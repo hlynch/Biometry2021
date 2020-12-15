@@ -7,6 +7,9 @@
 #    http://shiny.rstudio.com/
 #
 
+#library(rsconnect)
+#deployApp()
+
 library(shiny)
 
 # Define UI for application that draws a histogram
@@ -21,16 +24,16 @@ server <- function(input,output){
   })
   
   # calculate some stuff needed to define the quantiles 
-  min_quant <- reactive({
-    input$mean - 3*input$sd # set the minimum of the quantiles 
-  })
+#  min_quant <- reactive({
+#    input$mean - 3*input$sd # set the minimum of the quantiles 
+#  })
   
-  max_quant <- reactive({
-    input$mean + 3*input$sd # set the maximum of the quantiles 
-  })  
+#  max_quant <- reactive({
+#    input$mean + 3*input$sd # set the maximum of the quantiles 
+#  })  
   
   quantiles <- reactive({
-    seq(min_quant(), max_quant(), 0.01) 
+    seq(-10, 10, 0.01) 
   })
   
   # probability density 
@@ -55,7 +58,7 @@ server <- function(input,output){
   
   # Plot the random sample 
   output$Plot_sample <-renderPlot({
-    hist(rand_samp(),main="",xlab="Quantiles",col="grey")
+    plot(rand_samp(),main="",xlab="Sample index",ylab="Value",pch=16,col=rgb(225/255,74/255,141/255,0.5),ylim=c(-10,10))
   },
   width=400,height=400
   )
@@ -72,21 +75,24 @@ server <- function(input,output){
   
   # Plot the probability density
   output$Plot_prob_dens <-renderPlot({
-    plot(quantiles(), prob_dens(), type="l", ylab="Probability density", xlab="Quantiles")
+    hist(rand_samp(),main="",xlab="Value",ylab="Probability density",col=rgb(225/255,74/255,141/255,0.5),freq=F)
+    lines(quantiles(), prob_dens(),lwd=2)
   },
   width=400,height=400
   )
   
   # Plot the cumulative probability 
   output$Plot_cuml_prob <-renderPlot({
-    plot(quantiles(), cuml_prob(), type="l", ylab="Cumulative Probability", xlab="Quantiles")
+    plot(quantiles(), cuml_prob(), type="l", ylab="Cumulative Probability", xlab="Values")
+    lines(ecdf(rand_samp()),col=rgb(225/255,74/255,141/255,0.5),lwd=2)
   },
   width=400,height=400
   )
   
   # Plot the quantiles
   output$Plot_quantiles <-renderPlot({
-    plot(seq(0,1,0.01),quant_plot(),type="l",ylab="Quantiles", xlab="Probability")
+    plot(seq(0,1,0.01),quant_plot(),type="l",ylab="Values", xlab="Probability")
+    points(seq(0,1,0.01),quantile(rand_samp(),probs=seq(0,1,0.01)),col=rgb(225/255,74/255,141/255,0.7),pch=16)
   },
   width=400,height=400
   )
@@ -108,8 +114,8 @@ ui <- shinyUI(pageWithSidebar(
     
     sliderInput("mean",
                 "Mean:",
-                min=-50,
-                max=50,
+                min=-10,
+                max=10,
                 value=0,
                 step=0.1),
     
@@ -117,7 +123,7 @@ ui <- shinyUI(pageWithSidebar(
                 "Standard deviation:",
                 value=1,
                 min=0.1,
-                max=100,
+                max=10,
                 step=0.1)
   ),
   
@@ -129,20 +135,20 @@ ui <- shinyUI(pageWithSidebar(
                plotOutput("Plot_sample"),
                h6("Summary:"),
                verbatimTextOutput("summary"),
-               h6("Standard deviation:"),
+               h5("Standard deviation:"),
                verbatimTextOutput("stdev")
       ),
       tabPanel("Probability Density",
                plotOutput("Plot_prob_dens"),
-               h6("dnorm(quantiles, mean, sd)")
+               h5("dnorm(quantiles, mean, sd)")
       ),
       tabPanel("Cumulative Probability",
                plotOutput("Plot_cuml_prob"),
-               h6("pnorm(quantiles, mean, sd)")
+               h5("pnorm(quantiles, mean, sd)")
       ),
       tabPanel("Quantile Plot",
                plotOutput("Plot_quantiles"),
-               h6("qnorm(seq(0,1,0.01), mean, sd)")
+               h5("qnorm(seq(0,1,0.01), mean, sd)")
       )  
     )
   )

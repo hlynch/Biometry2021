@@ -5,6 +5,6 @@ account: hlynch
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3405354
-bundleId: 3993737
+bundleId: 3994068
 url: https://hlynch.shinyapps.io/normaldistribution/
-when: 1608065732.62969
+when: 1608071665.06742
