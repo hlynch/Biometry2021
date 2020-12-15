@@ -16,7 +16,7 @@ There is a frog dataset on the distribution of the Southern Corroboree frog that
 
 
 ```r
-frogs<-read.csv("~/Dropbox/Biometry/Week 13 Model selection and criticism/Week 13 Lab/frogs.csv",header=T)
+frogs<-read.csv("~/Documents/Projects/Biometry2021/_data/frogs.csv",header=T)
 head(frogs)
 ```
 
@@ -922,9 +922,9 @@ model.sel(frogs.glm0,frogs.glm1)
 ##            (Int)       alt        avr log(dst) log(NOP)   mnmx  mnmn        NOS
 ## frogs.glm1 18.27            0.0007003  -0.7583   0.5709 -2.362 5.354 -0.0036200
 ## frogs.glm0 40.90 -0.006648 -0.0067930  -0.7593   0.5727 -3.173 5.305 -0.0008979
-##            na.action df  logLik  AICc delta weight
-## frogs.glm1            7 -98.827 212.2  0.00  0.744
-## frogs.glm0   na.fail  8 -98.812 214.3  2.13  0.256
+##                     family na.action df  logLik  AICc delta weight
+## frogs.glm1 binomial(logit)            7 -98.827 212.2  0.00  0.744
+## frogs.glm0 binomial(logit)   na.fail  8 -98.812 214.3  2.13  0.256
 ## Models ranked by AICc(x)
 ```
 
@@ -986,7 +986,7 @@ What does the output mean "with shrinkage"? These estimates include a zero value
 Part 2: Model criticism
 ------------------------
 
-We are going to use a dataset that comes from the journal Ecology, which is available [here](https://github.com/hlynch/Biometry2020/tree/master/_data/Ernest2003.pdf).
+We are going to use a dataset that comes from the journal Ecology, which is available [here](https://github.com/hlynch/Biometry2021/tree/master/_data/Ernest2003.pdf).
 
 STOP: Let's read the abstract so we know what we are modelling.
 
@@ -1009,7 +1009,7 @@ First, we will load the data and the 'car' package, and use 'names' to see what 
 
 
 ```r
-data<-read.csv("~/Dropbox/Biometry/Week 13 Model selection and criticism/Week 13 Lab/MammalLifeHistory.csv")
+data<-read.csv("~/Documents/Projects/Biometry2021/_data/MammalLifeHistory.csv")
 attach(data)
 names(data)
 ```
@@ -1025,25 +1025,25 @@ Before fitting any models, let's just look at each potential covariate vs. maxim
 
 
 ```r
-plot(MaxLifespan~Order)
+boxplot(MaxLifespan~Order)
 ```
 
 <img src="Week-13-lab_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 ```r
-plot(MaxLifespan~Family)
+boxplot(MaxLifespan~Family)
 ```
 
 <img src="Week-13-lab_files/figure-html/unnamed-chunk-22-2.png" width="672" />
 
 ```r
-plot(MaxLifespan~Genus)
+boxplot(MaxLifespan~Genus)
 ```
 
 <img src="Week-13-lab_files/figure-html/unnamed-chunk-22-3.png" width="672" />
 
 ```r
-plot(MaxLifespan~Species)
+boxplot(MaxLifespan~Species)
 ```
 
 <img src="Week-13-lab_files/figure-html/unnamed-chunk-22-4.png" width="672" />

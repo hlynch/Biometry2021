@@ -201,20 +201,20 @@ This is a single-factor (one-way) ANOVA because we have one grouping category, n
 Our data is as follows:
 
 
-Height   Treatment 
--------  ----------
-10       low N     
-12       low N     
-12       low N     
-13       low N     
-9        ambient N 
-11       ambient N 
-11       ambient N 
-12       ambient N 
-12       high N    
-13       high N    
-15       high N    
-16       high N    
+|Height |Treatment |
+|:------|:---------|
+|10     |low N     |
+|12     |low N     |
+|12     |low N     |
+|13     |low N     |
+|9      |ambient N |
+|11     |ambient N |
+|11     |ambient N |
+|12     |ambient N |
+|12     |high N    |
+|13     |high N    |
+|15     |high N    |
+|16     |high N    |
 
 We first need the group means:
 

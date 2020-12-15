@@ -572,6 +572,10 @@ ggplot(data = bomregions2012, aes(x = Year, y = northRain)) + geom_point() + geo
   theme(text = element_text(size = text.size)) + theme_classic()
 ```
 
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
+
 <img src="Week-10-lecture_files/figure-html/unnamed-chunk-14-1.png" width="384" />
 
 ###Splines

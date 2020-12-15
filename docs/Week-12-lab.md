@@ -37,12 +37,12 @@ summary(salaries)
 ```
 
 ```
-##      Salary         Gender       Education 
-##  Min.   :15.00   Female:16   Masters  :11  
-##  1st Qu.:20.50   Male  :15   No degree:11  
-##  Median :25.00               PhD      : 9  
-##  Mean   :23.97                             
-##  3rd Qu.:27.00                             
+##      Salary         Gender           Education        
+##  Min.   :15.00   Length:31          Length:31         
+##  1st Qu.:20.50   Class :character   Class :character  
+##  Median :25.00   Mode  :character   Mode  :character  
+##  Mean   :23.97                                        
+##  3rd Qu.:27.00                                        
 ##  Max.   :32.00
 ```
 
@@ -53,8 +53,8 @@ str(salaries)
 ```
 ## 'data.frame':	31 obs. of  3 variables:
 ##  $ Salary   : int  24 26 25 24 27 24 27 23 30 27 ...
-##  $ Gender   : Factor w/ 2 levels "Female","Male": 1 1 1 1 1 1 1 1 1 1 ...
-##  $ Education: Factor w/ 3 levels "Masters","No degree",..: 1 1 1 1 1 1 1 1 3 3 ...
+##  $ Gender   : chr  "Female" "Female" "Female" "Female" ...
+##  $ Education: chr  "Masters" "Masters" "Masters" "Masters" ...
 ```
 
 ```r
@@ -143,22 +143,22 @@ summary(Salary~Education+Gender,data=salaries,method="cross",fun=meansd)
 ##  meansd by Education, Gender 
 ## 
 ## +------+
-## |N     |
+## |     N|
 ## |Salary|
 ## +------+
 ## +---------+-----------+-----------+-----------+
 ## |Education|   Female  |    Male   |    ALL    |
 ## +---------+-----------+-----------+-----------+
-## |Masters  |8          |3          |11         |
+## |  Masters|         8 |         3 |         11|
 ## |         |25 (1.51)  |27 (2)     |25.5 (1.81)|
 ## +---------+-----------+-----------+-----------+
-## |No degree|4          |7          |11         |
+## |No degree|         4 |         7 |         11|
 ## |         |17 (2.16)  |20 (1.41)  |18.9 (2.21)|
 ## +---------+-----------+-----------+-----------+
-## |PhD      |4          |5          |9          |
+## |      PhD|         4 |         5 |         9 |
 ## |         |29.2 (2.22)|27.4 (1.67)|28.2 (2.05)|
 ## +---------+-----------+-----------+-----------+
-## |ALL      |16         |15         |31         |
+## |      ALL|         16|         15|         31|
 ## |         |24.1 (4.89)|23.9 (4.03)|24 (4.42)  |
 ## +---------+-----------+-----------+-----------+
 ```
@@ -359,7 +359,7 @@ t.test(salaries.v2$Salary[salaries.v2$Gender=="Female"&salaries.v2$Education=="M
 ## 
 ## 	Welch Two Sample t-test
 ## 
-## data:  salaries.v2$Salary[salaries.v2$Gender == "Female" & salaries.v2$Education ==  and salaries.v2$Salary[salaries.v2$Gender == "Female" & salaries.v2$Education ==     "Masters"] and     "PhD"]
+## data:  salaries.v2$Salary[salaries.v2$Gender == "Female" & salaries.v2$Education == "Masters"] and salaries.v2$Salary[salaries.v2$Gender == "Female" & salaries.v2$Education == "PhD"]
 ## t = -3.453, df = 4.4536, p-value = 0.02188
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:

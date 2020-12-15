@@ -78,8 +78,7 @@ readings[readings$Index==14,1][1]
 ```
 
 ```
-## [1] Shmueli (2010) To explain or predict? Statistical Science 25(3): 289-310.
-## 33 Levels: Altman, N., and M. Krzywinski. 2015. Sources of variation. Nature Methods 12(1): 5-6. ...
+## [1] "Shmueli (2010) To explain or predict? Statistical Science 25(3): 289-310."
 ```
 
 ```r
@@ -87,8 +86,7 @@ readings[readings$Index==16,1][1]
 ```
 
 ```
-## [1] Hulbert, S. H. 1984. Pseudoreplication and the design of ecological field experiments. Ecological Monographs 54(2): 187-211.
-## 33 Levels: Altman, N., and M. Krzywinski. 2015. Sources of variation. Nature Methods 12(1): 5-6. ...
+## [1] "Hulbert, S. H. 1984. Pseudoreplication and the design of ecological field experiments. Ecological Monographs 54(2): 187-211."
 ```
 
 Perhaps not surprising! 
@@ -103,8 +101,7 @@ readings[readings$Index==1,1][1]
 ```
 
 ```
-## [1] Johnson, D.H. 1995. Statistical sirens: The allure of nonparametrics. Ecology 76(6): 1998-2000.
-## 33 Levels: Altman, N., and M. Krzywinski. 2015. Sources of variation. Nature Methods 12(1): 5-6. ...
+## [1] "Johnson, D.H. 1995. Statistical sirens: The allure of nonparametrics. Ecology 76(6): 1998-2000."
 ```
 
 ```r
@@ -112,8 +109,7 @@ readings[readings$Index==3,1][1]
 ```
 
 ```
-## [1] Johnson, D.H. 2002. The role of hypothesis testing in wildlife science. The Journal of Wildlife Management 66(2): 272-276.
-## 33 Levels: Altman, N., and M. Krzywinski. 2015. Sources of variation. Nature Methods 12(1): 5-6. ...
+## [1] "Johnson, D.H. 2002. The role of hypothesis testing in wildlife science. The Journal of Wildlife Management 66(2): 272-276."
 ```
 
 ```r
@@ -121,8 +117,7 @@ readings[readings$Index==10,1][1]
 ```
 
 ```
-## [1] Gawande (1999) The cancer cluster myth. The New Yorker.
-## 33 Levels: Altman, N., and M. Krzywinski. 2015. Sources of variation. Nature Methods 12(1): 5-6. ...
+## [1] "Gawande (1999) The cancer cluster myth. The New Yorker."
 ```
 
 There are two papers out at the end of Not Useful:
@@ -133,8 +128,7 @@ readings[readings$Index==12,1][1]
 ```
 
 ```
-## [1] Wainer, H. 1984. How to display data badly. The American Statistician 38(2): 137-147.
-## 33 Levels: Altman, N., and M. Krzywinski. 2015. Sources of variation. Nature Methods 12(1): 5-6. ...
+## [1] "Wainer, H. 1984. How to display data badly. The American Statistician 38(2): 137-147."
 ```
 
 ```r
@@ -142,8 +136,7 @@ readings[readings$Index==31,1][1]
 ```
 
 ```
-## [1] Gelman, A. 2011. Open data and open methods. Chance 24(4): 51-53.
-## 33 Levels: Altman, N., and M. Krzywinski. 2015. Sources of variation. Nature Methods 12(1): 5-6. ...
+## [1] "Gelman, A. 2011. Open data and open methods. Chance 24(4): 51-53."
 ```
 
 Both papers relate to the more general issues relating to data display and data reproducibility. I hope these ideas prove useful later, but I can understand why they don't seem as immediately useful to Biometry as some of the other readings we did.

@@ -518,14 +518,17 @@ Prestige$type
 ```
 
 ```
-##   [1] prof prof prof prof prof prof prof prof prof prof prof prof prof prof prof
-##  [16] prof prof prof prof prof prof prof prof prof prof prof prof bc   prof prof
-##  [31] wc   prof wc   <NA> wc   wc   wc   wc   wc   wc   wc   wc   wc   wc   wc  
-##  [46] wc   wc   wc   wc   wc   wc   wc   <NA> bc   wc   wc   wc   bc   bc   bc  
-##  [61] bc   bc   <NA> bc   bc   bc   <NA> bc   bc   bc   bc   bc   bc   bc   bc  
-##  [76] bc   bc   bc   bc   bc   bc   bc   bc   bc   bc   bc   bc   bc   bc   bc  
-##  [91] bc   bc   bc   bc   bc   prof bc   bc   bc   bc   bc   bc  
-## Levels: bc prof wc
+##   [1] "prof" "prof" "prof" "prof" "prof" "prof" "prof" "prof" "prof" "prof"
+##  [11] "prof" "prof" "prof" "prof" "prof" "prof" "prof" "prof" "prof" "prof"
+##  [21] "prof" "prof" "prof" "prof" "prof" "prof" "prof" "bc"   "prof" "prof"
+##  [31] "wc"   "prof" "wc"   NA     "wc"   "wc"   "wc"   "wc"   "wc"   "wc"  
+##  [41] "wc"   "wc"   "wc"   "wc"   "wc"   "wc"   "wc"   "wc"   "wc"   "wc"  
+##  [51] "wc"   "wc"   NA     "bc"   "wc"   "wc"   "wc"   "bc"   "bc"   "bc"  
+##  [61] "bc"   "bc"   NA     "bc"   "bc"   "bc"   NA     "bc"   "bc"   "bc"  
+##  [71] "bc"   "bc"   "bc"   "bc"   "bc"   "bc"   "bc"   "bc"   "bc"   "bc"  
+##  [81] "bc"   "bc"   "bc"   "bc"   "bc"   "bc"   "bc"   "bc"   "bc"   "bc"  
+##  [91] "bc"   "bc"   "bc"   "bc"   "bc"   "prof" "bc"   "bc"   "bc"   "bc"  
+## [101] "bc"   "bc"
 ```
 
 Notice that in addition to just listing that column, R also tells you what all the factor values are. We can do this with numerical values too, but be careful because R will interpret the numerical values as characters:

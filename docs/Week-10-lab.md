@@ -491,7 +491,7 @@ dev_diff
 ```
 
 ```
-## [1] 0.272681
+## [1] 0.01021377
 ```
 
 Notice that even though the covariate that we added is just noise, it still decreases the deviance.
@@ -517,34 +517,6 @@ for (i in 1:1000){
   
   dev_diff <- c(dev_diff, dev_diff_rand)
 }
-```
-
-```
-## Warning: glm.fit: algorithm did not converge
-```
-
-```
-## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-```
-
-```
-## Warning: glm.fit: algorithm did not converge
-```
-
-```
-## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-```
-
-```
-## Warning: glm.fit: algorithm did not converge
-```
-
-```
-## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-```
-
-```
-## Warning: glm.fit: algorithm did not converge
 ```
 
 ```
@@ -622,14 +594,6 @@ Now we'll try fitting this data with a GAM. Note the syntax: s() fits a smoothin
 
 ```r
 air.gam<-gam(log(Ozone)~s(Solar.R)+s(Wind)+s(Temp),data=airquality)
-```
-
-```
-## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
-## ignored
-```
-
-```r
 summary(air.gam)
 ```
 
@@ -647,7 +611,7 @@ summary(air.gam)
 ## AIC: 162.8854 
 ## 42 observations deleted due to missingness 
 ## 
-## Number of Local Scoring Iterations: 2 
+## Number of Local Scoring Iterations: NA 
 ## 
 ## Anova for Parametric Effects
 ##            Df Sum Sq Mean Sq F value    Pr(>F)    
@@ -680,14 +644,6 @@ The default is that the smoothing splines have df=4, but we can control the amou
 
 ```r
 air.gam<-gam(log(Ozone)~s(Solar.R,df=20)+s(Wind)+s(Temp),data=airquality)
-```
-
-```
-## Warning in model.matrix.default(mt, mf, contrasts): non-list contrasts argument
-## ignored
-```
-
-```r
 plot(air.gam,se=T)
 ```
 

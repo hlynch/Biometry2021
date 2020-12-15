@@ -1,6 +1,14 @@
 Week 8 Lecture
 =============
 
+##Warm-up
+
+Which of these is the best model? Why?
+
+```{r echo=FALSE, fig.align='center', fig.cap='Models of three different complexities. Source: Gr\"{u}nwald (2007) \textit{The Minimum Descreiption Length principle}', out.width='100%'}
+knitr::include_graphics('ModelComplexity.png')
+```
+
 ## The aims of modelling -- A discussion of Shmueli (2010)
 
 Before we launch into the technical details of building linear models, let’s discuss the Shmueli (2010) paper. Shmeuli makes the distinction between three kinds of models

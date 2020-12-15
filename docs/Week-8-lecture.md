@@ -1,6 +1,15 @@
 Week 8 Lecture
 =============
 
+##Warm-up
+
+Which of these is the best model? Why?
+
+<div class="figure" style="text-align: center">
+<img src="ModelComplexity.png" alt="Models of three different complexities. Source: Gr&quot;{u}nwald (2007) 	extit{The Minimum Descreiption Length principle}" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-1)Models of three different complexities. Source: Gr"{u}nwald (2007) 	extit{The Minimum Descreiption Length principle}</p>
+</div>
+
 ## The aims of modelling -- A discussion of Shmueli (2010)
 
 Before we launch into the technical details of building linear models, let’s discuss the Shmueli (2010) paper. Shmeuli makes the distinction between three kinds of models
@@ -326,17 +335,17 @@ model.matrix( ~ -1 + iris.sub$Species)
 ```
 ##    iris.sub$Speciessetosa iris.sub$Speciesversicolor iris.sub$Speciesvirginica
 ## 1                       0                          1                         0
-## 2                       1                          0                         0
+## 2                       0                          0                         1
 ## 3                       0                          1                         0
 ## 4                       0                          0                         1
-## 5                       0                          0                         1
-## 6                       0                          0                         1
-## 7                       0                          1                         0
-## 8                       0                          0                         1
-## 9                       0                          1                         0
+## 5                       0                          1                         0
+## 6                       1                          0                         0
+## 7                       1                          0                         0
+## 8                       0                          1                         0
+## 9                       0                          0                         1
 ## 10                      0                          1                         0
-## 11                      0                          1                         0
-## 12                      0                          1                         0
+## 11                      0                          0                         1
+## 12                      1                          0                         0
 ## attr(,"assign")
 ## [1] 1 1 1
 ## attr(,"contrasts")
@@ -355,10 +364,10 @@ dummy$coefficients
 ```
 
 ```
-##                            Estimate Std. Error   t value     Pr(>|t|)
-## iris.sub$Speciessetosa     5.000000  0.5190422  9.633129 4.879758e-06
-## iris.sub$Speciesversicolor 5.857143  0.1961795 29.856040 2.592575e-10
-## iris.sub$Speciesvirginica  6.625000  0.2595211 25.527792 1.045635e-09
+##                            Estimate Std. Error  t value     Pr(>|t|)
+## iris.sub$Speciessetosa        5.000  0.2485141 20.11958 8.614415e-09
+## iris.sub$Speciesversicolor    6.100  0.1924982 31.68861 1.523662e-10
+## iris.sub$Speciesvirginica     6.375  0.2152195 29.62092 2.781964e-10
 ```
 
 ```r
@@ -368,7 +377,7 @@ iris.fig <- ggplot(iris.sub, aes(x = Species, y = Sepal.Length)) + geom_point() 
 iris.fig
 ```
 
-<img src="Week-8-lecture_files/figure-html/unnamed-chunk-3-1.png" width="480" />
+<img src="Week-8-lecture_files/figure-html/unnamed-chunk-4-1.png" width="480" />
 
 Don't worry about the syntax, but look closely at the figure. The figure is illustrating the values for each group, and the red, green, and blue filled circles represent the mean within each group. Our simple "dummy coding" model simply states that each value (the individual black dots) can be modelled as the mean for that group PLUS the residual difference (i.e. $\epsilon$) between the group mean and that individual value. Note that the function we use to fit the linear model 'lm' is one that we haven't formally introduced yet (but that will come soon). For now, just observe how the output of the model represents the parameters we are interested in (in this case, the group means).
 
@@ -636,17 +645,17 @@ model.matrix(~ iris.sub$Species)
 ```
 ##    (Intercept) iris.sub$Speciesversicolor iris.sub$Speciesvirginica
 ## 1            1                          1                         0
-## 2            1                          0                         0
+## 2            1                          0                         1
 ## 3            1                          1                         0
 ## 4            1                          0                         1
-## 5            1                          0                         1
-## 6            1                          0                         1
-## 7            1                          1                         0
-## 8            1                          0                         1
-## 9            1                          1                         0
+## 5            1                          1                         0
+## 6            1                          0                         0
+## 7            1                          0                         0
+## 8            1                          1                         0
+## 9            1                          0                         1
 ## 10           1                          1                         0
-## 11           1                          1                         0
-## 12           1                          1                         0
+## 11           1                          0                         1
+## 12           1                          0                         0
 ## attr(,"assign")
 ## [1] 0 1 1
 ## attr(,"contrasts")
@@ -661,10 +670,10 @@ treatment$coefficients
 ```
 
 ```
-##                             Estimate Std. Error  t value     Pr(>|t|)
-## (Intercept)                5.0000000  0.5190422 9.633129 4.879758e-06
-## iris.sub$Speciesversicolor 0.8571429  0.5548794 1.544737 1.568085e-01
-## iris.sub$Speciesvirginica  1.6250000  0.5803068 2.800243 2.070441e-02
+##                            Estimate Std. Error   t value     Pr(>|t|)
+## (Intercept)                   5.000  0.2485141 20.119583 8.614415e-09
+## iris.sub$Speciesversicolor    1.100  0.3143482  3.499304 6.730882e-03
+## iris.sub$Speciesvirginica     1.375  0.3287533  4.182468 2.367407e-03
 ```
 
 In this case, you can see that the model is estimating the mean of the first group (setosa) and then the difference between the second and first group and the difference between the third and first groups. This allows you to test hypotheses about the differences, which is often more meaningful than testing hypotheses about the group means themselves.
@@ -721,17 +730,17 @@ model.matrix(~ iris.sub$Species)
 ```
 ##    (Intercept) iris.sub$Species1 iris.sub$Species2
 ## 1            1                 1                -1
-## 2            1                -1                -1
+## 2            1                 0                 2
 ## 3            1                 1                -1
 ## 4            1                 0                 2
-## 5            1                 0                 2
-## 6            1                 0                 2
-## 7            1                 1                -1
-## 8            1                 0                 2
-## 9            1                 1                -1
+## 5            1                 1                -1
+## 6            1                -1                -1
+## 7            1                -1                -1
+## 8            1                 1                -1
+## 9            1                 0                 2
 ## 10           1                 1                -1
-## 11           1                 1                -1
-## 12           1                 1                -1
+## 11           1                 0                 2
+## 12           1                -1                -1
 ## attr(,"assign")
 ## [1] 0 1 1
 ## attr(,"contrasts")
@@ -746,10 +755,10 @@ helmert$coefficients
 ```
 
 ```
-##                    Estimate Std. Error   t value     Pr(>|t|)
-## (Intercept)       5.8273810  0.2041901 28.538999 3.876110e-10
-## iris.sub$Species1 0.4285714  0.2774397  1.544737 1.568085e-01
-## iris.sub$Species2 0.3988095  0.1266333  3.149325 1.175030e-02
+##                   Estimate Std. Error   t value     Pr(>|t|)
+## (Intercept)          5.825  0.1269883 45.870367 5.565413e-12
+## iris.sub$Species1    0.550  0.1571741  3.499304 6.730882e-03
+## iris.sub$Species2    0.275  0.0888339  3.095665 1.281177e-02
 ```
 
 ##Sum-to-zero contrasts
@@ -807,17 +816,17 @@ model.matrix(~ iris.sub$Species)
 ```
 ##    (Intercept) iris.sub$Species1 iris.sub$Species2
 ## 1            1                 0                 1
-## 2            1                 1                 0
+## 2            1                -1                -1
 ## 3            1                 0                 1
 ## 4            1                -1                -1
-## 5            1                -1                -1
-## 6            1                -1                -1
-## 7            1                 0                 1
-## 8            1                -1                -1
-## 9            1                 0                 1
+## 5            1                 0                 1
+## 6            1                 1                 0
+## 7            1                 1                 0
+## 8            1                 0                 1
+## 9            1                -1                -1
 ## 10           1                 0                 1
-## 11           1                 0                 1
-## 12           1                 0                 1
+## 11           1                -1                -1
+## 12           1                 1                 0
 ## attr(,"assign")
 ## [1] 0 1 1
 ## attr(,"contrasts")
@@ -832,10 +841,10 @@ sumtozero$coefficients
 ```
 
 ```
-##                     Estimate Std. Error    t value     Pr(>|t|)
-## (Intercept)        5.8273810  0.2041901 28.5389994 3.876110e-10
-## iris.sub$Species1 -0.8273810  0.3626226 -2.2816583 4.843096e-02
-## iris.sub$Species2  0.0297619  0.2335003  0.1274598 9.013789e-01
+##                   Estimate Std. Error   t value     Pr(>|t|)
+## (Intercept)          5.825  0.1269883 45.870367 5.565413e-12
+## iris.sub$Species1   -0.825  0.1916049 -4.305735 1.973987e-03
+## iris.sub$Species2    0.275  0.1687539  1.629592 1.376270e-01
 ```
 
 There is one final "off-the-shelf" contrast that we will learn, and that is polynomial contrasts.
@@ -911,14 +920,14 @@ iris.fig.baselines <- ggplot(iris.sub, aes(x = Species, y = Sepal.Length)) + geo
 iris.fig.baselines
 ```
 
-<img src="Week-8-lecture_files/figure-html/unnamed-chunk-10-1.png" width="576" />
+<img src="Week-8-lecture_files/figure-html/unnamed-chunk-11-1.png" width="576" />
 
 ## Orthogonal vs. Non-orthogonal contrasts
 
 
 <div class="figure" style="text-align: center">
 <img src="perpendicular.png" alt="The segment AB is orthogonal to the segement CD. Source: Wikipedia" width="50%" />
-<p class="caption">(\#fig:unnamed-chunk-11)The segment AB is orthogonal to the segement CD. Source: Wikipedia</p>
+<p class="caption">(\#fig:unnamed-chunk-12)The segment AB is orthogonal to the segement CD. Source: Wikipedia</p>
 </div>
 
 In a broad sense, orthogonal refers to things that are perpendicular. For some cases, that's easy to think about. But what does it mean with respect to categorical comparisons in linear models? 
