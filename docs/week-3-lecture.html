@@ -416,6 +416,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><span class="math display">\[ f(x \mid \mu, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \]</span> <span class="math display">\[ x \in \mathbb{R} \\ \mu \in \mathbb{R} \\ \sigma &gt; 0 \]</span></p>
 <p>The shape of the Normal distribution can be illustrated by a few examples</p>
 <p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<iframe src="https://hlynch.shinyapps.io/normaldistribution/?showcase=0" width="672" height="1000px">
+</iframe>
 <p>The expected value of the Normal distribution is given by</p>
 <p><span class="math display">\[ 
 \begin{align} E[X] &amp;= \int_{-\infty}^{\infty}{X \cdot f(X)dX} \\
@@ -458,7 +460,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 \mu \in \mathbb{R} \\ 
 \sigma &gt; 0 \]</span></p>
 <p>The shape of the Log-Normal distribution can be illustrated with a few examples</p>
-<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>The expected value and variance of the Log-Normal distribution is given by</p>
 <ul>
 <li><span class="math inline">\(\mu\)</span> is no longer the mean!</li>
@@ -496,7 +498,7 @@ S_n = \frac{1}{n} (X_1 + X_2 + X_3,...,X_k) \\
 x \in \mathbb{N} \cup \{0\} \]</span></p>
 <p>Note that when variables are discrete (i.e. when the distribution only produces integer numbers), we call the probability density function a probability <em>mass</em> function. The PDF and PMF play the same tole in both cases.</p>
 <p>The shape of the Poisson distribution is illustrated by a few examples</p>
-<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>The expected value and variance of the Poisson distribution is given by</p>
 <p><span class="math display">\[ \begin{align} E[X] &amp;= \sum_{x=1}^{\infty} x \frac{e^{-\lambda} \cdot \lambda^x}{x!} \\
 &amp;= \lambda \cdot e^{-\lambda} \cdot \sum_{x=1}^{\infty} x \frac{\lambda^{x-1}}{x!} \\
@@ -524,7 +526,7 @@ x \in \{1,2,3,...,n\} \\
 p \in [0,1] 
 \]</span></p>
 <p>The shape of the Binomial distribution is illustrated by the following examples</p>
-<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>The expected value and variance of the Binomial distribution is given by</p>
 <p><span class="math display">\[
 \begin{align} E[X] &amp;= \sum_{x=1}^n x \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x} \\ 
@@ -547,7 +549,7 @@ Var[X] &amp;= np(1-p) \end{align}
  x \in (0,1) \]</span></p>
 <p>Gamma Function: if n is a positive integer <span class="math inline">\(\Gamma(n)=(n-1)!\)</span></p>
 <p>The shape of the Beta distribution is illustrated by the following examples</p>
-<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>The expected value and variance of the Beta distribution is given by</p>
 <p><span class="math display">\[ \begin{align} E[X] &amp;= \int_0^1x\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) + \Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}dx \\
 &amp;= \frac{\alpha}{\alpha + \beta}  \end{align} \]</span></p>
@@ -569,7 +571,7 @@ Var[X] &amp;= np(1-p) \end{align}
 \beta &gt;0 \\
 x&gt;0\]</span></p>
 <p>The shape of the Gamma distribution is illustrated by the following examples</p>
-<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The expected value and variance of the Gamma distribution is given by</p>
 <p><span class="math display">\[ \begin{align} E[X] &amp;= \int_0^\infty x\frac{1}{\beta^\alpha \Gamma(\alpha)} x^{(\alpha-1)} e^\frac{-x}{\beta} \\
 &amp;= \alpha\beta \end{align} \]</span></p>

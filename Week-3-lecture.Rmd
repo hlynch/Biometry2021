@@ -76,6 +76,9 @@ ggplot(n.data, aes(x=x, y=y)) +
         legend.position = c(0.8, 0.55))
 ```
 
+```{r, echo = FALSE}
+knitr::include_app('https://hlynch.shinyapps.io/normaldistribution/', height = '1000px')
+```
 
 The expected value of the Normal distribution is given by
 

@@ -54,6 +54,7 @@ The shape of the Normal distribution can be illustrated by a few examples
 
 <img src="Week-3-lecture_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
+<iframe src="https://hlynch.shinyapps.io/normaldistribution/?showcase=0" width="672" height="1000px"></iframe>
 
 The expected value of the Normal distribution is given by
 
@@ -115,7 +116,7 @@ $$ f(x \mid \mu, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}}e^{-\frac{(log(x)-\mu)
 
 The shape of the Log-Normal distribution can be illustrated with a few examples
 
-<img src="Week-3-lecture_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="Week-3-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 
 The expected value and variance of the Log-Normal distribution is given by
@@ -171,7 +172,7 @@ Note that when variables are discrete (i.e. when the distribution only produces 
 
 The shape of the Poisson distribution is illustrated by a few examples
 
-<img src="Week-3-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="Week-3-lecture_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 
 The expected value and variance of the Poisson distribution is given by
@@ -215,7 +216,7 @@ $$
 
 The shape of the Binomial distribution is illustrated by the following examples
 
-<img src="Week-3-lecture_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="Week-3-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 
 The expected value and variance of the Binomial distribution is given by
@@ -249,7 +250,7 @@ Gamma Function: if n is a positive integer $\Gamma(n)=(n-1)!$
 
 The shape of the Beta distribution is illustrated by the following examples
 
-<img src="Week-3-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="Week-3-lecture_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 
 The expected value and variance of the Beta distribution is given by
@@ -284,7 +285,7 @@ x>0$$
 
 The shape of the Gamma distribution is illustrated by the following examples
 
-<img src="Week-3-lecture_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="Week-3-lecture_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
 The expected value and variance of the Gamma distribution is given by
