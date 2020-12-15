@@ -5,7 +5,7 @@ Week 8 Lecture
 
 Which of these is the best model? Why?
 
-```{r echo=FALSE, fig.align='center', fig.cap='Models of three different complexities. Source: Gr\"{u}nwald (2007) \textit{The Minimum Descreiption Length principle}', out.width='100%'}
+```{r echo=FALSE, fig.align='center', fig.cap='Models of three different complexities. Figure adapted from [Grunwald (2007) The Minimum Description Length principle](https://mitpress.mit.edu/books/minimum-description-length-principle)', out.width='100%'}
 knitr::include_graphics('ModelComplexity.png')
 ```
 

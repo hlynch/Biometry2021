@@ -34,7 +34,7 @@ PART II: Two-dimensional data
 Read in the following dataset describing fox fur production as a function of year.
 
 ```{r}
-setwd("~/Dropbox/Biometry/Week 7 Graphical methods/Week 7 Lecture")
+setwd("~/Documents/Projects/Biometry2021/_data/")
 fox.data<-read.csv("FoxFurProduction.csv", header=F)
 ```
 

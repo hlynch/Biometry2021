@@ -403,32 +403,32 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]       [,3]       [,4]      [,5]       [,6]       [,7]
-##  [1,]   NA 0.1790671 0.49389565 0.42565891 0.4165550 0.11078940 0.51240664
-##  [2,]   NA        NA 0.05806477 0.06711235 0.5397060 0.97603898 0.08609956
-##  [3,]   NA        NA         NA 0.81195239 0.1468869 0.02656330 0.92770095
-##  [4,]   NA        NA         NA         NA 0.1532970 0.04286506 0.89736230
-##  [5,]   NA        NA         NA         NA        NA 0.45556539 0.19397010
-##  [6,]   NA        NA         NA         NA        NA         NA 0.05665428
-##  [7,]   NA        NA         NA         NA        NA         NA         NA
-##  [8,]   NA        NA         NA         NA        NA         NA         NA
-##  [9,]   NA        NA         NA         NA        NA         NA         NA
-## [10,]   NA        NA         NA         NA        NA         NA         NA
+<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
+##  [1,]   NA 0.5823057 0.3782348 0.7537355 0.7862395 0.5892159 0.3881732
+##  [2,]   NA        NA 0.6069813 0.7887253 0.7108464 0.8627263 0.6510831
+##  [3,]   NA        NA        NA 0.4888851 0.4384158 0.8157896 0.9083082
+##  [4,]   NA        NA        NA        NA 0.9418498 0.7352967 0.5108866
+##  [5,]   NA        NA        NA        NA        NA 0.6927846 0.4473948
+##  [6,]   NA        NA        NA        NA        NA        NA 0.8810683
+##  [7,]   NA        NA        NA        NA        NA        NA        NA
+##  [8,]   NA        NA        NA        NA        NA        NA        NA
+##  [9,]   NA        NA        NA        NA        NA        NA        NA
+## [10,]   NA        NA        NA        NA        NA        NA        NA
 ##            [,8]      [,9]     [,10]
-##  [1,] 0.4517271 0.9452434 0.9913079
-##  [2,] 0.5938037 0.1772074 0.2184898
-##  [3,] 0.1852733 0.5607196 0.5304531
-##  [4,] 0.1776722 0.4755379 0.4522200
-##  [5,] 0.9781845 0.4015730 0.4681665
-##  [6,] 0.5285635 0.1156126 0.1563528
-##  [7,] 0.2200004 0.5648290 0.5358149
-##  [8,]        NA 0.4336261 0.4927799
-##  [9,]        NA        NA 0.9418747
+##  [1,] 0.2387520 0.5820227 0.5841423
+##  [2,] 0.4180818 0.9852752 0.9802396
+##  [3,] 0.9542491 0.5909001 0.6314075
+##  [4,] 0.3054025 0.7939022 0.7826162
+##  [5,] 0.2319427 0.7116814 0.7109914
+##  [6,] 0.7484329 0.8521097 0.8784203
+##  [7,] 0.8286529 0.6310757 0.6807335
+##  [8,]        NA 0.3874824 0.4637189
+##  [9,]        NA        NA 0.9657970
 ## [10,]        NA        NA        NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 0</code></pre>
 <p>We could correct this using the Bonferonni method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">45</span>
 new.threshold.B&lt;-<span class="fl">0.05</span>/k
@@ -469,7 +469,7 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
 <pre><code>##          5% 
-## 0.001836248</code></pre>
+## 0.002002707</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
 <pre><code>## [1] 0</code></pre>

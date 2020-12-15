@@ -208,14 +208,14 @@ opt1
 
 ```
 ## $par
-## [1] 0.9895751 2.0065787
+## [1] 1.003949 2.092092
 ## 
 ## $value
-## [1] 2115.236
+## [1] 2157.181
 ## 
 ## $counts
 ## function gradient 
-##       53       NA 
+##       59       NA 
 ## 
 ## $convergence
 ## [1] 0
@@ -234,8 +234,8 @@ fitdistr(x,"normal")
 
 ```
 ##       mean          sd    
-##   0.98923522   2.00631058 
-##  (0.06344511) (0.04486247)
+##   1.00376281   2.09225482 
+##  (0.06616291) (0.04678424)
 ```
 
 Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE. You will learn how to put CI on estimators in Problem Set #3.
