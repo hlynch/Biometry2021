@@ -1,0 +1,10 @@
+name: betadistribution
+title:
+username:
+account: hlynch
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3407926
+bundleId: 3997838
+url: https://hlynch.shinyapps.io/betadistribution/
+when: 1608140279.53378

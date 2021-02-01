@@ -178,17 +178,25 @@ Overview of Univariate Distributions
 --------------------------------
 
 Discrete Distributions
+
 - Binomial
+
 - Multinomial
+
 - Poisson
+
 - Geometric
 
-
 Continuous Distributions
+
 - Normal/Gaussian
+
 - Beta
+
 - Gamma
+
 - Student's t
+
 - $\chi^2$
 
 
@@ -234,14 +242,14 @@ $$ E[X] = \int_{-\infty}^{\infty}{X \cdot f(X)dX}$$
 
 INDUCTIVE reasoning:
 
-A set of specific observations -> A general principle
+A set of specific observations $\rightarrow$ A general principle
 
 Example: I observe a number of elephants and they were all gray. Therefore, all elephants are gray.
 
 
 DEDUCTIVE reasoning:
 
-A general principle -> A set of predictions or explanations
+A general principle $\rightarrow$ A set of predictions or explanations
 
 Example: All elephants are gray. Therefore, I predict that this new (as yet undiscovered) species of elephant will be gray.
 
@@ -309,7 +317,7 @@ An example:
 
 The basic outline of statistical inference
 
-sample(data) -> sample statistics -> ESTIMATOR -> population parameter -> underlying distribution
+sample(data) $\rightarrow$ sample statistics $\rightarrow$ ESTIMATOR $\rightarrow$ population parameter $\rightarrow$ underlying distribution
 
 
 Estimators are imperfect tools

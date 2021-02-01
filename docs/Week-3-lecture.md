@@ -252,6 +252,7 @@ The shape of the Beta distribution is illustrated by the following examples
 
 <img src="Week-3-lecture_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
+<iframe src="https://hlynch.shinyapps.io/betadistribution/?showcase=0" width="672" height="1000px"></iframe>
 
 The expected value and variance of the Beta distribution is given by
 
@@ -285,7 +286,7 @@ x>0$$
 
 The shape of the Gamma distribution is illustrated by the following examples
 
-<img src="Week-3-lecture_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="Week-3-lecture_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 
 The expected value and variance of the Gamma distribution is given by
