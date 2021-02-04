@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-01" />
+<meta name="date" content="2021-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -419,7 +419,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <ul>
 <li><p>Lecture on Tuesday</p></li>
 <li><p>&quot;Lab&quot;&quot; on Thursday</p></li>
-<li><p>Problem sets are posted on Wednesdays (feel free to remind me via Slack if I forget), and are due before lecture next Tuesday. This deadline is very strict, no exceptions. Turn in what you have before 8:30 am on Tuesday, even if its not complete.</p></li>
+<li><p>Problem sets are posted on Wednesdays (feel free to remind me via Slack if I forget), and are due before lecture next Tuesday. This deadline is very strict, no exceptions. Turn in what you have before 8:00 am on Tuesday, even if its not complete.</p></li>
 </ul>
 <p>Communication</p>
 <ul>
@@ -454,9 +454,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 Figure 0.1: Red shading represents the intersection. Source: Wikimedia Commons
 </p>
 </div>
-<p>Now let's pull one M&amp;M out of the bag</p>
+<p>Now let's pull one M&amp;M out of the bag. <em>If</em> the color distribution of chocolate M&amp;Ms and peanut M&amp;Ms is the same, then these two traits are independent, and we can write the probability of being <em>both</em> Green and Peanut as</p>
 <p><span class="math display">\[ P(Green \: AND \:  Peanut) = P(Green \cap Peanut) = P(Green) \cdot P(Peanut) \]</span></p>
-<p>This is called a Joint Probability and we usually write it as <span class="math inline">\(P(Green,Peanut)\)</span>.</p>
+<p>This is called a Joint Probability and we usually write it as <span class="math inline">\(P(Green,Peanut)\)</span>. <em>This only works if these two traits are independent of one another.</em> If color and type were not independent of one another, we would have to calculate the joint probability differently, but in the vast majority of cases we are working with data that we assuming are independent of one another. In these cases, the joint probability is simply the product of all the individual probabilities.</p>
 </div>
 <div id="union" class="section level3">
 <h3><span class="header-section-number">1.4.2</span> Union</h3>
@@ -469,6 +469,8 @@ Figure 1.1: Red shading represents the union. Source: Wikimedia Commons
 <p><span class="math display">\[ \begin{align*} 
 P(Green \: OR \: Peanut) &amp;= P(Green \cup Peanut) \\ 
 &amp;= P(Green) + P(Peanut) - P(Green \cap Peanut) \end{align*} \]</span></p>
+<p><strong>Question: Why do we have to subtract off the intersection?</strong></p>
+<p><details> <summary>Click for Answer</summary> <span style="color: blueviolet;"> If we do not subtract off the intersection, then the probability of Green AND Peanut will be double counted. </span> </details></p>
 </div>
 <div id="complement" class="section level3">
 <h3><span class="header-section-number">1.4.3</span> Complement:</h3>
@@ -486,7 +488,8 @@ Figure 1.2: Red shading represents the complement. Source: Wikimedia Commons
 <h2><span class="header-section-number">1.5</span> Multiple events</h2>
 <p>Let's consider what happens when we pull 2 M&amp;Ms out of the bag</p>
 <p><span class="math display">\[ P (Green \: AND \: THEN \: Blue) = P(Green) \cdot P(Blue) \]</span></p>
-<p>What if we didn't care about the order?</p>
+<p><strong>Question: What if we didn't care about the order?</strong></p>
+<p><details> <summary>Click for Answer</summary> <span style="color: blueviolet;"> If we do not care about the order, then the combination of one Green M&amp;M and one Blue M&amp;M could have come about because we drew a Blue M&amp;M and then a Green, or a Green and then a Blue. Because there are two ways to get this outcome (and they are mutually exclusive, so we can simply add the two probabilities), the total probability is simply 2<em>P(Green)</em>P(Blue). </span> </details></p>
 </div>
 <div id="conditionals" class="section level2">
 <h2><span class="header-section-number">1.6</span> Conditionals</h2>
@@ -543,7 +546,7 @@ Figure 1.2: Red shading represents the complement. Source: Wikimedia Commons
 <ul>
 <li><strong>Probability Density Function</strong>: <span class="math inline">\(P(x_1&lt;X&lt;x_2)\)</span> (continuous distributions)</li>
 </ul>
-<p></p>
+<p><span style="color: green;"> <strong>Stop: Let's pause for a second and discuss the probability density function. This is a concdept that student's often struggle with. What is the interpretation of <span class="math inline">\(P(x)\)</span>? What is <span class="math inline">\(P(x=3)\)</span>? Can <span class="math inline">\(P(x)\)</span> ever be negative? [No.] Can <span class="math inline">\(P(x)\)</span> ever be greater than 1? [Yes! Why?]</strong> </span></p>
 <ul>
 <li><p><strong>Probability Mass Function</strong>: <span class="math inline">\(P(X=x_1)\)</span> (discrete distributions)</p></li>
 <li><p><strong>Cumulative Density Function (CDF)</strong>: What is <span class="math inline">\(P(X \le X^*)\)</span>?</p></li>

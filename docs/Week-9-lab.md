@@ -734,6 +734,14 @@ Note that we have to pass the function the data and the indices to be sampled. I
 
 ```r
 duncan.boot<-boot(Duncan,boot.huber,1999,maxit=100)
+```
+
+```
+## Warning in rlm.default(x, y, weights, method = method, wt.method = wt.method, :
+## 'rlm' failed to converge in 100 steps
+```
+
+```r
 duncan.boot
 ```
 
@@ -748,8 +756,8 @@ duncan.boot
 ## 
 ## Bootstrap Statistics :
 ##      original       bias    std. error
-## t1* 6.3002197  0.315168421  4.54157414
-## t2* 0.6615263 -0.006462788  0.07373057
+## t1* 6.3002197  0.492150664  4.76765452
+## t2* 0.6615263 -0.008954028  0.07701522
 ```
 
 Question: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?

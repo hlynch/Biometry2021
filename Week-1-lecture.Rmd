@@ -49,7 +49,7 @@ Class Structure
 
 - "Lab"" on Thursday
 
-- Problem sets are posted on Wednesdays (feel free to remind me via Slack if I forget), and are due before lecture next Tuesday. This deadline is very strict, no exceptions. Turn in what you have before 8:30 am on Tuesday, even if its not complete. 
+- Problem sets are posted on Wednesdays (feel free to remind me via Slack if I forget), and are due before lecture next Tuesday. This deadline is very strict, no exceptions. Turn in what you have before 8:00 am on Tuesday, even if its not complete. 
 
 
 Communication
@@ -86,11 +86,11 @@ $$ \sum_{all \: types} P(types) = ? $$
 knitr::include_graphics('inter.png')
 ```
 
-Now let's pull one M&M out of the bag
+Now let's pull one M&M out of the bag. *If* the color distribution of chocolate M&Ms and peanut M&Ms is the same, then these two traits are independent, and we can write the probability of being *both* Green and Peanut as  
 
 $$ P(Green \: AND \:  Peanut) = P(Green \cap Peanut) = P(Green) \cdot P(Peanut) $$
 
-This is called a Joint Probability and we usually write it as $P(Green,Peanut)$.
+This is called a Joint Probability and we usually write it as $P(Green,Peanut)$. *This only works if these two traits are independent of one another.* If color and type were not independent of one another, we would have to calculate the joint probability differently, but in the vast majority of cases we are working with data that we assuming are independent of one another. In these cases, the joint probability is simply the product of all the individual probabilities.
 
 ###Union
 
@@ -103,6 +103,14 @@ $$ \begin{align*}
 P(Green \: OR \: Peanut) &= P(Green \cup Peanut) \\ 
 &= P(Green) + P(Peanut) - P(Green \cap Peanut) \end{align*} $$ 
 
+**Question: Why do we have to subtract off the intersection?**
+
+<details>
+  <summary>Click for Answer</summary>
+<span style="color: blueviolet;">
+    If we do not subtract off the intersection, then the probability of Green AND Peanut will be double counted.
+</span>
+</details> 
 
 ###Complement:
 
@@ -121,8 +129,14 @@ Let's consider what happens when we pull 2 M&Ms out of the bag
 
 $$ P (Green \: AND \: THEN \: Blue) = P(Green) \cdot P(Blue) $$
 
-What if we didn't care about the order?
+**Question: What if we didn't care about the order?**
 
+<details>
+  <summary>Click for Answer</summary>
+<span style="color: blueviolet;">
+    If we do not care about the order, then the combination of one Green M&M and one Blue M&M could have come about because we drew a Blue M&M and then a Green, or a Green and then a Blue. Because there are two ways to get this outcome (and they are mutually exclusive, so we can simply add the two probabilities), the total probability is simply 2*P(Green)*P(Blue).
+</span>
+</details> 
 
 ##Conditionals
 
@@ -202,7 +216,9 @@ What can you ask of a distribution?
 
 - **Probability Density Function**: $P(x_1<X<x_2)$ (continuous distributions)
 
-\or
+<span style="color: green;">
+    **Stop: Let's pause for a second and discuss the probability density function. This is a concdept that student's often struggle with. What is the interpretation of $P(x)$? What is $P(x=3)$? Can $P(x)$ ever be negative? [No.] Can $P(x)$ ever be greater than 1? [Yes! Why?]**
+</span>
 
 - **Probability Mass Function**: $P(X=x_1)$ (discrete distributions)
 
