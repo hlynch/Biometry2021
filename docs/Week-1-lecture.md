@@ -137,7 +137,7 @@ $$ P (Green \: AND \: THEN \: Blue) = P(Green) \cdot P(Blue) $$
 <details>
   <summary>Click for Answer</summary>
 <span style="color: blueviolet;">
-    If we do not care about the order, then the combination of one Green M&M and one Blue M&M could have come about because we drew a Blue M&M and then a Green, or a Green and then a Blue. Because there are two ways to get this outcome (and they are mutually exclusive, so we can simply add the two probabilities), the total probability is simply 2*P(Green)*P(Blue).
+    If we do not care about the order, then the combination of one Green M&M and one Blue M&M could have come about because we drew a Blue M&M and then a Green, or a Green and then a Blue. Because there are two ways to get this outcome (and they are mutually exclusive, so we can simply add the two probabilities), the total probability is simply 2 $\times$ P(Green) $\times$ P(Blue).
 </span>
 </details> 
 
@@ -154,6 +154,7 @@ $$ P(A \mid B) \cdot P(B) = P(B \mid A) \cdot P(A) $$
 
 $$ P(A \mid B) = \frac{P(B \mid A) \cdot P(A)}{P(B)}$$
 
+In Bayesian analyses (which we will not get into this semester), we are using this to calculate the probability of certain model parameters conditional on the data you have. But to find out more, you'll have to take BEE 569.
 
 $$ P(parameters \mid data) \cdot P(data) = P(data \mid parameters) \cdot P(parameters) $$
 
@@ -253,6 +254,7 @@ $$ \begin{align*} E[X] &= (0.1 \cdot 1) + (0.1 \cdot 2) + (0.1 \cdot 3) + (0.1 \
 
 $$ E[X] = \int_{-\infty}^{\infty}{X \cdot f(X)dX}$$
 
+Note that the function $f(x)$ in the above equation is the probability density function.
 
 ##A Brief Introduction to Scientific Method 
 

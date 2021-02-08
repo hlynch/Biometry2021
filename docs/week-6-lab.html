@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-04" />
+<meta name="date" content="2021-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,6 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>3.5</b> Parametric bootstrap</a></li>
 <li class="chapter" data-level="3.6" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife"><i class="fa fa-check"></i><b>3.6</b> Jackknife</a></li>
 <li class="chapter" data-level="3.7" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife-after-bootstrap"><i class="fa fa-check"></i><b>3.7</b> Jackknife-after-bootstrap</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-this-lecture-you-should-understand..."><i class="fa fa-check"></i><b>3.8</b> By the end of this lecture, you should understand...</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a><ul>
 <li class="chapter" data-level="4.1" data-path="week-2-lab.html"><a href="week-2-lab.html#confidence-intervals"><i class="fa fa-check"></i><b>4.1</b> Confidence intervals</a></li>
@@ -403,32 +404,32 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
-##  [1,]   NA 0.7411697 0.7184346 0.8203374 0.6666963 0.7412089 0.5162771
-##  [2,]   NA        NA 0.4889297 0.5675840 0.4580180 0.9291625 0.7845353
-##  [3,]   NA        NA        NA 0.8754401 0.9173921 0.3909873 0.2774769
-##  [4,]   NA        NA        NA        NA 0.8035983 0.4899907 0.3386670
-##  [5,]   NA        NA        NA        NA        NA 0.3738905 0.2658022
-##  [6,]   NA        NA        NA        NA        NA        NA 0.6469900
-##  [7,]   NA        NA        NA        NA        NA        NA        NA
-##  [8,]   NA        NA        NA        NA        NA        NA        NA
-##  [9,]   NA        NA        NA        NA        NA        NA        NA
-## [10,]   NA        NA        NA        NA        NA        NA        NA
-##            [,8]       [,9]     [,10]
-##  [1,] 0.3577071 0.17212118 0.9306187
-##  [2,] 0.2378151 0.11135031 0.8267092
-##  [3,] 0.4997476 0.23247827 0.6808241
-##  [4,] 0.4177389 0.17565051 0.7684067
-##  [5,] 0.5859105 0.32188999 0.6356889
-##  [6,] 0.1543824 0.02945943 0.8542214
-##  [7,] 0.1196554 0.03865317 0.6201402
-##  [8,]        NA 0.73663457 0.3614881
-##  [9,]        NA         NA 0.1999748
-## [10,]        NA         NA        NA</code></pre>
+<pre><code>##       [,1]     [,2]      [,3]      [,4]      [,5]      [,6]      [,7]      [,8]
+##  [1,]   NA 0.386674 0.8731121 0.6265219 0.7037056 0.4290053 0.7824417 0.8647718
+##  [2,]   NA       NA 0.2770420 0.6293179 0.1967478 0.8568907 0.2263649 0.5529290
+##  [3,]   NA       NA        NA 0.4821811 0.8129037 0.2995912 0.9020609 0.7487978
+##  [4,]   NA       NA        NA        NA 0.3504005 0.7206063 0.4032312 0.8097944
+##  [5,]   NA       NA        NA        NA        NA 0.2081556 0.9068244 0.6059583
+##  [6,]   NA       NA        NA        NA        NA        NA 0.2407097 0.6176169
+##  [7,]   NA       NA        NA        NA        NA        NA        NA 0.6712492
+##  [8,]   NA       NA        NA        NA        NA        NA        NA        NA
+##  [9,]   NA       NA        NA        NA        NA        NA        NA        NA
+## [10,]   NA       NA        NA        NA        NA        NA        NA        NA
+##             [,9]      [,10]
+##  [1,] 0.41352781 0.47999805
+##  [2,] 0.05642677 0.09675877
+##  [3,] 0.49024391 0.56269858
+##  [4,] 0.11597644 0.18490667
+##  [5,] 0.68616887 0.74371768
+##  [6,] 0.04497730 0.09455380
+##  [7,] 0.58014374 0.64813313
+##  [8,] 0.36596538 0.41901739
+##  [9,]         NA 0.96720154
+## [10,]         NA         NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 1</code></pre>
 <p>We could correct this using the Bonferonni method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">45</span>
 new.threshold.B&lt;-<span class="fl">0.05</span>/k
@@ -469,7 +470,7 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
 <pre><code>##          5% 
-## 0.001958675</code></pre>
+## 0.001927143</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
 <pre><code>## [1] 0</code></pre>

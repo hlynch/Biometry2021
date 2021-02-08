@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-04" />
+<meta name="date" content="2021-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,6 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>3.5</b> Parametric bootstrap</a></li>
 <li class="chapter" data-level="3.6" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife"><i class="fa fa-check"></i><b>3.6</b> Jackknife</a></li>
 <li class="chapter" data-level="3.7" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife-after-bootstrap"><i class="fa fa-check"></i><b>3.7</b> Jackknife-after-bootstrap</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-this-lecture-you-should-understand..."><i class="fa fa-check"></i><b>3.8</b> By the end of this lecture, you should understand...</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a><ul>
 <li class="chapter" data-level="4.1" data-path="week-2-lab.html"><a href="week-2-lab.html#confidence-intervals"><i class="fa fa-check"></i><b>4.1</b> Confidence intervals</a></li>
@@ -795,10 +796,8 @@ boot.huber&lt;-function(data,indices,maxit)
   <span class="kw">coefficients</span>(mod) <span class="co">#return the coefficient vector</span>
   }</code></pre></div>
 <p>Note that we have to pass the function the data and the indices to be sampled. I've added an additional option to increase the number of iterations allowed for the rlm estimator to converge.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">duncan.boot&lt;-<span class="kw">boot</span>(Duncan,boot.huber,<span class="dv">1999</span>,<span class="dt">maxit=</span><span class="dv">100</span>)</code></pre></div>
-<pre><code>## Warning in rlm.default(x, y, weights, method = method, wt.method = wt.method, :
-## &#39;rlm&#39; failed to converge in 100 steps</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">duncan.boot</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">duncan.boot&lt;-<span class="kw">boot</span>(Duncan,boot.huber,<span class="dv">1999</span>,<span class="dt">maxit=</span><span class="dv">100</span>)
+duncan.boot</code></pre></div>
 <pre><code>## 
 ## ORDINARY NONPARAMETRIC BOOTSTRAP
 ## 
@@ -809,8 +808,8 @@ boot.huber&lt;-function(data,indices,maxit)
 ## 
 ## Bootstrap Statistics :
 ##      original       bias    std. error
-## t1* 6.3002197  0.492150664  4.76765452
-## t2* 0.6615263 -0.008954028  0.07701522</code></pre>
+## t1* 6.3002197  0.267948435  4.76269586
+## t2* 0.6615263 -0.007609315  0.07666992</code></pre>
 <p>Question: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?</p>
 </div>
 <div id="type-i-vs.-type-ii-regression-the-smatr-package" class="section level2">

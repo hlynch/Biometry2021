@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-04" />
+<meta name="date" content="2021-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,6 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>3.5</b> Parametric bootstrap</a></li>
 <li class="chapter" data-level="3.6" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife"><i class="fa fa-check"></i><b>3.6</b> Jackknife</a></li>
 <li class="chapter" data-level="3.7" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife-after-bootstrap"><i class="fa fa-check"></i><b>3.7</b> Jackknife-after-bootstrap</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-this-lecture-you-should-understand..."><i class="fa fa-check"></i><b>3.8</b> By the end of this lecture, you should understand...</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a><ul>
 <li class="chapter" data-level="4.1" data-path="week-2-lab.html"><a href="week-2-lab.html#confidence-intervals"><i class="fa fa-check"></i><b>4.1</b> Confidence intervals</a></li>
@@ -489,7 +490,7 @@ Figure 1.2: Red shading represents the complement. Source: Wikimedia Commons
 <p>Let's consider what happens when we pull 2 M&amp;Ms out of the bag</p>
 <p><span class="math display">\[ P (Green \: AND \: THEN \: Blue) = P(Green) \cdot P(Blue) \]</span></p>
 <p><strong>Question: What if we didn't care about the order?</strong></p>
-<p><details> <summary>Click for Answer</summary> <span style="color: blueviolet;"> If we do not care about the order, then the combination of one Green M&amp;M and one Blue M&amp;M could have come about because we drew a Blue M&amp;M and then a Green, or a Green and then a Blue. Because there are two ways to get this outcome (and they are mutually exclusive, so we can simply add the two probabilities), the total probability is simply 2<em>P(Green)</em>P(Blue). </span> </details></p>
+<p><details> <summary>Click for Answer</summary> <span style="color: blueviolet;"> If we do not care about the order, then the combination of one Green M&amp;M and one Blue M&amp;M could have come about because we drew a Blue M&amp;M and then a Green, or a Green and then a Blue. Because there are two ways to get this outcome (and they are mutually exclusive, so we can simply add the two probabilities), the total probability is simply 2 <span class="math inline">\(\times\)</span> P(Green) <span class="math inline">\(\times\)</span> P(Blue). </span> </details></p>
 </div>
 <div id="conditionals" class="section level2">
 <h2><span class="header-section-number">1.6</span> Conditionals</h2>
@@ -501,6 +502,7 @@ Figure 1.2: Red shading represents the complement. Source: Wikimedia Commons
 <h2><span class="header-section-number">1.7</span> Bayes Theorem</h2>
 <p><span class="math display">\[ P(A \mid B) \cdot P(B) = P(B \mid A) \cdot P(A) \]</span></p>
 <p><span class="math display">\[ P(A \mid B) = \frac{P(B \mid A) \cdot P(A)}{P(B)}\]</span></p>
+<p>In Bayesian analyses (which we will not get into this semester), we are using this to calculate the probability of certain model parameters conditional on the data you have. But to find out more, you'll have to take BEE 569.</p>
 <p><span class="math display">\[ P(parameters \mid data) \cdot P(data) = P(data \mid parameters) \cdot P(parameters) \]</span></p>
 <p><span class="math display">\[ P(parameters \mid data) = \frac{P(data \mid parameters) \cdot P(parameters)}{P(data)}\]</span></p>
 </div>
@@ -570,6 +572,7 @@ E[X] = \sum_{i=1}^n{X_i \cdot P(X_i)}\]</span></p>
 <div id="continuous-case" class="section level3">
 <h3><span class="header-section-number">1.10.3</span> Continuous Case</h3>
 <p><span class="math display">\[ E[X] = \int_{-\infty}^{\infty}{X \cdot f(X)dX}\]</span></p>
+<p>Note that the function <span class="math inline">\(f(x)\)</span> in the above equation is the probability density function.</p>
 </div>
 </div>
 <div id="a-brief-introduction-to-scientific-method" class="section level2">

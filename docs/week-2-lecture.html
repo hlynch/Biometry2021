@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-04" />
+<meta name="date" content="2021-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -145,6 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>3.5</b> Parametric bootstrap</a></li>
 <li class="chapter" data-level="3.6" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife"><i class="fa fa-check"></i><b>3.6</b> Jackknife</a></li>
 <li class="chapter" data-level="3.7" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife-after-bootstrap"><i class="fa fa-check"></i><b>3.7</b> Jackknife-after-bootstrap</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-this-lecture-you-should-understand..."><i class="fa fa-check"></i><b>3.8</b> By the end of this lecture, you should understand...</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a><ul>
 <li class="chapter" data-level="4.1" data-path="week-2-lab.html"><a href="week-2-lab.html#confidence-intervals"><i class="fa fa-check"></i><b>4.1</b> Confidence intervals</a></li>
@@ -394,17 +395,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>To take Karl Popper’s famous example:</p>
 <p><span class="math inline">\(H_{0}\)</span>: There are no vultures in the park.</p>
 <p><span class="math inline">\(H_{A}\)</span>: There are vultures in the park.</p>
-<p>Note that the data may reject the null hypothesis (for example, finding vultures in the park), or the data may fail to reject the null hypothesis, but it can never prove the null hypothesis. We cannot prove there are no vultures in the park. We can only say that we were not able to find any vultures in the park, and therefore cannot reject the null hypothesis.</p>
+<p>Note that the data may reject the null hypothesis (for example, finding vultures in the park), or the data may fail to reject the null hypothesis, but it can never prove the null hypothesis. <strong>We cannot prove there are no vultures in the park.</strong> We can only say that we were not able to find any vultures in the park, and therefore cannot reject the null hypothesis.</p>
 <p>Fisher’s original context for developing significance testing was agricultural experiments that could be easily replicated. Fisher’s threshold of 0.05 was an arbitrary threshold for an effect to be considered worthy of continued experimentation. Any experiment that failed to reach this threshold would not be pursued. Experiments that gave “significant” results would be subject to additional experiments. These additional experiments may prove the original effect to be a fluke (and experiments would cease) or the additional experiments may provide confirmatory evidence that the effect was real.</p>
-<p>Null hypothesis testing (as I will teach it) involves 6 steps.</p>
+<p><a id="6steps"></a><span style="color: teal;"><strong>Null hypothesis testing (as I will teach it) involves 6 steps.</strong></span></p>
 <p><strong>Step #1</strong>: Specify a null hypothesis <span class="math inline">\(H_{0}\)</span> (Note that I do not include specification of the alternative hypothesis <span class="math inline">\(H_{A}\)</span> here. While the alternative hypothesis is useful as a mental construct, the basic approach deals only with <span class="math inline">\(H_{0}\)</span> and does not require a <span class="math inline">\(H_{A}\)</span>.)</p>
+<p><em>Example</em>: In an experiment on vaccine efficacy, the null hypothesis would be that the probability of coronovirus infection is the same in the vaccinated group as in the control group that received only a placebo. Mathematically, this could be stated:</p>
+<p><span class="math inline">\(H_{0}: P_{\small{\mbox{infection}}}^{\small{\mbox{vaccinated}}}=P_{\small{\mbox{infection}}}^{\small{\mbox{control}}}\)</span></p>
 <p><strong>Step #2</strong>: Specific an appropriate test statistic T. A test statistic is some summary of your data that pertains to the null hypothesis. For testing simple hypotheses, there are test statistics known to be ideal in certain situations. However, even in these simple cases, there are other test statistics that could be used. In more complex situations, YOU will have to determine the most appropriate test statistic.</p>
-<p>generic=T=f(X)</p>
+<p>generic <span class="math inline">\(T=f(X)\)</span></p>
 <p>specific <span class="math inline">\(T^{*}\)</span>=T(<span class="math inline">\(X_{1}\)</span>,<span class="math inline">\(X_{2}\)</span>,…,<span class="math inline">\(X_{n}\)</span>)</p>
-<p>We will introduce many more test statistics in the weeks to come but a simple example of a test statistic would be the use of <span class="math inline">\(\bar{X}\)</span> (the mean of your sample) as a measure of the mean of the normally distributed population from which the sample was derived.</p>
+<p>We will introduce many more test statistics in the weeks to come.</p>
+<p><em>Example</em>: In our example with the vaccine trial, a reasonable test statistic would be</p>
+<p><span class="math inline">\(T=P_{\small{\mbox{infection}}}^{\small{\mbox{vaccinated}}}-P_{\small{\mbox{infection}}}^{\small{\mbox{control}}}\)</span>.</p>
+<p>(This would be the best test statistic if probabilities were Normally distributed, but they are not. However, this test statistic is reasonable and highly intuitive and illustrates the basic point.)</p>
 <p><strong>Step #3</strong>: Determine the distribution of the test statistic under the null hypothesis <span class="math inline">\(H_{0}\)</span>. A test statistic is a statistical quantity that has a statistical distribution.</p>
 <p><span class="math inline">\(f(T│H_{0})\)</span></p>
-<p>Notice that this is the probability of obtaining the test statistic T GIVEN the null distribution, it is NOT <span class="math inline">\(f(H_{0}│T)\)</span>.</p>
+<p>Notice that this is the probability of obtaining the test statistic T <strong>given</strong> the null distribution, it is <strong>not</strong> <span class="math inline">\(f(H_{0}│T)\)</span>.</p>
 <p>The test statistic and its distribution under the null hypothesis is the statistical test.</p>
 <p>Test = Test statistic + Distribution of test statistic under <span class="math inline">\(H_{0}\)</span></p>
 <p><strong>Step #4</strong>: Collect data and calculate T* Collect data by taking random samples from your population and calculate the test statistic from the sample data.</p>
@@ -413,13 +419,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><span class="math inline">\(P(T^{*}│H_{0})\)</span>=p-value</p>
 <p><strong>Step #6</strong>: Interpret the p-value</p>
 <p>Use the p-value to determine whether to reject the null hypothesis (or, alternatively, to decide that the null hypothesis cannot be rejected)</p>
-<p>These steps apply for both parametric and non-parametric statistics. Here we are introducing hypothesis testing through the lens of randomization procedures, but the same steps will be used again when we get into statistics involving parametric distributions (i.e. statistical distributions of known form and described by a finite number of parameters) and their properties. As you will see in a few weeks, most standard statistical tests involve a test statistic with a known distribution under the null hypothesis; here the distribution under the null hypothesis needs to be generated by randomization (randomization test). (We are starting with the randomization-based procedures because there is no math involved and it is more intuitive.)</p>
-<p>The basic idea underlying all statistical tests: What is the probability that I would get a test statistic as large or larger (as produced by the data) if the null hypothesis was true (this is the “p-value”). To answer this question we need (1) a test statistic and (2) a distribution under the null hypothesis.</p>
+<p><em>Example</em>: In our vaccination example, we would look at the difference in these two populations (control vs. vaccinated) and if the difference between those two probabilities was larger than we would expect to occur under the null hypothesis (which, but assuming that the vaccine is no better than a placebo, assumes that these two groups are equivalent and therefore that any differences are due to random chance alone), then we would reject the null hypothesis that the vaccine is equivalent to the placebo. (Note that I haven't said anything about whether the vaccine lowers infection rates; in a few minutes we'll discuss one-tailed vs. two-tailed tests.)</p>
+<p><strong>These steps apply for both parametric and non-parametric statistics.</strong> Here we are introducing hypothesis testing through the lens of randomization procedures, but the same steps will be used again when we get into statistics involving parametric distributions (i.e. statistical distributions of known form and described by a finite number of parameters) and their properties. As you will see in a few weeks, most standard statistical tests involve a test statistic with a known distribution under the null hypothesis; here the distribution under the null hypothesis needs to be generated by randomization (randomization test). (We are starting with the randomization-based procedures because there is no math involved and it is more intuitive.)</p>
+<p>The basic idea underlying all statistical tests: <span style="color: teal;"><strong>What is the probability that I would get a test statistic as large or larger (as produced by the data) if the null hypothesis was true (this is the “p-value”). To answer this question we need (1) a test statistic and (2) a distribution under the null hypothesis.</strong></span></p>
 <p>p-value = <span class="math inline">\(P(data|H_{0})\)</span></p>
-<p>Remember – the p-value is a statement about the probability of getting your data if the null hypothesis were true. It is NOT a statement about the probability that the null hypothesis is true. This logic can go wrong!!</p>
+<p><a id="pvalint"></a><span style="color: teal;"><strong>Remember – the p-value is a statement about the probability of getting your data if the null hypothesis were true. It is not a statement about the probability that the null hypothesis is true.</strong></span> This logic can go wrong!!</p>
 <p>Example: If a person is an American, he is probably not a member of Congress. This person is a member of Congress. Therefore he is probably not an American.</p>
-<p>Let's draw a null distribution. In order to interpret the statistical test, we need to know whether we want a one-tailed test or a two-tailed test. In a one-tailed test, we would reject the null hypothesis only if the test statistic is larger than expected under in the null in one direction (5<span class="math inline">\(%\)</span> in one tail). In a two-tailed test, we would reject the null if the test statistic is larger in either direction (2.5<span class="math inline">\(%\)</span> in both tails).</p>
-<p>EXAMPLE: Let’s say I’m looking at the change in auto accident mortalities after a ban is enacted on driving while texting. We would expect that auto accident mortality would decrease after a ban on texting while driving. Let’s say, for arguments sake, that our test statistic T is the change in accident deaths</p>
+<p>Let's draw a null distribution. In order to interpret the statistical test, we need to know whether we want a one-tailed test or a two-tailed test. <a id="tails"></a>In a one-tailed test, we would reject the null hypothesis only if the test statistic is larger than expected under in the null in one direction (5<span class="math inline">\(%\)</span> in one tail). In a two-tailed test, we would reject the null if the test statistic is larger in either direction (2.5<span class="math inline">\(%\)</span> in both tails).</p>
+<p><strong>Example</strong>: Let’s say I’m looking at the change in auto accident mortalities after a ban is enacted on driving while texting. We would expect that auto accident mortality would decrease after a ban on texting while driving. Let’s say, for arguments sake, that our test statistic T is the change in accident deaths</p>
 <p><span class="math inline">\(H_{0}\)</span>: T=0 (no change in deaths)</p>
 <p><span class="math inline">\(H_{A}\)</span>: T&lt;0 (decline in deaths)</p>
 <p>Another possible formulation of the null and alternative hypotheses is</p>
@@ -433,40 +440,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><span class="math inline">\(P(T \geq T^{*}│H_{0})&lt;0.025\)</span></p>
 <p><span class="math inline">\(P(T \leq T^{*}│H_{0})&lt;0.025\)</span></p>
 <p>Notice that it now becomes a <em>more stringent test</em>. If <span class="math inline">\(T^{*}\)</span> is large, it now has to be even larger to qualify as &quot;significant&quot;. This is a two-tailed test.</p>
-<p>TWO KEY POINTS:</p>
-<ol style="list-style-type: decimal">
-<li><p>If you are using a one-tailed test, you have to be willing to accept a result that is opposite in sign of what was expected as being PURELY BY CHANCE!! In other words, if traffic deaths went UP after the texting ban, you would have to be willing to accept that that was by pure chance and you would then fail to reject the null hypothesis of NO CHANGE. This is in fact what happened, by the way: Texting bans actually increase traffic deaths – WHY?</p></li>
-<li><p>Before using the more “lenient” one-tailed test, make sure you really believe that results opposite to what you expect are only random</p></li>
-</ol>
+<p><strong><span style="color: indigo;">TWO KEY POINTS:</span></strong></p>
+<p><span style="color: indigo;">1. If you are using a one-tailed test, you have to be willing to accept a result that is opposite in sign of what was expected as being PURELY BY CHANCE!! In other words, if traffic deaths went UP after the texting ban, you would have to be willing to accept that that was by pure chance and you would then fail to reject the null hypothesis of NO CHANGE. This is in fact what happened, by the way: Texting bans actually increase traffic deaths – WHY?</span></p>
+<p><span style="color: indigo;">2. Before using the more “lenient” one-tailed test, make sure you really believe that results opposite to what you expect are only random</span></p>
 <p>You cannot do a one-tailed test, find the answer to have the wrong sign and then do a two-tailed test. While probably quite common, this is not statistically valid. You cannot use the data to generate the test! Not all tests are created equal!! Tests differ in their power to detect differences, and their efficiency. The balance between power and efficiency depends on the specific situation; we will discuss this more next week.</p>
 <p>We are going to introduce the idea of hypothesis testing through the practice of permutation tests, because it allows us to get into the flow of testing hypotheses without the burden of a lot of complicated mathematics. Moreover, in doing so, we introduce the more general concept of &quot;generative models&quot;, which generate outcomes through simulation. For example, we can think of the statement <span class="math inline">\(X \sim Pois(\lambda)\)</span> as a generative model because it allows us to generate datasets that follow the distribution <span class="math inline">\(Pois(\lambda)\)</span>. If we had a dataset and we wanted to know whether it came from a Poisson distribution, we could imagine generating lots of datasets using a generative model (i.e. drawn from <span class="math inline">\(Pois(\lambda)\)</span>) and asking ourselves whether any of the generated datasets look anything like the dataset we have. In the same way, we can think about testing a null hypothesis <span class="math inline">\(H_{0}\)</span> by generating data under that null hypothesis, calculating some test statistics from that generated data, and asking whether our geneterated test statsitics &quot;look like&quot; the test statistic obtained from our real data. If not, then we can reject the null hypothesis. Simulations like this are enormously powerful tools for testing hypotheses and are often far more intuitive than the alternative &quot;parametric&quot; statistical tests we will learn in Weeks 3 and 4.</p>
 </div>
 <div id="permutation-tests" class="section level2">
 <h2><span class="header-section-number">3.2</span> Permutation tests</h2>
-<p>Let’s say we have two random samples drawn from possibly different probability distributions F and G,</p>
+<p><a id="permmethods"></a>Let’s say we have two random samples drawn from possibly different probability distributions F and G,</p>
 <p><span class="math inline">\(F \rightarrow z=\{z_{1},z_{2},...,z_{n}\}\)</span></p>
 <p><span class="math inline">\(G \rightarrow y=\{y_{1},y_{2},...,y_{m}\}\)</span></p>
 <p>Having observed z and y, we wish to test the null hypothesis <span class="math inline">\(H_{0}\)</span> of no difference between F and G, <span class="math inline">\(H_{0}:F=G\)</span>. Note that the equality F=G means that the two distributions are exactly the same across their entire distribution, not just that their means are the same. If <span class="math inline">\(H_{0}\)</span> is true, than there is no probabilistic difference between drawing random values from F and drawing random values from G.</p>
 <p><em>What are some possible test statistics that we might use in this case?</em></p>
 <p>There are many test statistics that we could use to test this null hypothesis but lets use the difference in means as the test statistic. If there is a large difference in their means, than we can probably reject the null hypothesis that they represent the same underlying distribution.</p>
 <p><span class="math inline">\(T=E[F]-E[G]=\bar{z}-\bar{y}\)</span></p>
-<p>The way to do this is to lump all the data together and to randomly permute the labels so that data are randomly assigned to a group (z vs. y). NOTE: We are <strong>not</strong> sampling with replacement here. We are simply permuting the labels to &quot;erase&quot; any possible correlation between group and the values of the data.</p>
+<p>The way to do this is to lump all the data together and to randomly permute the labels so that data are randomly assigned to a group (z vs. y). <strong><span style="color: orangered;">Important: We are not sampling with replacement here. We are simply permuting the labels to &quot;erase&quot; any possible correlation between group and the values of the data.</span></strong></p>
 <p>We then calculate the mean of the &quot;fake z&quot; group and the mean of the &quot;fake y&quot; group and take the difference. That is the result of ONE permutation. If we do that many many times (say, 10000 times) then the distribution of those differences reflects the distribution under the null hypothesis of no difference between F and G.</p>
 <p>We will do an example like this in the problem set.</p>
 </div>
 <div id="parameter-estimation" class="section level2">
 <h2><span class="header-section-number">3.3</span> Parameter estimation</h2>
 <p>Hypothesis testing is a bit like the game 50-questions (Are you red? Are you blue? Each question is a null hypothesis to be rejected...).</p>
-<p>Parameter estimation appears at first glance more direct, it just asks &quot;What are you?&quot;, and in doing so it estimates the value of a parameter (mean growth rate of a fish population, for example) and provides a measure of uncertainty about that estimate.</p>
-<p>As a reminder, estimators are tools that produce estimates of population statistics from sample statistics.</p>
+<p><a id="effectsize"></a>Parameter estimation appears at first glance more direct, it just asks &quot;What are you?&quot;, and in doing so it estimates the value of a parameter (mean growth rate of a fish population, for example) and provides a measure of uncertainty about that estimate.</p>
+<p>As a reminder, <strong>estimators are tools that produce estimates of population statistics from sample statistics</strong>.</p>
 <p>The basic outline of &quot;statistical inference&quot;: Data = sample <span class="math inline">\(\rightarrow\)</span> sample statistics <span class="math inline">\(\rightarrow\)</span> ESTIMATOR <span class="math inline">\(\rightarrow\)</span> population parameters</p>
 <p>We generally use the word &quot;statistic&quot; when discussing the data, and &quot;parameter&quot; when discussing the underlying distribution.</p>
-<p>An &quot;estimator&quot; or &quot;point estimate&quot; is a statistic (that is, a function of the data) that is used to infer the value of an unknown parameter in a statistical model. If the parameter is denoted <span class="math inline">\(\theta\)</span> then the estimator is typically written by adding a &quot;hat&quot; over the symbol: <span class="math inline">\(\hat{\theta}\)</span>. Being a function of the data, the estimator is itself a random variable; a particular realization of this random variable is called the &quot;estimate&quot;. Sometimes the words &quot;estimator&quot; and &quot;estimate&quot; are used interchangeably, but I will try and be consistent in using the word &quot;estimator&quot; for the function in the generic, and the word &quot;estimate&quot; for the result of applying that function to the data at hand.</p>
+<p><strong>An &quot;estimator&quot; or &quot;point estimate&quot; is a statistic (that is, a function of the data) that is used to infer the value of an unknown parameter in a statistical model. If the parameter is denoted <span class="math inline">\(\theta\)</span> then the estimator is typically written by adding a &quot;hat&quot; over the symbol: <span class="math inline">\(\hat{\theta}\)</span>. Being a function of the data, the estimator is itself a random variable; a particular realization of this random variable is called the &quot;estimate&quot;.</strong> Sometimes the words &quot;estimator&quot; and &quot;estimate&quot; are used interchangeably, but I will try and be consistent in using the word &quot;estimator&quot; for the function in the generic, and the word &quot;estimate&quot; for the result of applying that function to the data at hand.</p>
 <p>Example:</p>
 <p><span class="math display">\[
 X \sim N(\mu,\sigma^{2})
 \]</span></p>
-<p>We define the &quot;estimator&quot; for <span class="math inline">\(\mu\)</span> as</p>
+<p><a id="estimator"></a>We define the &quot;estimator&quot; for <span class="math inline">\(\mu\)</span> as</p>
 <p><span class="math display">\[
 \frac{1}{n}\sum_{i=1}^{n}X_{i} 
 \]</span></p>
@@ -474,12 +479,12 @@ X \sim N(\mu,\sigma^{2})
 <p><span class="math display">\[
 \hat{\mu}=\bar{X} =\frac{1}{n}\sum_{i=1}^{n}X_{i} 
 \]</span></p>
-<p>Estimators are IMPERFECT tools.</p>
+<p>Estimators are imperfect tools.</p>
 <ol style="list-style-type: decimal">
 <li><p>Bias: As <span class="math inline">\(n \rightarrow \infty\)</span>, sample statistic does not converge to the population parameter</p></li>
 <li><p>Standard error: Each individual estimate may be too low or too high from the true value (this can occur even if the long run average value is correct, i.e. unbiased)</p></li>
 </ol>
-<p>Why are estimators associated with a standard error? If you were to do your experiment all over again, say 1000 times, the value of your estimate would be different each time. Your 1000 estimates would have a statistical distribution with some spread, and the spread of these 1000 estimates is quantified by the standard error.</p>
+<p><strong>Why are estimators associated with a standard error? <span style="color: orangered;">If you were to do your experiment all over again, say 1000 times, the value of your estimate would be different each time.</span> Your 1000 estimates would have a statistical distribution with some spread, and the spread of these 1000 estimates is quantified by the standard error.</strong></p>
 <p>(A good example of this from the Week 1 problem set is the question asking you the probability of getting <em>your</em> bag of M&amp;Ms from a random sample of M&amp;Ms. Let's say you calculated this probability by sampling 100,000 times and you got 4 &quot;matches&quot;. This gives you an estimate of 0.00004. But if you repeated this experiement a second time, with <em>another</em> sample of 100,000 bags, you might get 7 matches or 2 matches or none at all! So 0.00004 is your estimate of the probability, but it is an estimate with some uncertainty because you don't know how variable that probability would be if you did the experiment multiple times. This &quot;spread&quot; of the estimates is the standard error of your estimate. Computationally, we can calculate the standard error by doing lots of experiments, but in practice, this is not always possible. Therefore, as we'll see in the next few weeks, we usually use the properties of statistical distributions to calculate the standard error of an estimate.)</p>
 <p>How do we estimate the bias and variance (related to standard error) of an estimator?</p>
 <p>While there are other methods that we will discuss in a few weeks, now we are going to introduce the idea through two non-parametric approaches: bootstrap and jackknife.</p>
@@ -544,12 +549,12 @@ X_{k}^{*}=\{\mbox{n values drawn with replacement from } X\}
 <p><span class="math display">\[
 \widehat{Bias_{boot}}=\left( \frac{1}{k}\sum_{i=1}^{k}\theta_{i}^{*}\right)-\hat{\theta}
 \]</span></p>
-<p>In other words, the Bias of our estimator is simply the mean of the bootstrapped sample statistics minus the statistic as calculated for the original data. (For unbiased estimators, our estimate of bias goes to zero as the sample size n gets very large.)</p>
+<p>In other words, the <a id="bias"></a>Bias of our estimator is simply the mean of the bootstrapped sample statistics minus the statistic as calculated for the original data. (For unbiased estimators, our estimate of bias goes to zero as the sample size n gets very large.)</p>
 <p>We can also use these bootstrapped statistics to calculate the standard error of the estimator:</p>
 <p><span class="math display">\[
 \widehat{se_{boot}}=\sqrt{\frac{1}{k-1}\sum_{i=1}^{k}(\theta_{i}^{*}-\bar{\theta^{*}})^{2}}
 \]</span></p>
-<p><em>This is just the standard deviation of the distribution of <span class="math inline">\(\theta\)</span>.</em> This is a really important point that is worth dwelling on for a bit. Our uncertainty about the value is captured by how much variation there is when I draw a different sub-sample of the data, which mimics re-doing the experiment altogether. In this case, I call the standard deviation of those <span class="math inline">\(\theta^{*}\)</span> values a standard error, because they represent my uncertainty (my potential error) about <span class="math inline">\(\hat{\theta}\)</span>. Do not confuse standard deviation and standard error. A standard deviation is a statistic (something calculated from data) about the spread of the data. A standard error is the standard deviation of my estimates, and therefore is a measure of how uncertain I am about my estimate.</p>
+<p><em>This is just the standard deviation of the distribution of <span class="math inline">\(\theta\)</span>.</em> This is a really important point that is worth dwelling on for a bit. Our uncertainty about the value is captured by how much variation there is when I draw a different sub-sample of the data, which mimics re-doing the experiment altogether. In this case, I call the standard deviation of those <span class="math inline">\(\theta^{*}\)</span> values a standard error, because they represent my uncertainty (my potential error) about <span class="math inline">\(\hat{\theta}\)</span>. Do not confuse standard deviation and standard error. A standard deviation is a statistic (something calculated from data) about the spread of the data. <a id="se"></a>A standard error is the standard deviation of my estimates, and therefore is a measure of how uncertain I am about my estimate.</p>
 <p>We will work through 2 examples, one using hand calculations, and one using R pseudocode.</p>
 <p><strong>Example 1</strong>:</p>
 <p><em>Data</em>: 10 pennies that the students have</p>
@@ -639,7 +644,7 @@ Figure 1.2: Source: Efron and Tibshirani (1994)
 </div>
 <div id="jackknife" class="section level2">
 <h2><span class="header-section-number">3.6</span> Jackknife</h2>
-<p>Jackknifing is another method of assessing bias and standard error of sample statistics. Jackknife can also be used to establish the influence of each datapoint in your dataset. The procedure simply involves leaving out each datapoint and recalculating the statistic of interest.</p>
+<p><a id="jackknife"></a>Jackknifing is another method of assessing bias and standard error of sample statistics. Jackknife can also be used to establish the influence of each datapoint in your dataset. The procedure simply involves leaving out each datapoint and recalculating the statistic of interest.</p>
 <p>If your dataset involves the set</p>
 <p><span class="math display">\[
 \{x_{1},x_{2},x_{3}\}
@@ -682,6 +687,20 @@ Figure 1.2: Source: Efron and Tibshirani (1994)
 <p>Notice that because there are always some bootstrap samples that do not include i, you do not actually have to do any extra computation to do jackknife-after-bootstrap, but the precise details of using the bootstrap samples you already have are a bit complicated.</p>
 <p>In R, this can be done using the ‘jack.after.boot’ function in the package “boot”.</p>
 <p><strong>Discuss: Why are hypothesis testing and parameter estimation two sides of the same coin?</strong></p>
+</div>
+<div id="by-the-end-of-this-lecture-you-should-understand..." class="section level2">
+<h2><span class="header-section-number">3.8</span> By the end of this lecture, you should understand...</h2>
+<ul>
+<li>the 6 steps of Null Hypothesis Significance Testing <a href="week-2-lecture.html#6steps">here</a></li>
+<li>the interpretation of a <a href="week-2-lecture.html#pvalint">p-value</a> (hint: it is <em>not</em> the probability that the null hypothesis is correct)</li>
+<li>the difference between <a href="week-2-lecture.html#tails">a one-tailed and two-tailed test</a></li>
+<li>how to use <a href="week-2-lecture.html#permmethods">permutation-based methods</a> to test a statistical hypothesis</li>
+<li>the relationship between testing a hypothesis and estimating an <a href="week-2-lecture.html#effectsize">effect size</a></li>
+<li>the definition of an <a href="week-2-lecture.html#estimator">estimator</a></li>
+<li>how to use bootstrapping (both parametric and non-parametric) to estimate a test statistic and calculate the <a href="week-2-lecture.html#bias">bias</a> and <a href="week-2-lecture.html#se">standard error</a> of your estimate</li>
+<li>when to use parametric bootstrap vs. non-parametric bootstrap (hint: rarely)</li>
+<li>how to use <a href="week-2-lecture.html#jackknife">jackknife</a> to estimate bias and standard errors of an estimate</li>
+</ul>
 
 </div>
 </div>
