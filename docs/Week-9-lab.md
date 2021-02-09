@@ -748,8 +748,8 @@ duncan.boot
 ## 
 ## Bootstrap Statistics :
 ##      original       bias    std. error
-## t1* 6.3002197  0.267948435  4.76269586
-## t2* 0.6615263 -0.007609315  0.07666992
+## t1* 6.3002197  0.339369275  4.79029090
+## t2* 0.6615263 -0.007961816  0.07822718
 ```
 
 Question: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?

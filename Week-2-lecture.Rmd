@@ -183,11 +183,13 @@ $$
 \hat{\mu}=\bar{X} =\frac{1}{n}\sum_{i=1}^{n}X_{i} 
 $$
 
-Estimators are imperfect tools. 
+Estimators are imperfect tools, and they can suffer from *bias* and/or *variance* (or, equivalently, standard error). 
 
 1. Bias: As $n \rightarrow \infty$, sample statistic does not converge to the population parameter
 
-2. Standard error: Each individual estimate may be too low or too high from the true value (this can occur even if the long run average value is correct, i.e. unbiased) 
+2. Standard error: Each individual estimate may be too low or too high from the true value (this can occur even if the long run average value is correct, i.e. unbiased). In other words, there is sample-to-sample variance in the estimates obtained from a given sample. 
+
+It turns out that bias and variance trade-off, and this trade-off is controlled by the complexity of the model you are trying to fit. We will return to these ideas in Week 13 but I suggest reading through [this](https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229) nice (and short) explanation of bias and variance (written from the perspective of machine learning, which is just another kind of model building enterprise).
 
 **Why are estimators associated with a standard error? <span style="color: orangered;">If you were to do your experiment all over again, say 1000 times, the value of your estimate would be different each time.</span> Your 1000 estimates would have a statistical distribution with some spread, and the spread of these 1000 estimates is quantified by the standard error.**
 

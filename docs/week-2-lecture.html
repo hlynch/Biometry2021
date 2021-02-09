@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-08" />
+<meta name="date" content="2021-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -479,11 +479,12 @@ X \sim N(\mu,\sigma^{2})
 <p><span class="math display">\[
 \hat{\mu}=\bar{X} =\frac{1}{n}\sum_{i=1}^{n}X_{i} 
 \]</span></p>
-<p>Estimators are imperfect tools.</p>
+<p>Estimators are imperfect tools, and they can suffer from <em>bias</em> and/or <em>variance</em> (or, equivalently, standard error).</p>
 <ol style="list-style-type: decimal">
 <li><p>Bias: As <span class="math inline">\(n \rightarrow \infty\)</span>, sample statistic does not converge to the population parameter</p></li>
-<li><p>Standard error: Each individual estimate may be too low or too high from the true value (this can occur even if the long run average value is correct, i.e. unbiased)</p></li>
+<li><p>Standard error: Each individual estimate may be too low or too high from the true value (this can occur even if the long run average value is correct, i.e. unbiased). In other words, there is sample-to-sample variance in the estimates obtained from a given sample.</p></li>
 </ol>
+<p>It turns out that bias and variance trade-off, and this trade-off is controlled by the complexity of the model you are trying to fit. We will return to these ideas in Week 13 but I suggest reading through <a href="https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229">this</a> nice (and short) explanation of bias and variance (written from the perspective of machine learning, which is just another kind of model building enterprise).</p>
 <p><strong>Why are estimators associated with a standard error? <span style="color: orangered;">If you were to do your experiment all over again, say 1000 times, the value of your estimate would be different each time.</span> Your 1000 estimates would have a statistical distribution with some spread, and the spread of these 1000 estimates is quantified by the standard error.</strong></p>
 <p>(A good example of this from the Week 1 problem set is the question asking you the probability of getting <em>your</em> bag of M&amp;Ms from a random sample of M&amp;Ms. Let's say you calculated this probability by sampling 100,000 times and you got 4 &quot;matches&quot;. This gives you an estimate of 0.00004. But if you repeated this experiement a second time, with <em>another</em> sample of 100,000 bags, you might get 7 matches or 2 matches or none at all! So 0.00004 is your estimate of the probability, but it is an estimate with some uncertainty because you don't know how variable that probability would be if you did the experiment multiple times. This &quot;spread&quot; of the estimates is the standard error of your estimate. Computationally, we can calculate the standard error by doing lots of experiments, but in practice, this is not always possible. Therefore, as we'll see in the next few weeks, we usually use the properties of statistical distributions to calculate the standard error of an estimate.)</p>
 <p>How do we estimate the bias and variance (related to standard error) of an estimator?</p>
