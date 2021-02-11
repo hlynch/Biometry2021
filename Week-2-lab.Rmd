@@ -10,31 +10,31 @@ A 95th percentile confidence interval say “If I repeat this procedure 100 time
 
 **Quiz time! (Don't worry, not a real quiz)**
 
-*Important note*: This is an area where Aho is WRONG. I will not repeat Aho's interpretation here because I think he's just wrong. Aho is correct on only one point. It is true that ONCE THE 95th CI HAS BEEN CONSTRUCTED, it is no longer possible to assign a $%$ to the probability that that CI contains the true value or not. Because that CI, once created, either DOES or DOES NOT contain the true value. However, we often talk about the interval in the abstract. When we say "There is a 95$%$ chance that the interval contains the true value" what we mean is that there is a 95$%$ probability that a CI created using that methodology would contain the true value.
+*Important note*: This is an area where Aho is **WRONG**. Aho is correct on only one point. It is true that *once the 95th CI has been constructed*, it is no longer possible to assign a $\%$ to the probability that that CI contains the true value or not. Because that CI, once created, either DOES or DOES NOT contain the true value. However, we often talk about the interval in the abstract. **<span style="color: orangered;">When we say "There is a 95$\%$ chance that the interval contains the true value" what we mean is that there is a 95$\%$ probability that a CI created using that methodology would contain the true value.</span>**
 
 Do not let Week 2 pass by without fundamentally understanding the interpretation of a confidence interval. 
 
 Testing hypotheses through permutation
 ------------------------------------
 
-We'll start off by working through two examples from Phillip Good's book "Introduction to Statistics Through Resampling Methods and R/S-PLUS":
+These examples use data on the speeds of the top 20 racing pigeons from a race in Alma, GA on February 7,2021. 
 
-**Example #1**: Use permutation methods to test the null hypothesis that the treatment does not increase survival time (in other word: $H_{0}$: No difference in survival between the treated and control groups):
+**Example #1**: Use permutation methods to test whether Cock or Hen birds fly at different speeds (speeds are in meters-per-minute) (in other word: $H_{0}$: No difference in speeds between the C and H groups):
 
-Survival.treated=$\{94,197,16,38,99,141,23 \}$
+C=$\{1359.8,1355.3,1355.1,1353.0,1349.8,1348.8,1345.2\}$
 
-Survival.control=$\{52,104,146,10,51,30,40,27,46 \}$
+H=$\{1357.5,1356.4,1355.1,1353.5,1353.2,1352.5,1350.0,1349.8,1346.2,1344.9,1344.4,1343.9,1342.6\}$
 
-(Is this a one-tailed or a two-tailed test?)
+**<span style="color: green;">Checkpoint #1: Is this a one-tailed or a two-tailed test?</span>**
 
 Make sure that you understand what is being done here, as this example is very closely related to the problem set.
 
 
-**Example #2**: Using the same data, provide a 95% confidence interval for the difference in mean survival days based on 1000 bootstrap samples
+**Example #2**: Using the same data, provide a 95% confidence interval for the difference in mean speed based on 1000 bootstrap samples
 
-Note that these two approaches are very closely related. Do you see why either approach can be used to test the null hypothesis? (What is the null hypothesis here?)
+Note that these two approaches are very closely related. Do you see why either approach can be used to test the null hypothesis? **<span style="color: green;">Checkpoint #2: What is the null hypothesis here?</span>**
 
-Now we will do one slightly more complicated example from Phillip Good's book "Permutation tests: A practical guide to resampling methods and testing hypotheses":
+**Example #3**: Now we will do one slightly more complicated example from Phillip Good's book "Permutation tests: A practical guide to resampling methods and testing hypotheses":
 
 Holmes and Williams (1954) studied tonsil size in children to verify a possible association with the virus \textit{S. pyrogenes}. Test for an association between \textit{S. pyrogenes} status and tonsil size. (Note that you will need to come up with a reasonable test statistic.)
 
@@ -42,7 +42,7 @@ Holmes and Williams (1954) studied tonsil size in children to verify a possible 
 knitr::include_graphics('Table2categories.png')
 ```
 
-Now lets consider the full dataset, where tonsil size is divided into three categories. How would we do the test now? What is the new test statistic? (There are many options.) What 'labels' do you permute?
+Now lets consider the full dataset, where tonsil size is divided into three categories. How would we do the test now? **<span style="color: green;">Checkpoint #3: What is the new test statistic? (There are many options.)</span>** What 'labels' do you permute?
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Fill dataset on tonsil size and S. pyrogenes status. Source: Good (1994)', out.width='50%'}
 knitr::include_graphics('Table3categories.png')
@@ -138,7 +138,7 @@ UL.normal
 
 In this case, the confidence intervals we got from the normal distribution theory are too wide.
 
-Does it make sense why the normal distribution theory intervals are too wide? Because the original were were uniformly distributed, the data has higher variance than would be expected and therefore the standard error is higher than would be expected.
+**<span style="color: green;">Checkpoint #4: Does it make sense why the normal distribution theory intervals are too wide?</span>** Because the original were were uniformly distributed, the data has higher variance than would be expected and therefore the standard error is higher than would be expected.
 
 There are two packages that provide functions for bootstrapping, 'boot' and 'boostrap'. We will start by using the 'bootstrap' package, which was originally designed for Efron and Tibshirani's monograph on the bootstrap. 
 
@@ -321,7 +321,7 @@ results<-jackknife(x=x,theta=theta)
 results
 ```
 
-Why do we not have to tell the 'jackknife' function how many replicates to do?
+**<span style="color: green;">Checkpoint #6: Why do we not have to tell the 'jackknife' function how many replicates to do?</span>**
 
 Let's compare this with what we would have obtained from bootstrapping
 
