@@ -518,7 +518,7 @@ In R, this can be done using the ‘jack.after.boot’ function in the package �
 
 **Discuss: Why are hypothesis testing and parameter estimation two sides of the same coin?**
 
-By the end of this lecture, you should understand...
+By the end of Week 2, you should understand...
 ---------------------
 
 - the 6 steps of Null Hypothesis Significance Testing [here](#6steps)

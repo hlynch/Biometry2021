@@ -490,7 +490,7 @@ Var[X]&=&E[(X-E[X])^{2}] \\
 \end{eqnarray}
 $$
 
-By the end of this lecture, you should understand...
+By the end of Week 3, you should understand...
 ---------------------
 
 - the shape of each of the distributions introduced (including the range of support for x) and the number of parameters for each distribution. You should also know if the parameters have restrictions (e.g., non-negative, etc.)
