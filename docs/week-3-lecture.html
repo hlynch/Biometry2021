@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-10" />
+<meta name="date" content="2021-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,6 +165,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.8" data-path="week-3-lecture.html"><a href="week-3-lecture.html#beta-distribution"><i class="fa fa-check"></i><b>5.8</b> Beta Distribution</a></li>
 <li class="chapter" data-level="5.9" data-path="week-3-lecture.html"><a href="week-3-lecture.html#gamma-distribution"><i class="fa fa-check"></i><b>5.9</b> Gamma Distribution</a></li>
 <li class="chapter" data-level="5.10" data-path="week-3-lecture.html"><a href="week-3-lecture.html#some-additional-notes"><i class="fa fa-check"></i><b>5.10</b> Some additional notes:</a></li>
+<li class="chapter" data-level="5.11" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-this-lecture-you-should-understand..."><i class="fa fa-check"></i><b>5.11</b> By the end of this lecture, you should understand...</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab Handout</a><ul>
 <li class="chapter" data-level="6.1" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.1</b> The Central Limit Theorem</a></li>
@@ -497,19 +498,21 @@ S_n = \frac{1}{n} (X_1 + X_2 + X_3,...,X_k) \\
 <p><span class="math display">\[ P(x \mid \lambda)= \frac{e^{-\lambda} \cdot \lambda^x}{x!} \\
 \lambda&gt;0 \\
 x \in \mathbb{N} \cup \{0\} \]</span></p>
-<p>Note that when variables are discrete (i.e. when the distribution only produces integer numbers), we call the probability density function a probability <em>mass</em> function. The PDF and PMF play the same tole in both cases.</p>
+<p>Note that when variables are discrete (i.e. when the distribution only produces integer numbers), we call the probability density function a probability <em>mass</em> function. The PDF and PMF play the same role in both cases.</p>
 <p>The shape of the Poisson distribution is illustrated by a few examples</p>
 <p><img src="Week-3-lecture_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>The expected value and variance of the Poisson distribution is given by</p>
 <p><span class="math display">\[ \begin{align} E[X] &amp;= \sum_{x=1}^{\infty} x \frac{e^{-\lambda} \cdot \lambda^x}{x!} \\
 &amp;= \lambda \cdot e^{-\lambda} \cdot \sum_{x=1}^{\infty} x \frac{\lambda^{x-1}}{x!} \\
-&amp;= \lambda \cdot e^{-\lambda} \cdot \sum_{x=1}^{\infty} \frac{\lambda^{x-1}}{(x-1)!}, y = x-1 \\
-&amp;= \lambda \cdot e^{-\lambda} \cdot \sum_{y=0}^{\infty} \frac{\lambda^{y}}{y!} \\
+&amp;= \lambda \cdot e^{-\lambda} \cdot \sum_{x=1}^{\infty} \frac{\lambda^{x-1}}{(x-1)!}\\ 
+&amp;\mbox{define } y = x-1 \\
+&amp;= \lambda \cdot e^{-\lambda} \cdot \sum_{y=0}^{\infty} \frac{\lambda^{y}}{y!} \mbox{ (the sum is now the expansion of the exponential)}\\
 &amp;= \lambda \cdot e^{-\lambda} \cdot e^{\lambda} \\
 &amp;= \lambda\end{align} \]</span></p>
 <p><span class="math display">\[ Var[X] = \lambda \]</span></p>
 <p>The Poisson distribution has the following relationship to the Normal distribution:</p>
 <p><span class="math display">\[ \lim_{\lambda \to \infty} Pois(\lambda) \to N(\lambda, \lambda)  \]</span></p>
+<p>The above limit can be understood in terms of 'moment matching'. What are moments? Think of moments as being like characteristics of the distribution, but in decreasing order of importance. The first moment in the mean of the distribution (or, equivalently, the expected value E[X]). The second moment is the variance of the distribution, or Var[X]. The third moment is the skew of a distribution (assemmetry of left and right tails), the fourth momnent is the kurtosis (fatness of the tails), etc. Consider this, if I wanted to construct a Normal distribution that &quot;looked&quot; like a Poisson, I would want a Normal distribution that had the same moments as possible to the Poisson, so at the very least I would want that Normal distribution to have the same mean and variance. This is easy done with the Normal distribution because the mean and variance are two parameters that can be controlled independently, so we can simply set these memonts to match one another (just like the Poisson) and now we have a Normal distribution that has the key characteristic of the Poisson which is E[X]=Var[X]. Since we use the Greek letter <span class="math inline">\(\lambda\)</span> to represent this parameter for the Poisson, we can use that same letter in the Normal to emphasize how these two distributions relate as <span class="math inline">\(\lambda \to \infty\)</span>. Note also that as <span class="math inline">\(\lambda \to \infty\)</span>, the values of the draws from Pois(<span class="math inline">\(\lambda\)</span>) get very large and so the discreteness of the values approximates a continuous distribution like the Normal.</p>
 <p>Note that the sum of Poisson distributed variables is itself Poisson distributed.</p>
 <p><span class="math display">\[ \begin{align} X &amp;\sim Pois(1) \\ Y &amp;= \sum_{i=1}^{\lambda} X_i \\
 Y &amp;\sim Pois(\lambda) \end{align} \]</span></p>
@@ -610,6 +613,9 @@ Var[X]&amp;=&amp;E[(X-E[X])^{2}] \\
 &amp;=&amp; E(X^2) - E(X)^2 
 \end{eqnarray}
 \]</span></p>
+</div>
+<div id="by-the-end-of-this-lecture-you-should-understand..." class="section level2">
+<h2><span class="header-section-number">5.11</span> By the end of this lecture, you should understand...</h2>
 
 </div>
 </div>

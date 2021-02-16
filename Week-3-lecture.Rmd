@@ -213,7 +213,7 @@ $$ P(x \mid \lambda)= \frac{e^{-\lambda} \cdot \lambda^x}{x!} \\
 \lambda>0 \\
 x \in \mathbb{N} \cup \{0\} $$
 
-Note that when variables are discrete (i.e. when the distribution only produces integer numbers), we call the probability density function a probability *mass* function. The PDF and PMF play the same tole in both cases.
+Note that when variables are discrete (i.e. when the distribution only produces integer numbers), we call the probability density function a probability *mass* function. The PDF and PMF play the same role in both cases.
 
 The shape of the Poisson distribution is illustrated by a few examples
 
@@ -246,8 +246,9 @@ The expected value and variance of the Poisson distribution is given by
 
 $$ \begin{align} E[X] &= \sum_{x=1}^{\infty} x \frac{e^{-\lambda} \cdot \lambda^x}{x!} \\
 &= \lambda \cdot e^{-\lambda} \cdot \sum_{x=1}^{\infty} x \frac{\lambda^{x-1}}{x!} \\
-&= \lambda \cdot e^{-\lambda} \cdot \sum_{x=1}^{\infty} \frac{\lambda^{x-1}}{(x-1)!}, y = x-1 \\
-&= \lambda \cdot e^{-\lambda} \cdot \sum_{y=0}^{\infty} \frac{\lambda^{y}}{y!} \\
+&= \lambda \cdot e^{-\lambda} \cdot \sum_{x=1}^{\infty} \frac{\lambda^{x-1}}{(x-1)!}\\ 
+&\mbox{define } y = x-1 \\
+&= \lambda \cdot e^{-\lambda} \cdot \sum_{y=0}^{\infty} \frac{\lambda^{y}}{y!} \mbox{ (the sum is now the expansion of the exponential)}\\
 &= \lambda \cdot e^{-\lambda} \cdot e^{\lambda} \\
 &= \lambda\end{align} $$
 
@@ -257,6 +258,8 @@ $$ Var[X] = \lambda $$
 The Poisson distribution has the following relationship to the Normal distribution:
 
 $$ \lim_{\lambda \to \infty} Pois(\lambda) \to N(\lambda, \lambda)  $$
+
+The above limit can be understood in terms of 'moment matching'. What are moments? Think of moments as being like characteristics of the distribution, but in decreasing order of importance. The first moment in the mean of the distribution (or, equivalently, the expected value E[X]). The second moment is the variance of the distribution, or Var[X]. The third moment is the skew of a distribution (assemmetry of left and right tails), the fourth momnent is the kurtosis (fatness of the tails), etc.  Consider this, if I wanted to construct a Normal distribution that "looked" like a Poisson, I would want a Normal distribution that had the same moments as possible to the Poisson, so at the very least I would want that Normal distribution to have the same mean and variance. This is easy done with the Normal distribution because the mean and variance are two parameters that can be controlled independently, so we can simply set these memonts to match one another (just like the Poisson) and now we have a Normal distribution that has the key characteristic of the Poisson which is E[X]=Var[X]. Since we use the Greek letter $\lambda$ to represent this parameter for the Poisson, we can use that same letter in the Normal to emphasize how these two distributions relate as $\lambda \to \infty$. Note also that as $\lambda \to \infty$, the values of the draws from Pois($\lambda$) get very large and so the discreteness of the values approximates a continuous distribution like the Normal.
 
 Note that the sum of Poisson distributed variables is itself Poisson distributed.
 
@@ -484,4 +487,7 @@ Var[X]&=&E[(X-E[X])^{2}] \\
 &=& E(X^2) - E(X)^2 
 \end{eqnarray}
 $$
+
+By the end of this lecture, you should understand...
+---------------------
 

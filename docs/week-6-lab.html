@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-10" />
+<meta name="date" content="2021-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,6 +165,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.8" data-path="week-3-lecture.html"><a href="week-3-lecture.html#beta-distribution"><i class="fa fa-check"></i><b>5.8</b> Beta Distribution</a></li>
 <li class="chapter" data-level="5.9" data-path="week-3-lecture.html"><a href="week-3-lecture.html#gamma-distribution"><i class="fa fa-check"></i><b>5.9</b> Gamma Distribution</a></li>
 <li class="chapter" data-level="5.10" data-path="week-3-lecture.html"><a href="week-3-lecture.html#some-additional-notes"><i class="fa fa-check"></i><b>5.10</b> Some additional notes:</a></li>
+<li class="chapter" data-level="5.11" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-this-lecture-you-should-understand..."><i class="fa fa-check"></i><b>5.11</b> By the end of this lecture, you should understand...</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab Handout</a><ul>
 <li class="chapter" data-level="6.1" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.1</b> The Central Limit Theorem</a></li>
@@ -404,32 +405,32 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]        [,3]      [,4]       [,5]       [,6]       [,7]
-##  [1,]   NA 0.5499847 0.003256125 0.3182146 0.24115792 0.51365389 0.07710116
-##  [2,]   NA        NA 0.043391469 0.6053387 0.75091681 0.97456811 0.27276864
-##  [3,]   NA        NA          NA 0.2827111 0.03162916 0.04141813 0.41188821
-##  [4,]   NA        NA          NA        NA 0.73737141 0.61818421 0.69238909
-##  [5,]   NA        NA          NA        NA         NA 0.77241877 0.32567980
-##  [6,]   NA        NA          NA        NA         NA         NA 0.27655807
-##  [7,]   NA        NA          NA        NA         NA         NA         NA
-##  [8,]   NA        NA          NA        NA         NA         NA         NA
-##  [9,]   NA        NA          NA        NA         NA         NA         NA
-## [10,]   NA        NA          NA        NA         NA         NA         NA
-##             [,8]      [,9]      [,10]
-##  [1,] 0.06137235 0.4074293 0.07604571
-##  [2,] 0.32198945 0.7555310 0.33228467
-##  [3,] 0.19190961 0.1592980 0.22614537
-##  [4,] 0.83300480 0.8360162 0.82384713
-##  [5,] 0.38193216 0.9271663 0.40015052
-##  [6,] 0.32592968 0.7725987 0.33708483
-##  [7,] 0.78014078 0.5091956 0.80506799
-##  [8,]         NA 0.6211373 0.97979821
-##  [9,]         NA        NA 0.61862372
-## [10,]         NA        NA         NA</code></pre>
+<pre><code>##       [,1]     [,2]      [,3]       [,4]       [,5]      [,6]      [,7]
+##  [1,]   NA 0.291593 0.5380928 0.15794913 0.01301299 0.9154601 0.6560154
+##  [2,]   NA       NA 0.1966364 0.06697834 0.01961819 0.3420631 0.2230050
+##  [3,]   NA       NA        NA 0.56469035 0.26456975 0.6835031 0.8247259
+##  [4,]   NA       NA        NA         NA 0.60308620 0.3124735 0.3766278
+##  [5,]   NA       NA        NA         NA         NA 0.1093850 0.1134492
+##  [6,]   NA       NA        NA         NA         NA        NA 0.8174336
+##  [7,]   NA       NA        NA         NA         NA        NA        NA
+##  [8,]   NA       NA        NA         NA         NA        NA        NA
+##  [9,]   NA       NA        NA         NA         NA        NA        NA
+## [10,]   NA       NA        NA         NA         NA        NA        NA
+##            [,8]       [,9]      [,10]
+##  [1,] 0.3565438 0.06784924 0.21342268
+##  [2,] 0.1319807 0.05992528 0.09580809
+##  [3,] 0.8249292 0.65494137 0.82595728
+##  [4,] 0.7197002 0.77826360 0.63065553
+##  [5,] 0.3687688 0.26584958 0.21190562
+##  [6,] 0.5214527 0.32831481 0.47165427
+##  [7,] 0.6345138 0.39392009 0.58504268
+##  [8,]        NA 0.85891799 0.96555410
+##  [9,]        NA         NA 0.75018736
+## [10,]        NA         NA         NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 2</code></pre>
 <p>We could correct this using the Bonferonni method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">45</span>
 new.threshold.B&lt;-<span class="fl">0.05</span>/k
@@ -469,8 +470,8 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
   }
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
-<pre><code>##         5% 
-## 0.00167183</code></pre>
+<pre><code>##          5% 
+## 0.001787842</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
 <pre><code>## [1] 0</code></pre>
