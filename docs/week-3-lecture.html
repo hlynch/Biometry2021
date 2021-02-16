@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="week-2-lab.html"/>
-<link rel="next" href="week-3-lab-handout.html"/>
+<link rel="next" href="week-3-lab.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -167,10 +167,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.10" data-path="week-3-lecture.html"><a href="week-3-lecture.html#some-additional-notes"><i class="fa fa-check"></i><b>5.10</b> Some additional notes:</a></li>
 <li class="chapter" data-level="5.11" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-this-lecture-you-should-understand..."><i class="fa fa-check"></i><b>5.11</b> By the end of this lecture, you should understand...</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab Handout</a><ul>
-<li class="chapter" data-level="6.1" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.1</b> The Central Limit Theorem</a></li>
-<li class="chapter" data-level="6.2" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#exploring-the-univariate-distributions-with-r"><i class="fa fa-check"></i><b>6.2</b> Exploring the univariate distributions with R</a></li>
-<li class="chapter" data-level="6.3" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.3</b> Standard deviation vs. Standard error</a></li>
+<li class="chapter" data-level="6" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="6.1" data-path="week-3-lab.html"><a href="week-3-lab.html#exploring-the-univariate-distributions-with-r"><i class="fa fa-check"></i><b>6.1</b> Exploring the univariate distributions with R</a></li>
+<li class="chapter" data-level="6.2" data-path="week-3-lab.html"><a href="week-3-lab.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.2</b> Standard deviation vs. Standard error</a></li>
+<li class="chapter" data-level="6.3" data-path="week-3-lab.html"><a href="week-3-lab.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> The Central Limit Theorem</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lecture</a><ul>
 <li class="chapter" data-level="7.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#short-digression-degrees-of-freedom"><i class="fa fa-check"></i><b>7.1</b> Short digression: Degrees of freedom</a></li>
@@ -441,8 +441,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Mostly useful as a theoretical construct in hypothesis testing.</p></li>
 </ul>
 <p>The probability density function of the Standard Normal distribution is given by</p>
-<p><span class="math display">\[ z = \frac{x-\mu}{\sigma} \]</span></p>
-<p><span class="math display">\[ f(z \mid \mu, \sigma) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2} \]</span></p>
+<p><span class="math display">\[ Z = \frac{X-\mu}{\sigma} \]</span></p>
+<p><span class="math display">\[ f(z \mid \mu, \sigma) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2} \]</span> While the letter used to represent a random variable is usually arbitrary (X usually, maybe Y), we use Z (or its specific incarnation z) to represent a random variable drawn from a Standard Normal distribution.</p>
 <p>The expected value and variance of the Standard Normal distribution are given by</p>
 <ul>
 <li><p>E[X] = 0</p></li>
@@ -481,11 +481,11 @@ log(X) \sim N(\mu,\sigma^{2})
 <div id="intermission-central-limit-theorem" class="section level2">
 <h2><span class="header-section-number">5.5</span> Intermission: Central Limit Theorem</h2>
 <p><span class="math display">\[ X_1,X_2,X_3,...,X_k \sim N(\mu,\sigma^2) \\ 
-S_n = \frac{1}{n} (X_1 + X_2 + X_3,...,X_k) \\
+S_n = \frac{1}{n} (X_1 + X_2 + X_3,...,X_n) \\
 \lim_{n \to \infty} S_n \to N(\mu,\frac{\sigma^2}{n}) \]</span></p>
 <ul>
 <li><p>X is i.i.d</p></li>
-<li><p>X can be drawn from any distribution!</p></li>
+<li><p>X can be drawn from any distribution (with some very limited exceptions; distribution has to have finite moments)!</p></li>
 </ul>
 </div>
 <div id="poisson-distribution" class="section level2">
@@ -562,7 +562,7 @@ Var[X] &amp;= np(1-p) \end{align}
 <p><span class="math display">\[ Var[X] = \frac{\alpha\beta}{(\alpha+\beta)^2 \cdot(\alpha + \beta + 1)} \]</span></p>
 <p>The Beta Distribution's relationship to the Normal and Uniform distributions are given by</p>
 <p><span class="math inline">\(Beta(1,1)\)</span> is the same as <span class="math inline">\(Uniform(0,1)\)</span></p>
-<p><span class="math display">\[ f(x \mid 1,1) = \frac{\Gamma(2)}{\Gamma(1) + \Gamma(1)}x^{0}(1-x)^{0} = 1 \]</span></p>
+<p><span class="math display">\[ f(x \mid 1,1) = \frac{\Gamma(2)}{\Gamma(1) + \Gamma(1)}x^{0}(1-x)^{0} = 1 \]</span> In the limit that <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are the same and growing large, the Beta distribution has the following relationship to the Normal distribution.</p>
 <p><span class="math display">\[ \lim_{\alpha=\beta \to \infty} \to N(\frac{1}{2}, \frac{1}{8\alpha + 4}) \]</span></p>
 </div>
 <div id="gamma-distribution" class="section level2">
@@ -602,7 +602,7 @@ cX\sim N(c\mu,c^{2}\sigma^{2})
 <p><span class="math display">\[
 E[ g(x) ] = \int g(x) f(x) \ dx
 \]</span></p>
-<p>With this knowledge, let's approach the derivation of the variance, where we are essentially defining <span class="math inline">\(g(x) = (X-E[X])^2\)</span> and using some basic properties of algebra involving integrals. Note that in this derivation we are treating <span class="math inline">\(E[X]\)</span> as a constanct, and <strong>not</strong> as a function of <span class="math inline">\(x\)</span>.</p>
+<p>With this knowledge, let's approach the derivation of the variance, where we are essentially defining <span class="math inline">\(g(x) = (X-E[X])^2\)</span> and using some basic properties of algebra involving integrals. Note that in this derivation we are treating <span class="math inline">\(E[X]\)</span> as a constant, and <strong>not</strong> as a function of <span class="math inline">\(x\)</span>.</p>
 <p><span class="math display">\[
 \begin{eqnarray}
 Var[X]&amp;=&amp;E[(X-E[X])^{2}] \\
@@ -616,6 +616,12 @@ Var[X]&amp;=&amp;E[(X-E[X])^{2}] \\
 </div>
 <div id="by-the-end-of-this-lecture-you-should-understand..." class="section level2">
 <h2><span class="header-section-number">5.11</span> By the end of this lecture, you should understand...</h2>
+<ul>
+<li><p>the shape of each of the distributions introduced (including the range of support for x) and the number of parameters for each distribution. You should also know if the parameters have restrictions (e.g., non-negative, etc.)</p></li>
+<li><p>the process by which you can find the E[X] and Var[X] for any parametric distribution. (In some cases, the integral might not be tractable.)</p></li>
+<li><p>the relationships between the distributions</p></li>
+<li><p>the PDFs for the Normal distribution, Standard Normal, Log-Normal, Binomial, and Poisson distributions</p></li>
+</ul>
 
 </div>
 </div>
@@ -625,7 +631,7 @@ Var[X]&amp;=&amp;E[(X-E[X])^{2}] \\
         </div>
       </div>
 <a href="week-2-lab.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="week-3-lab-handout.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="week-3-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

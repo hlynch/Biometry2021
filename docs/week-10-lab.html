@@ -167,10 +167,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.10" data-path="week-3-lecture.html"><a href="week-3-lecture.html#some-additional-notes"><i class="fa fa-check"></i><b>5.10</b> Some additional notes:</a></li>
 <li class="chapter" data-level="5.11" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-this-lecture-you-should-understand..."><i class="fa fa-check"></i><b>5.11</b> By the end of this lecture, you should understand...</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab Handout</a><ul>
-<li class="chapter" data-level="6.1" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.1</b> The Central Limit Theorem</a></li>
-<li class="chapter" data-level="6.2" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#exploring-the-univariate-distributions-with-r"><i class="fa fa-check"></i><b>6.2</b> Exploring the univariate distributions with R</a></li>
-<li class="chapter" data-level="6.3" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.3</b> Standard deviation vs. Standard error</a></li>
+<li class="chapter" data-level="6" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="6.1" data-path="week-3-lab.html"><a href="week-3-lab.html#exploring-the-univariate-distributions-with-r"><i class="fa fa-check"></i><b>6.1</b> Exploring the univariate distributions with R</a></li>
+<li class="chapter" data-level="6.2" data-path="week-3-lab.html"><a href="week-3-lab.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.2</b> Standard deviation vs. Standard error</a></li>
+<li class="chapter" data-level="6.3" data-path="week-3-lab.html"><a href="week-3-lab.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> The Central Limit Theorem</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lecture</a><ul>
 <li class="chapter" data-level="7.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#short-digression-degrees-of-freedom"><i class="fa fa-check"></i><b>7.1</b> Short digression: Degrees of freedom</a></li>
@@ -707,7 +707,7 @@ challenger.larger.model &lt;-<span class="st"> </span><span class="kw">glm</span
 <span class="co"># Calculate the deviance difference of the two models </span>
 dev_diff &lt;-<span class="st"> </span><span class="kw">deviance</span>(challenger.smaller.model) -<span class="st"> </span><span class="kw">deviance</span>(challenger.larger.model)
 dev_diff</code></pre></div>
-<pre><code>## [1] 0.4365053</code></pre>
+<pre><code>## [1] 0.8635384</code></pre>
 <p>Notice that even though the covariate that we added is just noise, it still decreases the deviance.</p>
 <p>Now we need to repeat those steps a number of times to generate a distribution of expected deviance differences</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dev_diff &lt;-<span class="st"> </span><span class="kw">c</span>()
@@ -727,8 +727,6 @@ for (i in <span class="dv">1</span>:<span class="dv">1000</span>){
   
   dev_diff &lt;-<span class="st"> </span><span class="kw">c</span>(dev_diff, dev_diff_rand)
 }</code></pre></div>
-<pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
-<pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
 <pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
 <pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot the distribution and add a line for a chi-square with df=1 </span>

@@ -85,9 +85,10 @@ Standard Normal Distribution
 
 The probability density function of the Standard Normal distribution is given by
 
-$$ z = \frac{x-\mu}{\sigma} $$
+$$ Z = \frac{X-\mu}{\sigma} $$
 
 $$ f(z \mid \mu, \sigma) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2} $$
+While the letter used to represent a random variable is usually arbitrary (X usually, maybe Y), we use Z (or its specific incarnation z) to represent a random variable drawn from a Standard Normal distribution.
 
 The expected value and variance of the Standard Normal distribution are given by
 
@@ -142,12 +143,12 @@ Intermission: Central Limit Theorem
 --------------------------------
 
 $$ X_1,X_2,X_3,...,X_k \sim N(\mu,\sigma^2) \\ 
-S_n = \frac{1}{n} (X_1 + X_2 + X_3,...,X_k) \\
+S_n = \frac{1}{n} (X_1 + X_2 + X_3,...,X_n) \\
 \lim_{n \to \infty} S_n \to N(\mu,\frac{\sigma^2}{n}) $$
 
 - X is i.i.d
 
-- X can be drawn from any distribution!
+- X can be drawn from any distribution (with some very limited exceptions; distribution has to have finite moments)!
 
 
 Poisson Distribution
@@ -270,6 +271,7 @@ The Beta Distribution's relationship to the Normal and Uniform distributions are
 $Beta(1,1)$ is the same as $Uniform(0,1)$
 
 $$ f(x \mid 1,1) = \frac{\Gamma(2)}{\Gamma(1) + \Gamma(1)}x^{0}(1-x)^{0} = 1 $$
+In the limit that $\alpha$ and $\beta$ are the same and growing large, the Beta distribution has the following relationship to the Normal distribution.
 
 $$ \lim_{\alpha=\beta \to \infty} \to N(\frac{1}{2}, \frac{1}{8\alpha + 4}) $$
 
@@ -338,7 +340,7 @@ $$
 With this knowledge, let's approach the derivation of the variance, where 
 we are essentially defining $g(x) = (X-E[X])^2$ and using some basic properties
 of algebra involving integrals.  Note that in this derivation we are treating
-$E[X]$ as a constanct, and **not** as a function of $x$.
+$E[X]$ as a constant, and **not** as a function of $x$.
 
 $$
 \begin{eqnarray}
@@ -353,4 +355,12 @@ $$
 
 By the end of this lecture, you should understand...
 ---------------------
+
+- the shape of each of the distributions introduced (including the range of support for x) and the number of parameters for each distribution. You should also know if the parameters have restrictions (e.g., non-negative, etc.)
+
+- the process by which you can find the E[X] and Var[X] for any parametric distribution. (In some cases, the integral might not be tractable.)
+
+- the relationships between the distributions
+
+- the PDFs for the Normal distribution, Standard Normal, Log-Normal, Binomial, and Poisson distributions
 

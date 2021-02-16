@@ -1,62 +1,5 @@
-Week 3 Lab Handout
+Week 3 Lab
 ========================================================
-
-In lab today, we will dive into using R to understand the properties of the univariate distributions, but first we'll take a short detour to discuss the Central Limit Theorem (or CLT).
-
-The Central Limit Theorem
-------------------------------
-
-QUESTION: Why is the normal distribution so fundamental to statistics?
-ANSWER: The central-limit theorem.
-
-Let X1, X2,..., Xn be independently and identically distributed random variables with mean $\mu$ and finite, non-zero variance $\sigma^{2}$, 
-
-$$
-X_{1},X_{2},...,X_{n} \sim N(\mu,\sigma^{2})
-$$
-
-and the average of these variable $S_{n}$ be defined as
-
-$$
-S_{n} = \frac{1}{n}(X_{1}+X_{2}+X_{3}+...+X_{n})
-$$
-
-Then the Central Limit Theorem states:
-
-$$
-\lim_{n\rightarrow\infty} S_{n} \rightarrow N(\mu,\frac{\sigma^{2}}{n})
-$$
-
-Here I have illustrated the CLT using the normal distribution, but the variables X can be drawn from ANY distribution (as long as the X are i.i.d. from a distribution with finite mean and variance), which is remarkable. For example, X could be drawn from a Bernoulli! 
-
-The CLT is a very general statement, but do not forget the requirements that the mean and standard deviation exist (i.e. are finite). The Cauchy distribution, which is used all the time in atomic physics, has NO MEAN and NO SD – therefore, the CLT would not apply.
-
-IMPORTANT SIDE NOTE:
-
-The Central Limit Theorem tells us something very important about how well we can estimate the mean of a set of random i.i.d. numbers. 
-
-Our uncertainty of the mean is given by the variance of $S_{n}$ 
-
-$$
-\mbox{variance of estimate of } \mu =  \frac{s^{2}}{n}
-$$
-
-where
-
-$$
-s^{2} = \frac{(X-\bar{X})^{2}}{n-1}
-$$
-
-is our unbiased estimate of $\sigma^{2}$. Therefore, we define the STANDARD ERROR of our estimate of $\mu$ as 
-
-$$
-\mbox{s.e. of } \mu = \sqrt{\frac{s^{2}}{n}}
-$$
-
-Our uncertainty regarding our estimate of $\mu$ goes down as the $\sqrt{n}$.
-
-DO NOT CONFUSE STANDARD ERROR AND STANDARD DEVIATION. Standard errors are just the standard deviation of a parameter estimate, it expresses uncertainty about the estimate. Standard deviations of a population simply reflect the spread in values. As you increase sample size, standard errors (i.e. standard deviations of the parameter estimate) get smaller and smaller, but standard deviations of the population values do not get smaller with increasing sample size.
-
 
 Exploring the univariate distributions with R
 -----------------------------------
@@ -91,7 +34,7 @@ head(data)
 ```
 
 ```
-## [1] -1.73626460 -0.78731344  0.68108300 -0.19075250  1.06670102  0.07065679
+## [1] -0.7182688 -0.9795301 -0.7868133  1.2468660 -0.6062158  0.2482228
 ```
 
 Note that you could have left off the "mean" and "sd" since R knows the order of inputs, that is you could simply write 
@@ -102,7 +45,8 @@ head(rnorm(100,0,1))
 ```
 
 ```
-## [1] -0.5461951 -1.5954806 -0.2210232 -0.4917391  0.3966994 -1.7581707
+## [1]  0.778432684 -2.009156838 -0.325088182 -0.005045882 -1.360909901
+## [6] -0.578439728
 ```
 
 or even
@@ -113,7 +57,7 @@ head(rnorm(100))
 ```
 
 ```
-## [1] -0.9150809 -1.3193843  1.5651203 -0.5504642 -0.3311407  0.5400152
+## [1]  2.02613137  0.27870463 -0.33076495 -0.54558724 -0.99070517 -0.04508572
 ```
 
 since mean=0, sd=1 is the default. Until you are 100% comfortable with R, its better to leave all the options spelled out. 
@@ -160,19 +104,18 @@ hist(rnorm(1000,mean=0,sd=1),plot=F)
 
 ```
 ## $breaks
-##  [1] -4.0 -3.5 -3.0 -2.5 -2.0 -1.5 -1.0 -0.5  0.0  0.5  1.0  1.5  2.0  2.5  3.0
-## [16]  3.5
+##  [1] -3.0 -2.5 -2.0 -1.5 -1.0 -0.5  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5
 ## 
 ## $counts
-##  [1]   2   1   7  12  36 105 137 192 186 142  96  53  24   5   2
+##  [1]   5  15  39  84 141 187 208 133 103  65  16   3   1
 ## 
 ## $density
-##  [1] 0.004 0.002 0.014 0.024 0.072 0.210 0.274 0.384 0.372 0.284 0.192 0.106
-## [13] 0.048 0.010 0.004
+##  [1] 0.010 0.030 0.078 0.168 0.282 0.374 0.416 0.266 0.206 0.130 0.032 0.006
+## [13] 0.002
 ## 
 ## $mids
-##  [1] -3.75 -3.25 -2.75 -2.25 -1.75 -1.25 -0.75 -0.25  0.25  0.75  1.25  1.75
-## [13]  2.25  2.75  3.25
+##  [1] -2.75 -2.25 -1.75 -1.25 -0.75 -0.25  0.25  0.75  1.25  1.75  2.25  2.75
+## [13]  3.25
 ## 
 ## $xname
 ## [1] "rnorm(1000, mean = 0, sd = 1)"
@@ -197,7 +140,7 @@ plot(quantiles,density,type="l",ylab="Probability density")
 
 <img src="Week-3-lab_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
-This is the probability density function for the standard normal. (We are getting a little ahead of ourselves because we won't discuss graphics until next week, but this syntax is fairly straightforward.)
+This is the probability density function for the Standard Normal. (We are getting a little ahead of ourselves because we won't discuss graphics until next week, but this syntax is fairly straightforward.)
 
 Let's use the same vector 'quantiles' and try the function pnorm:
 
@@ -245,8 +188,8 @@ table(count)
 
 ```
 ## count
-##   0   1   2   3   4   5   6   7   8  10 
-##  28  70 115 123  86  40  24   8   5   1
+##   0   1   2   3   4   5   6   7   8   9  10 
+##  16  73 129 104  86  53  24  11   2   1   1
 ```
 
 ```r
@@ -254,7 +197,7 @@ mean(count)
 ```
 
 ```
-## [1] 2.926
+## [1] 3.016
 ```
 
 ```r
@@ -262,7 +205,7 @@ var(count)
 ```
 
 ```
-## [1] 2.822168
+## [1] 2.785315
 ```
 
 Standard deviation vs. Standard error
@@ -270,9 +213,11 @@ Standard deviation vs. Standard error
 
 Many people struggle with the distinction between the standard deviation of a sample (or a population), and the standard error of the mean of the sample (or population). The standard deviation is a measure of the average spread of the data. Since the standard deviation is a measure of the average spread of the data, adding more data does not appreciably change the standard deviation. (*Make sure this makes sense!*)
 
-The standard error can be understood as follows: If you repeated your experiment many times, and calculated the mean of each of the samples (one sample from each "experiment"), the standard deviation of the means would represent the uncertainty in the estimate of the mean coming from any one sample. The standard deviation of those means is called the standard error of the mean (or SEM). The SEM decreases as the size of each sample increases because each sample is now more representative of the underlying distribution.
+The standard error can be understood as follows: **<span style="color: orangered;">If you repeated your experiment many times, and calculated the mean of each of the samples (one sample from each "experiment"), the standard deviation of the means would represent the uncertainty in the estimate of the mean coming from any one sample.</span>** The standard deviation of those means is called the standard error of the mean (or SEM). The SEM decreases as the size of each sample increases because each sample is now more representative of the underlying distribution.
 
-More precisely, the standard error is the standard deviation of the sampling distribution of a statistic. Standard errors can be calculated for any statistic. For example, if we fit a Beta($\alpha$,$\beta$) distribution to a dataset, we want to estimate the parameter values $\hat{\alpha}$ and $\hat{\beta}$ AND thier standard errors, which we might denote s.e.$_{\hat{\alpha}}$ and s.e.$_{\hat{\beta}}$. 
+More precisely, **<span style="color: orangered;">the standard error is the standard deviation of the sampling distribution of a statistic</span>**. Standard errors can be calculated for any statistic. For example, if we fit a Beta($\alpha$,$\beta$) distribution to a dataset, we want to estimate the parameter values $\hat{\alpha}$ and $\hat{\beta}$ **and** thier standard errors, which we might denote s.e.$_{\hat{\alpha}}$ and s.e.$_{\hat{\beta}}$. 
+
+**<span style="color: green;">Checkpoint #1: Does everyone in your group understand the definition of a standard error?</span>**
 
 We can use the Poisson distribution to illustrate the difference between a standard deviation of a distribution and the standard deviation of the mean:
 
@@ -296,7 +241,7 @@ sd(sample1)
 ```
 
 ```
-## [1] 1.704195
+## [1] 1.691064
 ```
 
 ```r
@@ -304,7 +249,7 @@ sd(sample2)
 ```
 
 ```
-## [1] 1.746083
+## [1] 1.749768
 ```
 
 ```r
@@ -312,7 +257,7 @@ sd(sample3)
 ```
 
 ```
-## [1] 1.73669
+## [1] 1.736358
 ```
 
 Notice that the standard deviation has not appreciably changed as we have increased the sample size.
@@ -339,7 +284,7 @@ s.e.1
 ```
 
 ```
-## [1] 0.05502585
+## [1] 0.05354462
 ```
 
 ```r
@@ -347,10 +292,12 @@ s.e.2
 ```
 
 ```
-## [1] 0.05528532
+## [1] 0.05260715
 ```
 
-Note that the number of experiments I looped through (2000 in this case) is not relevant. It just has to be big enough that you get a sense of what the distribution of means looks like. Now go back and modify the code so that sample.size=10000 - how does that change the result?
+Note that the number of experiments I looped through (2000 in this case) is not relevant. It just has to be big enough that you get a sense of what the distribution of means looks like. Now go back and modify the code so that sample.size=10000. 
+
+**<span style="color: green;">Checkpoint #2: How does increasing the sample size change the result?</span>**
 
 On Tuesday we discussed the probability mass function for the binomial. While an individual flip of the coin can be thought of as a success/failure, the binomial is answering the question "How many succesess do I expect if I try n times."
 
@@ -421,26 +368,13 @@ First, install the library 'MASS'.
 library(MASS) #this loads the library into the workspace
 sample.pois<-rpois(1000,lambda=20)
 fit<-fitdistr(sample.pois,"gamma",start=list(shape=20,scale=1))
-```
-
-```
-## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
-
-## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
-
-## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
-
-## Warning in densfun(x, parm[1], parm[2], ...): NaNs produced
-```
-
-```r
 fit
 ```
 
 ```
-##       shape         scale   
-##   19.42209701    1.01997117 
-##  ( 0.86110839) ( 0.04581006)
+##      shape        scale   
+##   18.8681224    1.0687337 
+##  ( 0.8363818) ( 0.0480090)
 ```
 
 (Sometimes you get a warnings message about NAs when using fitdistr. The best explanation I can find says that this means R "encountered some difficulties during fitting". I can find no difference in the fits when you get the warning and when you don't, and the same sample.pois will sometimes give a warning and sometimes not, so it appears independent of the data itself. Do not ignore warnings() in R but don't be paralized by them, especially in a context where R is searching parameter space during an optimization. Be sure to search around for an explanation and make sure you are confident that R is still giving reasonable answers.)
@@ -469,7 +403,7 @@ fit$estimate
 
 ```
 ##     shape     scale 
-## 19.422097  1.019971
+## 18.868122  1.068734
 ```
 
 and notice that we can pull out the two estimates as
@@ -480,8 +414,8 @@ fit$estimate[1]
 ```
 
 ```
-##   shape 
-## 19.4221
+##    shape 
+## 18.86812
 ```
 
 ```r
@@ -490,7 +424,7 @@ fit$estimate[2]
 
 ```
 ##    scale 
-## 1.019971
+## 1.068734
 ```
 
 Now we want to plot the data, and the best fit line:
@@ -521,6 +455,8 @@ lines(x.vals,dnorm(x.vals,mean=fit2$estimate[1],sd=fit2$estimate[2])*1000,col="r
 
 <img src="Week-3-lab_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
+**<span style="color: green;">Checkpoint #3: We see here that the data, which were generated by a Poisson distribution, are fit quite well by the Normal distribution. If this data were research data, what would be one major clue that the Poisson distribution was more appropriate than the Normal distribution?</span>**
+
 So we have shown that given certain parameters, a Gamma distribution can approximate a Poisson, and we have shown that the Normal can approximate the draws from a Poisson distribution. This latter fact shouldn't come as a surprise because 
 
 $$
@@ -541,3 +477,62 @@ abline(a=0,b=1,col="red",lwd=2)
 ```
 
 <img src="Week-3-lab_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+
+In lab today, we will dive into using R to understand the properties of the univariate distributions, but first we'll take a short detour to discuss the Central Limit Theorem (or CLT).
+
+The Central Limit Theorem
+------------------------------
+
+QUESTION: Why is the normal distribution so fundamental to statistics?
+ANSWER: The central-limit theorem.
+
+Let $X_{1}$, $X_{2}$,..., $X_{n}$ be independently and identically distributed random variables with mean $\mu$ and finite, non-zero variance $\sigma^{2}$, 
+
+$$
+X_{1},X_{2},...,X_{n} \sim N(\mu,\sigma^{2})
+$$
+
+and the average of these variable $S_{n}$ be defined as
+
+$$
+S_{n} = \frac{1}{n}(X_{1}+X_{2}+X_{3}+...+X_{n})
+$$
+
+Then the Central Limit Theorem states:
+
+$$
+\lim_{n\rightarrow\infty} S_{n} \rightarrow N(\mu,\frac{\sigma^{2}}{n})
+$$
+
+Here I have illustrated the CLT using the normal distribution, but the variables X can be drawn from ANY distribution (as long as the X are i.i.d. from a distribution with finite mean and variance), which is remarkable. For example, X could be drawn from a Bernoulli! 
+
+**<span style="color: green;">Checkpoint #4: Write a short script to draw Bernoulli distributed data. Play around with data of different sizes. Roughly how large does $n$ need to get before $S_{n}$ starts to "look" like a Normal distribution? What effect does the parameter $p$ have? </span>**
+
+The CLT is a very general statement, but do not forget the requirements that the mean and standard deviation exist (i.e. are finite). The Cauchy distribution, which is used all the time in atomic physics, has NO MEAN and NO SD – therefore, the CLT would not apply.
+
+IMPORTANT SIDE NOTE:
+
+The Central Limit Theorem tells us something very important about how well we can estimate the mean of a set of random i.i.d. numbers. 
+
+Our uncertainty of the mean is given by the variance of $S_{n}$ 
+
+$$
+\mbox{variance of estimate of } \mu =  \frac{s^{2}}{n}
+$$
+
+where
+
+$$
+s^{2} = \frac{(X-\bar{X})^{2}}{n-1}
+$$
+
+is our unbiased estimate of $\sigma^{2}$. Therefore, we define the STANDARD ERROR of our estimate of $\mu$ as 
+
+$$
+\mbox{s.e. of } \mu = \sqrt{\frac{s^{2}}{n}}
+$$
+
+Our uncertainty regarding our estimate of $\mu$ goes down as the $\sqrt{n}$.
+
+DO NOT CONFUSE STANDARD ERROR AND STANDARD DEVIATION. Standard errors are just the standard deviation of a parameter estimate, it expresses uncertainty about the estimate. Standard deviations of a population simply reflect the spread in values. As you increase sample size, standard errors (i.e. standard deviations of the parameter estimate) get smaller and smaller, but standard deviations of the population values do not get smaller with increasing sample size.
+

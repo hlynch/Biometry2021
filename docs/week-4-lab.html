@@ -167,10 +167,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.10" data-path="week-3-lecture.html"><a href="week-3-lecture.html#some-additional-notes"><i class="fa fa-check"></i><b>5.10</b> Some additional notes:</a></li>
 <li class="chapter" data-level="5.11" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-this-lecture-you-should-understand..."><i class="fa fa-check"></i><b>5.11</b> By the end of this lecture, you should understand...</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab Handout</a><ul>
-<li class="chapter" data-level="6.1" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.1</b> The Central Limit Theorem</a></li>
-<li class="chapter" data-level="6.2" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#exploring-the-univariate-distributions-with-r"><i class="fa fa-check"></i><b>6.2</b> Exploring the univariate distributions with R</a></li>
-<li class="chapter" data-level="6.3" data-path="week-3-lab-handout.html"><a href="week-3-lab-handout.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.3</b> Standard deviation vs. Standard error</a></li>
+<li class="chapter" data-level="6" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="6.1" data-path="week-3-lab.html"><a href="week-3-lab.html#exploring-the-univariate-distributions-with-r"><i class="fa fa-check"></i><b>6.1</b> Exploring the univariate distributions with R</a></li>
+<li class="chapter" data-level="6.2" data-path="week-3-lab.html"><a href="week-3-lab.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.2</b> Standard deviation vs. Standard error</a></li>
+<li class="chapter" data-level="6.3" data-path="week-3-lab.html"><a href="week-3-lab.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> The Central Limit Theorem</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lecture</a><ul>
 <li class="chapter" data-level="7.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#short-digression-degrees-of-freedom"><i class="fa fa-check"></i><b>7.1</b> Short digression: Degrees of freedom</a></li>
@@ -511,14 +511,14 @@ sigma=params[<span class="dv">2</span>]
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">opt1&lt;-<span class="kw">optim</span>(<span class="dt">par=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">fn=</span>neg.ll.v2,<span class="dt">x=</span>x)
 opt1</code></pre></div>
 <pre><code>## $par
-## [1] 0.9335454 1.9640354
+## [1] 1.071645 2.017520
 ## 
 ## $value
-## [1] 2093.933
+## [1] 2120.754
 ## 
 ## $counts
 ## function gradient 
-##       61       NA 
+##       53       NA 
 ## 
 ## $convergence
 ## [1] 0
@@ -529,8 +529,8 @@ opt1</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
 <span class="kw">fitdistr</span>(x,<span class="st">&quot;normal&quot;</span>)</code></pre></div>
 <pre><code>##       mean          sd    
-##   0.93378503   1.96402231 
-##  (0.06210784) (0.04391687)</code></pre>
+##   1.07186414   2.01741278 
+##  (0.06379619) (0.04511072)</code></pre>
 <p>Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE. You will learn how to put CI on estimators in Problem Set #3.</p>
 <p>The likelihood is a relative concept that only makes sense relative to other possible datasets. The absolute magnitude depends on the &quot;sample space&quot; of the data and sometimes even the maximum likelihood is a very small value. So all we can do is compare relative likelihoods. We could base our confidence intervals on any likelihood cut-off, but we can use the fact that the NLL (in the asymptotic case of having lots of data) follows a chi-squared distribution</p>
 <p><span class="math display">\[
