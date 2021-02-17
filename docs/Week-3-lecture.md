@@ -110,7 +110,7 @@ The probability density function of the Log-Normal distribution is given by
 
 $$ \begin{align} log(X) &\sim N(\mu,\sigma) \\ X &\sim LN(\mu,\sigma) \end{align} $$
 
-$$ f(x \mid \mu, \sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}}e^{-\frac{(log(x)-\mu)^2}{2\sigma^2}} \\ x \in \{0,\infty\} \\
+$$ f(x \mid \mu, \sigma) = \frac{1}{x\sqrt{2 \pi \sigma^2}}e^{-\frac{(log(x)-\mu)^2}{2\sigma^2}} \\ x \in \{0,\infty\} \\
 \mu \in \mathbb{R} \\ 
 \sigma > 0 $$
 
