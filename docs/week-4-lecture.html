@@ -473,10 +473,17 @@ Y = \frac{1}{\sigma^{2}}\sum_{i=1}^{n}{(X_{i}-\mu)^{2}} \sim \chi_{n}^{2}
 <ol style="list-style-type: decimal">
 <li>If <span class="math inline">\(X \sim N(0,1)\)</span>, then <span class="math inline">\(X^{2} \sim \chi_{1}^{2}\)</span>. In other words, the square of a standard normal random variable is a chi-squared random variable.</li>
 </ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">chisqhist&lt;-<span class="kw">hist</span>((<span class="kw">rnorm</span>(<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>))^<span class="dv">2</span>,<span class="dt">freq=</span>F,<span class="dt">breaks=</span><span class="dv">30</span>,<span class="dt">main=</span><span class="st">&quot;Chi-squared with df=1&quot;</span>)
+<span class="kw">lines</span>(chisqhist$mids,<span class="kw">dchisq</span>(chisqhist$mids,<span class="dv">1</span>),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <p><img src="Week-4-lecture_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>If <span class="math inline">\(X_{p1},X_{p2},X_{p3}... \sim \chi^{2}\)</span> distribution, then <span class="math inline">\(\sum_{i}{X_{pi}} \sim \chi^{2}_{\sum{p_{i}}}\)</span>. In other words, independent chi-squared random variables sum to a chi-squared random variable, and the degrees of freedom also add.</li>
 </ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1&lt;-<span class="dv">5</span> 
+df2&lt;-<span class="dv">2</span>
+df3&lt;-<span class="dv">3</span>
+chisqhist2&lt;-<span class="kw">hist</span>(<span class="kw">rchisq</span>(<span class="dv">1000</span>,df1)+<span class="kw">rchisq</span>(<span class="dv">1000</span>,df2)+<span class="kw">rchisq</span>(<span class="dv">1000</span>,df3),<span class="dt">freq=</span>F,<span class="dt">breaks=</span><span class="dv">30</span>,<span class="dt">main=</span><span class="st">&quot;Sum of chi-squared distributions&quot;</span>)
+<span class="kw">lines</span>(chisqhist2$mids,<span class="kw">dchisq</span>(chisqhist2$mids,df1+df2+df3),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <p><img src="Week-4-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>While above I used the symbol &quot;n&quot; to designate the parameter of the <span class="math inline">\(\chi^{2}\)</span> distribution because it is intuitive how that parameter is equal to the number of (squared) random variables are being summed, here I will switch to the letter <span class="math inline">\(\nu\)</span>, which is slightly more traditional. The chi-squared distribution has an ugly pdf, which I include here for completeness.</p>
 <p><span class="math display">\[ 
@@ -560,10 +567,14 @@ s^2(n-1) = \sum_{i=1}^n(X_i-\bar{X})^2
 <p>We will now learn how to fit a model to data, that is, to estimate the parameter values for the distribution being used to model the data. Since parameter estimates are useless without their corresponding confidence intervals, we will also learn out to estimate confidence intervals for these parameters.</p>
 <p>Let's review for a second what is meant by a confidence interval. <strong><span style="color: orangered;">A 95th percentile confidence interval is an interval estimated from the data that we are 95<span class="math inline">\(\%\)</span> certain contains the true but unknown value for the parameter.</span></strong> Because this interval is estimated from data, it has its own confidence interval. While we usually we don't worry too much about this, keep in mind that <strong>a different dataset would also produce a different parameter estimate and a different confidence interval</strong>.</p>
 <p>How do we calculate confidence intervals when we are using a parametric distribution to model some data? We are going to use what we know about these distributions to derive an analytical expression for the distribution of the parameter of interest, and then use the quantiles of that distribution to calculate the appropriate confidence intervals (typically we use the <span class="math inline">\(\alpha⁄2\)</span> and 1-<span class="math inline">\(\alpha⁄2\)</span> confidence intervals, where <span class="math inline">\(\alpha\)</span>=0.05).</p>
-<p>The following four examples use the same methodology:</p>
+<p>The following five examples use the same methodology:</p>
 <p><em>Step #1</em>: Start with an expression involving the parameter of interest that you know is true based on what we already know about the properties of the univariate distributions</p>
 <p><em>Step #2</em>: Algebraically re-arrange that expression to isolate the parameter of interest on one side of the equation. You now have an expression for the statistical distribution describing the estimate of that parameter</p>
 <p><em>Step #3</em>: Replace the distribution with the appropriate quantiles to generate the lower bound and upper bound of interest.</p>
+<p>The first four examples involve the following model</p>
+<p><span class="math display">\[
+X \sim N(\mu,\sigma^{2})
+\]</span> If we want to find confidence intervals for <span class="math inline">\(\mu\)</span>, we can do so in the case where <span class="math inline">\(\sigma\)</span> is known (unrealistic) or where <span class="math inline">\(\sigma\)</span> is unknown. If we want to find confidence intervals for <span class="math inline">\(\sigma\)</span>, we can do so in cases where <span class="math inline">\(\mu\)</span> is known (unrealistic) or where <span class="math inline">\(\mu\)</span> is unknown. These form the first four of the five examples we will cover.</p>
 <p><strong>Example 1: Confidence intervals for <span class="math inline">\(\mu\)</span> assuming <span class="math inline">\(\sigma\)</span> is known.</strong> Let's say that we have some data <span class="math inline">\(X_{1},X_{2},X_{3},....,X_{n}\)</span>. To use a concrete example, let's say that these data represent the population growth rate of some bird colonies that I am monitoring. I am going to model growth rate by a Normal distribution:</p>
 <p><span class="math display">\[
 X \sim N(\mu,\sigma^{2})
@@ -592,7 +603,7 @@ X \sim N(\mu,\sigma^{2})
 <p>We now have the distribution for the parameter <span class="math inline">\(\mu\)</span> in terms of quantities we already know (<span class="math inline">\(\sigma\)</span>, which is assumed known, sample size n, and the average of the data <span class="math inline">\(\bar{X}\)</span>).</p>
 <p>We can use this expression to get confidence intervals for <span class="math inline">\(\mu\)</span>, by plugging in the quantiles of the standard Normal distribution on the right hand side. The lower limit is defined by the [<span class="math inline">\(\alpha\)</span>/2] quantile of N(0,1), and the upper limit is defined by 1-[<span class="math inline">\(\alpha\)</span>/2] quantile of N(0,1). By tradition, we call the quantiles of the standard normal ''z''.</p>
 <p><span class="math display">\[
-P(\bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{\alpha/2} \leq \mu \leq \bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2}) = 0.05
+P(\bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{\alpha/2} \leq \mu \leq \bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2}) = 0.95
 \]</span></p>
 <p>Because the N(0,1) is symmetric about zero,</p>
 <p><span class="math display">\[
@@ -606,7 +617,7 @@ Figure 7.1: Standard normal diagram illustrating the symmetry of the distributio
 </div>
 <p>this is the same as</p>
 <p><span class="math display">\[
-P(\bar{X}-\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2} \leq \mu \leq \bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2}) = 0.05 = 1-\alpha
+P(\bar{X}-\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2} \leq \mu \leq \bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2}) = 0.95 = 1-\alpha
 \]</span></p>
 <p>This second version makes it easier to see that there is a quantity that is subtracted off <span class="math inline">\(\bar{X}\)</span> for the lower limit, and added to <span class="math inline">\(\bar{X}\)</span> for the upper limit. The confidence intervals in this case are symmetric about <span class="math inline">\(\bar{X}\)</span>.</p>
 <p>Side note: This is called the “equal-tails” method, because we have constructed the confidence interval using equal amounts in each tail of the distribution. It is the most common way of constructing a confidence interval, but not the only way.</p>

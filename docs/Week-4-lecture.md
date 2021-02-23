@@ -138,9 +138,24 @@ To reiterate, it is important to remember the following properties of the chi-sq
 
 1. If $X \sim N(0,1)$, then $X^{2} \sim \chi_{1}^{2}$. In other words, the square of a standard normal random variable is a chi-squared random variable.
 
+
+```r
+chisqhist<-hist((rnorm(1000,0,1))^2,freq=F,breaks=30,main="Chi-squared with df=1")
+lines(chisqhist$mids,dchisq(chisqhist$mids,1),col="red",lwd=2)
+```
+
 <img src="Week-4-lecture_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 2. If $X_{p1},X_{p2},X_{p3}... \sim \chi^{2}$ distribution, then $\sum_{i}{X_{pi}} \sim \chi^{2}_{\sum{p_{i}}}$. In other words, independent chi-squared random variables sum to a chi-squared random variable, and the degrees of freedom also add.
+
+
+```r
+df1<-5 
+df2<-2
+df3<-3
+chisqhist2<-hist(rchisq(1000,df1)+rchisq(1000,df2)+rchisq(1000,df3),freq=F,breaks=30,main="Sum of chi-squared distributions")
+lines(chisqhist2$mids,dchisq(chisqhist2$mids,df1+df2+df3),col="red",lwd=2)
+```
 
 <img src="Week-4-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
@@ -276,13 +291,20 @@ Let's review for a second what is meant by a confidence interval. **<span style=
 
 How do we calculate confidence intervals when we are using a parametric distribution to model some data? We are going to use what we know about these distributions to derive an analytical expression for the distribution of the parameter of interest, and then use the quantiles of that distribution to calculate the appropriate confidence intervals (typically we use the $\alpha⁄2$ and 1-$\alpha⁄2$ confidence intervals, where $\alpha$=0.05).
 
-The following four examples use the same methodology:
+The following five examples use the same methodology:
 
 *Step #1*: Start with an expression involving the parameter of interest that you know is true based on what we already know about the properties of the univariate distributions
 
 *Step #2*: Algebraically re-arrange that expression to isolate the parameter of interest on one side of the equation. You now have an expression for the statistical distribution describing the estimate of that parameter
 
 *Step #3*: Replace the distribution with the appropriate quantiles to generate the lower bound and upper bound of interest.
+
+The first four examples involve the following model
+
+$$
+X \sim N(\mu,\sigma^{2})
+$$
+If we want to find confidence intervals for $\mu$, we can do so in the case where $\sigma$ is known (unrealistic) or where $\sigma$ is unknown. If we want to find confidence intervals for $\sigma$, we can do so in cases where $\mu$ is known (unrealistic) or where $\mu$ is unknown. These form the first four of the five examples we will cover.
 
 **Example 1: Confidence intervals for $\mu$ assuming $\sigma$ is known.** Let's say that we have some data $X_{1},X_{2},X_{3},....,X_{n}$. To use a concrete example, let's say that these data represent the population growth rate of some bird colonies that I am monitoring. I am going to model growth rate by a Normal distribution:
 
@@ -329,7 +351,7 @@ We now have the distribution for the parameter $\mu$ in terms of quantities we a
 We can use this expression to get confidence intervals for $\mu$, by plugging in the quantiles of the standard Normal distribution on the right hand side. The lower limit is defined by the [$\alpha$/2] quantile of N(0,1), and the upper limit is defined by 1-[$\alpha$/2] quantile of N(0,1). By tradition, we call the quantiles of the standard normal ''z''.
 
 $$
-P(\bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{\alpha/2} \leq \mu \leq \bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2}) = 0.05
+P(\bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{\alpha/2} \leq \mu \leq \bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2}) = 0.95
 $$
 
 Because the N(0,1) is symmetric about zero,
@@ -346,7 +368,7 @@ $$
 this is the same as
 
 $$
-P(\bar{X}-\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2} \leq \mu \leq \bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2}) = 0.05 = 1-\alpha
+P(\bar{X}-\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2} \leq \mu \leq \bar{X}+\sqrt{\frac{\sigma^{2}}{n}}z_{1-\alpha/2}) = 0.95 = 1-\alpha
 $$
 
 This second version makes it easier to see that there is a quantity that is subtracted off $\bar{X}$ for the lower limit, and added to $\bar{X}$ for the upper limit. The confidence intervals in this case are symmetric about $\bar{X}$.
