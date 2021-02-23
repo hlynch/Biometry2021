@@ -36,7 +36,7 @@ $$
 SS = \frac{\sum(Y-\bar{Y})^{2}}{n-1}
 $$
 
-Now that we have that out of the way, we can get back to univariate distributions.
+Now that we have that out of the way, we can get back to univariate distributions. The three distributions we will learn about today all share one thing, which is that their parameters represent some kind of a number. The most difficult part of these distributions is keeping separate in your mind the number associated with the parameter and the number associated with the number of samples drawn from the distribution. 
 
 ##t-distribution
 
@@ -49,7 +49,7 @@ $$
 Then the Central Limit Theorem states:
 
 $$
-lim_{n \rightarrow \infty} \bar{X} \rightarrow N(\mu,\frac{\sigma^{2}}{n})
+lim_{n \rightarrow \infty} \bar{X} \rightarrow N\left(\mu,\frac{\sigma^{2}}{n}\right)
 $$
 and therefore that
 
@@ -59,17 +59,24 @@ $$
 
 (Note that I could use $s^{2}$ synonymously with $\sigma^{2}$ here because $s^{2}$ is an unbiased estimator of $\sigma^{2}$, which means that $lim_{n \rightarrow \infty} s^{2}\rightarrow \sigma^{2}$.)
 
-But what is the distribution of $\bar{X}$ for finite n when we don’t know what the population variance $\sigma^{2}$ is and have to substitute $s^{2}$ instead? The t-distribution.
+**What is the distribution of $\bar{X}$ for finite n when we don’t know what the population variance $\sigma^{2}$ is and have to substitute $s^{2}$ instead? The t-distribution.**
 
 The t-distribution has one parameter, n-1, where n=the number of degrees of freedom.
 
-(Just like $\mu$ and $\sigma^{2}$ are the parameters of the Normal, the parameter of the t is called the “degrees of freedom”. Do not let the name confuse you. )
+(Just like $\mu$ and $\sigma^{2}$ are the parameters of the Normal, the parameter of the t is called the “degrees of freedom”. Do not let the name confuse you. Also, keep in mind that there is no relationship between the *number* of draws from the t distribution and the parameter for the t distribution. You can have n=100 draws from a $t_{n-1=10}$ or n=10 draws from a $t_{n-1=100}$. The two "n"s here are different and independent of one another.)
 
 Notice that as n gets large, both the numerator and the denominator get small. The ratio of these two small numbers is the t-distribution, which is symmetric about 0 because the sample mean could end up either slightly too low or slightly too high.
 
-Where did we lose the degree of freedom? We lost one degree of freedom because we had to use the sample mean in the estimation of the sample variance.
+**Where did we lose the degree of freedom?** 
 
-Sometimes $s^{2}$ is smaller than $\sigma^{2}$, and sometimes it is larger, which explains why the t-distribution is flatter in the middle but has longer tails.
+<details>
+  <summary>Click for Answer</summary>
+<span style="color: blueviolet;">
+We lost one degree of freedom because we had to use the sample mean in the estimation of the sample variance.
+</span>
+</details> 
+
+Sometimes $s^{2}$ is smaller than $\sigma^{2}$, and sometimes it is larger, which explains why **the t-distribution is flatter in the middle but fatter in the tails**.
 
 <img src="Week-4-lecture_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
@@ -131,7 +138,11 @@ To reiterate, it is important to remember the following properties of the chi-sq
 
 1. If $X \sim N(0,1)$, then $X^{2} \sim \chi_{1}^{2}$. In other words, the square of a standard normal random variable is a chi-squared random variable.
 
-2. If $X_{p1}^{2},X_{p2}^{2},X_{p3}^{2}... \sim \chi^{2}$ distribution, then $\sum_{i}{X_{pi}} \sim \chi^{2}_{\sum{p_{i}}}$. In other words, independent chi-squared random variables sum to a chi-squared random variable, and the degrees of freedom also add.
+<img src="Week-4-lecture_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+
+2. If $X_{p1},X_{p2},X_{p3}... \sim \chi^{2}$ distribution, then $\sum_{i}{X_{pi}} \sim \chi^{2}_{\sum{p_{i}}}$. In other words, independent chi-squared random variables sum to a chi-squared random variable, and the degrees of freedom also add.
+
+<img src="Week-4-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 While above I used the symbol "n" to designate the parameter of the $\chi^{2}$ distribution because it is intuitive how that parameter is equal to the number of (squared) random variables are being summed, here I will switch to the letter $\nu$, which is slightly more traditional. The chi-squared distribution has an ugly pdf, which I include here for completeness.
 
@@ -147,7 +158,7 @@ With this we can see that the $\chi^{2}$ distribution is a special case of the g
 
 The shape of the $\chi^{2}$ distribution can be seen with a few examples:
 
-<img src="Week-4-lecture_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="Week-4-lecture_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 The expected value and variance are given by:
 
@@ -173,7 +184,7 @@ $$
 
 (noting that I have used r=n-1 and s=m-1 to make the equation slightly more readable) and the shape of the F distribution looks like
 
-<img src="Week-4-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="Week-4-lecture_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 $$ E[X] = \frac{m-1}{m-3} $$
 
@@ -259,7 +270,7 @@ Once you decide on a distribution for your data, you need some way of estimating
 
 ##Parameter estimation
 
-We will now learn how to fit a model to data, that is, to estimate the parameter values for the distribution being used to model the data. Since parameter estimates are useful without their corresponding confidence intervals, we will also learn out to estimate confidence intervals for these parameters.
+We will now learn how to fit a model to data, that is, to estimate the parameter values for the distribution being used to model the data. Since parameter estimates are useless without their corresponding confidence intervals, we will also learn out to estimate confidence intervals for these parameters.
 
 Let's review for a second what is meant by a confidence interval. **<span style="color: orangered;">A 95th percentile confidence interval is an interval estimated from the data that we are 95$\%$ certain contains the true but unknown value for the parameter.</span>** Because this interval is estimated from data, it has its own confidence interval. While we usually we don't worry too much about this, keep in mind that **a different dataset would also produce a different parameter estimate and a different confidence interval**.
 
@@ -278,7 +289,7 @@ The following four examples use the same methodology:
 $$
 X \sim N(\mu,\sigma^{2})
 $$
-Let's assume for the moment that I already know what the variance of growth rate is, so $\sigma$ is already known and does not have to be estimated from the data, but I do need to use the data to estimate the mean of the distribution $\mu$. 
+Let's assume for the moment that I already know what the variance of growth rate is, so **$\sigma$ is already known and does not have to be estimated from the data**, but I do need to use the data to estimate the mean of the distribution $\mu$. 
 
 Let's start with the model we have for the data
 
@@ -326,6 +337,11 @@ Because the N(0,1) is symmetric about zero,
 $$
 z_{\alpha/2}= -z_{1-\alpha/2}
 $$
+
+<div class="figure" style="text-align: center">
+<img src="StandardNormalTails.png" alt="Standard normal diagram illustrating the symmetry of the distribution and the quantiles for the left and right tails." width="75%" />
+<p class="caption">(\#fig:unnamed-chunk-6)Standard normal diagram illustrating the symmetry of the distribution and the quantiles for the left and right tails.</p>
+</div>
 
 this is the same as
 
