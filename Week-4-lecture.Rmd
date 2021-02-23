@@ -235,8 +235,6 @@ $$ E[X] = \frac{m-1}{m-3} $$
 
 and the variance is just ugly.
 
-**Bonus question: Why does the expected value of the F distribution only depend on m and not n?** 
-
 Why would we ever need to use the F-distribution? It turns out that the F-distribution is critical for assessing variances. Let’s say you have two datasets...
 
 Data set A, with n data points:
@@ -319,7 +317,7 @@ Once you decide on a distribution for your data, you need some way of estimating
 
 We will now learn how to fit a model to data, that is, to estimate the parameter values for the distribution being used to model the data. Since parameter estimates are useful without their corresponding confidence intervals, we will also learn out to estimate confidence intervals for these parameters.
 
-Let's review for a second what is meant by a confidence interval. A 95th percentile confidence interval is an interval estimated from the data that we are 95$\%$ certain contains the true but unknown value for the paameter. Because this interval is estimated from data, it has its own confidence interval. While we usually we don't worry too much about this, keep in mind that a different dataset would also produce a different parameter estimate and a different confidence interval.
+Let's review for a second what is meant by a confidence interval. **<span style="color: orangered;">A 95th percentile confidence interval is an interval estimated from the data that we are 95$\%$ certain contains the true but unknown value for the parameter.</span>** Because this interval is estimated from data, it has its own confidence interval. While we usually we don't worry too much about this, keep in mind that **a different dataset would also produce a different parameter estimate and a different confidence interval**.
 
 How do we calculate confidence intervals when we are using a parametric distribution to model some data? We are going to use what we know about these distributions to derive an analytical expression for the distribution of the parameter of interest, and then use the quantiles of that distribution to calculate the appropriate confidence intervals (typically we use the $\alpha⁄2$ and 1-$\alpha⁄2$ confidence intervals, where $\alpha$=0.05).
 
@@ -457,7 +455,7 @@ $$
 Now that we have the sampling distribution for $\sigma^{2}$ we can simply insert the appropriate quantiles to get the lower and upper limits of the confidence interval. Note that because the $\chi^{2}$ is in the denominator, the *larger* quantile is associated with the lower limit, and vice versa.
 
 $$
-P(\frac{ns^{2}}{\chi^{2}_{(1-\alpha/2)[n]}} \leq \sigma^{2} \leq \frac{ns^{2}}{\chi^{2}_{(\alpha/2)[n]}}) = 1-\alpha
+P\left(\frac{ns^{2}}{\chi^{2}_{(1-\alpha/2)[n]}} \leq \sigma^{2} \leq \frac{ns^{2}}{\chi^{2}_{(\alpha/2)[n]}}\right) = 1-\alpha
 $$
 
 **Example #4: Estimating the confidence intervals for the variance $\sigma^{2}$ assuming $\mu$ is unknown.**
