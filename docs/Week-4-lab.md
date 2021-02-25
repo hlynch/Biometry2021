@@ -41,9 +41,9 @@ In this way, the relationship between the joint probability density and the like
 
 Parameter estimates may be found by maximum likelihood simply by finding those parameters that make your data most likely (among all possible data sets).
 
-Conceptually, it helps to remember the Week #1 problem set. The likelihood of obtaining your exact set of colors was very small even when using the true underlying probabilities of each color. Likelihoods are always VERY SMALL - even the maximum likelihood estimates (MLEs) are very unlikely to produce your dataset, simply because there are so many possible datasets that could be produced. The MLEs are simply those parameters that make your dataset more likely than any other dataset.
+Conceptually, it helps to remember the Week #1 problem set. The likelihood of obtaining your exact set of colors was very small even when using the true underlying probabilities of each color. **<span style="color: orangered;">Likelihoods are always very small numbers - even the maximum likelihood estimates (MLEs) are very unlikely to produce your dataset, simply because there are so many possible datasets that could be produced.</span>** The MLEs are simply those parameters that make your dataset more likely than any other dataset.
 
-The magnitude of the likelihood means NOTHING. The actual value of the likelihood depends on the size of the "sample space" (how many possible datasets could you imagine getting?), so we can only assign meaning to the relative size of likelihoods among different combinations of parameter values. We can say whether one set of parameter values is more likely to be the "true" population values than other possible sets of parameter values.
+The magnitude of the likelihood means **nothing**. The actual value of the likelihood depends on the size of the "sample space" (how many possible datasets could you imagine getting?), so we can only assign meaning to the relative size of likelihoods among different combinations of parameter values. We can say whether one set of parameter values is more likely to be the "true" population values than other possible sets of parameter values.
 
 We will now discuss how to go about finding MLEs.
 
@@ -111,10 +111,6 @@ $$
 
 The MLEs are not necessarily the best estimates, or even unbised estimates. In fact, the MLE for $\sigma^{2}$ is biased (the unbiased estimator replaces n with n-1).
 
-Another way of finding parameter estimates is to use resampling methods. We learned about this method back in Week 2.
-
-In practice, we almost never do these calculations by hand (which isn't to say I wouldn't ask you to do it on an exam).
-
 To do this in R, we have to write a function to define the NLL:
 
 
@@ -179,7 +175,7 @@ plot(sigma2.test.values,likelihood.matrix[max.element[1],],typ="b")
 
 <img src="Week-4-lab_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-Notice how the likelihood curve for $\sigma^{2}$ is not symmetric. While we will not discuss the likelihood ratio test more formally until next week, notice how a horizontal line drawn at some higher value (which represents the likelihood of an alternative hypothesis) yields a fairly symmetric confidence interval for $\mu$ but a highly assymetric confidence interval for $\sigma^{2}$. Confidence intervals do not have to be symmatric!
+Notice how the likelihood curve for $\sigma^{2}$ is not symmetric. While a horizontal line drawn at some higher value (which represents the likelihood of an alternative hypothesis) yields a fairly symmetric confidence interval for $\mu$, the assymetry of the likleihood surface yields a highly assymetric confidence interval for $\sigma^{2}$. Confidence intervals do not have to be symmetric! **However**, immediately in the vicinity of the minimum, the liklelihood surface **is** approximately quadratic and symmetric. We will use this fact in a second.
 
 In this case, the bivariate likelihood surface shows no correlation between $\mu$ and $\sigma^{2}$, but this is not always the case. Sometimes you get strong correlations among parameter estimates and get diagonal "ridges" in parameter space. In this case, it is important to distinguish between the likelihood profile and likellihood slices. (see Bolker!) The likelihood surface need not even have a single maximum; there could be several peaks which makes it difficult to define the MLE or its confidence intervals. If there are strong tradeoffs between parameter values, it is often better to discuss the MLEs in terms of a confidence region, which is the envelop of parameter space that you are [insert confidence limit here] percent certain contains the true combination of population parameter values.
 
@@ -208,14 +204,14 @@ opt1
 
 ```
 ## $par
-## [1] 0.9962009 1.9942769
+## [1] 0.9713975 1.9470726
 ## 
 ## $value
-## [1] 2109.219
+## [1] 2085.32
 ## 
 ## $counts
 ## function gradient 
-##       59       NA 
+##       53       NA 
 ## 
 ## $convergence
 ## [1] 0
@@ -234,23 +230,40 @@ fitdistr(x,"normal")
 
 ```
 ##       mean          sd    
-##   0.99647083   1.99427465 
-##  (0.06306450) (0.04459334)
+##   0.97174215   1.94717775 
+##  (0.06157517) (0.04354022)
 ```
 
-Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE. You will learn how to put CI on estimators in Problem Set #3.
+Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE. You will learn how to put CI on estimators in Problem Set #4.
 
-The likelihood is a relative concept that only makes sense relative to other possible datasets. The absolute magnitude depends on the "sample space" of the data and sometimes even the maximum likelihood is a very small value. So all we can do is compare relative likelihoods. We could base our confidence intervals on any likelihood cut-off, but we can use the fact that the NLL (in the asymptotic case of having lots of data) follows a chi-squared distribution
+The likelihood is a relative concept that only makes sense relative to other possible datasets. The absolute magnitude depends on the "sample space" of the data and sometimes even the maximum likelihood is a very small value. So all we can do is compare relative likelihoods. 
+
+We now know how to use maximum likelihood to calculate the "best" parameter value (in the sense that it is the parameter value that maximizes the likelihood, or minimizes the negative log-likelihood.) But we know that parameter estimates by themselves are useless. We need to somehow calculate the uncertainty in our maximum likelihood estimate, i.e. the confidence interval.
+
+For example, if I have a one-parameter model (let's call the parameter $\theta$) and I want to find a confidence interval on $\theta$, then I want to ask the question: What values of estimated theta are reasonable under the null hypothesis that $\hat{\theta}$ is the true value? We want to find a window of $\theta$ values around $\hat{\theta}$ that are similar enough to $\hat{\theta}$ that I would *not* reject the null hypothesis (that $\hat{\theta}$ is the true value). Since $\hat{\theta}$ is the one that minimizes the NLL surface, any other $\theta$ value would have a higher NLL.
+
+It turns out that, if one model represents a special case of another likelihood, the ratio between two likelihoods is related to a $\chi^{2}$-distribution. 
 
 $$
--Log(likelihood) \sim \chi^{2}
+-2log\left(\frac{\widehat{\mbox{L}_{r}}}{\widehat{\mbox{L}}}\right) \sim \chi^{2}_{r}
 $$
 
-Therefore, we can set a cut-off for the difference in log-likelihoods based on the 95th percentile of the $\chi^{2}$ distribution, which equals 1.92 log-likelihood units. (If you are looking at only one parameter to be estimated, then df=1.)
+where $r$ is the number of "constrained" parameters for the smaller model. So if I compare a model where $\theta$ is allowed to vary (the original model) to one in which I fix $\theta$ arbitrarily (somewhere higher on the NLL surface), then the likelihood ratio ($\times$ -2) follows a $\chi^{2}_{1}$.
+
+Therefore, we can set a cut-off for the difference in log-likelihoods based on the 95th percentile of the $\chi^{2}$ distribution.
+
+
+```r
+qchisq(0.95,1)/2
+```
+
+```
+## [1] 1.920729
+```
+
+which equals 1.92 log-likelihood units if you are looking at only one parameter to be estimated. Therefore, if we have only one parameter, then we simply calculate the NLL over a range of parameter values, and find the CIs representing those parameter estimates which have <1.92 increase in NLL from the MLE.
+
 
 You will explore this more in the problem set. There is also more discussion of this in Bolker's Chapter #6. 
 
-If we have only one parameter, then we simply calculate the NLL over a range of parameter values, and find the CIs representing those parameter estimates which have <1.92 increase in NLL from the MLE.
-
-However, if we have more than one parameter, we have to re-maximize the LL for every parameter value in our "sweep" to ensure we are correctly accounting for correlations among the parameters.
 
