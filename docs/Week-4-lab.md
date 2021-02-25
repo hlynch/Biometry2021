@@ -70,7 +70,7 @@ NLL=\sum_{i}\left(\frac{1}{2}log(2\pi A)+\frac{1}{2}\frac{(X_{i}-\mu)^{2}}{A}\ri
 $$
 
 $$
-\frac{\partial NLL}{\partial \mu} = \sum_{i}\left(\frac{-(X_{i}-\hat{\mu})}{\sigma^{2}}\right)=0
+\frac{\partial NLL}{\partial \mu} = \sum_{i}\left(\frac{-(X_{i}-\hat{\mu})}{A}\right)=0
 $$
 
 Notice that when I set the left-hand side to 0, the notation changes from $\mu$ to $\hat{\mu}$ because the MLE $\hat{\mu}$ is that value that makes that statement true.
@@ -121,7 +121,7 @@ sum(0.5*log(2*pi*sigma2)+0.5*((x-mu)^2)/sigma2)
 }
 ```
 
-For the purposes of a simple exmaple, lets generate some fake "data" by drawing random samples from a $N(\mu=1,\sigma=2)$.
+For the purposes of a simple example, lets generate some fake "data" by drawing random samples from a $N(\mu=1,\sigma=2)$.
 
 
 ```r
@@ -175,7 +175,7 @@ plot(sigma2.test.values,likelihood.matrix[max.element[1],],typ="b")
 
 <img src="Week-4-lab_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-Notice how the likelihood curve for $\sigma^{2}$ is not symmetric. While a horizontal line drawn at some higher value (which represents the likelihood of an alternative hypothesis) yields a fairly symmetric confidence interval for $\mu$, the assymetry of the likleihood surface yields a highly assymetric confidence interval for $\sigma^{2}$. Confidence intervals do not have to be symmetric! **However**, immediately in the vicinity of the minimum, the liklelihood surface **is** approximately quadratic and symmetric. We will use this fact in a second.
+Notice how the likelihood curve for $\sigma^{2}$ is not symmetric. While a horizontal line drawn at some higher value (which represents the likelihood of an alternative hypothesis) yields a fairly symmetric confidence interval for $\mu$, the assymetry of the likelihood surface yields a highly assymetric confidence interval for $\sigma^{2}$. Confidence intervals do not have to be symmetric! **However**, immediately in the vicinity of the minimum, the likelihood surface **is** approximately quadratic and symmetric. We will use this fact in a second.
 
 In this case, the bivariate likelihood surface shows no correlation between $\mu$ and $\sigma^{2}$, but this is not always the case. Sometimes you get strong correlations among parameter estimates and get diagonal "ridges" in parameter space. In this case, it is important to distinguish between the likelihood profile and likellihood slices. (see Bolker!) The likelihood surface need not even have a single maximum; there could be several peaks which makes it difficult to define the MLE or its confidence intervals. If there are strong tradeoffs between parameter values, it is often better to discuss the MLEs in terms of a confidence region, which is the envelop of parameter space that you are [insert confidence limit here] percent certain contains the true combination of population parameter values.
 
@@ -204,14 +204,14 @@ opt1
 
 ```
 ## $par
-## [1] 0.9713975 1.9470726
+## [1] 1.020148 2.019655
 ## 
 ## $value
-## [1] 2085.32
+## [1] 2121.984
 ## 
 ## $counts
 ## function gradient 
-##       53       NA 
+##       57       NA 
 ## 
 ## $convergence
 ## [1] 0
@@ -230,8 +230,8 @@ fitdistr(x,"normal")
 
 ```
 ##       mean          sd    
-##   0.97174215   1.94717775 
-##  (0.06157517) (0.04354022)
+##   1.01980290   2.01989466 
+##  (0.06387468) (0.04516622)
 ```
 
 Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE. You will learn how to put CI on estimators in Problem Set #4.

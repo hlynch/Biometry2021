@@ -405,32 +405,32 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]        [,2]       [,3]        [,4]         [,5]       [,6]
-##  [1,]   NA 0.004037271 0.05364278 0.004178771 0.0002485922 0.04415976
-##  [2,]   NA          NA 0.16137766 0.848029326 0.4122126645 0.42653670
-##  [3,]   NA          NA         NA 0.195192326 0.0164320661 0.65992010
-##  [4,]   NA          NA         NA          NA 0.2728652672 0.50853988
-##  [5,]   NA          NA         NA          NA           NA 0.11889685
-##  [6,]   NA          NA         NA          NA           NA         NA
-##  [7,]   NA          NA         NA          NA           NA         NA
-##  [8,]   NA          NA         NA          NA           NA         NA
-##  [9,]   NA          NA         NA          NA           NA         NA
-## [10,]   NA          NA         NA          NA           NA         NA
-##             [,7]        [,8]       [,9]       [,10]
-##  [1,] 0.01562405 0.006894504 0.14196253 0.370499195
-##  [2,] 0.57947420 0.987360631 0.11457168 0.044615865
-##  [3,] 0.41792633 0.199564672 0.72596984 0.361438138
-##  [4,] 0.69146230 0.872013266 0.13755716 0.052484118
-##  [5,] 0.16101166 0.442484122 0.01565793 0.005628277
-##  [6,] 0.77618961 0.460395395 0.48241081 0.241833781
-##  [7,]         NA 0.614568626 0.29329927 0.127626285
-##  [8,]         NA          NA 0.14133161 0.058686179
-##  [9,]         NA          NA         NA 0.591337180
-## [10,]         NA          NA         NA          NA</code></pre>
+<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
+##  [1,]   NA 0.6501173 0.6002491 0.6691969 0.4171101 0.2459308 0.2548858
+##  [2,]   NA        NA 0.8539253 0.9872995 0.5992612 0.3547388 0.3699176
+##  [3,]   NA        NA        NA 0.8746250 0.7707205 0.6090906 0.6187019
+##  [4,]   NA        NA        NA        NA 0.6337919 0.4256325 0.4381249
+##  [5,]   NA        NA        NA        NA        NA 0.8753383 0.8830388
+##  [6,]   NA        NA        NA        NA        NA        NA 0.9913375
+##  [7,]   NA        NA        NA        NA        NA        NA        NA
+##  [8,]   NA        NA        NA        NA        NA        NA        NA
+##  [9,]   NA        NA        NA        NA        NA        NA        NA
+## [10,]   NA        NA        NA        NA        NA        NA        NA
+##            [,8]      [,9]     [,10]
+##  [1,] 0.3229782 0.4325961 0.6325216
+##  [2,] 0.4774209 0.6270867 0.9376969
+##  [3,] 0.6985192 0.8049509 0.9125381
+##  [4,] 0.5320892 0.6630096 0.9556227
+##  [5,] 0.9550294 0.9578522 0.6669880
+##  [6,] 0.9072008 0.8196713 0.4599838
+##  [7,] 0.9163241 0.8282652 0.4725767
+##  [8,]        NA 0.9055695 0.5679181
+##  [9,]        NA        NA 0.6982630
+## [10,]        NA        NA        NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
-<pre><code>## [1] 10</code></pre>
+<pre><code>## [1] 0</code></pre>
 <p>We could correct this using the Bonferonni method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">45</span>
 new.threshold.B&lt;-<span class="fl">0.05</span>/k
@@ -438,7 +438,7 @@ new.threshold.B</code></pre></div>
 <pre><code>## [1] 0.001111111</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.B&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.B,<span class="dt">na.rm=</span>T)
 false.positives.B</code></pre></div>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 0</code></pre>
 <p>We could correct this using the Dunn-Sidak method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">45</span>
 new.threshold.DS&lt;-<span class="dv">1</span>-((<span class="dv">1</span><span class="fl">-0.05</span>)^(<span class="dv">1</span>/k))
@@ -446,7 +446,7 @@ new.threshold.DS</code></pre></div>
 <pre><code>## [1] 0.001139202</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.DS&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.DS,<span class="dt">na.rm=</span>T)
 false.positives.DS</code></pre></div>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 0</code></pre>
 <p>We could correct this using the randomization method. This requires simulating data under the null hypothesis to generate a null distribution of p-values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p.values.all&lt;-<span class="kw">c</span>()
 min.p.values.all&lt;-<span class="kw">c</span>()
@@ -470,11 +470,11 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
   }
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
-<pre><code>##         5% 
-## 0.00155177</code></pre>
+<pre><code>##          5% 
+## 0.001618216</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 0</code></pre>
 <p>If you were to do this experiment (all of the code in the preceding clock) 100 times, you should get at least 1 false positive 5 times, since we have set the threshold such that we have a 5% chance that the smallest p-value in that set of 45 comparisons will be smaller than the threshold we set.</p>
 
 </div>
