@@ -182,14 +182,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>8</b> Week 4 Lab</a></li>
 <li class="chapter" data-level="9" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lecture</a><ul>
-<li class="chapter" data-level="9.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-single-sample-t-test"><i class="fa fa-check"></i><b>9.1</b> The single sample t test</a></li>
-<li class="chapter" data-level="9.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> The unpaired two sample t test</a></li>
-<li class="chapter" data-level="9.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-paired-two-sample-t-test"><i class="fa fa-check"></i><b>9.3</b> The paired two sample t test</a></li>
-<li class="chapter" data-level="9.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-f-test"><i class="fa fa-check"></i><b>9.4</b> The F test</a></li>
-<li class="chapter" data-level="9.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>9.5</b> Comparing two proportions</a></li>
-<li class="chapter" data-level="9.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>9.6</b> Comparing two distributions</a></li>
-<li class="chapter" data-level="9.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#a-bit-more-detail-on-the-binomial"><i class="fa fa-check"></i><b>9.7</b> A bit more detail on the Binomial</a></li>
-<li class="chapter" data-level="9.8" data-path="week-5-lecture.html"><a href="week-5-lecture.html#side-note-about-the-wald-test"><i class="fa fa-check"></i><b>9.8</b> Side-note about the Wald test</a></li>
+<li class="chapter" data-level="9.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#statistical-power"><i class="fa fa-check"></i><b>9.1</b> Statistical power</a></li>
+<li class="chapter" data-level="9.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-single-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> The single sample t test</a></li>
+<li class="chapter" data-level="9.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>9.3</b> The unpaired two sample t test</a></li>
+<li class="chapter" data-level="9.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-paired-two-sample-t-test"><i class="fa fa-check"></i><b>9.4</b> The paired two sample t test</a></li>
+<li class="chapter" data-level="9.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-f-test"><i class="fa fa-check"></i><b>9.5</b> The F test</a></li>
+<li class="chapter" data-level="9.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>9.6</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="9.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>9.7</b> Comparing two distributions</a></li>
+<li class="chapter" data-level="9.8" data-path="week-5-lecture.html"><a href="week-5-lecture.html#a-bit-more-detail-on-the-binomial"><i class="fa fa-check"></i><b>9.8</b> A bit more detail on the Binomial</a></li>
+<li class="chapter" data-level="9.9" data-path="week-5-lecture.html"><a href="week-5-lecture.html#side-note-about-the-wald-test"><i class="fa fa-check"></i><b>9.9</b> Side-note about the Wald test</a></li>
+<li class="chapter" data-level="9.10" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-goodness-of-fit-test"><i class="fa fa-check"></i><b>9.10</b> Chi-squared goodness-of-fit test</a></li>
+<li class="chapter" data-level="9.11" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-test-of-independence"><i class="fa fa-check"></i><b>9.11</b> Chi-squared test of independence</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>10</b> Week 5 Lab</a><ul>
 <li class="chapter" data-level="10.1" data-path="week-5-lab.html"><a href="week-5-lab.html#f-test"><i class="fa fa-check"></i><b>10.1</b> F-test</a></li>
@@ -405,32 +408,32 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
-##  [1,]   NA 0.6501173 0.6002491 0.6691969 0.4171101 0.2459308 0.2548858
-##  [2,]   NA        NA 0.8539253 0.9872995 0.5992612 0.3547388 0.3699176
-##  [3,]   NA        NA        NA 0.8746250 0.7707205 0.6090906 0.6187019
-##  [4,]   NA        NA        NA        NA 0.6337919 0.4256325 0.4381249
-##  [5,]   NA        NA        NA        NA        NA 0.8753383 0.8830388
-##  [6,]   NA        NA        NA        NA        NA        NA 0.9913375
-##  [7,]   NA        NA        NA        NA        NA        NA        NA
-##  [8,]   NA        NA        NA        NA        NA        NA        NA
-##  [9,]   NA        NA        NA        NA        NA        NA        NA
-## [10,]   NA        NA        NA        NA        NA        NA        NA
-##            [,8]      [,9]     [,10]
-##  [1,] 0.3229782 0.4325961 0.6325216
-##  [2,] 0.4774209 0.6270867 0.9376969
-##  [3,] 0.6985192 0.8049509 0.9125381
-##  [4,] 0.5320892 0.6630096 0.9556227
-##  [5,] 0.9550294 0.9578522 0.6669880
-##  [6,] 0.9072008 0.8196713 0.4599838
-##  [7,] 0.9163241 0.8282652 0.4725767
-##  [8,]        NA 0.9055695 0.5679181
-##  [9,]        NA        NA 0.6982630
-## [10,]        NA        NA        NA</code></pre>
+<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]       [,6]       [,7]
+##  [1,]   NA 0.2298995 0.2858893 0.2124564 0.2828324 0.04885913 0.55854000
+##  [2,]   NA        NA 0.7525434 0.9881544 0.9613593 0.60438727 0.34709633
+##  [3,]   NA        NA        NA 0.7517666 0.7501809 0.31474742 0.44624492
+##  [4,]   NA        NA        NA        NA 0.9499370 0.57087351 0.32077318
+##  [5,]   NA        NA        NA        NA        NA 0.70426570 0.41398673
+##  [6,]   NA        NA        NA        NA        NA         NA 0.05008738
+##  [7,]   NA        NA        NA        NA        NA         NA         NA
+##  [8,]   NA        NA        NA        NA        NA         NA         NA
+##  [9,]   NA        NA        NA        NA        NA         NA         NA
+## [10,]   NA        NA        NA        NA        NA         NA         NA
+##             [,8]      [,9]      [,10]
+##  [1,] 0.60222145 0.3730972 0.11392759
+##  [2,] 0.09889786 0.7275846 0.88607658
+##  [3,] 0.10639723 0.9446541 0.57763690
+##  [4,] 0.08484414 0.7269590 0.86559272
+##  [5,] 0.14702535 0.7259625 0.94723227
+##  [6,] 0.01238666 0.3420798 0.64173422
+##  [7,] 0.20840332 0.5774271 0.14869129
+##  [8,]         NA 0.1691917 0.03360092
+##  [9,]         NA        NA 0.57643595
+## [10,]         NA        NA         NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
-<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 3</code></pre>
 <p>We could correct this using the Bonferonni method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">45</span>
 new.threshold.B&lt;-<span class="fl">0.05</span>/k
@@ -471,7 +474,7 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
 <pre><code>##          5% 
-## 0.001618216</code></pre>
+## 0.001447136</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
 <pre><code>## [1] 0</code></pre>

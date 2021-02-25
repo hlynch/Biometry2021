@@ -182,14 +182,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>8</b> Week 4 Lab</a></li>
 <li class="chapter" data-level="9" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lecture</a><ul>
-<li class="chapter" data-level="9.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-single-sample-t-test"><i class="fa fa-check"></i><b>9.1</b> The single sample t test</a></li>
-<li class="chapter" data-level="9.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> The unpaired two sample t test</a></li>
-<li class="chapter" data-level="9.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-paired-two-sample-t-test"><i class="fa fa-check"></i><b>9.3</b> The paired two sample t test</a></li>
-<li class="chapter" data-level="9.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-f-test"><i class="fa fa-check"></i><b>9.4</b> The F test</a></li>
-<li class="chapter" data-level="9.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>9.5</b> Comparing two proportions</a></li>
-<li class="chapter" data-level="9.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>9.6</b> Comparing two distributions</a></li>
-<li class="chapter" data-level="9.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#a-bit-more-detail-on-the-binomial"><i class="fa fa-check"></i><b>9.7</b> A bit more detail on the Binomial</a></li>
-<li class="chapter" data-level="9.8" data-path="week-5-lecture.html"><a href="week-5-lecture.html#side-note-about-the-wald-test"><i class="fa fa-check"></i><b>9.8</b> Side-note about the Wald test</a></li>
+<li class="chapter" data-level="9.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#statistical-power"><i class="fa fa-check"></i><b>9.1</b> Statistical power</a></li>
+<li class="chapter" data-level="9.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-single-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> The single sample t test</a></li>
+<li class="chapter" data-level="9.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>9.3</b> The unpaired two sample t test</a></li>
+<li class="chapter" data-level="9.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-paired-two-sample-t-test"><i class="fa fa-check"></i><b>9.4</b> The paired two sample t test</a></li>
+<li class="chapter" data-level="9.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-f-test"><i class="fa fa-check"></i><b>9.5</b> The F test</a></li>
+<li class="chapter" data-level="9.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>9.6</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="9.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>9.7</b> Comparing two distributions</a></li>
+<li class="chapter" data-level="9.8" data-path="week-5-lecture.html"><a href="week-5-lecture.html#a-bit-more-detail-on-the-binomial"><i class="fa fa-check"></i><b>9.8</b> A bit more detail on the Binomial</a></li>
+<li class="chapter" data-level="9.9" data-path="week-5-lecture.html"><a href="week-5-lecture.html#side-note-about-the-wald-test"><i class="fa fa-check"></i><b>9.9</b> Side-note about the Wald test</a></li>
+<li class="chapter" data-level="9.10" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-goodness-of-fit-test"><i class="fa fa-check"></i><b>9.10</b> Chi-squared goodness-of-fit test</a></li>
+<li class="chapter" data-level="9.11" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-test-of-independence"><i class="fa fa-check"></i><b>9.11</b> Chi-squared test of independence</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>10</b> Week 5 Lab</a><ul>
 <li class="chapter" data-level="10.1" data-path="week-5-lab.html"><a href="week-5-lab.html#f-test"><i class="fa fa-check"></i><b>10.1</b> F-test</a></li>
@@ -388,7 +391,42 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="week-5-lecture" class="section level1">
 <h1><span class="header-section-number">9</span> Week 5 Lecture</h1>
-<p>A bit of review: What have we done so far this semester?</p>
+<div id="statistical-power" class="section level2">
+<h2><span class="header-section-number">9.1</span> Statistical power</h2>
+<p>In any hypothesis test, there are 4 possible outcomes.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="Power.png" alt="Type I and Type II errors" width="100%" />
+<p class="caption">
+Figure 0.1: Type I and Type II errors
+</p>
+</div>
+<p>B and C are the <strong>correct answer</strong>. If <span class="math inline">\(H_{0}\)</span> is false, we want to reject the null hypothesis.</p>
+<p>A = Probability of rejecting <span class="math inline">\(H_{0}\)</span> when <span class="math inline">\(H_{0}\)</span> is true = Type I error = This is your <span class="math inline">\(\alpha\)</span>!</p>
+<p>D = Probability of not rejecting <span class="math inline">\(H_{0}\)</span> when <span class="math inline">\(H_{0}\)</span> is false = Type II error</p>
+<p>The power of a statistical test is defined as</p>
+<p><span class="math display">\[
+\mbox{Power} = \frac{C}{C+D}
+\]</span> In words, <strong>power is the probability of correctly rejecting the null hypothesis</strong>.</p>
+<p>Power calculations boil down to this unavoidable fact: When variance is high, you need larger samples. When the differences are small, you need larger samples. There is a tradeoff between Type I and Type II errors. As a general rule of thumb, people aim for Type I errors of 0.05 and Power = 0.80. Question for the class: Why do we worry more about Type I errors than Type II errors? When would a Type II error be really serious? (For example, failing to detect a disease agent...)</p>
+<p>Power calculations only make sense before an experiment, not after. If you found a sig. effect, then clearly you had enough power, and if no sig. effect, clearly not enough power. Only useful for finding a basic idea of sample size.</p>
+<p>In order to plan a study, you need to know how many samples you need to detect as significant difference of a certain magnitude. For a single sample comparison (against a fixed value)</p>
+<p><span class="math display">\[
+n = \left(\frac{\sigma(z_{1-\alpha}+z_{1-\beta})}{\delta}\right)^{2}
+\]</span></p>
+<p>You will be asked to derive this in the problem set but for now its enough to note that in the very common case that <span class="math inline">\(\alpha\)</span>=0.05 and power=1-<span class="math inline">\(\beta\)</span>=0.80, this can be approximated by</p>
+<p><span class="math display">\[
+n = \frac{8\sigma^{2}}{\delta^{2}}
+\]</span> Note that some authors use the symbol <span class="math inline">\(\sigma^{2}\)</span> under the assumption that this is known (or assumed) prior to calculation, whereas others substitute <span class="math inline">\(s^{2}\)</span> for <span class="math inline">\(\sigma^{2}\)</span> in recognition that this is calculated from the data, although they leave the formula unchanged. As long as you understand what is meant by the symbol, than it is not important which you use here.</p>
+<p><em>Example</em>: If you want to be able to detect a change of 2.0 in a population with variance <span class="math inline">\(\sigma^{2}\)</span>=10.0, then we would need 8x10/<span class="math inline">\(2^{2}\)</span> = 20 replicates.</p>
+<p>For a two sample comparison, the sample size (for each group!) required is simply twice</p>
+<p><span class="math display">\[
+n = 2\left(\frac{\sigma(z_{1-\alpha}+z_{1-\beta})}{\delta}\right)^{2}
+\]</span> or</p>
+<p><span class="math display">\[
+n = \frac{16\sigma^{2}}{\delta^{2}}
+\]</span> This is a formula you will be deriving in the problem set.</p>
+<p>I won’t say a lot more about power calculations because I think that these calculations typify the old way of thinking because they depend so heavily on the arbitrary cut-off of “significance” that is so problematic in null hypothesis testing. Such power calculations can give you some general rules of thumb for whether an experiment is well designed, but even then it required some major assumptions about the size of the unknown variance that I’m not sure how helpful they are.</p>
+<p><strong>A bit of review: What have we done so far this semester?</strong></p>
 <ol style="list-style-type: decimal">
 <li>We learned a bit about probability theory (joint probability, union and intersection, etc.).</li>
 <li>We learned about hypothesis testing and parameter estimation, using two randomization-based procedures that gave us the main idea behind these two key concepts</li>
@@ -426,8 +464,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Test of two distributions</li>
 </ol>
 <p>The t-test is used to make inference on the means of normally distributed variables. There are three varieties of the t-test – one to test whether the mean of some normally distributed variable is equal to some hypothesized value, one to test whether the means of two unpaired samples are equal, and one to test whether the means of two paired samples are equal.</p>
+</div>
 <div id="the-single-sample-t-test" class="section level2">
-<h2><span class="header-section-number">9.1</span> The single sample t test</h2>
+<h2><span class="header-section-number">9.2</span> The single sample t test</h2>
 <p>(The t-test is often called the Student's t-test, as it is named after the pseudonym under which the original paper was submitted. However, I will refer to it as just the t-test for simplicity.)</p>
 <p>The single sample t-test is used when you want to compare the mean of a distribution to a prescribed value. <span class="math inline">\(H_{0}: \mu = c\)</span></p>
 <p>Let’s say we have normally distributed data:</p>
@@ -465,7 +504,7 @@ P(T \leq (-|T^{*}|) \mbox{ OR } T \geq (|T^{*}|)|H_{0}) = p-value
 <p>Note that the t-test assumes that the data are Normally distributed, but it turns out that the t-test is fairly robust to violations of this assumption. In fact, the Central Limit Theorem says that (with a few minor requirements) the means of data have as their limit (for large sample sizes) the Normal distribution, so the t-test is often valid even if the original data is not Normally distributed.</p>
 </div>
 <div id="the-unpaired-two-sample-t-test" class="section level2">
-<h2><span class="header-section-number">9.2</span> The unpaired two sample t test</h2>
+<h2><span class="header-section-number">9.3</span> The unpaired two sample t test</h2>
 <p>The unpaired two-sample t test is used when you have data from two groups and you want to test whether these groups have the same mean value (i.e. <span class="math inline">\(H_{0}: \mu_{A} = \mu_{B}\)</span>. As before, we will assume that the data are at least approximately Normally distributed.</p>
 <p><span class="math display">\[
 X_{A} \sim N(\mu_{A},\sigma_{A}^{2})
@@ -511,7 +550,7 @@ s^{2}_{pooled} = \frac{1}{n_{A}+n_{B}-2}(SS_{A}+SS_{B})
 <p>Why bother assuming the variances are equal? By combining the data in the estimate of their pooled variance, we get a better estimate of <span class="math inline">\(s_{pooled}^{2}\)</span> than either <span class="math inline">\(s_{A}^{2}\)</span> or <span class="math inline">\(s_{B}^{2}\)</span>.</p>
 </div>
 <div id="the-paired-two-sample-t-test" class="section level2">
-<h2><span class="header-section-number">9.3</span> The paired two sample t test</h2>
+<h2><span class="header-section-number">9.4</span> The paired two sample t test</h2>
 <p>Paired data occurs when each datapoint in set A corresponds to a datapoint in set B. Examples might be the strength of the left vs. right leg in a sample of individuals, or the blood sugar of husbands vs. wifes in a sample of married couples. In these cases, the question at hand is whether the difference between the two datasets is equal to some value or not. In other words, the null hypothesis is <span class="math inline">\(H_{0}: X_{A}-X_{B} = c\)</span>. The test statistic is the same as with the unpaired test</p>
 <p><span class="math display">\[
 T = \frac{\bar{X_{A}}-\bar{X_{B}}}{SE_{diff}}
@@ -539,7 +578,7 @@ Y = X_{A}-X_{B}
 <p>The t-test does assume that the data are Normally distributed and, depending on the form we choose to use, we may be assuming that the variances are the same. Given a real dataset, you wouldn't know for sure whether the variance are the same, and so you would need to first test whether the variances are the same (or, rather, whether you can reject the null hypothesis that they are the same). How do we test whether two datasests come from populations with the same variance - the F-test! (That's coming now...)</p>
 </div>
 <div id="the-f-test" class="section level2">
-<h2><span class="header-section-number">9.4</span> The F test</h2>
+<h2><span class="header-section-number">9.5</span> The F test</h2>
 <p>(This is often referred to as Fisher's F test, but I will just stick with F test.)</p>
 <p>Its fairly obvious why someone would want to compare two means, but less obvious why you would want to compare two variances. As mentioned just a second ago, one of the biggest uses of the F-test is to determine whether two samples violate the equal-variances assumption underlying the t-test. Another major use is when comparing two nested models to determine which model fits a dataset better. (We will see this again when we cover ANOVA.)</p>
 <p>The null hypothesis for the F test is <span class="math inline">\(H_{0}: \sigma^{2}_{A} = \sigma^{2}_{B}\)</span>. Here I assume the dataset with the larger sample variance is sample A, so the implied alternative is <span class="math inline">\(H_{A}: \sigma^{2}_{A} &gt; \sigma^{2}_{B}\)</span>. In this case, I am testing whether we can reject the null hypothesis that the two parametric variances are actually the same (even if the sample variance of A is larger) [this is the one-tailed test, we will discuss the two-tailed test at the end].</p>
@@ -564,7 +603,7 @@ Y = X_{A}-X_{B}
 <p>The R function for testing whether the variances of two samples are different is ''var.test''. We will be using this function in lab this week.</p>
 </div>
 <div id="comparing-two-proportions" class="section level2">
-<h2><span class="header-section-number">9.5</span> Comparing two proportions</h2>
+<h2><span class="header-section-number">9.6</span> Comparing two proportions</h2>
 <p>There are a number of different ways to do the proportion test, but I will only expect you to know one. I will call the true underlying proportion <span class="math inline">\(\theta\)</span>. In this case, <span class="math inline">\(H_{0}: \theta = \theta_{0}\)</span>, and for the two-tailed test, <span class="math inline">\(H_{A}:\theta \neq \theta_{0}\)</span>.</p>
 <p>The approach we will go over is called the Wald test (see also Handout), and it uses the large sample normal approximation to the Binomial distribution.</p>
 <p>Recall that</p>
@@ -598,7 +637,7 @@ P\left(\hat{p}-z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \leq \theta \le
 <p>There are MANY methods statisticians have devised to obtain true 1-<span class="math inline">\(\alpha\)</span> CIs that do not go outside of (0,1) and which work for all <span class="math inline">\(\theta\)</span>. I have posted a paper under “Interesting statistics papers” that address 7 methods, including the Wald approximation, but I will only expect you to know the Wald approximation.</p>
 </div>
 <div id="comparing-two-distributions" class="section level2">
-<h2><span class="header-section-number">9.6</span> Comparing two distributions</h2>
+<h2><span class="header-section-number">9.7</span> Comparing two distributions</h2>
 <p>There are many ways that we might compare two distributions. Many of these methods focus on the difference between the empirical cumulative density functions (i.e. <span class="math inline">\(P(X \leq X^{*})\)</span>), and they differ in the loss function (that is, the function used to weight differences of different magnitudes) used when comparing the CDFs.</p>
 <p>Here I introduce the Kolmogorov-Smirnov test (or the K-S test), which is one of the most common. The K-S test can be used to compare two empirical distributions OR an empirical distribution against a parametric distribution. The K-S statistic D is the <em>maximum</em> difference between the two CDFs or, more formally,</p>
 <p><span class="math display">\[
@@ -608,7 +647,7 @@ D=sup_{x} |CDF_{1}(x)-CDF_{2}(x)|
 <p>The expected distribution of D under the null hypothesis is complicated and not one you need to know. We will go over R’s functions to do these tests on Thursday.</p>
 </div>
 <div id="a-bit-more-detail-on-the-binomial" class="section level2">
-<h2><span class="header-section-number">9.7</span> A bit more detail on the Binomial</h2>
+<h2><span class="header-section-number">9.8</span> A bit more detail on the Binomial</h2>
 <p>Above I skipped over some details about deriving the Binomial from the Bernoulli. Here I fill in those details.</p>
 <p>Let's assume X follows a Bernoulli distribution:</p>
 <p><span class="math display">\[
@@ -628,7 +667,7 @@ n\hat{p} \rightarrow N(mean=n\theta,var=n\theta(1-\theta))
 \]</span> in the limit that <span class="math inline">\(n \rightarrow \infty\)</span>.</p>
 </div>
 <div id="side-note-about-the-wald-test" class="section level2">
-<h2><span class="header-section-number">9.8</span> Side-note about the Wald test</h2>
+<h2><span class="header-section-number">9.9</span> Side-note about the Wald test</h2>
 <p>We introduced the Wald test in the context of the binomial test, but the Wald test is a much more general test about the statistical significance of a maximum likelihood estimate. We often use the Wald test even when we haven’t proven that the estimate in question is actually the MLE. In the case of the proportion test, the MLE for the binomial parameter p is just <span class="math inline">\(\hat{p}\)</span> (=# heads)⁄n.</p>
 <p>The Wald test states that if you have a parameter estimate <span class="math inline">\(\hat{\theta}\)</span> and you want to test it against the null hypothesis value <span class="math inline">\(\theta_{0}\)</span>, you can use the following (approximate) relationship</p>
 <p><span class="math display">\[
@@ -639,6 +678,49 @@ n\hat{p} \rightarrow N(mean=n\theta,var=n\theta(1-\theta))
 \frac{(\hat{\theta}-\theta_{0})^{2}}{var(\hat{\theta})} \sim \chi^{2}_{1}
 \]</span></p>
 <p>The standard error of a maximum likelihood estimate <span class="math inline">\(se(\hat{\theta})\)</span> is usually approximated using the inverse of the second derivative of the log-likelihood (if you are interested, this is called the Fisher Information matrix). This makes intuitive sense because if the negative log-likelihood surface is steep around the minimum (and the second derivative large), the uncertainty about the MLE is small (narrow CI). I won’t get into detail about this, because often you have some knowledge of the parameter’s variance and can use the Wald test with little fuss or calculation.</p>
+</div>
+<div id="chi-squared-goodness-of-fit-test" class="section level2">
+<h2><span class="header-section-number">9.10</span> Chi-squared goodness-of-fit test</h2>
+<p><span class="math inline">\(H_{0}\)</span> is a table (need not be 2$$2) of predicted probabilities such as</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="Chisq1.png" alt="2 x 2 contingency table" width="50%" />
+<p class="caption">
+Figure 1.1: 2 x 2 contingency table
+</p>
+</div>
+<p>and you want to test whether the data are consistent with the null hypothesis of known probabilities.</p>
+<p>The chi-squared test statistic is</p>
+<p><span class="math display">\[
+X^{2} = \sum_{\mbox{cell} i}\frac{O_{i}-E_{i}}{E_{i}}
+\]</span> <span class="math display">\[
+X^{2}|H_{0} \sim \chi^{2}_{(r \times c) -1}
+\]</span></p>
+<p>We have lost a single degree of freedom because the total sample size of the observed data constrains the value of one of the cells given the other three. When we have a single proportion (e.g., percentage of men vs. women in class) we can use this as an alternative to the binomial test we discussed in class. (When the expected frequencies are small, the binomial test is preferred over the chi-squared goodness of fit test.)</p>
+<p>If all you are given are marginal probabilities, you have to assume independence to get the probabilities for individual cells, which many of you did on the problem set.</p>
+</div>
+<div id="chi-squared-test-of-independence" class="section level2">
+<h2><span class="header-section-number">9.11</span> Chi-squared test of independence</h2>
+<p><span class="math inline">\(H_{0}\)</span> is a table (need not be 2$$2) of marginal probabilities</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="Chisq2.png" alt="2 x 2 contingency table with marginal probabilities only" width="50%" />
+<p class="caption">
+Figure 1.2: 2 x 2 contingency table with marginal probabilities only
+</p>
+</div>
+<p><strong>or</strong> a table of observed data from which marginal probabilities can be calculated</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<img src="Chisq3.png" alt="2 x 2 contingency table" width="50%" />
+<p class="caption">
+Figure 1.3: 2 x 2 contingency table
+</p>
+</div>
+<p>The chi-squared test statistic is</p>
+<p><span class="math display">\[
+X^{2} = \sum_{\mbox{cell} i}\frac{O_{i}-E_{i}}{E_{i}}
+\]</span></p>
+<p><span class="math display">\[
+X^{2}|H_{0} \sim \chi^{2}_{(r-1) \times (c-1)}
+\]</span>We have one degree of freedom from each row and column because the total sample size in each row and column is fixed by the marginal totals. This test is used to test whether the characters are independent.</p>
 
 </div>
 </div>

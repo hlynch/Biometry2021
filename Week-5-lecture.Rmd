@@ -1,7 +1,60 @@
 Week 5 Lecture
 ========================================================
-  
-A bit of review: What have we done so far this semester?
+##Statistical power
+In any hypothesis test, there are 4 possible outcomes.
+
+```{r echo=FALSE, fig.align='center', fig.cap='Type I and Type II errors', out.width='100%'}
+knitr::include_graphics('Power.png')
+```
+
+B and C are the **correct answer**. If $H_{0}$ is false, we want to reject the null hypothesis.
+
+A = Probability of rejecting $H_{0}$ when $H_{0}$ is true = Type I error = This is your $\alpha$!
+
+D = Probability of not rejecting $H_{0}$ when $H_{0}$ is false = Type II error
+
+The power of a statistical test is defined as
+
+$$
+\mbox{Power} = \frac{C}{C+D}
+$$
+In words, **power is the probability of correctly rejecting the null hypothesis**.
+
+Power calculations boil down to this unavoidable fact: When variance is high, you need larger samples. When the differences are small, you need larger samples. There is a tradeoff between Type I and Type II errors. As a general rule of thumb, people aim for Type I errors of 0.05 and Power = 0.80.
+Question for the class: Why do we worry more about Type I errors than Type II errors? When would a Type II error be really serious? (For example, failing to detect a disease agent...)
+
+Power calculations only make sense before an experiment, not after. If you found a sig. effect, then clearly you had enough power, and if no sig. effect, clearly not enough power. Only useful for finding a basic idea of sample size.
+
+In order to plan a study, you need to know how many samples you need to detect as significant difference of a certain magnitude. For a single sample comparison (against a fixed value)
+
+$$
+n = \left(\frac{\sigma(z_{1-\alpha}+z_{1-\beta})}{\delta}\right)^{2}
+$$
+
+You will be asked to derive this in the problem set but for now its enough to note that in the very common case that $\alpha$=0.05 and power=1-$\beta$=0.80, this can be approximated by
+
+$$
+n = \frac{8\sigma^{2}}{\delta^{2}}
+$$
+Note that some authors use the symbol $\sigma^{2}$ under the assumption that this is known (or assumed) prior to calculation, whereas others substitute $s^{2}$ for $\sigma^{2}$ in recognition that this is calculated from the data, although they leave the formula unchanged. As long as you understand what is meant by the symbol, than it is not important which you use here.
+
+*Example*: If you want to be able to detect a change of 2.0 in a population with variance $\sigma^{2}$=10.0, then we would need 8x10/$2^{2}$ = 20 replicates.
+
+For a two sample comparison, the sample size (for each group!) required is simply twice
+
+$$
+n = 2\left(\frac{\sigma(z_{1-\alpha}+z_{1-\beta})}{\delta}\right)^{2}
+$$
+or
+
+$$
+n = \frac{16\sigma^{2}}{\delta^{2}}
+$$
+This is a formula you will be deriving in the problem set.
+
+I won’t say a lot more about power calculations because I think that these calculations typify the old way of thinking because they depend so heavily on the arbitrary cut-off of “significance” that is so problematic in null hypothesis testing. Such power calculations can give you some general rules of thumb for whether an experiment is well designed, but even then it required some major assumptions about the size of the unknown variance that I’m not sure how helpful they are.
+
+**A bit of review: What have we done so far this semester?**
 
 1.	We learned a bit about probability theory (joint probability, union and intersection, etc.).
 2.	We learned about hypothesis testing and parameter estimation, using two randomization-based procedures that gave us the main idea behind these two key concepts
@@ -390,3 +443,54 @@ $$
 $$
 
 The standard error of a maximum likelihood estimate $se(\hat{\theta})$ is usually approximated using the inverse of the second derivative of the log-likelihood (if you are interested, this is called the Fisher Information matrix). This makes intuitive sense because if the negative log-likelihood surface is steep around the minimum (and the second derivative large), the uncertainty about the MLE is small (narrow CI). I won’t get into detail about this, because often you have some knowledge of the parameter’s variance and can use the Wald test with little fuss or calculation.
+
+##Chi-squared goodness-of-fit test 
+$H_{0}$ is a table (need not be 2$\times$2) of predicted probabilities such as
+
+```{r echo=FALSE, fig.align='center', fig.cap='2 x 2 contingency table', out.width='50%'}
+knitr::include_graphics('Chisq1.png')
+```
+
+and you want to test whether the data are consistent with the null hypothesis of known probabilities.
+
+The chi-squared test statistic is
+
+$$
+X^{2} = \sum_{\mbox{cell} i}\frac{O_{i}-E_{i}}{E_{i}}
+$$
+$$
+X^{2}|H_{0} \sim \chi^{2}_{(r \times c) -1}
+$$
+
+
+We have lost a single degree of freedom because the total sample size of the observed data constrains the value of one of the cells given the other three. When we have a single proportion (e.g., percentage of men vs. women in class) we can use this as an alternative to the binomial test we discussed in class. (When the expected frequencies are small, the binomial test is preferred over the chi-squared goodness of fit test.)
+
+If all you are given are marginal probabilities, you have to assume independence to get the probabilities for individual cells, which many of you did on the problem set.
+
+##Chi-squared test of independence
+
+$H_{0}$ is a table (need not be 2$\times$2) of marginal probabilities 
+
+```{r echo=FALSE, fig.align='center', fig.cap='2 x 2 contingency table with marginal probabilities only', out.width='50%'}
+knitr::include_graphics('Chisq2.png')
+```
+
+**or** a table of observed data from which marginal probabilities can be calculated
+
+
+```{r echo=FALSE, fig.align='center', fig.cap='2 x 2 contingency table', out.width='50%'}
+knitr::include_graphics('Chisq3.png')
+```
+
+The chi-squared test statistic is
+
+$$
+X^{2} = \sum_{\mbox{cell} i}\frac{O_{i}-E_{i}}{E_{i}}
+$$
+
+
+$$
+X^{2}|H_{0} \sim \chi^{2}_{(r-1) \times (c-1)}
+$$We have one degree of freedom from each row and column because the total sample size in each row and column is fixed by the marginal totals. 
+This test is used to test whether the characters are independent.
+

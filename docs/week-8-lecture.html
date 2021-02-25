@@ -182,14 +182,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>8</b> Week 4 Lab</a></li>
 <li class="chapter" data-level="9" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lecture</a><ul>
-<li class="chapter" data-level="9.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-single-sample-t-test"><i class="fa fa-check"></i><b>9.1</b> The single sample t test</a></li>
-<li class="chapter" data-level="9.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> The unpaired two sample t test</a></li>
-<li class="chapter" data-level="9.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-paired-two-sample-t-test"><i class="fa fa-check"></i><b>9.3</b> The paired two sample t test</a></li>
-<li class="chapter" data-level="9.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-f-test"><i class="fa fa-check"></i><b>9.4</b> The F test</a></li>
-<li class="chapter" data-level="9.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>9.5</b> Comparing two proportions</a></li>
-<li class="chapter" data-level="9.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>9.6</b> Comparing two distributions</a></li>
-<li class="chapter" data-level="9.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#a-bit-more-detail-on-the-binomial"><i class="fa fa-check"></i><b>9.7</b> A bit more detail on the Binomial</a></li>
-<li class="chapter" data-level="9.8" data-path="week-5-lecture.html"><a href="week-5-lecture.html#side-note-about-the-wald-test"><i class="fa fa-check"></i><b>9.8</b> Side-note about the Wald test</a></li>
+<li class="chapter" data-level="9.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#statistical-power"><i class="fa fa-check"></i><b>9.1</b> Statistical power</a></li>
+<li class="chapter" data-level="9.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-single-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> The single sample t test</a></li>
+<li class="chapter" data-level="9.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>9.3</b> The unpaired two sample t test</a></li>
+<li class="chapter" data-level="9.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-paired-two-sample-t-test"><i class="fa fa-check"></i><b>9.4</b> The paired two sample t test</a></li>
+<li class="chapter" data-level="9.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-f-test"><i class="fa fa-check"></i><b>9.5</b> The F test</a></li>
+<li class="chapter" data-level="9.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>9.6</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="9.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>9.7</b> Comparing two distributions</a></li>
+<li class="chapter" data-level="9.8" data-path="week-5-lecture.html"><a href="week-5-lecture.html#a-bit-more-detail-on-the-binomial"><i class="fa fa-check"></i><b>9.8</b> A bit more detail on the Binomial</a></li>
+<li class="chapter" data-level="9.9" data-path="week-5-lecture.html"><a href="week-5-lecture.html#side-note-about-the-wald-test"><i class="fa fa-check"></i><b>9.9</b> Side-note about the Wald test</a></li>
+<li class="chapter" data-level="9.10" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-goodness-of-fit-test"><i class="fa fa-check"></i><b>9.10</b> Chi-squared goodness-of-fit test</a></li>
+<li class="chapter" data-level="9.11" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-test-of-independence"><i class="fa fa-check"></i><b>9.11</b> Chi-squared test of independence</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>10</b> Week 5 Lab</a><ul>
 <li class="chapter" data-level="10.1" data-path="week-5-lab.html"><a href="week-5-lab.html#f-test"><i class="fa fa-check"></i><b>10.1</b> F-test</a></li>
@@ -585,17 +588,17 @@ Y_5 = \alpha_{2(5)} + \epsilon_5 \text{, where } \epsilon_5 \sim N(0, \sigma^2)
 <span class="kw">model.matrix</span>( ~<span class="st"> </span>-<span class="dv">1</span> +<span class="st"> </span>iris.sub$Species)</code></pre></div>
 <pre><code>##    iris.sub$Speciessetosa iris.sub$Speciesversicolor iris.sub$Speciesvirginica
 ## 1                       1                          0                         0
-## 2                       1                          0                         0
+## 2                       0                          1                         0
 ## 3                       0                          0                         1
-## 4                       0                          1                         0
-## 5                       0                          1                         0
-## 6                       1                          0                         0
+## 4                       1                          0                         0
+## 5                       1                          0                         0
+## 6                       0                          1                         0
 ## 7                       0                          1                         0
-## 8                       0                          1                         0
-## 9                       0                          1                         0
-## 10                      0                          1                         0
-## 11                      0                          1                         0
-## 12                      0                          0                         1
+## 8                       1                          0                         0
+## 9                       0                          0                         1
+## 10                      1                          0                         0
+## 11                      1                          0                         0
+## 12                      1                          0                         0
 ## attr(,&quot;assign&quot;)
 ## [1] 1 1 1
 ## attr(,&quot;contrasts&quot;)
@@ -605,9 +608,9 @@ Y_5 = \alpha_{2(5)} + \epsilon_5 \text{, where } \epsilon_5 \sim N(0, \sigma^2)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dummy &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">lm</span>(iris.sub$Sepal.Length ~<span class="st"> </span>-<span class="dv">1</span> +<span class="st"> </span>iris.sub$Species))
 dummy$coefficients</code></pre></div>
 <pre><code>##                            Estimate Std. Error  t value     Pr(&gt;|t|)
-## iris.sub$Speciessetosa     5.066667  0.2277875 22.24296 3.548993e-09
-## iris.sub$Speciesversicolor 6.171429  0.1491219 41.38513 1.399460e-11
-## iris.sub$Speciesvirginica  6.300000  0.2789815 22.58214 3.103836e-09</code></pre>
+## iris.sub$Speciessetosa     4.928571  0.1288504 38.25035 2.833065e-11
+## iris.sub$Speciesversicolor 5.466667  0.1968222 27.77465 4.936565e-10
+## iris.sub$Speciesvirginica  6.150000  0.2410570 25.51264 1.051168e-09</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris.fig &lt;-<span class="st"> </span><span class="kw">ggplot</span>(iris.sub, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> Sepal.Length)) +<span class="st"> </span><span class="kw">geom_point</span>() +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> iris.means, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> Sepal.Length, <span class="dt">col =</span> Species), <span class="dt">size =</span> <span class="dv">3</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Sepal length&quot;</span>) +<span class="st"> </span><span class="kw">theme_classic</span>() +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> font.size))
@@ -1011,17 +1014,17 @@ Y_i = \alpha_{\text{control}} + \alpha_{j(i)} + \epsilon_i \text{, where } \epsi
 <span class="kw">model.matrix</span>(~<span class="st"> </span>iris.sub$Species)</code></pre></div>
 <pre><code>##    (Intercept) iris.sub$Speciesversicolor iris.sub$Speciesvirginica
 ## 1            1                          0                         0
-## 2            1                          0                         0
+## 2            1                          1                         0
 ## 3            1                          0                         1
-## 4            1                          1                         0
-## 5            1                          1                         0
-## 6            1                          0                         0
+## 4            1                          0                         0
+## 5            1                          0                         0
+## 6            1                          1                         0
 ## 7            1                          1                         0
-## 8            1                          1                         0
-## 9            1                          1                         0
-## 10           1                          1                         0
-## 11           1                          1                         0
-## 12           1                          0                         1
+## 8            1                          0                         0
+## 9            1                          0                         1
+## 10           1                          0                         0
+## 11           1                          0                         0
+## 12           1                          0                         0
 ## attr(,&quot;assign&quot;)
 ## [1] 0 1 1
 ## attr(,&quot;contrasts&quot;)
@@ -1029,10 +1032,10 @@ Y_i = \alpha_{\text{control}} + \alpha_{j(i)} + \epsilon_i \text{, where } \epsi
 ## [1] &quot;contr.treatment&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">treatment &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">lm</span>(iris.sub$Sepal.Length ~<span class="st"> </span>iris.sub$Species))
 treatment$coefficients</code></pre></div>
-<pre><code>##                            Estimate Std. Error   t value     Pr(&gt;|t|)
-## (Intercept)                5.066667  0.2277875 22.242957 3.548993e-09
-## iris.sub$Speciesversicolor 1.104762  0.2722581  4.057774 2.851453e-03
-## iris.sub$Speciesvirginica  1.233333  0.3601636  3.424370 7.575387e-03</code></pre>
+<pre><code>##                             Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept)                4.9285714  0.1288504 38.250346 2.833065e-11
+## iris.sub$Speciesversicolor 0.5380952  0.2352475  2.287358 4.798159e-02
+## iris.sub$Speciesvirginica  1.2214286  0.2733329  4.468648 1.557700e-03</code></pre>
 <p>In this case, you can see that the model is estimating the mean of the first group (setosa) and then the difference between the second and first group and the difference between the third and first groups. This allows you to test hypotheses about the differences, which is often more meaningful than testing hypotheses about the group means themselves.</p>
 </div>
 <div id="helmert-contrasts" class="section level2">
@@ -1101,17 +1104,17 @@ Y_i = \bar{\alpha}_{&lt; j} + \alpha_{j(i)} + \epsilon_i \text{, where } \epsilo
 <span class="kw">model.matrix</span>(~<span class="st"> </span>iris.sub$Species)</code></pre></div>
 <pre><code>##    (Intercept) iris.sub$Species1 iris.sub$Species2
 ## 1            1                -1                -1
-## 2            1                -1                -1
+## 2            1                 1                -1
 ## 3            1                 0                 2
-## 4            1                 1                -1
-## 5            1                 1                -1
-## 6            1                -1                -1
+## 4            1                -1                -1
+## 5            1                -1                -1
+## 6            1                 1                -1
 ## 7            1                 1                -1
-## 8            1                 1                -1
-## 9            1                 1                -1
-## 10           1                 1                -1
-## 11           1                 1                -1
-## 12           1                 0                 2
+## 8            1                -1                -1
+## 9            1                 0                 2
+## 10           1                -1                -1
+## 11           1                -1                -1
+## 12           1                -1                -1
 ## attr(,&quot;assign&quot;)
 ## [1] 0 1 1
 ## attr(,&quot;contrasts&quot;)
@@ -1120,9 +1123,9 @@ Y_i = \bar{\alpha}_{&lt; j} + \alpha_{j(i)} + \epsilon_i \text{, where } \epsilo
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">helmert &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">lm</span>(iris.sub$Sepal.Length ~<span class="st"> </span>iris.sub$Species))
 helmert$coefficients</code></pre></div>
 <pre><code>##                    Estimate Std. Error   t value     Pr(&gt;|t|)
-## (Intercept)       5.8460317  0.1299381 44.990903 6.620126e-12
-## iris.sub$Species1 0.5523810  0.1361290  4.057774 2.851453e-03
-## iris.sub$Species2 0.2269841  0.1034740  2.193635 5.591795e-02</code></pre>
+## (Intercept)       5.5150794 0.11227440 49.121434 3.011736e-12
+## iris.sub$Species1 0.2690476 0.11762376  2.287358 4.798159e-02
+## iris.sub$Species2 0.3174603 0.08940781  3.550700 6.209078e-03</code></pre>
 </div>
 <div id="sum-to-zero-contrasts" class="section level2">
 <h2><span class="header-section-number">14.8</span> Sum-to-zero contrasts</h2>
@@ -1192,17 +1195,17 @@ Y_i = \bar{\alpha} + \alpha_{j(i)} + \epsilon_i \text{, where } \epsilon_i \sim 
 <span class="kw">model.matrix</span>(~<span class="st"> </span>iris.sub$Species)</code></pre></div>
 <pre><code>##    (Intercept) iris.sub$Species1 iris.sub$Species2
 ## 1            1                 1                 0
-## 2            1                 1                 0
+## 2            1                 0                 1
 ## 3            1                -1                -1
-## 4            1                 0                 1
-## 5            1                 0                 1
-## 6            1                 1                 0
+## 4            1                 1                 0
+## 5            1                 1                 0
+## 6            1                 0                 1
 ## 7            1                 0                 1
-## 8            1                 0                 1
-## 9            1                 0                 1
-## 10           1                 0                 1
-## 11           1                 0                 1
-## 12           1                -1                -1
+## 8            1                 1                 0
+## 9            1                -1                -1
+## 10           1                 1                 0
+## 11           1                 1                 0
+## 12           1                 1                 0
 ## attr(,&quot;assign&quot;)
 ## [1] 0 1 1
 ## attr(,&quot;contrasts&quot;)
@@ -1211,9 +1214,9 @@ Y_i = \bar{\alpha} + \alpha_{j(i)} + \epsilon_i \text{, where } \epsilon_i \sim 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sumtozero &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">lm</span>(iris.sub$Sepal.Length ~<span class="st"> </span>iris.sub$Species))
 sumtozero$coefficients</code></pre></div>
 <pre><code>##                     Estimate Std. Error   t value     Pr(&gt;|t|)
-## (Intercept)        5.8460317  0.1299381 44.990903 6.620126e-12
-## iris.sub$Species1 -0.7793651  0.1848773 -4.215580 2.254128e-03
-## iris.sub$Species2  0.3253968  0.1558729  2.087578 6.644378e-02</code></pre>
+## (Intercept)        5.5150794  0.1122744 49.121434 3.011736e-12
+## iris.sub$Species1 -0.5865079  0.1346836 -4.354708 1.837589e-03
+## iris.sub$Species2 -0.0484127  0.1597452 -0.303062 7.687309e-01</code></pre>
 <p>There is one final &quot;off-the-shelf&quot; contrast that we will learn, and that is polynomial contrasts.</p>
 </div>
 <div id="polynomial-contrasts" class="section level2">
