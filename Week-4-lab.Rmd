@@ -164,7 +164,7 @@ plot(mu.test.values,likelihood.matrix[,max.element[2]],typ="b")
 plot(sigma2.test.values,likelihood.matrix[max.element[1],],typ="b")
 ```
 
-Notice how the likelihood curve for $\sigma^{2}$ is not symmetric. While a horizontal line drawn at some higher value (which represents the likelihood of an alternative hypothesis) yields a fairly symmetric confidence interval for $\mu$, the assymetry of the likelihood surface yields a highly assymetric confidence interval for $\sigma^{2}$. Confidence intervals do not have to be symmetric! **However**, immediately in the vicinity of the minimum, the likelihood surface **is** approximately quadratic and symmetric. We will use this fact in a second.
+Notice how the likelihood curve for $\sigma^{2}$ is not symmetric. While a horizontal line drawn at some higher value (which represents the likelihood of an alternative hypothesis) yields a fairly symmetric confidence interval for $\mu$, the assymetry of the likelihood surface yields a highly assymetric confidence interval for $\sigma^{2}$. Confidence intervals do not have to be symmetric! **However**, immediately in the vicinity of the minimum, the likelihood surface **is** approximately quadratic and symmetric. We will come back to this in a second.
 
 In this case, the bivariate likelihood surface shows no correlation between $\mu$ and $\sigma^{2}$, but this is not always the case. Sometimes you get strong correlations among parameter estimates and get diagonal "ridges" in parameter space. In this case, it is important to distinguish between the likelihood profile and likellihood slices. (see Bolker!) The likelihood surface need not even have a single maximum; there could be several peaks which makes it difficult to define the MLE or its confidence intervals. If there are strong tradeoffs between parameter values, it is often better to discuss the MLEs in terms of a confidence region, which is the envelop of parameter space that you are [insert confidence limit here] percent certain contains the true combination of population parameter values.
 
@@ -196,7 +196,7 @@ library(MASS)
 fitdistr(x,"normal")
 ```
 
-Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE. You will learn how to put CI on estimators in Problem Set #4.
+Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE. 
 
 The likelihood is a relative concept that only makes sense relative to other possible datasets. The absolute magnitude depends on the "sample space" of the data and sometimes even the maximum likelihood is a very small value. So all we can do is compare relative likelihoods. 
 
@@ -220,7 +220,12 @@ qchisq(0.95,1)/2
 
 which equals 1.92 log-likelihood units if you are looking at only one parameter to be estimated. Therefore, if we have only one parameter, then we simply calculate the NLL over a range of parameter values, and find the CIs representing those parameter estimates which have <1.92 increase in NLL from the MLE.
 
-
 You will explore this more in the problem set. There is also more discussion of this in Bolker's Chapter #6. 
 
+While the above method (finding the bounds on the parameter within which the increase in the NLL is less than or equal to the threshold determined by the number of parameters and the desired critical value $\alpha$) is the best method of finding the confidence intervals for a parameter, it's worth coming back to the idea that "fitdistr" returns an estimate of the parameter standard errors. How does "fitdistr" do that? It turns out that the standard error is related to the inverse of the second derivative of the NLL right in the vicinity of the minimum where the curve is approximately quadratic. (The second derivative of the NLL has to be positive, do you see why?) 
 
+```{r echo=FALSE, fig.align='center', fig.cap='Comparing steep and shallow NLL functions, and its impact on the estimated standard errors.', out.width='100%'}
+knitr::include_graphics('FisherInformationFigure.png')
+```
+
+A large second derivative is associated with a steep curve in the NLL, and this results in a small standard error (does this make sense?). Conversely, a very flat NLL that gently slopes up would be associated with a large standard error. So, if "fitdistr" estimates the standard error, why not just create the confidence intervals using [MLE-1.96$\times$SE, MLE+1.96$\times$SE]? Well, you *could*, but this assumes that the NLL is symmetric around its minimum and that the confidence interval is correspondingly symmetric around the maximum likelihood estimate. For some parameters for some distributions, this assumption will be fine, but for other parameters this may be a poor assumption and so the confidence intervals created using the standard error will be only approximate (and the approximation may not be that accurate, especially if you want 90th or 50th percentile confidence intervals [do you see why the approximation gets worse as you estimate larger CI intervals?]). Using the NLL function directly in the manner described about involves no approximation and will always be more correct.

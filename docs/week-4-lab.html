@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-25" />
+<meta name="date" content="2021-02-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -498,7 +498,7 @@ max.element&lt;-<span class="kw">which</span>(likelihood.matrix==<span class="kw
 <span class="kw">plot</span>(mu.test.values,likelihood.matrix[,max.element[<span class="dv">2</span>]],<span class="dt">typ=</span><span class="st">&quot;b&quot;</span>)
 <span class="kw">plot</span>(sigma2.test.values,likelihood.matrix[max.element[<span class="dv">1</span>],],<span class="dt">typ=</span><span class="st">&quot;b&quot;</span>)</code></pre></div>
 <p><img src="Week-4-lab_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Notice how the likelihood curve for <span class="math inline">\(\sigma^{2}\)</span> is not symmetric. While a horizontal line drawn at some higher value (which represents the likelihood of an alternative hypothesis) yields a fairly symmetric confidence interval for <span class="math inline">\(\mu\)</span>, the assymetry of the likelihood surface yields a highly assymetric confidence interval for <span class="math inline">\(\sigma^{2}\)</span>. Confidence intervals do not have to be symmetric! <strong>However</strong>, immediately in the vicinity of the minimum, the likelihood surface <strong>is</strong> approximately quadratic and symmetric. We will use this fact in a second.</p>
+<p>Notice how the likelihood curve for <span class="math inline">\(\sigma^{2}\)</span> is not symmetric. While a horizontal line drawn at some higher value (which represents the likelihood of an alternative hypothesis) yields a fairly symmetric confidence interval for <span class="math inline">\(\mu\)</span>, the assymetry of the likelihood surface yields a highly assymetric confidence interval for <span class="math inline">\(\sigma^{2}\)</span>. Confidence intervals do not have to be symmetric! <strong>However</strong>, immediately in the vicinity of the minimum, the likelihood surface <strong>is</strong> approximately quadratic and symmetric. We will come back to this in a second.</p>
 <p>In this case, the bivariate likelihood surface shows no correlation between <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^{2}\)</span>, but this is not always the case. Sometimes you get strong correlations among parameter estimates and get diagonal &quot;ridges&quot; in parameter space. In this case, it is important to distinguish between the likelihood profile and likellihood slices. (see Bolker!) The likelihood surface need not even have a single maximum; there could be several peaks which makes it difficult to define the MLE or its confidence intervals. If there are strong tradeoffs between parameter values, it is often better to discuss the MLEs in terms of a confidence region, which is the envelop of parameter space that you are [insert confidence limit here] percent certain contains the true combination of population parameter values.</p>
 <p>R has a function 'optim' which optimizes functions (and is thus much better than a simple grid search 'brute force' approach we just did) and is very handy for minimizing the LL. We take advantage of the R function that gives us the probability density function, which saves us having to hard code that into R. Make sure the use of 'dnorm' in the code below makes sense!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">neg.ll.v2&lt;-function(x,params)
@@ -512,14 +512,14 @@ sigma=params[<span class="dv">2</span>]
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">opt1&lt;-<span class="kw">optim</span>(<span class="dt">par=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">fn=</span>neg.ll.v2,<span class="dt">x=</span>x)
 opt1</code></pre></div>
 <pre><code>## $par
-## [1] 1.111088 1.990666
+## [1] 0.9041978 2.0005779
 ## 
 ## $value
-## [1] 2107.522
+## [1] 2112.365
 ## 
 ## $counts
 ## function gradient 
-##       55       NA 
+##       63       NA 
 ## 
 ## $convergence
 ## [1] 0
@@ -530,9 +530,9 @@ opt1</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
 <span class="kw">fitdistr</span>(x,<span class="st">&quot;normal&quot;</span>)</code></pre></div>
 <pre><code>##       mean          sd    
-##   1.11113012   1.99089373 
-##  (0.06295759) (0.04451774)</code></pre>
-<p>Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE. You will learn how to put CI on estimators in Problem Set #4.</p>
+##   0.90380443   2.00055940 
+##  (0.06326324) (0.04473387)</code></pre>
+<p>Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE.</p>
 <p>The likelihood is a relative concept that only makes sense relative to other possible datasets. The absolute magnitude depends on the &quot;sample space&quot; of the data and sometimes even the maximum likelihood is a very small value. So all we can do is compare relative likelihoods.</p>
 <p>We now know how to use maximum likelihood to calculate the &quot;best&quot; parameter value (in the sense that it is the parameter value that maximizes the likelihood, or minimizes the negative log-likelihood.) But we know that parameter estimates by themselves are useless. We need to somehow calculate the uncertainty in our maximum likelihood estimate, i.e. the confidence interval.</p>
 <p>For example, if I have a one-parameter model (let's call the parameter <span class="math inline">\(\theta\)</span>) and I want to find a confidence interval on <span class="math inline">\(\theta\)</span>, then I want to ask the question: What values of estimated theta are reasonable under the null hypothesis that <span class="math inline">\(\hat{\theta}\)</span> is the true value? We want to find a window of <span class="math inline">\(\theta\)</span> values around <span class="math inline">\(\hat{\theta}\)</span> that are similar enough to <span class="math inline">\(\hat{\theta}\)</span> that I would <em>not</em> reject the null hypothesis (that <span class="math inline">\(\hat{\theta}\)</span> is the true value). Since <span class="math inline">\(\hat{\theta}\)</span> is the one that minimizes the NLL surface, any other <span class="math inline">\(\theta\)</span> value would have a higher NLL.</p>
@@ -546,6 +546,14 @@ opt1</code></pre></div>
 <pre><code>## [1] 1.920729</code></pre>
 <p>which equals 1.92 log-likelihood units if you are looking at only one parameter to be estimated. Therefore, if we have only one parameter, then we simply calculate the NLL over a range of parameter values, and find the CIs representing those parameter estimates which have &lt;1.92 increase in NLL from the MLE.</p>
 <p>You will explore this more in the problem set. There is also more discussion of this in Bolker's Chapter #6.</p>
+<p>While the above method (finding the bounds on the parameter within which the increase in the NLL is less than or equal to the threshold determined by the number of parameters and the desired critical value <span class="math inline">\(\alpha\)</span>) is the best method of finding the confidence intervals for a parameter, it's worth coming back to the idea that &quot;fitdistr&quot; returns an estimate of the parameter standard errors. How does &quot;fitdistr&quot; do that? It turns out that the standard error is related to the inverse of the second derivative of the NLL right in the vicinity of the minimum where the curve is approximately quadratic. (The second derivative of the NLL has to be positive, do you see why?)</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
+<img src="FisherInformationFigure.png" alt="Comparing steep and shallow NLL functions, and its impact on the estimated standard errors." width="100%" />
+<p class="caption">
+Figure 8.1: Comparing steep and shallow NLL functions, and its impact on the estimated standard errors.
+</p>
+</div>
+<p>A large second derivative is associated with a steep curve in the NLL, and this results in a small standard error (does this make sense?). Conversely, a very flat NLL that gently slopes up would be associated with a large standard error. So, if &quot;fitdistr&quot; estimates the standard error, why not just create the confidence intervals using [MLE-1.96<span class="math inline">\(\times\)</span>SE, MLE+1.96<span class="math inline">\(\times\)</span>SE]? Well, you <em>could</em>, but this assumes that the NLL is symmetric around its minimum and that the confidence interval is correspondingly symmetric around the maximum likelihood estimate. For some parameters for some distributions, this assumption will be fine, but for other parameters this may be a poor assumption and so the confidence intervals created using the standard error will be only approximate (and the approximation may not be that accurate, especially if you want 90th or 50th percentile confidence intervals [do you see why the approximation gets worse as you estimate larger CI intervals?]). Using the NLL function directly in the manner described about involves no approximation and will always be more correct.</p>
 
 </div>
             </section>
