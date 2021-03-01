@@ -40,7 +40,7 @@ Notice that the degrees of freedom need not necessarily be an integer. R assumes
 
 Because we are simulating data, everyone's output is going to look slightly different. In fact, some of us may get p<0.05 and others p>0.05. Here we are looking for a relatively small difference (compared to the standard deviations) with only 100 random draws. We would get more consistent results if we had larger sample sizes, larger mean differences, or smaller standard deviations. This touches on the very important question of statistical POWER, which we will discuss next week.
 
-The output of t.test includes 7 quantities - let's take a few minutes and make sure we can reproduce all 7 quantities based on what we learned on Tuesday.
+**<span style="color: green;">Checkpoint #1: The output of t.test includes 7 quantities - can you reproduce all 7 quantities based on what we learned on Tuesday?</span>**
 
 The default in R is to assume a two-sided test. In other words, by default, R tests
 
@@ -70,7 +70,7 @@ t.test(sample.a,sample.b,alternative="less")
 
 Try both of these options and see how the p-value and the confidence intervals change. Make sure you understand why they make sense. Remember, if you are going to use a one-tailed test, you should be prepared to accept that a large difference opposite to what was expected is pure random chance.
 
-Exercise: Spend some time going back and experimenting with different sets of random variables. Make the means more or less different. Change the variances. Make sure you understand why the t-test results change as you alter the data. What happens if you make the sample sizes smaller or larger?
+Spend some time going back and experimenting with different sets of random variables. Make the means more or less different. Change the variances. Make sure you understand why the t-test results change as you alter the data. **<span style="color: green;">Checkpoint #2: What happens if you make the sample sizes smaller or larger?</span>**
 
 Now let's see what happens when we simulate a new dataset with correlations between the two samples.
 
@@ -110,7 +110,7 @@ var(z)
 var(sample.a)+var(sample.b)-2*cov(sample.a,sample.b)
 ```
 
-Exercise: Spend some time going back and experimenting with different sets of random variables. In particular, change the covariances (makign sure that the covariance matrix is symmetric and the variances positive). Make sure you understand why the t-test results change as you alter the data.
+Spend some time going back and experimenting with different sets of random variables. In particular, change the covariances (makign sure that the covariance matrix is symmetric and the variances positive). Make sure you understand why the t-test results change as you alter the data. **<span style="color: green;">Checkpoint #3: What happens to the t-test results when you make the correlation weak?</span>**
 
 F-test
 --------
@@ -201,7 +201,7 @@ Now we know what the F-ratio of our simulated data is, but we don't know what th
 qf(p=0.95,df1=99,df2=99)
 ```
 
-Make sure you understand why df1=99 and df2=99.
+**<span style="color: green;">Checkpoint #4: Do you understand why df1=99 and df2=99?</span>**
 
 We see that the F-ratio for our data is greater than the critical value for the 95th percentile. Therefore we can say that the two samples are unlikely to come from populations from the same variance. We can also flip the question around to ask: "What is the probability of obtaining this F-ratio if the null hypothesis were true?"
 
@@ -367,7 +367,6 @@ sum(as.numeric((0.02<=UL)&(0.02>=LL)))/1000 #proportion of times the CI include 
 ```
 
 We see that the CIs are actually too narrow! The Wald test is commonly used but as we have demonstrated, it is not very good in practice. R and its packages make it easy to get better CIs for a binomial proportion and in real analysis, you should use these more sophisticated methods.
-
 
 One of the better functions for doing tests of binomial proportions is provided by Dr. Dirk Enzmann. He has posted a function online that calculates 11 different versions of the binomial confidence interval.
 
@@ -548,7 +547,6 @@ Comparing two distributions
 ----------------------------
 
 To perform the K-S test to compare two distributions, we need to simulate some data. We will plot their (empirical) cumulative distributions using the function "ecdf".
-
 
 ```{r}
 x<-rnorm(50,mean=0,sd=1)

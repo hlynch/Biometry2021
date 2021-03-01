@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-02-26" />
+<meta name="date" content="2021-03-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,32 +408,32 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]      [,3]       [,4]        [,5]       [,6]       [,7]
-##  [1,]   NA 0.2042981 0.1841877 0.01274597 0.002440566 0.01456787 0.01415433
-##  [2,]   NA        NA 0.9514159 0.25288385 0.167197467 0.28090972 0.30328601
-##  [3,]   NA        NA        NA 0.19579791 0.108716372 0.22016671 0.23730545
-##  [4,]   NA        NA        NA         NA 0.929495871 0.93606055 0.86622404
-##  [5,]   NA        NA        NA         NA          NA 0.85393160 0.76811218
-##  [6,]   NA        NA        NA         NA          NA         NA 0.93108341
-##  [7,]   NA        NA        NA         NA          NA         NA         NA
-##  [8,]   NA        NA        NA         NA          NA         NA         NA
-##  [9,]   NA        NA        NA         NA          NA         NA         NA
-## [10,]   NA        NA        NA         NA          NA         NA         NA
+<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
+##  [1,]   NA 0.6933247 0.8834385 0.5150382 0.6952641 0.3833006 0.6983088
+##  [2,]   NA        NA 0.6609888 0.4101989 0.9365304 0.7310143 0.9458818
+##  [3,]   NA        NA        NA 0.7251298 0.6711892 0.4151941 0.6714079
+##  [4,]   NA        NA        NA        NA 0.3670847 0.2023515 0.3772179
+##  [5,]   NA        NA        NA        NA        NA 0.6261633 0.9905369
+##  [6,]   NA        NA        NA        NA        NA        NA 0.6430403
+##  [7,]   NA        NA        NA        NA        NA        NA        NA
+##  [8,]   NA        NA        NA        NA        NA        NA        NA
+##  [9,]   NA        NA        NA        NA        NA        NA        NA
+## [10,]   NA        NA        NA        NA        NA        NA        NA
 ##            [,8]      [,9]     [,10]
-##  [1,] 0.1063290 0.4595307 0.3479656
-##  [2,] 0.7537353 0.7798146 0.9269589
-##  [3,] 0.6901151 0.8078131 0.8914981
-##  [4,] 0.4000130 0.2188160 0.4794229
-##  [5,] 0.2936351 0.1639442 0.4236323
-##  [6,] 0.4400526 0.2397620 0.5105263
-##  [7,] 0.4757128 0.2573182 0.5406126
-##  [8,]        NA 0.5862002 0.8968871
-##  [9,]        NA        NA 0.7652987
+##  [1,] 0.8430382 0.4195042 0.6540718
+##  [2,] 0.6037853 0.3417145 0.9585374
+##  [3,] 0.9913690 0.5994520 0.6432657
+##  [4,] 0.6308627 0.8143292 0.3359228
+##  [5,] 0.5831962 0.3065192 0.9715811
+##  [6,] 0.3173365 0.1745455 0.6407335
+##  [7,] 0.5905747 0.3141909 0.9823150
+##  [8,]        NA 0.5069348 0.5420088
+##  [9,]        NA        NA 0.2828167
 ## [10,]        NA        NA        NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 0</code></pre>
 <p>We could correct this using the Bonferonni method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">45</span>
 new.threshold.B&lt;-<span class="fl">0.05</span>/k
@@ -474,7 +474,7 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
 <pre><code>##          5% 
-## 0.001591415</code></pre>
+## 0.001553452</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
 <pre><code>## [1] 0</code></pre>
