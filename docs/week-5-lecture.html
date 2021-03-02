@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-01" />
+<meta name="date" content="2021-03-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,12 +408,12 @@ Figure 0.1: Type I and Type II errors
 \mbox{Power} = \frac{C}{C+D}
 \]</span> In words, <strong>power is the probability of correctly rejecting the null hypothesis</strong>.</p>
 <p>Power calculations boil down to this unavoidable fact: When variance is high, you need larger samples. When the differences are small, you need larger samples. There is a tradeoff between Type I and Type II errors. As a general rule of thumb, people aim for Type I errors of 0.05 and Power = 0.80. Question for the class: Why do we worry more about Type I errors than Type II errors? When would a Type II error be really serious? (For example, failing to detect a disease agent...)</p>
-<p>Power calculations only make sense before an experiment, not after. If you found a sig. effect, then clearly you had enough power, and if no sig. effect, clearly not enough power. Only useful for finding a basic idea of sample size.</p>
+<p>Power calculations only make sense before an experiment, not after. If you found a significant effect, then clearly you had enough power, and if no significant effect, you clearly do not enough power. The main utility of power calculations is to get some intuition for the necessary sample size required while designing an experiement.</p>
 <p>In order to plan a study, you need to know how many samples you need to detect as significant difference of a certain magnitude. For a single sample comparison (against a fixed value)</p>
 <p><span class="math display">\[
 n = \left(\frac{\sigma(z_{1-\alpha}+z_{1-\beta})}{\delta}\right)^{2}
 \]</span></p>
-<p>You will be asked to derive this in the problem set but for now its enough to note that in the very common case that <span class="math inline">\(\alpha\)</span>=0.05 and power=1-<span class="math inline">\(\beta\)</span>=0.80, this can be approximated by</p>
+<p>You will be derive this as a group in lab this week but for now its enough to note that in the very common case that <span class="math inline">\(\alpha\)</span>=0.05 and power=1-<span class="math inline">\(\beta\)</span>=0.80, this can be approximated by</p>
 <p><span class="math display">\[
 n = \frac{8\sigma^{2}}{\delta^{2}}
 \]</span> Note that some authors use the symbol <span class="math inline">\(\sigma^{2}\)</span> under the assumption that this is known (or assumed) prior to calculation, whereas others substitute <span class="math inline">\(s^{2}\)</span> for <span class="math inline">\(\sigma^{2}\)</span> in recognition that this is calculated from the data, although they leave the formula unchanged. As long as you understand what is meant by the symbol, than it is not important which you use here.</p>
@@ -424,8 +424,7 @@ n = 2\left(\frac{\sigma(z_{1-\alpha}+z_{1-\beta})}{\delta}\right)^{2}
 \]</span> or</p>
 <p><span class="math display">\[
 n = \frac{16\sigma^{2}}{\delta^{2}}
-\]</span> This is a formula you will be deriving in the problem set.</p>
-<p>I won’t say a lot more about power calculations because I think that these calculations typify the old way of thinking because they depend so heavily on the arbitrary cut-off of “significance” that is so problematic in null hypothesis testing. Such power calculations can give you some general rules of thumb for whether an experiment is well designed, but even then it required some major assumptions about the size of the unknown variance that I’m not sure how helpful they are.</p>
+\]</span> I won’t say a lot more about power calculations because I think that these calculations typify the old way of thinking because they depend so heavily on the arbitrary cut-off of “significance” that is so problematic in null hypothesis testing. Such power calculations can give you some general rules of thumb for whether an experiment is well designed, but even then it required some major assumptions about the size of the unknown variance that I’m not sure how helpful they are.</p>
 <p><strong>A bit of review: What have we done so far this semester?</strong></p>
 <ol style="list-style-type: decimal">
 <li>We learned a bit about probability theory (joint probability, union and intersection, etc.).</li>
@@ -439,8 +438,8 @@ n = \frac{16\sigma^{2}}{\delta^{2}}
 <li>It may be that each individual data point does come from a known distribution but your data are not independent and you are not able to describe the JOINT distribution of your data In these cases, we tend to fall back on non-parametric methods like bootstrap and jackknife, such as what was covered in Week 2.</li>
 </ol>
 <p>We will now learn how to combine our knowledge of all the univariate distributions with our understanding of hypothesis testing to test hypotheses about the parameters of a distribution. (In other words, we will learn how to use statistics to pose and answer quantitatively rigorous questions about our data.)</p>
-<p>First, a few reminders about statistical hypothesis testing...</p>
-<p>We frame decision-making in terms of a null and an alternative hypothesis: <span class="math inline">\(H_{0}\)</span> vs. <span class="math inline">\(H_{A}\)</span>. Let's say that we are measuring the growth rates of bird colonies, and as before, we use a Normal distribution <span class="math inline">\(N(\mu,\sigma^2)\)</span>. One reasonable null hypothesis might be <span class="math inline">\(H_{0}:\mu=0\)</span>. So we collect data on several bird colonies, and we might find that our confidence interval for <span class="math inline">\(\mu\)</span> contains 0. In this case, we cannot reject the null hypothesis that <span class="math inline">\(\mu=0\)</span>. But we also cannot affirmatively prove the null hypothesis. We simply &quot;cannot reject&quot; the null hypothesis. There are two reasons we &quot;cannot reject&quot; the null hypothesis. It might be that <span class="math inline">\(\mu\)</span> really is equal to 0. It is also possible that <span class="math inline">\(\mu \neq 0\)</span> but we did not have enough data to shrink the confidence intervals sufficiently to reject the null hypothesis. In this latter scenario, we would say that we did not have enough &quot;statistical power&quot; to reject the null hypothesis. We will talk more about statistical power in a bit.</p>
+<p><em>First, a few reminders about statistical hypothesis testing...</em></p>
+<p>We frame decision-making in terms of a null and an alternative hypothesis: <span class="math inline">\(H_{0}\)</span> vs. <span class="math inline">\(H_{A}\)</span>. Let's say that we are measuring the growth rates of bird colonies, and as before, we use a Normal distribution <span class="math inline">\(N(\mu,\sigma^2)\)</span>. One reasonable null hypothesis might be <span class="math inline">\(H_{0}:\mu=0\)</span>. So we collect data on several bird colonies, and we might find that our confidence interval for <span class="math inline">\(\mu\)</span> contains 0. In this case, we cannot reject the null hypothesis that <span class="math inline">\(\mu=0\)</span>. But we also cannot affirmatively prove the null hypothesis. We simply &quot;cannot reject&quot; the null hypothesis. There are two reasons we &quot;cannot reject&quot; the null hypothesis. It might be that <span class="math inline">\(\mu\)</span> really is equal to 0. It is also possible that <span class="math inline">\(\mu \neq 0\)</span> but we did not have enough data to shrink the confidence intervals sufficiently to reject the null hypothesis. In this latter scenario, we would say that we did not have enough &quot;statistical power&quot; to reject the null hypothesis.</p>
 <p><strong>The six steps of null hypothesis testing are</strong>:</p>
 <p><strong>Step #1</strong>: Specify a null hypothesis <span class="math inline">\(H_{0}\)</span>.</p>
 <p><strong>Step #2</strong>: Specific an appropriate test statistic T. A test statistic is some summary of your data that pertains to the null hypothesis. For testing simple hypotheses, there are test statistics known to be ideal in certain situations. However, even in these simple cases, there are other test statistics that could be used. In more complex situations, YOU will have to determine the most appropriate test statistic.</p>
@@ -452,8 +451,9 @@ n = \frac{16\sigma^{2}}{\delta^{2}}
 <p><strong>Step #6</strong>: Interpret the p-value. Use the p-value to determine whether to reject the null hypothesis (or, alternatively, to decide that the null hypothesis cannot be rejected).</p>
 <p>Note that these steps apply for both parametric and non-parametric statistics. The same basic steps also apply whether the test statistic follows a known distribution under the null hypothesis or whether the distribution under the null hypothesis needs to be generated by randomization (randomization test).</p>
 <p>The basic idea underlying all statistical tests: What is the probability that I would get a test statistic as large or larger (as produced by the data) if the null hypothesis was true (this is the ''p-value''). To answer this question we need (1) a test statistic and (2) a distribution under the null hypothesis.</p>
-<p>p-value = P(data|H0) Remember – the p-value is a statement about the probability of getting your data if the null hypothesis were true. It is NOT a statement about the probability that the null hypothesis is true.</p>
-<p>Not all tests are created equal!! Tests differ in their power to detect differences, and their efficiency. The balance between power and efficiency depends on the specific situation; we will discuss this more next week.</p>
+<p>p-value = P(data|H0)</p>
+<p><strong>Remember – the p-value is a statement about the probability of getting your data if the null hypothesis were true. It is NOT a statement about the probability that the null hypothesis is true.</strong></p>
+<p>Not all tests are created equal!! Tests differ in their power to detect differences and their &quot;efficiency&quot;. The balance between power and efficiency depends on the specific situation; we will discuss this more next week.</p>
 <p>To get some practice in constructing and executing hypothesis tests, we are going to go over 4 classic and frequently used hypothesis tests:</p>
 <ol style="list-style-type: decimal">
 <li>The t-test</li>
@@ -492,7 +492,7 @@ H_{A}: \bar{X} \neq c
 <p><span class="math display">\[
 \frac{\bar{X}-c}{\sqrt{s^{2}/n}} \sim t_{n-1}
 \]</span></p>
-<p>In this case, our “test statistic” is <span class="math inline">\(T=\frac{\bar{X}-c}{\sqrt{s^{2}/n}}\)</span> and this test statistics follow the <span class="math inline">\(t_{n-1}\)</span> distribution. In other words, under the null hypothesis (if <span class="math inline">\(\mu\)</span> really is c), the value of the test statistic for any particular dataset of size n will be drawn from this distribution.</p>
+<p><strong><span style="color: orangered;">In this case, our “test statistic” is <span class="math inline">\(T=\frac{\bar{X}-c}{\sqrt{s^{2}/n}}\)</span> and this test statistics follow the <span class="math inline">\(t_{n-1}\)</span> distribution. In other words, under the null hypothesis (if <span class="math inline">\(\mu\)</span> really is c), the value of the test statistic for any particular dataset of size n will be drawn from this distribution.</span></strong></p>
 <p>Let’s say when I actually calculate T for the data I have, I get <span class="math inline">\(T^{*}\)</span>.</p>
 <p><span class="math display">\[
 P(T \leq (-|T^{*}|) \mbox{ OR } T \geq (|T^{*}|)|H_{0}) = p-value
@@ -606,10 +606,10 @@ Y = X_{A}-X_{B}
 <p>The approach we will go over is called the Wald test (see also Handout), and it uses the large sample normal approximation to the Binomial distribution.</p>
 <p>Recall that</p>
 <p><span class="math display">\[
-lim_{n \rightarrow \infty} Binom(n,\theta) \rightarrow N(n\theta,n\theta(1-\theta))
-\]</span> from which it follows<span class="math inline">\(^{\mbox{see below}}\)</span> that</p>
+\mbox{lim}_{n \rightarrow \infty} Binom(n,\theta) \rightarrow N(n\theta,n\theta(1-\theta))
+\]</span> from which it follows (<a href="week-5-lecture.html#binomialproof">details below</a>)</p>
 <p><span class="math display">\[
-lim_{n \rightarrow \infty} \hat{p} \rightarrow N(\theta,\frac{\theta(1-\theta)}{n})
+\mbox{lim}_{n \rightarrow \infty} \hat{p} \rightarrow N(\theta,\frac{\theta(1-\theta)}{n})
 \]</span></p>
 <p>So under the null hypothesis that <span class="math inline">\(\theta=\theta_{0}\)</span></p>
 <p><span class="math display">\[
@@ -618,7 +618,7 @@ lim_{n \rightarrow \infty} \hat{p} \rightarrow N(\theta,\frac{\theta(1-\theta)}{
 <p>(Technically, since we estimated the s.e. using the data, this is t-distributed, but since we are already assuming <span class="math inline">\(n \rightarrow \infty\)</span>, then we typically use the standard normal here.)</p>
 <p>Therefore, we can compare out test statistic against the standard normal to decide if the observed value is EXTREME, i.e. (if <span class="math inline">\(T^{*}\)</span> is positive [see handout])</p>
 <p><span class="math display">\[
-P($T \geq T^{*}│H_{0})+P(T \leq (-T^{*}) │H_{0}) = \mbox{p-value for 2-tailed test}
+P(T \geq T^{*}│H_{0})+P(T \leq (-T^{*}) │H_{0}) = \mbox{p-value for 2-tailed test}
 \]</span></p>
 <p>Correspondingly, we can derived confidence intervals on the true proportion <span class="math inline">\(\theta\)</span>.</p>
 <p><span class="math display">\[
@@ -641,12 +641,17 @@ P\left(\hat{p}-z_{1-\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \leq \theta \le
 <p><span class="math display">\[
 D=sup_{x} |CDF_{1}(x)-CDF_{2}(x)|
 \]</span></p>
-<p>&lt;<Insert picture>&gt;</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="KS_Example.png" alt="Illustration of the empirical CDF (blue) and the CDF of the distribution being tested (red). Source: Wikimedia Commons" width="50%" />
+<p class="caption">
+Figure 1.1: Illustration of the empirical CDF (blue) and the CDF of the distribution being tested (red). Source: Wikimedia Commons
+</p>
+</div>
 <p>The expected distribution of D under the null hypothesis is complicated and not one you need to know. We will go over R’s functions to do these tests on Thursday.</p>
 </div>
 <div id="a-bit-more-detail-on-the-binomial" class="section level2">
 <h2><span class="header-section-number">9.8</span> A bit more detail on the Binomial</h2>
-<p>Above I skipped over some details about deriving the Binomial from the Bernoulli. Here I fill in those details.</p>
+<p><a id="binomialproof"></a> Above I skipped over some details about deriving the Binomial from the Bernoulli. Here I fill in those details.</p>
 <p>Let's assume X follows a Bernoulli distribution:</p>
 <p><span class="math display">\[
 X \sim Bernoulli(\theta)
@@ -680,10 +685,10 @@ n\hat{p} \rightarrow N(mean=n\theta,var=n\theta(1-\theta))
 <div id="chi-squared-goodness-of-fit-test" class="section level2">
 <h2><span class="header-section-number">9.10</span> Chi-squared goodness-of-fit test</h2>
 <p><span class="math inline">\(H_{0}\)</span> is a table (need not be 2 <span class="math inline">\(\times\)</span> 2) of predicted probabilities such as</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="Chisq1.png" alt="2 x 2 contingency table" width="50%" />
 <p class="caption">
-Figure 1.1: 2 x 2 contingency table
+Figure 1.2: 2 x 2 contingency table
 </p>
 </div>
 <p>and you want to test whether the data are consistent with the null hypothesis of known probabilities.</p>
@@ -694,22 +699,22 @@ X^{2} = \sum_{\mbox{cell} i}\frac{O_{i}-E_{i}}{E_{i}}
 X^{2}|H_{0} \sim \chi^{2}_{(r \times c) -1}
 \]</span></p>
 <p>We have lost a single degree of freedom because the total sample size of the observed data constrains the value of one of the cells given the other three. When we have a single proportion (e.g., percentage of men vs. women in class) we can use this as an alternative to the binomial test we discussed in class. (When the expected frequencies are small, the binomial test is preferred over the chi-squared goodness of fit test.)</p>
-<p>If all you are given are marginal probabilities, you have to assume independence to get the probabilities for individual cells, which many of you did on the problem set.</p>
+<p>If all you are given are marginal probabilities, you have to assume independence to get the probabilities for individual cells.</p>
 </div>
 <div id="chi-squared-test-of-independence" class="section level2">
 <h2><span class="header-section-number">9.11</span> Chi-squared test of independence</h2>
 <p><span class="math inline">\(H_{0}\)</span> is a table (need not be 2 <span class="math inline">\(\times\)</span> 2) of marginal probabilities</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="Chisq2.png" alt="2 x 2 contingency table with marginal probabilities only" width="50%" />
 <p class="caption">
-Figure 1.2: 2 x 2 contingency table with marginal probabilities only
+Figure 1.3: 2 x 2 contingency table with marginal probabilities only
 </p>
 </div>
 <p><strong>or</strong> a table of observed data from which marginal probabilities can be calculated</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="Chisq3.png" alt="2 x 2 contingency table" width="50%" />
 <p class="caption">
-Figure 1.3: 2 x 2 contingency table
+Figure 9.1: 2 x 2 contingency table
 </p>
 </div>
 <p>The chi-squared test statistic is</p>
