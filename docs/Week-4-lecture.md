@@ -283,7 +283,7 @@ $$
 
 Once you decide on a distribution for your data, you need some way of estimating the best-fit parameters. This brings us to the next major topic of Biometry.
 
-##Parameter estimation
+##Estimating confidence intervals - 5 special cases
 
 We will now learn how to fit a model to data, that is, to estimate the parameter values for the distribution being used to model the data. Since parameter estimates are useless without their corresponding confidence intervals, we will also learn out to estimate confidence intervals for these parameters.
 

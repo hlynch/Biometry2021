@@ -177,7 +177,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#t-distribution"><i class="fa fa-check"></i><b>7.2</b> t-distribution</a></li>
 <li class="chapter" data-level="7.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.3</b> Chi-squared distribution</a></li>
 <li class="chapter" data-level="7.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#f-distribution"><i class="fa fa-check"></i><b>7.4</b> F distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parameter-estimation"><i class="fa fa-check"></i><b>7.5</b> Parameter estimation</a></li>
+<li class="chapter" data-level="7.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#estimating-confidence-intervals---5-special-cases"><i class="fa fa-check"></i><b>7.5</b> Estimating confidence intervals - 5 special cases</a></li>
 <li class="chapter" data-level="7.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#to-recap"><i class="fa fa-check"></i><b>7.6</b> To recap</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>8</b> Week 4 Lab</a></li>
@@ -565,8 +565,8 @@ s^2(n-1) = \sum_{i=1}^n(X_i-\bar{X})^2
 \]</span> <em>Relationship 2</em>: If <span class="math inline">\(X \sim t_{n-1}\)</span>, then <span class="math inline">\(X^2 \sim F_{1,n-1}\)</span>. In words, this means that if you square a t-distributed variable, you get an F distributed variable.</p>
 <p>Once you decide on a distribution for your data, you need some way of estimating the best-fit parameters. This brings us to the next major topic of Biometry.</p>
 </div>
-<div id="parameter-estimation" class="section level2">
-<h2><span class="header-section-number">7.5</span> Parameter estimation</h2>
+<div id="estimating-confidence-intervals---5-special-cases" class="section level2">
+<h2><span class="header-section-number">7.5</span> Estimating confidence intervals - 5 special cases</h2>
 <p>We will now learn how to fit a model to data, that is, to estimate the parameter values for the distribution being used to model the data. Since parameter estimates are useless without their corresponding confidence intervals, we will also learn out to estimate confidence intervals for these parameters.</p>
 <p>Let's review for a second what is meant by a confidence interval. <strong><span style="color: orangered;">A 95th percentile confidence interval is an interval estimated from the data that we are 95<span class="math inline">\(\%\)</span> certain contains the true but unknown value for the parameter.</span></strong> Because this interval is estimated from data, it has its own confidence interval. While we usually we don't worry too much about this, keep in mind that <strong>a different dataset would also produce a different parameter estimate and a different confidence interval</strong>.</p>
 <p>How do we calculate confidence intervals when we are using a parametric distribution to model some data? We are going to use what we know about these distributions to derive an analytical expression for the distribution of the parameter of interest, and then use the quantiles of that distribution to calculate the appropriate confidence intervals (typically we use the <span class="math inline">\(\alpha⁄2\)</span> and 1-<span class="math inline">\(\alpha⁄2\)</span> confidence intervals, where <span class="math inline">\(\alpha\)</span>=0.05).</p>
