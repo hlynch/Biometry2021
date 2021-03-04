@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-02" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,28 +408,28 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
-##  [1,]   NA 0.8922338 0.4131732 0.8971896 0.1370782 0.3890947 0.5329360
-##  [2,]   NA        NA 0.3063369 0.7790913 0.1362435 0.4216093 0.5850758
-##  [3,]   NA        NA        NA 0.4777077 0.0265848 0.1227622 0.1597026
-##  [4,]   NA        NA        NA        NA 0.1016298 0.3250654 0.4460629
-##  [5,]   NA        NA        NA        NA        NA 0.6419401 0.3839175
-##  [6,]   NA        NA        NA        NA        NA        NA 0.7572570
-##  [7,]   NA        NA        NA        NA        NA        NA        NA
-##  [8,]   NA        NA        NA        NA        NA        NA        NA
-##  [9,]   NA        NA        NA        NA        NA        NA        NA
-## [10,]   NA        NA        NA        NA        NA        NA        NA
-##             [,8]       [,9]      [,10]
-##  [1,] 0.10810700 0.86284206 0.84105316
-##  [2,] 0.09568151 0.73928541 0.71894300
-##  [3,] 0.01555060 0.49278371 0.51878469
-##  [4,] 0.07351576 0.96674077 0.94241213
-##  [5,] 0.91427606 0.08759972 0.08708111
-##  [6,] 0.66748247 0.30138594 0.29482452
-##  [7,] 0.36748155 0.41374552 0.40391234
-##  [8,]         NA 0.05924701 0.06039506
-##  [9,]         NA         NA 0.97449466
-## [10,]         NA         NA         NA</code></pre>
+<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]       [,6]      [,7]
+##  [1,]   NA 0.6931891 0.1612811 0.3420830 0.8120415 0.77141016 0.3509090
+##  [2,]   NA        NA 0.3720506 0.6523026 0.8564600 0.50395143 0.6981280
+##  [3,]   NA        NA        NA 0.5814665 0.2353478 0.08433437 0.4663237
+##  [4,]   NA        NA        NA        NA 0.4754454 0.19818250 0.9014036
+##  [5,]   NA        NA        NA        NA        NA 0.59006369 0.4999810
+##  [6,]   NA        NA        NA        NA        NA         NA 0.1911639
+##  [7,]   NA        NA        NA        NA        NA         NA        NA
+##  [8,]   NA        NA        NA        NA        NA         NA        NA
+##  [9,]   NA        NA        NA        NA        NA         NA        NA
+## [10,]   NA        NA        NA        NA        NA         NA        NA
+##            [,8]       [,9]     [,10]
+##  [1,] 0.9811705 0.03950670 0.2372365
+##  [2,] 0.7368421 0.14685439 0.5184229
+##  [3,] 0.2230788 0.54561579 0.7150001
+##  [4,] 0.4180666 0.20604187 0.8222939
+##  [5,] 0.8510217 0.06317988 0.3448580
+##  [6,] 0.7783033 0.01506594 0.1242191
+##  [7,] 0.4390883 0.10622699 0.6975138
+##  [8,]        NA 0.07994166 0.3158337
+##  [9,]        NA         NA 0.2662079
+## [10,]        NA         NA        NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
@@ -474,7 +474,7 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
 <pre><code>##          5% 
-## 0.001937872</code></pre>
+## 0.001951156</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
 <pre><code>## [1] 0</code></pre>

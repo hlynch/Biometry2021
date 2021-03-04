@@ -452,6 +452,12 @@ $$
 
 It is almost never the case that you know $\sigma^{2}$, so you should always use the quantiles of the t-distribution for building confidence intervals for $\bar{X}$. People incorrectly use the normal approximation because back in the day of tables, the normal distribution was easier. *In the age of computers, no excuse – use the t-distribution.*
 
+One final note - next week we will learn about t-tests and depending on the assumptions being made, the appropriate t-distribution may have a degree-of-freedom different from n-1, so I'm including the most general statement about the confidence interval for the mean of a Normally distriuted population here:
+
+$$
+P(\bar{X}-\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[dof]} \leq \mu \leq \bar{X}+\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[dof]}) = 1-\alpha
+$$
+
 **Example #3: Estimating the confidence intervals for the variance $\sigma^{2}$ assuming $\mu$ is known.**
 
 Based on the definition of a $\chi^{2}$ distribution, we know that if we have data $X \sim N(\mu,\sigma^{2})$, than 

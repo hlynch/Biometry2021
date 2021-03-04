@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-02" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -642,6 +642,10 @@ z_{1-\alpha/2}=qnorm(0.975)=1.96
 P(\bar{X}-\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[n-1]} \leq \mu \leq \bar{X}+\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[n-1]}) = 1-\alpha
 \]</span></p>
 <p>It is almost never the case that you know <span class="math inline">\(\sigma^{2}\)</span>, so you should always use the quantiles of the t-distribution for building confidence intervals for <span class="math inline">\(\bar{X}\)</span>. People incorrectly use the normal approximation because back in the day of tables, the normal distribution was easier. <em>In the age of computers, no excuse – use the t-distribution.</em></p>
+<p>One final note - next week we will learn about t-tests and depending on the assumptions being made, the appropriate t-distribution may have a degree-of-freedom different from n-1, so I'm including the most general statement about the confidence interval for the mean of a Normally distriuted population here:</p>
+<p><span class="math display">\[
+P(\bar{X}-\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[dof]} \leq \mu \leq \bar{X}+\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[dof]}) = 1-\alpha
+\]</span></p>
 <p><strong>Example #3: Estimating the confidence intervals for the variance <span class="math inline">\(\sigma^{2}\)</span> assuming <span class="math inline">\(\mu\)</span> is known.</strong></p>
 <p>Based on the definition of a <span class="math inline">\(\chi^{2}\)</span> distribution, we know that if we have data <span class="math inline">\(X \sim N(\mu,\sigma^{2})\)</span>, than</p>
 <p><span class="math display">\[

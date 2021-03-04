@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-02" />
+<meta name="date" content="2021-03-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -500,6 +500,11 @@ P(T \leq (-|T^{*}|) \mbox{ OR } T \geq (|T^{*}|)|H_{0}) = p-value
 <p>If p&lt;0.05, we say that there is <span class="math inline">\(&lt;5\%\)</span> probability that we would obtain something as or more ‘extreme’ than <span class="math inline">\(T^{*}\)</span> if the null hypothesis was true, we therefore REJECT the null hypothesis</p>
 <p>If p&gt;0.05, we say that there is a <span class="math inline">\(&gt;5\%\)</span> probability we would obtain something as or more ‘extreme’ than <span class="math inline">\(T^{*}\)</span> if the null hypothesis is true, and therefore we DO NOT REJECT the null hypothesis.</p>
 <p>Note that the t-test assumes that the data are Normally distributed, but it turns out that the t-test is fairly robust to violations of this assumption. In fact, the Central Limit Theorem says that (with a few minor requirements) the means of data have as their limit (for large sample sizes) the Normal distribution, so the t-test is often valid even if the original data is not Normally distributed.</p>
+<p>Keep in mind that the t-test is intimately connected to the idea of calculating a confidence interval for the mean of a Normally distributed population. Last week, we derived this formula:</p>
+<p><span class="math display">\[
+P(\bar{X}-\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[dof]} \leq \mu \leq \bar{X}+\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[dof]}) = 1-\alpha
+\]</span></p>
+<p>So we now can test a hypothesis regarding the value of the mean <em>and</em> we can generate confidence intervals on the true (but unknown) mean of the population we are studying.</p>
 </div>
 <div id="the-unpaired-two-sample-t-test" class="section level2">
 <h2><span class="header-section-number">9.3</span> The unpaired two sample t test</h2>

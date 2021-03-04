@@ -169,6 +169,14 @@ If p>0.05, we say that there is a $>5\%$ probability we would obtain something a
 
 Note that the t-test assumes that the data are Normally distributed, but it turns out that the t-test is fairly robust to violations of this assumption. In fact, the Central Limit Theorem says that (with a few minor requirements) the means of data have as their limit (for large sample sizes) the Normal distribution, so the t-test is often valid even if the original data is not Normally distributed.
 
+Keep in mind that the t-test is intimately connected to the idea of calculating a confidence interval for the mean of a Normally distributed population. Last week, we derived this formula:
+
+$$
+P(\bar{X}-\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[dof]} \leq \mu \leq \bar{X}+\sqrt{\frac{s^{2}}{n}}t_{(1-\alpha/2)[dof]}) = 1-\alpha
+$$
+
+So we now can test a hypothesis regarding the value of the mean *and* we can generate confidence intervals on the true (but unknown) mean of the population we are studying.
+
 ##The unpaired two sample t test
 
 The unpaired two-sample t test is used when you have data from two groups and you want to test whether these groups have the same mean value (i.e. $H_{0}: \mu_{A} = \mu_{B}$. As before, we will assume that the data are at least approximately Normally distributed. 
