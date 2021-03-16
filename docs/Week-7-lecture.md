@@ -26,7 +26,7 @@ library(gplots)
 library(ade4)
 ```
 
-PART I: Box plots
+Box plots
 ------------------
 
 A boxplot is a convenient way of summarizing univariate data; the top and bottom of the rectangle represent the upper and lower quartiles of the data, the median by a horizontal line in the rectangle. There are several conventions for the whiskers, so the meaning of the whiskers should be explained clearly in the legend. One convention holds that the whisker extend to the further point that is no more than 1.5 times the interquartile range (75th-25th). In this case, outlying datapoints are shown with their own dot or star. You can also draw whiskers that extend out to the furthest datapoint.
@@ -49,10 +49,10 @@ boxplot(rnorm(1000,mean=0,sd=1),rnorm(1000,mean=0,sd=3),names=c("cats","dogs"), 
 
 <img src="Week-7-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
-PART II: Two-dimensional data
+Two-dimensional data
 -------------------------
 
-Read in the following dataset describing fox fur production as a function of year.
+Read in the following dataset describing [fox fur production as a function of year](https://github.com/hlynch/Biometry2021/tree/master/_data/FoxFurProduction.csv)
 
 
 ```r
@@ -425,8 +425,8 @@ jitter(rep(0, 7))
 ```
 
 ```
-## [1]  0.008140356  0.009119146 -0.009711313  0.006513794  0.004170553
-## [6] -0.006351471  0.006512755
+## [1] -0.015157494  0.011062055 -0.011072192  0.014582139 -0.016195923
+## [6]  0.018862694 -0.009667612
 ```
 
 Before we launch into three-dimensional plotting, we should introduce 'ggplot2' which is quickly becoming "industry standard" for making plots in R. There is *so* much that can be done with ggplot2 that we will only scratch the surface today, but at least this introduction will illustrate some of the things that ggplot2 can do.
@@ -465,7 +465,7 @@ qplot(mpg, data=mtcars, geom="density", fill=gear, alpha=I(.5),
 There is more to ggplot2 than I can cover today, but if you are serious about making nice plots, its worth investing some time in learning this package.
 
 
-PART III: Three-dimensional data
+Three-dimensional data
 ------------------------
 
 There are almost an infinite variety of graphical options for R, most of which are available through the contributed R packages. We will use one of them now to demonstrate some of R's other graphical options.
@@ -498,8 +498,8 @@ hist2d(x,y, same.scale=TRUE)
 ## 
 ## Number of data points:  2000 
 ## Number of grid bins:  200 x 200 
-## X range: ( -13.20154 , 12.09502 )
-## Y range: ( -13.20154 , 12.09502 )
+## X range: ( -15.50319 , 13.55363 )
+## Y range: ( -15.50319 , 13.55363 )
 ```
 
 Notice that we had to use "same.scale=T" to make sure that distances along the x and y axes were comparable.
@@ -556,7 +556,7 @@ title(main="Maunga Whau Volcano", sub = "col=terrain.colors(100)", font.main=4)
 
 <img src="Week-7-lecture_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
-PART IV: Multiple plots
+Multiple plots
 ---------------------
 
 Now we will discuss how to arrange multiple plots of the same page.

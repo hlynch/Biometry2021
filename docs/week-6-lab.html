@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-04" />
+<meta name="date" content="2021-03-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -202,10 +202,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11" data-path="week-6-lecture.html"><a href="week-6-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 6 Lecture</a></li>
 <li class="chapter" data-level="12" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>12</b> Week 6 Lab</a></li>
 <li class="chapter" data-level="13" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html"><i class="fa fa-check"></i><b>13</b> Week 7 Lecture/Lab</a><ul>
-<li class="chapter" data-level="13.1" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#part-i-box-plots"><i class="fa fa-check"></i><b>13.1</b> PART I: Box plots</a></li>
-<li class="chapter" data-level="13.2" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#part-ii-two-dimensional-data"><i class="fa fa-check"></i><b>13.2</b> PART II: Two-dimensional data</a></li>
-<li class="chapter" data-level="13.3" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#part-iii-three-dimensional-data"><i class="fa fa-check"></i><b>13.3</b> PART III: Three-dimensional data</a></li>
-<li class="chapter" data-level="13.4" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#part-iv-multiple-plots"><i class="fa fa-check"></i><b>13.4</b> PART IV: Multiple plots</a></li>
+<li class="chapter" data-level="13.1" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#box-plots"><i class="fa fa-check"></i><b>13.1</b> Box plots</a></li>
+<li class="chapter" data-level="13.2" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#two-dimensional-data"><i class="fa fa-check"></i><b>13.2</b> Two-dimensional data</a></li>
+<li class="chapter" data-level="13.3" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#three-dimensional-data"><i class="fa fa-check"></i><b>13.3</b> Three-dimensional data</a></li>
+<li class="chapter" data-level="13.4" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#multiple-plots"><i class="fa fa-check"></i><b>13.4</b> Multiple plots</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lecture</a><ul>
 <li class="chapter" data-level="14.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#warm-up"><i class="fa fa-check"></i><b>14.1</b> Warm-up</a></li>
@@ -408,28 +408,28 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]      [,3]       [,4]       [,5]      [,6]       [,7]
-##  [1,]   NA 0.1416562 0.7240392 0.41288398 0.44510241 0.9005428 0.18783667
-##  [2,]   NA        NA 0.3687797 0.08640431 0.04723061 0.2220358 0.70460908
-##  [3,]   NA        NA        NA 0.31455189 0.32618008 0.6912887 0.32497486
-##  [4,]   NA        NA        NA         NA 0.80996494 0.5330303 0.09152028
-##  [5,]   NA        NA        NA         NA         NA 0.6219036 0.08136982
-##  [6,]   NA        NA        NA         NA         NA        NA 0.21222318
-##  [7,]   NA        NA        NA         NA         NA        NA         NA
-##  [8,]   NA        NA        NA         NA         NA        NA         NA
-##  [9,]   NA        NA        NA         NA         NA        NA         NA
-## [10,]   NA        NA        NA         NA         NA        NA         NA
-##            [,8]      [,9]     [,10]
-##  [1,] 0.6062913 0.5632074 0.8978224
-##  [2,] 0.1540624 0.3539545 0.1417644
-##  [3,] 0.4684438 0.8949575 0.6581157
-##  [4,] 0.8111920 0.2382567 0.4809733
-##  [5,] 0.9654899 0.2092335 0.5467816
-##  [6,] 0.7197923 0.5774390 0.9848899
-##  [7,] 0.1467636 0.3340517 0.1750514
-##  [8,]        NA 0.3798152 0.6804934
-##  [9,]        NA        NA 0.5106704
-## [10,]        NA        NA        NA</code></pre>
+<pre><code>##       [,1]      [,2]      [,3]       [,4]       [,5]      [,6]      [,7]
+##  [1,]   NA 0.6112596 0.2207574 0.36457865 0.37206097 0.6603578 0.5210114
+##  [2,]   NA        NA 0.1878838 0.92762857 0.91903446 0.4366352 0.8950418
+##  [3,]   NA        NA        NA 0.05401178 0.05804099 0.4970019 0.0746872
+##  [4,]   NA        NA        NA         NA 0.98562075 0.2396548 0.7177566
+##  [5,]   NA        NA        NA         NA         NA 0.2448061 0.7144024
+##  [6,]   NA        NA        NA         NA         NA        NA 0.3319239
+##  [7,]   NA        NA        NA         NA         NA        NA        NA
+##  [8,]   NA        NA        NA         NA         NA        NA        NA
+##  [9,]   NA        NA        NA         NA         NA        NA        NA
+## [10,]   NA        NA        NA         NA         NA        NA        NA
+##             [,8]      [,9]      [,10]
+##  [1,] 0.32142080 0.3761821 0.31765177
+##  [2,] 0.90661844 0.9310647 0.79934642
+##  [3,] 0.04367422 0.0574847 0.05713087
+##  [4,] 0.96951236 0.9956749 0.81410376
+##  [5,] 0.98573568 0.9816791 0.83068139
+##  [6,] 0.21342953 0.2470573 0.21271933
+##  [7,] 0.66926747 0.7280724 0.58375069
+##  [8,]         NA 0.9655790 0.83241606
+##  [9,]         NA        NA 0.81284159
+## [10,]         NA        NA         NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
@@ -473,8 +473,8 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
   }
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
-<pre><code>##         5% 
-## 0.00216642</code></pre>
+<pre><code>##          5% 
+## 0.001489526</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
 <pre><code>## [1] 0</code></pre>

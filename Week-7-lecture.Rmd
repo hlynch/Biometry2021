@@ -11,7 +11,7 @@ library(gplots)
 library(ade4)
 ```
 
-PART I: Box plots
+Box plots
 ------------------
 
 A boxplot is a convenient way of summarizing univariate data; the top and bottom of the rectangle represent the upper and lower quartiles of the data, the median by a horizontal line in the rectangle. There are several conventions for the whiskers, so the meaning of the whiskers should be explained clearly in the legend. One convention holds that the whisker extend to the further point that is no more than 1.5 times the interquartile range (75th-25th). In this case, outlying datapoints are shown with their own dot or star. You can also draw whiskers that extend out to the furthest datapoint.
@@ -28,10 +28,10 @@ We can play around with some of the options, such as naming the boxes and colori
 boxplot(rnorm(1000,mean=0,sd=1),rnorm(1000,mean=0,sd=3),names=c("cats","dogs"), border=c("red","green"))
 ```
 
-PART II: Two-dimensional data
+Two-dimensional data
 -------------------------
 
-Read in the following dataset describing fox fur production as a function of year.
+Read in the following dataset describing [fox fur production as a function of year](https://github.com/hlynch/Biometry2021/tree/master/_data/FoxFurProduction.csv)
 
 ```{r}
 setwd("~/Documents/Projects/Biometry2021/_data/")
@@ -164,7 +164,7 @@ qplot(mpg, data=mtcars, geom="density", fill=gear, alpha=I(.5),
 There is more to ggplot2 than I can cover today, but if you are serious about making nice plots, its worth investing some time in learning this package.
 
 
-PART III: Three-dimensional data
+Three-dimensional data
 ------------------------
 
 There are almost an infinite variety of graphical options for R, most of which are available through the contributed R packages. We will use one of them now to demonstrate some of R's other graphical options.
@@ -225,7 +225,7 @@ box()
 title(main="Maunga Whau Volcano", sub = "col=terrain.colors(100)", font.main=4)
 ```
 
-PART IV: Multiple plots
+Multiple plots
 ---------------------
 
 Now we will discuss how to arrange multiple plots of the same page.
