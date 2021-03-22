@@ -4,7 +4,7 @@ Week 6 Lecture
 The ''family-wise error rate'' is
 
 $$
-\alpha = 1-(1-\alpha^{’})k
+\alpha = 1-(1-\alpha^{’})^k
 $$
 
 where $\alpha^{'}$ is the ''per-comparison error rate''. This is an important formula, don’t just memorize it - make sure you understand it!
