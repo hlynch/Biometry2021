@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-22" />
+<meta name="date" content="2021-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -392,7 +392,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="week-8-lab" class="section level1">
 <h1><span class="header-section-number">15</span> Week 8 Lab</h1>
 <p>Our first task is to go over how to write a linear model in R. Let's take a moment to go through Logan Table 7.3.</p>
-<p>First we will read in some data on mercury levels in fish.</p>
+<p>First we will read in <a href="https://github.com/hlynch/Biometry2021/tree/master/_data/fish.txt">some data</a> on mercury levels in fish.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 8 Introduction to linear models/Week 8 Lab&quot;</span>)
 data&lt;-<span class="kw">read.table</span>(<span class="st">&quot;fish.txt&quot;</span>,<span class="dt">header=</span>T)
 <span class="kw">head</span>(data)</code></pre></div>
@@ -482,7 +482,7 @@ Mercury&lt;-data$MERCURY</code></pre></div>
 ## Multiple R-squared:  0.3813, Adjusted R-squared:  0.3214 
 ## F-statistic: 6.367 on 15 and 155 DF,  p-value: 2.1e-10</code></pre>
 <p>This second approach is what we are interested in, because we want to use the Stations as categorical factors.</p>
-<p>Why is the intercept for fit2 not the same as the intercept for fit? We won't get into linear regression formally until next week, but we can see what's going on if we plot the data and the best-fit line together on the same plot.</p>
+<p><strong><span style="color: green;">Checkpoint #1: Why is the intercept for fit2 not the same as the intercept for fit?</span></strong> We won't get into linear regression formally until next week, but we can see what's going on if we plot the data and the best-fit line together on the same plot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Station, Mercury,<span class="dt">cex=</span><span class="dv">1</span>,<span class="dt">xlab=</span><span class="st">&quot;Station as a numeric&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Mercury&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">a=</span><span class="kw">coef</span>(fit)[<span class="dv">1</span>],<span class="dt">b=</span><span class="kw">coef</span>(fit)[<span class="dv">2</span>],<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
 <span class="kw">segments</span>(<span class="dt">x0=</span>-<span class="fl">0.5</span>,<span class="dt">x1=</span><span class="fl">0.5</span>,<span class="dt">y0=</span><span class="kw">coef</span>(fit2)[<span class="dv">1</span>],<span class="dt">y1=</span><span class="kw">coef</span>(fit2)[<span class="dv">1</span>],<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">lwd=</span><span class="dv">4</span>)</code></pre></div>
@@ -586,7 +586,7 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 <p>But this doesn't match what R has returned!! Why not? Because an even better estimate of the &quot;residual&quot; variation is the pooled estimate of the residual variation, where we use not only the residual variation within the Station=0 group, but within each of the Stations. R returned this value above: &quot;Residual standard error:0.6274&quot;. Using this value, we calculate</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.6274</span>/<span class="kw">sqrt</span>(<span class="kw">length</span>(Mercury[Station==<span class="st">&quot;0&quot;</span>]))</code></pre></div>
 <pre><code>## [1] 0.1984013</code></pre>
-<p>Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.</p>
+<p>Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. <strong><span style="color: green;">Checkpoint #2: Does this make sense?</span></strong> Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.</p>
 <div id="contrasts" class="section level2">
 <h2><span class="header-section-number">15.1</span> Contrasts</h2>
 <p>In lecture on Tuesday we discussed several other contrasts. Let's start with the Helmhert contrast.</p>
@@ -732,7 +732,7 @@ group.means</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">group.means[<span class="dv">2</span>]-<span class="kw">mean</span>(group.means)</code></pre></div>
 <pre><code>##   Station1 
 ## -0.3742987</code></pre>
-<p>and so forth.</p>
+<p>and so forth. <strong><span style="color: green;">Checkpoint #3: Do you understand how to obtain the sum-to-zero parameter estimates and what they mean in terms of this dataset?</span></strong></p>
 <p>Polynomial contrasts can be done using</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrasts</span>(Station)&lt;-<span class="st">&quot;contr.poly&quot;</span>
 <span class="kw">contr.poly</span>(<span class="dv">15</span>)</code></pre></div>

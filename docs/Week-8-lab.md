@@ -3,7 +3,7 @@ Week 8 Lab
 
 Our first task is to go over how to write a linear model in R. Let's take a moment to go through Logan Table 7.3.
 
-First we will read in some data on mercury levels in fish. 
+First we will read in [some data](https://github.com/hlynch/Biometry2021/tree/master/_data/fish.txt) on mercury levels in fish. 
 
 
 ```r
@@ -139,7 +139,7 @@ summary(fit2)
 
 This second approach is what we are interested in, because we want to use the Stations as categorical factors. 
 
-Why is the intercept for fit2 not the same as the intercept for fit? We won't get into linear regression formally until next week, but we can see what's going on if we plot the data and the best-fit line together on the same plot.
+**<span style="color: green;">Checkpoint #1: Why is the intercept for fit2 not the same as the intercept for fit?</span>** We won't get into linear regression formally until next week, but we can see what's going on if we plot the data and the best-fit line together on the same plot.
 
 
 ```r
@@ -348,7 +348,7 @@ But this doesn't match what R has returned!! Why not? Because an even better est
 ## [1] 0.1984013
 ```
 
-Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.
+Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. **<span style="color: green;">Checkpoint #2: Does this make sense?</span>** Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.
 
 ##Contrasts
 In lecture on Tuesday we discussed several other contrasts. Let's start with the Helmhert contrast. 
@@ -578,7 +578,7 @@ group.means[2]-mean(group.means)
 ## -0.3742987
 ```
 
-and so forth.
+and so forth. **<span style="color: green;">Checkpoint #3: Do you understand how to obtain the sum-to-zero parameter estimates and what they mean in terms of this dataset?</span>**
 
 Polynomial contrasts can be done using
 
