@@ -353,7 +353,7 @@ But this doesn't match what R has returned!! Why not? Because an even better est
 
 Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. **<span style="color: green;">Checkpoint #3: Does this make sense?</span>** Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.
 
-**<span style="color: green;">Checkpoint #4: Each of you should have your own estimate for mercury at Station0. Calculate the standard deviation of your group's estimates. Is this at least approximately equal to the standard error of the estimate?</span>**
+**<span style="color: green;">Checkpoint #4: Write a short script to bootstrap resample data within each station. Each of you should end up with a slightly different dataset and fitting the model to that unique dataset will yield a unique estimate for mercury at Station0. Calculate the standard deviation of your group's estimates. Is this at least approximately equal to the standard error of the estimate as reported by your model's fit?</span>**
 
 ##Contrasts
 In lecture on Tuesday we discussed several other contrasts. Let's start with the Helmhert contrast. 
