@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-23" />
+<meta name="date" content="2021-03-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -494,6 +494,7 @@ Mercury&lt;-data$MERCURY</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(Mercury[Station==<span class="st">&quot;0&quot;</span>])</code></pre></div>
 <pre><code>## [1] 0.993</code></pre>
 <p>(We have to use quotes now, because the variable &quot;Station&quot; is a factor, which means the levels are now identified by names (characters) which must be put in quotes.)</p>
+<p><strong><span style="color: green;">Checkpoint #2: Do you understand what the intercept of fit2 means? Can you predict what the value for as.factor(Station)1 means?</span></strong></p>
 <p>We can also convince ourselves of the other model estimates using</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(Mercury[Station==<span class="st">&quot;1&quot;</span>])</code></pre></div>
 <pre><code>## [1] 0.8442105</code></pre>
@@ -586,7 +587,8 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 <p>But this doesn't match what R has returned!! Why not? Because an even better estimate of the &quot;residual&quot; variation is the pooled estimate of the residual variation, where we use not only the residual variation within the Station=0 group, but within each of the Stations. R returned this value above: &quot;Residual standard error:0.6274&quot;. Using this value, we calculate</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.6274</span>/<span class="kw">sqrt</span>(<span class="kw">length</span>(Mercury[Station==<span class="st">&quot;0&quot;</span>]))</code></pre></div>
 <pre><code>## [1] 0.1984013</code></pre>
-<p>Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. <strong><span style="color: green;">Checkpoint #2: Does this make sense?</span></strong> Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.</p>
+<p>Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. <strong><span style="color: green;">Checkpoint #3: Does this make sense?</span></strong> Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.</p>
+<p><strong><span style="color: green;">Checkpoint #4: Each of you should have your own estimate for mercury at Station0. Calculate the standard deviation of your group's estimates. Is this at least approximately equal to the standard error of the estimate?</span></strong></p>
 <div id="contrasts" class="section level2">
 <h2><span class="header-section-number">15.1</span> Contrasts</h2>
 <p>In lecture on Tuesday we discussed several other contrasts. Let's start with the Helmhert contrast.</p>
@@ -732,7 +734,7 @@ group.means</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">group.means[<span class="dv">2</span>]-<span class="kw">mean</span>(group.means)</code></pre></div>
 <pre><code>##   Station1 
 ## -0.3742987</code></pre>
-<p>and so forth. <strong><span style="color: green;">Checkpoint #3: Do you understand how to obtain the sum-to-zero parameter estimates and what they mean in terms of this dataset?</span></strong></p>
+<p>and so forth. <strong><span style="color: green;">Checkpoint #5: Do you understand how to obtain the sum-to-zero parameter estimates and what they mean in terms of this dataset?</span></strong></p>
 <p>Polynomial contrasts can be done using</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contrasts</span>(Station)&lt;-<span class="st">&quot;contr.poly&quot;</span>
 <span class="kw">contr.poly</span>(<span class="dv">15</span>)</code></pre></div>

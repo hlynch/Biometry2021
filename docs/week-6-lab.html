@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-23" />
+<meta name="date" content="2021-03-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,32 +408,32 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]       [,7]
-##  [1,]   NA 0.6700999 0.3868067 0.5164564 0.1824161 0.9059750 0.13895652
-##  [2,]   NA        NA 0.2672930 0.3566061 0.1324032 0.7287641 0.12048924
-##  [3,]   NA        NA        NA 0.9042032 0.5542124 0.3159423 0.71118660
-##  [4,]   NA        NA        NA        NA 0.5125789 0.4464177 0.64503116
-##  [5,]   NA        NA        NA        NA        NA 0.1475412 0.70600458
-##  [6,]   NA        NA        NA        NA        NA        NA 0.08786991
-##  [7,]   NA        NA        NA        NA        NA        NA         NA
-##  [8,]   NA        NA        NA        NA        NA        NA         NA
-##  [9,]   NA        NA        NA        NA        NA        NA         NA
-## [10,]   NA        NA        NA        NA        NA        NA         NA
-##             [,8]       [,9]      [,10]
-##  [1,] 0.40464564 0.85871035 0.71536306
-##  [2,] 0.77232749 0.77172091 0.90352838
-##  [3,] 0.12241814 0.30058390 0.24414603
-##  [4,] 0.19658015 0.42509536 0.35326846
-##  [5,] 0.06026985 0.14114562 0.11605724
-##  [6,] 0.44543225 0.94671763 0.78829943
-##  [7,] 0.03135617 0.08808162 0.07342338
-##  [8,]         NA 0.49177128 0.63260285
-##  [9,]         NA         NA 0.84147725
-## [10,]         NA         NA         NA</code></pre>
+<pre><code>##       [,1]      [,2]      [,3]       [,4]      [,5]      [,6]      [,7]
+##  [1,]   NA 0.3409058 0.6445162 0.19253712 0.8777781 0.7093718 0.9032732
+##  [2,]   NA        NA 0.6662958 0.07649484 0.3681016 0.6643270 0.4648202
+##  [3,]   NA        NA        NA 0.14830469 0.6201594 0.9730745 0.7675865
+##  [4,]   NA        NA        NA         NA 0.3166721 0.1824301 0.2138004
+##  [5,]   NA        NA        NA         NA        NA 0.6690177 0.8210520
+##  [6,]   NA        NA        NA         NA        NA        NA 0.8124014
+##  [7,]   NA        NA        NA         NA        NA        NA        NA
+##  [8,]   NA        NA        NA         NA        NA        NA        NA
+##  [9,]   NA        NA        NA         NA        NA        NA        NA
+## [10,]   NA        NA        NA         NA        NA        NA        NA
+##            [,8]       [,9]       [,10]
+##  [1,] 0.6910762 0.03026196 0.051262891
+##  [2,] 0.5947222 0.01862010 0.418668140
+##  [3,] 0.9342165 0.04285557 0.206281269
+##  [4,] 0.1514937 0.79552335 0.014093449
+##  [5,] 0.6595325 0.13489072 0.088079928
+##  [6,] 0.9676164 0.06955537 0.229221956
+##  [7,] 0.8206926 0.06559597 0.111218852
+##  [8,]        NA 0.03739807 0.158746215
+##  [9,]        NA         NA 0.001549432
+## [10,]        NA         NA          NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 6</code></pre>
 <p>We could correct this using the Bonferonni method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">45</span>
 new.threshold.B&lt;-<span class="fl">0.05</span>/k
@@ -474,10 +474,10 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
 <pre><code>##          5% 
-## 0.001405672</code></pre>
+## 0.001604466</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
-<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 1</code></pre>
 <p>If you were to do this experiment (all of the code in the preceding clock) 100 times, you should get at least 1 false positive 5 times, since we have set the threshold such that we have a 5% chance that the smallest p-value in that set of 45 comparisons will be smaller than the threshold we set.</p>
 
 </div>

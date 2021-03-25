@@ -70,6 +70,9 @@ mean(Mercury[Station=="0"])
 
 (We have to use quotes now, because the variable "Station" is a factor, which means the levels are now identified by names (characters) which must be put in quotes.)
 
+
+**<span style="color: green;">Checkpoint #2: Do you understand what the intercept of fit2 means? Can you predict what the value for as.factor(Station)1 means?</span>**
+
 We can also convince ourselves of the other model estimates using
 
 ```{r}
@@ -152,7 +155,9 @@ But this doesn't match what R has returned!! Why not? Because an even better est
 0.6274/sqrt(length(Mercury[Station=="0"]))
 ```
 
-Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. **<span style="color: green;">Checkpoint #2: Does this make sense?</span>** Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.
+Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. **<span style="color: green;">Checkpoint #3: Does this make sense?</span>** Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.
+
+**<span style="color: green;">Checkpoint #4: Each of you should have your own estimate for mercury at Station0. Calculate the standard deviation of your group's estimates. Is this at least approximately equal to the standard error of the estimate?</span>**
 
 ##Contrasts
 In lecture on Tuesday we discussed several other contrasts. Let's start with the Helmhert contrast. 
@@ -231,7 +236,7 @@ group.means[1]-mean(group.means)
 group.means[2]-mean(group.means)
 ```
 
-and so forth. **<span style="color: green;">Checkpoint #3: Do you understand how to obtain the sum-to-zero parameter estimates and what they mean in terms of this dataset?</span>**
+and so forth. **<span style="color: green;">Checkpoint #5: Do you understand how to obtain the sum-to-zero parameter estimates and what they mean in terms of this dataset?</span>**
 
 Polynomial contrasts can be done using
 
