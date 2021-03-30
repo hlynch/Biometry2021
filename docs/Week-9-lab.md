@@ -428,7 +428,7 @@ R2
 ## [1] 0.8114608
 ```
 
-R also produces an "adjusted R2", which attempts to account for the number of parameters being estimated, and provides one way of comparing goodness of fit between models with different numbers of parameters. It is defined as
+**<span style="color: green;">Checkpoint #2: Were you able to reproduce all of the output from cor.test covered so far?</span>** R also produces an "adjusted R2", which attempts to account for the number of parameters being estimated, and provides one way of comparing goodness of fit between models with different numbers of parameters. It is defined as
 
 $$
 R^{2}_{adj} = 1-(1-R^{2})\left(\frac{n-1}{n-p-1}\right)
@@ -465,6 +465,8 @@ lines(newdata[,1],prediction.bands[,3],col=3)
 ```
 
 <img src="Week-9-lab_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+
+**<span style="color: green;">Checkpoint #3: Do you understand the difference in interpretation between a confidence interval and a prediction interval? Do you understand why the prediction interval is always wider? </span>**
 
 What do we do if we want to force the intercept through the origin (i.e., set the intercept to zero)?
 
@@ -659,7 +661,7 @@ outliers<-c(which(rownames(Duncan)=="RR.engineer"),which(rownames(Duncan)=="cond
 Duncan.model2<-lm(income[-outliers]~education[-outliers],data=Duncan)
 ```
 
-We see that removing these two professions changes the slope and intercept, as expected. Let's try doing a robust regression now. First, let's remind ourselves that robust regression minimizes some function of the errors.
+We see that removing these two professions changes the slope and intercept, as expected. **<span style="color: green;">Checkpoint #4: Does the change in slope and intercept when you remove those outliers make sense intuitively?</span>** Let's try doing a robust regression now. First, let's remind ourselves that robust regression minimizes some function of the errors.
 
 $$
 \sum^{n}_{i=1}f(Y_{i}-\hat{Y}_{i})
@@ -750,11 +752,11 @@ duncan.boot
 ## 
 ## Bootstrap Statistics :
 ##      original       bias    std. error
-## t1* 6.3002197  0.285287974  4.58089428
-## t2* 0.6615263 -0.005619193  0.07320265
+## t1* 6.3002197  0.345102458  4.58826261
+## t2* 0.6615263 -0.006417631  0.07353725
 ```
 
-Question: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?
+**<span style="color: green;">Checkpoint #5: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?</span>**
 
 ##Type I vs. Type II regression: The 'smatr' package
 

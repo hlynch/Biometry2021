@@ -63,7 +63,7 @@ r = \frac{Cov(A,B)}{\sqrt{Var(A) \times Var(B)}}
 $$
 Pearson's product moment correlation is bounded between -1 and 1. Correlation coefficients of 1 or -1 occur when you set deviations in sample $B$ to be exactly matched in sample $A$. These measures are unitless. 
 
-Let's look at a feew examples...
+Let's look at a few examples...
 
 ```{r fig.width=2.5, fig.height=2.5, echo=FALSE}
 df <- data.frame(x = rnorm(n = 100, mean = 10, sd = 5), y = rnorm(n = 100, mean = 10, sd = 5))
