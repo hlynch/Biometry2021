@@ -345,7 +345,7 @@ Let's start from the beginning with this dataset of the relative length of spide
 
 ```{r, fig.width=3, fig.height=3}
 data(webs)
-ggplot(data = webs, aes(x = 1, y = temp.C)) + geom_point(col = "gray37") + labs(x = "", y = "Relative length of spider webs") + theme_classic() +  theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank(), text = element_text(size = text.size))
+ggplot(data = webs, aes(x = 1, y = length)) + geom_point(col = "gray37") + labs(x = "", y = "Relative length of spider webs") + theme_classic() +  theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank(), text = element_text(size = text.size))
 ```
 
 Next, we fit a model with two parameters, one parameter to describe the mean behavior of the system and one parameter to describe the amount of variation around that mean, e.g., $Y \sim \mathrm{N}(\mu, \sigma^2)$, where we estimate $\mu$ using $\overline{Y}$ (there are two parameters, but only $\mu$ describes the mean). Using this parameter $\mu$, we have explained some of that variation in our data.
@@ -354,7 +354,7 @@ Next, we fit a model with two parameters, one parameter to describe the mean beh
 y.bar <- mean(webs[, 2])
 ggplot(data = webs, aes(x = 0, y = length)) + geom_point(col = "gray37") + 
   geom_hline(aes(yintercept = mean(length)), col = "dodgerblue1") + 
-  annotate('text', x = 0.001, y = y.bar, label = "bar(Y)", parse = TRUE, size = 5, col ="dodgerblue1") +
+  annotate('text', x = 0.01, y = y.bar+0.0001, label = "bar(Y)", parse = TRUE, size = 5, col ="dodgerblue1") +
   labs(x = "", y = "Relative length of spider webs") + theme_classic() +
   theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank(), text = element_text(size = text.size))
 ```
@@ -453,7 +453,35 @@ $$
 
 Try this derivation yourself and then check your work [here](http://seismo.berkeley.edu/~kirchner/eps_120/Toolkits/Toolkit_10.pdf).
 
-###Assumptions of regression:
+##But wait, couldn't we have used maximum likelihood? Yes!
+The explanation provided above is the standard "non-calculus" explanation for how to find the best fit OLS regression line. But we could have found the MLE for slope and intercept using the same methods as were learned before the midterm.
+
+Remember back to the Week 4 lab, the joint likelihood for $n$ i.i.d. Normally distributed data $Y \sim N(\mu,\sigma^{2})$ was given by:
+
+$$
+L(\mu,\sigma|Y_{1},Y_{2},...,Y_{n}) = \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(Y_{i}-\mu)^{2}}{\sigma^{2}}\right)}
+$$
+(Before, we were calling the response variable X, but now we will switch to calling the response variable Y since we will use X for the covariates.) Here we are making one tiny change, we are replacing $\mu$ with $\beta_{0}+\beta_{1}X_{i}$ to fit the model $Y \sim N(\beta_{0}+\beta_{1}X_{i},\sigma^{2})$.
+
+$$
+L(\beta_{0},\beta_{1},\sigma|Y_{1},Y_{2},...,Y_{n}) = \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(Y_{i}-(\beta_{0}+\beta_{1}X_{i}))^{2}}{\sigma^{2}}\right)}
+$$
+
+Great! Now we have a joint likelihood for the new linear regression model, and we can find the MLE for $\beta_{0}$ and $\beta_{1}$ just like we did before, by setting
+
+$$
+\frac{\partial NLL}{\partial \beta_{0}} =0
+$$
+and
+
+$$
+\frac{\partial NLL}{\partial \beta_{1}} =0
+$$
+The values of $\beta_{0}$ and $\beta_{1}$ that satisfy this equation are the maximum likelihood estimators for these two parameters.
+
+We will use this approach (writing down the joint likelihood and then minimizing with respect to the parameters) when we come to generalized linear models in another week.
+
+##Assumptions of regression:
 
 $$
 Y_{i} = \beta_{0}+\beta_{1}X_{i} + \epsilon_{i} \mbox{, where } \epsilon_{i} \sim N(0,\sigma^{2})
@@ -594,6 +622,36 @@ ggplot(data = webs, aes(x = temp.C, y = length)) + geom_point(col = "gray37") +
 
 Remember: Confidence intervals represent our uncertainty about where the line should be (the mean behavior). Prediction intervals represent our certainty about the predicted values you could expect (the mean behavior + the variance).
 
+We can confirm the interpretation of the confidence interval by bootstrapping our data and refitting a line each time.
+
+```{r warning=FALSE, fig.width=6, fig.height=5}
+webs$CIl <- predict(web.fit, interval = "confidence")[, 2]
+webs$CIu <- predict(web.fit, interval = "confidence")[, 3]
+webs$PIl <- predict(web.fit, interval = "prediction")[, 2]
+webs$PIu <- predict(web.fit, interval = "prediction")[, 3]
+p<-ggplot(data = webs, aes(x = temp.C, y = length)) + geom_point(col = "gray37") + 
+    geom_line(aes(x = temp.C, y = CIl), linetype = "dashed", col = "dodgerblue1") +
+    geom_line(aes(x = temp.C, y = CIu), linetype = "dashed", col = "dodgerblue1") +
+    geom_line(aes(x = temp.C, y = PIl), linetype = "dotted", col = "slateblue1") +
+    geom_line(aes(x = temp.C, y = PIu), linetype = "dotted", col = "slateblue1") +
+    labs(x = "Temperature (in C)", y = "Relative length of spider webs") + theme_classic() + theme(text = element_text(size = text.size))
+for (i in 1:100)
+{
+  selection<-sample(1:nrow(webs),replace=T)
+  webs.bootstrapped<-webs[selection,]
+  web.fit.new <- lm(formula = length ~ temp.C, data = webs.bootstrapped)
+  p<-p+geom_abline(intercept = web.fit.new$coefficients[1], slope = web.fit.new$coefficients[2], col = "palegreen1")
+}
+p<-p+ geom_line(aes(x = temp.C, y = CIl), linetype = "dashed", col = "dodgerblue1") +
+  geom_line(aes(x = temp.C, y = CIu), linetype = "dashed", col = "dodgerblue1")  +
+  geom_line(aes(x = temp.C, y = PIl), linetype = "dotted", col = "slateblue1") +
+  geom_line(aes(x = temp.C, y = PIu), linetype = "dotted", col = "slateblue1") 
+plot(p)
+```
+
+Notice that the confidence intervals "capture" the range of possible regression lines created by fitting a linear model to the bootstrapped datasets (each "playing the role"" of a re-do of the original data collection.)
+
+
 **Question: Why are confidence and prediction intervals "bow-tie" shaped, i.e. wider further away from the middle of the line?**
 
 <details>
@@ -687,7 +745,6 @@ Standardized major axis regression standardizes each variable by its own varianc
 
 When is MA and SMA used? (1) In tests of isometry, allometry, stoichiometry (is the relationship between X and Y 1? Is the ratio of C:N 1?), (2) Testing if two methods of measurement agree.
 
-Download Warton et al. 2006 "Bivariate line-fitting methods for allometry" on Blackboard and save in case you need to use this method in the future.
 
 
 

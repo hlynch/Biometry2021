@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-29" />
+<meta name="date" content="2021-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -230,14 +230,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="16.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>16.1</b> Correlation</a></li>
 <li class="chapter" data-level="16.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#hypothesis-testing---pearsons-r"><i class="fa fa-check"></i><b>16.2</b> Hypothesis testing - Pearson's <em>r</em></a></li>
 <li class="chapter" data-level="16.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#fishers-z"><i class="fa fa-check"></i><b>16.3</b> Fisher's <span class="math inline">\(z\)</span></a></li>
-<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.4</b> Regression</a><ul>
-<li class="chapter" data-level="16.4.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#assumptions-of-regression"><i class="fa fa-check"></i><b>16.4.1</b> Assumptions of regression:</a></li>
-</ul></li>
-<li class="chapter" data-level="16.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#confidence-vs.-prediction-intervals"><i class="fa fa-check"></i><b>16.5</b> Confidence vs. Prediction intervals</a></li>
-<li class="chapter" data-level="16.6" data-path="week-9-lecture.html"><a href="week-9-lecture.html#how-do-we-know-if-our-model-is-any-good"><i class="fa fa-check"></i><b>16.6</b> How do we know if our model is any good?</a></li>
-<li class="chapter" data-level="16.7" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>16.7</b> Robust regression</a></li>
-<li class="chapter" data-level="16.8" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression-1"><i class="fa fa-check"></i><b>16.8</b> Robust regression</a></li>
-<li class="chapter" data-level="16.9" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.9</b> Type I and Type II Regression</a></li>
+<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.4</b> Regression</a></li>
+<li class="chapter" data-level="16.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#but-wait-couldnt-we-have-used-maximum-likelihood-yes"><i class="fa fa-check"></i><b>16.5</b> But wait, couldn't we have used maximum likelihood? Yes!</a></li>
+<li class="chapter" data-level="16.6" data-path="week-9-lecture.html"><a href="week-9-lecture.html#assumptions-of-regression"><i class="fa fa-check"></i><b>16.6</b> Assumptions of regression:</a></li>
+<li class="chapter" data-level="16.7" data-path="week-9-lecture.html"><a href="week-9-lecture.html#confidence-vs.-prediction-intervals"><i class="fa fa-check"></i><b>16.7</b> Confidence vs. Prediction intervals</a></li>
+<li class="chapter" data-level="16.8" data-path="week-9-lecture.html"><a href="week-9-lecture.html#how-do-we-know-if-our-model-is-any-good"><i class="fa fa-check"></i><b>16.8</b> How do we know if our model is any good?</a></li>
+<li class="chapter" data-level="16.9" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>16.9</b> Robust regression</a></li>
+<li class="chapter" data-level="16.10" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression-1"><i class="fa fa-check"></i><b>16.10</b> Robust regression</a></li>
+<li class="chapter" data-level="16.11" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.11</b> Type I and Type II Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>17</b> Week 9 Lab</a><ul>
 <li class="chapter" data-level="17.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>17.1</b> Correlation</a></li>
@@ -430,9 +430,9 @@ r = \frac{Cov(A,B)}{\sqrt{Var(A) \times Var(B)}}
 \]</span> Pearson's product moment correlation is bounded between -1 and 1. Correlation coefficients of 1 or -1 occur when you set deviations in sample <span class="math inline">\(B\)</span> to be exactly matched in sample <span class="math inline">\(A\)</span>. These measures are unitless.</p>
 <p>Let's look at a few examples...</p>
 <p><img src="Week-9-lecture_files/figure-html/unnamed-chunk-4-1.png" width="240" /></p>
-<pre><code>## [1] -0.05808509</code></pre>
+<pre><code>## [1] 0.008919323</code></pre>
 <p><img src="Week-9-lecture_files/figure-html/unnamed-chunk-4-2.png" width="240" /></p>
-<pre><code>## [1] 0.9231245</code></pre>
+<pre><code>## [1] 0.9189584</code></pre>
 </div>
 <div id="hypothesis-testing---pearsons-r" class="section level2">
 <h2><span class="header-section-number">16.2</span> Hypothesis testing - Pearson's <em>r</em></h2>
@@ -477,7 +477,7 @@ df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class=
 <span class="kw">ggplot</span>(<span class="dt">data =</span> df, <span class="kw">aes</span>(<span class="dt">x =</span> A, <span class="dt">y =</span> B)) +<span class="st"> </span><span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">theme_classic</span>() +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> text.size))</code></pre></div>
 <p><img src="Week-9-lecture_files/figure-html/unnamed-chunk-5-1.png" width="288" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df$A, df$B)</code></pre></div>
-<pre><code>## [1] 0.1233909</code></pre>
+<pre><code>## [1] 0.2401323</code></pre>
 <p>Even though <em>A</em> and <em>B</em> clearly have a strong relationship, correlation is only effective if the relationship is <strong>linear</strong>.</p>
 <p>Other considerations:</p>
 <p>What if the data are not bivariate normal? If sample size is large, you're probably okay.</p>
@@ -496,7 +496,7 @@ for (i in <span class="dv">1</span>:iterations) {
   cor.boot[i] &lt;-<span class="st"> </span><span class="kw">cor</span>(<span class="dt">x =</span> dat.boot$A, <span class="dt">y =</span> dat.boot$B)
 }
 <span class="kw">paste</span>(<span class="st">&quot;The 95% confidence interval for the estimated correlation coefficient, &quot;</span>, <span class="kw">round</span>(cor.obs, <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot; is (&quot;</span>, <span class="kw">round</span>(<span class="kw">quantile</span>(cor.boot, <span class="fl">0.025</span>), <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;, &quot;</span>, <span class="kw">round</span>(<span class="kw">quantile</span>(cor.boot, <span class="fl">0.975</span>), <span class="dt">digits =</span> <span class="dv">3</span>), <span class="st">&quot;)&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
-<pre><code>## [1] &quot;The 95% confidence interval for the estimated correlation coefficient, 0.864 is (0.805, 0.909)&quot;</code></pre>
+<pre><code>## [1] &quot;The 95% confidence interval for the estimated correlation coefficient, 0.9 is (0.857, 0.929)&quot;</code></pre>
 <p></span> </details></p>
 <p><strong>Question: How would we conduct a permutation test for the correlation coefficient (with <span class="math inline">\(H_0: \rho = 0\)</span>)?</strong></p>
 <p><details> <summary>Click for Answer</summary> <span style="color: blueviolet;"> Shuffle <em>A</em> independently of <em>B</em> and calculate the correlation of the shuffled data to create a null distribution of correlations. Compare the observed correlation to this distribution. </span> </details></p>
@@ -521,11 +521,11 @@ r.obs &lt;-<span class="st"> </span><span class="kw">cor</span>(A, B)
 <span class="co"># using z as test statistic</span>
 z.obs &lt;-<span class="st"> </span><span class="fl">0.5</span> *<span class="st"> </span><span class="kw">log</span>((<span class="dv">1</span> +<span class="st"> </span>r.obs) /<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>r.obs)) <span class="co"># note that z under the null distribution is 0</span>
 <span class="kw">pnorm</span>(<span class="dt">q =</span> z.obs, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(<span class="dv">1</span> /<span class="st"> </span>(<span class="dv">100</span> -<span class="st"> </span><span class="dv">3</span>)), <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<pre><code>## [1] 2.740662e-49</code></pre>
+<pre><code>## [1] 1.289857e-42</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># using transformed test statistic, T*</span>
 test.stat &lt;-<span class="st"> </span>z.obs /<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span> /<span class="st"> </span>(<span class="dv">100</span> -<span class="st"> </span><span class="dv">3</span>))
 <span class="kw">pnorm</span>(<span class="dt">q =</span> test.stat, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<pre><code>## [1] 2.740662e-49</code></pre>
+<pre><code>## [1] 1.289857e-42</code></pre>
 <p>To simply the notation, let us define</p>
 <p><span class="math display">\[
 \zeta_{0} = \frac{1}{2}ln\left(\frac{1+\rho_{0}}{1-\rho_{0}}\right)
@@ -638,13 +638,13 @@ Y_{i} = \beta_{0}+\beta_{1}X_{i} + \epsilon_{i} \mbox{, where } \epsilon_{i} \si
 </div>
 <p>To determine how to specifically fit slope and intercept parameters, we need to talk about partitioning variance (a goal of modeling in general, and a major part of ANOVA). When modeling, variation is either explained or unexplained. Let's start from the beginning with this dataset of the relative length of spider webs. Of course, our data are not all exactly the same value, there is some variation:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(webs)
-<span class="kw">ggplot</span>(<span class="dt">data =</span> webs, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> temp.C)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">col =</span> <span class="st">&quot;gray37&quot;</span>) +<span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Relative length of spider webs&quot;</span>) +<span class="st"> </span><span class="kw">theme_classic</span>() +<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.x =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.ticks.x =</span> <span class="kw">element_blank</span>(), <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> text.size))</code></pre></div>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> webs, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> length)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">col =</span> <span class="st">&quot;gray37&quot;</span>) +<span class="st"> </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Relative length of spider webs&quot;</span>) +<span class="st"> </span><span class="kw">theme_classic</span>() +<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.x =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.ticks.x =</span> <span class="kw">element_blank</span>(), <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> text.size))</code></pre></div>
 <p><img src="Week-9-lecture_files/figure-html/unnamed-chunk-11-1.png" width="288" /></p>
 <p>Next, we fit a model with two parameters, one parameter to describe the mean behavior of the system and one parameter to describe the amount of variation around that mean, e.g., <span class="math inline">\(Y \sim \mathrm{N}(\mu, \sigma^2)\)</span>, where we estimate <span class="math inline">\(\mu\)</span> using <span class="math inline">\(\overline{Y}\)</span> (there are two parameters, but only <span class="math inline">\(\mu\)</span> describes the mean). Using this parameter <span class="math inline">\(\mu\)</span>, we have explained some of that variation in our data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y.bar &lt;-<span class="st"> </span><span class="kw">mean</span>(webs[, <span class="dv">2</span>])
 <span class="kw">ggplot</span>(<span class="dt">data =</span> webs, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> length)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">col =</span> <span class="st">&quot;gray37&quot;</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_hline</span>(<span class="kw">aes</span>(<span class="dt">yintercept =</span> <span class="kw">mean</span>(length)), <span class="dt">col =</span> <span class="st">&quot;dodgerblue1&quot;</span>) +<span class="st"> </span>
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;text&#39;</span>, <span class="dt">x =</span> <span class="fl">0.001</span>, <span class="dt">y =</span> y.bar, <span class="dt">label =</span> <span class="st">&quot;bar(Y)&quot;</span>, <span class="dt">parse =</span> <span class="ot">TRUE</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">col =</span><span class="st">&quot;dodgerblue1&quot;</span>) +
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&#39;text&#39;</span>, <span class="dt">x =</span> <span class="fl">0.01</span>, <span class="dt">y =</span> y.bar<span class="fl">+0.0001</span>, <span class="dt">label =</span> <span class="st">&quot;bar(Y)&quot;</span>, <span class="dt">parse =</span> <span class="ot">TRUE</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">col =</span><span class="st">&quot;dodgerblue1&quot;</span>) +
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Relative length of spider webs&quot;</span>) +<span class="st"> </span><span class="kw">theme_classic</span>() +
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.x =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>(), <span class="dt">axis.ticks.x =</span> <span class="kw">element_blank</span>(), <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> text.size))</code></pre></div>
 <p><img src="Week-9-lecture_files/figure-html/unnamed-chunk-12-1.png" width="288" /></p>
@@ -704,8 +704,28 @@ y.i.hat &lt;-<span class="st"> </span>web.fit$coefficients[<span class="dv">1</s
 \hat{\beta_1} = \frac{\sum_{i = 1}^n (X_i - \bar{X})(Y_i - \bar{Y})}{\sum_{i = 1}^n (X_i - \bar{X})^2}
 \]</span></p>
 <p>Try this derivation yourself and then check your work <a href="http://seismo.berkeley.edu/~kirchner/eps_120/Toolkits/Toolkit_10.pdf">here</a>.</p>
-<div id="assumptions-of-regression" class="section level3">
-<h3><span class="header-section-number">16.4.1</span> Assumptions of regression:</h3>
+</div>
+<div id="but-wait-couldnt-we-have-used-maximum-likelihood-yes" class="section level2">
+<h2><span class="header-section-number">16.5</span> But wait, couldn't we have used maximum likelihood? Yes!</h2>
+<p>The explanation provided above is the standard &quot;non-calculus&quot; explanation for how to find the best fit OLS regression line. But we could have found the MLE for slope and intercept using the same methods as were learned before the midterm.</p>
+<p>Remember back to the Week 4 lab, the joint likelihood for <span class="math inline">\(n\)</span> i.i.d. Normally distributed data <span class="math inline">\(Y \sim N(\mu,\sigma^{2})\)</span> was given by:</p>
+<p><span class="math display">\[
+L(\mu,\sigma|Y_{1},Y_{2},...,Y_{n}) = \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(Y_{i}-\mu)^{2}}{\sigma^{2}}\right)}
+\]</span> (Before, we were calling the response variable X, but now we will switch to calling the response variable Y since we will use X for the covariates.) Here we are making one tiny change, we are replacing <span class="math inline">\(\mu\)</span> with <span class="math inline">\(\beta_{0}+\beta_{1}X_{i}\)</span> to fit the model <span class="math inline">\(Y \sim N(\beta_{0}+\beta_{1}X_{i},\sigma^{2})\)</span>.</p>
+<p><span class="math display">\[
+L(\beta_{0},\beta_{1},\sigma|Y_{1},Y_{2},...,Y_{n}) = \prod^{n}_{i=1}\frac{1}{\sqrt{2\pi\sigma^{2}}} \exp{\left(-\frac{1}{2}\frac{(Y_{i}-(\beta_{0}+\beta_{1}X_{i}))^{2}}{\sigma^{2}}\right)}
+\]</span></p>
+<p>Great! Now we have a joint likelihood for the new linear regression model, and we can find the MLE for <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> just like we did before, by setting</p>
+<p><span class="math display">\[
+\frac{\partial NLL}{\partial \beta_{0}} =0
+\]</span> and</p>
+<p><span class="math display">\[
+\frac{\partial NLL}{\partial \beta_{1}} =0
+\]</span> The values of <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> that satisfy this equation are the maximum likelihood estimators for these two parameters.</p>
+<p>We will use this approach (writing down the joint likelihood and then minimizing with respect to the parameters) when we come to generalized linear models in another week.</p>
+</div>
+<div id="assumptions-of-regression" class="section level2">
+<h2><span class="header-section-number">16.6</span> Assumptions of regression:</h2>
 <p><span class="math display">\[
 Y_{i} = \beta_{0}+\beta_{1}X_{i} + \epsilon_{i} \mbox{, where } \epsilon_{i} \sim N(0,\sigma^{2})
 \]</span></p>
@@ -753,9 +773,8 @@ P {\left( \hat{\beta_1 } - t_{(1 - \frac{\alpha}{2}) [n - p]} \text{SE}_{\hat{\b
 <p><details> <summary>Click for Answer</summary> <span style="color: blueviolet;"> The standard deviation of an estimated parameter (here, <span class="math inline">\(\hat{\beta}_1\)</span>) is equal to the standard error of the parameter. </span> </details></p>
 <p>Our model allows us to make a prediction about the response expected for any given value of X, which may be a value of X in the original dataset or it may be a value of X <strong>not</strong> in the original dataset. (The model is only valid for X values contained within the range of the original data; more on this later.) We will refer to a new X value as <span class="math inline">\(X^{*}\)</span> and the corresponding estimates for Y as <span class="math inline">\(\hat{Y}\)</span>. Don't forget that the fitted <span class="math inline">\(\hat{Y}\)</span> values are also estimated quantities, and as such come with uncertainty (i.e. standard errors and confidence intervals). It turns out there are really two ways to express “confidence”: one of which we call a &quot;confidence interval&quot;, the other we call a &quot;prediction interval&quot;.</p>
 </div>
-</div>
 <div id="confidence-vs.-prediction-intervals" class="section level2">
-<h2><span class="header-section-number">16.5</span> Confidence vs. Prediction intervals</h2>
+<h2><span class="header-section-number">16.7</span> Confidence vs. Prediction intervals</h2>
 <p>One way is to ask about variability in our predicted values is: “What are the 1-<span class="math inline">\(\alpha\)</span> confidence intervals on the <strong>mean</strong> value of Y given <span class="math inline">\(X^{*}\)</span>”? Equivalently, confidence intervals for <span class="math inline">\(\hat{Y}\)</span> mean, &quot;there is a 95% chance that my 95th percentile CIs include the true underlying population parameter value, which is the <strong>mean value</strong> of <span class="math inline">\(\hat{Y}\)</span> (<span class="math inline">\(\mathrm{E}[Y|X^{*}]\)</span>).&quot;</p>
 <p>We calculate the CIs using</p>
 <p><span class="math display">\[
@@ -782,11 +801,36 @@ webs$PIu &lt;-<span class="st"> </span><span class="kw">predict</span>(web.fit, 
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature (in C)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Relative length of spider webs&quot;</span>) +<span class="st"> </span><span class="kw">theme_classic</span>() +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> text.size))</code></pre></div>
 <p><img src="Week-9-lecture_files/figure-html/unnamed-chunk-16-1.png" width="576" /></p>
 <p>Remember: Confidence intervals represent our uncertainty about where the line should be (the mean behavior). Prediction intervals represent our certainty about the predicted values you could expect (the mean behavior + the variance).</p>
+<p>We can confirm the interpretation of the confidence interval by bootstrapping our data and refitting a line each time.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">webs$CIl &lt;-<span class="st"> </span><span class="kw">predict</span>(web.fit, <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)[, <span class="dv">2</span>]
+webs$CIu &lt;-<span class="st"> </span><span class="kw">predict</span>(web.fit, <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)[, <span class="dv">3</span>]
+webs$PIl &lt;-<span class="st"> </span><span class="kw">predict</span>(web.fit, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)[, <span class="dv">2</span>]
+webs$PIu &lt;-<span class="st"> </span><span class="kw">predict</span>(web.fit, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)[, <span class="dv">3</span>]
+p&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> webs, <span class="kw">aes</span>(<span class="dt">x =</span> temp.C, <span class="dt">y =</span> length)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">col =</span> <span class="st">&quot;gray37&quot;</span>) +<span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temp.C, <span class="dt">y =</span> CIl), <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;dodgerblue1&quot;</span>) +
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temp.C, <span class="dt">y =</span> CIu), <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;dodgerblue1&quot;</span>) +
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temp.C, <span class="dt">y =</span> PIl), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;slateblue1&quot;</span>) +
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temp.C, <span class="dt">y =</span> PIu), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;slateblue1&quot;</span>) +
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Temperature (in C)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Relative length of spider webs&quot;</span>) +<span class="st"> </span><span class="kw">theme_classic</span>() +<span class="st"> </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> text.size))
+for (i in <span class="dv">1</span>:<span class="dv">100</span>)
+{
+  selection&lt;-<span class="kw">sample</span>(<span class="dv">1</span>:<span class="kw">nrow</span>(webs),<span class="dt">replace=</span>T)
+  webs.bootstrapped&lt;-webs[selection,]
+  web.fit.new &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> length ~<span class="st"> </span>temp.C, <span class="dt">data =</span> webs.bootstrapped)
+  p&lt;-p+<span class="kw">geom_abline</span>(<span class="dt">intercept =</span> web.fit.new$coefficients[<span class="dv">1</span>], <span class="dt">slope =</span> web.fit.new$coefficients[<span class="dv">2</span>], <span class="dt">col =</span> <span class="st">&quot;palegreen1&quot;</span>)
+}
+p&lt;-p+<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temp.C, <span class="dt">y =</span> CIl), <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;dodgerblue1&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temp.C, <span class="dt">y =</span> CIu), <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;dodgerblue1&quot;</span>)  +
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temp.C, <span class="dt">y =</span> PIl), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;slateblue1&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> temp.C, <span class="dt">y =</span> PIu), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;slateblue1&quot;</span>) 
+<span class="kw">plot</span>(p)</code></pre></div>
+<p><img src="Week-9-lecture_files/figure-html/unnamed-chunk-17-1.png" width="576" /></p>
+<p>Notice that the confidence intervals &quot;capture&quot; the range of possible regression lines created by fitting a linear model to the bootstrapped datasets (each &quot;playing the role&quot;&quot; of a re-do of the original data collection.)</p>
 <p><strong>Question: Why are confidence and prediction intervals &quot;bow-tie&quot; shaped, i.e. wider further away from the middle of the line?</strong></p>
 <p><details> <summary>Click for Answer</summary> <span style="color: blueviolet;"> Mathematically, the squared deviation from <span class="math inline">\(\bar{X}\)</span> is greater as you move away from <span class="math inline">\(\bar{X}\)</span>, which increases <span class="math inline">\(\text{SE}_{\hat{Y}}\)</span>. Intuitively, we can think about it this way: Because the best fitting line <em>has</em> to go through (<span class="math inline">\(\bar{X},\bar{Y}\)</span>), the confidence interval is narrowest at this point. Away from (<span class="math inline">\(\bar{X},\bar{Y}\)</span>), we have the additional uncertainty about what the slope should be moving away from (<span class="math inline">\(\bar{X},\bar{Y}\)</span>), and so the intervals &quot;grow&quot; as you move away from this point. </span> </details></p>
 </div>
 <div id="how-do-we-know-if-our-model-is-any-good" class="section level2">
-<h2><span class="header-section-number">16.6</span> How do we know if our model is any good?</h2>
+<h2><span class="header-section-number">16.8</span> How do we know if our model is any good?</h2>
 <p>Earlier we determined that we fit our regression by minimizing the sum of squares error (SSE). However, SSE depends on the units of the dependent variable, so that doesn't help us decide if the model fits &quot;well&quot; (e.g., the model could be a best fit line, but still not very good). However, we can use the total variation, partitioned into 1) the explained variation in the regression, SSR, and 2) the unexplained residual variance, SSE, to create a useful metric of model fit.</p>
 <p><span class="math display">\[
 \sum_{i = 1}^n (Y_i - \bar{Y})^2 = \sum_{i = 1}^n (\hat{Y_i} - \bar{Y})^2 + \sum_{i = 1}^n (Y_i - \hat{Y}_i)^2
@@ -804,7 +848,7 @@ R^2 = \frac{\text{SSR}}{\text{SST}}
 </ol>
 </div>
 <div id="robust-regression" class="section level2">
-<h2><span class="header-section-number">16.7</span> Robust regression</h2>
+<h2><span class="header-section-number">16.9</span> Robust regression</h2>
 <p>Ordinary Least Squares regression as defined above is fairly sensitive to outliers, which can be seen in the definition of SSE:</p>
 <p><span class="math display">\[
 SSE = \sum_{i=1}^{n}(Y_{i}-\hat{Y_{i}})^{2}
@@ -818,7 +862,7 @@ SSE = \sum_{i=1}^{n}(Y_{i}-\hat{Y_{i}})^{2}
 <p>We won't get into the mathematics, because they are complex (another benefit of least squares is simpler math) but it's an avenue you may use in the future and is good to know about.</p>
 </div>
 <div id="robust-regression-1" class="section level2">
-<h2><span class="header-section-number">16.8</span> Robust regression</h2>
+<h2><span class="header-section-number">16.10</span> Robust regression</h2>
 <p>Sometimes the relationship between X and Y is not linear and cannot be made linear using a transformation of the variables. In this case, you can carry out a non-parametric test for regression. Here we will discuss Kendall’s robust line fitting method.</p>
 <p>Step 1 – Order the x and y values in order of increasing <span class="math inline">\(X\)</span> value Step 2 – Compute the slope between every pair of <span class="math inline">\(X\)</span> values</p>
 <p><span class="math display">\[
@@ -832,13 +876,12 @@ SSE = \sum_{i=1}^{n}(Y_{i}-\hat{Y_{i}})^{2}
 <p><details> <summary>Click for Answer</summary> <span style="color: blueviolet;">Use Kendall’s rank correlation test. </span> </details></p>
 </div>
 <div id="type-i-and-type-ii-regression" class="section level2">
-<h2><span class="header-section-number">16.9</span> Type I and Type II Regression</h2>
+<h2><span class="header-section-number">16.11</span> Type I and Type II Regression</h2>
 <p>We have only discussed Type I regression up to this point. With Type I regression, we use <span class="math inline">\(X\)</span> to predict <span class="math inline">\(Y\)</span>, and have only minimized the error in <span class="math inline">\(Y\)</span>. This means that we have assumed that there is no error in <span class="math inline">\(X\)</span> (<span class="math inline">\(X\)</span> is fixed and not random).</p>
 <p>However, in many cases there could be error in <span class="math inline">\(X\)</span>. <strong>Major axis regression</strong> and <strong>standardized major axis regression</strong> (Type II or Model II regressions) model variance in both the explanatory and response variables. Importantly, however, these methods to not strictly predict <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span>, but rather calculate the major axis of variation in the bivariate dataset <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. This means Type II regression models are not suggested for prediction.</p>
 <p>Major axis regression places equal weight on deviations in the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> directions and minimizes the sum of squared <strong>perpendicular distances</strong> to the best fit line. The major axis regression line is the first principal component from PCA (stay tuned). This requires that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are measured on the same scale, using the same units.</p>
 <p>Standardized major axis regression standardizes each variable by its own variance and then fits a best fit line, so that deviations in <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are weighted accordingly.</p>
 <p>When is MA and SMA used? (1) In tests of isometry, allometry, stoichiometry (is the relationship between X and Y 1? Is the ratio of C:N 1?), (2) Testing if two methods of measurement agree.</p>
-<p>Download Warton et al. 2006 &quot;Bivariate line-fitting methods for allometry&quot; on Blackboard and save in case you need to use this method in the future.</p>
 
 </div>
 </div>

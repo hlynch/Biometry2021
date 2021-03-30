@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-03-29" />
+<meta name="date" content="2021-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -230,14 +230,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="16.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>16.1</b> Correlation</a></li>
 <li class="chapter" data-level="16.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#hypothesis-testing---pearsons-r"><i class="fa fa-check"></i><b>16.2</b> Hypothesis testing - Pearson's <em>r</em></a></li>
 <li class="chapter" data-level="16.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#fishers-z"><i class="fa fa-check"></i><b>16.3</b> Fisher's <span class="math inline">\(z\)</span></a></li>
-<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.4</b> Regression</a><ul>
-<li class="chapter" data-level="16.4.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#assumptions-of-regression"><i class="fa fa-check"></i><b>16.4.1</b> Assumptions of regression:</a></li>
-</ul></li>
-<li class="chapter" data-level="16.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#confidence-vs.-prediction-intervals"><i class="fa fa-check"></i><b>16.5</b> Confidence vs. Prediction intervals</a></li>
-<li class="chapter" data-level="16.6" data-path="week-9-lecture.html"><a href="week-9-lecture.html#how-do-we-know-if-our-model-is-any-good"><i class="fa fa-check"></i><b>16.6</b> How do we know if our model is any good?</a></li>
-<li class="chapter" data-level="16.7" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>16.7</b> Robust regression</a></li>
-<li class="chapter" data-level="16.8" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression-1"><i class="fa fa-check"></i><b>16.8</b> Robust regression</a></li>
-<li class="chapter" data-level="16.9" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.9</b> Type I and Type II Regression</a></li>
+<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.4</b> Regression</a></li>
+<li class="chapter" data-level="16.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#but-wait-couldnt-we-have-used-maximum-likelihood-yes"><i class="fa fa-check"></i><b>16.5</b> But wait, couldn't we have used maximum likelihood? Yes!</a></li>
+<li class="chapter" data-level="16.6" data-path="week-9-lecture.html"><a href="week-9-lecture.html#assumptions-of-regression"><i class="fa fa-check"></i><b>16.6</b> Assumptions of regression:</a></li>
+<li class="chapter" data-level="16.7" data-path="week-9-lecture.html"><a href="week-9-lecture.html#confidence-vs.-prediction-intervals"><i class="fa fa-check"></i><b>16.7</b> Confidence vs. Prediction intervals</a></li>
+<li class="chapter" data-level="16.8" data-path="week-9-lecture.html"><a href="week-9-lecture.html#how-do-we-know-if-our-model-is-any-good"><i class="fa fa-check"></i><b>16.8</b> How do we know if our model is any good?</a></li>
+<li class="chapter" data-level="16.9" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>16.9</b> Robust regression</a></li>
+<li class="chapter" data-level="16.10" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression-1"><i class="fa fa-check"></i><b>16.10</b> Robust regression</a></li>
+<li class="chapter" data-level="16.11" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.11</b> Type I and Type II Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>17</b> Week 9 Lab</a><ul>
 <li class="chapter" data-level="17.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>17.1</b> Correlation</a></li>
@@ -408,28 +408,28 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
-##  [1,]   NA 0.1414373 0.9224964 0.1893285 0.4794002 0.7176761 0.6447766
-##  [2,]   NA        NA 0.1855842 0.9408786 0.6666303 0.4159638 0.5001617
-##  [3,]   NA        NA        NA 0.2265034 0.4769409 0.6884476 0.6239170
-##  [4,]   NA        NA        NA        NA 0.7206135 0.4687791 0.5528135
-##  [5,]   NA        NA        NA        NA        NA 0.7554729 0.8347076
-##  [6,]   NA        NA        NA        NA        NA        NA 0.9222809
-##  [7,]   NA        NA        NA        NA        NA        NA        NA
-##  [8,]   NA        NA        NA        NA        NA        NA        NA
-##  [9,]   NA        NA        NA        NA        NA        NA        NA
-## [10,]   NA        NA        NA        NA        NA        NA        NA
-##              [,8]       [,9]       [,10]
-##  [1,] 0.002355618 0.09501169 0.572234042
-##  [2,] 0.099438572 0.74265458 0.329943232
-##  [3,] 0.010191800 0.12771066 0.574661196
-##  [4,] 0.108585455 0.70335448 0.401571926
-##  [5,] 0.103812984 0.50296359 0.761721240
-##  [6,] 0.042892875 0.29954220 0.946742616
-##  [7,] 0.064497048 0.36814499 0.959387385
-##  [8,]          NA 0.23965728 0.008128268
-##  [9,]          NA         NA 0.220606257
-## [10,]          NA         NA          NA</code></pre>
+<pre><code>##       [,1]      [,2]       [,3]       [,4]       [,5]      [,6]       [,7]
+##  [1,]   NA 0.2351443 0.21919418 0.35441538 0.29099594 0.6919956 0.22066061
+##  [2,]   NA        NA 0.04144855 0.85398316 0.85296040 0.1700612 0.95929155
+##  [3,]   NA        NA         NA 0.07703497 0.04757936 0.5113378 0.03248796
+##  [4,]   NA        NA         NA         NA 0.98882501 0.2545921 0.88501573
+##  [5,]   NA        NA         NA         NA         NA 0.2081806 0.88611576
+##  [6,]   NA        NA         NA         NA         NA        NA 0.16039464
+##  [7,]   NA        NA         NA         NA         NA        NA         NA
+##  [8,]   NA        NA         NA         NA         NA        NA         NA
+##  [9,]   NA        NA         NA         NA         NA        NA         NA
+## [10,]   NA        NA         NA         NA         NA        NA         NA
+##            [,8]       [,9]      [,10]
+##  [1,] 0.9320108 0.09787176 0.48376992
+##  [2,] 0.2486882 0.70898671 0.57909287
+##  [3,] 0.3222344 0.01304954 0.08279924
+##  [4,] 0.3583048 0.58418266 0.73997157
+##  [5,] 0.3056712 0.55976897 0.70171317
+##  [6,] 0.7774176 0.07532086 0.33757301
+##  [7,] 0.2399680 0.65361092 0.59123359
+##  [8,]        NA 0.11546912 0.48522037
+##  [9,]        NA         NA 0.32590006
+## [10,]        NA         NA         NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
@@ -474,7 +474,7 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
 <pre><code>##          5% 
-## 0.001659531</code></pre>
+## 0.001310742</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
 <pre><code>## [1] 0</code></pre>
