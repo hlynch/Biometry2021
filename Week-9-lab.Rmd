@@ -135,7 +135,7 @@ cor.test(Temperature,Year, method="kendall")
 
 Does it make sense why Kendall's tau=1.0?
 
-Now that we have some practice with correlations, let play a game! Each member of your group should visit [this site](http://guessthecorrelation.com/) and play 20 rounds of a single player game. (You will need to make a name to start playing.) **<span style="color: green;">Checkpoint #1: Who had the highest score after 20 rounds?</span>**
+Now that we have some practice with correlations, let play a game! Each member of your group should visit [this site](http://guessthecorrelation.com/) and play 10 rounds of a single player game (each game lasts until you have mis-guessed three times). (You will need to make a name to start playing.) **<span style="color: green;">Checkpoint #1: Who had the highest score after 10 rounds?</span>**
 
 ##Linear modelling
 

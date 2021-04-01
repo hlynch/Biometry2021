@@ -233,7 +233,7 @@ cor.test(Temperature,Year, method="kendall")
 
 Does it make sense why Kendall's tau=1.0?
 
-Now that we have some practice with correlations, let play a game! Each member of your group should visit [this site](http://guessthecorrelation.com/) and play 20 rounds of a single player game. (You will need to make a name to start playing.) **<span style="color: green;">Checkpoint #1: Who had the highest score after 20 rounds?</span>**
+Now that we have some practice with correlations, let play a game! Each member of your group should visit [this site](http://guessthecorrelation.com/) and play 10 rounds of a single player game (each game lasts until you have mis-guessed three times). (You will need to make a name to start playing.) **<span style="color: green;">Checkpoint #1: Who had the highest score after 10 rounds?</span>**
 
 ##Linear modelling
 
@@ -752,8 +752,8 @@ duncan.boot
 ## 
 ## Bootstrap Statistics :
 ##      original       bias    std. error
-## t1* 6.3002197  0.386029989  4.65280992
-## t2* 0.6615263 -0.008967917  0.07574721
+## t1* 6.3002197  0.097696018  4.61888843
+## t2* 0.6615263 -0.003639578  0.07438161
 ```
 
 **<span style="color: green;">Checkpoint #5: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?</span>**
