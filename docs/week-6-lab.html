@@ -408,32 +408,32 @@ for (i in <span class="dv">1</span>:<span class="dv">9</span>)
       }
   }
 p.values</code></pre></div>
-<pre><code>##       [,1]      [,2]       [,3]       [,4]      [,5]      [,6]       [,7]
-##  [1,]   NA 0.0581118 0.09788518 0.90514026 0.2998377 0.5088893 0.01941372
-##  [2,]   NA        NA 0.71322213 0.06173588 0.3391861 0.4284157 0.43339009
-##  [3,]   NA        NA         NA 0.10650367 0.5173788 0.5636554 0.26683383
-##  [4,]   NA        NA         NA         NA 0.3381724 0.5601843 0.01997926
-##  [5,]   NA        NA         NA         NA        NA 0.8965854 0.11922369
-##  [6,]   NA        NA         NA         NA        NA        NA 0.20964765
-##  [7,]   NA        NA         NA         NA        NA        NA         NA
-##  [8,]   NA        NA         NA         NA        NA        NA         NA
-##  [9,]   NA        NA         NA         NA        NA        NA         NA
-## [10,]   NA        NA         NA         NA        NA        NA         NA
-##             [,8]       [,9]      [,10]
-##  [1,] 0.92474510 0.36869921 0.84641486
-##  [2,] 0.05946597 0.24140516 0.06865379
-##  [3,] 0.09709067 0.38858915 0.11870985
-##  [4,] 0.83269516 0.41682777 0.93913249
-##  [5,] 0.27888086 0.85708351 0.37180730
-##  [6,] 0.47256191 0.99724678 0.59667931
-##  [7,] 0.02072630 0.07944002 0.02205608
-##  [8,]         NA 0.34088106 0.77718813
-##  [9,]         NA         NA 0.45722745
-## [10,]         NA         NA         NA</code></pre>
+<pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
+##  [1,]   NA 0.7904805 0.8803457 0.9844886 0.6478355 0.8844258 0.8629048
+##  [2,]   NA        NA 0.6632249 0.7427206 0.4492750 0.9116853 0.6082454
+##  [3,]   NA        NA        NA 0.8793271 0.7503244 0.7641252 0.9997859
+##  [4,]   NA        NA        NA        NA 0.6168806 0.8540116 0.8539416
+##  [5,]   NA        NA        NA        NA        NA 0.5460536 0.7124497
+##  [6,]   NA        NA        NA        NA        NA        NA 0.7305990
+##  [7,]   NA        NA        NA        NA        NA        NA        NA
+##  [8,]   NA        NA        NA        NA        NA        NA        NA
+##  [9,]   NA        NA        NA        NA        NA        NA        NA
+## [10,]   NA        NA        NA        NA        NA        NA        NA
+##            [,8]      [,9]     [,10]
+##  [1,] 0.8876345 0.9078943 0.4366839
+##  [2,] 0.6214007 0.6593634 0.2433462
+##  [3,] 0.9683044 0.9557521 0.5253342
+##  [4,] 0.8823645 0.9088221 0.3598232
+##  [5,] 0.6735578 0.6791267 0.7948638
+##  [6,] 0.7495613 0.7767606 0.3447711
+##  [7,] 0.9597554 0.9458707 0.4275190
+##  [8,]        NA 0.9810315 0.3708721
+##  [9,]        NA        NA 0.4074468
+## [10,]        NA        NA        NA</code></pre>
 <p>Now we can see how many of these p.values are &quot;significant&quot;. We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives&lt;-<span class="kw">sum</span>(p.values&lt;<span class="fl">0.05</span>,<span class="dt">na.rm=</span>T)
 false.positives</code></pre></div>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 0</code></pre>
 <p>We could correct this using the Bonferonni method:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">45</span>
 new.threshold.B&lt;-<span class="fl">0.05</span>/k
@@ -474,7 +474,7 @@ for (k in <span class="dv">1</span>:<span class="dv">1000</span>)
 new.threshold.R&lt;-<span class="kw">quantile</span>(min.p.values.all,<span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.05</span>))
 new.threshold.R</code></pre></div>
 <pre><code>##         5% 
-## 0.00171418</code></pre>
+## 0.00219784</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">false.positives.R&lt;-<span class="kw">sum</span>(p.values&lt;new.threshold.R,<span class="dt">na.rm=</span>T)
 false.positives.R</code></pre></div>
 <pre><code>## [1] 0</code></pre>

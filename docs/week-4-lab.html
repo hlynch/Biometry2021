@@ -512,14 +512,14 @@ sigma=params[<span class="dv">2</span>]
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">opt1&lt;-<span class="kw">optim</span>(<span class="dt">par=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">fn=</span>neg.ll.v2,<span class="dt">x=</span>x)
 opt1</code></pre></div>
 <pre><code>## $par
-## [1] 0.9744361 1.9348047
+## [1] 1.074353 1.993369
 ## 
 ## $value
-## [1] 2079.123
+## [1] 2108.766
 ## 
 ## $counts
 ## function gradient 
-##       51       NA 
+##       53       NA 
 ## 
 ## $convergence
 ## [1] 0
@@ -530,8 +530,8 @@ opt1</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
 <span class="kw">fitdistr</span>(x,<span class="st">&quot;normal&quot;</span>)</code></pre></div>
 <pre><code>##       mean          sd    
-##   0.97439292   1.93514912 
-##  (0.06119479) (0.04327125)</code></pre>
+##   1.07409615   1.99337095 
+##  (0.06303592) (0.04457313)</code></pre>
 <p>Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE.</p>
 <p>The likelihood is a relative concept that only makes sense relative to other possible datasets. The absolute magnitude depends on the &quot;sample space&quot; of the data and sometimes even the maximum likelihood is a very small value. So all we can do is compare relative likelihoods.</p>
 <p>We now know how to use maximum likelihood to calculate the &quot;best&quot; parameter value (in the sense that it is the parameter value that maximizes the likelihood, or minimizes the negative log-likelihood.) But we know that parameter estimates by themselves are useless. We need to somehow calculate the uncertainty in our maximum likelihood estimate, i.e. the confidence interval.</p>

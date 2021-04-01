@@ -37,7 +37,7 @@ beetle.predict <- data.frame(WoodDensity = new.predictor[[1]], Presence = beetle
 ggplot(data = beetle, aes(x = Wood.density, y = ANAT)) + geom_point(col = "gray55") + 
   geom_line(data = beetle.predict, aes(x = WoodDensity, y = Presence)) +
   labs(x = expression(paste("Wood density (g cm" ^ "-3", ")")), y = "Presence of wood-boring beetle", parse = TRUE) + 
-  theme_classic() + theme(text = element_text(size = text.size))
+  theme_classic() + theme(text = element_text(size = 10))
 ```
 
 <img src="Week-10-lecture_files/figure-html/unnamed-chunk-3-1.png" width="384" />
