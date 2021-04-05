@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-01" />
+<meta name="date" content="2021-04-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="week-1-lab-handout.html"/>
 <link rel="next" href="week-2-lab.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,41 +54,68 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -107,28 +135,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#reading-material"><i class="fa fa-check"></i><b>1.1</b> Reading Material</a></li>
 <li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#basic-outline"><i class="fa fa-check"></i><b>1.2</b> Basic Outline</a></li>
-<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#todays-agenda"><i class="fa fa-check"></i><b>1.3</b> Today's Agenda</a></li>
-<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#basic-probability-theory"><i class="fa fa-check"></i><b>1.4</b> Basic Probability Theory</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#intersection"><i class="fa fa-check"></i><b>1.4.1</b> Intersection</a></li>
-<li class="chapter" data-level="1.4.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#union"><i class="fa fa-check"></i><b>1.4.2</b> Union</a></li>
-<li class="chapter" data-level="1.4.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#complement"><i class="fa fa-check"></i><b>1.4.3</b> Complement:</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#todays-agenda"><i class="fa fa-check"></i><b>1.3</b> Today’s Agenda</a></li>
+<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#overview-of-univariate-distributions"><i class="fa fa-check"></i><b>1.4</b> Overview of Univariate Distributions</a></li>
+<li class="chapter" data-level="1.5" data-path="week-1-lecture.html"><a href="week-1-lecture.html#what-can-you-ask-of-a-distribution"><i class="fa fa-check"></i><b>1.5</b> What can you ask of a distribution?</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="week-1-lecture.html"><a href="week-1-lecture.html#multiple-events"><i class="fa fa-check"></i><b>1.5</b> Multiple events</a></li>
-<li class="chapter" data-level="1.6" data-path="week-1-lecture.html"><a href="week-1-lecture.html#conditionals"><i class="fa fa-check"></i><b>1.6</b> Conditionals</a></li>
-<li class="chapter" data-level="1.7" data-path="week-1-lecture.html"><a href="week-1-lecture.html#bayes-theorem"><i class="fa fa-check"></i><b>1.7</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="1.8" data-path="week-1-lecture.html"><a href="week-1-lecture.html#a-few-foundational-ideas"><i class="fa fa-check"></i><b>1.8</b> A few foundational ideas</a></li>
-<li class="chapter" data-level="1.9" data-path="week-1-lecture.html"><a href="week-1-lecture.html#overview-of-univariate-distributions"><i class="fa fa-check"></i><b>1.9</b> Overview of Univariate Distributions</a></li>
-<li class="chapter" data-level="1.10" data-path="week-1-lecture.html"><a href="week-1-lecture.html#what-can-you-ask-of-a-distribution"><i class="fa fa-check"></i><b>1.10</b> What can you ask of a distribution?</a><ul>
-<li class="chapter" data-level="1.10.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#expected-value-of-a-random-variable"><i class="fa fa-check"></i><b>1.10.1</b> Expected Value of a Random Variable</a></li>
-<li class="chapter" data-level="1.10.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#discrete-case"><i class="fa fa-check"></i><b>1.10.2</b> Discrete Case</a></li>
-<li class="chapter" data-level="1.10.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#continuous-case"><i class="fa fa-check"></i><b>1.10.3</b> Continuous Case</a></li>
-</ul></li>
-<li class="chapter" data-level="1.11" data-path="week-1-lecture.html"><a href="week-1-lecture.html#a-brief-introduction-to-scientific-method"><i class="fa fa-check"></i><b>1.11</b> A Brief Introduction to Scientific Method</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab Handout</a><ul>
+<li class="chapter" data-level="2" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab Handout</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#using-r-like-a-calculator"><i class="fa fa-check"></i><b>2.1</b> Using R like a calculator</a></li>
 <li class="chapter" data-level="2.2" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#the-basic-data-structures-in-r"><i class="fa fa-check"></i><b>2.2</b> The basic data structures in R</a></li>
 <li class="chapter" data-level="2.3" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#writing-functions-in-r"><i class="fa fa-check"></i><b>2.3</b> Writing functions in R</a></li>
@@ -137,7 +153,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.6" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#lesson-6-some-practice-writing-r-code"><i class="fa fa-check"></i><b>2.6</b> Lesson #6: Some practice writing R code</a></li>
 <li class="chapter" data-level="2.7" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#a-few-final-notes"><i class="fa fa-check"></i><b>2.7</b> A few final notes</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
+<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#hypothesis-testing-and-p-values"><i class="fa fa-check"></i><b>3.1</b> Hypothesis testing and p-values</a></li>
 <li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#permutation-tests"><i class="fa fa-check"></i><b>3.2</b> Permutation tests</a></li>
 <li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parameter-estimation"><i class="fa fa-check"></i><b>3.3</b> Parameter estimation</a></li>
@@ -145,16 +162,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>3.5</b> Parametric bootstrap</a></li>
 <li class="chapter" data-level="3.6" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife"><i class="fa fa-check"></i><b>3.6</b> Jackknife</a></li>
 <li class="chapter" data-level="3.7" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife-after-bootstrap"><i class="fa fa-check"></i><b>3.7</b> Jackknife-after-bootstrap</a></li>
-<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-week-2-you-should-understand..."><i class="fa fa-check"></i><b>3.8</b> By the end of Week 2, you should understand...</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-week-2-you-should-understand"><i class="fa fa-check"></i><b>3.8</b> By the end of Week 2, you should understand…</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a><ul>
+<li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="week-2-lab.html"><a href="week-2-lab.html#confidence-intervals"><i class="fa fa-check"></i><b>4.1</b> Confidence intervals</a></li>
 <li class="chapter" data-level="4.2" data-path="week-2-lab.html"><a href="week-2-lab.html#testing-hypotheses-through-permutation"><i class="fa fa-check"></i><b>4.2</b> Testing hypotheses through permutation</a></li>
 <li class="chapter" data-level="4.3" data-path="week-2-lab.html"><a href="week-2-lab.html#basics-of-bootstrap-and-jackknife"><i class="fa fa-check"></i><b>4.3</b> Basics of bootstrap and jackknife</a></li>
 <li class="chapter" data-level="4.4" data-path="week-2-lab.html"><a href="week-2-lab.html#calculating-bias-and-standard-error"><i class="fa fa-check"></i><b>4.4</b> Calculating bias and standard error</a></li>
 <li class="chapter" data-level="4.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>4.5</b> Parametric bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lecture</a><ul>
+<li class="chapter" data-level="5" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lecture</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#overview-of-probability-distributions"><i class="fa fa-check"></i><b>5.1</b> Overview of probability distributions</a></li>
 <li class="chapter" data-level="5.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>5.2</b> Normal (Gaussian) Distribution</a></li>
 <li class="chapter" data-level="5.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#standard-normal-distribution"><i class="fa fa-check"></i><b>5.3</b> Standard Normal Distribution</a></li>
@@ -165,194 +184,163 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.8" data-path="week-3-lecture.html"><a href="week-3-lecture.html#beta-distribution"><i class="fa fa-check"></i><b>5.8</b> Beta Distribution</a></li>
 <li class="chapter" data-level="5.9" data-path="week-3-lecture.html"><a href="week-3-lecture.html#gamma-distribution"><i class="fa fa-check"></i><b>5.9</b> Gamma Distribution</a></li>
 <li class="chapter" data-level="5.10" data-path="week-3-lecture.html"><a href="week-3-lecture.html#some-additional-notes"><i class="fa fa-check"></i><b>5.10</b> Some additional notes:</a></li>
-<li class="chapter" data-level="5.11" data-path="week-3-lecture.html"><a href="week-3-lecture.html#by-the-end-of-week-3-you-should-understand..."><i class="fa fa-check"></i><b>5.11</b> By the end of Week 3, you should understand...</a></li>
+<li class="chapter" data-level="5.11" data-path="week-3-lecture.html"><a href="week-3-lecture.html#by-the-end-of-week-3-you-should-understand"><i class="fa fa-check"></i><b>5.11</b> By the end of Week 3, you should understand…</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="6" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="week-3-lab.html"><a href="week-3-lab.html#exploring-the-univariate-distributions-with-r"><i class="fa fa-check"></i><b>6.1</b> Exploring the univariate distributions with R</a></li>
-<li class="chapter" data-level="6.2" data-path="week-3-lab.html"><a href="week-3-lab.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.2</b> Standard deviation vs. Standard error</a></li>
+<li class="chapter" data-level="6.2" data-path="week-3-lab.html"><a href="week-3-lab.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.2</b> Standard deviation vs. Standard error</a></li>
 <li class="chapter" data-level="6.3" data-path="week-3-lab.html"><a href="week-3-lab.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> The Central Limit Theorem</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lecture</a><ul>
-<li class="chapter" data-level="7.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#short-digression-degrees-of-freedom"><i class="fa fa-check"></i><b>7.1</b> Short digression: Degrees of freedom</a></li>
-<li class="chapter" data-level="7.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#t-distribution"><i class="fa fa-check"></i><b>7.2</b> t-distribution</a></li>
-<li class="chapter" data-level="7.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.3</b> Chi-squared distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#f-distribution"><i class="fa fa-check"></i><b>7.4</b> F distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#estimating-confidence-intervals---5-special-cases"><i class="fa fa-check"></i><b>7.5</b> Estimating confidence intervals - 5 special cases</a></li>
-<li class="chapter" data-level="7.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#to-recap"><i class="fa fa-check"></i><b>7.6</b> To recap</a></li>
-</ul></li>
+<li class="chapter" data-level="7" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lecture</a></li>
 <li class="chapter" data-level="8" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>8</b> Week 4 Lab</a></li>
-<li class="chapter" data-level="9" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lecture</a><ul>
-<li class="chapter" data-level="9.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#statistical-power"><i class="fa fa-check"></i><b>9.1</b> Statistical power</a></li>
-<li class="chapter" data-level="9.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-single-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> The single sample t test</a></li>
-<li class="chapter" data-level="9.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>9.3</b> The unpaired two sample t test</a></li>
-<li class="chapter" data-level="9.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-paired-two-sample-t-test"><i class="fa fa-check"></i><b>9.4</b> The paired two sample t test</a></li>
-<li class="chapter" data-level="9.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-f-test"><i class="fa fa-check"></i><b>9.5</b> The F test</a></li>
-<li class="chapter" data-level="9.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>9.6</b> Comparing two proportions</a></li>
-<li class="chapter" data-level="9.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>9.7</b> Comparing two distributions</a></li>
-<li class="chapter" data-level="9.8" data-path="week-5-lecture.html"><a href="week-5-lecture.html#a-bit-more-detail-on-the-binomial"><i class="fa fa-check"></i><b>9.8</b> A bit more detail on the Binomial</a></li>
-<li class="chapter" data-level="9.9" data-path="week-5-lecture.html"><a href="week-5-lecture.html#side-note-about-the-wald-test"><i class="fa fa-check"></i><b>9.9</b> Side-note about the Wald test</a></li>
-<li class="chapter" data-level="9.10" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-goodness-of-fit-test"><i class="fa fa-check"></i><b>9.10</b> Chi-squared goodness-of-fit test</a></li>
-<li class="chapter" data-level="9.11" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-test-of-independence"><i class="fa fa-check"></i><b>9.11</b> Chi-squared test of independence</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>10</b> Week 5 Lab</a><ul>
+<li class="chapter" data-level="9" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lecture</a></li>
+<li class="chapter" data-level="10" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>10</b> Week 5 Lab</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="week-5-lab.html"><a href="week-5-lab.html#f-test"><i class="fa fa-check"></i><b>10.1</b> F-test</a></li>
-<li class="chapter" data-level="10.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>10.2</b> Comparing two proportions</a></li>
-<li class="chapter" data-level="10.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>10.3</b> Comparing two distributions</a></li>
+<li class="chapter" data-level="10.2" data-path="week-5-lab.html"><a href="week-5-lab.html#comparing-two-proportions"><i class="fa fa-check"></i><b>10.2</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="10.3" data-path="week-5-lab.html"><a href="week-5-lab.html#comparing-two-distributions"><i class="fa fa-check"></i><b>10.3</b> Comparing two distributions</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="week-6-lecture.html"><a href="week-6-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 6 Lecture</a></li>
 <li class="chapter" data-level="12" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>12</b> Week 6 Lab</a></li>
-<li class="chapter" data-level="13" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html"><i class="fa fa-check"></i><b>13</b> Week 7 Lecture/Lab</a><ul>
+<li class="chapter" data-level="13" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html"><i class="fa fa-check"></i><b>13</b> Week 7 Lecture/Lab</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#box-plots"><i class="fa fa-check"></i><b>13.1</b> Box plots</a></li>
 <li class="chapter" data-level="13.2" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#two-dimensional-data"><i class="fa fa-check"></i><b>13.2</b> Two-dimensional data</a></li>
 <li class="chapter" data-level="13.3" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#three-dimensional-data"><i class="fa fa-check"></i><b>13.3</b> Three-dimensional data</a></li>
 <li class="chapter" data-level="13.4" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#multiple-plots"><i class="fa fa-check"></i><b>13.4</b> Multiple plots</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lecture</a><ul>
-<li class="chapter" data-level="14.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#warm-up"><i class="fa fa-check"></i><b>14.1</b> Warm-up</a></li>
-<li class="chapter" data-level="14.2" data-path="week-8-lecture.html"><a href="week-8-lecture.html#the-aims-of-modelling----a-discussion-of-shmueli-2010"><i class="fa fa-check"></i><b>14.2</b> The aims of modelling -- A discussion of Shmueli (2010)</a></li>
-<li class="chapter" data-level="14.3" data-path="week-8-lecture.html"><a href="week-8-lecture.html#introduction-to-linear-models"><i class="fa fa-check"></i><b>14.3</b> Introduction to linear models</a></li>
-<li class="chapter" data-level="14.4" data-path="week-8-lecture.html"><a href="week-8-lecture.html#linear-models-example-with-continuous-covariate"><i class="fa fa-check"></i><b>14.4</b> Linear models | example with continuous covariate</a></li>
-<li class="chapter" data-level="14.5" data-path="week-8-lecture.html"><a href="week-8-lecture.html#resolving-overparameterization-using-contrasts"><i class="fa fa-check"></i><b>14.5</b> Resolving overparameterization using contrasts</a></li>
-<li class="chapter" data-level="14.6" data-path="week-8-lecture.html"><a href="week-8-lecture.html#effect-codingtreatment-constrast"><i class="fa fa-check"></i><b>14.6</b> Effect coding/Treatment constrast</a></li>
-<li class="chapter" data-level="14.7" data-path="week-8-lecture.html"><a href="week-8-lecture.html#helmert-contrasts"><i class="fa fa-check"></i><b>14.7</b> Helmert contrasts</a></li>
-<li class="chapter" data-level="14.8" data-path="week-8-lecture.html"><a href="week-8-lecture.html#sum-to-zero-contrasts"><i class="fa fa-check"></i><b>14.8</b> Sum-to-zero contrasts</a></li>
-<li class="chapter" data-level="14.9" data-path="week-8-lecture.html"><a href="week-8-lecture.html#polynomial-contrasts"><i class="fa fa-check"></i><b>14.9</b> Polynomial contrasts</a></li>
-<li class="chapter" data-level="14.10" data-path="week-8-lecture.html"><a href="week-8-lecture.html#visualizing-hypotheses-for-different-coding-schemes"><i class="fa fa-check"></i><b>14.10</b> Visualizing hypotheses for different coding schemes</a></li>
-<li class="chapter" data-level="14.11" data-path="week-8-lecture.html"><a href="week-8-lecture.html#orthogonal-vs.-non-orthogonal-contrasts"><i class="fa fa-check"></i><b>14.11</b> Orthogonal vs. Non-orthogonal contrasts</a></li>
-<li class="chapter" data-level="14.12" data-path="week-8-lecture.html"><a href="week-8-lecture.html#error-structure-of-linear-models"><i class="fa fa-check"></i><b>14.12</b> Error structure of linear models</a><ul>
-<li class="chapter" data-level="14.12.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#independence-of-errors"><i class="fa fa-check"></i><b>14.12.1</b> Independence of errors</a></li>
+<li class="chapter" data-level="14" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lecture</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#the-aims-of-modelling-a-discussion-of-shmueli-2010"><i class="fa fa-check"></i><b>14.1</b> The aims of modelling – A discussion of Shmueli (2010)</a></li>
+<li class="chapter" data-level="14.2" data-path="week-8-lecture.html"><a href="week-8-lecture.html#linear-models-example-with-continuous-covariate"><i class="fa fa-check"></i><b>14.2</b> Linear models | example with continuous covariate</a></li>
+<li class="chapter" data-level="14.3" data-path="week-8-lecture.html"><a href="week-8-lecture.html#resolving-overparameterization-using-contrasts"><i class="fa fa-check"></i><b>14.3</b> Resolving overparameterization using contrasts</a></li>
+<li class="chapter" data-level="14.4" data-path="week-8-lecture.html"><a href="week-8-lecture.html#visualizing-hypotheses-for-different-coding-schemes"><i class="fa fa-check"></i><b>14.4</b> Visualizing hypotheses for different coding schemes</a></li>
+<li class="chapter" data-level="14.5" data-path="week-8-lecture.html"><a href="week-8-lecture.html#orthogonal-vs.-non-orthogonal-contrasts"><i class="fa fa-check"></i><b>14.5</b> Orthogonal vs. Non-orthogonal contrasts</a></li>
+<li class="chapter" data-level="14.6" data-path="week-8-lecture.html"><a href="week-8-lecture.html#error-structure-of-linear-models"><i class="fa fa-check"></i><b>14.6</b> Error structure of linear models</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#independence-of-errors"><i class="fa fa-check"></i><b>14.6.1</b> Independence of errors</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>15</b> Week 8 Lab</a><ul>
+<li class="chapter" data-level="15" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>15</b> Week 8 Lab</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="week-8-lab.html"><a href="week-8-lab.html#contrasts"><i class="fa fa-check"></i><b>15.1</b> Contrasts</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lecture</a><ul>
-<li class="chapter" data-level="16.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>16.1</b> Correlation</a></li>
-<li class="chapter" data-level="16.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#hypothesis-testing---pearsons-r"><i class="fa fa-check"></i><b>16.2</b> Hypothesis testing - Pearson's <em>r</em></a></li>
-<li class="chapter" data-level="16.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#fishers-z"><i class="fa fa-check"></i><b>16.3</b> Fisher's <span class="math inline">\(z\)</span></a></li>
-<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.4</b> Regression</a></li>
-<li class="chapter" data-level="16.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#but-wait-couldnt-we-have-used-maximum-likelihood-yes"><i class="fa fa-check"></i><b>16.5</b> But wait, couldn't we have used maximum likelihood? Yes!</a></li>
-<li class="chapter" data-level="16.6" data-path="week-9-lecture.html"><a href="week-9-lecture.html#assumptions-of-regression"><i class="fa fa-check"></i><b>16.6</b> Assumptions of regression:</a></li>
-<li class="chapter" data-level="16.7" data-path="week-9-lecture.html"><a href="week-9-lecture.html#confidence-vs.-prediction-intervals"><i class="fa fa-check"></i><b>16.7</b> Confidence vs. Prediction intervals</a></li>
-<li class="chapter" data-level="16.8" data-path="week-9-lecture.html"><a href="week-9-lecture.html#how-do-we-know-if-our-model-is-any-good"><i class="fa fa-check"></i><b>16.8</b> How do we know if our model is any good?</a></li>
-<li class="chapter" data-level="16.9" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>16.9</b> Robust regression</a></li>
-<li class="chapter" data-level="16.10" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression-1"><i class="fa fa-check"></i><b>16.10</b> Robust regression</a></li>
-<li class="chapter" data-level="16.11" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.11</b> Type I and Type II Regression</a></li>
+<li class="chapter" data-level="16" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lecture</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#hypothesis-testing---pearsons-r"><i class="fa fa-check"></i><b>16.1</b> Hypothesis testing - Pearson’s <em>r</em></a></li>
+<li class="chapter" data-level="16.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#fishers-z"><i class="fa fa-check"></i><b>16.2</b> Fisher’s <span class="math inline">\(z\)</span></a></li>
+<li class="chapter" data-level="16.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.3</b> Regression</a></li>
+<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.4</b> Type I and Type II Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>17</b> Week 9 Lab</a><ul>
-<li class="chapter" data-level="17.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>17.1</b> Correlation</a></li>
+<li class="chapter" data-level="17" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>17</b> Week 9 Lab</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="week-9-lab.html"><a href="week-9-lab.html#correlation"><i class="fa fa-check"></i><b>17.1</b> Correlation</a></li>
 <li class="chapter" data-level="17.2" data-path="week-9-lab.html"><a href="week-9-lab.html#linear-modelling"><i class="fa fa-check"></i><b>17.2</b> Linear modelling</a></li>
 <li class="chapter" data-level="17.3" data-path="week-9-lab.html"><a href="week-9-lab.html#weighted-regression"><i class="fa fa-check"></i><b>17.3</b> Weighted regression</a></li>
-<li class="chapter" data-level="17.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>17.4</b> Robust regression</a></li>
+<li class="chapter" data-level="17.4" data-path="week-9-lab.html"><a href="week-9-lab.html#robust-regression"><i class="fa fa-check"></i><b>17.4</b> Robust regression</a></li>
 <li class="chapter" data-level="17.5" data-path="week-9-lab.html"><a href="week-9-lab.html#bootstrapping-standard-errors-for-robust-regression"><i class="fa fa-check"></i><b>17.5</b> Bootstrapping standard errors for robust regression</a></li>
-<li class="chapter" data-level="17.6" data-path="week-9-lab.html"><a href="week-9-lab.html#type-i-vs.-type-ii-regression-the-smatr-package"><i class="fa fa-check"></i><b>17.6</b> Type I vs. Type II regression: The 'smatr' package</a></li>
+<li class="chapter" data-level="17.6" data-path="week-9-lab.html"><a href="week-9-lab.html#type-i-vs.-type-ii-regression-the-smatr-package"><i class="fa fa-check"></i><b>17.6</b> Type I vs. Type II regression: The ‘smatr’ package</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lecture</a><ul>
+<li class="chapter" data-level="18" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lecture</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#an-example"><i class="fa fa-check"></i><b>18.1</b> An example</a></li>
 <li class="chapter" data-level="18.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#generalized-linear-models"><i class="fa fa-check"></i><b>18.2</b> Generalized linear models</a></li>
-<li class="chapter" data-level="18.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#logistic-regression"><i class="fa fa-check"></i><b>18.3</b> Logistic regression</a></li>
-<li class="chapter" data-level="18.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#fitting-a-glm"><i class="fa fa-check"></i><b>18.4</b> Fitting a GLM</a></li>
-<li class="chapter" data-level="18.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#poisson-regression"><i class="fa fa-check"></i><b>18.5</b> Poisson regression</a></li>
-<li class="chapter" data-level="18.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#deviance"><i class="fa fa-check"></i><b>18.6</b> Deviance</a></li>
-<li class="chapter" data-level="18.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#other-methods----loess-splines-gams"><i class="fa fa-check"></i><b>18.7</b> Other methods -- LOESS, splines, GAMs</a><ul>
-<li class="chapter" data-level="18.7.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#loess"><i class="fa fa-check"></i><b>18.7.1</b> LOESS</a></li>
-<li class="chapter" data-level="18.7.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#splines"><i class="fa fa-check"></i><b>18.7.2</b> Splines</a></li>
-<li class="chapter" data-level="18.7.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#gams"><i class="fa fa-check"></i><b>18.7.3</b> GAMs</a></li>
-<li class="chapter" data-level="18.7.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#multiple-regression"><i class="fa fa-check"></i><b>18.7.4</b> Multiple regression</a></li>
+<li class="chapter" data-level="18.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#other-methods-loess-splines-gams"><i class="fa fa-check"></i><b>18.3</b> Other methods – LOESS, splines, GAMs</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#loess"><i class="fa fa-check"></i><b>18.3.1</b> LOESS</a></li>
+<li class="chapter" data-level="18.3.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#multiple-regression"><i class="fa fa-check"></i><b>18.3.2</b> Multiple regression</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>19</b> Week 10 Lab</a><ul>
-<li class="chapter" data-level="19.1" data-path="week-10-lab.html"><a href="week-10-lab.html#discussion-of-challenger-analysis"><i class="fa fa-check"></i><b>19.1</b> Discussion of Challenger analysis</a><ul>
-<li class="chapter" data-level="19.1.1" data-path="week-10-lab.html"><a href="week-10-lab.html#practice-fitting-models"><i class="fa fa-check"></i><b>19.1.1</b> Practice fitting models</a></li>
+<li class="chapter" data-level="19" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>19</b> Week 10 Lab</a>
+<ul>
+<li class="chapter" data-level="19.0.1" data-path="week-10-lab.html"><a href="week-10-lab.html#practice-fitting-models"><i class="fa fa-check"></i><b>19.0.1</b> Practice fitting models</a></li>
 </ul></li>
-<li class="chapter" data-level="19.2" data-path="week-10-lab.html"><a href="week-10-lab.html#weighted-linear-regression"><i class="fa fa-check"></i><b>19.2</b> Weighted linear regression</a></li>
-<li class="chapter" data-level="19.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#logistic-regression"><i class="fa fa-check"></i><b>19.3</b> Logistic regression</a></li>
-<li class="chapter" data-level="19.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#poisson-regression"><i class="fa fa-check"></i><b>19.4</b> Poisson regression</a></li>
-<li class="chapter" data-level="19.5" data-path="week-10-lab.html"><a href="week-10-lab.html#getting-a-feel-for-deviance"><i class="fa fa-check"></i><b>19.5</b> Getting a feel for Deviance</a></li>
-<li class="chapter" data-level="19.6" data-path="week-10-lab.html"><a href="week-10-lab.html#generalized-additive-models"><i class="fa fa-check"></i><b>19.6</b> Generalized Additive Models</a></li>
-</ul></li>
-<li class="chapter" data-level="20" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lecture</a><ul>
-<li class="chapter" data-level="20.0.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#variation-within-treatment-group"><i class="fa fa-check"></i><b>20.0.1</b> Variation within treatment group</a></li>
-<li class="chapter" data-level="20.0.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#variation-among-treatment-group-means"><i class="fa fa-check"></i><b>20.0.2</b> Variation among treatment group means</a></li>
-<li class="chapter" data-level="20.0.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#comparing-variance-components"><i class="fa fa-check"></i><b>20.0.3</b> Comparing variance components</a></li>
+<li class="chapter" data-level="20" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lecture</a>
+<ul>
+<li class="chapter" data-level="20.0.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#variation-among-treatment-group-means"><i class="fa fa-check"></i><b>20.0.1</b> Variation among treatment group means</a></li>
+<li class="chapter" data-level="20.0.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#comparing-variance-components"><i class="fa fa-check"></i><b>20.0.2</b> Comparing variance components</a></li>
 <li class="chapter" data-level="20.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#comparing-variance-components-1"><i class="fa fa-check"></i><b>20.1</b> Comparing variance components</a></li>
 <li class="chapter" data-level="20.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#two-ways-to-estimate-variance"><i class="fa fa-check"></i><b>20.2</b> Two ways to estimate variance</a></li>
 <li class="chapter" data-level="20.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#single-factor-anova"><i class="fa fa-check"></i><b>20.3</b> Single-factor ANOVA</a></li>
-<li class="chapter" data-level="20.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#fixed-effects-vs.-random-effects"><i class="fa fa-check"></i><b>20.4</b> Fixed effects vs. random effects</a></li>
-<li class="chapter" data-level="20.5" data-path="week-11-lecture.html"><a href="week-11-lecture.html#post-hoc-tests"><i class="fa fa-check"></i><b>20.5</b> Post-hoc tests</a><ul>
-<li class="chapter" data-level="20.5.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#tukeys-hsd"><i class="fa fa-check"></i><b>20.5.1</b> Tukey's HSD</a></li>
+<li class="chapter" data-level="20.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#fixed-effects-vs.-random-effects"><i class="fa fa-check"></i><b>20.4</b> Fixed effects vs. random effects</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#tukeys-hsd"><i class="fa fa-check"></i><b>20.4.1</b> Tukey’s HSD</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>21</b> Week 11 Lab</a><ul>
-<li class="chapter" data-level="21.1" data-path="week-11-lab.html"><a href="week-11-lab.html#rs-anova-functions"><i class="fa fa-check"></i><b>21.1</b> R's ANOVA functions</a></li>
+<li class="chapter" data-level="21" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>21</b> Week 11 Lab</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="week-11-lab.html"><a href="week-11-lab.html#rs-anova-functions"><i class="fa fa-check"></i><b>21.1</b> R’s ANOVA functions</a></li>
 <li class="chapter" data-level="21.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#single-factor-anova"><i class="fa fa-check"></i><b>21.2</b> Single-factor ANOVA</a></li>
 <li class="chapter" data-level="21.3" data-path="week-11-lab.html"><a href="week-11-lab.html#follow-up-analyses-to-anova"><i class="fa fa-check"></i><b>21.3</b> Follow up analyses to ANOVA</a></li>
 <li class="chapter" data-level="21.4" data-path="week-11-lab.html"><a href="week-11-lab.html#more-practice-model-i-anova"><i class="fa fa-check"></i><b>21.4</b> More practice: Model I ANOVA</a></li>
 <li class="chapter" data-level="21.5" data-path="week-11-lab.html"><a href="week-11-lab.html#more-practice-brief-intro-to-doing-model-ii-anova-in-r"><i class="fa fa-check"></i><b>21.5</b> More practice: Brief intro to doing Model II ANOVA in R</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lecture</a><ul>
+<li class="chapter" data-level="22" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lecture</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#review-anova-with-one-factor"><i class="fa fa-check"></i><b>22.1</b> Review: ANOVA with one factor</a></li>
 <li class="chapter" data-level="22.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#anova-with-more-than-one-factor"><i class="fa fa-check"></i><b>22.2</b> ANOVA with more than one factor</a></li>
-<li class="chapter" data-level="22.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-way-anova-factorial-designs"><i class="fa fa-check"></i><b>22.3</b> Two-way ANOVA factorial designs</a></li>
-<li class="chapter" data-level="22.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#why-bother-with-random-effects"><i class="fa fa-check"></i><b>22.4</b> Why bother with random effects?</a></li>
-<li class="chapter" data-level="22.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mixed-models"><i class="fa fa-check"></i><b>22.5</b> Mixed models</a></li>
-<li class="chapter" data-level="22.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-designs"><i class="fa fa-check"></i><b>22.6</b> Unbalanced designs</a></li>
-<li class="chapter" data-level="22.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design----different-sample-sizes"><i class="fa fa-check"></i><b>22.7</b> Unbalanced design -- Different sample sizes</a><ul>
-<li class="chapter" data-level="22.7.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-i-sequential-sums-of-squares"><i class="fa fa-check"></i><b>22.7.1</b> Type I (sequential) sums of squares</a></li>
-<li class="chapter" data-level="22.7.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-ii-hierarchical-sums-of-squares"><i class="fa fa-check"></i><b>22.7.2</b> Type II (hierarchical) sums of squares</a></li>
-<li class="chapter" data-level="22.7.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-iii-marginal-sums-of-squares"><i class="fa fa-check"></i><b>22.7.3</b> Type III (marginal) sums of squares</a></li>
-<li class="chapter" data-level="22.7.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#comparing-type-i-ii-and-iii-ss"><i class="fa fa-check"></i><b>22.7.4</b> Comparing type I, II, and III SS</a></li>
+<li class="chapter" data-level="22.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-designs"><i class="fa fa-check"></i><b>22.3</b> Unbalanced designs</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design-different-sample-sizes"><i class="fa fa-check"></i><b>22.4</b> Unbalanced design – Different sample sizes</a>
+<ul>
+<li class="chapter" data-level="22.4.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-i-sequential-sums-of-squares"><i class="fa fa-check"></i><b>22.4.1</b> Type I (sequential) sums of squares</a></li>
+<li class="chapter" data-level="22.4.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-ii-hierarchical-sums-of-squares"><i class="fa fa-check"></i><b>22.4.2</b> Type II (hierarchical) sums of squares</a></li>
+<li class="chapter" data-level="22.4.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-iii-marginal-sums-of-squares"><i class="fa fa-check"></i><b>22.4.3</b> Type III (marginal) sums of squares</a></li>
+<li class="chapter" data-level="22.4.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#comparing-type-i-ii-and-iii-ss"><i class="fa fa-check"></i><b>22.4.4</b> Comparing type I, II, and III SS</a></li>
 </ul></li>
-<li class="chapter" data-level="22.8" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design----missing-cells"><i class="fa fa-check"></i><b>22.8</b> Unbalanced design -- Missing cells</a></li>
-<li class="chapter" data-level="22.9" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-factor-nested-anova"><i class="fa fa-check"></i><b>22.9</b> Two factor nested ANOVA</a><ul>
-<li class="chapter" data-level="22.9.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#potential-issues-with-nested-designs"><i class="fa fa-check"></i><b>22.9.1</b> Potential issues with nested designs</a></li>
+<li class="chapter" data-level="22.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design-missing-cells"><i class="fa fa-check"></i><b>22.5</b> Unbalanced design – Missing cells</a></li>
+<li class="chapter" data-level="22.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-factor-nested-anova"><i class="fa fa-check"></i><b>22.6</b> Two factor nested ANOVA</a>
+<ul>
+<li class="chapter" data-level="22.6.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#potential-issues-with-nested-designs"><i class="fa fa-check"></i><b>22.6.1</b> Potential issues with nested designs</a></li>
 </ul></li>
-<li class="chapter" data-level="22.10" data-path="week-12-lecture.html"><a href="week-12-lecture.html#experimental-design"><i class="fa fa-check"></i><b>22.10</b> Experimental design</a><ul>
-<li class="chapter" data-level="22.10.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#completely-randomized-design"><i class="fa fa-check"></i><b>22.10.1</b> Completely randomized design</a></li>
-<li class="chapter" data-level="22.10.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#randomized-block-design"><i class="fa fa-check"></i><b>22.10.2</b> Randomized block design</a></li>
-<li class="chapter" data-level="22.10.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#latin-square-design"><i class="fa fa-check"></i><b>22.10.3</b> Latin square design</a></li>
-<li class="chapter" data-level="22.10.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#split-plot-design"><i class="fa fa-check"></i><b>22.10.4</b> Split plot design</a></li>
+<li class="chapter" data-level="22.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#experimental-design"><i class="fa fa-check"></i><b>22.7</b> Experimental design</a>
+<ul>
+<li class="chapter" data-level="22.7.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#completely-randomized-design"><i class="fa fa-check"></i><b>22.7.1</b> Completely randomized design</a></li>
+<li class="chapter" data-level="22.7.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#randomized-block-design"><i class="fa fa-check"></i><b>22.7.2</b> Randomized block design</a></li>
+<li class="chapter" data-level="22.7.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#split-plot-design"><i class="fa fa-check"></i><b>22.7.3</b> Split plot design</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>23</b> Week 12 Lab</a><ul>
+<li class="chapter" data-level="23" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>23</b> Week 12 Lab</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="week-12-lab.html"><a href="week-12-lab.html#example-1-two-way-factorial-anova-in-r"><i class="fa fa-check"></i><b>23.1</b> Example #1: Two-way factorial ANOVA in R</a></li>
 <li class="chapter" data-level="23.2" data-path="week-12-lab.html"><a href="week-12-lab.html#example-2-nested-design"><i class="fa fa-check"></i><b>23.2</b> Example #2: Nested design</a></li>
 <li class="chapter" data-level="23.3" data-path="week-12-lab.html"><a href="week-12-lab.html#example-3-nested-design"><i class="fa fa-check"></i><b>23.3</b> Example #3: Nested design</a></li>
 <li class="chapter" data-level="23.4" data-path="week-12-lab.html"><a href="week-12-lab.html#example-4-randomized-block-design"><i class="fa fa-check"></i><b>23.4</b> Example #4: Randomized Block Design</a></li>
 <li class="chapter" data-level="23.5" data-path="week-12-lab.html"><a href="week-12-lab.html#example-5-nested-design"><i class="fa fa-check"></i><b>23.5</b> Example #5: Nested design</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 13 Lecture</a><ul>
+<li class="chapter" data-level="24" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 13 Lecture</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-criticism"><i class="fa fa-check"></i><b>24.1</b> Model criticism</a></li>
-<li class="chapter" data-level="24.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#residuals"><i class="fa fa-check"></i><b>24.2</b> Residuals</a></li>
-<li class="chapter" data-level="24.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#leverage"><i class="fa fa-check"></i><b>24.3</b> Leverage</a></li>
-<li class="chapter" data-level="24.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#influence"><i class="fa fa-check"></i><b>24.4</b> Influence</a></li>
-<li class="chapter" data-level="24.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-residuals-leverage-and-influence"><i class="fa fa-check"></i><b>24.5</b> Comparing residuals, leverage, and influence</a></li>
-<li class="chapter" data-level="24.6" data-path="week-13-lecture.html"><a href="week-13-lecture.html#residuals-for-glms"><i class="fa fa-check"></i><b>24.6</b> Residuals for GLMs</a></li>
-<li class="chapter" data-level="24.7" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-selection-vs.-model-criticism"><i class="fa fa-check"></i><b>24.7</b> Model selection vs. model criticism</a></li>
-<li class="chapter" data-level="24.8" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-two-models"><i class="fa fa-check"></i><b>24.8</b> Comparing two models</a><ul>
-<li class="chapter" data-level="24.8.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#nested-or-not"><i class="fa fa-check"></i><b>24.8.1</b> Nested or not?</a></li>
-<li class="chapter" data-level="24.8.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#likelihood-ratio-test-lrt"><i class="fa fa-check"></i><b>24.8.2</b> Likelihood Ratio Test (LRT)</a></li>
-<li class="chapter" data-level="24.8.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#akaikes-information-criterion-aic"><i class="fa fa-check"></i><b>24.8.3</b> Akaike's Information Criterion (AIC)</a></li>
-<li class="chapter" data-level="24.8.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>24.8.4</b> Bayesian Information Criterion (BIC)</a></li>
-<li class="chapter" data-level="24.8.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-lrt-and-aicbic"><i class="fa fa-check"></i><b>24.8.5</b> Comparing LRT and AIC/BIC</a></li>
+<li class="chapter" data-level="24.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#residuals-for-glms"><i class="fa fa-check"></i><b>24.2</b> Residuals for GLMs</a></li>
+<li class="chapter" data-level="24.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-selection-vs.-model-criticism"><i class="fa fa-check"></i><b>24.3</b> Model selection vs. model criticism</a></li>
+<li class="chapter" data-level="24.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-two-models"><i class="fa fa-check"></i><b>24.4</b> Comparing two models</a>
+<ul>
+<li class="chapter" data-level="24.4.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#likelihood-ratio-test-lrt"><i class="fa fa-check"></i><b>24.4.1</b> Likelihood Ratio Test (LRT)</a></li>
+<li class="chapter" data-level="24.4.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#akaikes-information-criterion-aic"><i class="fa fa-check"></i><b>24.4.2</b> Akaike’s Information Criterion (AIC)</a></li>
+<li class="chapter" data-level="24.4.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>24.4.3</b> Bayesian Information Criterion (BIC)</a></li>
+<li class="chapter" data-level="24.4.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-lrt-and-aicbic"><i class="fa fa-check"></i><b>24.4.4</b> Comparing LRT and AIC/BIC</a></li>
 </ul></li>
-<li class="chapter" data-level="24.9" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-weighting"><i class="fa fa-check"></i><b>24.9</b> Model weighting</a></li>
-<li class="chapter" data-level="24.10" data-path="week-13-lecture.html"><a href="week-13-lecture.html#stepwise-regression"><i class="fa fa-check"></i><b>24.10</b> Stepwise regression</a><ul>
-<li class="chapter" data-level="24.10.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-stepwise-regression"><i class="fa fa-check"></i><b>24.10.1</b> Criticism of stepwise regression</a></li>
-<li class="chapter" data-level="24.10.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-data-dredging"><i class="fa fa-check"></i><b>24.10.2</b> Criticism of data dredging</a></li>
-<li class="chapter" data-level="24.10.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#final-thoughts-on-model-selection"><i class="fa fa-check"></i><b>24.10.3</b> Final thoughts on model selection</a></li>
+<li class="chapter" data-level="24.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-weighting"><i class="fa fa-check"></i><b>24.5</b> Model weighting</a></li>
+<li class="chapter" data-level="24.6" data-path="week-13-lecture.html"><a href="week-13-lecture.html#stepwise-regression"><i class="fa fa-check"></i><b>24.6</b> Stepwise regression</a>
+<ul>
+<li class="chapter" data-level="24.6.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-stepwise-regression"><i class="fa fa-check"></i><b>24.6.1</b> Criticism of stepwise regression</a></li>
+<li class="chapter" data-level="24.6.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-data-dredging"><i class="fa fa-check"></i><b>24.6.2</b> Criticism of data dredging</a></li>
+<li class="chapter" data-level="24.6.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#final-thoughts-on-model-selection"><i class="fa fa-check"></i><b>24.6.3</b> Final thoughts on model selection</a></li>
 </ul></li>
-<li class="chapter" data-level="24.11" data-path="week-13-lecture.html"><a href="week-13-lecture.html#week-13-faq"><i class="fa fa-check"></i><b>24.11</b> Week 13 FAQ</a></li>
+<li class="chapter" data-level="24.7" data-path="week-13-lecture.html"><a href="week-13-lecture.html#week-13-faq"><i class="fa fa-check"></i><b>24.7</b> Week 13 FAQ</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="week-13-lab.html"><a href="week-13-lab.html"><i class="fa fa-check"></i><b>25</b> Week 13 Lab</a><ul>
+<li class="chapter" data-level="25" data-path="week-13-lab.html"><a href="week-13-lab.html"><i class="fa fa-check"></i><b>25</b> Week 13 Lab</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="week-13-lab.html"><a href="week-13-lab.html#part-1-model-selection-model-comparison"><i class="fa fa-check"></i><b>25.1</b> Part 1: Model selection / model comparison</a></li>
 <li class="chapter" data-level="25.2" data-path="week-13-lab.html"><a href="week-13-lab.html#model-selection-via-step-wise-regression"><i class="fa fa-check"></i><b>25.2</b> Model selection via step-wise regression</a></li>
 <li class="chapter" data-level="25.3" data-path="week-13-lab.html"><a href="week-13-lab.html#part-2-model-criticism"><i class="fa fa-check"></i><b>25.3</b> Part 2: Model criticism</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 14 Lecture</a><ul>
-<li class="chapter" data-level="26.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#what-does-multivariate-mean"><i class="fa fa-check"></i><b>26.1</b> What does 'multivariate' mean?</a></li>
+<li class="chapter" data-level="26" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 14 Lecture</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#what-does-multivariate-mean"><i class="fa fa-check"></i><b>26.1</b> What does ‘multivariate’ mean?</a></li>
 <li class="chapter" data-level="26.2" data-path="week-14-lecture.html"><a href="week-14-lecture.html#multivariate-associations"><i class="fa fa-check"></i><b>26.2</b> Multivariate associations</a></li>
-<li class="chapter" data-level="26.3" data-path="week-14-lecture.html"><a href="week-14-lecture.html#model-criticism-for-multivariate-analyses"><i class="fa fa-check"></i><b>26.3</b> Model criticism for multivariate analyses</a><ul>
+<li class="chapter" data-level="26.3" data-path="week-14-lecture.html"><a href="week-14-lecture.html#model-criticism-for-multivariate-analyses"><i class="fa fa-check"></i><b>26.3</b> Model criticism for multivariate analyses</a>
+<ul>
 <li class="chapter" data-level="26.3.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#transforming-your-data"><i class="fa fa-check"></i><b>26.3.1</b> Transforming your data</a></li>
 </ul></li>
 <li class="chapter" data-level="26.4" data-path="week-14-lecture.html"><a href="week-14-lecture.html#standardizing-your-data"><i class="fa fa-check"></i><b>26.4</b> Standardizing your data</a></li>
@@ -366,7 +354,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="26.12" data-path="week-14-lecture.html"><a href="week-14-lecture.html#missing-data"><i class="fa fa-check"></i><b>26.12</b> Missing data</a></li>
 <li class="chapter" data-level="26.13" data-path="week-14-lecture.html"><a href="week-14-lecture.html#imputing-missing-data"><i class="fa fa-check"></i><b>26.13</b> Imputing missing data</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>27</b> Week 14 Lab</a><ul>
+<li class="chapter" data-level="27" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>27</b> Week 14 Lab</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="week-14-lab.html"><a href="week-14-lab.html#missing-at-random---practice-with-glms"><i class="fa fa-check"></i><b>27.1</b> Missing at random - practice with GLMs</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -389,47 +378,55 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="week-2-lecture" class="section level1">
+<div id="week-2-lecture" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Week 2 Lecture</h1>
-<div id="hypothesis-testing-and-p-values" class="section level2">
+<div id="hypothesis-testing-and-p-values" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Hypothesis testing and p-values</h2>
-<p>There are few topics in statistics more controversial than the various philosophies behind null hypothesis testing. Over the next two weeks we will learn about the two paradigms (Fisher vs. Neyman-Pearson), the hybrid approach mostly commonly used in ecology, and criticisms of the whole enterprise. Bayesian statistics takes an entirely different approach than either Fisher or Neyman-Pearson, and the Bayesian approach resolves many of the inconsistencies involved with frequentist statistics, but at the expense of increased computation (and the use of prior information…).</p>
+<p>There are few topics in statistics more controversial than the various philosophies behind null hypothesis testing. Over the next two weeks we will learn about the two paradigms (Fisher vs. Neyman-Pearson), the hybrid approach mostly commonly used in ecology, and criticisms of the whole enterprise. Bayesian statistics takes an entirely different approach than either Fisher or Neyman-Pearson, and the Bayesian approach resolves many of the inconsistencies involved with frequentist statistics, but at the expense of increased computation (and the use of prior information…).</p>
 <p>We frame decision-making in terms of a null and an alternative hypothesis.</p>
-<p><span class="math inline">\(H_{0}\)</span> vs. <span class="math inline">\(H_{A}\)</span></p>
+<p><span class="math inline">\(H_{0}\)</span> vs. <span class="math inline">\(H_{A}\)</span></p>
 <p>To take Karl Popper’s famous example:</p>
 <p><span class="math inline">\(H_{0}\)</span>: There are no vultures in the park.</p>
 <p><span class="math inline">\(H_{A}\)</span>: There are vultures in the park.</p>
 <p>Note that the data may reject the null hypothesis (for example, finding vultures in the park), or the data may fail to reject the null hypothesis, but it can never prove the null hypothesis. <strong>We cannot prove there are no vultures in the park.</strong> We can only say that we were not able to find any vultures in the park, and therefore cannot reject the null hypothesis.</p>
 <p>Fisher’s original context for developing significance testing was agricultural experiments that could be easily replicated. Fisher’s threshold of 0.05 was an arbitrary threshold for an effect to be considered worthy of continued experimentation. Any experiment that failed to reach this threshold would not be pursued. Experiments that gave “significant” results would be subject to additional experiments. These additional experiments may prove the original effect to be a fluke (and experiments would cease) or the additional experiments may provide confirmatory evidence that the effect was real.</p>
 <p><a id="6steps"></a><span style="color: teal;"><strong>Null hypothesis testing (as I will teach it) involves 6 steps.</strong></span></p>
-<p><strong>Step #1</strong>: Specify a null hypothesis <span class="math inline">\(H_{0}\)</span> (Note that I do not include specification of the alternative hypothesis <span class="math inline">\(H_{A}\)</span> here. While the alternative hypothesis is useful as a mental construct, the basic approach deals only with <span class="math inline">\(H_{0}\)</span> and does not require a <span class="math inline">\(H_{A}\)</span>.)</p>
+<p><strong>Step #1</strong>: Specify a null hypothesis <span class="math inline">\(H_{0}\)</span>
+(Note that I do not include specification of the alternative hypothesis <span class="math inline">\(H_{A}\)</span> here. While the alternative hypothesis is useful as a mental construct, the basic approach deals only with <span class="math inline">\(H_{0}\)</span> and does not require a <span class="math inline">\(H_{A}\)</span>.)</p>
 <p><em>Example</em>: In an experiment on vaccine efficacy, the null hypothesis would be that the probability of coronovirus infection is the same in the vaccinated group as in the control group that received only a placebo. Mathematically, this could be stated:</p>
 <p><span class="math inline">\(H_{0}: P_{\small{\mbox{infection}}}^{\small{\mbox{vaccinated}}}=P_{\small{\mbox{infection}}}^{\small{\mbox{control}}}\)</span></p>
-<p><strong>Step #2</strong>: Specific an appropriate test statistic T. A test statistic is some summary of your data that pertains to the null hypothesis. For testing simple hypotheses, there are test statistics known to be ideal in certain situations. However, even in these simple cases, there are other test statistics that could be used. In more complex situations, YOU will have to determine the most appropriate test statistic.</p>
+<p><strong>Step #2</strong>: Specific an appropriate test statistic T.
+A test statistic is some summary of your data that pertains to the null hypothesis. For testing simple hypotheses, there are test statistics known to be ideal in certain situations. However, even in these simple cases, there are other test statistics that could be used. In more complex situations, YOU will have to determine the most appropriate test statistic.</p>
 <p>generic <span class="math inline">\(T=f(X)\)</span></p>
 <p>specific <span class="math inline">\(T^{*}\)</span>=T(<span class="math inline">\(X_{1}\)</span>,<span class="math inline">\(X_{2}\)</span>,…,<span class="math inline">\(X_{n}\)</span>)</p>
 <p>We will introduce many more test statistics in the weeks to come.</p>
 <p><em>Example</em>: In our example with the vaccine trial, a reasonable test statistic would be</p>
 <p><span class="math inline">\(T=P_{\small{\mbox{infection}}}^{\small{\mbox{vaccinated}}}-P_{\small{\mbox{infection}}}^{\small{\mbox{control}}}\)</span>.</p>
 <p>(This would be the best test statistic if probabilities were Normally distributed, but they are not. However, this test statistic is reasonable and highly intuitive and illustrates the basic point.)</p>
-<p><strong>Step #3</strong>: Determine the distribution of the test statistic under the null hypothesis <span class="math inline">\(H_{0}\)</span>. A test statistic is a statistical quantity that has a statistical distribution.</p>
+<p><strong>Step #3</strong>: Determine the distribution of the test statistic under the null hypothesis <span class="math inline">\(H_{0}\)</span>.
+A test statistic is a statistical quantity that has a statistical distribution.</p>
 <p><span class="math inline">\(f(T│H_{0})\)</span></p>
-<p>Notice that this is the probability of obtaining the test statistic T <strong>given</strong> the null distribution, it is <strong>not</strong> <span class="math inline">\(f(H_{0}│T)\)</span>.</p>
+<p>Notice that this is the probability of obtaining the test statistic T <strong>given</strong> the null distribution, it is <strong>not</strong>
+<span class="math inline">\(f(H_{0}│T)\)</span>.</p>
 <p>The test statistic and its distribution under the null hypothesis is the statistical test.</p>
 <p>Test = Test statistic + Distribution of test statistic under <span class="math inline">\(H_{0}\)</span></p>
-<p><strong>Step #4</strong>: Collect data and calculate T* Collect data by taking random samples from your population and calculate the test statistic from the sample data.</p>
+<p><strong>Step #4</strong>: Collect data and calculate T*
+Collect data by taking random samples from your population and calculate the test statistic from the sample data.</p>
 <p><strong>Step #5</strong>: Calculate a p-value</p>
 <p>Calculate the probability that you would get a value for the test statistic as large or larger than that obtained with the data under the null hypothesis</p>
 <p><span class="math inline">\(P(T^{*}│H_{0})\)</span>=p-value</p>
 <p><strong>Step #6</strong>: Interpret the p-value</p>
 <p>Use the p-value to determine whether to reject the null hypothesis (or, alternatively, to decide that the null hypothesis cannot be rejected)</p>
-<p><em>Example</em>: In our vaccination example, we would look at the difference in these two populations (control vs. vaccinated) and if the difference between those two probabilities was larger than we would expect to occur under the null hypothesis (which, but assuming that the vaccine is no better than a placebo, assumes that these two groups are equivalent and therefore that any differences are due to random chance alone), then we would reject the null hypothesis that the vaccine is equivalent to the placebo. (Note that I haven't said anything about whether the vaccine lowers infection rates; in a few minutes we'll discuss one-tailed vs. two-tailed tests.)</p>
-<p><strong>These steps apply for both parametric and non-parametric statistics.</strong> Here we are introducing hypothesis testing through the lens of randomization procedures, but the same steps will be used again when we get into statistics involving parametric distributions (i.e. statistical distributions of known form and described by a finite number of parameters) and their properties. As you will see in a few weeks, most standard statistical tests involve a test statistic with a known distribution under the null hypothesis; here the distribution under the null hypothesis needs to be generated by randomization (randomization test). (We are starting with the randomization-based procedures because there is no math involved and it is more intuitive.)</p>
+<p><em>Example</em>: In our vaccination example, we would look at the difference in these two populations (control vs. vaccinated) and if the difference between those two probabilities was larger than we would expect to occur under the null hypothesis (which, but assuming that the vaccine is no better than a placebo, assumes that these two groups are equivalent and therefore that any differences are due to random chance alone), then we would reject the null hypothesis that the vaccine is equivalent to the placebo. (Note that I haven’t said anything about whether the vaccine lowers infection rates; in a few minutes we’ll discuss one-tailed vs. two-tailed tests.)</p>
+<p><strong>These steps apply for both parametric and non-parametric statistics.</strong> Here we are introducing hypothesis testing through the lens of randomization procedures, but the same steps will be used again when we get into statistics involving parametric distributions (i.e. statistical distributions of known form and described by a finite number of parameters) and their properties. As you will see in a few weeks, most standard statistical tests involve a test statistic with a known distribution under the null hypothesis; here the distribution under the null hypothesis needs to be generated by randomization (randomization test). (We are starting with the randomization-based procedures because there is no math involved and it is more intuitive.)</p>
 <p>The basic idea underlying all statistical tests: <span style="color: teal;"><strong>What is the probability that I would get a test statistic as large or larger (as produced by the data) if the null hypothesis was true (this is the “p-value”). To answer this question we need (1) a test statistic and (2) a distribution under the null hypothesis.</strong></span></p>
 <p>p-value = <span class="math inline">\(P(data|H_{0})\)</span></p>
 <p><a id="pvalint"></a><span style="color: teal;"><strong>Remember – the p-value is a statement about the probability of getting your data if the null hypothesis were true. It is not a statement about the probability that the null hypothesis is true.</strong></span> This logic can go wrong!!</p>
-<p>Example: If a person is an American, he is probably not a member of Congress. This person is a member of Congress. Therefore he is probably not an American.</p>
-<p>Let's draw a null distribution. In order to interpret the statistical test, we need to know whether we want a one-tailed test or a two-tailed test. <a id="tails"></a>In a one-tailed test, we would reject the null hypothesis only if the test statistic is larger than expected under in the null in one direction (5<span class="math inline">\(%\)</span> in one tail). In a two-tailed test, we would reject the null if the test statistic is larger in either direction (2.5<span class="math inline">\(%\)</span> in both tails).</p>
+<p>Example:
+If a person is an American, he is probably not a member of Congress.
+This person is a member of Congress.
+Therefore he is probably not an American.</p>
+<p>Let’s draw a null distribution. In order to interpret the statistical test, we need to know whether we want a one-tailed test or a two-tailed test. <a id="tails"></a>In a one-tailed test, we would reject the null hypothesis only if the test statistic is larger than expected under in the null in one direction (5<span class="math inline">\(%\)</span> in one tail). In a two-tailed test, we would reject the null if the test statistic is larger in either direction (2.5<span class="math inline">\(%\)</span> in both tails).</p>
 <p><strong>Example</strong>: Let’s say I’m looking at the change in auto accident mortalities after a ban is enacted on driving while texting. We would expect that auto accident mortality would decrease after a ban on texting while driving. Let’s say, for arguments sake, that our test statistic T is the change in accident deaths</p>
 <p><span class="math inline">\(H_{0}\)</span>: T=0 (no change in deaths)</p>
 <p><span class="math inline">\(H_{A}\)</span>: T&lt;0 (decline in deaths)</p>
@@ -443,54 +440,57 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Consider the second case. To reject the null hypothesis, you would accept values of <span class="math inline">\(T^{*}\)</span> as significant if they were either very large or very small, and would divide the 5% critical region between the two tails</p>
 <p><span class="math inline">\(P(T \geq T^{*}│H_{0})&lt;0.025\)</span></p>
 <p><span class="math inline">\(P(T \leq T^{*}│H_{0})&lt;0.025\)</span></p>
-<p>Notice that it now becomes a <em>more stringent test</em>. If <span class="math inline">\(T^{*}\)</span> is large, it now has to be even larger to qualify as &quot;significant&quot;. This is a two-tailed test.</p>
+<p>Notice that it now becomes a <em>more stringent test</em>. If <span class="math inline">\(T^{*}\)</span> is large, it now has to be even larger to qualify as “significant.” This is a two-tailed test.</p>
 <p><strong><span style="color: indigo;">TWO KEY POINTS:</span></strong></p>
 <p><span style="color: indigo;">1. If you are using a one-tailed test, you have to be willing to accept a result that is opposite in sign of what was expected as being PURELY BY CHANCE!! In other words, if traffic deaths went UP after the texting ban, you would have to be willing to accept that that was by pure chance and you would then fail to reject the null hypothesis of NO CHANGE. This is in fact what happened, by the way: Texting bans actually increase traffic deaths – WHY?</span></p>
 <p><span style="color: indigo;">2. Before using the more “lenient” one-tailed test, make sure you really believe that results opposite to what you expect are only random</span></p>
-<p>You cannot do a one-tailed test, find the answer to have the wrong sign and then do a two-tailed test. While probably quite common, this is not statistically valid. You cannot use the data to generate the test! Not all tests are created equal!! Tests differ in their power to detect differences, and their efficiency. The balance between power and efficiency depends on the specific situation; we will discuss this more next week.</p>
-<p>We are going to introduce the idea of hypothesis testing through the practice of permutation tests, because it allows us to get into the flow of testing hypotheses without the burden of a lot of complicated mathematics. Moreover, in doing so, we introduce the more general concept of &quot;generative models&quot;, which generate outcomes through simulation. For example, we can think of the statement <span class="math inline">\(X \sim Pois(\lambda)\)</span> as a generative model because it allows us to generate datasets that follow the distribution <span class="math inline">\(Pois(\lambda)\)</span>. If we had a dataset and we wanted to know whether it came from a Poisson distribution, we could imagine generating lots of datasets using a generative model (i.e. drawn from <span class="math inline">\(Pois(\lambda)\)</span>) and asking ourselves whether any of the generated datasets look anything like the dataset we have. In the same way, we can think about testing a null hypothesis <span class="math inline">\(H_{0}\)</span> by generating data under that null hypothesis, calculating some test statistics from that generated data, and asking whether our geneterated test statsitics &quot;look like&quot; the test statistic obtained from our real data. If not, then we can reject the null hypothesis. Simulations like this are enormously powerful tools for testing hypotheses and are often far more intuitive than the alternative &quot;parametric&quot; statistical tests we will learn in Weeks 3 and 4.</p>
+<p>You cannot do a one-tailed test, find the answer to have the wrong sign and then do a two-tailed test. While probably quite common, this is not statistically valid. You cannot use the data to generate the test!
+Not all tests are created equal!! Tests differ in their power to detect differences, and their efficiency. The balance between power and efficiency depends on the specific situation; we will discuss this more next week.</p>
+<p>We are going to introduce the idea of hypothesis testing through the practice of permutation tests, because it allows us to get into the flow of testing hypotheses without the burden of a lot of complicated mathematics. Moreover, in doing so, we introduce the more general concept of “generative models,” which generate outcomes through simulation. For example, we can think of the statement <span class="math inline">\(X \sim Pois(\lambda)\)</span> as a generative model because it allows us to generate datasets that follow the distribution <span class="math inline">\(Pois(\lambda)\)</span>. If we had a dataset and we wanted to know whether it came from a Poisson distribution, we could imagine generating lots of datasets using a generative model (i.e. drawn from <span class="math inline">\(Pois(\lambda)\)</span>) and asking ourselves whether any of the generated datasets look anything like the dataset we have. In the same way, we can think about testing a null hypothesis <span class="math inline">\(H_{0}\)</span> by generating data under that null hypothesis, calculating some test statistics from that generated data, and asking whether our geneterated test statsitics “look like” the test statistic obtained from our real data. If not, then we can reject the null hypothesis. Simulations like this are enormously powerful tools for testing hypotheses and are often far more intuitive than the alternative “parametric” statistical tests we will learn in Weeks 3 and 4.</p>
 </div>
-<div id="permutation-tests" class="section level2">
+<div id="permutation-tests" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Permutation tests</h2>
 <p><a id="permmethods"></a>Let’s say we have two random samples drawn from possibly different probability distributions F and G,</p>
 <p><span class="math inline">\(F \rightarrow z=\{z_{1},z_{2},...,z_{n}\}\)</span></p>
 <p><span class="math inline">\(G \rightarrow y=\{y_{1},y_{2},...,y_{m}\}\)</span></p>
-<p>Having observed z and y, we wish to test the null hypothesis <span class="math inline">\(H_{0}\)</span> of no difference between F and G, <span class="math inline">\(H_{0}:F=G\)</span>. Note that the equality F=G means that the two distributions are exactly the same across their entire distribution, not just that their means are the same. If <span class="math inline">\(H_{0}\)</span> is true, than there is no probabilistic difference between drawing random values from F and drawing random values from G.</p>
+<p>Having observed z and y, we wish to test the null hypothesis <span class="math inline">\(H_{0}\)</span> of no difference between F and G, <span class="math inline">\(H_{0}:F=G\)</span>.
+Note that the equality F=G means that the two distributions are exactly the same across their entire distribution, not just that their means are the same. If <span class="math inline">\(H_{0}\)</span> is true, than there is no probabilistic difference between drawing random values from F and drawing random values from G.</p>
 <p><em>What are some possible test statistics that we might use in this case?</em></p>
 <p>There are many test statistics that we could use to test this null hypothesis but lets use the difference in means as the test statistic. If there is a large difference in their means, than we can probably reject the null hypothesis that they represent the same underlying distribution.</p>
 <p><span class="math inline">\(T=E[F]-E[G]=\bar{z}-\bar{y}\)</span></p>
-<p>The way to do this is to lump all the data together and to randomly permute the labels so that data are randomly assigned to a group (z vs. y). <strong><span style="color: orangered;">Important: We are not sampling with replacement here. We are simply permuting the labels to &quot;erase&quot; any possible correlation between group and the values of the data.</span></strong></p>
-<p>We then calculate the mean of the &quot;fake z&quot; group and the mean of the &quot;fake y&quot; group and take the difference. That is the result of ONE permutation. If we do that many many times (say, 10000 times) then the distribution of those differences reflects the distribution under the null hypothesis of no difference between F and G.</p>
+<p>The way to do this is to lump all the data together and to randomly permute the labels so that data are randomly assigned to a group (z vs. y). <strong><span style="color: orangered;">Important: We are not sampling with replacement here. We are simply permuting the labels to “erase” any possible correlation between group and the values of the data.</span></strong></p>
+<p>We then calculate the mean of the “fake z” group and the mean of the “fake y” group and take the difference. That is the result of ONE permutation. If we do that many many times (say, 10000 times) then the distribution of those differences reflects the distribution under the null hypothesis of no difference between F and G.</p>
 <p>We will do an example like this in the problem set.</p>
 </div>
-<div id="parameter-estimation" class="section level2">
+<div id="parameter-estimation" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Parameter estimation</h2>
-<p>Hypothesis testing is a bit like the game 50-questions (Are you red? Are you blue? Each question is a null hypothesis to be rejected...).</p>
-<p><a id="effectsize"></a>Parameter estimation appears at first glance more direct, it just asks &quot;What are you?&quot;, and in doing so it estimates the value of a parameter (mean growth rate of a fish population, for example) and provides a measure of uncertainty about that estimate.</p>
+<p>Hypothesis testing is a bit like the game 50-questions (Are you red? Are you blue? Each question is a null hypothesis to be rejected…).</p>
+<p><a id="effectsize"></a>Parameter estimation appears at first glance more direct, it just asks “What are you?” and in doing so it estimates the value of a parameter (mean growth rate of a fish population, for example) and provides a measure of uncertainty about that estimate.</p>
 <p>As a reminder, <strong>estimators are tools that produce estimates of population statistics from sample statistics</strong>.</p>
-<p>The basic outline of &quot;statistical inference&quot;: Data = sample <span class="math inline">\(\rightarrow\)</span> sample statistics <span class="math inline">\(\rightarrow\)</span> ESTIMATOR <span class="math inline">\(\rightarrow\)</span> population parameters</p>
-<p>We generally use the word &quot;statistic&quot; when discussing the data, and &quot;parameter&quot; when discussing the underlying distribution.</p>
-<p><strong>An &quot;estimator&quot; or &quot;point estimate&quot; is a statistic (that is, a function of the data) that is used to infer the value of an unknown parameter in a statistical model. If the parameter is denoted <span class="math inline">\(\theta\)</span> then the estimator is typically written by adding a &quot;hat&quot; over the symbol: <span class="math inline">\(\hat{\theta}\)</span>. Being a function of the data, the estimator is itself a random variable; a particular realization of this random variable is called the &quot;estimate&quot;.</strong> Sometimes the words &quot;estimator&quot; and &quot;estimate&quot; are used interchangeably, but I will try and be consistent in using the word &quot;estimator&quot; for the function in the generic, and the word &quot;estimate&quot; for the result of applying that function to the data at hand.</p>
+<p>The basic outline of “statistical inference”:
+Data = sample <span class="math inline">\(\rightarrow\)</span> sample statistics <span class="math inline">\(\rightarrow\)</span> ESTIMATOR <span class="math inline">\(\rightarrow\)</span> population parameters</p>
+<p>We generally use the word “statistic” when discussing the data, and “parameter” when discussing the underlying distribution.</p>
+<p><strong>An “estimator” or “point estimate” is a statistic (that is, a function of the data) that is used to infer the value of an unknown parameter in a statistical model. If the parameter is denoted <span class="math inline">\(\theta\)</span> then the estimator is typically written by adding a “hat” over the symbol: <span class="math inline">\(\hat{\theta}\)</span>. Being a function of the data, the estimator is itself a random variable; a particular realization of this random variable is called the “estimate.”</strong> Sometimes the words “estimator” and “estimate” are used interchangeably, but I will try and be consistent in using the word “estimator” for the function in the generic, and the word “estimate” for the result of applying that function to the data at hand.</p>
 <p>Example:</p>
 <p><span class="math display">\[
 X \sim N(\mu,\sigma^{2})
 \]</span></p>
-<p><a id="estimator"></a>We define the &quot;estimator&quot; for <span class="math inline">\(\mu\)</span> as</p>
+<p><a id="estimator"></a>We define the “estimator” for <span class="math inline">\(\mu\)</span> as</p>
 <p><span class="math display">\[
 \frac{1}{n}\sum_{i=1}^{n}X_{i} 
 \]</span></p>
-<p>Therefore, the &quot;estimate&quot; <span class="math inline">\(\hat{\mu}\)</span> is</p>
+<p>Therefore, the “estimate” <span class="math inline">\(\hat{\mu}\)</span> is</p>
 <p><span class="math display">\[
 \hat{\mu}=\bar{X} =\frac{1}{n}\sum_{i=1}^{n}X_{i} 
 \]</span></p>
 <p>Estimators are imperfect tools, and they can suffer from <em>bias</em> and/or <em>variance</em> (or, equivalently, standard error).</p>
 <ol style="list-style-type: decimal">
 <li><p>Bias: As <span class="math inline">\(n \rightarrow \infty\)</span>, sample statistic does not converge to the population parameter</p></li>
-<li><p>Standard error: Each individual estimate may be too low or too high from the true value (this can occur even if the long run average value is correct, i.e. unbiased). In other words, there is sample-to-sample variance in the estimates obtained from a given sample.</p></li>
+<li><p>Standard error: Each individual estimate may be too low or too high from the true value (this can occur even if the long run average value is correct, i.e. unbiased). In other words, there is sample-to-sample variance in the estimates obtained from a given sample.</p></li>
 </ol>
 <p>It turns out that bias and variance trade-off, and this trade-off is controlled by the complexity of the model you are trying to fit. We will return to these ideas in Week 13 but I suggest reading through <a href="https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229">this</a> nice (and short) explanation of bias and variance (written from the perspective of machine learning, which is just another kind of model building enterprise).</p>
 <p><strong>Why are estimators associated with a standard error? <span style="color: orangered;">If you were to do your experiment all over again, say 1000 times, the value of your estimate would be different each time.</span> Your 1000 estimates would have a statistical distribution with some spread, and the spread of these 1000 estimates is quantified by the standard error.</strong></p>
-<p>(A good example of this from the Week 1 problem set is the question asking you the probability of getting <em>your</em> bag of M&amp;Ms from a random sample of M&amp;Ms. Let's say you calculated this probability by sampling 100,000 times and you got 4 &quot;matches&quot;. This gives you an estimate of 0.00004. But if you repeated this experiement a second time, with <em>another</em> sample of 100,000 bags, you might get 7 matches or 2 matches or none at all! So 0.00004 is your estimate of the probability, but it is an estimate with some uncertainty because you don't know how variable that probability would be if you did the experiment multiple times. This &quot;spread&quot; of the estimates is the standard error of your estimate. Computationally, we can calculate the standard error by doing lots of experiments, but in practice, this is not always possible. Therefore, as we'll see in the next few weeks, we usually use the properties of statistical distributions to calculate the standard error of an estimate.)</p>
+<p>(A good example of this from the Week 1 problem set is the question asking you the probability of getting <em>your</em> bag of M&amp;Ms from a random sample of M&amp;Ms. Let’s say you calculated this probability by sampling 100,000 times and you got 4 “matches.” This gives you an estimate of 0.00004. But if you repeated this experiement a second time, with <em>another</em> sample of 100,000 bags, you might get 7 matches or 2 matches or none at all! So 0.00004 is your estimate of the probability, but it is an estimate with some uncertainty because you don’t know how variable that probability would be if you did the experiment multiple times. This “spread” of the estimates is the standard error of your estimate. Computationally, we can calculate the standard error by doing lots of experiments, but in practice, this is not always possible. Therefore, as we’ll see in the next few weeks, we usually use the properties of statistical distributions to calculate the standard error of an estimate.)</p>
 <p>How do we estimate the bias and variance (related to standard error) of an estimator?</p>
 <p>While there are other methods that we will discuss in a few weeks, now we are going to introduce the idea through two non-parametric approaches: bootstrap and jackknife.</p>
 <p>First we need to stop and discuss what it means to sample from an empirical distribution.</p>
@@ -500,7 +500,7 @@ X \sim N(\mu,\sigma^{2})
 <p>If you sample with replacement, we may get some numbers more than once. It also means that if you draw n balls out of an urn with n numbers, there are some numbers you will never draw.</p>
 <p><strong>STOP: Do you understand sample-with-replacement and sample-without-replacement?</strong></p>
 </div>
-<div id="method-1-non-parametric-bootstrap" class="section level2">
+<div id="method-1-non-parametric-bootstrap" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Method #1: Non-parametric bootstrap</h2>
 <p>The basic idea behind bootstrap sampling is that even if we don’t know what the distribution is that underlies the data, we can “pull ourselves up by our bootstraps” and generate the distribution by resampling WITH REPLACEMENT from the data itself.</p>
 <p>Say we have original data drawn from an unknown distribution G</p>
@@ -508,14 +508,14 @@ X \sim N(\mu,\sigma^{2})
 <p><span class="math display">\[
 X \sim G()
 \]</span></p>
-<p>We don’t know the underlying distribution, but we can substitute the empirical distribution <span class="math inline">\(\hat{G}\)</span> which is defined by <span class="math inline">\(\{X_{1},X_{2},X_{3},...,X_{n}\}\)</span>. In other words, we model the underlying &quot;true&quot; unknown distribution as a multinomial where every value in X is given a probability <span class="math inline">\(\frac{1}{n}\)</span> of occurring.</p>
+<p>We don’t know the underlying distribution, but we can substitute the empirical distribution <span class="math inline">\(\hat{G}\)</span> which is defined by <span class="math inline">\(\{X_{1},X_{2},X_{3},...,X_{n}\}\)</span>. In other words, we model the underlying “true” unknown distribution as a multinomial where every value in X is given a probability <span class="math inline">\(\frac{1}{n}\)</span> of occurring.</p>
 <p>Let’s say we want to compute a statistic of the probability distribution <span class="math inline">\(\theta=f(G)\)</span>, which could be the mean or the median or the standard error of the standard deviation (anything at all!!).</p>
 <p>BTW: <span class="math inline">\(\theta\)</span> is analogous to the test statistic T used for hypothesis testing, and it will be used in the same way. However, I will use the symbol <span class="math inline">\(\theta\)</span> to be consistent with the Efron and Tibshirani and other literature on the bootstrap.</p>
-<p>The &quot;plug-in&quot; principle states that for every parameter of the underlying distribution, we can estimate that function by simply plugging in the empirical distribution</p>
+<p>The “plug-in” principle states that for every parameter of the underlying distribution, we can estimate that function by simply plugging in the empirical distribution</p>
 <p><span class="math display">\[
 \hat{\theta}=f(\hat{G})=f(X)
 \]</span></p>
-<p>This is exactly what we would do intuitively. If we have a bunch of numbers and we want to know the mean of the distribution from whence they came, we would use as the best estimate the mean of those numbers. The &quot;plug-in&quot; principle simply formalizes the idea that these summary statistics can be used to make inference about the generating distribution.</p>
+<p>This is exactly what we would do intuitively. If we have a bunch of numbers and we want to know the mean of the distribution from whence they came, we would use as the best estimate the mean of those numbers. The “plug-in” principle simply formalizes the idea that these summary statistics can be used to make inference about the generating distribution.</p>
 <p>In the development to follow, we will assume that we have NO other information about a distribution other than a single sample from that distribution.</p>
 <p>Summary statistics are easy enough to compute, but we don’t have any way of knowing how accurate those summary statistics might be. The bootstrap gives us a way to calculate the accuracy of our summary statistics <span class="math inline">\(\hat{\theta}\)</span>.</p>
 <p>The bootstrap works NO MATTER HOW COMPLICATED THE FUNCTION, IT IS COMPLETELY AUTOMATIC, AND REQUIRES NO THEORETICAL CALCULATIONS.</p>
@@ -526,7 +526,8 @@ X \sim G()
 <p>We draw k such bootstrap samples:</p>
 <p><span class="math display">\[
 X_{1}^{*}=\{\mbox{n values drawn with replacement from } X\}
-\]</span> <span class="math display">\[
+\]</span>
+<span class="math display">\[
 X_{2}^{*}=\{\mbox{n values drawn with replacement from } X\}
 \]</span></p>
 <p>etc.</p>
@@ -537,7 +538,8 @@ X_{k}^{*}=\{\mbox{n values drawn with replacement from } X\}
 <p>We calculate our statistic of interest on each bootstrap sample:</p>
 <p><span class="math display">\[
 \theta_{1}^{*}=f(X_{1}^{*})
-\]</span> <span class="math display">\[
+\]</span>
+<span class="math display">\[
 \theta_{2}^{*}=f(X_{2}^{*})
 \]</span></p>
 <p>etc.</p>
@@ -564,10 +566,13 @@ X_{k}^{*}=\{\mbox{n values drawn with replacement from } X\}
 <p><strong>Example 1</strong>:</p>
 <p><em>Data</em>: 10 pennies that the students have</p>
 <p><em>Test statistic</em>: Median</p>
-<p>Lets say we are trying to find the median age of all pennies in circulation. We can't figure this out exactly, because we can't collect all the pennies in circulation, but we each have a sample of 10 pennies. The median age of the pennies in our sample is a reasonable estimate for the median age of all pennies in circulation.</p>
-<p>What is our uncertainty about that number? How far might our estimate of the median age be from the true median age? In this case, we don't know the underlying distribution of penny ages. (Let's brainstorm this for a bit. Do we have any guesses what this distribution might look like? What might be a reasonable distribution to describe the shape of penny age?)</p>
+<p>Lets say we are trying to find the median age of all pennies in circulation. We can’t figure this out exactly, because we can’t collect all the pennies in circulation, but we each have a sample of 10 pennies. The median age of the pennies in our sample is a reasonable estimate for the median age of all pennies in circulation.</p>
+<p>What is our uncertainty about that number? How far might our estimate of the median age be from the true median age? In this case, we don’t know the underlying distribution of penny ages. (Let’s brainstorm this for a bit. Do we have any guesses what this distribution might look like? What might be a reasonable distribution to describe the shape of penny age?)</p>
 <p>Let’s use bootstrapped samples to calculate the s.e. associated with that estimate.</p>
-<p>Procedure: 1. Sample WITH REPLACEMENT a group of 10 pennies. (To sample with replacement you will have to sample one penny, write down the age, and repeat that 10 times.) 2. Calculate the median age from that sample of pennies. 3. Repeat</p>
+<p>Procedure:
+1. Sample WITH REPLACEMENT a group of 10 pennies. (To sample with replacement you will have to sample one penny, write down the age, and repeat that 10 times.)
+2. Calculate the median age from that sample of pennies.
+3. Repeat</p>
 <p>Over time you will gather a collection of median estimates, each one of which was calculated using a different bootstrapped dataset. They can be used to calculate the Bias and the Variance of the estimator.</p>
 <p>We actually have two primary mechanisms for generating confidence intervals for the statistic.</p>
 <p>Method #1: We can use the following normal approximation:</p>
@@ -577,7 +582,8 @@ X_{k}^{*}=\{\mbox{n values drawn with replacement from } X\}
 <p><strong>STOP</strong>: How do we construct a confidence interval from this?</p>
 <p><span class="math display">\[
 \hat{\theta}_{LL}=\hat{\theta}-1.96*\hat{se}
-\]</span> <span class="math display">\[
+\]</span>
+<span class="math display">\[
 \hat{\theta}_{UL}=\hat{\theta}+1.96*\hat{se}
 \]</span></p>
 <p>Remember that 95<span class="math inline">\(\%\)</span> of the probability for a Standard Normal distribution lies between (-1.96<span class="math inline">\(\sigma\)</span>,+1.96<span class="math inline">\(\sigma\)</span>)? Here we are using the same principle, capturing 95<span class="math inline">\(\%\)</span> of the probability of the distribution by assuming the distribution of <span class="math inline">\(\theta^{*}\)</span> is Normal and pulling out the lower limit and the upper limit lying 1.95 times the standard deviation below and above (respectively) the estimate.</p>
@@ -585,13 +591,15 @@ X_{k}^{*}=\{\mbox{n values drawn with replacement from } X\}
 <p>Method #2: we could do away with normal approximations altogether and simply take the quantiles directly from the distribution of <span class="math inline">\(\hat{\theta}^{*}\)</span>:</p>
 <p><span class="math display">\[
 \theta_{LL} = \mbox{2.5th percentile of } \hat{\theta}^{*}
-\]</span> <span class="math display">\[
+\]</span>
+<span class="math display">\[
 \theta_{UL} = \mbox{97.5th percentile of } \hat{\theta}^{*}
 \]</span></p>
 <p>Notice that (by construction) 95<span class="math inline">\(%\)</span> of the <span class="math inline">\(\hat{\theta}^{*}\)</span> values fall in the interval <span class="math inline">\((\theta_{LL},\theta_{UL})\)</span>.</p>
 <p>NB: If you are going to go through the trouble of doing the bootstrap sampling, I don’t know why you would make a normal approximation at the very end to construct the CIs. I recommend Method #2.</p>
 <p><strong>Example 2</strong>:</p>
-<p>Knowing how to draw bootstrap replicates gets more complicated when you have multivariate datasets. For example, lets start with a dataset comparing average LSAT scores and GPA for the incoming classes for 15 law schools</p>
+<p>Knowing how to draw bootstrap replicates gets more complicated when you have multivariate datasets.
+For example, lets start with a dataset comparing average LSAT scores and GPA for the incoming classes for 15 law schools</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
 <img src="LSAT_info.png" alt="Source: Efron and Tibshirani (1994)" width="40%" />
 <p class="caption">
@@ -611,7 +619,8 @@ r=\frac{cov(a,b)}{\sqrt{var(a)×var(b)}}
 <p>Here we sample with replacement from the bivariate PAIRS of data. In other words, we sample</p>
 <p><span class="math display">\[
 X_{1}^{*}=(LSAT_{i},GPA_{i}), \mbox{where i=sample with replacement 1...n}
-\]</span> <span class="math display">\[
+\]</span>
+<span class="math display">\[
 X_{2}^{*}=(LSAT_{i},GPA_{i}), \mbox{where i=sample with replacement 1...n}
 \]</span></p>
 <p>and so forth, and then calculate the correlation of each simulated dataset.</p>
@@ -642,12 +651,13 @@ Figure 1.2: Source: Efron and Tibshirani (1994)
 <p>R has numerous functions for doing bootstrapping, although bootstrapping is so easy its often just as easy (and more transparent) to simply write your own code to do it. We will go over some examples in lab.</p>
 <p>Note that the procedure we have described is called the non-parametric bootstrap estimate because it is based only on the non-parametric empirical distribution G ̂. If we had assumed some kind of distributional form for G, it would be considered a parametric bootstrap.</p>
 </div>
-<div id="parametric-bootstrap" class="section level2">
+<div id="parametric-bootstrap" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Parametric bootstrap</h2>
-<p>The parametric bootstrap is similar to the non-parametric bootstrap except that instead of drawing our bootstrap samples from the original data, we fit a distribution to the data first, and then draw our samples from that. We haven’t covered how to fit a distribution to data yet, nor have we introduced any of the univariate distributions, so I won’t show you how to do a parametric bootstrap now but we’ll get some practice in the Week 3 problem set.</p>
-<p>Why would we ever do a parametric bootstrap? We might use a parametric distribution if our original sample size was so small that we did not think it could &quot;stand in&quot; for the underlying parametric distribution. For example, if your dataset for coin age just so happens not to have any coins made in 1990, you may be uncomfortable having all your bootstrapped datasets also be missing coins made in 1990. (Remember: Bootstrapping is, in some way, supposed to mimic redoing your experiment. Do you really think that you'd never get a coin made in 1990?) To get around this problem, you might do a parametric bootstrap. Note that, if you use MLEs to get the parameters for the parametric bootstrap, those parameter estimates assume large sample sizes (the formula are asymptotically correct for large sample sizes) and so you have to be a little caution that your parametric bootstrap might not be capturing the true underlying distribution. While parametric bootstrap is often done when sample sizes are too small, occasionally it may also be used when you have some strong theoretical justification for a particular distribution but the statistics you are interested in have no simple formula. (In other words, maybe the distribution is known, but the statistical properties of the specific parameter you are interested in is not known but could be derived through parametric bootstrapping.)</p>
+<p>The parametric bootstrap is similar to the non-parametric bootstrap except that instead of drawing our bootstrap samples from the original data, we fit a distribution to the data first, and then draw our samples from that.
+We haven’t covered how to fit a distribution to data yet, nor have we introduced any of the univariate distributions, so I won’t show you how to do a parametric bootstrap now but we’ll get some practice in the Week 3 problem set.</p>
+<p>Why would we ever do a parametric bootstrap? We might use a parametric distribution if our original sample size was so small that we did not think it could “stand in” for the underlying parametric distribution. For example, if your dataset for coin age just so happens not to have any coins made in 1990, you may be uncomfortable having all your bootstrapped datasets also be missing coins made in 1990. (Remember: Bootstrapping is, in some way, supposed to mimic redoing your experiment. Do you really think that you’d never get a coin made in 1990?) To get around this problem, you might do a parametric bootstrap. Note that, if you use MLEs to get the parameters for the parametric bootstrap, those parameter estimates assume large sample sizes (the formula are asymptotically correct for large sample sizes) and so you have to be a little caution that your parametric bootstrap might not be capturing the true underlying distribution. While parametric bootstrap is often done when sample sizes are too small, occasionally it may also be used when you have some strong theoretical justification for a particular distribution but the statistics you are interested in have no simple formula. (In other words, maybe the distribution is known, but the statistical properties of the specific parameter you are interested in is not known but could be derived through parametric bootstrapping.)</p>
 </div>
-<div id="jackknife" class="section level2">
+<div id="jackknife" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Jackknife</h2>
 <p><a id="jackknife"></a>Jackknifing is another method of assessing bias and standard error of sample statistics. Jackknife can also be used to establish the influence of each datapoint in your dataset. The procedure simply involves leaving out each datapoint and recalculating the statistic of interest.</p>
 <p>If your dataset involves the set</p>
@@ -662,7 +672,8 @@ Figure 1.2: Source: Efron and Tibshirani (1994)
 <p>The jackknife estimate of bias is given by</p>
 <p><span class="math display">\[
 \widehat{Bias_{jack}}=(n-1)(\hat{\theta_{(.)}}-\hat{\theta})
-\]</span> where</p>
+\]</span>
+where</p>
 <p><span class="math display">\[
 \hat{\theta}_{(.)}=\frac{1}{n}\sum_{i=1}^{n}\hat{\theta}_{(i)}
 \]</span></p>
@@ -675,9 +686,10 @@ Figure 1.2: Source: Efron and Tibshirani (1994)
 <p><strong>Exercise</strong>: Use your pennies to calculate <span class="math inline">\(\widehat{Bias}_{jack}\)</span> and <span class="math inline">\(\widehat{se}_{jack}\)</span>.</p>
 <p>Both bootstrap and jackknife can estimate the standard error of a statistic, and in this way, their use can often be interchangeable. However, the jackknife can ONLY compute the bias and standard error whereas the bootstrap calculates the entire distribution of the statistic from which the standard error can be inferred. Bootstrapping is often more computer intensive, but with modern computers this is hardly a drawback.</p>
 </div>
-<div id="jackknife-after-bootstrap" class="section level2">
+<div id="jackknife-after-bootstrap" class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Jackknife-after-bootstrap</h2>
-<p>Jackknife-after-bootstrap is one method of assessing the standard error of bootstrap statistics. For example, jackknife-after-bootstrap can give us the standard error of the bootstrap standard error:</p>
+<p>Jackknife-after-bootstrap is one method of assessing the standard error of bootstrap statistics.
+For example, jackknife-after-bootstrap can give us the standard error of the bootstrap standard error:</p>
 <p><span class="math display">\[
 \widehat{se}_{jack}(\widehat{se}_{boot})
 \]</span></p>
@@ -690,11 +702,11 @@ Figure 1.2: Source: Efron and Tibshirani (1994)
 \widehat{se}_{jack}(\widehat{se}_{boot})=\sqrt{\left(\frac{n-1}{n}\right)\sum_{i=1}^{n}(\hat{se}_{boot(i)}-\hat{se}_{boot(.)})^{2}}
 \]</span></p>
 <p>Notice that because there are always some bootstrap samples that do not include i, you do not actually have to do any extra computation to do jackknife-after-bootstrap, but the precise details of using the bootstrap samples you already have are a bit complicated.</p>
-<p>In R, this can be done using the ‘jack.after.boot’ function in the package “boot”.</p>
+<p>In R, this can be done using the ‘jack.after.boot’ function in the package “boot.”</p>
 <p><strong>Discuss: Why are hypothesis testing and parameter estimation two sides of the same coin?</strong></p>
 </div>
-<div id="by-the-end-of-week-2-you-should-understand..." class="section level2">
-<h2><span class="header-section-number">3.8</span> By the end of Week 2, you should understand...</h2>
+<div id="by-the-end-of-week-2-you-should-understand" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> By the end of Week 2, you should understand…</h2>
 <ul>
 <li>the 6 steps of Null Hypothesis Significance Testing <a href="week-2-lecture.html#6steps">here</a></li>
 <li>the interpretation of a <a href="week-2-lecture.html#pvalint">p-value</a> (hint: it is <em>not</em> the probability that the null hypothesis is correct)</li>
@@ -703,7 +715,7 @@ Figure 1.2: Source: Efron and Tibshirani (1994)
 <li>the relationship between testing a hypothesis and estimating an <a href="week-2-lecture.html#effectsize">effect size</a></li>
 <li>the definition of an <a href="week-2-lecture.html#estimator">estimator</a></li>
 <li>how to use bootstrapping (both parametric and non-parametric) to estimate a test statistic and calculate the <a href="week-2-lecture.html#bias">bias</a> and <a href="week-2-lecture.html#se">standard error</a> of your estimate</li>
-<li>when to use parametric bootstrap vs. non-parametric bootstrap (hint: rarely)</li>
+<li>when to use parametric bootstrap vs. non-parametric bootstrap (hint: rarely)</li>
 <li>how to use <a href="week-2-lecture.html#jackknife">jackknife</a> to estimate bias and standard errors of an estimate</li>
 </ul>
 
@@ -770,7 +782,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

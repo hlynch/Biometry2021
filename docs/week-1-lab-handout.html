@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-01" />
+<meta name="date" content="2021-04-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="week-1-lecture.html"/>
 <link rel="next" href="week-2-lecture.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,41 +54,68 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -107,28 +135,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#reading-material"><i class="fa fa-check"></i><b>1.1</b> Reading Material</a></li>
 <li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#basic-outline"><i class="fa fa-check"></i><b>1.2</b> Basic Outline</a></li>
-<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#todays-agenda"><i class="fa fa-check"></i><b>1.3</b> Today's Agenda</a></li>
-<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#basic-probability-theory"><i class="fa fa-check"></i><b>1.4</b> Basic Probability Theory</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#intersection"><i class="fa fa-check"></i><b>1.4.1</b> Intersection</a></li>
-<li class="chapter" data-level="1.4.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#union"><i class="fa fa-check"></i><b>1.4.2</b> Union</a></li>
-<li class="chapter" data-level="1.4.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#complement"><i class="fa fa-check"></i><b>1.4.3</b> Complement:</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#todays-agenda"><i class="fa fa-check"></i><b>1.3</b> Today’s Agenda</a></li>
+<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#overview-of-univariate-distributions"><i class="fa fa-check"></i><b>1.4</b> Overview of Univariate Distributions</a></li>
+<li class="chapter" data-level="1.5" data-path="week-1-lecture.html"><a href="week-1-lecture.html#what-can-you-ask-of-a-distribution"><i class="fa fa-check"></i><b>1.5</b> What can you ask of a distribution?</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="week-1-lecture.html"><a href="week-1-lecture.html#multiple-events"><i class="fa fa-check"></i><b>1.5</b> Multiple events</a></li>
-<li class="chapter" data-level="1.6" data-path="week-1-lecture.html"><a href="week-1-lecture.html#conditionals"><i class="fa fa-check"></i><b>1.6</b> Conditionals</a></li>
-<li class="chapter" data-level="1.7" data-path="week-1-lecture.html"><a href="week-1-lecture.html#bayes-theorem"><i class="fa fa-check"></i><b>1.7</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="1.8" data-path="week-1-lecture.html"><a href="week-1-lecture.html#a-few-foundational-ideas"><i class="fa fa-check"></i><b>1.8</b> A few foundational ideas</a></li>
-<li class="chapter" data-level="1.9" data-path="week-1-lecture.html"><a href="week-1-lecture.html#overview-of-univariate-distributions"><i class="fa fa-check"></i><b>1.9</b> Overview of Univariate Distributions</a></li>
-<li class="chapter" data-level="1.10" data-path="week-1-lecture.html"><a href="week-1-lecture.html#what-can-you-ask-of-a-distribution"><i class="fa fa-check"></i><b>1.10</b> What can you ask of a distribution?</a><ul>
-<li class="chapter" data-level="1.10.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#expected-value-of-a-random-variable"><i class="fa fa-check"></i><b>1.10.1</b> Expected Value of a Random Variable</a></li>
-<li class="chapter" data-level="1.10.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#discrete-case"><i class="fa fa-check"></i><b>1.10.2</b> Discrete Case</a></li>
-<li class="chapter" data-level="1.10.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#continuous-case"><i class="fa fa-check"></i><b>1.10.3</b> Continuous Case</a></li>
-</ul></li>
-<li class="chapter" data-level="1.11" data-path="week-1-lecture.html"><a href="week-1-lecture.html#a-brief-introduction-to-scientific-method"><i class="fa fa-check"></i><b>1.11</b> A Brief Introduction to Scientific Method</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab Handout</a><ul>
+<li class="chapter" data-level="2" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab Handout</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#using-r-like-a-calculator"><i class="fa fa-check"></i><b>2.1</b> Using R like a calculator</a></li>
 <li class="chapter" data-level="2.2" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#the-basic-data-structures-in-r"><i class="fa fa-check"></i><b>2.2</b> The basic data structures in R</a></li>
 <li class="chapter" data-level="2.3" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#writing-functions-in-r"><i class="fa fa-check"></i><b>2.3</b> Writing functions in R</a></li>
@@ -137,7 +153,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.6" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#lesson-6-some-practice-writing-r-code"><i class="fa fa-check"></i><b>2.6</b> Lesson #6: Some practice writing R code</a></li>
 <li class="chapter" data-level="2.7" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#a-few-final-notes"><i class="fa fa-check"></i><b>2.7</b> A few final notes</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
+<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#hypothesis-testing-and-p-values"><i class="fa fa-check"></i><b>3.1</b> Hypothesis testing and p-values</a></li>
 <li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#permutation-tests"><i class="fa fa-check"></i><b>3.2</b> Permutation tests</a></li>
 <li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parameter-estimation"><i class="fa fa-check"></i><b>3.3</b> Parameter estimation</a></li>
@@ -145,16 +162,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>3.5</b> Parametric bootstrap</a></li>
 <li class="chapter" data-level="3.6" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife"><i class="fa fa-check"></i><b>3.6</b> Jackknife</a></li>
 <li class="chapter" data-level="3.7" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife-after-bootstrap"><i class="fa fa-check"></i><b>3.7</b> Jackknife-after-bootstrap</a></li>
-<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-week-2-you-should-understand..."><i class="fa fa-check"></i><b>3.8</b> By the end of Week 2, you should understand...</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-week-2-you-should-understand"><i class="fa fa-check"></i><b>3.8</b> By the end of Week 2, you should understand…</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a><ul>
+<li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="week-2-lab.html"><a href="week-2-lab.html#confidence-intervals"><i class="fa fa-check"></i><b>4.1</b> Confidence intervals</a></li>
 <li class="chapter" data-level="4.2" data-path="week-2-lab.html"><a href="week-2-lab.html#testing-hypotheses-through-permutation"><i class="fa fa-check"></i><b>4.2</b> Testing hypotheses through permutation</a></li>
 <li class="chapter" data-level="4.3" data-path="week-2-lab.html"><a href="week-2-lab.html#basics-of-bootstrap-and-jackknife"><i class="fa fa-check"></i><b>4.3</b> Basics of bootstrap and jackknife</a></li>
 <li class="chapter" data-level="4.4" data-path="week-2-lab.html"><a href="week-2-lab.html#calculating-bias-and-standard-error"><i class="fa fa-check"></i><b>4.4</b> Calculating bias and standard error</a></li>
 <li class="chapter" data-level="4.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>4.5</b> Parametric bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lecture</a><ul>
+<li class="chapter" data-level="5" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lecture</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#overview-of-probability-distributions"><i class="fa fa-check"></i><b>5.1</b> Overview of probability distributions</a></li>
 <li class="chapter" data-level="5.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>5.2</b> Normal (Gaussian) Distribution</a></li>
 <li class="chapter" data-level="5.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#standard-normal-distribution"><i class="fa fa-check"></i><b>5.3</b> Standard Normal Distribution</a></li>
@@ -165,194 +184,163 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.8" data-path="week-3-lecture.html"><a href="week-3-lecture.html#beta-distribution"><i class="fa fa-check"></i><b>5.8</b> Beta Distribution</a></li>
 <li class="chapter" data-level="5.9" data-path="week-3-lecture.html"><a href="week-3-lecture.html#gamma-distribution"><i class="fa fa-check"></i><b>5.9</b> Gamma Distribution</a></li>
 <li class="chapter" data-level="5.10" data-path="week-3-lecture.html"><a href="week-3-lecture.html#some-additional-notes"><i class="fa fa-check"></i><b>5.10</b> Some additional notes:</a></li>
-<li class="chapter" data-level="5.11" data-path="week-3-lecture.html"><a href="week-3-lecture.html#by-the-end-of-week-3-you-should-understand..."><i class="fa fa-check"></i><b>5.11</b> By the end of Week 3, you should understand...</a></li>
+<li class="chapter" data-level="5.11" data-path="week-3-lecture.html"><a href="week-3-lecture.html#by-the-end-of-week-3-you-should-understand"><i class="fa fa-check"></i><b>5.11</b> By the end of Week 3, you should understand…</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="6" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="week-3-lab.html"><a href="week-3-lab.html#exploring-the-univariate-distributions-with-r"><i class="fa fa-check"></i><b>6.1</b> Exploring the univariate distributions with R</a></li>
-<li class="chapter" data-level="6.2" data-path="week-3-lab.html"><a href="week-3-lab.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.2</b> Standard deviation vs. Standard error</a></li>
+<li class="chapter" data-level="6.2" data-path="week-3-lab.html"><a href="week-3-lab.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.2</b> Standard deviation vs. Standard error</a></li>
 <li class="chapter" data-level="6.3" data-path="week-3-lab.html"><a href="week-3-lab.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> The Central Limit Theorem</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lecture</a><ul>
-<li class="chapter" data-level="7.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#short-digression-degrees-of-freedom"><i class="fa fa-check"></i><b>7.1</b> Short digression: Degrees of freedom</a></li>
-<li class="chapter" data-level="7.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#t-distribution"><i class="fa fa-check"></i><b>7.2</b> t-distribution</a></li>
-<li class="chapter" data-level="7.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.3</b> Chi-squared distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#f-distribution"><i class="fa fa-check"></i><b>7.4</b> F distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#estimating-confidence-intervals---5-special-cases"><i class="fa fa-check"></i><b>7.5</b> Estimating confidence intervals - 5 special cases</a></li>
-<li class="chapter" data-level="7.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#to-recap"><i class="fa fa-check"></i><b>7.6</b> To recap</a></li>
-</ul></li>
+<li class="chapter" data-level="7" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lecture</a></li>
 <li class="chapter" data-level="8" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>8</b> Week 4 Lab</a></li>
-<li class="chapter" data-level="9" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lecture</a><ul>
-<li class="chapter" data-level="9.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#statistical-power"><i class="fa fa-check"></i><b>9.1</b> Statistical power</a></li>
-<li class="chapter" data-level="9.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-single-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> The single sample t test</a></li>
-<li class="chapter" data-level="9.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>9.3</b> The unpaired two sample t test</a></li>
-<li class="chapter" data-level="9.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-paired-two-sample-t-test"><i class="fa fa-check"></i><b>9.4</b> The paired two sample t test</a></li>
-<li class="chapter" data-level="9.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-f-test"><i class="fa fa-check"></i><b>9.5</b> The F test</a></li>
-<li class="chapter" data-level="9.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>9.6</b> Comparing two proportions</a></li>
-<li class="chapter" data-level="9.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>9.7</b> Comparing two distributions</a></li>
-<li class="chapter" data-level="9.8" data-path="week-5-lecture.html"><a href="week-5-lecture.html#a-bit-more-detail-on-the-binomial"><i class="fa fa-check"></i><b>9.8</b> A bit more detail on the Binomial</a></li>
-<li class="chapter" data-level="9.9" data-path="week-5-lecture.html"><a href="week-5-lecture.html#side-note-about-the-wald-test"><i class="fa fa-check"></i><b>9.9</b> Side-note about the Wald test</a></li>
-<li class="chapter" data-level="9.10" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-goodness-of-fit-test"><i class="fa fa-check"></i><b>9.10</b> Chi-squared goodness-of-fit test</a></li>
-<li class="chapter" data-level="9.11" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-test-of-independence"><i class="fa fa-check"></i><b>9.11</b> Chi-squared test of independence</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>10</b> Week 5 Lab</a><ul>
+<li class="chapter" data-level="9" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lecture</a></li>
+<li class="chapter" data-level="10" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>10</b> Week 5 Lab</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="week-5-lab.html"><a href="week-5-lab.html#f-test"><i class="fa fa-check"></i><b>10.1</b> F-test</a></li>
-<li class="chapter" data-level="10.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>10.2</b> Comparing two proportions</a></li>
-<li class="chapter" data-level="10.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>10.3</b> Comparing two distributions</a></li>
+<li class="chapter" data-level="10.2" data-path="week-5-lab.html"><a href="week-5-lab.html#comparing-two-proportions"><i class="fa fa-check"></i><b>10.2</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="10.3" data-path="week-5-lab.html"><a href="week-5-lab.html#comparing-two-distributions"><i class="fa fa-check"></i><b>10.3</b> Comparing two distributions</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="week-6-lecture.html"><a href="week-6-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 6 Lecture</a></li>
 <li class="chapter" data-level="12" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>12</b> Week 6 Lab</a></li>
-<li class="chapter" data-level="13" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html"><i class="fa fa-check"></i><b>13</b> Week 7 Lecture/Lab</a><ul>
+<li class="chapter" data-level="13" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html"><i class="fa fa-check"></i><b>13</b> Week 7 Lecture/Lab</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#box-plots"><i class="fa fa-check"></i><b>13.1</b> Box plots</a></li>
 <li class="chapter" data-level="13.2" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#two-dimensional-data"><i class="fa fa-check"></i><b>13.2</b> Two-dimensional data</a></li>
 <li class="chapter" data-level="13.3" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#three-dimensional-data"><i class="fa fa-check"></i><b>13.3</b> Three-dimensional data</a></li>
 <li class="chapter" data-level="13.4" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#multiple-plots"><i class="fa fa-check"></i><b>13.4</b> Multiple plots</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lecture</a><ul>
-<li class="chapter" data-level="14.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#warm-up"><i class="fa fa-check"></i><b>14.1</b> Warm-up</a></li>
-<li class="chapter" data-level="14.2" data-path="week-8-lecture.html"><a href="week-8-lecture.html#the-aims-of-modelling----a-discussion-of-shmueli-2010"><i class="fa fa-check"></i><b>14.2</b> The aims of modelling -- A discussion of Shmueli (2010)</a></li>
-<li class="chapter" data-level="14.3" data-path="week-8-lecture.html"><a href="week-8-lecture.html#introduction-to-linear-models"><i class="fa fa-check"></i><b>14.3</b> Introduction to linear models</a></li>
-<li class="chapter" data-level="14.4" data-path="week-8-lecture.html"><a href="week-8-lecture.html#linear-models-example-with-continuous-covariate"><i class="fa fa-check"></i><b>14.4</b> Linear models | example with continuous covariate</a></li>
-<li class="chapter" data-level="14.5" data-path="week-8-lecture.html"><a href="week-8-lecture.html#resolving-overparameterization-using-contrasts"><i class="fa fa-check"></i><b>14.5</b> Resolving overparameterization using contrasts</a></li>
-<li class="chapter" data-level="14.6" data-path="week-8-lecture.html"><a href="week-8-lecture.html#effect-codingtreatment-constrast"><i class="fa fa-check"></i><b>14.6</b> Effect coding/Treatment constrast</a></li>
-<li class="chapter" data-level="14.7" data-path="week-8-lecture.html"><a href="week-8-lecture.html#helmert-contrasts"><i class="fa fa-check"></i><b>14.7</b> Helmert contrasts</a></li>
-<li class="chapter" data-level="14.8" data-path="week-8-lecture.html"><a href="week-8-lecture.html#sum-to-zero-contrasts"><i class="fa fa-check"></i><b>14.8</b> Sum-to-zero contrasts</a></li>
-<li class="chapter" data-level="14.9" data-path="week-8-lecture.html"><a href="week-8-lecture.html#polynomial-contrasts"><i class="fa fa-check"></i><b>14.9</b> Polynomial contrasts</a></li>
-<li class="chapter" data-level="14.10" data-path="week-8-lecture.html"><a href="week-8-lecture.html#visualizing-hypotheses-for-different-coding-schemes"><i class="fa fa-check"></i><b>14.10</b> Visualizing hypotheses for different coding schemes</a></li>
-<li class="chapter" data-level="14.11" data-path="week-8-lecture.html"><a href="week-8-lecture.html#orthogonal-vs.-non-orthogonal-contrasts"><i class="fa fa-check"></i><b>14.11</b> Orthogonal vs. Non-orthogonal contrasts</a></li>
-<li class="chapter" data-level="14.12" data-path="week-8-lecture.html"><a href="week-8-lecture.html#error-structure-of-linear-models"><i class="fa fa-check"></i><b>14.12</b> Error structure of linear models</a><ul>
-<li class="chapter" data-level="14.12.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#independence-of-errors"><i class="fa fa-check"></i><b>14.12.1</b> Independence of errors</a></li>
+<li class="chapter" data-level="14" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lecture</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#the-aims-of-modelling-a-discussion-of-shmueli-2010"><i class="fa fa-check"></i><b>14.1</b> The aims of modelling – A discussion of Shmueli (2010)</a></li>
+<li class="chapter" data-level="14.2" data-path="week-8-lecture.html"><a href="week-8-lecture.html#linear-models-example-with-continuous-covariate"><i class="fa fa-check"></i><b>14.2</b> Linear models | example with continuous covariate</a></li>
+<li class="chapter" data-level="14.3" data-path="week-8-lecture.html"><a href="week-8-lecture.html#resolving-overparameterization-using-contrasts"><i class="fa fa-check"></i><b>14.3</b> Resolving overparameterization using contrasts</a></li>
+<li class="chapter" data-level="14.4" data-path="week-8-lecture.html"><a href="week-8-lecture.html#visualizing-hypotheses-for-different-coding-schemes"><i class="fa fa-check"></i><b>14.4</b> Visualizing hypotheses for different coding schemes</a></li>
+<li class="chapter" data-level="14.5" data-path="week-8-lecture.html"><a href="week-8-lecture.html#orthogonal-vs.-non-orthogonal-contrasts"><i class="fa fa-check"></i><b>14.5</b> Orthogonal vs. Non-orthogonal contrasts</a></li>
+<li class="chapter" data-level="14.6" data-path="week-8-lecture.html"><a href="week-8-lecture.html#error-structure-of-linear-models"><i class="fa fa-check"></i><b>14.6</b> Error structure of linear models</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#independence-of-errors"><i class="fa fa-check"></i><b>14.6.1</b> Independence of errors</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>15</b> Week 8 Lab</a><ul>
+<li class="chapter" data-level="15" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>15</b> Week 8 Lab</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="week-8-lab.html"><a href="week-8-lab.html#contrasts"><i class="fa fa-check"></i><b>15.1</b> Contrasts</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lecture</a><ul>
-<li class="chapter" data-level="16.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>16.1</b> Correlation</a></li>
-<li class="chapter" data-level="16.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#hypothesis-testing---pearsons-r"><i class="fa fa-check"></i><b>16.2</b> Hypothesis testing - Pearson's <em>r</em></a></li>
-<li class="chapter" data-level="16.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#fishers-z"><i class="fa fa-check"></i><b>16.3</b> Fisher's <span class="math inline">\(z\)</span></a></li>
-<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.4</b> Regression</a></li>
-<li class="chapter" data-level="16.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#but-wait-couldnt-we-have-used-maximum-likelihood-yes"><i class="fa fa-check"></i><b>16.5</b> But wait, couldn't we have used maximum likelihood? Yes!</a></li>
-<li class="chapter" data-level="16.6" data-path="week-9-lecture.html"><a href="week-9-lecture.html#assumptions-of-regression"><i class="fa fa-check"></i><b>16.6</b> Assumptions of regression:</a></li>
-<li class="chapter" data-level="16.7" data-path="week-9-lecture.html"><a href="week-9-lecture.html#confidence-vs.-prediction-intervals"><i class="fa fa-check"></i><b>16.7</b> Confidence vs. Prediction intervals</a></li>
-<li class="chapter" data-level="16.8" data-path="week-9-lecture.html"><a href="week-9-lecture.html#how-do-we-know-if-our-model-is-any-good"><i class="fa fa-check"></i><b>16.8</b> How do we know if our model is any good?</a></li>
-<li class="chapter" data-level="16.9" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>16.9</b> Robust regression</a></li>
-<li class="chapter" data-level="16.10" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression-1"><i class="fa fa-check"></i><b>16.10</b> Robust regression</a></li>
-<li class="chapter" data-level="16.11" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.11</b> Type I and Type II Regression</a></li>
+<li class="chapter" data-level="16" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lecture</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#hypothesis-testing---pearsons-r"><i class="fa fa-check"></i><b>16.1</b> Hypothesis testing - Pearson’s <em>r</em></a></li>
+<li class="chapter" data-level="16.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#fishers-z"><i class="fa fa-check"></i><b>16.2</b> Fisher’s <span class="math inline">\(z\)</span></a></li>
+<li class="chapter" data-level="16.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.3</b> Regression</a></li>
+<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.4</b> Type I and Type II Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>17</b> Week 9 Lab</a><ul>
-<li class="chapter" data-level="17.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>17.1</b> Correlation</a></li>
+<li class="chapter" data-level="17" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>17</b> Week 9 Lab</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="week-9-lab.html"><a href="week-9-lab.html#correlation"><i class="fa fa-check"></i><b>17.1</b> Correlation</a></li>
 <li class="chapter" data-level="17.2" data-path="week-9-lab.html"><a href="week-9-lab.html#linear-modelling"><i class="fa fa-check"></i><b>17.2</b> Linear modelling</a></li>
 <li class="chapter" data-level="17.3" data-path="week-9-lab.html"><a href="week-9-lab.html#weighted-regression"><i class="fa fa-check"></i><b>17.3</b> Weighted regression</a></li>
-<li class="chapter" data-level="17.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>17.4</b> Robust regression</a></li>
+<li class="chapter" data-level="17.4" data-path="week-9-lab.html"><a href="week-9-lab.html#robust-regression"><i class="fa fa-check"></i><b>17.4</b> Robust regression</a></li>
 <li class="chapter" data-level="17.5" data-path="week-9-lab.html"><a href="week-9-lab.html#bootstrapping-standard-errors-for-robust-regression"><i class="fa fa-check"></i><b>17.5</b> Bootstrapping standard errors for robust regression</a></li>
-<li class="chapter" data-level="17.6" data-path="week-9-lab.html"><a href="week-9-lab.html#type-i-vs.-type-ii-regression-the-smatr-package"><i class="fa fa-check"></i><b>17.6</b> Type I vs. Type II regression: The 'smatr' package</a></li>
+<li class="chapter" data-level="17.6" data-path="week-9-lab.html"><a href="week-9-lab.html#type-i-vs.-type-ii-regression-the-smatr-package"><i class="fa fa-check"></i><b>17.6</b> Type I vs. Type II regression: The ‘smatr’ package</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lecture</a><ul>
+<li class="chapter" data-level="18" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lecture</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#an-example"><i class="fa fa-check"></i><b>18.1</b> An example</a></li>
 <li class="chapter" data-level="18.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#generalized-linear-models"><i class="fa fa-check"></i><b>18.2</b> Generalized linear models</a></li>
-<li class="chapter" data-level="18.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#logistic-regression"><i class="fa fa-check"></i><b>18.3</b> Logistic regression</a></li>
-<li class="chapter" data-level="18.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#fitting-a-glm"><i class="fa fa-check"></i><b>18.4</b> Fitting a GLM</a></li>
-<li class="chapter" data-level="18.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#poisson-regression"><i class="fa fa-check"></i><b>18.5</b> Poisson regression</a></li>
-<li class="chapter" data-level="18.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#deviance"><i class="fa fa-check"></i><b>18.6</b> Deviance</a></li>
-<li class="chapter" data-level="18.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#other-methods----loess-splines-gams"><i class="fa fa-check"></i><b>18.7</b> Other methods -- LOESS, splines, GAMs</a><ul>
-<li class="chapter" data-level="18.7.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#loess"><i class="fa fa-check"></i><b>18.7.1</b> LOESS</a></li>
-<li class="chapter" data-level="18.7.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#splines"><i class="fa fa-check"></i><b>18.7.2</b> Splines</a></li>
-<li class="chapter" data-level="18.7.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#gams"><i class="fa fa-check"></i><b>18.7.3</b> GAMs</a></li>
-<li class="chapter" data-level="18.7.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#multiple-regression"><i class="fa fa-check"></i><b>18.7.4</b> Multiple regression</a></li>
+<li class="chapter" data-level="18.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#other-methods-loess-splines-gams"><i class="fa fa-check"></i><b>18.3</b> Other methods – LOESS, splines, GAMs</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#loess"><i class="fa fa-check"></i><b>18.3.1</b> LOESS</a></li>
+<li class="chapter" data-level="18.3.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#multiple-regression"><i class="fa fa-check"></i><b>18.3.2</b> Multiple regression</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>19</b> Week 10 Lab</a><ul>
-<li class="chapter" data-level="19.1" data-path="week-10-lab.html"><a href="week-10-lab.html#discussion-of-challenger-analysis"><i class="fa fa-check"></i><b>19.1</b> Discussion of Challenger analysis</a><ul>
-<li class="chapter" data-level="19.1.1" data-path="week-10-lab.html"><a href="week-10-lab.html#practice-fitting-models"><i class="fa fa-check"></i><b>19.1.1</b> Practice fitting models</a></li>
+<li class="chapter" data-level="19" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>19</b> Week 10 Lab</a>
+<ul>
+<li class="chapter" data-level="19.0.1" data-path="week-10-lab.html"><a href="week-10-lab.html#practice-fitting-models"><i class="fa fa-check"></i><b>19.0.1</b> Practice fitting models</a></li>
 </ul></li>
-<li class="chapter" data-level="19.2" data-path="week-10-lab.html"><a href="week-10-lab.html#weighted-linear-regression"><i class="fa fa-check"></i><b>19.2</b> Weighted linear regression</a></li>
-<li class="chapter" data-level="19.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#logistic-regression"><i class="fa fa-check"></i><b>19.3</b> Logistic regression</a></li>
-<li class="chapter" data-level="19.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#poisson-regression"><i class="fa fa-check"></i><b>19.4</b> Poisson regression</a></li>
-<li class="chapter" data-level="19.5" data-path="week-10-lab.html"><a href="week-10-lab.html#getting-a-feel-for-deviance"><i class="fa fa-check"></i><b>19.5</b> Getting a feel for Deviance</a></li>
-<li class="chapter" data-level="19.6" data-path="week-10-lab.html"><a href="week-10-lab.html#generalized-additive-models"><i class="fa fa-check"></i><b>19.6</b> Generalized Additive Models</a></li>
-</ul></li>
-<li class="chapter" data-level="20" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lecture</a><ul>
-<li class="chapter" data-level="20.0.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#variation-within-treatment-group"><i class="fa fa-check"></i><b>20.0.1</b> Variation within treatment group</a></li>
-<li class="chapter" data-level="20.0.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#variation-among-treatment-group-means"><i class="fa fa-check"></i><b>20.0.2</b> Variation among treatment group means</a></li>
-<li class="chapter" data-level="20.0.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#comparing-variance-components"><i class="fa fa-check"></i><b>20.0.3</b> Comparing variance components</a></li>
+<li class="chapter" data-level="20" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lecture</a>
+<ul>
+<li class="chapter" data-level="20.0.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#variation-among-treatment-group-means"><i class="fa fa-check"></i><b>20.0.1</b> Variation among treatment group means</a></li>
+<li class="chapter" data-level="20.0.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#comparing-variance-components"><i class="fa fa-check"></i><b>20.0.2</b> Comparing variance components</a></li>
 <li class="chapter" data-level="20.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#comparing-variance-components-1"><i class="fa fa-check"></i><b>20.1</b> Comparing variance components</a></li>
 <li class="chapter" data-level="20.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#two-ways-to-estimate-variance"><i class="fa fa-check"></i><b>20.2</b> Two ways to estimate variance</a></li>
 <li class="chapter" data-level="20.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#single-factor-anova"><i class="fa fa-check"></i><b>20.3</b> Single-factor ANOVA</a></li>
-<li class="chapter" data-level="20.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#fixed-effects-vs.-random-effects"><i class="fa fa-check"></i><b>20.4</b> Fixed effects vs. random effects</a></li>
-<li class="chapter" data-level="20.5" data-path="week-11-lecture.html"><a href="week-11-lecture.html#post-hoc-tests"><i class="fa fa-check"></i><b>20.5</b> Post-hoc tests</a><ul>
-<li class="chapter" data-level="20.5.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#tukeys-hsd"><i class="fa fa-check"></i><b>20.5.1</b> Tukey's HSD</a></li>
+<li class="chapter" data-level="20.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#fixed-effects-vs.-random-effects"><i class="fa fa-check"></i><b>20.4</b> Fixed effects vs. random effects</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#tukeys-hsd"><i class="fa fa-check"></i><b>20.4.1</b> Tukey’s HSD</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>21</b> Week 11 Lab</a><ul>
-<li class="chapter" data-level="21.1" data-path="week-11-lab.html"><a href="week-11-lab.html#rs-anova-functions"><i class="fa fa-check"></i><b>21.1</b> R's ANOVA functions</a></li>
+<li class="chapter" data-level="21" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>21</b> Week 11 Lab</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="week-11-lab.html"><a href="week-11-lab.html#rs-anova-functions"><i class="fa fa-check"></i><b>21.1</b> R’s ANOVA functions</a></li>
 <li class="chapter" data-level="21.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#single-factor-anova"><i class="fa fa-check"></i><b>21.2</b> Single-factor ANOVA</a></li>
 <li class="chapter" data-level="21.3" data-path="week-11-lab.html"><a href="week-11-lab.html#follow-up-analyses-to-anova"><i class="fa fa-check"></i><b>21.3</b> Follow up analyses to ANOVA</a></li>
 <li class="chapter" data-level="21.4" data-path="week-11-lab.html"><a href="week-11-lab.html#more-practice-model-i-anova"><i class="fa fa-check"></i><b>21.4</b> More practice: Model I ANOVA</a></li>
 <li class="chapter" data-level="21.5" data-path="week-11-lab.html"><a href="week-11-lab.html#more-practice-brief-intro-to-doing-model-ii-anova-in-r"><i class="fa fa-check"></i><b>21.5</b> More practice: Brief intro to doing Model II ANOVA in R</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lecture</a><ul>
+<li class="chapter" data-level="22" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lecture</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#review-anova-with-one-factor"><i class="fa fa-check"></i><b>22.1</b> Review: ANOVA with one factor</a></li>
 <li class="chapter" data-level="22.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#anova-with-more-than-one-factor"><i class="fa fa-check"></i><b>22.2</b> ANOVA with more than one factor</a></li>
-<li class="chapter" data-level="22.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-way-anova-factorial-designs"><i class="fa fa-check"></i><b>22.3</b> Two-way ANOVA factorial designs</a></li>
-<li class="chapter" data-level="22.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#why-bother-with-random-effects"><i class="fa fa-check"></i><b>22.4</b> Why bother with random effects?</a></li>
-<li class="chapter" data-level="22.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mixed-models"><i class="fa fa-check"></i><b>22.5</b> Mixed models</a></li>
-<li class="chapter" data-level="22.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-designs"><i class="fa fa-check"></i><b>22.6</b> Unbalanced designs</a></li>
-<li class="chapter" data-level="22.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design----different-sample-sizes"><i class="fa fa-check"></i><b>22.7</b> Unbalanced design -- Different sample sizes</a><ul>
-<li class="chapter" data-level="22.7.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-i-sequential-sums-of-squares"><i class="fa fa-check"></i><b>22.7.1</b> Type I (sequential) sums of squares</a></li>
-<li class="chapter" data-level="22.7.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-ii-hierarchical-sums-of-squares"><i class="fa fa-check"></i><b>22.7.2</b> Type II (hierarchical) sums of squares</a></li>
-<li class="chapter" data-level="22.7.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-iii-marginal-sums-of-squares"><i class="fa fa-check"></i><b>22.7.3</b> Type III (marginal) sums of squares</a></li>
-<li class="chapter" data-level="22.7.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#comparing-type-i-ii-and-iii-ss"><i class="fa fa-check"></i><b>22.7.4</b> Comparing type I, II, and III SS</a></li>
+<li class="chapter" data-level="22.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-designs"><i class="fa fa-check"></i><b>22.3</b> Unbalanced designs</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design-different-sample-sizes"><i class="fa fa-check"></i><b>22.4</b> Unbalanced design – Different sample sizes</a>
+<ul>
+<li class="chapter" data-level="22.4.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-i-sequential-sums-of-squares"><i class="fa fa-check"></i><b>22.4.1</b> Type I (sequential) sums of squares</a></li>
+<li class="chapter" data-level="22.4.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-ii-hierarchical-sums-of-squares"><i class="fa fa-check"></i><b>22.4.2</b> Type II (hierarchical) sums of squares</a></li>
+<li class="chapter" data-level="22.4.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-iii-marginal-sums-of-squares"><i class="fa fa-check"></i><b>22.4.3</b> Type III (marginal) sums of squares</a></li>
+<li class="chapter" data-level="22.4.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#comparing-type-i-ii-and-iii-ss"><i class="fa fa-check"></i><b>22.4.4</b> Comparing type I, II, and III SS</a></li>
 </ul></li>
-<li class="chapter" data-level="22.8" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design----missing-cells"><i class="fa fa-check"></i><b>22.8</b> Unbalanced design -- Missing cells</a></li>
-<li class="chapter" data-level="22.9" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-factor-nested-anova"><i class="fa fa-check"></i><b>22.9</b> Two factor nested ANOVA</a><ul>
-<li class="chapter" data-level="22.9.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#potential-issues-with-nested-designs"><i class="fa fa-check"></i><b>22.9.1</b> Potential issues with nested designs</a></li>
+<li class="chapter" data-level="22.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design-missing-cells"><i class="fa fa-check"></i><b>22.5</b> Unbalanced design – Missing cells</a></li>
+<li class="chapter" data-level="22.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-factor-nested-anova"><i class="fa fa-check"></i><b>22.6</b> Two factor nested ANOVA</a>
+<ul>
+<li class="chapter" data-level="22.6.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#potential-issues-with-nested-designs"><i class="fa fa-check"></i><b>22.6.1</b> Potential issues with nested designs</a></li>
 </ul></li>
-<li class="chapter" data-level="22.10" data-path="week-12-lecture.html"><a href="week-12-lecture.html#experimental-design"><i class="fa fa-check"></i><b>22.10</b> Experimental design</a><ul>
-<li class="chapter" data-level="22.10.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#completely-randomized-design"><i class="fa fa-check"></i><b>22.10.1</b> Completely randomized design</a></li>
-<li class="chapter" data-level="22.10.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#randomized-block-design"><i class="fa fa-check"></i><b>22.10.2</b> Randomized block design</a></li>
-<li class="chapter" data-level="22.10.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#latin-square-design"><i class="fa fa-check"></i><b>22.10.3</b> Latin square design</a></li>
-<li class="chapter" data-level="22.10.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#split-plot-design"><i class="fa fa-check"></i><b>22.10.4</b> Split plot design</a></li>
+<li class="chapter" data-level="22.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#experimental-design"><i class="fa fa-check"></i><b>22.7</b> Experimental design</a>
+<ul>
+<li class="chapter" data-level="22.7.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#completely-randomized-design"><i class="fa fa-check"></i><b>22.7.1</b> Completely randomized design</a></li>
+<li class="chapter" data-level="22.7.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#randomized-block-design"><i class="fa fa-check"></i><b>22.7.2</b> Randomized block design</a></li>
+<li class="chapter" data-level="22.7.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#split-plot-design"><i class="fa fa-check"></i><b>22.7.3</b> Split plot design</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>23</b> Week 12 Lab</a><ul>
+<li class="chapter" data-level="23" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>23</b> Week 12 Lab</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="week-12-lab.html"><a href="week-12-lab.html#example-1-two-way-factorial-anova-in-r"><i class="fa fa-check"></i><b>23.1</b> Example #1: Two-way factorial ANOVA in R</a></li>
 <li class="chapter" data-level="23.2" data-path="week-12-lab.html"><a href="week-12-lab.html#example-2-nested-design"><i class="fa fa-check"></i><b>23.2</b> Example #2: Nested design</a></li>
 <li class="chapter" data-level="23.3" data-path="week-12-lab.html"><a href="week-12-lab.html#example-3-nested-design"><i class="fa fa-check"></i><b>23.3</b> Example #3: Nested design</a></li>
 <li class="chapter" data-level="23.4" data-path="week-12-lab.html"><a href="week-12-lab.html#example-4-randomized-block-design"><i class="fa fa-check"></i><b>23.4</b> Example #4: Randomized Block Design</a></li>
 <li class="chapter" data-level="23.5" data-path="week-12-lab.html"><a href="week-12-lab.html#example-5-nested-design"><i class="fa fa-check"></i><b>23.5</b> Example #5: Nested design</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 13 Lecture</a><ul>
+<li class="chapter" data-level="24" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 13 Lecture</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-criticism"><i class="fa fa-check"></i><b>24.1</b> Model criticism</a></li>
-<li class="chapter" data-level="24.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#residuals"><i class="fa fa-check"></i><b>24.2</b> Residuals</a></li>
-<li class="chapter" data-level="24.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#leverage"><i class="fa fa-check"></i><b>24.3</b> Leverage</a></li>
-<li class="chapter" data-level="24.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#influence"><i class="fa fa-check"></i><b>24.4</b> Influence</a></li>
-<li class="chapter" data-level="24.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-residuals-leverage-and-influence"><i class="fa fa-check"></i><b>24.5</b> Comparing residuals, leverage, and influence</a></li>
-<li class="chapter" data-level="24.6" data-path="week-13-lecture.html"><a href="week-13-lecture.html#residuals-for-glms"><i class="fa fa-check"></i><b>24.6</b> Residuals for GLMs</a></li>
-<li class="chapter" data-level="24.7" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-selection-vs.-model-criticism"><i class="fa fa-check"></i><b>24.7</b> Model selection vs. model criticism</a></li>
-<li class="chapter" data-level="24.8" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-two-models"><i class="fa fa-check"></i><b>24.8</b> Comparing two models</a><ul>
-<li class="chapter" data-level="24.8.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#nested-or-not"><i class="fa fa-check"></i><b>24.8.1</b> Nested or not?</a></li>
-<li class="chapter" data-level="24.8.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#likelihood-ratio-test-lrt"><i class="fa fa-check"></i><b>24.8.2</b> Likelihood Ratio Test (LRT)</a></li>
-<li class="chapter" data-level="24.8.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#akaikes-information-criterion-aic"><i class="fa fa-check"></i><b>24.8.3</b> Akaike's Information Criterion (AIC)</a></li>
-<li class="chapter" data-level="24.8.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>24.8.4</b> Bayesian Information Criterion (BIC)</a></li>
-<li class="chapter" data-level="24.8.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-lrt-and-aicbic"><i class="fa fa-check"></i><b>24.8.5</b> Comparing LRT and AIC/BIC</a></li>
+<li class="chapter" data-level="24.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#residuals-for-glms"><i class="fa fa-check"></i><b>24.2</b> Residuals for GLMs</a></li>
+<li class="chapter" data-level="24.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-selection-vs.-model-criticism"><i class="fa fa-check"></i><b>24.3</b> Model selection vs. model criticism</a></li>
+<li class="chapter" data-level="24.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-two-models"><i class="fa fa-check"></i><b>24.4</b> Comparing two models</a>
+<ul>
+<li class="chapter" data-level="24.4.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#likelihood-ratio-test-lrt"><i class="fa fa-check"></i><b>24.4.1</b> Likelihood Ratio Test (LRT)</a></li>
+<li class="chapter" data-level="24.4.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#akaikes-information-criterion-aic"><i class="fa fa-check"></i><b>24.4.2</b> Akaike’s Information Criterion (AIC)</a></li>
+<li class="chapter" data-level="24.4.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>24.4.3</b> Bayesian Information Criterion (BIC)</a></li>
+<li class="chapter" data-level="24.4.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-lrt-and-aicbic"><i class="fa fa-check"></i><b>24.4.4</b> Comparing LRT and AIC/BIC</a></li>
 </ul></li>
-<li class="chapter" data-level="24.9" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-weighting"><i class="fa fa-check"></i><b>24.9</b> Model weighting</a></li>
-<li class="chapter" data-level="24.10" data-path="week-13-lecture.html"><a href="week-13-lecture.html#stepwise-regression"><i class="fa fa-check"></i><b>24.10</b> Stepwise regression</a><ul>
-<li class="chapter" data-level="24.10.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-stepwise-regression"><i class="fa fa-check"></i><b>24.10.1</b> Criticism of stepwise regression</a></li>
-<li class="chapter" data-level="24.10.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-data-dredging"><i class="fa fa-check"></i><b>24.10.2</b> Criticism of data dredging</a></li>
-<li class="chapter" data-level="24.10.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#final-thoughts-on-model-selection"><i class="fa fa-check"></i><b>24.10.3</b> Final thoughts on model selection</a></li>
+<li class="chapter" data-level="24.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-weighting"><i class="fa fa-check"></i><b>24.5</b> Model weighting</a></li>
+<li class="chapter" data-level="24.6" data-path="week-13-lecture.html"><a href="week-13-lecture.html#stepwise-regression"><i class="fa fa-check"></i><b>24.6</b> Stepwise regression</a>
+<ul>
+<li class="chapter" data-level="24.6.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-stepwise-regression"><i class="fa fa-check"></i><b>24.6.1</b> Criticism of stepwise regression</a></li>
+<li class="chapter" data-level="24.6.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-data-dredging"><i class="fa fa-check"></i><b>24.6.2</b> Criticism of data dredging</a></li>
+<li class="chapter" data-level="24.6.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#final-thoughts-on-model-selection"><i class="fa fa-check"></i><b>24.6.3</b> Final thoughts on model selection</a></li>
 </ul></li>
-<li class="chapter" data-level="24.11" data-path="week-13-lecture.html"><a href="week-13-lecture.html#week-13-faq"><i class="fa fa-check"></i><b>24.11</b> Week 13 FAQ</a></li>
+<li class="chapter" data-level="24.7" data-path="week-13-lecture.html"><a href="week-13-lecture.html#week-13-faq"><i class="fa fa-check"></i><b>24.7</b> Week 13 FAQ</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="week-13-lab.html"><a href="week-13-lab.html"><i class="fa fa-check"></i><b>25</b> Week 13 Lab</a><ul>
+<li class="chapter" data-level="25" data-path="week-13-lab.html"><a href="week-13-lab.html"><i class="fa fa-check"></i><b>25</b> Week 13 Lab</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="week-13-lab.html"><a href="week-13-lab.html#part-1-model-selection-model-comparison"><i class="fa fa-check"></i><b>25.1</b> Part 1: Model selection / model comparison</a></li>
 <li class="chapter" data-level="25.2" data-path="week-13-lab.html"><a href="week-13-lab.html#model-selection-via-step-wise-regression"><i class="fa fa-check"></i><b>25.2</b> Model selection via step-wise regression</a></li>
 <li class="chapter" data-level="25.3" data-path="week-13-lab.html"><a href="week-13-lab.html#part-2-model-criticism"><i class="fa fa-check"></i><b>25.3</b> Part 2: Model criticism</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 14 Lecture</a><ul>
-<li class="chapter" data-level="26.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#what-does-multivariate-mean"><i class="fa fa-check"></i><b>26.1</b> What does 'multivariate' mean?</a></li>
+<li class="chapter" data-level="26" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 14 Lecture</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#what-does-multivariate-mean"><i class="fa fa-check"></i><b>26.1</b> What does ‘multivariate’ mean?</a></li>
 <li class="chapter" data-level="26.2" data-path="week-14-lecture.html"><a href="week-14-lecture.html#multivariate-associations"><i class="fa fa-check"></i><b>26.2</b> Multivariate associations</a></li>
-<li class="chapter" data-level="26.3" data-path="week-14-lecture.html"><a href="week-14-lecture.html#model-criticism-for-multivariate-analyses"><i class="fa fa-check"></i><b>26.3</b> Model criticism for multivariate analyses</a><ul>
+<li class="chapter" data-level="26.3" data-path="week-14-lecture.html"><a href="week-14-lecture.html#model-criticism-for-multivariate-analyses"><i class="fa fa-check"></i><b>26.3</b> Model criticism for multivariate analyses</a>
+<ul>
 <li class="chapter" data-level="26.3.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#transforming-your-data"><i class="fa fa-check"></i><b>26.3.1</b> Transforming your data</a></li>
 </ul></li>
 <li class="chapter" data-level="26.4" data-path="week-14-lecture.html"><a href="week-14-lecture.html#standardizing-your-data"><i class="fa fa-check"></i><b>26.4</b> Standardizing your data</a></li>
@@ -366,7 +354,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="26.12" data-path="week-14-lecture.html"><a href="week-14-lecture.html#missing-data"><i class="fa fa-check"></i><b>26.12</b> Missing data</a></li>
 <li class="chapter" data-level="26.13" data-path="week-14-lecture.html"><a href="week-14-lecture.html#imputing-missing-data"><i class="fa fa-check"></i><b>26.13</b> Imputing missing data</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>27</b> Week 14 Lab</a><ul>
+<li class="chapter" data-level="27" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>27</b> Week 14 Lab</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="week-14-lab.html"><a href="week-14-lab.html#missing-at-random---practice-with-glms"><i class="fa fa-check"></i><b>27.1</b> Missing at random - practice with GLMs</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -389,50 +378,50 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="week-1-lab-handout" class="section level1">
+<div id="week-1-lab-handout" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Week 1 Lab Handout</h1>
 <p>In lab today, we will cover just a few of the basic elements of using R. If you are not already fluent with R, you should work through all of Logan Chapter 1, as there are many important elements covered in that chapter that we will not have time to go through in lab. I will assume everyone is using RStudio to run R - exercises and associated code will be written accordingly.</p>
 <p>For the purposes of lab, we will be entering all of the commands directly on the command line at the prompt. In general, however, you should get into the habit of writing scripts with all of your code. This will allow you to save your work and go back and easily use code that you have written in the past. When you are doing actual analyses for publication, it is essential that you have all of your code in well commented scripts that could be understood by another researcher in your field. All of your analysis should be fully reproducible long after the paper is published.</p>
-<div id="using-r-like-a-calculator" class="section level2">
+<div id="using-r-like-a-calculator" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Using R like a calculator</h2>
-<p>R can be used like a basic calculator with commands entered at the R prompt '&gt;'</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3+5</span></code></pre></div>
+<p>R can be used like a basic calculator with commands entered at the R prompt ‘&gt;’</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="week-1-lab-handout.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">+</span><span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span>*<span class="dv">5</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="week-1-lab-handout.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*</span><span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<p>(The &quot;##&quot; is the html editor's mechanism for indicating R output. The [1] is something that actually appears in the R output. It indicates that what you see is the first element of the output and in this case it can be ignored.)</p>
+<p>(The “##” is the html editor’s mechanism for indicating R output. The [1] is something that actually appears in the R output. It indicates that what you see is the first element of the output and in this case it can be ignored.)</p>
 <p>While R is fairly clever about the order of operations</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">3</span>*<span class="dv">5+7</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="week-1-lab-handout.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*</span><span class="dv">5</span><span class="sc">+</span><span class="dv">7</span></span></code></pre></div>
 <pre><code>## [1] 22</code></pre>
 <p>it is good practice to be explicit</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">3</span>*<span class="dv">5</span>)+<span class="dv">7</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="week-1-lab-handout.html#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span><span class="sc">*</span><span class="dv">5</span>)<span class="sc">+</span><span class="dv">7</span></span></code></pre></div>
 <pre><code>## [1] 22</code></pre>
 <p>Notice that the following two expressions are equivalent</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">4</span>^(<span class="dv">1</span>/<span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="week-1-lab-handout.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">4</span>)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="week-1-lab-handout.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>The former expression uses the <code>^</code> to signify an exponent, whereas the latter uses the built-in R function sqrt() for the square-root.</p>
 <p>Note the difference between</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">-<span class="dv">4</span>^(<span class="dv">1</span>/<span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="week-1-lab-handout.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">4</span><span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] -2</code></pre>
 <p>and</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(-<span class="dv">4</span>)^(<span class="dv">1</span>/<span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="week-1-lab-handout.html#cb16-1" aria-hidden="true" tabindex="-1"></a>(<span class="sc">-</span><span class="dv">4</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] NaN</code></pre>
-<p>In the first instance, R does the sqrt() and THEN applied the negative, whereas in the second case, it is trying to take the square-root of a negative number and it spits back NaN for 'Not a Number'.</p>
+<p>In the first instance, R does the sqrt() and THEN applied the negative, whereas in the second case, it is trying to take the square-root of a negative number and it spits back NaN for ‘Not a Number.’</p>
 <p>To use scientific notation, use <code>e</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">2.2e3</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="week-1-lab-handout.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.2e3</span></span></code></pre></div>
 <pre><code>## [1] 2200</code></pre>
-<p>For large numbers, R automatically uses scientific notation although the threshold for scientific notation is something you can change using the R function 'options' (advanced use only - don't worry about it for now).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">2.2e3</span>*<span class="fl">5e5</span></code></pre></div>
+<p>For large numbers, R automatically uses scientific notation although the threshold for scientific notation is something you can change using the R function ‘options’ (advanced use only - don’t worry about it for now).</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="week-1-lab-handout.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.2e3</span><span class="sc">*</span><span class="fl">5e5</span></span></code></pre></div>
 <pre><code>## [1] 1.1e+09</code></pre>
 </div>
-<div id="the-basic-data-structures-in-r" class="section level2">
+<div id="the-basic-data-structures-in-r" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> The basic data structures in R</h2>
 <p>There are several basic types of data structures in R.</p>
 <ol style="list-style-type: decimal">
 <li><strong>VECTORS</strong>: One-dimensional arrays of numbers, character strings, or logical values (T/F)</li>
-<li><strong>FACTORS</strong>: One-dimensional arrays of factors (Stop - Let's discuss factors)</li>
+<li><strong>FACTORS</strong>: One-dimensional arrays of factors (Stop - Let’s discuss factors)</li>
 <li><strong>DATA FRAMES</strong>: Data tables in which the various columns may be of different type</li>
 <li><strong>MATRICES</strong>: In R, matrices can only be 2-dimensional, anything higher dimension is called an array (see below). Matrix elements are typically (but not necessarily) numerical, but the key difference from a data frame is that every element has to have the same type. Some functions, like the transpose function t(), only work on matrices.</li>
 <li><strong>ARRAYS</strong>: higher dimensional matrices are called arrays in R</li>
@@ -441,8 +430,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Vectors:</p>
 <p>Vectors can be column vectors or row vectors but we are almost always talking about column vectors which are defined with a <code>c()</code>. One example of a vector would be a sequence of numbers. There are many ways to generate sequences in R. Lets say you want to define an object x as the following sequence of numbers (1,2,3,4,5,6,7)</p>
 <p>You could do this this long way</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)</code></pre></div>
-<p>Notice here I have used the <code>&lt;-</code> to &quot;assign&quot; the column vector (hence &quot;c&quot;) of values to the variable x. I could also do this using</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="week-1-lab-handout.html#cb22-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)</span></code></pre></div>
+<p>Notice here I have used the <code>&lt;-</code> to “assign” the column vector (hence “c”) of values to the variable x. I could also do this using</p>
 <pre><code>x&lt;-1:7</code></pre>
 <p>or I could explicitly use the seq() function as follows</p>
 <pre><code>x&lt;-seq(from=1,to=7)</code></pre>
@@ -451,59 +440,59 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Make sure this works by printing out the value for x</p>
 <pre><code>x</code></pre>
 <p>Try changing it up a little with</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">1</span>,<span class="dt">to=</span><span class="dv">16</span>,<span class="dt">by=</span><span class="dv">3</span>)</code></pre></div>
-<p>STOP: Spend a few minutes making vectors and using some of the basic R commands. What happens if you pass a vector to one of R's built-in functions?</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="week-1-lab-handout.html#cb27-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">16</span>,<span class="at">by=</span><span class="dv">3</span>)</span></code></pre></div>
+<p>STOP: Spend a few minutes making vectors and using some of the basic R commands. What happens if you pass a vector to one of R’s built-in functions?</p>
 <p>R can do a host of logical operations.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;<span class="dv">7</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="week-1-lab-handout.html#cb28-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">&lt;</span><span class="dv">7</span></span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE FALSE</code></pre>
 <p>We can turn that into a binary vector in at least two ways</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>(x&lt;<span class="dv">7</span>)</code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="week-1-lab-handout.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(x<span class="sc">&lt;</span><span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## [1] 1 1 0 0 0 0</code></pre>
 <p>or</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>*(x&lt;<span class="dv">7</span>)</code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="week-1-lab-handout.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">*</span>(x<span class="sc">&lt;</span><span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## [1] 1 1 0 0 0 0</code></pre>
 <p>The former forces R to return the values of x as a numerical vector, and by default False maps to 0 and True to 1. The latter version does the same thing, by multiplying the logical vector by a number. This trick comes in handy <em>all the time</em>.</p>
 <p>For example, if you want to know how many values of x are less than 7, you can simply do the following</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">as.numeric</span>(x&lt;<span class="dv">7</span>))</code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="week-1-lab-handout.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">as.numeric</span>(x<span class="sc">&lt;</span><span class="dv">7</span>))</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>You can also ask which elements satisfy certain criteria. In other words, you can type</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">which</span>(x&lt;<span class="dv">7</span>)</code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="week-1-lab-handout.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(x<span class="sc">&lt;</span><span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
 <p>This is telling you that the first and second elements of the vector are less than 7.</p>
 <p>We can take a random set of numbers</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y&lt;-<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="week-1-lab-handout.html#cb38-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">2</span>)</span></code></pre></div>
 <p>and sort them</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(y)</code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="week-1-lab-handout.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(y)</span></code></pre></div>
 <pre><code>## [1] 2 3 4 6 6 8 9</code></pre>
 <p>or reverse sort them</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rev</span>(<span class="kw">sort</span>(y))</code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="week-1-lab-handout.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rev</span>(<span class="fu">sort</span>(y))</span></code></pre></div>
 <pre><code>## [1] 9 8 6 6 4 3 2</code></pre>
-<p>To pull up the help file for the R command 'sort':</p>
+<p>To pull up the help file for the R command ‘sort’:</p>
 <pre><code>?sort</code></pre>
-<p>STOP: Let's take this opportunity to go through all the elements of an R help file.</p>
+<p>STOP: Let’s take this opportunity to go through all the elements of an R help file.</p>
 <p>We can also print out the rank of each value</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(y)</code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="week-1-lab-handout.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rank</span>(y)</span></code></pre></div>
 <pre><code>## [1] 3.0 6.0 4.5 2.0 4.5 7.0 1.0</code></pre>
 <p>Notice that ties got averaged.</p>
 <p>Elements of vectors in R are addressed using [] as follows</p>
 <p>First lets make a vector z</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z&lt;-<span class="kw">seq</span>(<span class="dt">from=</span><span class="dv">1</span>,<span class="dt">to=</span><span class="dv">15</span>,<span class="dt">by=</span><span class="dv">2</span>) </code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="week-1-lab-handout.html#cb46-1" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">15</span>,<span class="at">by=</span><span class="dv">2</span>) </span></code></pre></div>
 <p>We can find the 4th element by simply typing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z[<span class="dv">4</span>]</code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="week-1-lab-handout.html#cb47-1" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">4</span>]</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 <p>or we can find the 3rd and 4th elements by typing</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)]</code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="week-1-lab-handout.html#cb49-1" aria-hidden="true" tabindex="-1"></a>z[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>)]</span></code></pre></div>
 <pre><code>## [1] 5 7</code></pre>
 <p>In this more complicated case, we create a vector of the indices we want, and feed that into the brackets.</p>
 <p>We can do the opposite as well, instead of pulling out a set of elements you want, you can excise a set of elements and print everything else. In other words, if you wanted all the elements BUT element 3, you would use the minus sign</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z[-<span class="dv">3</span>]</code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="week-1-lab-handout.html#cb51-1" aria-hidden="true" tabindex="-1"></a>z[<span class="sc">-</span><span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1]  1  3  7  9 11 13 15</code></pre>
 <p>Factors:</p>
-<p>To explore factors, we will use the dataset Prestige.csv I posted on Blackboard. To simply everything that follows, I will set the working directory to my own folder for this week's lab. This will allow me to reference files within this folder without the entire file name.</p>
+<p>To explore factors, we will use the dataset Prestige.csv I posted on Blackboard. To simply everything that follows, I will set the working directory to my own folder for this week’s lab. This will allow me to reference files within this folder without the entire file name.</p>
 <p>Load the data</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Prestige&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/Prestige.csv&quot;</span>)</code></pre></div>
-<p>We can look at the entire data set by typing the name at the command prompt, but we can also just look at the first few lines using the 'head' function</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(Prestige)</code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="week-1-lab-handout.html#cb53-1" aria-hidden="true" tabindex="-1"></a>Prestige<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/Prestige.csv&quot;</span>)</span></code></pre></div>
+<p>We can look at the entire data set by typing the name at the command prompt, but we can also just look at the first few lines using the ‘head’ function</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="week-1-lab-handout.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Prestige)</span></code></pre></div>
 <pre><code>##                     X education income women prestige census type
 ## 1  gov.administrators     13.11  12351 11.16     68.8   1113 prof
 ## 2    general.managers     12.26  25879  4.02     69.1   1130 prof
@@ -511,8 +500,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 4 purchasing.officers     11.42   8865  9.11     56.8   1175 prof
 ## 5            chemists     14.62   8403 11.68     73.5   2111 prof
 ## 6          physicists     15.64  11030  5.13     77.6   2113 prof</code></pre>
-<p>or the last few lines using the 'tail' function</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(Prestige)</code></pre></div>
+<p>or the last few lines using the ‘tail’ function</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="week-1-lab-handout.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(Prestige)</span></code></pre></div>
 <pre><code>##                   X education income women prestige census type
 ## 97  train.engineers      8.49   8845  0.00     48.9   9131   bc
 ## 98      bus.drivers      7.58   5562  9.47     35.9   9171   bc
@@ -520,14 +509,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 100    longshoremen      8.37   4753  0.00     26.1   9313   bc
 ## 101     typesetters     10.00   6462 13.58     42.2   9511   bc
 ## 102     bookbinders      8.55   3617 70.87     35.2   9517   bc</code></pre>
-<p>We can also get the dimensions of the data set using the 'dim' function</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(Prestige)</code></pre></div>
+<p>We can also get the dimensions of the data set using the ‘dim’ function</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="week-1-lab-handout.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(Prestige)</span></code></pre></div>
 <pre><code>## [1] 102   7</code></pre>
-<p>or use the 'length' function to figure out the length of one of the columns</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(Prestige[,<span class="dv">1</span>])</code></pre></div>
+<p>or use the ‘length’ function to figure out the length of one of the columns</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="week-1-lab-handout.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(Prestige[,<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## [1] 102</code></pre>
 <p>Factors are character labels which take fixed values. First just look at the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Prestige</code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="week-1-lab-handout.html#cb62-1" aria-hidden="true" tabindex="-1"></a>Prestige</span></code></pre></div>
 <pre><code>##                             X education income women prestige census type
 ## 1          gov.administrators     13.11  12351 11.16     68.8   1113 prof
 ## 2            general.managers     12.26  25879  4.02     69.1   1130 prof
@@ -632,7 +621,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 101               typesetters     10.00   6462 13.58     42.2   9511   bc
 ## 102               bookbinders      8.55   3617 70.87     35.2   9517   bc</code></pre>
 <p>Notice that the third column assigns a type of professional status to the different occupations. We can have R list all those by printing just the last column. We do that by using the $ followed by the name of that column:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Prestige$type</code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="week-1-lab-handout.html#cb64-1" aria-hidden="true" tabindex="-1"></a>Prestige<span class="sc">$</span>type</span></code></pre></div>
 <pre><code>##   [1] &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot;
 ##  [11] &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot;
 ##  [21] &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;prof&quot; &quot;bc&quot;   &quot;prof&quot; &quot;prof&quot;
@@ -646,112 +635,113 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## [101] &quot;bc&quot;   &quot;bc&quot;</code></pre>
 <p>Notice that in addition to just listing that column, R also tells you what all the factor values are. We can do this with numerical values too, but be careful because R will interpret the numerical values as characters:</p>
 <p>IMPORTANT: By default, R will rank factors alphabetically. R will do this also when doing modeling and it is almost never what you want. In this case, you likely want to think of the factors arranged as bc<span class="math inline">\(&lt;\)</span>wc<span class="math inline">\(&lt;\)</span>prof. To do this you:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Prestige$type&lt;-<span class="kw">factor</span>(Prestige$type,<span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;bc&quot;</span>,<span class="st">&quot;wc&quot;</span>,<span class="st">&quot;prof&quot;</span>))
-<span class="kw">levels</span>(Prestige$type)</code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="week-1-lab-handout.html#cb66-1" aria-hidden="true" tabindex="-1"></a>Prestige<span class="sc">$</span>type<span class="ot">&lt;-</span><span class="fu">factor</span>(Prestige<span class="sc">$</span>type,<span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;bc&quot;</span>,<span class="st">&quot;wc&quot;</span>,<span class="st">&quot;prof&quot;</span>))</span>
+<span id="cb66-2"><a href="week-1-lab-handout.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(Prestige<span class="sc">$</span>type)</span></code></pre></div>
 <pre><code>## [1] &quot;bc&quot;   &quot;wc&quot;   &quot;prof&quot;</code></pre>
 <p>Data frames:</p>
-<p>R has a special object called a dataframe which is, as the name suggests, designed to hold data. Unlike a matrix, in which all the elements have to be the same type (typically numbers), dataframes are more like spreadsheets - each column can be its own datatype. So you can have a column of numbers associated with a second column of treatment types (character). Let's make a data frame to play around with, which we will make the ranking of the top three girls and boys names for 2010.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">our.data.frame&lt;-<span class="kw">data.frame</span>(<span class="dt">rank=</span><span class="kw">seq</span>(<span class="dv">1</span>:<span class="dv">3</span>),<span class="dt">boys.names=</span><span class="kw">c</span>(<span class="st">&quot;Jacob&quot;</span>,<span class="st">&quot;Ethan&quot;</span>,<span class="st">&quot;Michael&quot;</span>), <span class="dt">girls.names=</span><span class="kw">c</span>(<span class="st">&quot;Isabella&quot;</span>,<span class="st">&quot;Sophia&quot;</span>,<span class="st">&quot;Emma&quot;</span>))
-our.data.frame</code></pre></div>
+<p>R has a special object called a dataframe which is, as the name suggests, designed to hold data. Unlike a matrix, in which all the elements have to be the same type (typically numbers), dataframes are more like spreadsheets - each column can be its own datatype. So you can have a column of numbers associated with a second column of treatment types (character).
+Let’s make a data frame to play around with, which we will make the ranking of the top three girls and boys names for 2010.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="week-1-lab-handout.html#cb68-1" aria-hidden="true" tabindex="-1"></a>our.data.frame<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">rank=</span><span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="at">boys.names=</span><span class="fu">c</span>(<span class="st">&quot;Jacob&quot;</span>,<span class="st">&quot;Ethan&quot;</span>,<span class="st">&quot;Michael&quot;</span>), <span class="at">girls.names=</span><span class="fu">c</span>(<span class="st">&quot;Isabella&quot;</span>,<span class="st">&quot;Sophia&quot;</span>,<span class="st">&quot;Emma&quot;</span>))</span>
+<span id="cb68-2"><a href="week-1-lab-handout.html#cb68-2" aria-hidden="true" tabindex="-1"></a>our.data.frame</span></code></pre></div>
 <pre><code>##   rank boys.names girls.names
 ## 1    1      Jacob    Isabella
 ## 2    2      Ethan      Sophia
 ## 3    3    Michael        Emma</code></pre>
-<p>Now while I would encourage everyone to use the command line at all times, its worth pointing out that R does have a very basic data editor. To change a value in our.data.frame using the data editor, use the command 'fix'</p>
+<p>Now while I would encourage everyone to use the command line at all times, its worth pointing out that R does have a very basic data editor. To change a value in our.data.frame using the data editor, use the command ‘fix’</p>
 <pre><code>fix(our.data.frame)</code></pre>
-<p>Note that the command 'edit' <em>looks</em> like it should do the same thing but it does not. In fact, 'edit' does not change the original data frame but it makes a changed copy which must be assigned another name. In the following example, the changes are stored in new.data.frame.</p>
+<p>Note that the command ‘edit’ <em>looks</em> like it should do the same thing but it does not. In fact, ‘edit’ does not change the original data frame but it makes a changed copy which must be assigned another name. In the following example, the changes are stored in new.data.frame.</p>
 <pre><code>new.data.frame&lt;-edit(our.data.frame)</code></pre>
-<p>NOTE: R allows you to 'attach' a dataframe to a workspace so that you can refer to the individual columns without having to type in the name of the dataframe. I think this is terrible practice and makes your code impossible to read by your future self.</p>
+<p>NOTE: R allows you to ‘attach’ a dataframe to a workspace so that you can refer to the individual columns without having to type in the name of the dataframe. I think this is terrible practice and makes your code impossible to read by your future self.</p>
 <p>Matrices:</p>
 <p>You make a matrix as follows (here we populate the matrix with a sequence from 1:12):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test.matrix&lt;-<span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>,<span class="dt">nrow=</span><span class="dv">3</span>,<span class="dt">ncol=</span><span class="dv">4</span>)
-test.matrix</code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="week-1-lab-handout.html#cb72-1" aria-hidden="true" tabindex="-1"></a>test.matrix<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">4</span>)</span>
+<span id="cb72-2"><a href="week-1-lab-handout.html#cb72-2" aria-hidden="true" tabindex="-1"></a>test.matrix</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
 <p>Notice that in general, you do not need to include the label names for input parameters to functions. This gives the same answer:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test.matrix&lt;-<span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">12</span>,<span class="dv">3</span>,<span class="dv">4</span>)
-test.matrix</code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="week-1-lab-handout.html#cb74-1" aria-hidden="true" tabindex="-1"></a>test.matrix<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb74-2"><a href="week-1-lab-handout.html#cb74-2" aria-hidden="true" tabindex="-1"></a>test.matrix</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
 <p>but I <em>highly</em> suggest leaving all labels for clarity of coding.</p>
 <p>R indexes matrices by ROW THEN COLUMN. So, for example, try</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test.matrix[<span class="dv">2</span>,<span class="dv">3</span>]</code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="week-1-lab-handout.html#cb76-1" aria-hidden="true" tabindex="-1"></a>test.matrix[<span class="dv">2</span>,<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>R has all the functions you could ever want for matrix algebra, such as transposing:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trans.test.matrix&lt;-<span class="kw">t</span>(test.matrix)</code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="week-1-lab-handout.html#cb78-1" aria-hidden="true" tabindex="-1"></a>trans.test.matrix<span class="ot">&lt;-</span><span class="fu">t</span>(test.matrix)</span></code></pre></div>
 <p>See what happens when you try</p>
 <pre><code>1-test.matrix</code></pre>
 <p>Notice that R automatically translates the 1 into a matrix of 1s such that the calculation makes sense.</p>
 <p>Arrays:</p>
-<p>Arrays are just higher dimensional matrices and since we will not use them much, I won't get into details here.</p>
+<p>Arrays are just higher dimensional matrices and since we will not use them much, I won’t get into details here.</p>
 <p>Lists:</p>
 <p>A list is a one-dimensional structure of potentially heterogeneous data types.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list<span class="fl">.1</span>&lt;-<span class="kw">list</span>(<span class="dt">data=</span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">15</span>),<span class="dt">mat1=</span>test.matrix,<span class="dt">mat2=</span>trans.test.matrix)</code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="week-1-lab-handout.html#cb80-1" aria-hidden="true" tabindex="-1"></a>list<span class="fl">.1</span><span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">data=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">15</span>),<span class="at">mat1=</span>test.matrix,<span class="at">mat2=</span>trans.test.matrix)</span></code></pre></div>
 <p>We can reference elements of the list by name</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list<span class="fl">.1</span>$data</code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="week-1-lab-handout.html#cb81-1" aria-hidden="true" tabindex="-1"></a>list<span class="fl">.1</span><span class="sc">$</span>data</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
 <p>or by position</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list<span class="fl">.1</span>[[<span class="dv">2</span>]]</code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="week-1-lab-handout.html#cb83-1" aria-hidden="true" tabindex="-1"></a>list<span class="fl">.1</span>[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
 <p>Notice that list indexing requires double brackets.</p>
 </div>
-<div id="writing-functions-in-r" class="section level2">
+<div id="writing-functions-in-r" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Writing functions in R</h2>
 <p>Using R, you are not limited to functions that have been written for you, you can write your own functions! The basic template is straightforward:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">square&lt;-function(x)
-  {
-        x*x
-    }</code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="week-1-lab-handout.html#cb85-1" aria-hidden="true" tabindex="-1"></a>square<span class="ot">&lt;-</span><span class="cf">function</span>(x)</span>
+<span id="cb85-2"><a href="week-1-lab-handout.html#cb85-2" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb85-3"><a href="week-1-lab-handout.html#cb85-3" aria-hidden="true" tabindex="-1"></a>		x<span class="sc">*</span>x</span>
+<span id="cb85-4"><a href="week-1-lab-handout.html#cb85-4" aria-hidden="true" tabindex="-1"></a>	}</span></code></pre></div>
 <p>We can use our function now as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">square</span>(<span class="dv">5</span>)</code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="week-1-lab-handout.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">square</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 25</code></pre>
 <p>You can also have more than one argument for an R function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">product&lt;-function(x,y)
-  {
-    x*y
-    }
-
-<span class="kw">product</span>(<span class="dv">3</span>,<span class="dv">5</span>)</code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="week-1-lab-handout.html#cb88-1" aria-hidden="true" tabindex="-1"></a>product<span class="ot">&lt;-</span><span class="cf">function</span>(x,y)</span>
+<span id="cb88-2"><a href="week-1-lab-handout.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb88-3"><a href="week-1-lab-handout.html#cb88-3" aria-hidden="true" tabindex="-1"></a>  	x<span class="sc">*</span>y</span>
+<span id="cb88-4"><a href="week-1-lab-handout.html#cb88-4" aria-hidden="true" tabindex="-1"></a>	}</span>
+<span id="cb88-5"><a href="week-1-lab-handout.html#cb88-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-6"><a href="week-1-lab-handout.html#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="fu">product</span>(<span class="dv">3</span>,<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<p>A few notes about using R. What makes R special is not the base package but the &quot;Contributed packages&quot; which make up the bulk of R's utility. We will be using a variety of these contributed packages along the way, so you need to feel comfortable downloading them from the web. I have posted a handout on Blackboard to cover this.</p>
+<p>A few notes about using R. What makes R special is not the base package but the “Contributed packages” which make up the bulk of R’s utility. We will be using a variety of these contributed packages along the way, so you need to feel comfortable downloading them from the web. I have posted a handout on Blackboard to cover this.</p>
 </div>
-<div id="writing-loops-and-ifelse" class="section level2">
+<div id="writing-loops-and-ifelse" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Writing loops and if/else</h2>
 <p>The R language is very good at doing operations on vectors or matrices, and when possible, this is always the preferred method of doing an operation mulitple times. However, sometimes this is not possible and you have to write a loop to perform some operation on elements taken one at a time.</p>
-<p>There are two different kinds of loops in R. A 'for loop' executes once for each step through the looping index.</p>
-<p>The basic syntax for a 'for loop' in R is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (i in <span class="dv">1</span>:<span class="dv">6</span>) {
-  <span class="kw">print</span>(i)
-}</code></pre></div>
+<p>There are two different kinds of loops in R. A ‘for loop’ executes once for each step through the looping index.</p>
+<p>The basic syntax for a ‘for loop’ in R is:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="week-1-lab-handout.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) {</span>
+<span id="cb90-2"><a href="week-1-lab-handout.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb90-3"><a href="week-1-lab-handout.html#cb90-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
 ## [1] 4
 ## [1] 5
 ## [1] 6</code></pre>
-<p>The indexing variable does not need to be called &quot;i&quot;, it could be anything. What follows the &quot;in&quot; can be any sequence of numbers; they need not be consecutive. What appears inside the brackets is the chunk of code that will be executed at each iteration. This code can, but need not, actually use the indexing variable. Another example illustrating these points is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for (blah in <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>)) {
-  <span class="kw">print</span>(<span class="dv">4</span>+blah)
-}</code></pre></div>
+<p>The indexing variable does not need to be called “i,” it could be anything. What follows the “in” can be any sequence of numbers; they need not be consecutive. What appears inside the brackets is the chunk of code that will be executed at each iteration. This code can, but need not, actually use the indexing variable. Another example illustrating these points is:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="week-1-lab-handout.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (blah <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>)) {</span>
+<span id="cb92-2"><a href="week-1-lab-handout.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="dv">4</span><span class="sc">+</span>blah)</span>
+<span id="cb92-3"><a href="week-1-lab-handout.html#cb92-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 5
 ## [1] 7
 ## [1] 9
 ## [1] 10</code></pre>
-<p>A 'while loop' is open ended; it will execute the loop indefinitely until the 'while' condition is no longer met.</p>
-<p>The basic syntax for a 'while loop' in R is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">i=<span class="dv">1</span>
-while(i &lt;=<span class="st"> </span><span class="dv">8</span>) {
-    y &lt;-<span class="st"> </span>i*i
-    i &lt;-<span class="st"> </span>i +<span class="st"> </span><span class="dv">1</span> <span class="co"># What would happen if we left this line out?</span>
-    <span class="kw">print</span>(y)
-    }</code></pre></div>
+<p>A ‘while loop’ is open ended; it will execute the loop indefinitely until the ‘while’ condition is no longer met.</p>
+<p>The basic syntax for a ‘while loop’ in R is:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="week-1-lab-handout.html#cb94-1" aria-hidden="true" tabindex="-1"></a>i<span class="ot">=</span><span class="dv">1</span></span>
+<span id="cb94-2"><a href="week-1-lab-handout.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(i <span class="sc">&lt;=</span> <span class="dv">8</span>) {</span>
+<span id="cb94-3"><a href="week-1-lab-handout.html#cb94-3" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> i<span class="sc">*</span>i</span>
+<span id="cb94-4"><a href="week-1-lab-handout.html#cb94-4" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span> <span class="co"># What would happen if we left this line out?</span></span>
+<span id="cb94-5"><a href="week-1-lab-handout.html#cb94-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(y)</span>
+<span id="cb94-6"><a href="week-1-lab-handout.html#cb94-6" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 4
 ## [1] 9
@@ -760,70 +750,70 @@ while(i &lt;=<span class="st"> </span><span class="dv">8</span>) {
 ## [1] 36
 ## [1] 49
 ## [1] 64</code></pre>
-<p>Sometimes, you want to make R check some condition before executing a command. An 'if' statement will check a statement and execute a chunk of code if the statement evaluates to TRUE. If the statement evaluates to FALSE, the code is simply skipped. An if/else statement allows a second chunk of code to be executed as an alternative to the first. The syntax for each is as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="dv">3</span>
-if (a&lt;<span class="dv">4</span>) <span class="kw">print</span>(<span class="st">&quot;Hello&quot;</span>)</code></pre></div>
+<p>Sometimes, you want to make R check some condition before executing a command. An ‘if’ statement will check a statement and execute a chunk of code if the statement evaluates to TRUE. If the statement evaluates to FALSE, the code is simply skipped. An if/else statement allows a second chunk of code to be executed as an alternative to the first. The syntax for each is as follows:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="week-1-lab-handout.html#cb96-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="dv">3</span></span>
+<span id="cb96-2"><a href="week-1-lab-handout.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a<span class="sc">&lt;</span><span class="dv">4</span>) <span class="fu">print</span>(<span class="st">&quot;Hello&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (a &lt;<span class="st"> </span><span class="dv">4</span>) {
-  <span class="kw">print</span>(<span class="st">&quot;Hello&quot;</span>)
-  } else <span class="kw">print</span>(<span class="st">&quot;Goodbye&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="week-1-lab-handout.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a <span class="sc">&lt;</span> <span class="dv">4</span>) {</span>
+<span id="cb98-2"><a href="week-1-lab-handout.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello&quot;</span>)</span>
+<span id="cb98-3"><a href="week-1-lab-handout.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="fu">print</span>(<span class="st">&quot;Goodbye&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if (a &gt;<span class="st"> </span><span class="dv">4</span>) {
-  <span class="kw">print</span>(<span class="st">&quot;Hello&quot;</span>)
-  } else <span class="kw">print</span>(<span class="st">&quot;Goodbye&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="week-1-lab-handout.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (a <span class="sc">&gt;</span> <span class="dv">4</span>) {</span>
+<span id="cb100-2"><a href="week-1-lab-handout.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello&quot;</span>)</span>
+<span id="cb100-3"><a href="week-1-lab-handout.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="fu">print</span>(<span class="st">&quot;Goodbye&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Goodbye&quot;</code></pre>
 </div>
-<div id="a-short-diversion-bias-in-estimators" class="section level2">
+<div id="a-short-diversion-bias-in-estimators" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> (A short diversion) Bias in estimators</h2>
-<p>Now we will stop for a short digression about how to calculate the population variance (i.e. the variamce assuming the data I have is from the entire population) and how to estimate the sample variance (i.e. the variance assuming what I have is a <em>sample</em> from the population, and I want to infer the variance of the underlying but unknown population), since we can now use R to convince ourselves that the naive estimator for variance is biased.</p>
+<p>Now we will stop for a short digression about how to calculate the population variance (i.e. the variamce assuming the data I have is from the entire population) and how to estimate the sample variance (i.e. the variance assuming what I have is a <em>sample</em> from the population, and I want to infer the variance of the underlying but unknown population), since we can now use R to convince ourselves that the naive estimator for variance is biased.</p>
 <p>The population variance is the variance of a population which, by definition, means that every single individual of interest has been measured. Remember, in this case there is no inference going on. When we have measured every single individual of interest, all we can do (statistically) is describe that population. The population variance describes the variation in the quantity of interest <em>for that population you have completely sampled</em>).</p>
 <p><span class="math display">\[
 \sum^{n}_{i=1}{\frac{(Y_{i}-\bar{Y})^{2}}{n}}
 \]</span></p>
-<p>The sample variance answers the question &quot;If this data I have come from a larger population, and I want to use these data to estimate the population variance in that larger population, what is the best unbiased estimator for that (unknown) population variance?&quot; The formula for the sample variance (think of it like &quot;the estimate of the variance from the sample&quot;):</p>
+<p>The sample variance answers the question “If this data I have come from a larger population, and I want to use these data to estimate the population variance in that larger population, what is the best unbiased estimator for that (unknown) population variance?” The formula for the sample variance (think of it like “the estimate of the variance from the sample”):</p>
 <p><span class="math display">\[
 \sum^{n}_{i=1}{\frac{(Y_{i}-\bar{Y})^{2}}{n-1}}
 \]</span></p>
 <p>We can see this in practice using a little simulation. Type the following into an R script and run it in R:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n.iter&lt;-<span class="dv">100</span>
-data&lt;-<span class="kw">rnorm</span>(n.iter,<span class="dv">0</span>,<span class="dv">2</span>)
-sum&lt;-<span class="dv">0</span>
-for (j in <span class="dv">1</span>:<span class="kw">length</span>(data))
-{
-  sum&lt;-sum+((data[j]-<span class="kw">mean</span>(data))*(data[j]-<span class="kw">mean</span>(data)))
-}
-population.variance&lt;-sum/<span class="kw">length</span>(data)
-sample.variance&lt;-sum/(<span class="kw">length</span>(data)-<span class="dv">1</span>)</code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="week-1-lab-handout.html#cb102-1" aria-hidden="true" tabindex="-1"></a>n.iter<span class="ot">&lt;-</span><span class="dv">100</span></span>
+<span id="cb102-2"><a href="week-1-lab-handout.html#cb102-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">rnorm</span>(n.iter,<span class="dv">0</span>,<span class="dv">2</span>)</span>
+<span id="cb102-3"><a href="week-1-lab-handout.html#cb102-3" aria-hidden="true" tabindex="-1"></a>sum<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb102-4"><a href="week-1-lab-handout.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(data))</span>
+<span id="cb102-5"><a href="week-1-lab-handout.html#cb102-5" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb102-6"><a href="week-1-lab-handout.html#cb102-6" aria-hidden="true" tabindex="-1"></a>  sum<span class="ot">&lt;-</span>sum<span class="sc">+</span>((data[j]<span class="sc">-</span><span class="fu">mean</span>(data))<span class="sc">*</span>(data[j]<span class="sc">-</span><span class="fu">mean</span>(data)))</span>
+<span id="cb102-7"><a href="week-1-lab-handout.html#cb102-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb102-8"><a href="week-1-lab-handout.html#cb102-8" aria-hidden="true" tabindex="-1"></a>population.variance<span class="ot">&lt;-</span>sum<span class="sc">/</span><span class="fu">length</span>(data)</span>
+<span id="cb102-9"><a href="week-1-lab-handout.html#cb102-9" aria-hidden="true" tabindex="-1"></a>sample.variance<span class="ot">&lt;-</span>sum<span class="sc">/</span>(<span class="fu">length</span>(data)<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
 <p>What is the ratio of the sample variance to the population variance? Are either close to what we know the true variance to be? What happens if we change n.iter to 1000? Do the values get closer to the correct value? What happens to the ratio of the sample variance to the population variance?</p>
 <p>What does the R function var() give you?</p>
 </div>
-<div id="lesson-6-some-practice-writing-r-code" class="section level2">
+<div id="lesson-6-some-practice-writing-r-code" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Lesson #6: Some practice writing R code</h2>
-<p>We will be using a cloud-seeding dataset from: Simpson, Alsen, and Eden. (1975). A Bayesian analysis of a multiplicative treatment effect in weather modification. Technometrics 17, 161-166. The data consist of data on the amount of rainfall (in acre-feet) from unseeded clouds vs. those seeded with silver nitrate.</p>
+<p>We will be using a cloud-seeding dataset from: Simpson, Alsen, and Eden. (1975). A Bayesian analysis of a multiplicative treatment effect in weather modification. Technometrics 17, 161-166. The data consist of data on the amount of rainfall (in acre-feet) from unseeded clouds vs. those seeded with silver nitrate.</p>
 <p>Here and throughout I have assumed the data resides in a folder called Biometry on a thumb drive called TEACHING drive but you will have to change the code according to your own file structure. (I am using a Mac, but getting the pathname correct I have included a .txt file and a .csv file to show you the differences in inputting your data:</p>
 <p>Method 1:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cloud.data&lt;-<span class="kw">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.txt&quot;</span>)</code></pre></div>
-<p>Notice that that doesn't work because the headers have become part of the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cloud.data&lt;-<span class="kw">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.txt&quot;</span>, <span class="dt">header=</span>T)</code></pre></div>
-<p>Remember that we need to add the &quot;header=T&quot; or it will assume the headers are actually the first line of data.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="week-1-lab-handout.html#cb103-1" aria-hidden="true" tabindex="-1"></a>cloud.data<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.txt&quot;</span>)</span></code></pre></div>
+<p>Notice that that doesn’t work because the headers have become part of the data.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="week-1-lab-handout.html#cb104-1" aria-hidden="true" tabindex="-1"></a>cloud.data<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.txt&quot;</span>, <span class="at">header=</span>T)</span></code></pre></div>
+<p>Remember that we need to add the “header=T” or it will assume the headers are actually the first line of data.</p>
 <p>Method 2:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cloud.data&lt;-<span class="kw">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.csv&quot;</span>, <span class="dt">header=</span>T)</code></pre></div>
-<p>This doesn't work because R does know what the delimiter is. You have to specify the delimiter:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cloud.data&lt;-<span class="kw">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.csv&quot;</span>, <span class="dt">header=</span>T,<span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)</code></pre></div>
-<p>or use the command 'read.csv' which automatically assumes its comma delimited.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cloud.data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.csv&quot;</span>, <span class="dt">header=</span>T)</code></pre></div>
-<p>There are two ways to refer to the first column of data. Because we have column headers, we can refer to them by name using the &quot;$&quot; as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cloud.data$Unseeded_Clouds</code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="week-1-lab-handout.html#cb105-1" aria-hidden="true" tabindex="-1"></a>cloud.data<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.csv&quot;</span>, <span class="at">header=</span>T)</span></code></pre></div>
+<p>This doesn’t work because R does know what the delimiter is. You have to specify the delimiter:</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="week-1-lab-handout.html#cb106-1" aria-hidden="true" tabindex="-1"></a>cloud.data<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.csv&quot;</span>, <span class="at">header=</span>T,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<p>or use the command ‘read.csv’ which automatically assumes its comma delimited.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="week-1-lab-handout.html#cb107-1" aria-hidden="true" tabindex="-1"></a>cloud.data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 1 Preliminary Material/Week 1 Lab/clouds.csv&quot;</span>, <span class="at">header=</span>T)</span></code></pre></div>
+<p>There are two ways to refer to the first column of data. Because we have column headers, we can refer to them by name using the “$” as follows:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="week-1-lab-handout.html#cb108-1" aria-hidden="true" tabindex="-1"></a>cloud.data<span class="sc">$</span>Unseeded_Clouds</span></code></pre></div>
 <pre><code>##  [1] 1202.6  830.1  372.4  345.5  321.2  244.3  163.0  147.8   95.0   87.0
 ## [11]   81.2   68.5   47.3   41.1   36.6   29.0   28.6   26.3   26.1   24.4
 ## [21]   21.7   17.3   11.5    4.9    4.9    1.0</code></pre>
 <p>but we can also just ask for a specific column of the data, in this case the first column</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cloud.data[,<span class="dv">1</span>]</code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="week-1-lab-handout.html#cb110-1" aria-hidden="true" tabindex="-1"></a>cloud.data[,<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##  [1] 1202.6  830.1  372.4  345.5  321.2  244.3  163.0  147.8   95.0   87.0
 ## [11]   81.2   68.5   47.3   41.1   36.6   29.0   28.6   26.3   26.1   24.4
 ## [21]   21.7   17.3   11.5    4.9    4.9    1.0</code></pre>
 <p>Note that you can always print the data using just the name</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cloud.data</code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="week-1-lab-handout.html#cb112-1" aria-hidden="true" tabindex="-1"></a>cloud.data</span></code></pre></div>
 <pre><code>##    Unseeded_Clouds Seeded_Clouds
 ## 1           1202.6        2745.6
 ## 2            830.1        1697.8
@@ -852,25 +842,25 @@ sample.variance&lt;-sum/(<span class="kw">length</span>(data)-<span class="dv">1
 ## 25             4.9           7.7
 ## 26             1.0           4.1</code></pre>
 <p>or, if its easier, can use the data editor as described above.</p>
-<p>Lets calculate the variance of each treatment. For now, I will do this step-by-step, defining intermediate variables along the way. For simplicity, I redefine the two columns worth of data as &quot;A&quot; and &quot;B&quot;:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A&lt;-<span class="st"> </span>cloud.data$Unseeded_Clouds
-mean.A&lt;-<span class="kw">mean</span>(A)
-diff.from.mean.A&lt;-<span class="st"> </span>A-mean.A
-n.A&lt;-<span class="kw">length</span>(A)  <span class="co"># Here I am just calculating the sample size to use in next line</span>
-s2.A&lt;-<span class="kw">sum</span>(diff.from.mean.A^<span class="dv">2</span>)/(n.A<span class="dv">-1</span>)
-s2.A</code></pre></div>
+<p>Lets calculate the variance of each treatment. For now, I will do this step-by-step, defining intermediate variables along the way. For simplicity, I redefine the two columns worth of data as “A” and “B”:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="week-1-lab-handout.html#cb114-1" aria-hidden="true" tabindex="-1"></a>A<span class="ot">&lt;-</span> cloud.data<span class="sc">$</span>Unseeded_Clouds</span>
+<span id="cb114-2"><a href="week-1-lab-handout.html#cb114-2" aria-hidden="true" tabindex="-1"></a>mean.A<span class="ot">&lt;-</span><span class="fu">mean</span>(A)</span>
+<span id="cb114-3"><a href="week-1-lab-handout.html#cb114-3" aria-hidden="true" tabindex="-1"></a>diff.from.mean.A<span class="ot">&lt;-</span> A<span class="sc">-</span>mean.A</span>
+<span id="cb114-4"><a href="week-1-lab-handout.html#cb114-4" aria-hidden="true" tabindex="-1"></a>n.A<span class="ot">&lt;-</span><span class="fu">length</span>(A)  <span class="co"># Here I am just calculating the sample size to use in next line</span></span>
+<span id="cb114-5"><a href="week-1-lab-handout.html#cb114-5" aria-hidden="true" tabindex="-1"></a>s2.A<span class="ot">&lt;-</span><span class="fu">sum</span>(diff.from.mean.A<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(n.A<span class="dv">-1</span>)</span>
+<span id="cb114-6"><a href="week-1-lab-handout.html#cb114-6" aria-hidden="true" tabindex="-1"></a>s2.A</span></code></pre></div>
 <pre><code>## [1] 77521.26</code></pre>
-<p>Redo the calculation for the Seeded clouds to get &quot;s2.B&quot;.</p>
-<p>We could have saved ourselves a lot of effort by using the R function &quot;var&quot;:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s2.A&lt;-<span class="kw">var</span>(A)
-s2.A</code></pre></div>
+<p>Redo the calculation for the Seeded clouds to get “s2.B.”</p>
+<p>We could have saved ourselves a lot of effort by using the R function “var”:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="week-1-lab-handout.html#cb116-1" aria-hidden="true" tabindex="-1"></a>s2.A<span class="ot">&lt;-</span><span class="fu">var</span>(A)</span>
+<span id="cb116-2"><a href="week-1-lab-handout.html#cb116-2" aria-hidden="true" tabindex="-1"></a>s2.A</span></code></pre></div>
 <pre><code>## [1] 77521.26</code></pre>
 <p>Is the variance for the Seeded clouds the same as the Unseeded clouds? How close (to equal) is close enough? What is the null hypothesis?</p>
 </div>
-<div id="a-few-final-notes" class="section level2">
+<div id="a-few-final-notes" class="section level2" number="2.7">
 <h2><span class="header-section-number">2.7</span> A few final notes</h2>
 <p>I mentioned at the outset that all of your code should be kept in a script (some kind of text file; it could be a .R file but it could be a simple .txt file) and that your code should be clearly commented. Comments can be added to code using the # sign. For example</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="dv">3+5</span>  <span class="co">#This is a comment</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="week-1-lab-handout.html#cb118-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">+</span><span class="dv">5</span>  <span class="co">#This is a comment</span></span></code></pre></div>
 <p>everything after the # is not executed by R and is simply for your use in understanding the code.</p>
 <p>**Short digression on brackets and good coding practices.</p>
 
@@ -937,7 +927,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

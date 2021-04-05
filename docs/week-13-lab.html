@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-01" />
+<meta name="date" content="2021-04-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="week-13-lecture.html"/>
 <link rel="next" href="week-14-lecture.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,41 +54,68 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -107,28 +135,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a><ul>
+<li class="chapter" data-level="1" data-path="week-1-lecture.html"><a href="week-1-lecture.html"><i class="fa fa-check"></i><b>1</b> Week 1 Lecture</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#reading-material"><i class="fa fa-check"></i><b>1.1</b> Reading Material</a></li>
 <li class="chapter" data-level="1.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#basic-outline"><i class="fa fa-check"></i><b>1.2</b> Basic Outline</a></li>
-<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#todays-agenda"><i class="fa fa-check"></i><b>1.3</b> Today's Agenda</a></li>
-<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#basic-probability-theory"><i class="fa fa-check"></i><b>1.4</b> Basic Probability Theory</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#intersection"><i class="fa fa-check"></i><b>1.4.1</b> Intersection</a></li>
-<li class="chapter" data-level="1.4.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#union"><i class="fa fa-check"></i><b>1.4.2</b> Union</a></li>
-<li class="chapter" data-level="1.4.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#complement"><i class="fa fa-check"></i><b>1.4.3</b> Complement:</a></li>
+<li class="chapter" data-level="1.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#todays-agenda"><i class="fa fa-check"></i><b>1.3</b> Today’s Agenda</a></li>
+<li class="chapter" data-level="1.4" data-path="week-1-lecture.html"><a href="week-1-lecture.html#overview-of-univariate-distributions"><i class="fa fa-check"></i><b>1.4</b> Overview of Univariate Distributions</a></li>
+<li class="chapter" data-level="1.5" data-path="week-1-lecture.html"><a href="week-1-lecture.html#what-can-you-ask-of-a-distribution"><i class="fa fa-check"></i><b>1.5</b> What can you ask of a distribution?</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="week-1-lecture.html"><a href="week-1-lecture.html#multiple-events"><i class="fa fa-check"></i><b>1.5</b> Multiple events</a></li>
-<li class="chapter" data-level="1.6" data-path="week-1-lecture.html"><a href="week-1-lecture.html#conditionals"><i class="fa fa-check"></i><b>1.6</b> Conditionals</a></li>
-<li class="chapter" data-level="1.7" data-path="week-1-lecture.html"><a href="week-1-lecture.html#bayes-theorem"><i class="fa fa-check"></i><b>1.7</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="1.8" data-path="week-1-lecture.html"><a href="week-1-lecture.html#a-few-foundational-ideas"><i class="fa fa-check"></i><b>1.8</b> A few foundational ideas</a></li>
-<li class="chapter" data-level="1.9" data-path="week-1-lecture.html"><a href="week-1-lecture.html#overview-of-univariate-distributions"><i class="fa fa-check"></i><b>1.9</b> Overview of Univariate Distributions</a></li>
-<li class="chapter" data-level="1.10" data-path="week-1-lecture.html"><a href="week-1-lecture.html#what-can-you-ask-of-a-distribution"><i class="fa fa-check"></i><b>1.10</b> What can you ask of a distribution?</a><ul>
-<li class="chapter" data-level="1.10.1" data-path="week-1-lecture.html"><a href="week-1-lecture.html#expected-value-of-a-random-variable"><i class="fa fa-check"></i><b>1.10.1</b> Expected Value of a Random Variable</a></li>
-<li class="chapter" data-level="1.10.2" data-path="week-1-lecture.html"><a href="week-1-lecture.html#discrete-case"><i class="fa fa-check"></i><b>1.10.2</b> Discrete Case</a></li>
-<li class="chapter" data-level="1.10.3" data-path="week-1-lecture.html"><a href="week-1-lecture.html#continuous-case"><i class="fa fa-check"></i><b>1.10.3</b> Continuous Case</a></li>
-</ul></li>
-<li class="chapter" data-level="1.11" data-path="week-1-lecture.html"><a href="week-1-lecture.html#a-brief-introduction-to-scientific-method"><i class="fa fa-check"></i><b>1.11</b> A Brief Introduction to Scientific Method</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab Handout</a><ul>
+<li class="chapter" data-level="2" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html"><i class="fa fa-check"></i><b>2</b> Week 1 Lab Handout</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#using-r-like-a-calculator"><i class="fa fa-check"></i><b>2.1</b> Using R like a calculator</a></li>
 <li class="chapter" data-level="2.2" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#the-basic-data-structures-in-r"><i class="fa fa-check"></i><b>2.2</b> The basic data structures in R</a></li>
 <li class="chapter" data-level="2.3" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#writing-functions-in-r"><i class="fa fa-check"></i><b>2.3</b> Writing functions in R</a></li>
@@ -137,7 +153,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.6" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#lesson-6-some-practice-writing-r-code"><i class="fa fa-check"></i><b>2.6</b> Lesson #6: Some practice writing R code</a></li>
 <li class="chapter" data-level="2.7" data-path="week-1-lab-handout.html"><a href="week-1-lab-handout.html#a-few-final-notes"><i class="fa fa-check"></i><b>2.7</b> A few final notes</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a><ul>
+<li class="chapter" data-level="3" data-path="week-2-lecture.html"><a href="week-2-lecture.html"><i class="fa fa-check"></i><b>3</b> Week 2 Lecture</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="week-2-lecture.html"><a href="week-2-lecture.html#hypothesis-testing-and-p-values"><i class="fa fa-check"></i><b>3.1</b> Hypothesis testing and p-values</a></li>
 <li class="chapter" data-level="3.2" data-path="week-2-lecture.html"><a href="week-2-lecture.html#permutation-tests"><i class="fa fa-check"></i><b>3.2</b> Permutation tests</a></li>
 <li class="chapter" data-level="3.3" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parameter-estimation"><i class="fa fa-check"></i><b>3.3</b> Parameter estimation</a></li>
@@ -145,16 +162,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>3.5</b> Parametric bootstrap</a></li>
 <li class="chapter" data-level="3.6" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife"><i class="fa fa-check"></i><b>3.6</b> Jackknife</a></li>
 <li class="chapter" data-level="3.7" data-path="week-2-lecture.html"><a href="week-2-lecture.html#jackknife-after-bootstrap"><i class="fa fa-check"></i><b>3.7</b> Jackknife-after-bootstrap</a></li>
-<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-week-2-you-should-understand..."><i class="fa fa-check"></i><b>3.8</b> By the end of Week 2, you should understand...</a></li>
+<li class="chapter" data-level="3.8" data-path="week-2-lecture.html"><a href="week-2-lecture.html#by-the-end-of-week-2-you-should-understand"><i class="fa fa-check"></i><b>3.8</b> By the end of Week 2, you should understand…</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a><ul>
+<li class="chapter" data-level="4" data-path="week-2-lab.html"><a href="week-2-lab.html"><i class="fa fa-check"></i><b>4</b> Week 2 Lab</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="week-2-lab.html"><a href="week-2-lab.html#confidence-intervals"><i class="fa fa-check"></i><b>4.1</b> Confidence intervals</a></li>
 <li class="chapter" data-level="4.2" data-path="week-2-lab.html"><a href="week-2-lab.html#testing-hypotheses-through-permutation"><i class="fa fa-check"></i><b>4.2</b> Testing hypotheses through permutation</a></li>
 <li class="chapter" data-level="4.3" data-path="week-2-lab.html"><a href="week-2-lab.html#basics-of-bootstrap-and-jackknife"><i class="fa fa-check"></i><b>4.3</b> Basics of bootstrap and jackknife</a></li>
 <li class="chapter" data-level="4.4" data-path="week-2-lab.html"><a href="week-2-lab.html#calculating-bias-and-standard-error"><i class="fa fa-check"></i><b>4.4</b> Calculating bias and standard error</a></li>
 <li class="chapter" data-level="4.5" data-path="week-2-lecture.html"><a href="week-2-lecture.html#parametric-bootstrap"><i class="fa fa-check"></i><b>4.5</b> Parametric bootstrap</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lecture</a><ul>
+<li class="chapter" data-level="5" data-path="week-3-lecture.html"><a href="week-3-lecture.html"><i class="fa fa-check"></i><b>5</b> Week 3 Lecture</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="week-3-lecture.html"><a href="week-3-lecture.html#overview-of-probability-distributions"><i class="fa fa-check"></i><b>5.1</b> Overview of probability distributions</a></li>
 <li class="chapter" data-level="5.2" data-path="week-3-lecture.html"><a href="week-3-lecture.html#normal-gaussian-distribution"><i class="fa fa-check"></i><b>5.2</b> Normal (Gaussian) Distribution</a></li>
 <li class="chapter" data-level="5.3" data-path="week-3-lecture.html"><a href="week-3-lecture.html#standard-normal-distribution"><i class="fa fa-check"></i><b>5.3</b> Standard Normal Distribution</a></li>
@@ -165,194 +184,163 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.8" data-path="week-3-lecture.html"><a href="week-3-lecture.html#beta-distribution"><i class="fa fa-check"></i><b>5.8</b> Beta Distribution</a></li>
 <li class="chapter" data-level="5.9" data-path="week-3-lecture.html"><a href="week-3-lecture.html#gamma-distribution"><i class="fa fa-check"></i><b>5.9</b> Gamma Distribution</a></li>
 <li class="chapter" data-level="5.10" data-path="week-3-lecture.html"><a href="week-3-lecture.html#some-additional-notes"><i class="fa fa-check"></i><b>5.10</b> Some additional notes:</a></li>
-<li class="chapter" data-level="5.11" data-path="week-3-lecture.html"><a href="week-3-lecture.html#by-the-end-of-week-3-you-should-understand..."><i class="fa fa-check"></i><b>5.11</b> By the end of Week 3, you should understand...</a></li>
+<li class="chapter" data-level="5.11" data-path="week-3-lecture.html"><a href="week-3-lecture.html#by-the-end-of-week-3-you-should-understand"><i class="fa fa-check"></i><b>5.11</b> By the end of Week 3, you should understand…</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab</a><ul>
+<li class="chapter" data-level="6" data-path="week-3-lab.html"><a href="week-3-lab.html"><i class="fa fa-check"></i><b>6</b> Week 3 Lab</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="week-3-lab.html"><a href="week-3-lab.html#exploring-the-univariate-distributions-with-r"><i class="fa fa-check"></i><b>6.1</b> Exploring the univariate distributions with R</a></li>
-<li class="chapter" data-level="6.2" data-path="week-3-lab.html"><a href="week-3-lab.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.2</b> Standard deviation vs. Standard error</a></li>
+<li class="chapter" data-level="6.2" data-path="week-3-lab.html"><a href="week-3-lab.html#standard-deviation-vs.-standard-error"><i class="fa fa-check"></i><b>6.2</b> Standard deviation vs. Standard error</a></li>
 <li class="chapter" data-level="6.3" data-path="week-3-lab.html"><a href="week-3-lab.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> The Central Limit Theorem</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lecture</a><ul>
-<li class="chapter" data-level="7.1" data-path="week-4-lecture.html"><a href="week-4-lecture.html#short-digression-degrees-of-freedom"><i class="fa fa-check"></i><b>7.1</b> Short digression: Degrees of freedom</a></li>
-<li class="chapter" data-level="7.2" data-path="week-4-lecture.html"><a href="week-4-lecture.html#t-distribution"><i class="fa fa-check"></i><b>7.2</b> t-distribution</a></li>
-<li class="chapter" data-level="7.3" data-path="week-4-lecture.html"><a href="week-4-lecture.html#chi-squared-distribution"><i class="fa fa-check"></i><b>7.3</b> Chi-squared distribution</a></li>
-<li class="chapter" data-level="7.4" data-path="week-4-lecture.html"><a href="week-4-lecture.html#f-distribution"><i class="fa fa-check"></i><b>7.4</b> F distribution</a></li>
-<li class="chapter" data-level="7.5" data-path="week-4-lecture.html"><a href="week-4-lecture.html#estimating-confidence-intervals---5-special-cases"><i class="fa fa-check"></i><b>7.5</b> Estimating confidence intervals - 5 special cases</a></li>
-<li class="chapter" data-level="7.6" data-path="week-4-lecture.html"><a href="week-4-lecture.html#to-recap"><i class="fa fa-check"></i><b>7.6</b> To recap</a></li>
-</ul></li>
+<li class="chapter" data-level="7" data-path="week-4-lecture.html"><a href="week-4-lecture.html"><i class="fa fa-check"></i><b>7</b> Week 4 Lecture</a></li>
 <li class="chapter" data-level="8" data-path="week-4-lab.html"><a href="week-4-lab.html"><i class="fa fa-check"></i><b>8</b> Week 4 Lab</a></li>
-<li class="chapter" data-level="9" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lecture</a><ul>
-<li class="chapter" data-level="9.1" data-path="week-5-lecture.html"><a href="week-5-lecture.html#statistical-power"><i class="fa fa-check"></i><b>9.1</b> Statistical power</a></li>
-<li class="chapter" data-level="9.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-single-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> The single sample t test</a></li>
-<li class="chapter" data-level="9.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-unpaired-two-sample-t-test"><i class="fa fa-check"></i><b>9.3</b> The unpaired two sample t test</a></li>
-<li class="chapter" data-level="9.4" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-paired-two-sample-t-test"><i class="fa fa-check"></i><b>9.4</b> The paired two sample t test</a></li>
-<li class="chapter" data-level="9.5" data-path="week-5-lecture.html"><a href="week-5-lecture.html#the-f-test"><i class="fa fa-check"></i><b>9.5</b> The F test</a></li>
-<li class="chapter" data-level="9.6" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>9.6</b> Comparing two proportions</a></li>
-<li class="chapter" data-level="9.7" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>9.7</b> Comparing two distributions</a></li>
-<li class="chapter" data-level="9.8" data-path="week-5-lecture.html"><a href="week-5-lecture.html#a-bit-more-detail-on-the-binomial"><i class="fa fa-check"></i><b>9.8</b> A bit more detail on the Binomial</a></li>
-<li class="chapter" data-level="9.9" data-path="week-5-lecture.html"><a href="week-5-lecture.html#side-note-about-the-wald-test"><i class="fa fa-check"></i><b>9.9</b> Side-note about the Wald test</a></li>
-<li class="chapter" data-level="9.10" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-goodness-of-fit-test"><i class="fa fa-check"></i><b>9.10</b> Chi-squared goodness-of-fit test</a></li>
-<li class="chapter" data-level="9.11" data-path="week-5-lecture.html"><a href="week-5-lecture.html#chi-squared-test-of-independence"><i class="fa fa-check"></i><b>9.11</b> Chi-squared test of independence</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>10</b> Week 5 Lab</a><ul>
+<li class="chapter" data-level="9" data-path="week-5-lecture.html"><a href="week-5-lecture.html"><i class="fa fa-check"></i><b>9</b> Week 5 Lecture</a></li>
+<li class="chapter" data-level="10" data-path="week-5-lab.html"><a href="week-5-lab.html"><i class="fa fa-check"></i><b>10</b> Week 5 Lab</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="week-5-lab.html"><a href="week-5-lab.html#f-test"><i class="fa fa-check"></i><b>10.1</b> F-test</a></li>
-<li class="chapter" data-level="10.2" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-proportions"><i class="fa fa-check"></i><b>10.2</b> Comparing two proportions</a></li>
-<li class="chapter" data-level="10.3" data-path="week-5-lecture.html"><a href="week-5-lecture.html#comparing-two-distributions"><i class="fa fa-check"></i><b>10.3</b> Comparing two distributions</a></li>
+<li class="chapter" data-level="10.2" data-path="week-5-lab.html"><a href="week-5-lab.html#comparing-two-proportions"><i class="fa fa-check"></i><b>10.2</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="10.3" data-path="week-5-lab.html"><a href="week-5-lab.html#comparing-two-distributions"><i class="fa fa-check"></i><b>10.3</b> Comparing two distributions</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="week-6-lecture.html"><a href="week-6-lecture.html"><i class="fa fa-check"></i><b>11</b> Week 6 Lecture</a></li>
 <li class="chapter" data-level="12" data-path="week-6-lab.html"><a href="week-6-lab.html"><i class="fa fa-check"></i><b>12</b> Week 6 Lab</a></li>
-<li class="chapter" data-level="13" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html"><i class="fa fa-check"></i><b>13</b> Week 7 Lecture/Lab</a><ul>
+<li class="chapter" data-level="13" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html"><i class="fa fa-check"></i><b>13</b> Week 7 Lecture/Lab</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#box-plots"><i class="fa fa-check"></i><b>13.1</b> Box plots</a></li>
 <li class="chapter" data-level="13.2" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#two-dimensional-data"><i class="fa fa-check"></i><b>13.2</b> Two-dimensional data</a></li>
 <li class="chapter" data-level="13.3" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#three-dimensional-data"><i class="fa fa-check"></i><b>13.3</b> Three-dimensional data</a></li>
 <li class="chapter" data-level="13.4" data-path="week-7-lecturelab.html"><a href="week-7-lecturelab.html#multiple-plots"><i class="fa fa-check"></i><b>13.4</b> Multiple plots</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lecture</a><ul>
-<li class="chapter" data-level="14.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#warm-up"><i class="fa fa-check"></i><b>14.1</b> Warm-up</a></li>
-<li class="chapter" data-level="14.2" data-path="week-8-lecture.html"><a href="week-8-lecture.html#the-aims-of-modelling----a-discussion-of-shmueli-2010"><i class="fa fa-check"></i><b>14.2</b> The aims of modelling -- A discussion of Shmueli (2010)</a></li>
-<li class="chapter" data-level="14.3" data-path="week-8-lecture.html"><a href="week-8-lecture.html#introduction-to-linear-models"><i class="fa fa-check"></i><b>14.3</b> Introduction to linear models</a></li>
-<li class="chapter" data-level="14.4" data-path="week-8-lecture.html"><a href="week-8-lecture.html#linear-models-example-with-continuous-covariate"><i class="fa fa-check"></i><b>14.4</b> Linear models | example with continuous covariate</a></li>
-<li class="chapter" data-level="14.5" data-path="week-8-lecture.html"><a href="week-8-lecture.html#resolving-overparameterization-using-contrasts"><i class="fa fa-check"></i><b>14.5</b> Resolving overparameterization using contrasts</a></li>
-<li class="chapter" data-level="14.6" data-path="week-8-lecture.html"><a href="week-8-lecture.html#effect-codingtreatment-constrast"><i class="fa fa-check"></i><b>14.6</b> Effect coding/Treatment constrast</a></li>
-<li class="chapter" data-level="14.7" data-path="week-8-lecture.html"><a href="week-8-lecture.html#helmert-contrasts"><i class="fa fa-check"></i><b>14.7</b> Helmert contrasts</a></li>
-<li class="chapter" data-level="14.8" data-path="week-8-lecture.html"><a href="week-8-lecture.html#sum-to-zero-contrasts"><i class="fa fa-check"></i><b>14.8</b> Sum-to-zero contrasts</a></li>
-<li class="chapter" data-level="14.9" data-path="week-8-lecture.html"><a href="week-8-lecture.html#polynomial-contrasts"><i class="fa fa-check"></i><b>14.9</b> Polynomial contrasts</a></li>
-<li class="chapter" data-level="14.10" data-path="week-8-lecture.html"><a href="week-8-lecture.html#visualizing-hypotheses-for-different-coding-schemes"><i class="fa fa-check"></i><b>14.10</b> Visualizing hypotheses for different coding schemes</a></li>
-<li class="chapter" data-level="14.11" data-path="week-8-lecture.html"><a href="week-8-lecture.html#orthogonal-vs.-non-orthogonal-contrasts"><i class="fa fa-check"></i><b>14.11</b> Orthogonal vs. Non-orthogonal contrasts</a></li>
-<li class="chapter" data-level="14.12" data-path="week-8-lecture.html"><a href="week-8-lecture.html#error-structure-of-linear-models"><i class="fa fa-check"></i><b>14.12</b> Error structure of linear models</a><ul>
-<li class="chapter" data-level="14.12.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#independence-of-errors"><i class="fa fa-check"></i><b>14.12.1</b> Independence of errors</a></li>
+<li class="chapter" data-level="14" data-path="week-8-lecture.html"><a href="week-8-lecture.html"><i class="fa fa-check"></i><b>14</b> Week 8 Lecture</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#the-aims-of-modelling-a-discussion-of-shmueli-2010"><i class="fa fa-check"></i><b>14.1</b> The aims of modelling – A discussion of Shmueli (2010)</a></li>
+<li class="chapter" data-level="14.2" data-path="week-8-lecture.html"><a href="week-8-lecture.html#linear-models-example-with-continuous-covariate"><i class="fa fa-check"></i><b>14.2</b> Linear models | example with continuous covariate</a></li>
+<li class="chapter" data-level="14.3" data-path="week-8-lecture.html"><a href="week-8-lecture.html#resolving-overparameterization-using-contrasts"><i class="fa fa-check"></i><b>14.3</b> Resolving overparameterization using contrasts</a></li>
+<li class="chapter" data-level="14.4" data-path="week-8-lecture.html"><a href="week-8-lecture.html#visualizing-hypotheses-for-different-coding-schemes"><i class="fa fa-check"></i><b>14.4</b> Visualizing hypotheses for different coding schemes</a></li>
+<li class="chapter" data-level="14.5" data-path="week-8-lecture.html"><a href="week-8-lecture.html#orthogonal-vs.-non-orthogonal-contrasts"><i class="fa fa-check"></i><b>14.5</b> Orthogonal vs. Non-orthogonal contrasts</a></li>
+<li class="chapter" data-level="14.6" data-path="week-8-lecture.html"><a href="week-8-lecture.html#error-structure-of-linear-models"><i class="fa fa-check"></i><b>14.6</b> Error structure of linear models</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="week-8-lecture.html"><a href="week-8-lecture.html#independence-of-errors"><i class="fa fa-check"></i><b>14.6.1</b> Independence of errors</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>15</b> Week 8 Lab</a><ul>
+<li class="chapter" data-level="15" data-path="week-8-lab.html"><a href="week-8-lab.html"><i class="fa fa-check"></i><b>15</b> Week 8 Lab</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="week-8-lab.html"><a href="week-8-lab.html#contrasts"><i class="fa fa-check"></i><b>15.1</b> Contrasts</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lecture</a><ul>
-<li class="chapter" data-level="16.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>16.1</b> Correlation</a></li>
-<li class="chapter" data-level="16.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#hypothesis-testing---pearsons-r"><i class="fa fa-check"></i><b>16.2</b> Hypothesis testing - Pearson's <em>r</em></a></li>
-<li class="chapter" data-level="16.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#fishers-z"><i class="fa fa-check"></i><b>16.3</b> Fisher's <span class="math inline">\(z\)</span></a></li>
-<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.4</b> Regression</a></li>
-<li class="chapter" data-level="16.5" data-path="week-9-lecture.html"><a href="week-9-lecture.html#but-wait-couldnt-we-have-used-maximum-likelihood-yes"><i class="fa fa-check"></i><b>16.5</b> But wait, couldn't we have used maximum likelihood? Yes!</a></li>
-<li class="chapter" data-level="16.6" data-path="week-9-lecture.html"><a href="week-9-lecture.html#assumptions-of-regression"><i class="fa fa-check"></i><b>16.6</b> Assumptions of regression:</a></li>
-<li class="chapter" data-level="16.7" data-path="week-9-lecture.html"><a href="week-9-lecture.html#confidence-vs.-prediction-intervals"><i class="fa fa-check"></i><b>16.7</b> Confidence vs. Prediction intervals</a></li>
-<li class="chapter" data-level="16.8" data-path="week-9-lecture.html"><a href="week-9-lecture.html#how-do-we-know-if-our-model-is-any-good"><i class="fa fa-check"></i><b>16.8</b> How do we know if our model is any good?</a></li>
-<li class="chapter" data-level="16.9" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>16.9</b> Robust regression</a></li>
-<li class="chapter" data-level="16.10" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression-1"><i class="fa fa-check"></i><b>16.10</b> Robust regression</a></li>
-<li class="chapter" data-level="16.11" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.11</b> Type I and Type II Regression</a></li>
+<li class="chapter" data-level="16" data-path="week-9-lecture.html"><a href="week-9-lecture.html"><i class="fa fa-check"></i><b>16</b> Week 9 Lecture</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#hypothesis-testing---pearsons-r"><i class="fa fa-check"></i><b>16.1</b> Hypothesis testing - Pearson’s <em>r</em></a></li>
+<li class="chapter" data-level="16.2" data-path="week-9-lecture.html"><a href="week-9-lecture.html#fishers-z"><i class="fa fa-check"></i><b>16.2</b> Fisher’s <span class="math inline">\(z\)</span></a></li>
+<li class="chapter" data-level="16.3" data-path="week-9-lecture.html"><a href="week-9-lecture.html#regression"><i class="fa fa-check"></i><b>16.3</b> Regression</a></li>
+<li class="chapter" data-level="16.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#type-i-and-type-ii-regression"><i class="fa fa-check"></i><b>16.4</b> Type I and Type II Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>17</b> Week 9 Lab</a><ul>
-<li class="chapter" data-level="17.1" data-path="week-9-lecture.html"><a href="week-9-lecture.html#correlation"><i class="fa fa-check"></i><b>17.1</b> Correlation</a></li>
+<li class="chapter" data-level="17" data-path="week-9-lab.html"><a href="week-9-lab.html"><i class="fa fa-check"></i><b>17</b> Week 9 Lab</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="week-9-lab.html"><a href="week-9-lab.html#correlation"><i class="fa fa-check"></i><b>17.1</b> Correlation</a></li>
 <li class="chapter" data-level="17.2" data-path="week-9-lab.html"><a href="week-9-lab.html#linear-modelling"><i class="fa fa-check"></i><b>17.2</b> Linear modelling</a></li>
 <li class="chapter" data-level="17.3" data-path="week-9-lab.html"><a href="week-9-lab.html#weighted-regression"><i class="fa fa-check"></i><b>17.3</b> Weighted regression</a></li>
-<li class="chapter" data-level="17.4" data-path="week-9-lecture.html"><a href="week-9-lecture.html#robust-regression"><i class="fa fa-check"></i><b>17.4</b> Robust regression</a></li>
+<li class="chapter" data-level="17.4" data-path="week-9-lab.html"><a href="week-9-lab.html#robust-regression"><i class="fa fa-check"></i><b>17.4</b> Robust regression</a></li>
 <li class="chapter" data-level="17.5" data-path="week-9-lab.html"><a href="week-9-lab.html#bootstrapping-standard-errors-for-robust-regression"><i class="fa fa-check"></i><b>17.5</b> Bootstrapping standard errors for robust regression</a></li>
-<li class="chapter" data-level="17.6" data-path="week-9-lab.html"><a href="week-9-lab.html#type-i-vs.-type-ii-regression-the-smatr-package"><i class="fa fa-check"></i><b>17.6</b> Type I vs. Type II regression: The 'smatr' package</a></li>
+<li class="chapter" data-level="17.6" data-path="week-9-lab.html"><a href="week-9-lab.html#type-i-vs.-type-ii-regression-the-smatr-package"><i class="fa fa-check"></i><b>17.6</b> Type I vs. Type II regression: The ‘smatr’ package</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lecture</a><ul>
+<li class="chapter" data-level="18" data-path="week-10-lecture.html"><a href="week-10-lecture.html"><i class="fa fa-check"></i><b>18</b> Week 10 Lecture</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#an-example"><i class="fa fa-check"></i><b>18.1</b> An example</a></li>
 <li class="chapter" data-level="18.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#generalized-linear-models"><i class="fa fa-check"></i><b>18.2</b> Generalized linear models</a></li>
-<li class="chapter" data-level="18.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#logistic-regression"><i class="fa fa-check"></i><b>18.3</b> Logistic regression</a></li>
-<li class="chapter" data-level="18.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#fitting-a-glm"><i class="fa fa-check"></i><b>18.4</b> Fitting a GLM</a></li>
-<li class="chapter" data-level="18.5" data-path="week-10-lecture.html"><a href="week-10-lecture.html#poisson-regression"><i class="fa fa-check"></i><b>18.5</b> Poisson regression</a></li>
-<li class="chapter" data-level="18.6" data-path="week-10-lecture.html"><a href="week-10-lecture.html#deviance"><i class="fa fa-check"></i><b>18.6</b> Deviance</a></li>
-<li class="chapter" data-level="18.7" data-path="week-10-lecture.html"><a href="week-10-lecture.html#other-methods----loess-splines-gams"><i class="fa fa-check"></i><b>18.7</b> Other methods -- LOESS, splines, GAMs</a><ul>
-<li class="chapter" data-level="18.7.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#loess"><i class="fa fa-check"></i><b>18.7.1</b> LOESS</a></li>
-<li class="chapter" data-level="18.7.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#splines"><i class="fa fa-check"></i><b>18.7.2</b> Splines</a></li>
-<li class="chapter" data-level="18.7.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#gams"><i class="fa fa-check"></i><b>18.7.3</b> GAMs</a></li>
-<li class="chapter" data-level="18.7.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#multiple-regression"><i class="fa fa-check"></i><b>18.7.4</b> Multiple regression</a></li>
+<li class="chapter" data-level="18.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#other-methods-loess-splines-gams"><i class="fa fa-check"></i><b>18.3</b> Other methods – LOESS, splines, GAMs</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="week-10-lecture.html"><a href="week-10-lecture.html#loess"><i class="fa fa-check"></i><b>18.3.1</b> LOESS</a></li>
+<li class="chapter" data-level="18.3.2" data-path="week-10-lecture.html"><a href="week-10-lecture.html#multiple-regression"><i class="fa fa-check"></i><b>18.3.2</b> Multiple regression</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>19</b> Week 10 Lab</a><ul>
-<li class="chapter" data-level="19.1" data-path="week-10-lab.html"><a href="week-10-lab.html#discussion-of-challenger-analysis"><i class="fa fa-check"></i><b>19.1</b> Discussion of Challenger analysis</a><ul>
-<li class="chapter" data-level="19.1.1" data-path="week-10-lab.html"><a href="week-10-lab.html#practice-fitting-models"><i class="fa fa-check"></i><b>19.1.1</b> Practice fitting models</a></li>
+<li class="chapter" data-level="19" data-path="week-10-lab.html"><a href="week-10-lab.html"><i class="fa fa-check"></i><b>19</b> Week 10 Lab</a>
+<ul>
+<li class="chapter" data-level="19.0.1" data-path="week-10-lab.html"><a href="week-10-lab.html#practice-fitting-models"><i class="fa fa-check"></i><b>19.0.1</b> Practice fitting models</a></li>
 </ul></li>
-<li class="chapter" data-level="19.2" data-path="week-10-lab.html"><a href="week-10-lab.html#weighted-linear-regression"><i class="fa fa-check"></i><b>19.2</b> Weighted linear regression</a></li>
-<li class="chapter" data-level="19.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#logistic-regression"><i class="fa fa-check"></i><b>19.3</b> Logistic regression</a></li>
-<li class="chapter" data-level="19.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#poisson-regression"><i class="fa fa-check"></i><b>19.4</b> Poisson regression</a></li>
-<li class="chapter" data-level="19.5" data-path="week-10-lab.html"><a href="week-10-lab.html#getting-a-feel-for-deviance"><i class="fa fa-check"></i><b>19.5</b> Getting a feel for Deviance</a></li>
-<li class="chapter" data-level="19.6" data-path="week-10-lab.html"><a href="week-10-lab.html#generalized-additive-models"><i class="fa fa-check"></i><b>19.6</b> Generalized Additive Models</a></li>
-</ul></li>
-<li class="chapter" data-level="20" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lecture</a><ul>
-<li class="chapter" data-level="20.0.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#variation-within-treatment-group"><i class="fa fa-check"></i><b>20.0.1</b> Variation within treatment group</a></li>
-<li class="chapter" data-level="20.0.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#variation-among-treatment-group-means"><i class="fa fa-check"></i><b>20.0.2</b> Variation among treatment group means</a></li>
-<li class="chapter" data-level="20.0.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#comparing-variance-components"><i class="fa fa-check"></i><b>20.0.3</b> Comparing variance components</a></li>
+<li class="chapter" data-level="20" data-path="week-11-lecture.html"><a href="week-11-lecture.html"><i class="fa fa-check"></i><b>20</b> Week 11 Lecture</a>
+<ul>
+<li class="chapter" data-level="20.0.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#variation-among-treatment-group-means"><i class="fa fa-check"></i><b>20.0.1</b> Variation among treatment group means</a></li>
+<li class="chapter" data-level="20.0.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#comparing-variance-components"><i class="fa fa-check"></i><b>20.0.2</b> Comparing variance components</a></li>
 <li class="chapter" data-level="20.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#comparing-variance-components-1"><i class="fa fa-check"></i><b>20.1</b> Comparing variance components</a></li>
 <li class="chapter" data-level="20.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#two-ways-to-estimate-variance"><i class="fa fa-check"></i><b>20.2</b> Two ways to estimate variance</a></li>
 <li class="chapter" data-level="20.3" data-path="week-11-lecture.html"><a href="week-11-lecture.html#single-factor-anova"><i class="fa fa-check"></i><b>20.3</b> Single-factor ANOVA</a></li>
-<li class="chapter" data-level="20.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#fixed-effects-vs.-random-effects"><i class="fa fa-check"></i><b>20.4</b> Fixed effects vs. random effects</a></li>
-<li class="chapter" data-level="20.5" data-path="week-11-lecture.html"><a href="week-11-lecture.html#post-hoc-tests"><i class="fa fa-check"></i><b>20.5</b> Post-hoc tests</a><ul>
-<li class="chapter" data-level="20.5.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#tukeys-hsd"><i class="fa fa-check"></i><b>20.5.1</b> Tukey's HSD</a></li>
+<li class="chapter" data-level="20.4" data-path="week-11-lecture.html"><a href="week-11-lecture.html#fixed-effects-vs.-random-effects"><i class="fa fa-check"></i><b>20.4</b> Fixed effects vs. random effects</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="week-11-lecture.html"><a href="week-11-lecture.html#tukeys-hsd"><i class="fa fa-check"></i><b>20.4.1</b> Tukey’s HSD</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>21</b> Week 11 Lab</a><ul>
-<li class="chapter" data-level="21.1" data-path="week-11-lab.html"><a href="week-11-lab.html#rs-anova-functions"><i class="fa fa-check"></i><b>21.1</b> R's ANOVA functions</a></li>
+<li class="chapter" data-level="21" data-path="week-11-lab.html"><a href="week-11-lab.html"><i class="fa fa-check"></i><b>21</b> Week 11 Lab</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="week-11-lab.html"><a href="week-11-lab.html#rs-anova-functions"><i class="fa fa-check"></i><b>21.1</b> R’s ANOVA functions</a></li>
 <li class="chapter" data-level="21.2" data-path="week-11-lecture.html"><a href="week-11-lecture.html#single-factor-anova"><i class="fa fa-check"></i><b>21.2</b> Single-factor ANOVA</a></li>
 <li class="chapter" data-level="21.3" data-path="week-11-lab.html"><a href="week-11-lab.html#follow-up-analyses-to-anova"><i class="fa fa-check"></i><b>21.3</b> Follow up analyses to ANOVA</a></li>
 <li class="chapter" data-level="21.4" data-path="week-11-lab.html"><a href="week-11-lab.html#more-practice-model-i-anova"><i class="fa fa-check"></i><b>21.4</b> More practice: Model I ANOVA</a></li>
 <li class="chapter" data-level="21.5" data-path="week-11-lab.html"><a href="week-11-lab.html#more-practice-brief-intro-to-doing-model-ii-anova-in-r"><i class="fa fa-check"></i><b>21.5</b> More practice: Brief intro to doing Model II ANOVA in R</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lecture</a><ul>
+<li class="chapter" data-level="22" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lecture</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#review-anova-with-one-factor"><i class="fa fa-check"></i><b>22.1</b> Review: ANOVA with one factor</a></li>
 <li class="chapter" data-level="22.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#anova-with-more-than-one-factor"><i class="fa fa-check"></i><b>22.2</b> ANOVA with more than one factor</a></li>
-<li class="chapter" data-level="22.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-way-anova-factorial-designs"><i class="fa fa-check"></i><b>22.3</b> Two-way ANOVA factorial designs</a></li>
-<li class="chapter" data-level="22.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#why-bother-with-random-effects"><i class="fa fa-check"></i><b>22.4</b> Why bother with random effects?</a></li>
-<li class="chapter" data-level="22.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mixed-models"><i class="fa fa-check"></i><b>22.5</b> Mixed models</a></li>
-<li class="chapter" data-level="22.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-designs"><i class="fa fa-check"></i><b>22.6</b> Unbalanced designs</a></li>
-<li class="chapter" data-level="22.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design----different-sample-sizes"><i class="fa fa-check"></i><b>22.7</b> Unbalanced design -- Different sample sizes</a><ul>
-<li class="chapter" data-level="22.7.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-i-sequential-sums-of-squares"><i class="fa fa-check"></i><b>22.7.1</b> Type I (sequential) sums of squares</a></li>
-<li class="chapter" data-level="22.7.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-ii-hierarchical-sums-of-squares"><i class="fa fa-check"></i><b>22.7.2</b> Type II (hierarchical) sums of squares</a></li>
-<li class="chapter" data-level="22.7.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-iii-marginal-sums-of-squares"><i class="fa fa-check"></i><b>22.7.3</b> Type III (marginal) sums of squares</a></li>
-<li class="chapter" data-level="22.7.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#comparing-type-i-ii-and-iii-ss"><i class="fa fa-check"></i><b>22.7.4</b> Comparing type I, II, and III SS</a></li>
+<li class="chapter" data-level="22.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-designs"><i class="fa fa-check"></i><b>22.3</b> Unbalanced designs</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design-different-sample-sizes"><i class="fa fa-check"></i><b>22.4</b> Unbalanced design – Different sample sizes</a>
+<ul>
+<li class="chapter" data-level="22.4.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-i-sequential-sums-of-squares"><i class="fa fa-check"></i><b>22.4.1</b> Type I (sequential) sums of squares</a></li>
+<li class="chapter" data-level="22.4.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-ii-hierarchical-sums-of-squares"><i class="fa fa-check"></i><b>22.4.2</b> Type II (hierarchical) sums of squares</a></li>
+<li class="chapter" data-level="22.4.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-iii-marginal-sums-of-squares"><i class="fa fa-check"></i><b>22.4.3</b> Type III (marginal) sums of squares</a></li>
+<li class="chapter" data-level="22.4.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#comparing-type-i-ii-and-iii-ss"><i class="fa fa-check"></i><b>22.4.4</b> Comparing type I, II, and III SS</a></li>
 </ul></li>
-<li class="chapter" data-level="22.8" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design----missing-cells"><i class="fa fa-check"></i><b>22.8</b> Unbalanced design -- Missing cells</a></li>
-<li class="chapter" data-level="22.9" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-factor-nested-anova"><i class="fa fa-check"></i><b>22.9</b> Two factor nested ANOVA</a><ul>
-<li class="chapter" data-level="22.9.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#potential-issues-with-nested-designs"><i class="fa fa-check"></i><b>22.9.1</b> Potential issues with nested designs</a></li>
+<li class="chapter" data-level="22.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design-missing-cells"><i class="fa fa-check"></i><b>22.5</b> Unbalanced design – Missing cells</a></li>
+<li class="chapter" data-level="22.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-factor-nested-anova"><i class="fa fa-check"></i><b>22.6</b> Two factor nested ANOVA</a>
+<ul>
+<li class="chapter" data-level="22.6.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#potential-issues-with-nested-designs"><i class="fa fa-check"></i><b>22.6.1</b> Potential issues with nested designs</a></li>
 </ul></li>
-<li class="chapter" data-level="22.10" data-path="week-12-lecture.html"><a href="week-12-lecture.html#experimental-design"><i class="fa fa-check"></i><b>22.10</b> Experimental design</a><ul>
-<li class="chapter" data-level="22.10.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#completely-randomized-design"><i class="fa fa-check"></i><b>22.10.1</b> Completely randomized design</a></li>
-<li class="chapter" data-level="22.10.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#randomized-block-design"><i class="fa fa-check"></i><b>22.10.2</b> Randomized block design</a></li>
-<li class="chapter" data-level="22.10.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#latin-square-design"><i class="fa fa-check"></i><b>22.10.3</b> Latin square design</a></li>
-<li class="chapter" data-level="22.10.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#split-plot-design"><i class="fa fa-check"></i><b>22.10.4</b> Split plot design</a></li>
+<li class="chapter" data-level="22.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#experimental-design"><i class="fa fa-check"></i><b>22.7</b> Experimental design</a>
+<ul>
+<li class="chapter" data-level="22.7.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#completely-randomized-design"><i class="fa fa-check"></i><b>22.7.1</b> Completely randomized design</a></li>
+<li class="chapter" data-level="22.7.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#randomized-block-design"><i class="fa fa-check"></i><b>22.7.2</b> Randomized block design</a></li>
+<li class="chapter" data-level="22.7.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#split-plot-design"><i class="fa fa-check"></i><b>22.7.3</b> Split plot design</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>23</b> Week 12 Lab</a><ul>
+<li class="chapter" data-level="23" data-path="week-12-lab.html"><a href="week-12-lab.html"><i class="fa fa-check"></i><b>23</b> Week 12 Lab</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="week-12-lab.html"><a href="week-12-lab.html#example-1-two-way-factorial-anova-in-r"><i class="fa fa-check"></i><b>23.1</b> Example #1: Two-way factorial ANOVA in R</a></li>
 <li class="chapter" data-level="23.2" data-path="week-12-lab.html"><a href="week-12-lab.html#example-2-nested-design"><i class="fa fa-check"></i><b>23.2</b> Example #2: Nested design</a></li>
 <li class="chapter" data-level="23.3" data-path="week-12-lab.html"><a href="week-12-lab.html#example-3-nested-design"><i class="fa fa-check"></i><b>23.3</b> Example #3: Nested design</a></li>
 <li class="chapter" data-level="23.4" data-path="week-12-lab.html"><a href="week-12-lab.html#example-4-randomized-block-design"><i class="fa fa-check"></i><b>23.4</b> Example #4: Randomized Block Design</a></li>
 <li class="chapter" data-level="23.5" data-path="week-12-lab.html"><a href="week-12-lab.html#example-5-nested-design"><i class="fa fa-check"></i><b>23.5</b> Example #5: Nested design</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 13 Lecture</a><ul>
+<li class="chapter" data-level="24" data-path="week-13-lecture.html"><a href="week-13-lecture.html"><i class="fa fa-check"></i><b>24</b> Week 13 Lecture</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-criticism"><i class="fa fa-check"></i><b>24.1</b> Model criticism</a></li>
-<li class="chapter" data-level="24.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#residuals"><i class="fa fa-check"></i><b>24.2</b> Residuals</a></li>
-<li class="chapter" data-level="24.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#leverage"><i class="fa fa-check"></i><b>24.3</b> Leverage</a></li>
-<li class="chapter" data-level="24.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#influence"><i class="fa fa-check"></i><b>24.4</b> Influence</a></li>
-<li class="chapter" data-level="24.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-residuals-leverage-and-influence"><i class="fa fa-check"></i><b>24.5</b> Comparing residuals, leverage, and influence</a></li>
-<li class="chapter" data-level="24.6" data-path="week-13-lecture.html"><a href="week-13-lecture.html#residuals-for-glms"><i class="fa fa-check"></i><b>24.6</b> Residuals for GLMs</a></li>
-<li class="chapter" data-level="24.7" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-selection-vs.-model-criticism"><i class="fa fa-check"></i><b>24.7</b> Model selection vs. model criticism</a></li>
-<li class="chapter" data-level="24.8" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-two-models"><i class="fa fa-check"></i><b>24.8</b> Comparing two models</a><ul>
-<li class="chapter" data-level="24.8.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#nested-or-not"><i class="fa fa-check"></i><b>24.8.1</b> Nested or not?</a></li>
-<li class="chapter" data-level="24.8.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#likelihood-ratio-test-lrt"><i class="fa fa-check"></i><b>24.8.2</b> Likelihood Ratio Test (LRT)</a></li>
-<li class="chapter" data-level="24.8.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#akaikes-information-criterion-aic"><i class="fa fa-check"></i><b>24.8.3</b> Akaike's Information Criterion (AIC)</a></li>
-<li class="chapter" data-level="24.8.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>24.8.4</b> Bayesian Information Criterion (BIC)</a></li>
-<li class="chapter" data-level="24.8.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-lrt-and-aicbic"><i class="fa fa-check"></i><b>24.8.5</b> Comparing LRT and AIC/BIC</a></li>
+<li class="chapter" data-level="24.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#residuals-for-glms"><i class="fa fa-check"></i><b>24.2</b> Residuals for GLMs</a></li>
+<li class="chapter" data-level="24.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-selection-vs.-model-criticism"><i class="fa fa-check"></i><b>24.3</b> Model selection vs. model criticism</a></li>
+<li class="chapter" data-level="24.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-two-models"><i class="fa fa-check"></i><b>24.4</b> Comparing two models</a>
+<ul>
+<li class="chapter" data-level="24.4.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#likelihood-ratio-test-lrt"><i class="fa fa-check"></i><b>24.4.1</b> Likelihood Ratio Test (LRT)</a></li>
+<li class="chapter" data-level="24.4.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#akaikes-information-criterion-aic"><i class="fa fa-check"></i><b>24.4.2</b> Akaike’s Information Criterion (AIC)</a></li>
+<li class="chapter" data-level="24.4.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>24.4.3</b> Bayesian Information Criterion (BIC)</a></li>
+<li class="chapter" data-level="24.4.4" data-path="week-13-lecture.html"><a href="week-13-lecture.html#comparing-lrt-and-aicbic"><i class="fa fa-check"></i><b>24.4.4</b> Comparing LRT and AIC/BIC</a></li>
 </ul></li>
-<li class="chapter" data-level="24.9" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-weighting"><i class="fa fa-check"></i><b>24.9</b> Model weighting</a></li>
-<li class="chapter" data-level="24.10" data-path="week-13-lecture.html"><a href="week-13-lecture.html#stepwise-regression"><i class="fa fa-check"></i><b>24.10</b> Stepwise regression</a><ul>
-<li class="chapter" data-level="24.10.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-stepwise-regression"><i class="fa fa-check"></i><b>24.10.1</b> Criticism of stepwise regression</a></li>
-<li class="chapter" data-level="24.10.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-data-dredging"><i class="fa fa-check"></i><b>24.10.2</b> Criticism of data dredging</a></li>
-<li class="chapter" data-level="24.10.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#final-thoughts-on-model-selection"><i class="fa fa-check"></i><b>24.10.3</b> Final thoughts on model selection</a></li>
+<li class="chapter" data-level="24.5" data-path="week-13-lecture.html"><a href="week-13-lecture.html#model-weighting"><i class="fa fa-check"></i><b>24.5</b> Model weighting</a></li>
+<li class="chapter" data-level="24.6" data-path="week-13-lecture.html"><a href="week-13-lecture.html#stepwise-regression"><i class="fa fa-check"></i><b>24.6</b> Stepwise regression</a>
+<ul>
+<li class="chapter" data-level="24.6.1" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-stepwise-regression"><i class="fa fa-check"></i><b>24.6.1</b> Criticism of stepwise regression</a></li>
+<li class="chapter" data-level="24.6.2" data-path="week-13-lecture.html"><a href="week-13-lecture.html#criticism-of-data-dredging"><i class="fa fa-check"></i><b>24.6.2</b> Criticism of data dredging</a></li>
+<li class="chapter" data-level="24.6.3" data-path="week-13-lecture.html"><a href="week-13-lecture.html#final-thoughts-on-model-selection"><i class="fa fa-check"></i><b>24.6.3</b> Final thoughts on model selection</a></li>
 </ul></li>
-<li class="chapter" data-level="24.11" data-path="week-13-lecture.html"><a href="week-13-lecture.html#week-13-faq"><i class="fa fa-check"></i><b>24.11</b> Week 13 FAQ</a></li>
+<li class="chapter" data-level="24.7" data-path="week-13-lecture.html"><a href="week-13-lecture.html#week-13-faq"><i class="fa fa-check"></i><b>24.7</b> Week 13 FAQ</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="week-13-lab.html"><a href="week-13-lab.html"><i class="fa fa-check"></i><b>25</b> Week 13 Lab</a><ul>
+<li class="chapter" data-level="25" data-path="week-13-lab.html"><a href="week-13-lab.html"><i class="fa fa-check"></i><b>25</b> Week 13 Lab</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="week-13-lab.html"><a href="week-13-lab.html#part-1-model-selection-model-comparison"><i class="fa fa-check"></i><b>25.1</b> Part 1: Model selection / model comparison</a></li>
 <li class="chapter" data-level="25.2" data-path="week-13-lab.html"><a href="week-13-lab.html#model-selection-via-step-wise-regression"><i class="fa fa-check"></i><b>25.2</b> Model selection via step-wise regression</a></li>
 <li class="chapter" data-level="25.3" data-path="week-13-lab.html"><a href="week-13-lab.html#part-2-model-criticism"><i class="fa fa-check"></i><b>25.3</b> Part 2: Model criticism</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 14 Lecture</a><ul>
-<li class="chapter" data-level="26.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#what-does-multivariate-mean"><i class="fa fa-check"></i><b>26.1</b> What does 'multivariate' mean?</a></li>
+<li class="chapter" data-level="26" data-path="week-14-lecture.html"><a href="week-14-lecture.html"><i class="fa fa-check"></i><b>26</b> Week 14 Lecture</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#what-does-multivariate-mean"><i class="fa fa-check"></i><b>26.1</b> What does ‘multivariate’ mean?</a></li>
 <li class="chapter" data-level="26.2" data-path="week-14-lecture.html"><a href="week-14-lecture.html#multivariate-associations"><i class="fa fa-check"></i><b>26.2</b> Multivariate associations</a></li>
-<li class="chapter" data-level="26.3" data-path="week-14-lecture.html"><a href="week-14-lecture.html#model-criticism-for-multivariate-analyses"><i class="fa fa-check"></i><b>26.3</b> Model criticism for multivariate analyses</a><ul>
+<li class="chapter" data-level="26.3" data-path="week-14-lecture.html"><a href="week-14-lecture.html#model-criticism-for-multivariate-analyses"><i class="fa fa-check"></i><b>26.3</b> Model criticism for multivariate analyses</a>
+<ul>
 <li class="chapter" data-level="26.3.1" data-path="week-14-lecture.html"><a href="week-14-lecture.html#transforming-your-data"><i class="fa fa-check"></i><b>26.3.1</b> Transforming your data</a></li>
 </ul></li>
 <li class="chapter" data-level="26.4" data-path="week-14-lecture.html"><a href="week-14-lecture.html#standardizing-your-data"><i class="fa fa-check"></i><b>26.4</b> Standardizing your data</a></li>
@@ -366,7 +354,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="26.12" data-path="week-14-lecture.html"><a href="week-14-lecture.html#missing-data"><i class="fa fa-check"></i><b>26.12</b> Missing data</a></li>
 <li class="chapter" data-level="26.13" data-path="week-14-lecture.html"><a href="week-14-lecture.html#imputing-missing-data"><i class="fa fa-check"></i><b>26.13</b> Imputing missing data</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>27</b> Week 14 Lab</a><ul>
+<li class="chapter" data-level="27" data-path="week-14-lab.html"><a href="week-14-lab.html"><i class="fa fa-check"></i><b>27</b> Week 14 Lab</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="week-14-lab.html"><a href="week-14-lab.html#missing-at-random---practice-with-glms"><i class="fa fa-check"></i><b>27.1</b> Missing at random - practice with GLMs</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -389,18 +378,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="week-13-lab" class="section level1">
+<div id="week-13-lab" class="section level1" number="25">
 <h1><span class="header-section-number">25</span> Week 13 Lab</h1>
-<p>In lab we'll go through</p>
+<p>In lab we’ll go through</p>
 <ol style="list-style-type: decimal">
 <li><p>Model selection / model comparison</p></li>
 <li><p>Model criticism</p></li>
 </ol>
-<div id="part-1-model-selection-model-comparison" class="section level2">
+<div id="part-1-model-selection-model-comparison" class="section level2" number="25.1">
 <h2><span class="header-section-number">25.1</span> Part 1: Model selection / model comparison</h2>
 <p>There is a frog dataset on the distribution of the Southern Corroboree frog that we are going to attach.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">frogs&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;~/Documents/Projects/Biometry2021/_data/frogs.csv&quot;</span>,<span class="dt">header=</span>T)
-<span class="kw">head</span>(frogs)</code></pre></div>
+<div class="sourceCode" id="cb816"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb816-1"><a href="week-13-lab.html#cb816-1" aria-hidden="true" tabindex="-1"></a>frogs<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Documents/Projects/Biometry2021/_data/frogs.csv&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb816-2"><a href="week-13-lab.html#cb816-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(frogs)</span></code></pre></div>
 <pre><code>##   X pres.abs northing easting altitude distance NoOfPools NoOfSites   avrain
 ## 1 2        1      115    1047     1500      500       232         3 155.0000
 ## 2 3        1      110    1042     1520      250        66         5 157.6667
@@ -415,20 +404,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 4 3.200000 13.16667
 ## 5 3.200000 13.16667
 ## 6 3.133333 13.06667</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attach</span>(frogs)
-<span class="kw">plot</span>(northing ~<span class="st"> </span>easting, <span class="dt">pch=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">16</span>)[frogs$pres.abs<span class="dv">+1</span>],<span class="dt">xlab=</span><span class="st">&quot;Meters east&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Meters north&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb818"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb818-1"><a href="week-13-lab.html#cb818-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(frogs)</span>
+<span id="cb818-2"><a href="week-13-lab.html#cb818-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(northing <span class="sc">~</span> easting, <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">16</span>)[frogs<span class="sc">$</span>pres.abs<span class="sc">+</span><span class="dv">1</span>],<span class="at">xlab=</span><span class="st">&quot;Meters east&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Meters north&quot;</span>)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Make sure you understand how the pch command is working in the above plot command.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(<span class="kw">cbind</span>(altitude,distance,NoOfPools,NoOfSites,avrain,meanmin,meanmax))</code></pre></div>
+<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="week-13-lab.html#cb819-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">cbind</span>(altitude,distance,NoOfPools,NoOfSites,avrain,meanmin,meanmax))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Looking at the data in this way, are there any covariates that might benefit from transformation?</p>
-<p>Let's try log-transforming &quot;distance&quot; and &quot;Number of Pools&quot;.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(<span class="kw">cbind</span>(altitude,<span class="kw">log</span>(distance),<span class="kw">log</span>(NoOfPools),NoOfSites,avrain,meanmin,meanmax))</code></pre></div>
+<p>Let’s try log-transforming “distance” and “Number of Pools.”</p>
+<div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb820-1"><a href="week-13-lab.html#cb820-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">cbind</span>(altitude,<span class="fu">log</span>(distance),<span class="fu">log</span>(NoOfPools),NoOfSites,avrain,meanmin,meanmax))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Let's fit a GLM with all the variables.</p>
+<p>Let’s fit a GLM with all the variables.</p>
 <p>Why a GLM? Because the response variable is binary 0/1.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">frogs.glm0&lt;-<span class="kw">glm</span>(pres.abs~altitude+<span class="kw">log</span>(distance)+<span class="kw">log</span>(NoOfPools)+NoOfSites+avrain+meanmin+meanmax,<span class="dt">family=</span>binomial,<span class="dt">data=</span>frogs,<span class="dt">na.action=</span>na.fail)
-<span class="kw">summary</span>(frogs.glm0)</code></pre></div>
+<div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb821-1"><a href="week-13-lab.html#cb821-1" aria-hidden="true" tabindex="-1"></a>frogs.glm0<span class="ot">&lt;-</span><span class="fu">glm</span>(pres.abs<span class="sc">~</span>altitude<span class="sc">+</span><span class="fu">log</span>(distance)<span class="sc">+</span><span class="fu">log</span>(NoOfPools)<span class="sc">+</span>NoOfSites<span class="sc">+</span>avrain<span class="sc">+</span>meanmin<span class="sc">+</span>meanmax,<span class="at">family=</span>binomial,<span class="at">data=</span>frogs,<span class="at">na.action=</span>na.fail)</span>
+<span id="cb821-2"><a href="week-13-lab.html#cb821-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = pres.abs ~ altitude + log(distance) + log(NoOfPools) + 
@@ -459,28 +448,28 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## AIC: 213.62
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<p>(The na.action flag is so MuMIn won't complain further down.)</p>
+<p>(The na.action flag is so MuMIn won’t complain further down.)</p>
 <p>Anything look funny? Well, for one, meanmin is highly significant but meanmax and altitude are not - but we would expect these three variables to be highly correlated.</p>
 <p>Use the vif() function to explore this further</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vif</span>(frogs.glm0)</code></pre></div>
+<div class="sourceCode" id="cb823"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb823-1"><a href="week-13-lab.html#cb823-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>##       altitude  log(distance) log(NoOfPools)      NoOfSites         avrain 
 ##     850.879518       1.396014       1.306058       1.401175      16.664582 
 ##        meanmin        meanmax 
 ##      29.319704     996.949239</code></pre>
 <p>It appears that the variances for altitude and meanmax are inflated. Why?</p>
 <p>Plot the data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))
-<span class="kw">plot</span>(altitude,meanmax)
-<span class="kw">plot</span>(altitude,meanmin)</code></pre></div>
+<div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb825-1"><a href="week-13-lab.html#cb825-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb825-2"><a href="week-13-lab.html#cb825-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(altitude,meanmax)</span>
+<span id="cb825-3"><a href="week-13-lab.html#cb825-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(altitude,meanmin)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(altitude,meanmax)</code></pre></div>
+<div class="sourceCode" id="cb826"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb826-1"><a href="week-13-lab.html#cb826-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(altitude,meanmax)</span></code></pre></div>
 <pre><code>## [1] -0.996557</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(altitude,meanmin)</code></pre></div>
+<div class="sourceCode" id="cb828"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb828-1"><a href="week-13-lab.html#cb828-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(altitude,meanmin)</span></code></pre></div>
 <pre><code>## [1] -0.953661</code></pre>
-<p>Question: So...what do we do?</p>
-<p>Answer: Let's try removing the least biologically significant variable first. I suggest we remove altitude.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">frogs.glm1&lt;-<span class="kw">glm</span>(pres.abs~<span class="kw">log</span>(distance)+<span class="kw">log</span>(NoOfPools)+NoOfSites+avrain+meanmin+meanmax,<span class="dt">family=</span>binomial,<span class="dt">data=</span>frogs)
-<span class="kw">summary</span>(frogs.glm1)</code></pre></div>
+<p>Question: So…what do we do?</p>
+<p>Answer: Let’s try removing the least biologically significant variable first. I suggest we remove altitude.</p>
+<div class="sourceCode" id="cb830"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb830-1"><a href="week-13-lab.html#cb830-1" aria-hidden="true" tabindex="-1"></a>frogs.glm1<span class="ot">&lt;-</span><span class="fu">glm</span>(pres.abs<span class="sc">~</span><span class="fu">log</span>(distance)<span class="sc">+</span><span class="fu">log</span>(NoOfPools)<span class="sc">+</span>NoOfSites<span class="sc">+</span>avrain<span class="sc">+</span>meanmin<span class="sc">+</span>meanmax,<span class="at">family=</span>binomial,<span class="at">data=</span>frogs)</span>
+<span id="cb830-2"><a href="week-13-lab.html#cb830-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frogs.glm1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = pres.abs ~ log(distance) + log(NoOfPools) + NoOfSites + 
@@ -510,17 +499,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>Better, but we still have a lot of multicollinearity between meanmin and meanmax.</p>
-<p>We could choose one or the other but at this point, let's leave them both in and try and find the best model we can.</p>
-<p>First, let's do a little review of the three comparison criteria we discussed on Tuesday:</p>
+<p>We could choose one or the other but at this point, let’s leave them both in and try and find the best model we can.</p>
+<p>First, let’s do a little review of the three comparison criteria we discussed on Tuesday:</p>
 <ol style="list-style-type: decimal">
 <li><p>Likelihood (specifically, likelihood ratio)</p></li>
-<li><p>Akaike's Information Criteria (AIC)</p></li>
+<li><p>Akaike’s Information Criteria (AIC)</p></li>
 <li><p>Bayesian Information Criterion (BIC)</p></li>
 </ol>
 <p>We get the log-likelihood of a model in R using the logLik command</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">logLik</span>(frogs.glm0)</code></pre></div>
+<div class="sourceCode" id="cb832"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb832-1"><a href="week-13-lab.html#cb832-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## &#39;log Lik.&#39; -98.81244 (df=8)</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">logLik</span>(frogs.glm1)</code></pre></div>
+<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb834-1"><a href="week-13-lab.html#cb834-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(frogs.glm1)</span></code></pre></div>
 <pre><code>## &#39;log Lik.&#39; -98.82714 (df=7)</code></pre>
 <p>How do we do the likelihood ratio test?</p>
 <p>Remember that</p>
@@ -529,16 +518,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 \sim \chi^{2}_{\mbox{difference in parameters}}
 \]</span></p>
 <p>In R we can do this with</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test.stat&lt;--<span class="dv">2</span>*(<span class="kw">logLik</span>(frogs.glm1)-<span class="kw">logLik</span>(frogs.glm0))
-<span class="kw">as.numeric</span>(test.stat) <span class="co"># as.numeric is just to suppress the labels which can be misleading</span></code></pre></div>
+<div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb836-1"><a href="week-13-lab.html#cb836-1" aria-hidden="true" tabindex="-1"></a>test.stat<span class="ot">&lt;-</span><span class="sc">-</span><span class="dv">2</span><span class="sc">*</span>(<span class="fu">logLik</span>(frogs.glm1)<span class="sc">-</span><span class="fu">logLik</span>(frogs.glm0))</span>
+<span id="cb836-2"><a href="week-13-lab.html#cb836-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(test.stat) <span class="co"># as.numeric is just to suppress the labels which can be misleading</span></span></code></pre></div>
 <pre><code>## [1] 0.02941079</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>(<span class="dv">1</span>-<span class="kw">pchisq</span>(test.stat,<span class="dt">df=</span><span class="dv">1</span>))</code></pre></div>
+<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="week-13-lab.html#cb838-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(test.stat,<span class="at">df=</span><span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] 0.863834</code></pre>
 <p>Question: How do we interpret that p-value?</p>
 <p>Answer: This p-value is the probability that the larger model fits the data better only by the amount expected by its additional degree of freedom. In this case, we can not reject the null hypothesis that the two models are equivalent, and so we would prefer the smaller model on the basis of parsimony.</p>
-<p>We can actually get R to do the LRT automatically using the 'lrtest' function in the 'lmtest' package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;lmtest&#39;</span>)
-<span class="kw">lrtest</span>(frogs.glm0,frogs.glm1)</code></pre></div>
+<p>We can actually get R to do the LRT automatically using the ‘lrtest’ function in the ‘lmtest’ package.</p>
+<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="week-13-lab.html#cb840-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;lmtest&#39;</span>)</span>
+<span id="cb840-2"><a href="week-13-lab.html#cb840-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lrtest</span>(frogs.glm0,frogs.glm1)</span></code></pre></div>
 <pre><code>## Likelihood ratio test
 ## 
 ## Model 1: pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
@@ -550,7 +539,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 2   7 -98.827 -1 0.0294     0.8638</code></pre>
 <p>This gives us exactly the same result we got before.</p>
 <p>We could also have also compared these models by looking at the ANOVA table for comparison</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(frogs.glm0,frogs.glm1)</code></pre></div>
+<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb842-1"><a href="week-13-lab.html#cb842-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(frogs.glm0,frogs.glm1)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
@@ -561,36 +550,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 1       204     197.62             
 ## 2       205     197.65 -1 -0.029411</code></pre>
 <p>How do we calculate AIC for these two models?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">logLik</span>(frogs.glm0)</code></pre></div>
+<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="week-13-lab.html#cb844-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## &#39;log Lik.&#39; -98.81244 (df=8)</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">k&lt;-<span class="dv">8</span>
-AIC.glm0&lt;-<span class="kw">as.numeric</span>(-<span class="dv">2</span>*<span class="kw">logLik</span>(frogs.glm0)+<span class="dv">2</span>*k)
-AIC.glm0</code></pre></div>
+<div class="sourceCode" id="cb846"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb846-1"><a href="week-13-lab.html#cb846-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="dv">8</span></span>
+<span id="cb846-2"><a href="week-13-lab.html#cb846-2" aria-hidden="true" tabindex="-1"></a>AIC.glm0<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(<span class="sc">-</span><span class="dv">2</span><span class="sc">*</span><span class="fu">logLik</span>(frogs.glm0)<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>k)</span>
+<span id="cb846-3"><a href="week-13-lab.html#cb846-3" aria-hidden="true" tabindex="-1"></a>AIC.glm0</span></code></pre></div>
 <pre><code>## [1] 213.6249</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(frogs.glm0)</code></pre></div>
+<div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb848-1"><a href="week-13-lab.html#cb848-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## [1] 213.6249</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(frogs.glm1)</code></pre></div>
+<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb850-1"><a href="week-13-lab.html#cb850-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm1)</span></code></pre></div>
 <pre><code>## [1] 211.6543</code></pre>
 <p>Question: Are these significantly different?</p>
-<p>Answer: This is a trick question. In an Information Theoretic context, we avoid the term &quot;significant&quot; because it is implied that we mean &quot;statistically significant&quot; in the context of hypothesis testing, and no hypothesis test is being performed. AIC simply gives us information on the weight of evidence for one model over another. There are no theoretically justified guidelines (although Burnham and Anderson suggest some as we discussed in lecture). It is better (in my opinion) to convert AICs into model weights and, if it makes sense in the context, to do model averaging.</p>
+<p>Answer: This is a trick question. In an Information Theoretic context, we avoid the term “significant” because it is implied that we mean “statistically significant” in the context of hypothesis testing, and no hypothesis test is being performed. AIC simply gives us information on the weight of evidence for one model over another. There are no theoretically justified guidelines (although Burnham and Anderson suggest some as we discussed in lecture). It is better (in my opinion) to convert AICs into model weights and, if it makes sense in the context, to do model averaging.</p>
 <p>How about BIC? USe the AIC function with a different flag for the penalty.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(frogs.glm0,<span class="dt">k=</span><span class="kw">log</span>(<span class="kw">nrow</span>(frogs)))</code></pre></div>
+<div class="sourceCode" id="cb852"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb852-1"><a href="week-13-lab.html#cb852-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm0,<span class="at">k=</span><span class="fu">log</span>(<span class="fu">nrow</span>(frogs)))</span></code></pre></div>
 <pre><code>## [1] 240.4776</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(frogs.glm1,<span class="dt">k=</span><span class="kw">log</span>(<span class="kw">nrow</span>(frogs)))</code></pre></div>
+<div class="sourceCode" id="cb854"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb854-1"><a href="week-13-lab.html#cb854-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm1,<span class="at">k=</span><span class="fu">log</span>(<span class="fu">nrow</span>(frogs)))</span></code></pre></div>
 <pre><code>## [1] 235.1504</code></pre>
 <p>We could also do this with the BIC() function</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">BIC</span>(frogs.glm0)</code></pre></div>
+<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb856-1"><a href="week-13-lab.html#cb856-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## [1] 240.4776</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">BIC</span>(frogs.glm1)</code></pre></div>
+<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="week-13-lab.html#cb858-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(frogs.glm1)</span></code></pre></div>
 <pre><code>## [1] 235.1504</code></pre>
 <p>Exercise: Work in groups to find a small set (3-5) of candidate models, calculate the AIC for each of these models, and calculate model weights.</p>
 </div>
-<div id="model-selection-via-step-wise-regression" class="section level2">
+<div id="model-selection-via-step-wise-regression" class="section level2" number="25.2">
 <h2><span class="header-section-number">25.2</span> Model selection via step-wise regression</h2>
-<p>Let's start with an Information Theoretic approach:</p>
+<p>Let’s start with an Information Theoretic approach:</p>
 <p>We could calculate the AIC for every possible model, but this is probably not necessary. We can narrow down the set of candidate models just thinking about the biology.</p>
 <p>Now compare this to what you would get from</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">step</span>(frogs.glm0)</code></pre></div>
+<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="week-13-lab.html#cb860-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## Start:  AIC=213.62
 ## pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
 ##     avrain + meanmin + meanmax
@@ -648,9 +637,9 @@ AIC.glm0</code></pre></div>
 ##        18.5268         -0.7547          0.5707          5.3791         -2.3821  
 ## 
 ## Degrees of Freedom: 211 Total (i.e. Null);  207 Residual
-## Null Deviance:       280 
-## Residual Deviance: 197.7     AIC: 207.7</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">step</span>(frogs.glm0,<span class="dt">direction=</span><span class="st">&quot;forward&quot;</span>)</code></pre></div>
+## Null Deviance:	    280 
+## Residual Deviance: 197.7 	AIC: 207.7</code></pre>
+<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb863-1"><a href="week-13-lab.html#cb863-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(frogs.glm0,<span class="at">direction=</span><span class="st">&quot;forward&quot;</span>)</span></code></pre></div>
 <pre><code>## Start:  AIC=213.62
 ## pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
 ##     avrain + meanmin + meanmax</code></pre>
@@ -666,9 +655,9 @@ AIC.glm0</code></pre></div>
 ##     -0.0067930       5.3047879      -3.1729589  
 ## 
 ## Degrees of Freedom: 211 Total (i.e. Null);  204 Residual
-## Null Deviance:       280 
-## Residual Deviance: 197.6     AIC: 213.6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">step</span>(frogs.glm0,<span class="dt">direction=</span><span class="st">&quot;backward&quot;</span>)</code></pre></div>
+## Null Deviance:	    280 
+## Residual Deviance: 197.6 	AIC: 213.6</code></pre>
+<div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb866-1"><a href="week-13-lab.html#cb866-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(frogs.glm0,<span class="at">direction=</span><span class="st">&quot;backward&quot;</span>)</span></code></pre></div>
 <pre><code>## Start:  AIC=213.62
 ## pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
 ##     avrain + meanmin + meanmax
@@ -726,11 +715,11 @@ AIC.glm0</code></pre></div>
 ##        18.5268         -0.7547          0.5707          5.3791         -2.3821  
 ## 
 ## Degrees of Freedom: 211 Total (i.e. Null);  207 Residual
-## Null Deviance:       280 
-## Residual Deviance: 197.7     AIC: 207.7</code></pre>
+## Null Deviance:	    280 
+## Residual Deviance: 197.7 	AIC: 207.7</code></pre>
 <p>Why does the forward process give you more parameters? Probably because forward selection is like a ratchet - once variables get added, they never get removed, even if something is added that explains that portion of the variance better.</p>
 <p>Note that we can also do stepwise regression using stepAIC</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">stepAIC</span>(frogs.glm0)</code></pre></div>
+<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="week-13-lab.html#cb869-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stepAIC</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## Start:  AIC=213.62
 ## pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
 ##     avrain + meanmin + meanmax
@@ -788,11 +777,11 @@ AIC.glm0</code></pre></div>
 ##        18.5268         -0.7547          0.5707          5.3791         -2.3821  
 ## 
 ## Degrees of Freedom: 211 Total (i.e. Null);  207 Residual
-## Null Deviance:       280 
-## Residual Deviance: 197.7     AIC: 207.7</code></pre>
+## Null Deviance:	    280 
+## Residual Deviance: 197.7 	AIC: 207.7</code></pre>
 <p>but this is a bit like putting lipstick on a pig, so its not often used.</p>
-<p>The real magic comes when we use a package like 'MuMIn' (Multimodel Inference)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dredge</span>(frogs.glm0)</code></pre></div>
+<p>The real magic comes when we use a package like ‘MuMIn’ (Multimodel Inference)</p>
+<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="week-13-lab.html#cb872-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dredge</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## Fixed term is &quot;(Intercept)&quot;</code></pre>
 <pre><code>## Global model call: glm(formula = pres.abs ~ altitude + log(distance) + log(NoOfPools) + 
 ##     NoOfSites + avrain + meanmin + meanmax, family = binomial, 
@@ -1059,7 +1048,7 @@ AIC.glm0</code></pre></div>
 ## 3               2 -139.974 284.0 76.06  0.000
 ## Models ranked by AICc(x)</code></pre>
 <p>We can make a table to compare a hand-selected set of models.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">model.sel</span>(frogs.glm0,frogs.glm1)</code></pre></div>
+<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="week-13-lab.html#cb875-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model.sel</span>(frogs.glm0,frogs.glm1)</span></code></pre></div>
 <pre><code>## Model selection table 
 ##            (Int)       alt        avr log(dst) log(NOP)   mnmx  mnmn        NOS
 ## frogs.glm1 18.27            0.0007003  -0.7583   0.5709 -2.362 5.354 -0.0036200
@@ -1069,7 +1058,7 @@ AIC.glm0</code></pre></div>
 ## frogs.glm0 binomial(logit)   na.fail  8 -98.812 214.3  2.13  0.256
 ## Models ranked by AICc(x)</code></pre>
 <p>We can do model averaging</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">model.avg</span>(frogs.glm0,frogs.glm1))</code></pre></div>
+<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="week-13-lab.html#cb877-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">model.avg</span>(frogs.glm0,frogs.glm1))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## model.avg(object = frogs.glm0, frogs.glm1)
@@ -1113,12 +1102,12 @@ AIC.glm0</code></pre></div>
 ## altitude       -0.006648   0.038658    0.038888   0.171  0.86427    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>What does the output mean &quot;with shrinkage&quot;? These estimates include a zero value when a parameter does not actually appear in a model. In this case 'altitude' appears in only one of the two models and so the estimate &quot;with shrinkage&quot; is signicantly smaller than the parameter value estimated only from a weighting of the models including the covariate 'altitude'.</p>
+<p>What does the output mean “with shrinkage?” These estimates include a zero value when a parameter does not actually appear in a model. In this case ‘altitude’ appears in only one of the two models and so the estimate “with shrinkage” is signicantly smaller than the parameter value estimated only from a weighting of the models including the covariate ‘altitude.’</p>
 </div>
-<div id="part-2-model-criticism" class="section level2">
+<div id="part-2-model-criticism" class="section level2" number="25.3">
 <h2><span class="header-section-number">25.3</span> Part 2: Model criticism</h2>
 <p>We are going to use a dataset that comes from the journal Ecology, which is available <a href="https://github.com/hlynch/Biometry2021/tree/master/_data/Ernest2003.pdf">here</a>.</p>
-<p>STOP: Let's read the abstract so we know what we are modelling.</p>
+<p>STOP: Let’s read the abstract so we know what we are modelling.</p>
 <p>The goal is to create the best possible, most parsimonious model for maximum longevity in non-volant mammals. The covariates we have in this dataset to consider are:</p>
 <p>Order<br />
 Family<br />
@@ -1132,38 +1121,38 @@ Weaning mass (g)<br />
 Age of first reproduction (mo)<br />
 Litter size<br />
 Litters/year</p>
-<p>First, we will load the data and the 'car' package, and use 'names' to see what the columns are named</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;~/Documents/Projects/Biometry2021/_data/MammalLifeHistory.csv&quot;</span>)
-<span class="kw">attach</span>(data)
-<span class="kw">names</span>(data)</code></pre></div>
+<p>First, we will load the data and the ‘car’ package, and use ‘names’ to see what the columns are named</p>
+<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="week-13-lab.html#cb879-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Documents/Projects/Biometry2021/_data/MammalLifeHistory.csv&quot;</span>)</span>
+<span id="cb879-2"><a href="week-13-lab.html#cb879-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(data)</span>
+<span id="cb879-3"><a href="week-13-lab.html#cb879-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>##  [1] &quot;Order&quot;          &quot;Family&quot;         &quot;Genus&quot;          &quot;Species&quot;       
 ##  [5] &quot;Mass&quot;           &quot;Gestation&quot;      &quot;Newborn&quot;        &quot;Weaning&quot;       
 ##  [9] &quot;WeanMass&quot;       &quot;AFR&quot;            &quot;MaxLifespan&quot;    &quot;LitterSize&quot;    
 ## [13] &quot;LittersPerYear&quot;</code></pre>
-<p>Before fitting any models, let's just look at each potential covariate vs. maximum longevity to get a sense for which variables need to be transformed. I list get the first few here...</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(MaxLifespan~Order)</code></pre></div>
+<p>Before fitting any models, let’s just look at each potential covariate vs. maximum longevity to get a sense for which variables need to be transformed. I list get the first few here…</p>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="week-13-lab.html#cb881-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Order)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(MaxLifespan~Family)</code></pre></div>
+<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="week-13-lab.html#cb882-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Family)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(MaxLifespan~Genus)</code></pre></div>
+<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="week-13-lab.html#cb883-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Genus)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-3.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(MaxLifespan~Species)</code></pre></div>
+<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="week-13-lab.html#cb884-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Species)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-4.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(MaxLifespan~Mass)</code></pre></div>
+<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="week-13-lab.html#cb885-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span>Mass)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-5.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(MaxLifespan~Gestation)</code></pre></div>
+<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="week-13-lab.html#cb886-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span>Gestation)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-6.png" width="672" /></p>
 <p>Note that most of the covariates need to be transformed to linearize the relationship. The easiest transformation to try is the log() - the covariates that should probably be transformed relate to mass and time periods: Mass, Gestation, Newborn,Weaning,WeanMass,AFR,LittersPerYear (possible, not clear what the best transmation is for this). In other words, look at:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(MaxLifespan~<span class="kw">log10</span>(Mass))</code></pre></div>
+<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="week-13-lab.html#cb887-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span><span class="fu">log10</span>(Mass))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(MaxLifespan~<span class="kw">log10</span>(Gestation))</code></pre></div>
+<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="week-13-lab.html#cb888-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span><span class="fu">log10</span>(Gestation))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-23-2.png" width="672" /></p>
 <p>etc.</p>
-<p>For now, let's ignore the taxonomic covariates and focus on just three covariates: Mass, AFR, and LitterSize.</p>
-<p><em>Fitting the model using 'lm'</em></p>
-<p>Let's fit the model with Mass,AFR, and LitterSize. We will consider this the full model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit&lt;-<span class="kw">lm</span>(MaxLifespan~<span class="kw">log10</span>(Mass)+<span class="kw">log10</span>(AFR)+LitterSize)
-<span class="kw">summary</span>(fit)</code></pre></div>
+<p>For now, let’s ignore the taxonomic covariates and focus on just three covariates: Mass, AFR, and LitterSize.</p>
+<p><em>Fitting the model using ‘lm’</em></p>
+<p>Let’s fit the model with Mass,AFR, and LitterSize. We will consider this the full model.</p>
+<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="week-13-lab.html#cb889-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(MaxLifespan<span class="sc">~</span><span class="fu">log10</span>(Mass)<span class="sc">+</span><span class="fu">log10</span>(AFR)<span class="sc">+</span>LitterSize)</span>
+<span id="cb889-2"><a href="week-13-lab.html#cb889-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = MaxLifespan ~ log10(Mass) + log10(AFR) + LitterSize)
@@ -1183,14 +1172,14 @@ Litters/year</p>
 ## 
 ## Residual standard error: 118.7 on 485 degrees of freedom
 ##   (951 observations deleted due to missingness)
-## Multiple R-squared:  0.6282, Adjusted R-squared:  0.6259 
+## Multiple R-squared:  0.6282,	Adjusted R-squared:  0.6259 
 ## F-statistic: 273.1 on 3 and 485 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><em>Model diagnostics</em></p>
-<p>Let's look at the residuals as a function of the fitted values:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">fitted</span>(fit),<span class="kw">residuals</span>(fit))</code></pre></div>
+<p>Let’s look at the residuals as a function of the fitted values:</p>
+<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="week-13-lab.html#cb891-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fitted</span>(fit),<span class="fu">residuals</span>(fit))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-<p>Let's look at the residuals using the 'car' package function 'residualPlots'. This command produces scatterplots of the residuals versus each of the predictors and versus the final fitted value. Note that what we did manually above is reproduced as the final panel here.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">residualPlots</span>(fit)</code></pre></div>
+<p>Let’s look at the residuals using the ‘car’ package function ‘residualPlots.’ This command produces scatterplots of the residuals versus each of the predictors and versus the final fitted value. Note that what we did manually above is reproduced as the final panel here.</p>
+<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="week-13-lab.html#cb892-1" aria-hidden="true" tabindex="-1"></a><span class="fu">residualPlots</span>(fit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <pre><code>##             Test stat Pr(&gt;|Test stat|)    
 ## log10(Mass)   12.8413           &lt;2e-16 ***
@@ -1199,19 +1188,19 @@ Litters/year</p>
 ## Tukey test    15.0728           &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>We can assess the normality of the residuals by histogramming the studentized residuals. We can pull these out from the fitted model using the 'studres' function from the 'MASS' package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sresid&lt;-<span class="kw">studres</span>(fit)
-<span class="kw">hist</span>(sresid,<span class="dt">freq=</span><span class="ot">FALSE</span>)
-xfit&lt;-<span class="kw">seq</span>(<span class="kw">min</span>(sresid),<span class="kw">max</span>(sresid),<span class="dt">length=</span><span class="dv">40</span>)
-yfit&lt;-<span class="kw">dnorm</span>(xfit)
-<span class="kw">lines</span>(xfit,yfit)</code></pre></div>
+<p>We can assess the normality of the residuals by histogramming the studentized residuals. We can pull these out from the fitted model using the ‘studres’ function from the ‘MASS’ package.</p>
+<div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb894-1"><a href="week-13-lab.html#cb894-1" aria-hidden="true" tabindex="-1"></a>sresid<span class="ot">&lt;-</span><span class="fu">studres</span>(fit)</span>
+<span id="cb894-2"><a href="week-13-lab.html#cb894-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sresid,<span class="at">freq=</span><span class="cn">FALSE</span>)</span>
+<span id="cb894-3"><a href="week-13-lab.html#cb894-3" aria-hidden="true" tabindex="-1"></a>xfit<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fu">min</span>(sresid),<span class="fu">max</span>(sresid),<span class="at">length=</span><span class="dv">40</span>)</span>
+<span id="cb894-4"><a href="week-13-lab.html#cb894-4" aria-hidden="true" tabindex="-1"></a>yfit<span class="ot">&lt;-</span><span class="fu">dnorm</span>(xfit)</span>
+<span id="cb894-5"><a href="week-13-lab.html#cb894-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xfit,yfit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>A variation on the basic residual plot is the marginal model plot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">marginalModelPlots</span>(fit)</code></pre></div>
+<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="week-13-lab.html#cb895-1" aria-hidden="true" tabindex="-1"></a><span class="fu">marginalModelPlots</span>(fit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>Note that loess smoothers have been added showing the non-parametric regression between the actual data (solid line) and the model prediction (dashed line) against each of the predictor variables. If these two lines are close together, that is an indication of good model fit.</p>
-<p>Note that the marginal plots display the relationship between the response and each covariates IGNORING the other covariates. We can also look at the relationship between the response and each covariates CONTROLLING for the other covariates. We do this through &quot;added variable plots&quot;.</p>
-<p>Let's say we have the following model</p>
+<p>Note that the marginal plots display the relationship between the response and each covariates IGNORING the other covariates. We can also look at the relationship between the response and each covariates CONTROLLING for the other covariates. We do this through “added variable plots.”</p>
+<p>Let’s say we have the following model</p>
 <p><span class="math display">\[
 Y \sim X_{1} + X_{2} + X_{3}
 \]</span></p>
@@ -1222,7 +1211,7 @@ Y \sim X_{1} + X_{2} + X_{3}
 <p><span class="math display">\[
 Y \sim X_{2} + X_{3}
 \]</span></p>
-<p>The residuals from this plot reflect all the variation that is not otherwise explained in the model (i.e. by all the covariates except <span class="math inline">\(X_{1}\)</span>).</p>
+<p>The residuals from this plot reflect all the variation that is not otherwise explained in the model (i.e. by all the covariates except <span class="math inline">\(X_{1}\)</span>).</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Regress</li>
 </ol>
@@ -1231,8 +1220,8 @@ X_{1} \sim X_{2} + X_{3}
 \]</span></p>
 <p>The residuals from this plot represent the part of <span class="math inline">\(X_{1}\)</span> not explained by the other covariates.</p>
 <p>The added variable plot is simply a plot of the residuals from #1 on the y-axis and the residuals from #2 on the x-axis.</p>
-<p>We can do this in R using the function 'avPlots' from the 'car' package</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">avPlots</span>(fit,<span class="dt">id.n=</span><span class="dv">2</span>)</code></pre></div>
+<p>We can do this in R using the function ‘avPlots’ from the ‘car’ package</p>
+<div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb896-1"><a href="week-13-lab.html#cb896-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(fit,<span class="at">id.n=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## Warning in plot.window(...): &quot;id.n&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in plot.xy(xy, type, ...): &quot;id.n&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;id.n&quot; is not a
@@ -1269,24 +1258,24 @@ X_{1} \sim X_{2} + X_{3}
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>The id.n option will cause the plot to identify the two points that are furthest from the mean on the x axis and the two with the largest absolute residuals.</p>
 <p>The added variable plot allows us to visualize the effect of each covariate after adjusting for all the other covariates in the model.</p>
-<p>We can also look at leverage by using the command 'leveragePlots'</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">leveragePlots</span>(fit)</code></pre></div>
+<p>We can also look at leverage by using the command ‘leveragePlots’</p>
+<div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb915-1"><a href="week-13-lab.html#cb915-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveragePlots</span>(fit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
-<p>For covariates with only a single degree of freedom (i.e. not different levels of a factor), this will simply be a rescaled version of the added-variable plots.</p>
+<p>For covariates with only a single degree of freedom (i.e. not different levels of a factor), this will simply be a rescaled version of the added-variable plots.</p>
 <p><em>Outliers</em></p>
-<p>Let's look for outliers using the 'car' function 'outlierTest' which reports the Bonferroni p-values for Studentized residuals:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">outlierTest</span>(fit)</code></pre></div>
+<p>Let’s look for outliers using the ‘car’ function ‘outlierTest’ which reports the Bonferroni p-values for Studentized residuals:</p>
+<div class="sourceCode" id="cb916"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb916-1"><a href="week-13-lab.html#cb916-1" aria-hidden="true" tabindex="-1"></a><span class="fu">outlierTest</span>(fit)</span></code></pre></div>
 <pre><code>##      rstudent unadjusted p-value Bonferroni p
 ## 1440 6.797206         3.1481e-11   1.5394e-08
 ## 1439 6.284883         7.3267e-10   3.5828e-07
 ## 1438 4.650225         4.2834e-06   2.0946e-03
 ## 1437 4.488601         8.9697e-06   4.3862e-03</code></pre>
-<p>Plot the qqplot for the studentized residuals using the 'car' package function qqPlot. WARNING: This is not the same as qqplot (lower case p); this is a specialized function in the 'car' package that will plot the appropriate qqplot for the studentized residuals given a fitted model as input.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqPlot</span>(fit)</code></pre></div>
+<p>Plot the qqplot for the studentized residuals using the ‘car’ package function qqPlot. WARNING: This is not the same as qqplot (lower case p); this is a specialized function in the ‘car’ package that will plot the appropriate qqplot for the studentized residuals given a fitted model as input.</p>
+<div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb918-1"><a href="week-13-lab.html#cb918-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(fit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <pre><code>## [1] 1439 1440</code></pre>
-<p>To identify points with high leverage, we want to calculate the hat values for each of the points. We can do this using the 'hatvalues&quot; command in the 'car' package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hatvalues</span>(fit)</code></pre></div>
+<p>To identify points with high leverage, we want to calculate the hat values for each of the points. We can do this using the ‘hatvalues" command in the ’car’ package.</p>
+<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb920-1"><a href="week-13-lab.html#cb920-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hatvalues</span>(fit)</span></code></pre></div>
 <pre><code>##         842         846         847         848         849         850 
 ## 0.015068582 0.017116554 0.013839481 0.021939881 0.017150953 0.018853062 
 ##         853         854         856         857         858         859 
@@ -1451,13 +1440,13 @@ X_{1} \sim X_{2} + X_{3}
 ## 0.008787016 0.014546150 0.017984508 0.014618941 0.011304205 0.012288729 
 ##        1438        1439        1440 
 ## 0.022172504 0.025746100 0.020671173</code></pre>
-<p>Note that the 'stats' package has a function called 'lm.influence' that provides much the same information.</p>
-<p>We can make a plot that highlights highly influential values. We will use John Fox's suggested cut-off of 4/(n-p-1) where n=number of data points and p=number of estimated parameters.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cutoff&lt;-<span class="dv">4</span>/((<span class="kw">nrow</span>(data)-<span class="kw">length</span>(fit$coefficients)-<span class="dv">2</span>))
-<span class="kw">plot</span>(fit,<span class="dt">which=</span><span class="dv">4</span>,<span class="dt">cook.levels=</span>cutoff)</code></pre></div>
+<p>Note that the ‘stats’ package has a function called ‘lm.influence’ that provides much the same information.</p>
+<p>We can make a plot that highlights highly influential values. We will use John Fox’s suggested cut-off of 4/(n-p-1) where n=number of data points and p=number of estimated parameters.</p>
+<div class="sourceCode" id="cb922"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb922-1"><a href="week-13-lab.html#cb922-1" aria-hidden="true" tabindex="-1"></a>cutoff<span class="ot">&lt;-</span><span class="dv">4</span><span class="sc">/</span>((<span class="fu">nrow</span>(data)<span class="sc">-</span><span class="fu">length</span>(fit<span class="sc">$</span>coefficients)<span class="sc">-</span><span class="dv">2</span>))</span>
+<span id="cb922-2"><a href="week-13-lab.html#cb922-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit,<span class="at">which=</span><span class="dv">4</span>,<span class="at">cook.levels=</span>cutoff)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
-<p>Another useful plot is created by 'influencePlot' which creates a &quot;bubble&quot; plot of studentized residuals by hat values, with the areas of the circles representing the observations proportional to Cook's distances. Vertical reference lines are drawn at twice and three times the average hat value, horizontal reference lines at -2,0,2 on the studentized-residual scale.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">influencePlot</span>(fit,<span class="dt">id.method=</span><span class="st">&quot;identify&quot;</span>)</code></pre></div>
+<p>Another useful plot is created by ‘influencePlot’ which creates a “bubble” plot of studentized residuals by hat values, with the areas of the circles representing the observations proportional to Cook’s distances. Vertical reference lines are drawn at twice and three times the average hat value, horizontal reference lines at -2,0,2 on the studentized-residual scale.</p>
+<div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb923-1"><a href="week-13-lab.html#cb923-1" aria-hidden="true" tabindex="-1"></a><span class="fu">influencePlot</span>(fit,<span class="at">id.method=</span><span class="st">&quot;identify&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in plot.window(...): &quot;id.method&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in plot.xy(xy, type, ...): &quot;id.method&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;id.method&quot; is not
@@ -1476,21 +1465,21 @@ X_{1} \sim X_{2} + X_{3}
 ## 1439  6.2848828 0.02574610 0.241768060
 ## 1440  6.7972059 0.02067117 0.223016923</code></pre>
 <p><em>Heteroskedacity</em></p>
-<p>Although we can often pick up heteroskedacity graphically, we can test for it formally by using the 'ncvTest' function in the 'car' package</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncvTest</span>(fit)</code></pre></div>
+<p>Although we can often pick up heteroskedacity graphically, we can test for it formally by using the ‘ncvTest’ function in the ‘car’ package</p>
+<div class="sourceCode" id="cb931"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb931-1"><a href="week-13-lab.html#cb931-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncvTest</span>(fit)</span></code></pre></div>
 <pre><code>## Non-constant Variance Score Test 
 ## Variance formula: ~ fitted.values 
 ## Chisquare = 297.9263, Df = 1, p = &lt; 2.22e-16</code></pre>
-<p>We can also use the function 'spreadLevelPlot' from the 'car' package to create plots for examining potential heteroskedacity in the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">spreadLevelPlot</span>(fit)</code></pre></div>
+<p>We can also use the function ‘spreadLevelPlot’ from the ‘car’ package to create plots for examining potential heteroskedacity in the data.</p>
+<div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb933-1"><a href="week-13-lab.html#cb933-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spreadLevelPlot</span>(fit)</span></code></pre></div>
 <pre><code>## Warning in spreadLevelPlot.lm(fit): 
 ## 47 negative fitted values removed</code></pre>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <pre><code>## 
 ## Suggested power transformation:  0.4508167</code></pre>
 <p><em>Multicollinearity</em></p>
-<p>We can calculate the variance inflation factors using the function 'vif'</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vif</span>(fit)</code></pre></div>
+<p>We can calculate the variance inflation factors using the function ‘vif’</p>
+<div class="sourceCode" id="cb936"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb936-1"><a href="week-13-lab.html#cb936-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(fit)</span></code></pre></div>
 <pre><code>## log10(Mass)  log10(AFR)  LitterSize 
 ##    2.466580    2.434861    1.759614</code></pre>
 <p><em>Serially correlated residuals</em></p>
@@ -1500,16 +1489,16 @@ d=\frac{\sum^{T}_{t=2}(e_{t}-e_{t-1})^{2}}{\sum^{T}_{t=1}e^{2}_{t}}
 \]</span></p>
 <p>where T is the number of data points.</p>
 <p>We can calculate the Durban-Watson test as follows:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">durbinWatsonTest</span>(fit)</code></pre></div>
+<div class="sourceCode" id="cb938"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb938-1"><a href="week-13-lab.html#cb938-1" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(fit)</span></code></pre></div>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
 ##    1       0.6286888     0.6560464       0
 ##  Alternative hypothesis: rho != 0</code></pre>
 <p><em>More help with model diagnostics</em></p>
-<p>There is another package that can help with model diagnostics called the 'gvlma' or &quot;Global Validation of Linear Model Assumptions&quot;.</p>
-<p>Install 'gvlma'</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gvlma)
-gvmodel&lt;-<span class="kw">gvlma</span>(fit)
-<span class="kw">summary</span>(gvmodel)</code></pre></div>
+<p>There is another package that can help with model diagnostics called the ‘gvlma’ or “Global Validation of Linear Model Assumptions.”</p>
+<p>Install ‘gvlma’</p>
+<div class="sourceCode" id="cb940"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb940-1"><a href="week-13-lab.html#cb940-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gvlma)</span>
+<span id="cb940-2"><a href="week-13-lab.html#cb940-2" aria-hidden="true" tabindex="-1"></a>gvmodel<span class="ot">&lt;-</span><span class="fu">gvlma</span>(fit)</span>
+<span id="cb940-3"><a href="week-13-lab.html#cb940-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gvmodel)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = MaxLifespan ~ log10(Mass) + log10(AFR) + LitterSize)
@@ -1529,7 +1518,7 @@ gvmodel&lt;-<span class="kw">gvlma</span>(fit)
 ## 
 ## Residual standard error: 118.7 on 485 degrees of freedom
 ##   (951 observations deleted due to missingness)
-## Multiple R-squared:  0.6282, Adjusted R-squared:  0.6259 
+## Multiple R-squared:  0.6282,	Adjusted R-squared:  0.6259 
 ## F-statistic: 273.1 on 3 and 485 DF,  p-value: &lt; 2.2e-16
 ## 
 ## 
@@ -1546,7 +1535,7 @@ gvmodel&lt;-<span class="kw">gvlma</span>(fit)
 ## Kurtosis           1121.3       0 Assumptions NOT satisfied!
 ## Link Function       156.2       0 Assumptions NOT satisfied!
 ## Heteroscedasticity  189.6       0 Assumptions NOT satisfied!</code></pre>
-<p>Yet another package we won't discuss but may prove helpful is the 'lmtest' package.</p>
+<p>Yet another package we won’t discuss but may prove helpful is the ‘lmtest’ package.</p>
 
 </div>
 </div>
@@ -1611,7 +1600,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

@@ -15,7 +15,8 @@ There are 5 parts to this week's lab:
 4. Example #4: Randomized block design
 5. Example #5: Nested design 
 
-##Example #1: Two-way factorial ANOVA in R
+Example #1: Two-way factorial ANOVA in R
+---------------
 
 Two-way ANOVA in R is a lot like one-way ANOVA in R, except now we have a second covariate in the model equation. We will go through a two-way example using the same data on income and education that we used last week. 
 
@@ -137,7 +138,8 @@ Notice that the difference in means is exactly what you would expect from the su
 
 Which is correct? It depends on whether you think that there is value in pooling the errors. It also depends on how concerned you are about multiple comparisons with the separate t-tests.
 
-##Example #2: Nested design
+Example #2: Nested design
+------------
 
 We will work through one of the classic examples from Sokal & Rohlf in which we are looking at the effect of a treatment on rat livers. We have three treatments, two rats per treatment, three liver samples per rat, and two measurements of each liver sample. The experimental design is sketched out here:
 
@@ -172,10 +174,10 @@ summary(model)
 
 Note that if you leave the error term off, the sum of squares calculated are correct, but the F ratios are wrong and, as a result, the p-values are way too small.
 
-##Example #3: Nested design
+Example #3: Nested design
+----------------
 
 Case study taken from Logan (see Figure 2): "In an unusually detailed preparation for an Environmental Effects Statement for a proposed discharge of dairy wastes in the Curdies River, in western Victoria, a team of stream ecologists wanted to describe the basic patterns of variation in a stream invertebrate thought to be sensitive to nutrient enrichment. As an indicator species, they focused on a small flatworm, Dugesia, and started by sampling populations of this worm at a range of scales. They sampled in two season, they sampled three randomly chosen (well, haphazardly, because sites are nearly always chosen to be close to road access) sites. A total of six sites in all were visited, 3 in each season. At each site, they sampled six stones, and counted the number of flatworms on each stone." 
-
 Why is this a nested design and not a factorial (crossed) design? Because the sites chosen in each season are not the same sites, they are randomly selected in each season depending on logistical constraints.
 
 ```{r}
@@ -233,7 +235,8 @@ summary(model3)
 
 Now we get a grossly inflated level of significance for Season driven by the larger variance of the Winter densities.
 
-##Example #4: Randomized Block Design
+Example #4: Randomized Block Design
+--------------
 
 (From Quinn, Keough, and Carey; see Figure 3) A plant pathologist wanted to examine the effects of two different strengths of tobacco virus on the number of lesions on tobacco leaves. She knew from pilot studies that leaves were inherently very variable in response to the virus. In an attempt to account for this leaf to leaf variability, both treatments were applied to each leaf. Eight individual leaves were divided in half, with half of each leaf incoculated with weak strength virus and the other half inoculated with strong virus.
 
@@ -313,7 +316,8 @@ summary(model5)
 ```
 
 
-##Example #5: Nested design
+Example #5: Nested design
+--------------
 
 In an experiment on eye color, each male fly is mated with four different female flies. Two offspring are born from each mating, and the intensity of eye color among these offspring are measured. The question is, how much variation in eye color is due to differences between females and how much is due to differences between males?
 

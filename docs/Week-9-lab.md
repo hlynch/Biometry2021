@@ -1,15 +1,6 @@
 Week 9 Lab
 =============
 
-There are 6 parts to this week's lab:
-
-1. Correlation tests using 'cor.test'
-2. Linear regression with 'lm'
-3. Weighted linear regression using 'lm'
-4. Robust regression with 'rlm'
-5. Bootstrapping standard errors for robust regression using 'boot'
-6. Type I vs. Type II regression using 'sma' package
-
 We will need 4 packages for this week's lab, so we might as well load them all in now.
 
 
@@ -41,8 +32,8 @@ library(boot)
 library(smatr)
 ```
 
-
-##Correlation
+Correlation
+-------------
 
 We will first go over how to test for correlation between two variables. We will use a dataset of July mean temperatures at an Alaskan weather station (Prudhoe Bay) over a period of 12 years.
 
@@ -235,11 +226,56 @@ Does it make sense why Kendall's tau=1.0?
 
 Now that we have some practice with correlations, let play a game! Each member of your group should visit [this site](http://guessthecorrelation.com/) and play 10 rounds of a single player game (each game lasts until you have mis-guessed three times). (You will need to make a name to start playing.) **<span style="color: green;">Checkpoint #1: Who had the highest score after 10 rounds?</span>**
 
-##Linear modelling
+Linear modelling
+-----------------
 
 Linear modeling in R occurs primarily through two functions 'lm' and 'glm'. The first is reserved for linear regression in the form we have been discussing this week. The second function is for generalized linear models; we will discuss these in the next few weeks.
 
-The syntax of 'lm' is straightforward. We will run through some examples using a dataset on Old Faithful eruptions. The dataset is built into the MASS library, so we just have to load it.
+**Fitting simulated data**
+
+Before working with real data, let's play around with a simulated dataset, so you can see how the values used to simulate the data are reflected in the parameter estimates themselves.
+
+
+```r
+X<-seq(1,30) #a stand in for some covariate
+value<-c()
+intercept<-0.15
+slope<--2.2
+sigma<-10
+for (i in 1:length(X))
+{
+  value<-c(value,rnorm(1,mean=intercept+slope*X[i],sd=sigma))
+}
+fit<-lm(value~X)
+summary(fit)
+```
+
+```
+## 
+## Call:
+## lm(formula = value ~ X)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -20.084  -6.681  -1.212   5.721  20.123 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   1.3559     3.9741   0.341    0.736    
+## X            -2.3686     0.2239 -10.581 2.73e-11 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 10.61 on 28 degrees of freedom
+## Multiple R-squared:  0.7999,	Adjusted R-squared:  0.7928 
+## F-statistic:   112 on 1 and 28 DF,  p-value: 2.727e-11
+```
+
+Copy this script into R and r-run it several times. Notice how the estimates for slope and intercept bounce around, but they should be correct *on average* and also the scale of variation from one run to the next should make sense given the estimate of the standard error. (Their standard deviation should be the standard error.) Notice also how the residual standard error is equal (within sampling error) to the sigma that you put into the model, and that as you increase sigma, the R2 goes down because now you are increasing the variation that is *not* explained by the covariate. Try changing the number of samples drawn, either by extending the vector of the covariates or by drawing multiple times for each value (you will have to modify the code to make this latter change work). Notice how the standard errors on the intercept and slope coefficients gets smaller as the data set gets larger but the estimate for sigma does not. The parameter sigma is a property of the underlying population, not a property of the sample drawn, so it does not get smaller as you increase the number of samples in the dataset. (If this does not make sense, ask me!)
+
+**Fitting real data**
+
+Now that we've gained some intuition, we can dive into fitting a real dataset. The syntax of 'lm' is straightforward. We will run through some examples using a dataset on Old Faithful eruptions. The dataset is built into the MASS library, so we just have to load it.
 
 
 ```r
@@ -261,7 +297,7 @@ head(faithful)
 plot(waiting, eruptions,pch=16)
 ```
 
-<img src="Week-9-lab_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="Week-9-lab_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 This dataset lists the times of an Old Faithful eruption as a function of the waiting time prior to the eruption.
 
@@ -464,7 +500,7 @@ lines(newdata[,1],prediction.bands[,2],col=3)
 lines(newdata[,1],prediction.bands[,3],col=3)
 ```
 
-<img src="Week-9-lab_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="Week-9-lab_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 **<span style="color: green;">Checkpoint #3: Do you understand the difference in interpretation between a confidence interval and a prediction interval? Do you understand why the prediction interval is always wider? </span>**
 
@@ -514,7 +550,8 @@ $$
 
 Why does R do that? In the first case, you have a slope and an intercept, and R is comparing the model you have against an alternate model which includes only an intercept. When you have an intercept-only model, that intercept is going to be the mean $\bar{Y}$. (Does it make sense why that is?) However, when you have supressed the intercept, the original alternate model (intercept only) no longer makes sense. So R chooses a new alternate model which is one of just random noise with $\bar{Y}=0$. If we look at the expression above, the effect of this is to increase the residuals going into SSE and the total sum of squares SST. However, the increase in SST is generally larger than the increase in SSE, which means that the R2 actually increases. The bottom line is that funny things happy when you suppress the intercept and while the output (effect sizes and standard errors) is still perfectly valid, the metrics of model fit become different and the with-intercept and without-intercept models can no longer be compared sensibly.
 
-##Weighted regression
+Weighted regression
+---------------------
 
 In lecture, we introduced the idea that ordinary least squares regression involves minimizing the sum-of-squares error
 
@@ -544,9 +581,10 @@ eruption.lm.wt<-lm(eruptions~waiting,weights=rep(1,times=272)+9*as.numeric(short
 abline(a=eruption.lm.wt$coef[1],b=eruption.lm.wt$coef[2],col="purple",lwd=2)
 ```
 
-<img src="Week-9-lab_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="Week-9-lab_files/figure-html/unnamed-chunk-27-1.png" width="672" />
 
-##Robust regression
+Robust regression
+------------------
 
 Weighted linear regression would be one method that could be used for downweighting the influence of certain data points. Robust regression is a another method for making sure that your linear model fit is not unduly influenced by outliers (points with large residuals).
 
@@ -618,7 +656,7 @@ temp<-c(which(rownames(Duncan)=="RR.engineer"),which(rownames(Duncan)=="conducto
 text(x=Duncan$education[temp]-8,y=Duncan$income[temp],labels=rownames(Duncan)[temp],cex=0.5)
 ```
 
-<img src="Week-9-lab_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="Week-9-lab_files/figure-html/unnamed-chunk-29-1.png" width="672" />
 
 ```r
 #identify(x=Duncan$education, y=Duncan$income, labels=rownames(Duncan))
@@ -698,7 +736,8 @@ summary(Duncan.model.rlm)
 
 The residuals are much more similar to what we got from 'lm' when we excluded the outlying datapoints. Robust methods are generally preferred over removing outliers.
 
-##Bootstrapping standard errors for robust regression
+Bootstrapping standard errors for robust regression
+---------------
 
 The standard errors reported by 'rlm' rely on asymptomatic approximations that may not be particularly reliable in this case because our sample size is only 45. We will use bootstrapping to construct more appropriate standard errors.
 
@@ -752,13 +791,14 @@ duncan.boot
 ## 
 ## Bootstrap Statistics :
 ##      original       bias    std. error
-## t1* 6.3002197  0.168698411  4.76945179
-## t2* 0.6615263 -0.004957256  0.07678026
+## t1* 6.3002197  0.307282118  4.51758559
+## t2* 0.6615263 -0.007924018  0.07476242
 ```
 
 **<span style="color: green;">Checkpoint #5: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?</span>**
 
-##Type I vs. Type II regression: The 'smatr' package
+Type I vs. Type II regression: The 'smatr' package
+------------------
 
 The two main functions in the smatr package are 'sma' and 'ma' regression for doing standardized major axis regression. Look at the help file for sma to see what some of the options are.
 
@@ -800,7 +840,7 @@ abline(a=coef(Duncan.model.lm)[1],b=coef(Duncan.model.lm)[2])
 abline(a=coef(Duncan.model.sma)[1],b=coef(Duncan.model.sma)[2],col="red")
 ```
 
-<img src="Week-9-lab_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="Week-9-lab_files/figure-html/unnamed-chunk-36-1.png" width="672" />
 
 The SMA line is closer to what you would probably draw by eye as going through the 'cloud' of points, since our instinct is to draw a line through the principle axis of variation and not through the regression line, which has a smaller slope.
 
