@@ -1,7 +1,8 @@
 Week 8 Lecture
 =============
 
-##Warm-up
+Warm-up
+-----------
 
 Which of these is the best model? Why?
 
@@ -10,7 +11,8 @@ Which of these is the best model? Why?
 <p class="caption">(\#fig:unnamed-chunk-1)Models of three different complexities. Figure adapted from [Grunwald (2007) The Minimum Description Length principle](https://mitpress.mit.edu/books/minimum-description-length-principle)</p>
 </div>
 
-## The aims of modelling -- A discussion of Shmueli (2010)
+The aims of modelling -- A discussion of Shmueli (2010)
+------------------
 
 Before we launch into the technical details of building linear models, let’s discuss the Shmueli (2010) paper. Shmeuli makes the distinction between three kinds of models
 
@@ -36,8 +38,6 @@ Predictive models are concerned only with the ability to predict new (measurable
 Example: We can think back to our discussion of population statistics and sample statistics. If we are measuring every individual of a population and we want to summarize the data, we are doing *descriptive* statistics. Descriptive modeling is aimed at succinctly summarizing a body of data. If we want to use that data to make some inference about a larger population, we are doing *inferential* statistics. If we want to use our sample to predict a new sample from that larger population, we are doing *predictive* statistics. 
 </span>
 </details> 
-
-
 
 As noted by Shmeuli, prediction and explanation are conflated in the hypothetical-deductive paradigm of null hypothesis significance testing, because we are saying in essence "If it predicts the data, then it explains the data". Does everyone see why this is the case?
 
@@ -168,7 +168,8 @@ Example #2: Online auctions.
 1. Must an explanatory model have some level of predictive power to be considered scientifically useful?
 2. Must a predictive model have sufficient explanatory power to be scientifically useful?
 
-##Introduction to linear models
+Introduction to linear models
+--------------
 \subsection{Continuous covariates}
 
 In the first half of the semester, we were discussing how to identify distributions, and how to fit distributions to data (i.e. parameter estimation). This is a very simple application of fitting a "statistical model".  For example, we would write
@@ -219,7 +220,8 @@ In this class, we are not defining linear models as models that can be described
 
 Linear models can be represented as a matrix equation, which we will illustrate first with an example of a linear model with a single continuous covariate.
 
-## Linear models | example with continuous covariate
+Linear models | example with continuous covariate
+---------------
 
 Linear models can be written in matrix form (with vectors and matrices), which is more clear when you look at an example. For the model:
 
@@ -334,18 +336,18 @@ model.matrix( ~ -1 + iris.sub$Species)
 
 ```
 ##    iris.sub$Speciessetosa iris.sub$Speciesversicolor iris.sub$Speciesvirginica
-## 1                       0                          0                         1
-## 2                       1                          0                         0
+## 1                       0                          1                         0
+## 2                       0                          0                         1
 ## 3                       0                          1                         0
-## 4                       0                          0                         1
-## 5                       0                          1                         0
-## 6                       0                          0                         1
+## 4                       1                          0                         0
+## 5                       1                          0                         0
+## 6                       0                          1                         0
 ## 7                       1                          0                         0
-## 8                       0                          1                         0
-## 9                       0                          1                         0
-## 10                      0                          1                         0
-## 11                      0                          1                         0
-## 12                      0                          0                         1
+## 8                       0                          0                         1
+## 9                       0                          0                         1
+## 10                      1                          0                         0
+## 11                      1                          0                         0
+## 12                      0                          1                         0
 ## attr(,"assign")
 ## [1] 1 1 1
 ## attr(,"contrasts")
@@ -365,9 +367,9 @@ dummy$coefficients
 
 ```
 ##                            Estimate Std. Error  t value     Pr(>|t|)
-## iris.sub$Speciessetosa     5.050000  0.3958699 12.75672 4.566117e-07
-## iris.sub$Speciesversicolor 5.983333  0.2285556 26.17890 8.358469e-10
-## iris.sub$Speciesvirginica  6.675000  0.2799223 23.84590 1.915329e-09
+## iris.sub$Speciessetosa         5.18  0.2669998 19.40076 1.187167e-08
+## iris.sub$Speciesversicolor     6.30  0.2985148 21.10448 5.648744e-09
+## iris.sub$Speciesvirginica      7.10  0.3446952 20.59791 7.001068e-09
 ```
 
 ```r
@@ -511,7 +513,8 @@ H_{0}: \alpha_{j} = 0
 $$
 means something very different. Therefore, we need to make sure to use coding schemes that will allow us to most directly test the hypothesis of interest. (This is why there is no one "correct" approach.)
 
-## Resolving overparameterization using contrasts
+Resolving overparameterization using contrasts
+--------------
 
 We can reduce the number of parameters in our model by creating a new set of parameters, each of which is a linear combination of groups, rather than a single group effect. Each parameter can include contributions from any number of the groups. We will now introduce of series of potential options for doing this, each of which is designed to test a specific hypothesis about how groups may differ. It is occassionally the case that none of these "off the shelf" options are appropriate for your analysis and you may need to design a design matrix that is tailored specifically for your research question, so the options we introduce here are just a few of the options and meant to illustrate the overall idea. The following decision tree is designed to help you choose the correct coding scheme for your specific analysis.
 
@@ -561,7 +564,8 @@ As a review, the first way of writing the model does not contrast anything. It s
 
 Hopefully, by working through a few examples, you can see that there are many ways we can write a model, and that each way contrasts different things and allows for an explicit hypothesis test on differences that are of interest. In this example, Method #1 is the 'cell means' coding that we started with, Method #2 is called 'effect coding' or 'treatment contrasts', Method #3 is called Helmert contrasts, and Method #4 is called the 'sum-to-zero' contrast we already briefly introduced. We'll walk through a more formal introduction of these contrasts now.
 
-##Effect coding/Treatment constrast
+Effect coding/Treatment constrast
+------------
 
 In effect coding or treatment contrasts, you set aside one group as the "control" and estimate the difference of every other group from that control group. The estimated parameters therefore represent the "effect" of moving from the control group to any other group (which often represents the impact of a "treatment" relative to the control group).
 
@@ -644,18 +648,18 @@ model.matrix(~ iris.sub$Species)
 
 ```
 ##    (Intercept) iris.sub$Speciesversicolor iris.sub$Speciesvirginica
-## 1            1                          0                         1
-## 2            1                          0                         0
+## 1            1                          1                         0
+## 2            1                          0                         1
 ## 3            1                          1                         0
-## 4            1                          0                         1
-## 5            1                          1                         0
-## 6            1                          0                         1
+## 4            1                          0                         0
+## 5            1                          0                         0
+## 6            1                          1                         0
 ## 7            1                          0                         0
-## 8            1                          1                         0
-## 9            1                          1                         0
-## 10           1                          1                         0
-## 11           1                          1                         0
-## 12           1                          0                         1
+## 8            1                          0                         1
+## 9            1                          0                         1
+## 10           1                          0                         0
+## 11           1                          0                         0
+## 12           1                          1                         0
 ## attr(,"assign")
 ## [1] 0 1 1
 ## attr(,"contrasts")
@@ -670,15 +674,16 @@ treatment$coefficients
 ```
 
 ```
-##                             Estimate Std. Error   t value     Pr(>|t|)
-## (Intercept)                5.0500000  0.3958699 12.756717 4.566117e-07
-## iris.sub$Speciesversicolor 0.9333333  0.4571112  2.041808 7.155559e-02
-## iris.sub$Speciesvirginica  1.6250000  0.4848396  3.351624 8.501570e-03
+##                            Estimate Std. Error   t value     Pr(>|t|)
+## (Intercept)                    5.18  0.2669998 19.400764 1.187167e-08
+## iris.sub$Speciesversicolor     1.12  0.4004997  2.796507 2.083119e-02
+## iris.sub$Speciesvirginica      1.92  0.4360088  4.403580 1.711459e-03
 ```
 
 In this case, you can see that the model is estimating the mean of the first group (setosa) and then the difference between the second and first group and the difference between the third and first groups. This allows you to test hypotheses about the differences, which is often more meaningful than testing hypotheses about the group means themselves.
 
-##Helmert contrasts
+Helmert contrasts
+---------------
 
 Helmert contrasts include a mean treatment effect and then the remaining parameters estimate the group mean relative to the mean treatment effect of the groups before it.
 
@@ -729,18 +734,18 @@ model.matrix(~ iris.sub$Species)
 
 ```
 ##    (Intercept) iris.sub$Species1 iris.sub$Species2
-## 1            1                 0                 2
-## 2            1                -1                -1
+## 1            1                 1                -1
+## 2            1                 0                 2
 ## 3            1                 1                -1
-## 4            1                 0                 2
-## 5            1                 1                -1
-## 6            1                 0                 2
+## 4            1                -1                -1
+## 5            1                -1                -1
+## 6            1                 1                -1
 ## 7            1                -1                -1
-## 8            1                 1                -1
-## 9            1                 1                -1
-## 10           1                 1                -1
-## 11           1                 1                -1
-## 12           1                 0                 2
+## 8            1                 0                 2
+## 9            1                 0                 2
+## 10           1                -1                -1
+## 11           1                -1                -1
+## 12           1                 1                -1
 ## attr(,"assign")
 ## [1] 0 1 1
 ## attr(,"contrasts")
@@ -756,12 +761,13 @@ helmert$coefficients
 
 ```
 ##                    Estimate Std. Error   t value     Pr(>|t|)
-## (Intercept)       5.9027778  0.1786701 33.037297 1.050121e-10
-## iris.sub$Species1 0.4666667  0.2285556  2.041808 7.155559e-02
-## iris.sub$Species2 0.3861111  0.1204594  3.205322 1.073920e-02
+## (Intercept)       6.1933333  0.1761359 35.162236 6.015834e-11
+## iris.sub$Species1 0.5600000  0.2002498  2.796507 2.083119e-02
+## iris.sub$Species2 0.4533333  0.1328804  3.411589 7.730145e-03
 ```
 
-##Sum-to-zero contrasts
+Sum-to-zero contrasts
+--------------
 
 Sum-to-zero contrast set the intercept to the mean treatment effect (the mean of the group means) and then the remaining parameters estimate the mean treatment effect of that group relative to the mean treatment effect. (We introduced this contrast briefly earlier.)
 
@@ -815,18 +821,18 @@ model.matrix(~ iris.sub$Species)
 
 ```
 ##    (Intercept) iris.sub$Species1 iris.sub$Species2
-## 1            1                -1                -1
-## 2            1                 1                 0
+## 1            1                 0                 1
+## 2            1                -1                -1
 ## 3            1                 0                 1
-## 4            1                -1                -1
-## 5            1                 0                 1
-## 6            1                -1                -1
+## 4            1                 1                 0
+## 5            1                 1                 0
+## 6            1                 0                 1
 ## 7            1                 1                 0
-## 8            1                 0                 1
-## 9            1                 0                 1
-## 10           1                 0                 1
-## 11           1                 0                 1
-## 12           1                -1                -1
+## 8            1                -1                -1
+## 9            1                -1                -1
+## 10           1                 1                 0
+## 11           1                 1                 0
+## 12           1                 0                 1
 ## attr(,"assign")
 ## [1] 0 1 1
 ## attr(,"contrasts")
@@ -841,15 +847,16 @@ sumtozero$coefficients
 ```
 
 ```
-##                      Estimate Std. Error    t value     Pr(>|t|)
-## (Intercept)        5.90277778  0.1786701 33.0372972 1.050121e-10
-## iris.sub$Species1 -0.85277778  0.2901046 -2.9395530 1.649872e-02
-## iris.sub$Species2  0.08055556  0.2221161  0.3626732 7.252200e-01
+##                     Estimate Std. Error    t value     Pr(>|t|)
+## (Intercept)        6.1933333  0.1761359 35.1622357 6.015834e-11
+## iris.sub$Species1 -1.0133333  0.2340659 -4.3292657 1.907149e-03
+## iris.sub$Species2  0.1066667  0.2464296  0.4328483 6.753125e-01
 ```
 
 There is one final "off-the-shelf" contrast that we will learn, and that is polynomial contrasts.
 
-##Polynomial contrasts
+Polynomial contrasts
+------------
 
 Polynomial contrasts simply involve fitting polynomial terms of increasing order; polynomial contrasts only make sense if the covariate represents an ordinal value, so that the different levels of the factor are ordered and have equal spacing (income, years of education, etc.). This is really just a form of multiple regression (so a preview of what we will be doing in a couple of weeks…)
 
@@ -905,7 +912,8 @@ and so forth...
 
 The values in the design matrix look complicated, but they aren’t really. Each column is scaled to have length 1 (which means all the denominators are actually just 1).
 
-## Visualizing hypotheses for different coding schemes
+Visualizing hypotheses for different coding schemes
+-------------------
 
 The different contrasts are different ways of comparing groups to different baselines. You can either compare each group to zero, a control group, to the mean of the group means (often called the grand mean), to the average of all previous groups, etc.
 
@@ -922,7 +930,8 @@ iris.fig.baselines
 
 <img src="Week-8-lecture_files/figure-html/unnamed-chunk-11-1.png" width="576" />
 
-## Orthogonal vs. Non-orthogonal contrasts
+Orthogonal vs. Non-orthogonal contrasts
+---------------------
 
 
 <div class="figure" style="text-align: center">
@@ -938,7 +947,8 @@ In a simple model with one categorical predictor with five different groups (a, 
 
 Why does this matter? With non-orthogonal contrasts, the order in which you make you comparisons in an Analysis of Variance will change your results and interpretations. See Aho section 10.3.2 for details.
 
-## Error structure of linear models
+Error structure of linear models
+----------------
 
 Response = Deterministic function + Stochastic function
 
@@ -950,9 +960,7 @@ Imagine you have modeled the number of plants in quadrats. Is your error normall
 
 Other models for error can be more appropriate, depending on the data and the model, e.g., $\epsilon \sim \text{Bernoulli}()$ or $\epsilon \sim \text{Poisson}()$.
 
----
-
-### Independence of errors
+\subsection{Independence of errors}
 
 Everything to this point has assumed that the residuals for each data point (i.e. $\epsilon_{i}$) are independent from one another and identifcally distributed (as $N(0,\sigma^{2}$)). 
 

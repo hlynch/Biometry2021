@@ -1,7 +1,8 @@
 Week 8 Lecture
 =============
 
-##Warm-up
+Warm-up
+-----------
 
 Which of these is the best model? Why?
 
@@ -9,7 +10,8 @@ Which of these is the best model? Why?
 knitr::include_graphics('ModelComplexity.png')
 ```
 
-## The aims of modelling -- A discussion of Shmueli (2010)
+The aims of modelling -- A discussion of Shmueli (2010)
+------------------
 
 Before we launch into the technical details of building linear models, let’s discuss the Shmueli (2010) paper. Shmeuli makes the distinction between three kinds of models
 
@@ -35,8 +37,6 @@ Predictive models are concerned only with the ability to predict new (measurable
 Example: We can think back to our discussion of population statistics and sample statistics. If we are measuring every individual of a population and we want to summarize the data, we are doing *descriptive* statistics. Descriptive modeling is aimed at succinctly summarizing a body of data. If we want to use that data to make some inference about a larger population, we are doing *inferential* statistics. If we want to use our sample to predict a new sample from that larger population, we are doing *predictive* statistics. 
 </span>
 </details> 
-
-
 
 As noted by Shmeuli, prediction and explanation are conflated in the hypothetical-deductive paradigm of null hypothesis significance testing, because we are saying in essence "If it predicts the data, then it explains the data". Does everyone see why this is the case?
 
@@ -167,7 +167,8 @@ Example #2: Online auctions.
 1. Must an explanatory model have some level of predictive power to be considered scientifically useful?
 2. Must a predictive model have sufficient explanatory power to be scientifically useful?
 
-##Introduction to linear models
+Introduction to linear models
+--------------
 \subsection{Continuous covariates}
 
 In the first half of the semester, we were discussing how to identify distributions, and how to fit distributions to data (i.e. parameter estimation). This is a very simple application of fitting a "statistical model".  For example, we would write
@@ -218,7 +219,8 @@ In this class, we are not defining linear models as models that can be described
 
 Linear models can be represented as a matrix equation, which we will illustrate first with an example of a linear model with a single continuous covariate.
 
-## Linear models | example with continuous covariate
+Linear models | example with continuous covariate
+---------------
 
 Linear models can be written in matrix form (with vectors and matrices), which is more clear when you look at an example. For the model:
 
@@ -476,7 +478,8 @@ H_{0}: \alpha_{j} = 0
 $$
 means something very different. Therefore, we need to make sure to use coding schemes that will allow us to most directly test the hypothesis of interest. (This is why there is no one "correct" approach.)
 
-## Resolving overparameterization using contrasts
+Resolving overparameterization using contrasts
+--------------
 
 We can reduce the number of parameters in our model by creating a new set of parameters, each of which is a linear combination of groups, rather than a single group effect. Each parameter can include contributions from any number of the groups. We will now introduce of series of potential options for doing this, each of which is designed to test a specific hypothesis about how groups may differ. It is occassionally the case that none of these "off the shelf" options are appropriate for your analysis and you may need to design a design matrix that is tailored specifically for your research question, so the options we introduce here are just a few of the options and meant to illustrate the overall idea. The following decision tree is designed to help you choose the correct coding scheme for your specific analysis.
 
@@ -526,7 +529,8 @@ As a review, the first way of writing the model does not contrast anything. It s
 
 Hopefully, by working through a few examples, you can see that there are many ways we can write a model, and that each way contrasts different things and allows for an explicit hypothesis test on differences that are of interest. In this example, Method #1 is the 'cell means' coding that we started with, Method #2 is called 'effect coding' or 'treatment contrasts', Method #3 is called Helmert contrasts, and Method #4 is called the 'sum-to-zero' contrast we already briefly introduced. We'll walk through a more formal introduction of these contrasts now.
 
-##Effect coding/Treatment constrast
+Effect coding/Treatment constrast
+------------
 
 In effect coding or treatment contrasts, you set aside one group as the "control" and estimate the difference of every other group from that control group. The estimated parameters therefore represent the "effect" of moving from the control group to any other group (which often represents the impact of a "treatment" relative to the control group).
 
@@ -613,7 +617,8 @@ treatment$coefficients
 
 In this case, you can see that the model is estimating the mean of the first group (setosa) and then the difference between the second and first group and the difference between the third and first groups. This allows you to test hypotheses about the differences, which is often more meaningful than testing hypotheses about the group means themselves.
 
-##Helmert contrasts
+Helmert contrasts
+---------------
 
 Helmert contrasts include a mean treatment effect and then the remaining parameters estimate the group mean relative to the mean treatment effect of the groups before it.
 
@@ -666,7 +671,8 @@ helmert <- summary(lm(iris.sub$Sepal.Length ~ iris.sub$Species))
 helmert$coefficients
 ```
 
-##Sum-to-zero contrasts
+Sum-to-zero contrasts
+--------------
 
 Sum-to-zero contrast set the intercept to the mean treatment effect (the mean of the group means) and then the remaining parameters estimate the mean treatment effect of that group relative to the mean treatment effect. (We introduced this contrast briefly earlier.)
 
@@ -724,7 +730,8 @@ sumtozero$coefficients
 
 There is one final "off-the-shelf" contrast that we will learn, and that is polynomial contrasts.
 
-##Polynomial contrasts
+Polynomial contrasts
+------------
 
 Polynomial contrasts simply involve fitting polynomial terms of increasing order; polynomial contrasts only make sense if the covariate represents an ordinal value, so that the different levels of the factor are ordered and have equal spacing (income, years of education, etc.). This is really just a form of multiple regression (so a preview of what we will be doing in a couple of weeks…)
 
@@ -780,7 +787,8 @@ and so forth...
 
 The values in the design matrix look complicated, but they aren’t really. Each column is scaled to have length 1 (which means all the denominators are actually just 1).
 
-## Visualizing hypotheses for different coding schemes
+Visualizing hypotheses for different coding schemes
+-------------------
 
 The different contrasts are different ways of comparing groups to different baselines. You can either compare each group to zero, a control group, to the mean of the group means (often called the grand mean), to the average of all previous groups, etc.
 
@@ -794,7 +802,8 @@ iris.fig.baselines <- ggplot(iris.sub, aes(x = Species, y = Sepal.Length)) + geo
 iris.fig.baselines
 ```
 
-## Orthogonal vs. Non-orthogonal contrasts
+Orthogonal vs. Non-orthogonal contrasts
+---------------------
 
 
 ```{r echo=FALSE, fig.align='center', fig.cap='The segment AB is orthogonal to the segement CD. Source: Wikipedia', out.width='50%'}
@@ -809,7 +818,8 @@ In a simple model with one categorical predictor with five different groups (a, 
 
 Why does this matter? With non-orthogonal contrasts, the order in which you make you comparisons in an Analysis of Variance will change your results and interpretations. See Aho section 10.3.2 for details.
 
-## Error structure of linear models
+Error structure of linear models
+----------------
 
 Response = Deterministic function + Stochastic function
 
@@ -821,9 +831,7 @@ Imagine you have modeled the number of plants in quadrats. Is your error normall
 
 Other models for error can be more appropriate, depending on the data and the model, e.g., $\epsilon \sim \text{Bernoulli}()$ or $\epsilon \sim \text{Poisson}()$.
 
----
-
-### Independence of errors
+\subsection{Independence of errors}
 
 Everything to this point has assumed that the residuals for each data point (i.e. $\epsilon_{i}$) are independent from one another and identifcally distributed (as $N(0,\sigma^{2}$)). 
 
