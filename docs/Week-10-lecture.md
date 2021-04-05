@@ -14,7 +14,8 @@ An outline for this week's materials:
 6. Generalized additive models
 7. Multiple regression
 
-## An example
+An example
+-----------
 
 Let's start with a model of the presence or absence of a wood-boring beetle as a function of the wood density of decaying aspen trees in Quebec. The data looks like this:
 
@@ -74,7 +75,8 @@ ggplot(data = beetle.resid, aes(x = PredictedValues, y = Residuals)) + geom_poin
 <img src="Week-10-lecture_files/figure-html/unnamed-chunk-5-1.png" width="480" />
 
 
-## Generalized linear models
+Generalized linear models
+--------------
 
 The regression models that we have been introduced to thus far all assume two things:
 
@@ -136,7 +138,8 @@ In this lecture we will go through logistic regression for binomial data and Poi
 
 The order of complexity (and flexibility) of the models we will be discussing is: Standard linear regression $<$ Generalized linear models (GLMs) $<$ Generalized Additive Models (GAMs).
 
-##Logistic regression
+Logistic regression
+------------
 
 Logistic regression is used to model Bernoulli or binomial response variables. Bernoulli data includes:
 
@@ -370,7 +373,8 @@ beetle.glm.fit$coefficients[2]  # logit units
 
 Be aware that the significance of coefficients fit for GLMs is done using a Wald test, which relies on asymptotic (large-sample) estimates of standard errors of the coefficients. The Wald test uses a test statistic, $z$, that is the parameter estimate divided by the estimated standard error of the parameter estimate, which is asymptotically standard normal under $H_0 = 0$.
 
-##Fitting a GLM
+Fitting a GLM
+-------------
 
 To fit GLMs, we need another method besides ordinary least squares (which assumes data are normally distributed). We need to fit the parameters using maximum likelihood.
 
@@ -419,7 +423,8 @@ $$
 
 In other words, by using a logistic model, we have implicitly stated that the variability in the response that is due to sampling variation (‘residual error’) is entirely driven by the variation that would be expected by a Binomial distribution. We do not have a separate “error model”. We have one model that contains information both on the expected (mean) value of the response for each value of the covariate, and on the amount of random noise in that response that we would expect from one data point to the next (for the same value of the covariate).
 
-##Poisson regression
+Poisson regression
+------------
 
 Poisson regression is used to model response variables that are counts. Poisson data includes:
 
@@ -486,7 +491,8 @@ However, there are things you need to understand about your data before fitting 
 
 These types of Poisson regressions are common in ecology and evolution!
 
-##Deviance
+Deviance
+-------------
 
 When we were fitting linear regression models, we assessed model fit using the coefficient of determination $R^{2}$. To measure fit of GLMs we use the **deviance**. Conceptually, it is not all that different from other fit metrics, and is analogous to the residual sum of squares for a linear model (actually it is equal to the residual sum of squares, see table 9.3 in Aho).
 
@@ -534,7 +540,8 @@ $$
 
 The test statsitic z is approximately normal for large sample sizes.
 
-## Other methods -- LOESS, splines, GAMs
+Other methods -- LOESS, splines, GAMs
+-------------------
 
 Traditional regression methods are incredibly useful for predicting or explaining empirical data. However, in some situations, these methods are not flexible enough. For these cases, there are non-parametric approaches to curve fitting.
 
@@ -550,7 +557,7 @@ These methods may be useful for:
 
 Keep in mind that LOESS, splines, and GAMS do not produce models that are straightforward and mechanistic. It is difficult/impossible to explain what the coefficients they produce actually mean.
 
-### LOESS
+\subsection{LOESS}
 
 LOESS (LOWESS), or locally weighted regression, is a non-parameteric method for fitting a curve through data. The dependent variable is fit in a moving fashion (like a moving window average)
 
@@ -578,7 +585,7 @@ ggplot(data = bomregions2012, aes(x = Year, y = northRain)) + geom_point() + geo
 
 <img src="Week-10-lecture_files/figure-html/unnamed-chunk-14-1.png" width="384" />
 
-###Splines
+\subsection{Splines}
 
 A smoothing spline is a model whose metric of fit is the sum of a measure of residuals, as well as a measure of roughness:
 
@@ -596,7 +603,7 @@ ggplot(data = bomregions2012, aes(x = Year, y = northRain)) + geom_point() +
 
 <img src="Week-10-lecture_files/figure-html/unnamed-chunk-15-1.png" width="384" />
 
-###GAMs
+\subsection{GAMs}
 
 Generalized additive models (GAMs) allow us specify both smoothing and conventional parametric terms for models. GAMs are compatible with nonlinearity and nonnormal errors by using link functions (like with GLMs).  With one covariate:
 
@@ -616,7 +623,7 @@ ggplot(data = bomregions2012, aes(x = Year, y = northRain)) + geom_point() +
 
 Personally, I really dislike GAMs and would discourage their use. GAMs rarely if ever provide information that you couldn't see with the naked eye, and their use lends an air of statistical rigor to an analysis that is usually unjustified. I often see GAMs used as a crutch to avoid thinking seriously about the statistical model, and it tends to produce features that are artifacts of the data rather than meaningful information about the underlying process.
 
-### Multiple regression
+\subsection{Multiple regression}
 
 Multiple regression is **not** fundamentally different from what we have discussed in the past three weeks. The major differences are that we need to be careful about what covariates we include, as well as our interpretations of linear model coefficients. *Note that covariates, predictors, and explanatory variables all refer to the same thing, what I've referred to in linear regression as $X_i$.*
 
