@@ -17,13 +17,14 @@ There are 7 parts to this week's lab:
 
 Practice with Multiple regression will be held off until our discussion of model criticism in Week 13.
 
-##Discussion of Challenger analysis
+Discussion of Challenger analysis
+---------
 
 One of the classic datasets for logistic regression is the Challenger dataset, so even though its not related to ecology, I think its worth reading. You have already read the article about the Challenger analysis so you know the background behind the o-ring data. Because the Challenger paper is so well written, we will go over the analysis in detail together.
 
-1- The night before the launch, there was a meeting to discuss the influence of temperature on o-ring failure. The focus was on Figure 1a showing the number of o-ring failures CONDITIONAL ON there being at least one o-ring failure.
+**1-** The night before the launch, there was a meeting to discuss the influence of temperature on o-ring failure. The focus was on Figure 1a showing the number of o-ring failures CONDITIONAL ON there being at least one o-ring failure.
 
-2- There are 6 o-rings on each shuttle, what is the appropriate model for o-ring failure?
+**2-** There are 6 o-rings on each shuttle, what is the appropriate model for o-ring failure?
 
 $$
 X\sim Binom(n=6,p(t,s))
@@ -31,15 +32,15 @@ $$
 
 where p(s,t) is the probability of o-ring failure as a function of temperature t and pressure s.
 
-3- Therefore, the appropriate GLM for o-ring failure is
+**3-** Therefore, the appropriate GLM for o-ring failure is
 
 $$
 log\left(\frac{p(t,s)}{1-p(t,s)}\right)=\alpha+\beta t + \gamma s
 $$
 
-4- They then fit the model using maximum likelihood (*Quick review: What exactly does that mean?*)
+**4-** They then fit the model using maximum likelihood (*Quick review: What exactly does that mean?*)
 
-5- They calculate the "goodness of fit" statistic $G^{2}$. This is just another name for the Deviance.
+**5-** They calculate the "goodness of fit" statistic $G^{2}$. This is just another name for the Deviance.
 
 $$
 G^{2} = 2*log\left(\frac{\mbox{Likelihood saturated model}}{\mbox{Likelihood model being considered}}\right)
@@ -57,7 +58,7 @@ $$
 \mbox{Deviance} = 2*log\left(\frac{\mbox{Likelihood saturated model}}{\mbox{Likelihood model being considered}}\right) = G^{2}
 $$
 
-6- Recognizing that devaince is only really meaningful relative to another model, they fit the temperature-only model
+**6-** Recognizing that devaince is only really meaningful relative to another model, they fit the temperature-only model
 
 $$
 log\left(\frac{p(t)}{1-p(t)}\right) = \alpha + \beta t
@@ -79,49 +80,50 @@ $$
 
 The difference in deviance is not significant, i.e. this model fits about as well as the more complex model, so we can say that pressure has little effect on the probability of o-ring failure and we drop it from the model.
 
-7- They construct 90th percentile confidence intervals for the expected number of incidents.
+**7-** They construct 90th percentile confidence intervals for the expected number of incidents.
 
-*What exactly are they doing?* They are sampling with replacement from the original data and are refitting the model each time.
+**<span style="color: green;">Checkpoint #1: What exactly are they doing here? Do you understand what they have done and why?</span>** <span style="color: white;">They are sampling with replacement from the original data and are refitting the model each time.</span>
 
-8- Next they plot the contours of the log-likelihood function and note that the contours are elliptical and therefore the data were not leading to ill-conditioned computation.
+**8-** Next they plot the contours of the log-likelihood function and note that the contours are elliptical and therefore the data were not leading to ill-conditioned computation.
 
 *What do they mean by that?*
 
-9- They collapse the binomial data to make a Bernoulli dataset in which "0" means that no o-rings failed, and "1" means that at least one o-ring failed.
+**9-** They collapse the binomial data to make a Bernoulli dataset in which "0" means that no o-rings failed, and "1" means that at least one o-ring failed.
 
-Why did they do this? They felt this model would be more robust because you no longer assume independence among the o-rings on a rocket.
+**<span style="color: green;">Checkpoint #2: Why did they do this?</span>** 
+<span style="color: white;">Because the o-rings may not be independent</span>
 
-10- They refit the data using the Bernoulli model and find that the fits are quite close.
+**10-** They refit the data using the Bernoulli model and find that the fits are quite close.
 
-11- They want to construct confidence intervals for the model parameters. They say "instead of using the aymptotic theory to construct confidence intervals, we use the parametric bootstrap procedure".
+**11-** They want to construct confidence intervals for the model parameters. They say "instead of using the aymptotic theory to construct confidence intervals, we use the parametric bootstrap procedure".
 
-*Why might they have used a bootstrap approach here?*
+**<span style="color: green;">Checkpoint #3: Why might they have used a bootstrap approach here?</span>** 
 
-(Small size size probably...)
+<span style="color: white;">Small size size probably...</span>
 
 *How do they do a parametric bootstrap?*
 
 They take the best-fit model, sample with replacement from the logistic model (presumably drawing (x,predicted y) pairs at random with replacement), and refit the bootstrapped data to get new model parameter estimates.
 
-12- Then they look at the sensitivity of the model to each of the data points, by pulling out each data point in turn and refitting the model.
+**12-** Then they look at the sensitivity of the model to each of the data points, by pulling out each data point in turn and refitting the model.
 
-*What is this called?*
+**<span style="color: green;">Checkpoint #4: What is this called?</span>** 
 
-Jackknife!
+<span style="color: white;">Jackknife!</span>
 
-13- They next consider a non-linear model of the form
+**13-** They next consider a non-linear model of the form
 
 $$
 log\left(\frac{p(t,s)}{1-p(t,s)}\right)=\alpha + \beta(t-t_{0})+\gamma(t-t_{0})^{2}
 $$
 
-14- They again consider the change in deviance in going from the simpler linear model to the more complex quadratic model, and they find the quadratic term is not significant.
+**14-** They again consider the change in deviance in going from the simpler linear model to the more complex quadratic model, and they find the quadratic term is not significant.
 
-15- They then consider a model in which they use a non-parametric smoothing fit (using a moving window appraoch) in Figure 8.
+**15-** They then consider a model in which they use a non-parametric smoothing fit (using a moving window appraoch) in Figure 8.
 
-16- They identify possible outliers in the data (more on model criticism in three weeks).
+**16-** They identify possible outliers in the data (more on model criticism in three weeks).
 
-### Practice fitting models
+\subsection{Practice fitting models}
 
 You should have downloaded the data linking O-ring failure to launch temperature.
 
@@ -150,7 +152,8 @@ resid1<-residuals(challenger.fit1)
 plot(Temp,resid1,xlab="Temperature",ylab="Residuals for lm model")
 ```
 
-##Weighted linear regression
+Weighted linear regression
+----------------
 
 One possible solution to these problems is to use weighted linear regression (to account for high variance at intermediate temperatures) and to truncate the predicted values to the range (0,1).
 
@@ -222,7 +225,8 @@ lines(Temp,fitted(challenger.fit2),col="blue")
 
 The $r^{2}$ of the weighted model is higher, but the fit still has the same problems as the original fit. To properly solve this problem, we need to do logistic regression, which accurately captures the non-linear form of the relationahip and the nature of the residuals.
 
-##Logistic regression
+Logistic regression
+-------------
 
 ```{r}
 challenger.fit3<-glm(O.ring.failure~Temp, family="binomial")
@@ -249,7 +253,7 @@ lines(newdata[,1],inv.logit(confidence.bands$fit+1.96*confidence.bands$se.fit),c
 lines(newdata[,1],inv.logit(confidence.bands$fit-1.96*confidence.bands$se.fit),col="purple",lwd=2,lty=2)
 ```
 
-If you look at the help file for predict.glm, you will see that the only option is a confidence interval on the model (a 'confidence' interval). There is no way to generate a prediction interval for GLMs generally speaking. How would you construct a prediction interval for a binary value?
+If you look at the help file for predict.glm, you will see that the only option is a confidence interval on the model (a 'confidence' interval). There is no way to generate a prediction interval for GLMs generally speaking. **<span style="color: green;">Checkpoint #5: How would you construct a prediction interval for a binary value?</span>**<span style="color: white;">You cannot, it doesn't make sense, the value is either 0 or 1.</span>
 
 On the day of the Challenger launch, the temperature was 31 degrees - what was the probability of o-ring failure?
 
@@ -265,9 +269,10 @@ challenger.fit4<-glm(O.ring.failure~1,family=binomial)
 
 The null deviance is that with only an intercept. The statistical significance of the model can be assessed by comparing the deviance with the parameters vs. the model with only an intercept.
 
-##Poisson regression
+Poisson regression
+---------------
 
-Since we have the data loaded already, we will use the challenger o-ring data to illustrate how a Poisson model is fit, even though a Poisson model would be inappropriate for the o-ring data. Why is a Poisson model inappropriate?
+Since we have the data loaded already, we will use the challenger o-ring data to illustrate how a Poisson model is fit, even though a Poisson model would be inappropriate for the o-ring data. **<span style="color: green;">Checkpoint #6: Why is a Poisson model inappropriate?</span>**
 
 ```{r}
 challenger.fit4<-glm(O.ring.failure~Temp,family="poisson")
@@ -282,7 +287,8 @@ lines(newdata[,1],inv.logit(confidence.bands$fit-1.96*confidence.bands$se.fit),c
 
 We can see that the Poisson model has no inflection point and therefore its predictions would not be bounded by (0,1).
 
-##Getting a feel for Deviance
+Getting a feel for Deviance
+-----------------
 
 We can use the challenger dataset to get a feel for deviance, and the idea that while a larger model will always fit the data better (i.e. have a lower deviance), we need to make sure that the improvement in deviance is more than what would be expected by random chance. This is best illsutrated by an example.
 
@@ -331,7 +337,10 @@ lines(seq(0,20,0.1), dchisq(seq(0,20,0.1),df=1), col="red",lwd=2)
 
 Sure enough, as expected, the difference in deviance we get by adding a covariate that has *no* association with the response is a $\chi^{2}_{1}$ distributed variable. Therefore, to justify adding a covariate to a model, we want to see that the decrease in deviance is much larger than this. Specifically, we want to see that the decrease in deviance is so unlikely to have arisen from a $\chi^{2}_{1}$ distribution that we reject the null hypothesis that the two models are equivalent. (In other words, by rejecting the null hypothesis, we say that the larger model is, in fact, the better model and the additional covariate is worth keeping.)
 
-##Generalized Additive Models
+**<span style="color: green;">Checkpoint #7: Does this make sense?</span>**
+
+Generalized Additive Models
+--------------
 
 There are two libraries that can fit GAMs: 'gam' and 'mcgv'. We will use the 'gam' package for now, but keep in mind that the 'mgcv' package is more flexible and more powerful (so worth considering if you need to do GAMs for your own research).
 

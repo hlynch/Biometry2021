@@ -8,18 +8,25 @@ text.size <- 14
 This week we will cover my favorite topic of all: Generalized Linear Regression and Multiple Regression!
 
 An outline for this week's materials:
+
 1. Basic idea behind GLM
+
 2. Logistic regression
+
 3. Poisson regression
+
 4. Deviance
+
 5. LOESS/spline smoothing
+
 6. Generalized additive models
+
 7. Multiple regression
 
 An example
 -----------
 
-Let's start with a model of the presence or absence of a wood-boring beetle as a function of the wood density of decaying aspen trees in Quebec. The data looks like this:
+Let's start with a model of the presence or absence of a wood-boring beetle as a function of the wood density of decaying aspen trees in Quebec. The data look like this:
 
 ```{r echo=FALSE, warning=FALSE, fig.height=5, fig.width=6}
 library(ggplot2)
@@ -99,6 +106,7 @@ The Normal distribution is "special". The mean ($\mathrm{E}(X)$) and the varianc
 
 For other distributions, the parameters of the distribution often do not map uniquely to the mean and variance. GLMs allow us to model the response as some distribution (no longer has to be a Normal), and to model the parameters of that distribution (or a function of those parameters) using a linear model. In other words,  
 
+<span style="color: orangered;">
 $$
 \text{Response} \sim \text{Distribution}(\text{parameters})
 $$
@@ -106,6 +114,7 @@ $$
 $$
 g(\text{parameters}) = \beta_0 + \beta_1 X_i
 $$
+</span>
 
 $g()$ is a function of the parameters. For most distributions other than the Normal, the mean and variance are linked.
 
@@ -125,7 +134,9 @@ Traditional linear regression may fail to represent our data (predicting nonsens
 
 In this lecture we will go through logistic regression for binomial data and Poisson regression for Poisson (count) data. Keep in mind that other GLMs exist, specifically beta regression and gamma regression, among others.
 
-The order of complexity (and flexibility) of the models we will be discussing is: Standard linear regression $<$ Generalized linear models (GLMs) $<$ Generalized Additive Models (GAMs).
+The order of complexity (and flexibility) of the models we will be discussing is: 
+
+Standard linear regression $<$ Generalized linear models (GLMs) $<$ Generalized Additive Models (GAMs).
 
 Logistic regression
 ------------
@@ -157,10 +168,10 @@ $$
 \epsilon_i \sim \text{Variance function}
 $$
 
-Roughly, a variance function relates the mean of the distribution to the variance (see Aho 9.20.7.3 for more details). For example, the variance function of the normal distribution is 1, $\mathrm{V}[\theta] = 1$ (describing constant variance, i.e., homoscedasticity). *Note that $\mathrm{V}[\theta]$ is not equivalent to $\mathrm{Var}[\theta]$, though they are related (see Appendix A.6 in Aho for details).* The variance function for a logistic regression is:
+Roughly, a variance function relates the mean of the distribution to the variance (see Aho 9.20.7.3 for more details). For example, the variance function of the normal distribution is 1, $\mathrm{V}[\theta] = 1$ (describing constant variance, i.e., homoscedasticity). *Note that $\mathrm{V}[\theta]$ is not equivalent to $\mathrm{Var}[\theta]$, though they are related (see Appendix A.6 in Aho for details).* The variance of $Y_{i}$ for the Bernoulli, where $n_i=1$is given by:
 
 $$
-\mathrm{V}(Y_i) \propto p_i (1 - p_i)
+\mathrm{Var}(Y_i) = p_i (1 - p_i)
 $$
 
 While for a normal linear regression we need errors to be the same (homoscedasctic), with a logistic regression, variation is largest around $p = 0.5$ and shrinks to zero at the end points of $p=0$ and $p=1$.
@@ -184,10 +195,10 @@ $$
 Y_i \sim \mathrm{Binomial}(n_i, p_i) \text{, where } \log \left( \frac{p_i}{1 - p_i} \right) = \beta_0 + \beta_1 X_i
 $$
 
-Now, the variance function is:
+Now, the variance of $Y_i$ is:
 
 $$
-\mathrm{V}(Y_i) = n_i p_i (1 - p_i)
+\mathrm{Var}(Y_i) = n_i p_i (1 - p_i)
 $$
 
 Some examples of data that are best modelled as either Bernoulli or Binomial are:
@@ -370,10 +381,10 @@ g (\lambda_i) = \log (\lambda_i)
 $$
 This means that we map the linear model $\beta_0 + \beta_1 X_i$ to the parameter of the Poisson using a log function. Why use a log function? We want to map values that are non-negative integers to $[- \infty, \infty]$.
 
-The variance function for a Poisson regression is:
+The variance of $Y_i$ for a Poisson regression is:
 
 $$
-\mathrm{V}(Y_i) = \lambda_i
+\mathrm{Var}(Y_i) = \lambda_i
 $$
 
 The complete model for a Poisson regression with data $Y_i$ and covariate $X_i$ is:

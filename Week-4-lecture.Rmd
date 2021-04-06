@@ -1,7 +1,8 @@
 Week 4 Lecture
 ========================================================
 
-##Short digression: Degrees of freedom
+Short digression: Degrees of freedom
+------------
 
 What is meant by “degrees of freedom”?
 
@@ -38,7 +39,8 @@ $$
 
 Now that we have that out of the way, we can get back to univariate distributions. The three distributions we will learn about today all share one thing, which is that their parameters represent some kind of a number. The most difficult part of these distributions is keeping separate in your mind the number associated with the parameter and the number associated with the number of samples drawn from the distribution. 
 
-##t-distribution
+t-distribution
+-------------
 
 Let $X_{1},X_{2},...,X_{n}$ be independently and identically distributed random variables with mean $\mu$ and finite, non-zero variance $\sigma^{2}$, and the average of these variable $\bar{X}$ be defined as
 
@@ -121,7 +123,8 @@ $$
 Var[X]=\frac{p}{p-2} \mbox{ if p}>2
 $$
 
-##Chi-squared distribution
+Chi-squared distribution
+---------------
 
 The chi-squared distribution is related to the standard normal distribution as follows:
 Draw
@@ -211,7 +214,8 @@ $$ E[X] = \nu \\ Var[X] =2\nu  $$
 
 I don’t derive these, but they follow from the E[X] and Var[X] of the gamma distribution.
 
-##F distribution
+F distribution
+-------------
 
 As you will see in detail throughout the semester, the F distribution is critical to modelling variances. The F distribution is related to the $\chi^{2}$ distribution, in fact the ratio of two chi-squared distributions is the F-distribution.
 
@@ -333,7 +337,8 @@ $$
 
 Once you decide on a distribution for your data, you need some way of estimating the best-fit parameters. This brings us to the next major topic of Biometry.
 
-##Estimating confidence intervals - 5 special cases
+Estimating confidence intervals - 5 special cases
+----------------
 
 We will now learn how to fit a model to data, that is, to estimate the parameter values for the distribution being used to model the data. Since parameter estimates are useless without their corresponding confidence intervals, we will also learn out to estimate confidence intervals for these parameters.
 
@@ -558,7 +563,8 @@ $$
 \frac{s_{A}^{2}}{s_{B}^{2}}F_{(\alpha/2)[m-1,n-1]} \leq \frac{\sigma_{A}^{2}}{\sigma_{B}^{2}} \leq \frac{s_{A}^{2}}{s_{B}^{2}}F_{(1-\alpha/2)[m-1,n-1]}
 $$
 
-##To recap
+To recap
+-----------
 
 We used the Normal distribution to derive the confidence interval for the parametric mean $\mu$ when $\sigma$ is known. 
 

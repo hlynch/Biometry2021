@@ -1,6 +1,8 @@
 Week 5 Lecture
 ========================================================
-##Statistical power
+Statistical power
+----------
+
 In any hypothesis test, there are 4 possible outcomes.
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Type I and Type II errors', out.width='100%'}
@@ -111,7 +113,8 @@ To get some practice in constructing and executing hypothesis tests, we are goin
 
 The t-test is used to make inference on the means of normally distributed variables. There are three varieties of the t-test – one to test whether the mean of some normally distributed variable is equal to some hypothesized value, one to test whether the means of two unpaired samples are equal, and one to test whether the means of two paired samples are equal.
 
-##The single sample t test
+The single sample t test
+---------------
 
 (The t-test is often called the Student's t-test, as it is named after the pseudonym under which the original paper was submitted. However, I will refer to it as just the t-test for simplicity.)
 
@@ -177,7 +180,8 @@ $$
 
 So we now can test a hypothesis regarding the value of the mean *and* we can generate confidence intervals on the true (but unknown) mean of the population we are studying.
 
-##The unpaired two sample t test
+The unpaired two sample t test
+---------------
 
 The unpaired two-sample t test is used when you have data from two groups and you want to test whether these groups have the same mean value (i.e. $H_{0}: \mu_{A} = \mu_{B}$. As before, we will assume that the data are at least approximately Normally distributed. 
 
@@ -246,7 +250,8 @@ where $SS_{A}$ is the sums-of-squares for dataset A and $SS_{B}$ is the sums-of-
 
 Why bother assuming the variances are equal? By combining the data in the estimate of their pooled variance, we get a better estimate of $s_{pooled}^{2}$ than either $s_{A}^{2}$  or $s_{B}^{2}$.
 
-##The paired two sample t test
+The paired two sample t test
+-----------------
 
 Paired data occurs when each datapoint in set A corresponds to a datapoint in set B. Examples might be the strength of the left vs. right leg in a sample of individuals, or the blood sugar of husbands vs. wifes in a sample of married couples. In these cases, the question at hand is whether the difference between the two datasets is equal to some value or not. In other words, the null hypothesis is $H_{0}: X_{A}-X_{B} = c$. The test statistic is the same as with the unpaired test
 
@@ -289,7 +294,8 @@ Now you can do a one-sample t-test on Y just as we did before. This is usually t
 
 The t-test does assume that the data are Normally distributed and, depending on the form we choose to use, we may be assuming that the variances are the same. Given a real dataset, you wouldn't know for sure whether the variance are the same, and so you would need to first test whether the variances are the same (or, rather, whether you can reject the null hypothesis that they are the same). How do we test whether two datasests come from populations with the same variance - the F-test! (That's coming now...)
 
-##The F test
+The F test
+---------------
 
 (This is often referred to as Fisher's F test, but I will just stick with F test.)
 
@@ -331,7 +337,8 @@ then you need a one-tailed test and you use the $\alpha$ quantile for the F dist
 
 The R function for testing whether the variances of two samples are different is ''var.test''. We will be using this function in lab this week.
 
-##Comparing two proportions
+Comparing two proportions
+---------------
 
 There are a number of different ways to do the proportion test, but I will only expect you to know one. I will call the true underlying proportion $\theta$. In this case, $H_{0}: \theta = \theta_{0}$, and for the two-tailed test, $H_{A}:\theta \neq \theta_{0}$.
 
@@ -384,9 +391,8 @@ Answer: We can easily get confidence intervals that extend beyond (0,1). We can 
 
 There are MANY methods statisticians have devised to obtain true 1-$\alpha$ CIs that do not go outside of (0,1) and which work for all $\theta$. I have posted a paper under “Interesting statistics papers” that address 7 methods, including the Wald approximation, but I will only expect you to know the Wald approximation.
 
-
-
-##Comparing two distributions
+Comparing two distributions
+--------------
 
 There are many ways that we might compare two distributions. Many of these methods focus on the difference between the empirical cumulative density functions (i.e. $P(X \leq X^{*})$), and they differ in the loss function (that is, the function used to weight differences of different magnitudes) used when comparing the CDFs.
 
@@ -402,7 +408,8 @@ knitr::include_graphics('KS_Example.png')
 
 The expected distribution of D under the null hypothesis is complicated and not one you need to know. We will go over R’s functions to do these tests on Thursday.
 
-##A bit more detail on the Binomial
+A bit more detail on the Binomial
+--------------
 
 <a id="binomialproof"></a> Above I skipped over some details about deriving the Binomial from the Bernoulli. Here I fill in those details.
 
@@ -433,7 +440,8 @@ $$
 $$
 in the limit that $n \rightarrow \infty$.
 
-##Side-note about the Wald test
+Side-note about the Wald test
+-------------
 
 We introduced the Wald test in the context of the binomial test, but the Wald test is a much more general test about the statistical significance of a maximum likelihood estimate. We often use the Wald test even when we haven’t proven that the estimate in question is actually the MLE. In the case of the proportion test, the MLE for the binomial parameter p is just $\hat{p}$ (=# heads)⁄n.
 
@@ -451,7 +459,9 @@ $$
 
 The standard error of a maximum likelihood estimate $se(\hat{\theta})$ is usually approximated using the inverse of the second derivative of the log-likelihood (if you are interested, this is called the Fisher Information matrix). This makes intuitive sense because if the negative log-likelihood surface is steep around the minimum (and the second derivative large), the uncertainty about the MLE is small (narrow CI). I won’t get into detail about this, because often you have some knowledge of the parameter’s variance and can use the Wald test with little fuss or calculation.
 
-##Chi-squared goodness-of-fit test 
+Chi-squared goodness-of-fit test 
+-------------
+
 $H_{0}$ is a table (need not be 2 $\times$ 2) of predicted probabilities such as
 
 ```{r echo=FALSE, fig.align='center', fig.cap='2 x 2 contingency table', out.width='50%'}
@@ -474,7 +484,8 @@ We have lost a single degree of freedom because the total sample size of the obs
 
 If all you are given are marginal probabilities, you have to assume independence to get the probabilities for individual cells.
 
-##Chi-squared test of independence
+Chi-squared test of independence
+-------------
 
 $H_{0}$ is a table (need not be 2 $\times$ 2) of marginal probabilities 
 
@@ -498,6 +509,7 @@ $$
 
 $$
 X^{2}|H_{0} \sim \chi^{2}_{(r-1) \times (c-1)}
-$$We have one degree of freedom from each row and column because the total sample size in each row and column is fixed by the marginal totals. 
+$$
+We have one degree of freedom from each row and column because the total sample size in each row and column is fixed by the marginal totals. 
 This test is used to test whether the characters are independent.
 
