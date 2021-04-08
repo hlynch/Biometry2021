@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-06" />
+<meta name="date" content="2021-04-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -280,8 +280,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="19.1" data-path="week-10-lab.html"><a href="week-10-lab.html#discussion-of-challenger-analysis"><i class="fa fa-check"></i><b>19.1</b> Discussion of Challenger analysis</a></li>
 <li class="chapter" data-level="19.2" data-path="week-10-lab.html"><a href="week-10-lab.html#weighted-linear-regression"><i class="fa fa-check"></i><b>19.2</b> Weighted linear regression</a></li>
-<li class="chapter" data-level="19.3" data-path="week-10-lecture.html"><a href="week-10-lecture.html#logistic-regression"><i class="fa fa-check"></i><b>19.3</b> Logistic regression</a></li>
-<li class="chapter" data-level="19.4" data-path="week-10-lecture.html"><a href="week-10-lecture.html#poisson-regression"><i class="fa fa-check"></i><b>19.4</b> Poisson regression</a></li>
+<li class="chapter" data-level="19.3" data-path="week-10-lab.html"><a href="week-10-lab.html#logistic-regression-practice"><i class="fa fa-check"></i><b>19.3</b> Logistic regression practice</a></li>
+<li class="chapter" data-level="19.4" data-path="week-10-lab.html"><a href="week-10-lab.html#poisson-regression-practice"><i class="fa fa-check"></i><b>19.4</b> Poisson regression practice</a></li>
 <li class="chapter" data-level="19.5" data-path="week-10-lab.html"><a href="week-10-lab.html#getting-a-feel-for-deviance"><i class="fa fa-check"></i><b>19.5</b> Getting a feel for Deviance</a></li>
 <li class="chapter" data-level="19.6" data-path="week-10-lab.html"><a href="week-10-lab.html#generalized-additive-models"><i class="fa fa-check"></i><b>19.6</b> Generalized Additive Models</a></li>
 </ul></li>
@@ -505,17 +505,17 @@ Y = \frac{1}{\sigma^{2}}\sum_{i=1}^{n}{(X_{i}-\mu)^{2}} \sim \chi_{n}^{2}
 <ol style="list-style-type: decimal">
 <li>If <span class="math inline">\(X \sim N(0,1)\)</span>, then <span class="math inline">\(X^{2} \sim \chi_{1}^{2}\)</span>. In other words, the square of a standard normal random variable is a chi-squared random variable.</li>
 </ol>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="week-4-lecture.html#cb237-1" aria-hidden="true" tabindex="-1"></a>chisqhist<span class="ot">&lt;-</span><span class="fu">hist</span>((<span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>))<span class="sc">^</span><span class="dv">2</span>,<span class="at">freq=</span>F,<span class="at">breaks=</span><span class="dv">30</span>,<span class="at">main=</span><span class="st">&quot;Chi-squared with df=1&quot;</span>)</span>
-<span id="cb237-2"><a href="week-4-lecture.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(chisqhist<span class="sc">$</span>mids,<span class="fu">dchisq</span>(chisqhist<span class="sc">$</span>mids,<span class="dv">1</span>),<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="week-4-lecture.html#cb235-1" aria-hidden="true" tabindex="-1"></a>chisqhist<span class="ot">&lt;-</span><span class="fu">hist</span>((<span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>))<span class="sc">^</span><span class="dv">2</span>,<span class="at">freq=</span>F,<span class="at">breaks=</span><span class="dv">30</span>,<span class="at">main=</span><span class="st">&quot;Chi-squared with df=1&quot;</span>)</span>
+<span id="cb235-2"><a href="week-4-lecture.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(chisqhist<span class="sc">$</span>mids,<span class="fu">dchisq</span>(chisqhist<span class="sc">$</span>mids,<span class="dv">1</span>),<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Week-4-lecture_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>If <span class="math inline">\(X_{p1},X_{p2},X_{p3}... \sim \chi^{2}\)</span> distribution, then <span class="math inline">\(\sum_{i}{X_{pi}} \sim \chi^{2}_{\sum{p_{i}}}\)</span>. In other words, independent chi-squared random variables sum to a chi-squared random variable, and the degrees of freedom also add.</li>
 </ol>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="week-4-lecture.html#cb238-1" aria-hidden="true" tabindex="-1"></a>df1<span class="ot">&lt;-</span><span class="dv">5</span> </span>
-<span id="cb238-2"><a href="week-4-lecture.html#cb238-2" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">&lt;-</span><span class="dv">2</span></span>
-<span id="cb238-3"><a href="week-4-lecture.html#cb238-3" aria-hidden="true" tabindex="-1"></a>df3<span class="ot">&lt;-</span><span class="dv">3</span></span>
-<span id="cb238-4"><a href="week-4-lecture.html#cb238-4" aria-hidden="true" tabindex="-1"></a>chisqhist2<span class="ot">&lt;-</span><span class="fu">hist</span>(<span class="fu">rchisq</span>(<span class="dv">1000</span>,df1)<span class="sc">+</span><span class="fu">rchisq</span>(<span class="dv">1000</span>,df2)<span class="sc">+</span><span class="fu">rchisq</span>(<span class="dv">1000</span>,df3),<span class="at">freq=</span>F,<span class="at">breaks=</span><span class="dv">30</span>,<span class="at">main=</span><span class="st">&quot;Sum of chi-squared distributions&quot;</span>)</span>
-<span id="cb238-5"><a href="week-4-lecture.html#cb238-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(chisqhist2<span class="sc">$</span>mids,<span class="fu">dchisq</span>(chisqhist2<span class="sc">$</span>mids,df1<span class="sc">+</span>df2<span class="sc">+</span>df3),<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="week-4-lecture.html#cb236-1" aria-hidden="true" tabindex="-1"></a>df1<span class="ot">&lt;-</span><span class="dv">5</span> </span>
+<span id="cb236-2"><a href="week-4-lecture.html#cb236-2" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">&lt;-</span><span class="dv">2</span></span>
+<span id="cb236-3"><a href="week-4-lecture.html#cb236-3" aria-hidden="true" tabindex="-1"></a>df3<span class="ot">&lt;-</span><span class="dv">3</span></span>
+<span id="cb236-4"><a href="week-4-lecture.html#cb236-4" aria-hidden="true" tabindex="-1"></a>chisqhist2<span class="ot">&lt;-</span><span class="fu">hist</span>(<span class="fu">rchisq</span>(<span class="dv">1000</span>,df1)<span class="sc">+</span><span class="fu">rchisq</span>(<span class="dv">1000</span>,df2)<span class="sc">+</span><span class="fu">rchisq</span>(<span class="dv">1000</span>,df3),<span class="at">freq=</span>F,<span class="at">breaks=</span><span class="dv">30</span>,<span class="at">main=</span><span class="st">&quot;Sum of chi-squared distributions&quot;</span>)</span>
+<span id="cb236-5"><a href="week-4-lecture.html#cb236-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(chisqhist2<span class="sc">$</span>mids,<span class="fu">dchisq</span>(chisqhist2<span class="sc">$</span>mids,df1<span class="sc">+</span>df2<span class="sc">+</span>df3),<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Week-4-lecture_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>While above I used the symbol “n” to designate the parameter of the <span class="math inline">\(\chi^{2}\)</span> distribution because it is intuitive how that parameter is equal to the number of (squared) random variables are being summed, here I will switch to the letter <span class="math inline">\(\nu\)</span>, which is slightly more traditional. The chi-squared distribution has an ugly pdf, which I include here for completeness.</p>
 <p><span class="math display">\[ 

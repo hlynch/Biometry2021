@@ -330,9 +330,9 @@ lines(Temp,fitted(challenger.fit2),col="blue")
 
 <img src="Week-10-lab_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-The $r^{2}$ of the weighted model is higher, but the fit still has the same problems as the original fit. To properly solve this problem, we need to do logistic regression, which accurately captures the non-linear form of the relationahip and the nature of the residuals.
+The $R^{2}$ of the weighted model is higher, but the fit still has the same problems as the original fit. To properly solve this problem, we need to do logistic regression, which accurately captures the non-linear form of the relationahip and the nature of the residuals.
 
-Logistic regression
+Logistic regression practice
 -------------
 
 
@@ -383,7 +383,16 @@ newdata<-data.frame(Temp=seq(30,85))
 confidence.bands<-predict.glm(challenger.fit3,newdata,se.fit=TRUE)
 ```
 
-The default is for predict.glm to give you the fit and s.e. on the scale of the predictor, so you need to use the inverse logit function to extract the fit and s.e. on the scale of the probabilities.
+**Important note**: If we were modelling data on the number of O-rings failed as a Binomial distribution rather than the existence of failed O-rings as a Bernoulli, we would have to pass the data to glm() in a slightly different way. In particular, we would have to create a two-column object, where the first column is the number of O-rings failed, and the second column is the number of O-rings that did not fail. The glm() call would look something like:
+
+
+```r
+challenger.fit3<-glm(cbind(O.rings.failed, 6-O.rings.failed)~Temp, family="binomial")
+```
+
+There is a bit more information on the syntax [here](https://data.princeton.edu/r/glms).
+
+OK, back to the task at hand...The default is for predict.glm to give you the fit and s.e. on the scale of the predictor, so you need to use the inverse logit function to extract the fit and s.e. on the scale of the probabilities.
 
 
 ```r
@@ -395,7 +404,7 @@ lines(newdata[,1],inv.logit(confidence.bands$fit+1.96*confidence.bands$se.fit),c
 lines(newdata[,1],inv.logit(confidence.bands$fit-1.96*confidence.bands$se.fit),col="purple",lwd=2,lty=2)
 ```
 
-<img src="Week-10-lab_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="Week-10-lab_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 If you look at the help file for predict.glm, you will see that the only option is a confidence interval on the model (a 'confidence' interval). There is no way to generate a prediction interval for GLMs generally speaking. **<span style="color: green;">Checkpoint #5: How would you construct a prediction interval for a binary value?</span>**<span style="color: white;">You cannot, it doesn't make sense, the value is either 0 or 1.</span>
 
@@ -425,7 +434,7 @@ challenger.fit4<-glm(O.ring.failure~1,family=binomial)
 
 The null deviance is that with only an intercept. The statistical significance of the model can be assessed by comparing the deviance with the parameters vs. the model with only an intercept.
 
-Poisson regression
+Poisson regression practice
 ---------------
 
 Since we have the data loaded already, we will use the challenger o-ring data to illustrate how a Poisson model is fit, even though a Poisson model would be inappropriate for the o-ring data. **<span style="color: green;">Checkpoint #6: Why is a Poisson model inappropriate?</span>**
@@ -470,7 +479,7 @@ lines(newdata[,1],inv.logit(confidence.bands$fit+1.96*confidence.bands$se.fit),c
 lines(newdata[,1],inv.logit(confidence.bands$fit-1.96*confidence.bands$se.fit),col="orange",lwd=2,lty=3)
 ```
 
-<img src="Week-10-lab_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="Week-10-lab_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 We can see that the Poisson model has no inflection point and therefore its predictions would not be bounded by (0,1).
 
@@ -497,7 +506,7 @@ dev_diff
 ```
 
 ```
-## [1] 1.914508
+## [1] 0.5254816
 ```
 
 Notice that even though the covariate that we added is just noise, it still decreases the deviance.
@@ -523,35 +532,12 @@ for (i in 1:1000){
   
   dev_diff <- c(dev_diff, dev_diff_rand)
 }
-```
-
-```
-## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-```
-
-```
-## Warning: glm.fit: algorithm did not converge
-```
-
-```
-## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-```
-
-```
-## Warning: glm.fit: algorithm did not converge
-```
-
-```
-## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-```
-
-```r
 # plot the distribution and add a line for a chi-square with df=1 
 hist(dev_diff, xlab="Deviance Difference", main="Expected distribution", freq=FALSE,breaks=30)
 lines(seq(0,20,0.1), dchisq(seq(0,20,0.1),df=1), col="red",lwd=2)
 ```
 
-<img src="Week-10-lab_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="Week-10-lab_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 Sure enough, as expected, the difference in deviance we get by adding a covariate that has *no* association with the response is a $\chi^{2}_{1}$ distributed variable. Therefore, to justify adding a covariate to a model, we want to see that the decrease in deviance is much larger than this. Specifically, we want to see that the decrease in deviance is so unlikely to have arisen from a $\chi^{2}_{1}$ distribution that we reject the null hypothesis that the two models are equivalent. (In other words, by rejecting the null hypothesis, we say that the larger model is, in fact, the better model and the additional covariate is worth keeping.)
 
@@ -578,7 +564,7 @@ First we histogram the ozone data
 hist(airquality$Ozone)
 ```
 
-<img src="Week-10-lab_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="Week-10-lab_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 Clearly the ozone data are not normal. It turns out the log transformation gets the ozone data to something more 'normal-like'. (How would we compare different transformations of the data? Try and do a ks.test comparing various transformed datasets against the normal.)
 
@@ -662,7 +648,7 @@ par(mfrow=c(3,1))
 plot(air.gam,se=T)
 ```
 
-<img src="Week-10-lab_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="Week-10-lab_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 The default is that the smoothing splines have df=4, but we can control the amount of smoothing by changing the number of d.o.f.
 
@@ -672,7 +658,7 @@ air.gam<-gam(log(Ozone)~s(Solar.R,df=20)+s(Wind)+s(Temp),data=airquality)
 plot(air.gam,se=T)
 ```
 
-<img src="Week-10-lab_files/figure-html/unnamed-chunk-18-1.png" width="672" /><img src="Week-10-lab_files/figure-html/unnamed-chunk-18-2.png" width="672" /><img src="Week-10-lab_files/figure-html/unnamed-chunk-18-3.png" width="672" />
+<img src="Week-10-lab_files/figure-html/unnamed-chunk-19-1.png" width="672" /><img src="Week-10-lab_files/figure-html/unnamed-chunk-19-2.png" width="672" /><img src="Week-10-lab_files/figure-html/unnamed-chunk-19-3.png" width="672" />
 
 That makes the curve for Solar.R much more curvy.
 

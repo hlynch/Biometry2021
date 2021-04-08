@@ -223,9 +223,9 @@ lines(Temp,fitted(challenger.fit1),col="red")
 lines(Temp,fitted(challenger.fit2),col="blue")
 ```
 
-The $r^{2}$ of the weighted model is higher, but the fit still has the same problems as the original fit. To properly solve this problem, we need to do logistic regression, which accurately captures the non-linear form of the relationahip and the nature of the residuals.
+The $R^{2}$ of the weighted model is higher, but the fit still has the same problems as the original fit. To properly solve this problem, we need to do logistic regression, which accurately captures the non-linear form of the relationahip and the nature of the residuals.
 
-Logistic regression
+Logistic regression practice
 -------------
 
 ```{r}
@@ -242,7 +242,15 @@ newdata<-data.frame(Temp=seq(30,85))
 confidence.bands<-predict.glm(challenger.fit3,newdata,se.fit=TRUE)
 ```
 
-The default is for predict.glm to give you the fit and s.e. on the scale of the predictor, so you need to use the inverse logit function to extract the fit and s.e. on the scale of the probabilities.
+**Important note**: If we were modelling data on the number of O-rings failed as a Binomial distribution rather than the existence of failed O-rings as a Bernoulli, we would have to pass the data to glm() in a slightly different way. In particular, we would have to create a two-column object, where the first column is the number of O-rings failed, and the second column is the number of O-rings that did not fail. The glm() call would look something like:
+
+```{r,eval=F}
+challenger.fit3<-glm(cbind(O.rings.failed, 6-O.rings.failed)~Temp, family="binomial")
+```
+
+There is a bit more information on the syntax [here](https://data.princeton.edu/r/glms).
+
+OK, back to the task at hand...The default is for predict.glm to give you the fit and s.e. on the scale of the predictor, so you need to use the inverse logit function to extract the fit and s.e. on the scale of the probabilities.
 
 ```{r}
 library(boot)
@@ -269,7 +277,7 @@ challenger.fit4<-glm(O.ring.failure~1,family=binomial)
 
 The null deviance is that with only an intercept. The statistical significance of the model can be assessed by comparing the deviance with the parameters vs. the model with only an intercept.
 
-Poisson regression
+Poisson regression practice
 ---------------
 
 Since we have the data loaded already, we will use the challenger o-ring data to illustrate how a Poisson model is fit, even though a Poisson model would be inappropriate for the o-ring data. **<span style="color: green;">Checkpoint #6: Why is a Poisson model inappropriate?</span>**
