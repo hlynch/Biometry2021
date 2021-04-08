@@ -71,19 +71,19 @@ How do we test our hypothesis? First let's relate the figure back to the equatio
 
 Notice that there is variation at two levels: 1) variation among individuals within a given treatment group, and 2) variation among the three treatment group means. **We can partition the variance into these two components.**
 
-###Variation within treatment group
+\subsection{Variation within treatment group}
 
 Variation among individuals within a treatment group is residual variation. This variation exists because of any number of factors we weren't able to measure.
 
 <img src="Week-11-lecture_files/figure-html/unnamed-chunk-2-1.png" width="576" />
 
-### Variation among treatment group means
+\subsection{Variation among treatment group means}
 
 Variation among treatment means is variation due to the effect of the treatment (if there is an effect) *in addition to the individual variation*.
 
 <img src="Week-11-lecture_files/figure-html/unnamed-chunk-3-1.png" width="576" />
 
-### Comparing variance components
+\subsection{Comparing variance components}
 
 We can relate these two components of variation to one another, and this is our test statistic. Informally (we will get into the mathematical formulas soon) we can write this as:
 
@@ -107,7 +107,8 @@ Let's imagine our data looked slightly different:
 How much variation is there among groups relative to within groups? Without knowing the details yet, do you think there is a significant difference among groups?
 
 
-## Comparing variance components
+Comparing variance components
+------------
 
 **Question: Given that we are using null hypothesis significance testing methods, what do you think the next step is after we estimate the test statistic?**
 
@@ -129,7 +130,8 @@ The F distribution (see Week 5 lecture)
 
 Another way we can phrase the statistical question is to ask whether the differences among group means are significantly different from the differences seen within groups. *In ANOVA, we compare variances in order to compare means.*
 
-## Two ways to estimate variance
+Two ways to estimate variance
+-------------
 
 1) Variation among groups
 
@@ -192,7 +194,8 @@ mean(var.within)
 ## [1] 0.9948506
 ```
 
-## Single-factor ANOVA
+Single-factor ANOVA
+------------
 
 First we will start will the simplest ANOVA type, where we have a single factor (discrete covariate). We will work through an example involving the heights of plants, $Y$, under three different experimental treatments ($i$), low nitrogen (N), ambient N, and high N. We have four replicates in each treatment. We index the heights as $Y_{ij}$, where $i$ is treatment $i = (1, ..., a)$ and $j$ is the individual plant $j = (1, ..., n)$. There will be a lot of variation in plant heights for a million reasons we can't measure. But, we want to partition the variance into 1) the variance due to individual fluctuations ("error"), and 2) the variance due to the treatment (nitrogen level).
 
@@ -473,7 +476,8 @@ The difference between the data points $Y_{ij}$ and the group mean $\mu_i$, $\ep
 </span>
 </details> 
 
-## Fixed effects vs. random effects
+Fixed effects vs. random effects
+------------------
 
 We have so far assumed that factors are fixed effects. **Fixed effects** represent all the states in the system you would ever be interested in. Our null hypothesis for a fixed effects factor is $H_0: \text{all treatment effects, } A_i = 0$ (e.g., the three experimental, pre-planned nitrogen treatments as in our plant example). ANOVA models with only fixed effects are sometimes called Model I ANOVAs.
 
@@ -512,7 +516,8 @@ Again, ANOVA is an omnibus test, so if we get a significant result, we only know
 
 What do we do to find out which group(s) is/are different? This brings us to the subject of "post hoc tests".
 
-##Post-hoc tests
+Post-hoc tests
+---------
 
 To follow up on a significant ANOVA result, we can conduct *post hoc* (or *a posteriori*) tests. These only make sense for fixed effects, because with random effects, the factors belong to the same population, so differences between pairs has no interpretation. 
 
@@ -520,7 +525,7 @@ In general, these are similar to pairwise *t*-tests assuming equal variance whil
 
 There are a huge number of *post hoc* tests: Fishers Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), Dunnett's test, Bonferroni's test, Holm's test, Scheffe's test (see Day and Quinn 1989 in "Additional readings" for descriptions).
 
-### Tukey's HSD
+\subsection{Tukey's HSD}
 
 Tukey's HSD is one of the most common *post hoc* tests. It is very similar to an unpaired two-sample *t*-test assuming equal variances. 
 
