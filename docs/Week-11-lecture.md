@@ -136,12 +136,12 @@ Another way we can phrase the statistical question is to ask whether the differe
 We can calculate the within-group variance as an average of the within group variances from each group. In other words:
 
 $$
-\sigma^2 = \frac{1}{a} (\text{Within-group variance for group }1 +\text{Within-group variance for group }2+...+\text{Within-group variance for group }a)
+\sigma^2 = \frac{1}{a} (\text{Within-grp var grp }1 +\text{Within-grp var for grp }2+...+\text{Within-grp var group }a)
 $$
 This can be re-written as:
 
 $$
-\sigma^2 = \frac{1}{a} \sum_{i = 1}^a \text{Within-group variance in group }i
+\sigma^2 = \frac{1}{a} \sum_{i = 1}^a \text{Within-grp var group }i
 $$
 There is actually a second way we can calculate the within-group variance:
 

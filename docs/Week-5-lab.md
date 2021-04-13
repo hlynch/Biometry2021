@@ -46,13 +46,13 @@ t.test(sample.a,sample.b)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -2.1353, df = 197.76, p-value = 0.03396
+## t = -3.2817, df = 197.65, p-value = 0.00122
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.94243904 -0.03747054
+##  -1.2894776 -0.3214397
 ## sample estimates:
 ## mean of x mean of y 
-## 0.9252846 1.4152394
+## 0.7379467 1.5434054
 ```
 
 Notice that the degrees of freedom need not necessarily be an integer. R assumes unequal variances so we have to use the more complicated formula for the degrees of freedom. (In this situation, the number of degrees of freedom is not very intuitive; however, if you have $s_{A}^{2}=s_{B}^{2}$ and $n_{A}=n_{B}$, then the formula for the d.o.f. simplifies to 2n-2 which is what you would expect. )
@@ -92,13 +92,13 @@ t.test(sample.a,sample.b,alternative="greater")
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -2.1353, df = 197.76, p-value = 0.983
+## t = -3.2817, df = 197.65, p-value = 0.9994
 ## alternative hypothesis: true difference in means is greater than 0
 ## 95 percent confidence interval:
-##  -0.869144       Inf
+##  -1.211074       Inf
 ## sample estimates:
 ## mean of x mean of y 
-## 0.9252846 1.4152394
+## 0.7379467 1.5434054
 ```
 
 ```r
@@ -110,13 +110,13 @@ t.test(sample.a,sample.b,alternative="less")
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -2.1353, df = 197.76, p-value = 0.01698
+## t = -3.2817, df = 197.65, p-value = 0.00061
 ## alternative hypothesis: true difference in means is less than 0
 ## 95 percent confidence interval:
-##        -Inf -0.1107656
+##        -Inf -0.3998432
 ## sample estimates:
 ## mean of x mean of y 
-## 0.9252846 1.4152394
+## 0.7379467 1.5434054
 ```
 
 Try both of these options and see how the p-value and the confidence intervals change. Make sure you understand why they make sense. Remember, if you are going to use a one-tailed test, you should be prepared to accept that a large difference opposite to what was expected is pure random chance.
@@ -147,13 +147,13 @@ t.test(sample.a,sample.b,paired=T)
 ## 	Paired t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -1.9389, df = 99, p-value = 0.05537
+## t = -1.5356, df = 99, p-value = 0.1278
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.595895620  0.006888795
+##  -0.48534638  0.06185215
 ## sample estimates:
 ## mean of the differences 
-##              -0.2945034
+##              -0.2117471
 ```
 
 Compare this with
@@ -168,13 +168,13 @@ t.test(sample.a,sample.b,paired=F)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -1.1196, df = 197.94, p-value = 0.2642
+## t = -0.91944, df = 194.34, p-value = 0.359
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.8132178  0.2242110
+##  -0.6659556  0.2424613
 ## sample estimates:
 ## mean of x mean of y 
-##  1.003213  1.297717
+##  1.022340  1.234087
 ```
 
 which is the same as 
@@ -189,13 +189,13 @@ t.test(sample.a,sample.b)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -1.1196, df = 197.94, p-value = 0.2642
+## t = -0.91944, df = 194.34, p-value = 0.359
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.8132178  0.2242110
+##  -0.6659556  0.2424613
 ## sample estimates:
 ## mean of x mean of y 
-##  1.003213  1.297717
+##  1.022340  1.234087
 ```
 
 since the default is to assume unpaired samples.
@@ -209,7 +209,7 @@ mean(z)
 ```
 
 ```
-## [1] -0.2945034
+## [1] -0.2117471
 ```
 
 ```r
@@ -217,7 +217,7 @@ var(z)
 ```
 
 ```
-## [1] 2.307203
+## [1] 1.901304
 ```
 
 ```r
@@ -225,7 +225,7 @@ var(sample.a)+var(sample.b)-2*cov(sample.a,sample.b)
 ```
 
 ```
-## [1] 2.307203
+## [1] 1.901304
 ```
 
 Spend some time going back and experimenting with different sets of random variables. In particular, change the covariances (makign sure that the covariance matrix is symmetric and the variances positive). Make sure you understand why the t-test results change as you alter the data. **<span style="color: green;">Checkpoint #3: What happens to the t-test results when you make the correlation weak?</span>**
@@ -314,7 +314,7 @@ F.ratio
 ```
 
 ```
-## [1] 2.327592
+## [1] 1.726709
 ```
 
 Note that we didn't check that var.A was actually bigger than var.B. Because we are only interested in a one-tailed test, we want var.A in the numerator and we will compare that to the right-hand side of the F-distribution.
@@ -340,7 +340,7 @@ We see that the F-ratio for our data is greater than the critical value for the 
 ```
 
 ```
-## [1] 1.793451e-05
+## [1] 0.003529844
 ```
 
 and we see that it is small (<0.05).
@@ -359,13 +359,13 @@ var.test(sample.a,sample.b)
 ## 	F test to compare two variances
 ## 
 ## data:  sample.a and sample.b
-## F = 2.3276, num df = 99, denom df = 99, p-value = 3.587e-05
+## F = 1.7267, num df = 99, denom df = 99, p-value = 0.00706
 ## alternative hypothesis: true ratio of variances is not equal to 1
 ## 95 percent confidence interval:
-##  1.566101 3.459346
+##  1.161802 2.566294
 ## sample estimates:
 ## ratio of variances 
-##           2.327592
+##           1.726709
 ```
 
 The output of var.test includes 7 quantities - make sure you can calculate each and every one of these quantities.
@@ -380,7 +380,7 @@ qf(0.025,df1=99,df2=99)*F.ratio
 ```
 
 ```
-## [1] 1.566101
+## [1] 1.161802
 ```
 
 ```r
@@ -388,7 +388,7 @@ qf(0.975,df1=99,df2=99)*F.ratio
 ```
 
 ```
-## [1] 3.459346
+## [1] 2.566294
 ```
 
 Comparing two proportions
@@ -606,7 +606,7 @@ sum(as.numeric((0.02<=UL)&(0.02>=LL)))/1000 #proportion of times the CI include 
 ```
 
 ```
-## [1] 0.864
+## [1] 0.866
 ```
 
 We see that the CIs are actually too narrow! The Wald test is commonly used but as we have demonstrated, it is not very good in practice. R and its packages make it easy to get better CIs for a binomial proportion and in real analysis, you should use these more sophisticated methods.
