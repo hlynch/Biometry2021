@@ -46,13 +46,13 @@ t.test(sample.a,sample.b)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = 0.25217, df = 194.95, p-value = 0.8012
+## t = -2.1353, df = 197.76, p-value = 0.03396
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.4511631  0.5834492
+##  -0.94243904 -0.03747054
 ## sample estimates:
 ## mean of x mean of y 
-##  1.210811  1.144668
+## 0.9252846 1.4152394
 ```
 
 Notice that the degrees of freedom need not necessarily be an integer. R assumes unequal variances so we have to use the more complicated formula for the degrees of freedom. (In this situation, the number of degrees of freedom is not very intuitive; however, if you have $s_{A}^{2}=s_{B}^{2}$ and $n_{A}=n_{B}$, then the formula for the d.o.f. simplifies to 2n-2 which is what you would expect. )
@@ -92,13 +92,13 @@ t.test(sample.a,sample.b,alternative="greater")
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = 0.25217, df = 194.95, p-value = 0.4006
+## t = -2.1353, df = 197.76, p-value = 0.983
 ## alternative hypothesis: true difference in means is greater than 0
 ## 95 percent confidence interval:
-##  -0.3673589        Inf
+##  -0.869144       Inf
 ## sample estimates:
 ## mean of x mean of y 
-##  1.210811  1.144668
+## 0.9252846 1.4152394
 ```
 
 ```r
@@ -110,13 +110,13 @@ t.test(sample.a,sample.b,alternative="less")
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = 0.25217, df = 194.95, p-value = 0.5994
+## t = -2.1353, df = 197.76, p-value = 0.01698
 ## alternative hypothesis: true difference in means is less than 0
 ## 95 percent confidence interval:
-##      -Inf 0.499645
+##        -Inf -0.1107656
 ## sample estimates:
 ## mean of x mean of y 
-##  1.210811  1.144668
+## 0.9252846 1.4152394
 ```
 
 Try both of these options and see how the p-value and the confidence intervals change. Make sure you understand why they make sense. Remember, if you are going to use a one-tailed test, you should be prepared to accept that a large difference opposite to what was expected is pure random chance.
@@ -147,13 +147,13 @@ t.test(sample.a,sample.b,paired=T)
 ## 	Paired t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -2.1591, df = 99, p-value = 0.03326
+## t = -1.9389, df = 99, p-value = 0.05537
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.63386193 -0.02675442
+##  -0.595895620  0.006888795
 ## sample estimates:
 ## mean of the differences 
-##              -0.3303082
+##              -0.2945034
 ```
 
 Compare this with
@@ -168,13 +168,13 @@ t.test(sample.a,sample.b,paired=F)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -1.3451, df = 197.11, p-value = 0.1801
+## t = -1.1196, df = 197.94, p-value = 0.2642
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.8145854  0.1539690
+##  -0.8132178  0.2242110
 ## sample estimates:
 ## mean of x mean of y 
-## 0.8501533 1.1804615
+##  1.003213  1.297717
 ```
 
 which is the same as 
@@ -189,13 +189,13 @@ t.test(sample.a,sample.b)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -1.3451, df = 197.11, p-value = 0.1801
+## t = -1.1196, df = 197.94, p-value = 0.2642
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.8145854  0.1539690
+##  -0.8132178  0.2242110
 ## sample estimates:
 ## mean of x mean of y 
-## 0.8501533 1.1804615
+##  1.003213  1.297717
 ```
 
 since the default is to assume unpaired samples.
@@ -209,7 +209,7 @@ mean(z)
 ```
 
 ```
-## [1] -0.3303082
+## [1] -0.2945034
 ```
 
 ```r
@@ -217,7 +217,7 @@ var(z)
 ```
 
 ```
-## [1] 2.340415
+## [1] 2.307203
 ```
 
 ```r
@@ -225,7 +225,7 @@ var(sample.a)+var(sample.b)-2*cov(sample.a,sample.b)
 ```
 
 ```
-## [1] 2.340415
+## [1] 2.307203
 ```
 
 Spend some time going back and experimenting with different sets of random variables. In particular, change the covariances (makign sure that the covariance matrix is symmetric and the variances positive). Make sure you understand why the t-test results change as you alter the data. **<span style="color: green;">Checkpoint #3: What happens to the t-test results when you make the correlation weak?</span>**
@@ -314,7 +314,7 @@ F.ratio
 ```
 
 ```
-## [1] 1.476715
+## [1] 2.327592
 ```
 
 Note that we didn't check that var.A was actually bigger than var.B. Because we are only interested in a one-tailed test, we want var.A in the numerator and we will compare that to the right-hand side of the F-distribution.
@@ -340,7 +340,7 @@ We see that the F-ratio for our data is greater than the critical value for the 
 ```
 
 ```
-## [1] 0.02690379
+## [1] 1.793451e-05
 ```
 
 and we see that it is small (<0.05).
@@ -359,13 +359,13 @@ var.test(sample.a,sample.b)
 ## 	F test to compare two variances
 ## 
 ## data:  sample.a and sample.b
-## F = 1.4767, num df = 99, denom df = 99, p-value = 0.05381
+## F = 2.3276, num df = 99, denom df = 99, p-value = 3.587e-05
 ## alternative hypothesis: true ratio of variances is not equal to 1
 ## 95 percent confidence interval:
-##  0.9935954 2.1947438
+##  1.566101 3.459346
 ## sample estimates:
 ## ratio of variances 
-##           1.476715
+##           2.327592
 ```
 
 The output of var.test includes 7 quantities - make sure you can calculate each and every one of these quantities.
@@ -380,7 +380,7 @@ qf(0.025,df1=99,df2=99)*F.ratio
 ```
 
 ```
-## [1] 0.9935954
+## [1] 1.566101
 ```
 
 ```r
@@ -388,7 +388,7 @@ qf(0.975,df1=99,df2=99)*F.ratio
 ```
 
 ```
-## [1] 2.194744
+## [1] 3.459346
 ```
 
 Comparing two proportions
@@ -433,7 +433,7 @@ heads
 ```
 
 ```
-## [1] 49
+## [1] 53
 ```
 
 Now we will use R's function for the proportion test
@@ -448,13 +448,13 @@ prop.test(heads,100) #continuity correction true by default
 ## 	1-sample proportions test with continuity correction
 ## 
 ## data:  heads out of 100, null probability 0.5
-## X-squared = 0.01, df = 1, p-value = 0.9203
+## X-squared = 0.25, df = 1, p-value = 0.6171
 ## alternative hypothesis: true p is not equal to 0.5
 ## 95 percent confidence interval:
-##  0.3894281 0.5913488
+##  0.4280225 0.6296465
 ## sample estimates:
 ##    p 
-## 0.49
+## 0.53
 ```
 
 The continuity correction is used because we are approximating a discrete distribution (the binomial) with its normal approximation. While generally recommended, it rarely makes a large difference and for transparency I suggest we turn it off.
@@ -469,13 +469,13 @@ prop.test(heads,100,correct=FALSE)
 ## 	1-sample proportions test without continuity correction
 ## 
 ## data:  heads out of 100, null probability 0.5
-## X-squared = 0.04, df = 1, p-value = 0.8415
+## X-squared = 0.36, df = 1, p-value = 0.5485
 ## alternative hypothesis: true p is not equal to 0.5
 ## 95 percent confidence interval:
-##  0.3942200 0.5865199
+##  0.4328886 0.6248918
 ## sample estimates:
 ##    p 
-## 0.49
+## 0.53
 ```
 
 To make sure we understand this, let's look at the help file for prop.test
@@ -516,7 +516,7 @@ test.statistic
 ```
 
 ```
-## [1] 0.04
+## [1] 0.36
 ```
 
 and the p-value is given by
@@ -527,7 +527,7 @@ and the p-value is given by
 ```
 
 ```
-## [1] 0.8414806
+## [1] 0.5485062
 ```
 
 Notice that because $X^{2}$ is always positive, the test is a one-tailed test ("extreme" values of this test statistic are always large and **positive**). We could get the same result comparing the original (non-squared) test statistic against the Standard Normal, as long as you make sure to do the two-tailed test ("extreme" for X includes large and positive **and** large and negative). 
@@ -538,7 +538,7 @@ Notice that because $X^{2}$ is always positive, the test is a one-tailed test ("
 ```
 
 ```
-## [1] 0.8414806
+## [1] 0.5485062
 ```
 
 - Notice in the helpfile that R will return a clipped version of the confidence interval, so the confidence interval is bounded [0,1]. 
@@ -555,13 +555,13 @@ binom.test(heads,100)
 ## 	Exact binomial test
 ## 
 ## data:  heads and 100
-## number of successes = 49, number of trials = 100, p-value = 0.9204
+## number of successes = 53, number of trials = 100, p-value = 0.6173
 ## alternative hypothesis: true probability of success is not equal to 0.5
 ## 95 percent confidence interval:
-##  0.3886442 0.5919637
+##  0.4275815 0.6305948
 ## sample estimates:
 ## probability of success 
-##                   0.49
+##                   0.53
 ```
 
 One of the caveats in using the Wald method for binomial proportion is that it can give unrealistic values for the CIs when the underlying probability is very close to either 0 or 1 (especially if the sample size is small).
@@ -606,7 +606,7 @@ sum(as.numeric((0.02<=UL)&(0.02>=LL)))/1000 #proportion of times the CI include 
 ```
 
 ```
-## [1] 0.877
+## [1] 0.864
 ```
 
 We see that the CIs are actually too narrow! The Wald test is commonly used but as we have demonstrated, it is not very good in practice. R and its packages make it easy to get better CIs for a binomial proportion and in real analysis, you should use these more sophisticated methods.
