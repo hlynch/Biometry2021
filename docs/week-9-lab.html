@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-08" />
+<meta name="date" content="2021-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -406,27 +406,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="week-9-lab" class="section level1" number="17">
 <h1><span class="header-section-number">17</span> Week 9 Lab</h1>
 <p>We will need 4 packages for this week’s lab, so we might as well load them all in now.</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="week-9-lab.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb498-2"><a href="week-9-lab.html#cb498-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="week-9-lab.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb500-2"><a href="week-9-lab.html#cb500-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
 <pre><code>## Loading required package: carData</code></pre>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="week-9-lab.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="week-9-lab.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;boot&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:car&#39;:
 ## 
 ##     logit</code></pre>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="week-9-lab.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(smatr)</span></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="week-9-lab.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(smatr)</span></code></pre></div>
 <div id="correlation" class="section level2" number="17.1">
 <h2><span class="header-section-number">17.1</span> Correlation</h2>
 <p>We will first go over how to test for correlation between two variables. We will use a dataset of July mean temperatures at an Alaskan weather station (Prudhoe Bay) over a period of 12 years.</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="week-9-lab.html#cb504-1" aria-hidden="true" tabindex="-1"></a>Temperature<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">5.1</span>,<span class="fl">5.6</span>,<span class="fl">5.7</span>,<span class="fl">6.6</span>,<span class="fl">6.7</span>)</span>
-<span id="cb504-2"><a href="week-9-lab.html#cb504-2" aria-hidden="true" tabindex="-1"></a>Year<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1979</span>,<span class="dv">1982</span>,<span class="dv">1985</span>,<span class="dv">1988</span>,<span class="dv">1991</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="week-9-lab.html#cb506-1" aria-hidden="true" tabindex="-1"></a>Temperature<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">5.1</span>,<span class="fl">5.6</span>,<span class="fl">5.7</span>,<span class="fl">6.6</span>,<span class="fl">6.7</span>)</span>
+<span id="cb506-2"><a href="week-9-lab.html#cb506-2" aria-hidden="true" tabindex="-1"></a>Year<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1979</span>,<span class="dv">1982</span>,<span class="dv">1985</span>,<span class="dv">1988</span>,<span class="dv">1991</span>)</span></code></pre></div>
 <p>First we will plot the data to get a sense for whether the correlation coefficient is likely to be positive or negative.</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="week-9-lab.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Year,Temperature,<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="week-9-lab.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Year,Temperature,<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <p><img src="Week-9-lab_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>We can test the correlation between Temperature and Year using the R function ‘cor.test’</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="week-9-lab.html#cb506-1" aria-hidden="true" tabindex="-1"></a>ans<span class="ot">&lt;-</span><span class="fu">cor.test</span>(Temperature,Year)</span>
-<span id="cb506-2"><a href="week-9-lab.html#cb506-2" aria-hidden="true" tabindex="-1"></a>ans</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="week-9-lab.html#cb508-1" aria-hidden="true" tabindex="-1"></a>ans<span class="ot">&lt;-</span><span class="fu">cor.test</span>(Temperature,Year)</span>
+<span id="cb508-2"><a href="week-9-lab.html#cb508-2" aria-hidden="true" tabindex="-1"></a>ans</span></code></pre></div>
 <pre><code>## 
 ## 	Pearson&#39;s product-moment correlation
 ## 
@@ -447,34 +447,34 @@ How do we get this? Remember:</p>
 t_{s} = r\sqrt{\frac{n-2}{1-r^{2}}}
 \]</span></p>
 <p>We can calculate this by pulling out various elements of the variable ‘ans.’</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="week-9-lab.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ans)</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="week-9-lab.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ans)</span></code></pre></div>
 <pre><code>## [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;estimate&quot;    &quot;null.value&quot; 
 ## [6] &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;   &quot;conf.int&quot;</code></pre>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="week-9-lab.html#cb510-1" aria-hidden="true" tabindex="-1"></a>r<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(ans<span class="sc">$</span>estimate) <span class="co">#as.numeric supresses labels</span></span>
-<span id="cb510-2"><a href="week-9-lab.html#cb510-2" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(ans<span class="sc">$</span>parameter)</span>
-<span id="cb510-3"><a href="week-9-lab.html#cb510-3" aria-hidden="true" tabindex="-1"></a>r<span class="sc">*</span><span class="fu">sqrt</span>(df<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>(r<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="week-9-lab.html#cb512-1" aria-hidden="true" tabindex="-1"></a>r<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(ans<span class="sc">$</span>estimate) <span class="co">#as.numeric supresses labels</span></span>
+<span id="cb512-2"><a href="week-9-lab.html#cb512-2" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(ans<span class="sc">$</span>parameter)</span>
+<span id="cb512-3"><a href="week-9-lab.html#cb512-3" aria-hidden="true" tabindex="-1"></a>r<span class="sc">*</span><span class="fu">sqrt</span>(df<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>(r<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
 <pre><code>## [1] 6.429911</code></pre>
 <p>This gives us the same as</p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="week-9-lab.html#cb512-1" aria-hidden="true" tabindex="-1"></a>ans<span class="sc">$</span>statistic</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="week-9-lab.html#cb514-1" aria-hidden="true" tabindex="-1"></a>ans<span class="sc">$</span>statistic</span></code></pre></div>
 <pre><code>##        t 
 ## 6.429911</code></pre>
 <p>Part 3:
 Why is df=3? For a correlation coefficient, you have n-2 degrees of freedom - you lose one degree of freedom for the mean of each variable.</p>
 <p>Part 4:
 How do we get p-value = 0.007626? First, lets start with a plot of the t-distribution with three d.o.f.</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="week-9-lab.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">7</span>,<span class="dv">7</span>,<span class="fl">0.01</span>),<span class="fu">dt</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">7</span>,<span class="dv">7</span>,<span class="fl">0.01</span>),<span class="at">df=</span><span class="dv">3</span>),<span class="at">typ=</span><span class="st">&quot;l&quot;</span>,<span class="at">col=</span><span class="st">&quot;purple&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb514-2"><a href="week-9-lab.html#cb514-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">6.4299</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="week-9-lab.html#cb516-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">7</span>,<span class="dv">7</span>,<span class="fl">0.01</span>),<span class="fu">dt</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">7</span>,<span class="dv">7</span>,<span class="fl">0.01</span>),<span class="at">df=</span><span class="dv">3</span>),<span class="at">typ=</span><span class="st">&quot;l&quot;</span>,<span class="at">col=</span><span class="st">&quot;purple&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb516-2"><a href="week-9-lab.html#cb516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">6.4299</span>)</span></code></pre></div>
 <p><img src="Week-9-lab_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>We can ask P(t&gt;6.4299)=1-P(t&lt;6.4299) by</p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="week-9-lab.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pt</span>(<span class="fl">6.4299</span>,<span class="at">df=</span><span class="dv">3</span>,<span class="at">lower.tail=</span>F)<span class="sc">*</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="week-9-lab.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pt</span>(<span class="fl">6.4299</span>,<span class="at">df=</span><span class="dv">3</span>,<span class="at">lower.tail=</span>F)<span class="sc">*</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 0.007625665</code></pre>
 <p>Why multiple by 2? Because we want a two-tailed test, so we want to consider correlations larger in magnitude that are either positive or negative.</p>
 <p>Part 5: 95 percent confidence interval (0.5625553,0.9978118).</p>
 <p><span class="math display">\[
 z=\frac{1}{2}ln(\frac{1+r}{1-r})=arctanh(r)
 \]</span></p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="week-9-lab.html#cb517-1" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">log</span>((<span class="dv">1</span><span class="sc">+</span>r)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>r))</span>
-<span id="cb517-2"><a href="week-9-lab.html#cb517-2" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="week-9-lab.html#cb519-1" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">log</span>((<span class="dv">1</span><span class="sc">+</span>r)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>r))</span>
+<span id="cb519-2"><a href="week-9-lab.html#cb519-2" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
 <pre><code>## [1] 2.022468</code></pre>
 <p><span class="math display">\[
 P(z-\frac{t_{[1-\alpha/2](\infty)}}{\sqrt{n-3}}\leq arctanh(\rho) \leq z+\frac{t_{[1-\alpha/2](\infty)}}{\sqrt{n-3}})=1-\alpha
@@ -482,20 +482,20 @@ P(z-\frac{t_{[1-\alpha/2](\infty)}}{\sqrt{n-3}}\leq arctanh(\rho) \leq z+\frac{t
 <p><span class="math display">\[
 P(tanh(z-\frac{t_{[1-\alpha/2](\infty)}}{\sqrt{n-3}})\leq \rho \leq tanh(z+\frac{t_{[1-\alpha/2](\infty)}}{\sqrt{n-3}}))=1-\alpha
 \]</span></p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="week-9-lab.html#cb519-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">5</span></span>
-<span id="cb519-2"><a href="week-9-lab.html#cb519-2" aria-hidden="true" tabindex="-1"></a>LL.z<span class="ot">&lt;-</span>z<span class="sc">-</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(n<span class="dv">-3</span>))<span class="sc">*</span><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
-<span id="cb519-3"><a href="week-9-lab.html#cb519-3" aria-hidden="true" tabindex="-1"></a>LL.r<span class="ot">&lt;-</span><span class="fu">tanh</span>(LL.z)</span>
-<span id="cb519-4"><a href="week-9-lab.html#cb519-4" aria-hidden="true" tabindex="-1"></a>LL.r</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="week-9-lab.html#cb521-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">5</span></span>
+<span id="cb521-2"><a href="week-9-lab.html#cb521-2" aria-hidden="true" tabindex="-1"></a>LL.z<span class="ot">&lt;-</span>z<span class="sc">-</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(n<span class="dv">-3</span>))<span class="sc">*</span><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb521-3"><a href="week-9-lab.html#cb521-3" aria-hidden="true" tabindex="-1"></a>LL.r<span class="ot">&lt;-</span><span class="fu">tanh</span>(LL.z)</span>
+<span id="cb521-4"><a href="week-9-lab.html#cb521-4" aria-hidden="true" tabindex="-1"></a>LL.r</span></code></pre></div>
 <pre><code>## [1] 0.5625553</code></pre>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="week-9-lab.html#cb521-1" aria-hidden="true" tabindex="-1"></a>UL.z<span class="ot">&lt;-</span>z<span class="sc">+</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(n<span class="dv">-3</span>))<span class="sc">*</span><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
-<span id="cb521-2"><a href="week-9-lab.html#cb521-2" aria-hidden="true" tabindex="-1"></a>UL.r<span class="ot">&lt;-</span><span class="fu">tanh</span>(UL.z)</span>
-<span id="cb521-3"><a href="week-9-lab.html#cb521-3" aria-hidden="true" tabindex="-1"></a>UL.r</span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="week-9-lab.html#cb523-1" aria-hidden="true" tabindex="-1"></a>UL.z<span class="ot">&lt;-</span>z<span class="sc">+</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(n<span class="dv">-3</span>))<span class="sc">*</span><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb523-2"><a href="week-9-lab.html#cb523-2" aria-hidden="true" tabindex="-1"></a>UL.r<span class="ot">&lt;-</span><span class="fu">tanh</span>(UL.z)</span>
+<span id="cb523-3"><a href="week-9-lab.html#cb523-3" aria-hidden="true" tabindex="-1"></a>UL.r</span></code></pre></div>
 <pre><code>## [1] 0.9978118</code></pre>
 <p>Notice that I can extract the LL and the UL by taking the tanh of the limits for the transformed variable.</p>
 <p>In class we discussed several different ways of testing for a correlation. We can see these by querying the help page for ‘cor’ and ‘cor.test’:</p>
 <pre><code>?cor.test</code></pre>
 <p>Notice that under the method option there are three options. The “pearson” is the first (default). We can change the default by trying</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="week-9-lab.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(Temperature,Year, <span class="at">method=</span><span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="week-9-lab.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(Temperature,Year, <span class="at">method=</span><span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## 	Kendall&#39;s rank correlation tau
 ## 
@@ -513,40 +513,40 @@ P(tanh(z-\frac{t_{[1-\alpha/2](\infty)}}{\sqrt{n-3}})\leq \rho \leq tanh(z+\frac
 <p>Linear modeling in R occurs primarily through two functions ‘lm’ and ‘glm.’ The first is reserved for linear regression in the form we have been discussing this week. The second function is for generalized linear models; we will discuss these in the next few weeks.</p>
 <p><strong>Fitting simulated data</strong></p>
 <p>Before working with real data, let’s play around with a simulated dataset, so you can see how the values used to simulate the data are reflected in the parameter estimates themselves.</p>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="week-9-lab.html#cb526-1" aria-hidden="true" tabindex="-1"></a>X<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">30</span>) <span class="co">#a stand in for some covariate</span></span>
-<span id="cb526-2"><a href="week-9-lab.html#cb526-2" aria-hidden="true" tabindex="-1"></a>value<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
-<span id="cb526-3"><a href="week-9-lab.html#cb526-3" aria-hidden="true" tabindex="-1"></a>intercept<span class="ot">&lt;-</span><span class="fl">0.15</span></span>
-<span id="cb526-4"><a href="week-9-lab.html#cb526-4" aria-hidden="true" tabindex="-1"></a>slope<span class="ot">&lt;-</span><span class="sc">-</span><span class="fl">2.2</span></span>
-<span id="cb526-5"><a href="week-9-lab.html#cb526-5" aria-hidden="true" tabindex="-1"></a>sigma<span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb526-6"><a href="week-9-lab.html#cb526-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(X))</span>
-<span id="cb526-7"><a href="week-9-lab.html#cb526-7" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb526-8"><a href="week-9-lab.html#cb526-8" aria-hidden="true" tabindex="-1"></a>  value<span class="ot">&lt;-</span><span class="fu">c</span>(value,<span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean=</span>intercept<span class="sc">+</span>slope<span class="sc">*</span>X[i],<span class="at">sd=</span>sigma))</span>
-<span id="cb526-9"><a href="week-9-lab.html#cb526-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb526-10"><a href="week-9-lab.html#cb526-10" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(value<span class="sc">~</span>X)</span>
-<span id="cb526-11"><a href="week-9-lab.html#cb526-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="week-9-lab.html#cb528-1" aria-hidden="true" tabindex="-1"></a>X<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">30</span>) <span class="co">#a stand in for some covariate</span></span>
+<span id="cb528-2"><a href="week-9-lab.html#cb528-2" aria-hidden="true" tabindex="-1"></a>value<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
+<span id="cb528-3"><a href="week-9-lab.html#cb528-3" aria-hidden="true" tabindex="-1"></a>intercept<span class="ot">&lt;-</span><span class="fl">0.15</span></span>
+<span id="cb528-4"><a href="week-9-lab.html#cb528-4" aria-hidden="true" tabindex="-1"></a>slope<span class="ot">&lt;-</span><span class="sc">-</span><span class="fl">2.2</span></span>
+<span id="cb528-5"><a href="week-9-lab.html#cb528-5" aria-hidden="true" tabindex="-1"></a>sigma<span class="ot">&lt;-</span><span class="dv">10</span></span>
+<span id="cb528-6"><a href="week-9-lab.html#cb528-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(X))</span>
+<span id="cb528-7"><a href="week-9-lab.html#cb528-7" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb528-8"><a href="week-9-lab.html#cb528-8" aria-hidden="true" tabindex="-1"></a>  value<span class="ot">&lt;-</span><span class="fu">c</span>(value,<span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean=</span>intercept<span class="sc">+</span>slope<span class="sc">*</span>X[i],<span class="at">sd=</span>sigma))</span>
+<span id="cb528-9"><a href="week-9-lab.html#cb528-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb528-10"><a href="week-9-lab.html#cb528-10" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(value<span class="sc">~</span>X)</span>
+<span id="cb528-11"><a href="week-9-lab.html#cb528-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = value ~ X)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -14.368  -5.888  -1.344   7.448  16.970 
+##      Min       1Q   Median       3Q      Max 
+## -16.0581  -5.5693   0.3378   7.0203  15.8444 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   -0.255      3.337  -0.076     0.94    
-## X             -2.263      0.188 -12.040 1.38e-12 ***
+## (Intercept)   3.8769     3.3119   1.171    0.252    
+## X            -2.3039     0.1866 -12.349 7.55e-13 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 8.911 on 28 degrees of freedom
-## Multiple R-squared:  0.8381,	Adjusted R-squared:  0.8323 
-## F-statistic:   145 on 1 and 28 DF,  p-value: 1.378e-12</code></pre>
+## Residual standard error: 8.844 on 28 degrees of freedom
+## Multiple R-squared:  0.8449,	Adjusted R-squared:  0.8393 
+## F-statistic: 152.5 on 1 and 28 DF,  p-value: 7.547e-13</code></pre>
 <p>Copy this script into R and r-run it several times. Notice how the estimates for slope and intercept bounce around, but they should be correct <em>on average</em> and also the scale of variation from one run to the next should make sense given the estimate of the standard error. (Their standard deviation should be the standard error.) Notice also how the residual standard error is equal (within sampling error) to the sigma that you put into the model, and that as you increase sigma, the R2 goes down because now you are increasing the variation that is <em>not</em> explained by the covariate. Try changing the number of samples drawn, either by extending the vector of the covariates or by drawing multiple times for each value (you will have to modify the code to make this latter change work). Notice how the standard errors on the intercept and slope coefficients gets smaller as the data set gets larger but the estimate for sigma does not. The parameter sigma is a property of the underlying population, not a property of the sample drawn, so it does not get smaller as you increase the number of samples in the dataset. (If this does not make sense, ask me!)</p>
 <p><strong>Fitting real data</strong></p>
 <p>Now that we’ve gained some intuition, we can dive into fitting a real dataset. The syntax of ‘lm’ is straightforward. We will run through some examples using a dataset on Old Faithful eruptions. The dataset is built into the MASS library, so we just have to load it.</p>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="week-9-lab.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(faithful) <span class="co">#A rare exception to the rule of avoiding &#39;attach&#39;</span></span>
-<span id="cb528-2"><a href="week-9-lab.html#cb528-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithful)</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="week-9-lab.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(faithful) <span class="co">#A rare exception to the rule of avoiding &#39;attach&#39;</span></span>
+<span id="cb530-2"><a href="week-9-lab.html#cb530-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithful)</span></code></pre></div>
 <pre><code>##   eruptions waiting
 ## 1     3.600      79
 ## 2     1.800      54
@@ -554,11 +554,11 @@ P(tanh(z-\frac{t_{[1-\alpha/2](\infty)}}{\sqrt{n-3}})\leq \rho \leq tanh(z+\frac
 ## 4     2.283      62
 ## 5     4.533      85
 ## 6     2.883      55</code></pre>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="week-9-lab.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waiting, eruptions,<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="week-9-lab.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waiting, eruptions,<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <p><img src="Week-9-lab_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>This dataset lists the times of an Old Faithful eruption as a function of the waiting time prior to the eruption.</p>
 <p>We can see that as the waiting time increases, so does the length of the eruption. We can fit a linear regression model to this relationship using the R function ‘lm.’</p>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="week-9-lab.html#cb531-1" aria-hidden="true" tabindex="-1"></a>eruption.lm<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting)</span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="week-9-lab.html#cb533-1" aria-hidden="true" tabindex="-1"></a>eruption.lm<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting)</span></code></pre></div>
 <p>Model: y~x1<br />
 Meaning: y is explained by x1 only (intercept implicit)</p>
 <p>Model: y~x1-1<br />
@@ -570,7 +570,7 @@ Meaning: y is explained by x1,x2 and also by the interaction between them</p>
 <p>Model: y~x1*x2<br />
 Meaning: y is explained by x1,x2 and also by the interaction between them (this is an alternative way of writing the above)</p>
 <p>We print out a summary of the linear regression results as follows:</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="week-9-lab.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(eruption.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="week-9-lab.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(eruption.lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = eruptions ~ waiting)
@@ -592,47 +592,47 @@ Meaning: y is explained by x1,x2 and also by the interaction between them (this 
 <p><em>Question: In words, how would we interpret the coefficients for this model?</em></p>
 <p>Make sure you understand all of this output!</p>
 <p>We can check the output on the residuals using either the R function ‘residuals’ which takes in the lm object and spits out the residuals of the fit</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="week-9-lab.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(<span class="fu">residuals</span>(eruption.lm),<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.0</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">1.0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="week-9-lab.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(<span class="fu">residuals</span>(eruption.lm),<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.0</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">1.0</span>))</span></code></pre></div>
 <pre><code>##          0%         25%         50%         75%        100% 
 ## -1.29917268 -0.37689320  0.03508321  0.34909412  1.19329194</code></pre>
 <p>or by using the R function ‘predict’ (which calculates the predicted y value for each x value) and calculating the residuals ourselves:</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="week-9-lab.html#cb536-1" aria-hidden="true" tabindex="-1"></a>residuals<span class="ot">&lt;-</span>eruptions<span class="sc">-</span><span class="fu">predict</span>(eruption.lm, <span class="fu">data.frame</span>(waiting))</span>
-<span id="cb536-2"><a href="week-9-lab.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that predict wants a dataframe of values</span></span>
-<span id="cb536-3"><a href="week-9-lab.html#cb536-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(residuals,<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.0</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">1.0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="week-9-lab.html#cb538-1" aria-hidden="true" tabindex="-1"></a>residuals<span class="ot">&lt;-</span>eruptions<span class="sc">-</span><span class="fu">predict</span>(eruption.lm, <span class="fu">data.frame</span>(waiting))</span>
+<span id="cb538-2"><a href="week-9-lab.html#cb538-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that predict wants a dataframe of values</span></span>
+<span id="cb538-3"><a href="week-9-lab.html#cb538-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(residuals,<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.0</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">1.0</span>))</span></code></pre></div>
 <pre><code>##          0%         25%         50%         75%        100% 
 ## -1.29917268 -0.37689320  0.03508321  0.34909412  1.19329194</code></pre>
 <p>Now we can calculate the slope and its standard error:</p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="week-9-lab.html#cb538-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span>waiting</span>
-<span id="cb538-2"><a href="week-9-lab.html#cb538-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span>eruptions</span>
-<span id="cb538-3"><a href="week-9-lab.html#cb538-3" aria-hidden="true" tabindex="-1"></a>SSXY<span class="ot">&lt;-</span><span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">*</span>(y<span class="sc">-</span><span class="fu">mean</span>(y)))</span>
-<span id="cb538-4"><a href="week-9-lab.html#cb538-4" aria-hidden="true" tabindex="-1"></a>SSX<span class="ot">&lt;-</span><span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">*</span>(x<span class="sc">-</span><span class="fu">mean</span>(x)))</span>
-<span id="cb538-5"><a href="week-9-lab.html#cb538-5" aria-hidden="true" tabindex="-1"></a>slope.est<span class="ot">&lt;-</span>SSXY<span class="sc">/</span>SSX</span>
-<span id="cb538-6"><a href="week-9-lab.html#cb538-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Also could have used slope.est&lt;-cov(x,y)/var(x)</span></span>
-<span id="cb538-7"><a href="week-9-lab.html#cb538-7" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="fu">length</span>(x)</span>
-<span id="cb538-8"><a href="week-9-lab.html#cb538-8" aria-hidden="true" tabindex="-1"></a>residuals<span class="ot">&lt;-</span><span class="fu">residuals</span>(eruption.lm)</span>
-<span id="cb538-9"><a href="week-9-lab.html#cb538-9" aria-hidden="true" tabindex="-1"></a>var.slope<span class="ot">&lt;-</span>(<span class="dv">1</span><span class="sc">/</span>(n<span class="dv">-2</span>))<span class="sc">*</span><span class="fu">sum</span>((residuals<span class="sc">-</span><span class="fu">mean</span>(residuals))<span class="sc">*</span>(residuals<span class="sc">-</span><span class="fu">mean</span>(residuals)))<span class="sc">/</span>SSX</span>
-<span id="cb538-10"><a href="week-9-lab.html#cb538-10" aria-hidden="true" tabindex="-1"></a>s.e.slope<span class="ot">&lt;-</span><span class="fu">sqrt</span>(var.slope)</span></code></pre></div>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="week-9-lab.html#cb539-1" aria-hidden="true" tabindex="-1"></a>slope.est</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="week-9-lab.html#cb540-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span>waiting</span>
+<span id="cb540-2"><a href="week-9-lab.html#cb540-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span>eruptions</span>
+<span id="cb540-3"><a href="week-9-lab.html#cb540-3" aria-hidden="true" tabindex="-1"></a>SSXY<span class="ot">&lt;-</span><span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">*</span>(y<span class="sc">-</span><span class="fu">mean</span>(y)))</span>
+<span id="cb540-4"><a href="week-9-lab.html#cb540-4" aria-hidden="true" tabindex="-1"></a>SSX<span class="ot">&lt;-</span><span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">*</span>(x<span class="sc">-</span><span class="fu">mean</span>(x)))</span>
+<span id="cb540-5"><a href="week-9-lab.html#cb540-5" aria-hidden="true" tabindex="-1"></a>slope.est<span class="ot">&lt;-</span>SSXY<span class="sc">/</span>SSX</span>
+<span id="cb540-6"><a href="week-9-lab.html#cb540-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Also could have used slope.est&lt;-cov(x,y)/var(x)</span></span>
+<span id="cb540-7"><a href="week-9-lab.html#cb540-7" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="fu">length</span>(x)</span>
+<span id="cb540-8"><a href="week-9-lab.html#cb540-8" aria-hidden="true" tabindex="-1"></a>residuals<span class="ot">&lt;-</span><span class="fu">residuals</span>(eruption.lm)</span>
+<span id="cb540-9"><a href="week-9-lab.html#cb540-9" aria-hidden="true" tabindex="-1"></a>var.slope<span class="ot">&lt;-</span>(<span class="dv">1</span><span class="sc">/</span>(n<span class="dv">-2</span>))<span class="sc">*</span><span class="fu">sum</span>((residuals<span class="sc">-</span><span class="fu">mean</span>(residuals))<span class="sc">*</span>(residuals<span class="sc">-</span><span class="fu">mean</span>(residuals)))<span class="sc">/</span>SSX</span>
+<span id="cb540-10"><a href="week-9-lab.html#cb540-10" aria-hidden="true" tabindex="-1"></a>s.e.slope<span class="ot">&lt;-</span><span class="fu">sqrt</span>(var.slope)</span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="week-9-lab.html#cb541-1" aria-hidden="true" tabindex="-1"></a>slope.est</span></code></pre></div>
 <pre><code>## [1] 0.07562795</code></pre>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="week-9-lab.html#cb541-1" aria-hidden="true" tabindex="-1"></a>s.e.slope</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="week-9-lab.html#cb543-1" aria-hidden="true" tabindex="-1"></a>s.e.slope</span></code></pre></div>
 <pre><code>## [1] 0.002218541</code></pre>
 <p>We calculate the t-value as:</p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="week-9-lab.html#cb543-1" aria-hidden="true" tabindex="-1"></a>t.value<span class="ot">&lt;-</span>slope.est<span class="sc">/</span>s.e.slope</span>
-<span id="cb543-2"><a href="week-9-lab.html#cb543-2" aria-hidden="true" tabindex="-1"></a>p.value<span class="ot">&lt;-</span><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pt</span>(<span class="fu">abs</span>(t.value),n<span class="dv">-2</span>))</span>
-<span id="cb543-3"><a href="week-9-lab.html#cb543-3" aria-hidden="true" tabindex="-1"></a>t.value</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="week-9-lab.html#cb545-1" aria-hidden="true" tabindex="-1"></a>t.value<span class="ot">&lt;-</span>slope.est<span class="sc">/</span>s.e.slope</span>
+<span id="cb545-2"><a href="week-9-lab.html#cb545-2" aria-hidden="true" tabindex="-1"></a>p.value<span class="ot">&lt;-</span><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pt</span>(<span class="fu">abs</span>(t.value),n<span class="dv">-2</span>))</span>
+<span id="cb545-3"><a href="week-9-lab.html#cb545-3" aria-hidden="true" tabindex="-1"></a>t.value</span></code></pre></div>
 <pre><code>## [1] 34.08904</code></pre>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="week-9-lab.html#cb545-1" aria-hidden="true" tabindex="-1"></a>p.value</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="week-9-lab.html#cb547-1" aria-hidden="true" tabindex="-1"></a>p.value</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>We can calculate the intercept and its standard error in a similar manner.</p>
 <p>The residual standard error is:</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="week-9-lab.html#cb547-1" aria-hidden="true" tabindex="-1"></a>residual.se<span class="ot">&lt;-</span><span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">/</span>(n<span class="dv">-2</span>))<span class="sc">*</span><span class="fu">sum</span>((residuals<span class="sc">-</span><span class="fu">mean</span>(residuals))<span class="sc">*</span>(residuals<span class="sc">-</span><span class="fu">mean</span>(residuals))))</span>
-<span id="cb547-2"><a href="week-9-lab.html#cb547-2" aria-hidden="true" tabindex="-1"></a>residual.se</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="week-9-lab.html#cb549-1" aria-hidden="true" tabindex="-1"></a>residual.se<span class="ot">&lt;-</span><span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">/</span>(n<span class="dv">-2</span>))<span class="sc">*</span><span class="fu">sum</span>((residuals<span class="sc">-</span><span class="fu">mean</span>(residuals))<span class="sc">*</span>(residuals<span class="sc">-</span><span class="fu">mean</span>(residuals))))</span>
+<span id="cb549-2"><a href="week-9-lab.html#cb549-2" aria-hidden="true" tabindex="-1"></a>residual.se</span></code></pre></div>
 <pre><code>## [1] 0.4965129</code></pre>
 <p>and the R2 as</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="week-9-lab.html#cb549-1" aria-hidden="true" tabindex="-1"></a>SST<span class="ot">&lt;-</span><span class="fu">sum</span>((y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">*</span>(y<span class="sc">-</span><span class="fu">mean</span>(y)))</span>
-<span id="cb549-2"><a href="week-9-lab.html#cb549-2" aria-hidden="true" tabindex="-1"></a>SSR<span class="ot">&lt;-</span>SST<span class="sc">-</span><span class="fu">sum</span>(residuals<span class="sc">*</span>residuals)</span>
-<span id="cb549-3"><a href="week-9-lab.html#cb549-3" aria-hidden="true" tabindex="-1"></a>R2<span class="ot">&lt;-</span>SSR<span class="sc">/</span>SST</span>
-<span id="cb549-4"><a href="week-9-lab.html#cb549-4" aria-hidden="true" tabindex="-1"></a>R2</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="week-9-lab.html#cb551-1" aria-hidden="true" tabindex="-1"></a>SST<span class="ot">&lt;-</span><span class="fu">sum</span>((y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">*</span>(y<span class="sc">-</span><span class="fu">mean</span>(y)))</span>
+<span id="cb551-2"><a href="week-9-lab.html#cb551-2" aria-hidden="true" tabindex="-1"></a>SSR<span class="ot">&lt;-</span>SST<span class="sc">-</span><span class="fu">sum</span>(residuals<span class="sc">*</span>residuals)</span>
+<span id="cb551-3"><a href="week-9-lab.html#cb551-3" aria-hidden="true" tabindex="-1"></a>R2<span class="ot">&lt;-</span>SSR<span class="sc">/</span>SST</span>
+<span id="cb551-4"><a href="week-9-lab.html#cb551-4" aria-hidden="true" tabindex="-1"></a>R2</span></code></pre></div>
 <pre><code>## [1] 0.8114608</code></pre>
 <p><strong><span style="color: green;">Checkpoint #2: Were you able to reproduce all of the output from cor.test covered so far?</span></strong> R also produces an “adjusted R2,” which attempts to account for the number of parameters being estimated, and provides one way of comparing goodness of fit between models with different numbers of parameters. It is defined as</p>
 <p><span class="math display">\[
@@ -640,24 +640,24 @@ R^{2}_{adj} = 1-(1-R^{2})\left(\frac{n-1}{n-p-1}\right)
 \]</span></p>
 <p>but we won’t get into more details here.</p>
 <p>Notice that the percentage of explained variation <span class="math inline">\(R^{2}\)</span> is just the square of the Pearson’s product moment correlation coefficient.</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="week-9-lab.html#cb551-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">cor</span>(x,y))<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="week-9-lab.html#cb553-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">cor</span>(x,y))<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 0.8114608</code></pre>
 <p>We will hold off on a discussion of the F statistic until we do ANOVA next week.</p>
 <p>In lecture we distinguished between confidence intervals and prediction intervals. The former tells us our uncertainty about the <em>mean</em> of Y at a given X, whereas the latter gives us the interval within which we expect a new value of Y to fall for a given X. We can calculate both of these using the option ‘interval’ in the predict function.</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="week-9-lab.html#cb553-1" aria-hidden="true" tabindex="-1"></a>newdata<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">waiting=</span><span class="fu">seq</span>(<span class="fu">min</span>(waiting),<span class="fu">max</span>(waiting)))</span>
-<span id="cb553-2"><a href="week-9-lab.html#cb553-2" aria-hidden="true" tabindex="-1"></a>confidence.bands<span class="ot">&lt;-</span><span class="fu">predict</span>(eruption.lm,newdata,<span class="at">interval=</span><span class="st">&quot;confidence&quot;</span>)</span>
-<span id="cb553-3"><a href="week-9-lab.html#cb553-3" aria-hidden="true" tabindex="-1"></a>prediction.bands<span class="ot">&lt;-</span><span class="fu">predict</span>(eruption.lm,newdata,<span class="at">interval=</span><span class="st">&quot;predict&quot;</span>)</span>
-<span id="cb553-4"><a href="week-9-lab.html#cb553-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waiting,eruptions,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>))</span>
-<span id="cb553-5"><a href="week-9-lab.html#cb553-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],confidence.bands[,<span class="dv">1</span>],<span class="at">col=</span><span class="dv">1</span>)</span>
-<span id="cb553-6"><a href="week-9-lab.html#cb553-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],confidence.bands[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb553-7"><a href="week-9-lab.html#cb553-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],confidence.bands[,<span class="dv">3</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb553-8"><a href="week-9-lab.html#cb553-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],prediction.bands[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">3</span>)</span>
-<span id="cb553-9"><a href="week-9-lab.html#cb553-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],prediction.bands[,<span class="dv">3</span>],<span class="at">col=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="week-9-lab.html#cb555-1" aria-hidden="true" tabindex="-1"></a>newdata<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">waiting=</span><span class="fu">seq</span>(<span class="fu">min</span>(waiting),<span class="fu">max</span>(waiting)))</span>
+<span id="cb555-2"><a href="week-9-lab.html#cb555-2" aria-hidden="true" tabindex="-1"></a>confidence.bands<span class="ot">&lt;-</span><span class="fu">predict</span>(eruption.lm,newdata,<span class="at">interval=</span><span class="st">&quot;confidence&quot;</span>)</span>
+<span id="cb555-3"><a href="week-9-lab.html#cb555-3" aria-hidden="true" tabindex="-1"></a>prediction.bands<span class="ot">&lt;-</span><span class="fu">predict</span>(eruption.lm,newdata,<span class="at">interval=</span><span class="st">&quot;predict&quot;</span>)</span>
+<span id="cb555-4"><a href="week-9-lab.html#cb555-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waiting,eruptions,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>))</span>
+<span id="cb555-5"><a href="week-9-lab.html#cb555-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],confidence.bands[,<span class="dv">1</span>],<span class="at">col=</span><span class="dv">1</span>)</span>
+<span id="cb555-6"><a href="week-9-lab.html#cb555-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],confidence.bands[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb555-7"><a href="week-9-lab.html#cb555-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],confidence.bands[,<span class="dv">3</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb555-8"><a href="week-9-lab.html#cb555-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],prediction.bands[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">3</span>)</span>
+<span id="cb555-9"><a href="week-9-lab.html#cb555-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],prediction.bands[,<span class="dv">3</span>],<span class="at">col=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="Week-9-lab_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p><strong><span style="color: green;">Checkpoint #3: Do you understand the difference in interpretation between a confidence interval and a prediction interval? Do you understand why the prediction interval is always wider? </span></strong></p>
 <p>What do we do if we want to force the intercept through the origin (i.e., set the intercept to zero)?</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="week-9-lab.html#cb554-1" aria-hidden="true" tabindex="-1"></a>eruption.lm2<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting<span class="dv">-1</span>)</span>
-<span id="cb554-2"><a href="week-9-lab.html#cb554-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(eruption.lm2)</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="week-9-lab.html#cb556-1" aria-hidden="true" tabindex="-1"></a>eruption.lm2<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting<span class="dv">-1</span>)</span>
+<span id="cb556-2"><a href="week-9-lab.html#cb556-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(eruption.lm2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = eruptions ~ waiting - 1)
@@ -698,26 +698,26 @@ SSE = \sum^{n}_{i=1}(Y_{i}-\hat{Y}_{i})^{2}
 SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 \]</span></p>
 <p>We can illustrate doing this by using the ‘weights’ option in lm. In this example, we will see what happens when we weight the short eruptions 2 and 10 as much as the long eruptions. The result of this will be that the best fit model will try and fit the short eruptions better because residuals for short eruptions are two or ten times as influential to SSE than residuals for long eruptions.</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="week-9-lab.html#cb556-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waiting,eruptions,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>))</span>
-<span id="cb556-2"><a href="week-9-lab.html#cb556-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],confidence.bands[,<span class="dv">1</span>])</span>
-<span id="cb556-3"><a href="week-9-lab.html#cb556-3" aria-hidden="true" tabindex="-1"></a>short<span class="ot">&lt;-</span>(eruptions<span class="sc">&lt;</span><span class="dv">3</span>)</span>
-<span id="cb556-4"><a href="week-9-lab.html#cb556-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(waiting[short],eruptions[short],<span class="at">pch=</span><span class="dv">16</span>)</span>
-<span id="cb556-5"><a href="week-9-lab.html#cb556-5" aria-hidden="true" tabindex="-1"></a>eruption.lm<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting,<span class="at">weights=</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="at">times=</span><span class="dv">272</span>))</span>
-<span id="cb556-6"><a href="week-9-lab.html#cb556-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>eruption.lm<span class="sc">$</span>coef[<span class="dv">1</span>],<span class="at">b=</span>eruption.lm<span class="sc">$</span>coef[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;black&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb556-7"><a href="week-9-lab.html#cb556-7" aria-hidden="true" tabindex="-1"></a>eruption.lm.wt<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting,<span class="at">weights=</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="at">times=</span><span class="dv">272</span>)<span class="sc">+</span><span class="fu">as.numeric</span>(short))</span>
-<span id="cb556-8"><a href="week-9-lab.html#cb556-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>eruption.lm.wt<span class="sc">$</span>coef[<span class="dv">1</span>],<span class="at">b=</span>eruption.lm.wt<span class="sc">$</span>coef[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;green&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb556-9"><a href="week-9-lab.html#cb556-9" aria-hidden="true" tabindex="-1"></a>eruption.lm.wt<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting,<span class="at">weights=</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="at">times=</span><span class="dv">272</span>)<span class="sc">+</span><span class="dv">9</span><span class="sc">*</span><span class="fu">as.numeric</span>(short))</span>
-<span id="cb556-10"><a href="week-9-lab.html#cb556-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>eruption.lm.wt<span class="sc">$</span>coef[<span class="dv">1</span>],<span class="at">b=</span>eruption.lm.wt<span class="sc">$</span>coef[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;purple&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="week-9-lab.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waiting,eruptions,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">7</span>))</span>
+<span id="cb558-2"><a href="week-9-lab.html#cb558-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(newdata[,<span class="dv">1</span>],confidence.bands[,<span class="dv">1</span>])</span>
+<span id="cb558-3"><a href="week-9-lab.html#cb558-3" aria-hidden="true" tabindex="-1"></a>short<span class="ot">&lt;-</span>(eruptions<span class="sc">&lt;</span><span class="dv">3</span>)</span>
+<span id="cb558-4"><a href="week-9-lab.html#cb558-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(waiting[short],eruptions[short],<span class="at">pch=</span><span class="dv">16</span>)</span>
+<span id="cb558-5"><a href="week-9-lab.html#cb558-5" aria-hidden="true" tabindex="-1"></a>eruption.lm<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting,<span class="at">weights=</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="at">times=</span><span class="dv">272</span>))</span>
+<span id="cb558-6"><a href="week-9-lab.html#cb558-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>eruption.lm<span class="sc">$</span>coef[<span class="dv">1</span>],<span class="at">b=</span>eruption.lm<span class="sc">$</span>coef[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;black&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb558-7"><a href="week-9-lab.html#cb558-7" aria-hidden="true" tabindex="-1"></a>eruption.lm.wt<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting,<span class="at">weights=</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="at">times=</span><span class="dv">272</span>)<span class="sc">+</span><span class="fu">as.numeric</span>(short))</span>
+<span id="cb558-8"><a href="week-9-lab.html#cb558-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>eruption.lm.wt<span class="sc">$</span>coef[<span class="dv">1</span>],<span class="at">b=</span>eruption.lm.wt<span class="sc">$</span>coef[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;green&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb558-9"><a href="week-9-lab.html#cb558-9" aria-hidden="true" tabindex="-1"></a>eruption.lm.wt<span class="ot">&lt;-</span><span class="fu">lm</span>(eruptions<span class="sc">~</span>waiting,<span class="at">weights=</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="at">times=</span><span class="dv">272</span>)<span class="sc">+</span><span class="dv">9</span><span class="sc">*</span><span class="fu">as.numeric</span>(short))</span>
+<span id="cb558-10"><a href="week-9-lab.html#cb558-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>eruption.lm.wt<span class="sc">$</span>coef[<span class="dv">1</span>],<span class="at">b=</span>eruption.lm.wt<span class="sc">$</span>coef[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;purple&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Week-9-lab_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 </div>
 <div id="robust-regression" class="section level2" number="17.4">
 <h2><span class="header-section-number">17.4</span> Robust regression</h2>
 <p>Weighted linear regression would be one method that could be used for downweighting the influence of certain data points. Robust regression is a another method for making sure that your linear model fit is not unduly influenced by outliers (points with large residuals).</p>
 <p>We will use the Duncan occupational dataset we used once before</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="week-9-lab.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># for Duncan data and (later) data.ellipse)</span></span>
-<span id="cb557-2"><a href="week-9-lab.html#cb557-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb557-3"><a href="week-9-lab.html#cb557-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Duncan)</span>
-<span id="cb557-4"><a href="week-9-lab.html#cb557-4" aria-hidden="true" tabindex="-1"></a>Duncan</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="week-9-lab.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># for Duncan data and (later) data.ellipse)</span></span>
+<span id="cb559-2"><a href="week-9-lab.html#cb559-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb559-3"><a href="week-9-lab.html#cb559-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Duncan)</span>
+<span id="cb559-4"><a href="week-9-lab.html#cb559-4" aria-hidden="true" tabindex="-1"></a>Duncan</span></code></pre></div>
 <pre><code>##                    type income education prestige
 ## accountant         prof     62        86       82
 ## pilot              prof     72        76       83
@@ -765,14 +765,14 @@ SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 ## policeman            bc     34        47       41
 ## waiter               bc      8        32       10</code></pre>
 <p>Let’s identify any data points we think are outliers</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="week-9-lab.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Duncan<span class="sc">$</span>education,Duncan<span class="sc">$</span>income,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))</span>
-<span id="cb559-2"><a href="week-9-lab.html#cb559-2" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">which</span>(<span class="fu">rownames</span>(Duncan)<span class="sc">==</span><span class="st">&quot;RR.engineer&quot;</span>),<span class="fu">which</span>(<span class="fu">rownames</span>(Duncan)<span class="sc">==</span><span class="st">&quot;conductor&quot;</span>))</span>
-<span id="cb559-3"><a href="week-9-lab.html#cb559-3" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x=</span>Duncan<span class="sc">$</span>education[temp]<span class="sc">-</span><span class="dv">8</span>,<span class="at">y=</span>Duncan<span class="sc">$</span>income[temp],<span class="at">labels=</span><span class="fu">rownames</span>(Duncan)[temp],<span class="at">cex=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="week-9-lab.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Duncan<span class="sc">$</span>education,Duncan<span class="sc">$</span>income,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))</span>
+<span id="cb561-2"><a href="week-9-lab.html#cb561-2" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">which</span>(<span class="fu">rownames</span>(Duncan)<span class="sc">==</span><span class="st">&quot;RR.engineer&quot;</span>),<span class="fu">which</span>(<span class="fu">rownames</span>(Duncan)<span class="sc">==</span><span class="st">&quot;conductor&quot;</span>))</span>
+<span id="cb561-3"><a href="week-9-lab.html#cb561-3" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x=</span>Duncan<span class="sc">$</span>education[temp]<span class="sc">-</span><span class="dv">8</span>,<span class="at">y=</span>Duncan<span class="sc">$</span>income[temp],<span class="at">labels=</span><span class="fu">rownames</span>(Duncan)[temp],<span class="at">cex=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="Week-9-lab_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="week-9-lab.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="co">#identify(x=Duncan$education, y=Duncan$income, labels=rownames(Duncan))</span></span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="week-9-lab.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="co">#identify(x=Duncan$education, y=Duncan$income, labels=rownames(Duncan))</span></span></code></pre></div>
 <p>Visually, we may think that conductors and railroad engineers may have a disproportionate influence on the linear regression of income and education. We will explore this by first doing a regular linear regression using ‘lm’ and then doing a robust linear regression using ‘rlm.’</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="week-9-lab.html#cb561-1" aria-hidden="true" tabindex="-1"></a>Duncan.model.lm<span class="ot">&lt;-</span><span class="fu">lm</span>(income<span class="sc">~</span>education, <span class="at">data=</span>Duncan)</span>
-<span id="cb561-2"><a href="week-9-lab.html#cb561-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Duncan.model.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="week-9-lab.html#cb563-1" aria-hidden="true" tabindex="-1"></a>Duncan.model.lm<span class="ot">&lt;-</span><span class="fu">lm</span>(income<span class="sc">~</span>education, <span class="at">data=</span>Duncan)</span>
+<span id="cb563-2"><a href="week-9-lab.html#cb563-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Duncan.model.lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = income ~ education, data = Duncan)
@@ -792,8 +792,8 @@ SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 ## Multiple R-squared:  0.5249,	Adjusted R-squared:  0.5139 
 ## F-statistic: 47.51 on 1 and 43 DF,  p-value: 1.84e-08</code></pre>
 <p>Let’s compare the fit with the one in which we remove the two potential outliers.</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="week-9-lab.html#cb563-1" aria-hidden="true" tabindex="-1"></a>outliers<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">which</span>(<span class="fu">rownames</span>(Duncan)<span class="sc">==</span><span class="st">&quot;RR.engineer&quot;</span>),<span class="fu">which</span>(<span class="fu">rownames</span>(Duncan)<span class="sc">==</span><span class="st">&quot;conductor&quot;</span>))</span>
-<span id="cb563-2"><a href="week-9-lab.html#cb563-2" aria-hidden="true" tabindex="-1"></a>Duncan.model2<span class="ot">&lt;-</span><span class="fu">lm</span>(income[<span class="sc">-</span>outliers]<span class="sc">~</span>education[<span class="sc">-</span>outliers],<span class="at">data=</span>Duncan)</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="week-9-lab.html#cb565-1" aria-hidden="true" tabindex="-1"></a>outliers<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">which</span>(<span class="fu">rownames</span>(Duncan)<span class="sc">==</span><span class="st">&quot;RR.engineer&quot;</span>),<span class="fu">which</span>(<span class="fu">rownames</span>(Duncan)<span class="sc">==</span><span class="st">&quot;conductor&quot;</span>))</span>
+<span id="cb565-2"><a href="week-9-lab.html#cb565-2" aria-hidden="true" tabindex="-1"></a>Duncan.model2<span class="ot">&lt;-</span><span class="fu">lm</span>(income[<span class="sc">-</span>outliers]<span class="sc">~</span>education[<span class="sc">-</span>outliers],<span class="at">data=</span>Duncan)</span></code></pre></div>
 <p>We see that removing these two professions changes the slope and intercept, as expected. <strong><span style="color: green;">Checkpoint #4: Does the change in slope and intercept when you remove those outliers make sense intuitively?</span></strong> Let’s try doing a robust regression now. First, let’s remind ourselves that robust regression minimizes some function of the errors.</p>
 <p><span class="math display">\[
 \sum^{n}_{i=1}f(Y_{i}-\hat{Y}_{i})
@@ -801,8 +801,8 @@ SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 <p>Let’s look at the help file for ‘rlm’:</p>
 <pre><code>?rlm</code></pre>
 <p>The default robust weighting scheme is Huber’s method.</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="week-9-lab.html#cb565-1" aria-hidden="true" tabindex="-1"></a>Duncan.model.rlm<span class="ot">&lt;-</span><span class="fu">rlm</span>(income<span class="sc">~</span>education,<span class="at">data=</span>Duncan)</span>
-<span id="cb565-2"><a href="week-9-lab.html#cb565-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Duncan.model.rlm)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="week-9-lab.html#cb567-1" aria-hidden="true" tabindex="-1"></a>Duncan.model.rlm<span class="ot">&lt;-</span><span class="fu">rlm</span>(income<span class="sc">~</span>education,<span class="at">data=</span>Duncan)</span>
+<span id="cb567-2"><a href="week-9-lab.html#cb567-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Duncan.model.rlm)</span></code></pre></div>
 <pre><code>## 
 ## Call: rlm(formula = income ~ education, data = Duncan)
 ## Residuals:
@@ -837,16 +837,16 @@ SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 \]</span></p>
 <p>You might use this latter approach if the predictor variables were fixed by the experimentor (they do not reflect a larger population of fixed values), so they should really remain fixed in calculating the standard errors.</p>
 <p>Today I will only go through the mechanics of the first approach, called “random x resampling.” Although writing the bootstrap script yourself is straightforward, we will go through the functions available in the package ‘boot.’</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="week-9-lab.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
-<span id="cb567-2"><a href="week-9-lab.html#cb567-2" aria-hidden="true" tabindex="-1"></a>boot.huber<span class="ot">&lt;-</span><span class="cf">function</span>(data,indices,maxit)</span>
-<span id="cb567-3"><a href="week-9-lab.html#cb567-3" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb567-4"><a href="week-9-lab.html#cb567-4" aria-hidden="true" tabindex="-1"></a>  data<span class="ot">&lt;-</span>data[indices,] <span class="co">#select observations in bootstrap sample</span></span>
-<span id="cb567-5"><a href="week-9-lab.html#cb567-5" aria-hidden="true" tabindex="-1"></a>  mod<span class="ot">&lt;-</span><span class="fu">rlm</span>(income<span class="sc">~</span>education,<span class="at">data=</span>data,<span class="at">maxit=</span>maxit)</span>
-<span id="cb567-6"><a href="week-9-lab.html#cb567-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coefficients</span>(mod) <span class="co">#return the coefficient vector</span></span>
-<span id="cb567-7"><a href="week-9-lab.html#cb567-7" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="week-9-lab.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
+<span id="cb569-2"><a href="week-9-lab.html#cb569-2" aria-hidden="true" tabindex="-1"></a>boot.huber<span class="ot">&lt;-</span><span class="cf">function</span>(data,indices,maxit)</span>
+<span id="cb569-3"><a href="week-9-lab.html#cb569-3" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb569-4"><a href="week-9-lab.html#cb569-4" aria-hidden="true" tabindex="-1"></a>  data<span class="ot">&lt;-</span>data[indices,] <span class="co">#select observations in bootstrap sample</span></span>
+<span id="cb569-5"><a href="week-9-lab.html#cb569-5" aria-hidden="true" tabindex="-1"></a>  mod<span class="ot">&lt;-</span><span class="fu">rlm</span>(income<span class="sc">~</span>education,<span class="at">data=</span>data,<span class="at">maxit=</span>maxit)</span>
+<span id="cb569-6"><a href="week-9-lab.html#cb569-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coefficients</span>(mod) <span class="co">#return the coefficient vector</span></span>
+<span id="cb569-7"><a href="week-9-lab.html#cb569-7" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <p>Note that we have to pass the function the data and the indices to be sampled. I’ve added an additional option to increase the number of iterations allowed for the rlm estimator to converge.</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="week-9-lab.html#cb568-1" aria-hidden="true" tabindex="-1"></a>duncan.boot<span class="ot">&lt;-</span><span class="fu">boot</span>(Duncan,boot.huber,<span class="dv">1999</span>,<span class="at">maxit=</span><span class="dv">100</span>)</span>
-<span id="cb568-2"><a href="week-9-lab.html#cb568-2" aria-hidden="true" tabindex="-1"></a>duncan.boot</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="week-9-lab.html#cb570-1" aria-hidden="true" tabindex="-1"></a>duncan.boot<span class="ot">&lt;-</span><span class="fu">boot</span>(Duncan,boot.huber,<span class="dv">1999</span>,<span class="at">maxit=</span><span class="dv">100</span>)</span>
+<span id="cb570-2"><a href="week-9-lab.html#cb570-2" aria-hidden="true" tabindex="-1"></a>duncan.boot</span></code></pre></div>
 <pre><code>## 
 ## ORDINARY NONPARAMETRIC BOOTSTRAP
 ## 
@@ -857,8 +857,8 @@ SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 ## 
 ## Bootstrap Statistics :
 ##      original       bias    std. error
-## t1* 6.3002197  0.306898556  4.65954595
-## t2* 0.6615263 -0.005402748  0.07558331</code></pre>
+## t1* 6.3002197  0.328345437  4.49255229
+## t2* 0.6615263 -0.006491036  0.07307658</code></pre>
 <p><strong><span style="color: green;">Checkpoint #5: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?</span></strong></p>
 </div>
 <div id="type-i-vs.-type-ii-regression-the-smatr-package" class="section level2" number="17.6">
@@ -866,8 +866,8 @@ SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 <p>The two main functions in the smatr package are ‘sma’ and ‘ma’ regression for doing standardized major axis regression. Look at the help file for sma to see what some of the options are.</p>
 <pre><code>?sma</code></pre>
 <p>Let’s say we wanted to look at the Duncan dataset again, but instead of asking whether we can use income to predict education, we can ask instead simply whether the two are correlated.</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="week-9-lab.html#cb571-1" aria-hidden="true" tabindex="-1"></a>Duncan.model.sma<span class="ot">&lt;-</span><span class="fu">sma</span>(income<span class="sc">~</span>education, <span class="at">data=</span>Duncan)</span>
-<span id="cb571-2"><a href="week-9-lab.html#cb571-2" aria-hidden="true" tabindex="-1"></a>Duncan.model.sma</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="week-9-lab.html#cb573-1" aria-hidden="true" tabindex="-1"></a>Duncan.model.sma<span class="ot">&lt;-</span><span class="fu">sma</span>(income<span class="sc">~</span>education, <span class="at">data=</span>Duncan)</span>
+<span id="cb573-2"><a href="week-9-lab.html#cb573-2" aria-hidden="true" tabindex="-1"></a>Duncan.model.sma</span></code></pre></div>
 <pre><code>## Call: sma(formula = income ~ education, data = Duncan) 
 ## 
 ## Fit using Standardized Major Axis 
@@ -883,9 +883,9 @@ SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 ## R-squared : 0.5249182 
 ## P-value : 1.8399e-08</code></pre>
 <p>This gives us a very different result from what we got from ‘lm.’ Let’s plot the data, and the best-fit lines to see why this makes sense.</p>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="week-9-lab.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Duncan<span class="sc">$</span>education,Duncan<span class="sc">$</span>income)</span>
-<span id="cb573-2"><a href="week-9-lab.html#cb573-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="fu">coef</span>(Duncan.model.lm)[<span class="dv">1</span>],<span class="at">b=</span><span class="fu">coef</span>(Duncan.model.lm)[<span class="dv">2</span>])</span>
-<span id="cb573-3"><a href="week-9-lab.html#cb573-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="fu">coef</span>(Duncan.model.sma)[<span class="dv">1</span>],<span class="at">b=</span><span class="fu">coef</span>(Duncan.model.sma)[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="week-9-lab.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Duncan<span class="sc">$</span>education,Duncan<span class="sc">$</span>income)</span>
+<span id="cb575-2"><a href="week-9-lab.html#cb575-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="fu">coef</span>(Duncan.model.lm)[<span class="dv">1</span>],<span class="at">b=</span><span class="fu">coef</span>(Duncan.model.lm)[<span class="dv">2</span>])</span>
+<span id="cb575-3"><a href="week-9-lab.html#cb575-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="fu">coef</span>(Duncan.model.sma)[<span class="dv">1</span>],<span class="at">b=</span><span class="fu">coef</span>(Duncan.model.sma)[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="Week-9-lab_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 <p>The SMA line is closer to what you would probably draw by eye as going through the ‘cloud’ of points, since our instinct is to draw a line through the principle axis of variation and not through the regression line, which has a smaller slope.</p>
 <p><span class="math display">\[
