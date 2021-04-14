@@ -164,7 +164,10 @@ summary(lm.fit)
 This is better, but the intercept is still a little mysterious.
 
 Question: How do we interpret the intercept and the other estimates?
+
 Answer: Intercept = No degree mean / Other estimates = DIFFERENCE between the "No degree" and the other levels
+
+**<span style="color: green;">Checkpoint #1: Does this make sense?</span>**
 
 What do the t-statistics and p-values tell you?
 
@@ -227,8 +230,8 @@ Now the estimates represent the group means, which is easier to interpret. How d
 
 Since we have a balanced design, there are the same number of samples from each educational level, and so each educational coefficient estimate has the same standard error. In other words, when calculating the estimate standard errors, we used the mean squared residuals, which is equivalent to a pooled variance estimator, where we have pooled with within group variance from all the groups.
 
-Question: How do we interpret the p-values for the Masters and PhD group?
-Answer: Now the p-values are meaningless, because they test the uninteresting null hypothesis that the group means are zero.
+**<span style="color: green;">Checkpoint #2: In words, how do we interpret the p-values for the Masters and PhD group? What hypothesis are they addressing?</span>**
+<span style="color: white;">Answer: Now the p-values are meaningless, because they test the uninteresting null hypothesis that the group means are zero.</span>
 
 Before working out all the numbers here, lets print out the ANOVA table for this model
 
@@ -256,7 +259,7 @@ $$
 
 (The main take home message is that regression with discrete covariates is the SAME as analysis of variance. Using a regression approach, we focus more on coefficients and hypothesis tests on those coefficients. Using an ANOVA approach, we focus more on the partitioning of variance, and the null hypothesis being addressed is an omnibus hypothesis which addresses whether the covariate in question can explain more variation than would be expected by random chance alone.)
 
-Compare results of 'summary(lm.fit)' with a t-test looking at groups "No degree" and "Masters". Why would these be different? (The anova case pools the errors from all three cases, so the results will be slightly different.)
+Compare results of 'summary(lm.fit)' with a t-test looking at groups "No degree" and "Masters". **<span style="color: green;">Checkpoint #3: Why would these be different?</span>** <span style="color: white;">(The anova case pools the errors from all three cases, so the results will be slightly different.)</span>
 
 
 ```r
@@ -401,7 +404,7 @@ TukeyHSD(aov(Salary~Education,data=salaries))
 ## PhD-Masters       2.083333 -0.4291422  4.595809 0.119761
 ```
 
-Where are the confidence intervals coming from? We use the same basic procedure as in Week #4, we use the quantiles of the distribution to create upper and lower confidence intervals:
+**<span style="color: green;">Checkpoint #4: Where are the confidence intervals coming from?</span>** Hint: We use the same basic procedure as in Week #4, we use the quantiles of the distribution to create upper and lower confidence intervals:
 
 $$
 q_{a,DOF_{\text{within}}} \sim \frac{max(results)-min(results)}{\sqrt{MS_{within}*\frac{1}{12}}}
@@ -572,7 +575,7 @@ test.statistic<-numerator/denominator
 ## [1] 0.01160652
 ```
 
-Note that we did a one tailed test because we always take the largest minus the smallest group mean.
+**<span style="color: green;">Checkpoint #5: Why is this always a one-tailed test?</span>** <span style="color: white;">Note that we did a one tailed test because we always take the largest minus the smallest group mean.</span>
 
 We can also use the built in function we used before
 
@@ -700,4 +703,4 @@ lmer(DIVERSITY~1|STREAM,medley)
 
 In either case, the notation here says that we want to model DIVERSITY with an intercept (a group mean) that is "grouped" by STREAM. STREAM describes the nature of the random variation, but each stream is considered a random sample from a larger population of streams, and so we do not interpret the means grouped by stream in the way we would if they were fixed factors.
 
-Note that 'aov' and 'lmer' do not yield the same answer in this case because the design is unbalanced. In these cases, 'lmer' is to be used, but I have shown 'aov' just to illustrate the syntax. Understanding the output of 'lmer' (or understanding mixed models in general) is well beyond the scope of this course, but if you end up needing to use mixed models for your research, I highly suggest reading Chapter 12 of Gelman and Hill's excellent book "Data Analysis Using Regression and Multilevel/Hierarchical Models".
+Note that 'aov' and 'lmer' do not yield the same answer in this case because the design is unbalanced. In these cases, 'lmer' is to be used, but I have shown 'aov' just to illustrate the syntax. Understanding the output of 'lmer' (or understanding mixed models in general) is well beyond the scope of this course, but if you end up needing to use mixed models for your research, I highly suggest reading Chapter 12 of [Gelman and Hill's excellent book "Data Analysis Using Regression and Multilevel/Hierarchical Models"](https://www.amazon.com/Analysis-Regression-Multilevel-Hierarchical-Models/dp/052168689X/ref=sr_1_1?dchild=1&keywords=gelman+and+hill&qid=1618364668&sr=8-1).
