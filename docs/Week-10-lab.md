@@ -474,9 +474,9 @@ summary(challenger.fit4)
 confidence.bands<-predict.glm(challenger.fit4,newdata,se.fit=TRUE)
 plot(Temp,O.ring.failure,xlab="Temperature",ylab="Damage",main="O-ring Damage vs. Temperature") 
 # Above line only needed because RMarkdown doesn't keep previous plot
-lines(newdata[,1],inv.logit(confidence.bands$fit),col="orange",lwd=2)
-lines(newdata[,1],inv.logit(confidence.bands$fit+1.96*confidence.bands$se.fit),col="orange",lwd=2,lty=3)
-lines(newdata[,1],inv.logit(confidence.bands$fit-1.96*confidence.bands$se.fit),col="orange",lwd=2,lty=3)
+lines(newdata[,1],exp(confidence.bands$fit),col="orange",lwd=2)
+lines(newdata[,1],exp(confidence.bands$fit+1.96*confidence.bands$se.fit),col="orange",lwd=2,lty=3)
+lines(newdata[,1],exp(confidence.bands$fit-1.96*confidence.bands$se.fit),col="orange",lwd=2,lty=3)
 ```
 
 <img src="Week-10-lab_files/figure-html/unnamed-chunk-12-1.png" width="672" />
@@ -506,7 +506,7 @@ dev_diff
 ```
 
 ```
-## [1] 0.6726325
+## [1] 3.399165
 ```
 
 Notice that even though the covariate that we added is just noise, it still decreases the deviance.
@@ -532,18 +532,6 @@ for (i in 1:1000){
   
   dev_diff <- c(dev_diff, dev_diff_rand)
 }
-```
-
-```
-## Warning: glm.fit: algorithm did not converge
-```
-
-```
-## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-```
-
-```
-## Warning: glm.fit: algorithm did not converge
 ```
 
 ```

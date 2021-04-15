@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-13" />
+<meta name="date" content="2021-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -434,13 +434,13 @@ Cov(A,B) &amp; Cov(B,B) \end{array}\right)\right)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = 0.012539, df = 197.18, p-value = 0.99
+## t = -0.91071, df = 197.93, p-value = 0.3636
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.4917310  0.4980243
+##  -0.7444325  0.2740708
 ## sample estimates:
 ## mean of x mean of y 
-##  1.171176  1.168029</code></pre>
+## 0.9913185 1.2264994</code></pre>
 <p>Notice that the degrees of freedom need not necessarily be an integer. R assumes unequal variances so we have to use the more complicated formula for the degrees of freedom. (In this situation, the number of degrees of freedom is not very intuitive; however, if you have <span class="math inline">\(s_{A}^{2}=s_{B}^{2}\)</span> and <span class="math inline">\(n_{A}=n_{B}\)</span>, then the formula for the d.o.f. simplifies to 2n-2 which is what you would expect. )</p>
 <p>Because we are simulating data, everyone’s output is going to look slightly different. In fact, some of us may get p&lt;0.05 and others p&gt;0.05. Here we are looking for a relatively small difference (compared to the standard deviations) with only 100 random draws. We would get more consistent results if we had larger sample sizes, larger mean differences, or smaller standard deviations. This touches on the very important question of statistical POWER, which we will discuss next week.</p>
 <p><strong><span style="color: green;">Checkpoint #1: The output of t.test includes 7 quantities - can you reproduce all 7 quantities based on what we learned on Tuesday?</span></strong></p>
@@ -463,25 +463,25 @@ H_{A}:\mu_{1}&lt;\mu_{2}
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = 0.012539, df = 197.18, p-value = 0.495
+## t = -0.91071, df = 197.93, p-value = 0.8182
 ## alternative hypothesis: true difference in means is greater than 0
 ## 95 percent confidence interval:
-##  -0.4115672        Inf
+##  -0.6619426        Inf
 ## sample estimates:
 ## mean of x mean of y 
-##  1.171176  1.168029</code></pre>
+## 0.9913185 1.2264994</code></pre>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="week-5-lab.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sample.a,sample.b,<span class="at">alternative=</span><span class="st">&quot;less&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = 0.012539, df = 197.18, p-value = 0.505
+## t = -0.91071, df = 197.93, p-value = 0.1818
 ## alternative hypothesis: true difference in means is less than 0
 ## 95 percent confidence interval:
-##       -Inf 0.4178604
+##       -Inf 0.1915809
 ## sample estimates:
 ## mean of x mean of y 
-##  1.171176  1.168029</code></pre>
+## 0.9913185 1.2264994</code></pre>
 <p>Try both of these options and see how the p-value and the confidence intervals change. Make sure you understand why they make sense. Remember, if you are going to use a one-tailed test, you should be prepared to accept that a large difference opposite to what was expected is pure random chance.</p>
 <p>Spend some time going back and experimenting with different sets of random variables. Make the means more or less different. Change the variances. Make sure you understand why the t-test results change as you alter the data. <strong><span style="color: green;">Checkpoint #2: What happens if you make the sample sizes smaller or larger?</span></strong></p>
 <p>Now let’s see what happens when we simulate a new dataset with correlations between the two samples.</p>
@@ -496,48 +496,48 @@ H_{A}:\mu_{1}&lt;\mu_{2}
 ## 	Paired t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -4.559, df = 99, p-value = 1.472e-05
+## t = -1.5158, df = 99, p-value = 0.1328
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.7661511 -0.3014850
+##  -0.53594234  0.07173233
 ## sample estimates:
 ## mean of the differences 
-##               -0.533818</code></pre>
+##               -0.232105</code></pre>
 <p>Compare this with</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="week-5-lab.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sample.a,sample.b,<span class="at">paired=</span>F)</span></code></pre></div>
 <pre><code>## 
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -2.3029, df = 197.08, p-value = 0.02233
+## t = -0.88315, df = 197.41, p-value = 0.3782
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.99094542 -0.07669067
+##  -0.7503879  0.2861779
 ## sample estimates:
 ## mean of x mean of y 
-## 0.6455878 1.1794059</code></pre>
+## 0.8063402 1.0384452</code></pre>
 <p>which is the same as</p>
 <div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="week-5-lab.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sample.a,sample.b)</span></code></pre></div>
 <pre><code>## 
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -2.3029, df = 197.08, p-value = 0.02233
+## t = -0.88315, df = 197.41, p-value = 0.3782
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.99094542 -0.07669067
+##  -0.7503879  0.2861779
 ## sample estimates:
 ## mean of x mean of y 
-## 0.6455878 1.1794059</code></pre>
+## 0.8063402 1.0384452</code></pre>
 <p>since the default is to assume unpaired samples.</p>
 <p>To convince ourselves of the formulas we learned for paired t-tests, we will define a new variable</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="week-5-lab.html#cb265-1" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span>sample.a<span class="sc">-</span>sample.b</span>
 <span id="cb265-2"><a href="week-5-lab.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(z)</span></code></pre></div>
-<pre><code>## [1] -0.533818</code></pre>
+<pre><code>## [1] -0.232105</code></pre>
 <div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="week-5-lab.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(z)</span></code></pre></div>
-<pre><code>## [1] 1.37102</code></pre>
+<pre><code>## [1] 2.34479</code></pre>
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="week-5-lab.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(sample.a)<span class="sc">+</span><span class="fu">var</span>(sample.b)<span class="sc">-</span><span class="dv">2</span><span class="sc">*</span><span class="fu">cov</span>(sample.a,sample.b)</span></code></pre></div>
-<pre><code>## [1] 1.37102</code></pre>
+<pre><code>## [1] 2.34479</code></pre>
 <p>Spend some time going back and experimenting with different sets of random variables. In particular, change the covariances (makign sure that the covariance matrix is symmetric and the variances positive). Make sure you understand why the t-test results change as you alter the data. <strong><span style="color: green;">Checkpoint #3: What happens to the t-test results when you make the correlation weak?</span></strong></p>
 <div id="f-test" class="section level2" number="10.1">
 <h2><span class="header-section-number">10.1</span> F-test</h2>
@@ -590,7 +590,7 @@ H_{A implied}: \sigma_{A}^{2} &gt; \sigma_{B}^{2}
 <span id="cb272-2"><a href="week-5-lab.html#cb272-2" aria-hidden="true" tabindex="-1"></a>var.B<span class="ot">&lt;-</span><span class="fu">var</span>(sample.b)</span>
 <span id="cb272-3"><a href="week-5-lab.html#cb272-3" aria-hidden="true" tabindex="-1"></a>F.ratio<span class="ot">&lt;-</span>var.A<span class="sc">/</span>var.B </span>
 <span id="cb272-4"><a href="week-5-lab.html#cb272-4" aria-hidden="true" tabindex="-1"></a>F.ratio</span></code></pre></div>
-<pre><code>## [1] 1.870054</code></pre>
+<pre><code>## [1] 1.930492</code></pre>
 <p>Note that we didn’t check that var.A was actually bigger than var.B. Because we are only interested in a one-tailed test, we want var.A in the numerator and we will compare that to the right-hand side of the F-distribution.</p>
 <p>Now we know what the F-ratio of our simulated data is, but we don’t know what the critical value of the test statistic is for the ratio to be considered “significant.”</p>
 <div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="week-5-lab.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(<span class="at">p=</span><span class="fl">0.95</span>,<span class="at">df1=</span><span class="dv">99</span>,<span class="at">df2=</span><span class="dv">99</span>)</span></code></pre></div>
@@ -598,7 +598,7 @@ H_{A implied}: \sigma_{A}^{2} &gt; \sigma_{B}^{2}
 <p><strong><span style="color: green;">Checkpoint #4: Do you understand why df1=99 and df2=99?</span></strong></p>
 <p>We see that the F-ratio for our data is greater than the critical value for the 95th percentile. Therefore we can say that the two samples are unlikely to come from populations from the same variance. We can also flip the question around to ask: “What is the probability of obtaining this F-ratio if the null hypothesis were true?”</p>
 <div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="week-5-lab.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pf</span>(F.ratio,<span class="at">df1=</span><span class="dv">99</span>,<span class="at">df2=</span><span class="dv">99</span>)</span></code></pre></div>
-<pre><code>## [1] 0.001029655</code></pre>
+<pre><code>## [1] 0.000607189</code></pre>
 <p>and we see that it is small (&lt;0.05).</p>
 <p>Remember, pf gives the cumulative probability of getting any value less than or equal to the percentile being queried, so 1-pf gives the probability of getting a value as or more extreme.</p>
 <p>R gives us an easier way to test equality of variances (the F test):</p>
@@ -607,20 +607,20 @@ H_{A implied}: \sigma_{A}^{2} &gt; \sigma_{B}^{2}
 ## 	F test to compare two variances
 ## 
 ## data:  sample.a and sample.b
-## F = 1.8701, num df = 99, denom df = 99, p-value = 0.002059
+## F = 1.9305, num df = 99, denom df = 99, p-value = 0.001214
 ## alternative hypothesis: true ratio of variances is not equal to 1
 ## 95 percent confidence interval:
-##  1.258250 2.779337
+##  1.298916 2.869163
 ## sample estimates:
 ## ratio of variances 
-##           1.870054</code></pre>
+##           1.930492</code></pre>
 <p>The output of var.test includes 7 quantities - make sure you can calculate each and every one of these quantities.</p>
 <p>How did R arrive at its p-value? Notice that it is twice what we calculated when doing the F-test by hand. The reason is that R’s default is to do a two-sided test, and we only calculated the probability that you got a ratio as big or larger than the <span class="math inline">\(F^{*}\)</span>. You can get the two-tailed probability by either doubling that value or by adding the probability that you would get an F-ratio smaller than 1/<span class="math inline">\(F^{*}\)</span>.</p>
 <p>Notice also that to get the confidence intervals on the F-ratio, you multiply by the quantiles of the F-distribution.</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="week-5-lab.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(<span class="fl">0.025</span>,<span class="at">df1=</span><span class="dv">99</span>,<span class="at">df2=</span><span class="dv">99</span>)<span class="sc">*</span>F.ratio</span></code></pre></div>
-<pre><code>## [1] 1.25825</code></pre>
+<pre><code>## [1] 1.298916</code></pre>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="week-5-lab.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qf</span>(<span class="fl">0.975</span>,<span class="at">df1=</span><span class="dv">99</span>,<span class="at">df2=</span><span class="dv">99</span>)<span class="sc">*</span>F.ratio</span></code></pre></div>
-<pre><code>## [1] 2.779337</code></pre>
+<pre><code>## [1] 2.869163</code></pre>
 </div>
 <div id="comparing-two-proportions" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> Comparing two proportions</h2>
@@ -646,33 +646,33 @@ P\left(\hat{p}-z_{1-(\alpha/2)}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\leq \theta \l
 <p>First we simulate some data to work with</p>
 <div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="week-5-lab.html#cb284-1" aria-hidden="true" tabindex="-1"></a>heads<span class="ot">&lt;-</span><span class="fu">rbinom</span>(<span class="dv">1</span>,<span class="at">size=</span><span class="dv">100</span>,<span class="at">prob=</span><span class="fl">0.5</span>)</span>
 <span id="cb284-2"><a href="week-5-lab.html#cb284-2" aria-hidden="true" tabindex="-1"></a>heads</span></code></pre></div>
-<pre><code>## [1] 52</code></pre>
+<pre><code>## [1] 56</code></pre>
 <p>Now we will use R’s function for the proportion test</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="week-5-lab.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(heads,<span class="dv">100</span>) <span class="co">#continuity correction true by default</span></span></code></pre></div>
 <pre><code>## 
 ## 	1-sample proportions test with continuity correction
 ## 
 ## data:  heads out of 100, null probability 0.5
-## X-squared = 0.09, df = 1, p-value = 0.7642
+## X-squared = 1.21, df = 1, p-value = 0.2713
 ## alternative hypothesis: true p is not equal to 0.5
 ## 95 percent confidence interval:
-##  0.4183183 0.6201278
+##  0.4573588 0.6579781
 ## sample estimates:
 ##    p 
-## 0.52</code></pre>
+## 0.56</code></pre>
 <p>The continuity correction is used because we are approximating a discrete distribution (the binomial) with its normal approximation. While generally recommended, it rarely makes a large difference and for transparency I suggest we turn it off.</p>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="week-5-lab.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(heads,<span class="dv">100</span>,<span class="at">correct=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ## 	1-sample proportions test without continuity correction
 ## 
 ## data:  heads out of 100, null probability 0.5
-## X-squared = 0.16, df = 1, p-value = 0.6892
+## X-squared = 1.44, df = 1, p-value = 0.2301
 ## alternative hypothesis: true p is not equal to 0.5
 ## 95 percent confidence interval:
-##  0.4231658 0.6153545
+##  0.4622810 0.6532797
 ## sample estimates:
 ##    p 
-## 0.52</code></pre>
+## 0.56</code></pre>
 <p>To make sure we understand this, let’s look at the help file for prop.test</p>
 <pre><code>?prop.test</code></pre>
 <p>There are a couple of additional pieces of information you need to understand and/or reconstruct the output for prop.test, and unfortunately the help file for this function is fairly unhelpful.</p>
@@ -696,13 +696,13 @@ X^{2} \sim \chi^{2}_{1}
 <span id="cb291-2"><a href="week-5-lab.html#cb291-2" aria-hidden="true" tabindex="-1"></a>theta0<span class="ot">&lt;-</span><span class="fl">0.5</span></span>
 <span id="cb291-3"><a href="week-5-lab.html#cb291-3" aria-hidden="true" tabindex="-1"></a>test.statistic<span class="ot">&lt;-</span>(((heads<span class="sc">/</span>n)<span class="sc">-</span>theta0)<span class="sc">/</span>(<span class="fu">sqrt</span>(theta0<span class="sc">*</span>theta0<span class="sc">/</span>n)))<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb291-4"><a href="week-5-lab.html#cb291-4" aria-hidden="true" tabindex="-1"></a>test.statistic</span></code></pre></div>
-<pre><code>## [1] 0.16</code></pre>
+<pre><code>## [1] 1.44</code></pre>
 <p>and the p-value is given by</p>
 <div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="week-5-lab.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(test.statistic,<span class="at">df=</span><span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## [1] 0.6891565</code></pre>
+<pre><code>## [1] 0.2301393</code></pre>
 <p>Notice that because <span class="math inline">\(X^{2}\)</span> is always positive, the test is a one-tailed test (“extreme” values of this test statistic are always large and <strong>positive</strong>). We could get the same result comparing the original (non-squared) test statistic against the Standard Normal, as long as you make sure to do the two-tailed test (“extreme” for X includes large and positive <strong>and</strong> large and negative).</p>
 <div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="week-5-lab.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="fu">sqrt</span>(test.statistic)))</span></code></pre></div>
-<pre><code>## [1] 0.6891565</code></pre>
+<pre><code>## [1] 0.2301393</code></pre>
 <ul>
 <li>Notice in the helpfile that R will return a clipped version of the confidence interval, so the confidence interval is bounded [0,1].</li>
 </ul>
@@ -712,13 +712,13 @@ X^{2} \sim \chi^{2}_{1}
 ## 	Exact binomial test
 ## 
 ## data:  heads and 100
-## number of successes = 52, number of trials = 100, p-value = 0.7644
+## number of successes = 56, number of trials = 100, p-value = 0.2713
 ## alternative hypothesis: true probability of success is not equal to 0.5
 ## 95 percent confidence interval:
-##  0.4177898 0.6209945
+##  0.4571875 0.6591640
 ## sample estimates:
 ## probability of success 
-##                   0.52</code></pre>
+##                   0.56</code></pre>
 <p>One of the caveats in using the Wald method for binomial proportion is that it can give unrealistic values for the CIs when the underlying probability is very close to either 0 or 1 (especially if the sample size is small).</p>
 <p>To see this, lets calculate the Wald confidence intervals by hand assuming we got 2 successes out of 100 trials.</p>
 <div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="week-5-lab.html#cb299-1" aria-hidden="true" tabindex="-1"></a>p.hat<span class="ot">&lt;-</span><span class="dv">2</span><span class="sc">/</span><span class="dv">100</span></span>
@@ -740,7 +740,7 @@ X^{2} \sim \chi^{2}_{1}
 <span id="cb303-6"><a href="week-5-lab.html#cb303-6" aria-hidden="true" tabindex="-1"></a>LL<span class="ot">&lt;-</span>p.hat<span class="sc">-</span>se<span class="sc">*</span>z <span class="co">#vector of LLs</span></span>
 <span id="cb303-7"><a href="week-5-lab.html#cb303-7" aria-hidden="true" tabindex="-1"></a>UL<span class="ot">&lt;-</span>p.hat<span class="sc">+</span>se<span class="sc">*</span>z <span class="co">#vector of UL</span></span>
 <span id="cb303-8"><a href="week-5-lab.html#cb303-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">as.numeric</span>((<span class="fl">0.02</span><span class="sc">&lt;=</span>UL)<span class="sc">&amp;</span>(<span class="fl">0.02</span><span class="sc">&gt;=</span>LL)))<span class="sc">/</span><span class="dv">1000</span> <span class="co">#proportion of times the CI include the true value</span></span></code></pre></div>
-<pre><code>## [1] 0.872</code></pre>
+<pre><code>## [1] 0.866</code></pre>
 <p>We see that the CIs are actually too narrow! The Wald test is commonly used but as we have demonstrated, it is not very good in practice. R and its packages make it easy to get better CIs for a binomial proportion and in real analysis, you should use these more sophisticated methods.</p>
 <p>One of the better functions for doing tests of binomial proportions is provided by Dr. Dirk Enzmann. He has posted a function online that calculates 11 different versions of the binomial confidence interval.</p>
 <p>I have pasted the function here:</p>
@@ -929,7 +929,7 @@ X^{2} \sim \chi^{2}_{1}
 ## 	Two-sample Kolmogorov-Smirnov test
 ## 
 ## data:  x and y
-## D = 0.62667, p-value = 2.057e-07
+## D = 0.5, p-value = 9.065e-05
 ## alternative hypothesis: two-sided</code></pre>
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="week-5-lab.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(x))</span>
 <span id="cb330-2"><a href="week-5-lab.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">ecdf</span>(y),<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>

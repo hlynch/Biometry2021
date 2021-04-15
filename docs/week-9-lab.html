@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-13" />
+<meta name="date" content="2021-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -533,19 +533,19 @@ P(tanh(z-\frac{t_{[1-\alpha/2](\infty)}}{\sqrt{n-3}})\leq \rho \leq tanh(z+\frac
 ## lm(formula = value ~ X)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -26.3254  -3.3573   0.3872   4.7052  18.3184 
+##     Min      1Q  Median      3Q     Max 
+## -25.375  -7.863   0.812   8.500  29.467 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  -0.5992     3.8452  -0.156    0.877    
-## X            -2.1646     0.2166  -9.994 9.76e-11 ***
+## (Intercept)  -5.0529     4.7450  -1.065    0.296    
+## X            -1.8385     0.2673  -6.879 1.78e-07 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 10.27 on 28 degrees of freedom
-## Multiple R-squared:  0.781,	Adjusted R-squared:  0.7732 
-## F-statistic: 99.87 on 1 and 28 DF,  p-value: 9.76e-11</code></pre>
+## Residual standard error: 12.67 on 28 degrees of freedom
+## Multiple R-squared:  0.6282,	Adjusted R-squared:  0.615 
+## F-statistic: 47.32 on 1 and 28 DF,  p-value: 1.782e-07</code></pre>
 <p>Copy this script into R and r-run it several times. Notice how the estimates for slope and intercept bounce around, but they should be correct <em>on average</em> and also the scale of variation from one run to the next should make sense given the estimate of the standard error. (Their standard deviation should be the standard error.) Notice also how the residual standard error is equal (within sampling error) to the sigma that you put into the model, and that as you increase sigma, the R2 goes down because now you are increasing the variation that is <em>not</em> explained by the covariate. Try changing the number of samples drawn, either by extending the vector of the covariates or by drawing multiple times for each value (you will have to modify the code to make this latter change work). Notice how the standard errors on the intercept and slope coefficients gets smaller as the data set gets larger but the estimate for sigma does not. The parameter sigma is a property of the underlying population, not a property of the sample drawn, so it does not get smaller as you increase the number of samples in the dataset. (If this does not make sense, ask me!)</p>
 <p><strong>Fitting real data</strong></p>
 <p>Now that we’ve gained some intuition, we can dive into fitting a real dataset. The syntax of ‘lm’ is straightforward. We will run through some examples using a dataset on Old Faithful eruptions. The dataset is built into the MASS library, so we just have to load it.</p>
@@ -861,8 +861,8 @@ SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 ## 
 ## Bootstrap Statistics :
 ##      original       bias    std. error
-## t1* 6.3002197  0.363616884  4.74723512
-## t2* 0.6615263 -0.008261086  0.07890184</code></pre>
+## t1* 6.3002197  0.399457977  4.66744117
+## t2* 0.6615263 -0.008401788  0.07546324</code></pre>
 <p><strong><span style="color: green;">Checkpoint #5: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?</span></strong></p>
 </div>
 <div id="type-i-vs.-type-ii-regression-the-smatr-package" class="section level2" number="17.6">

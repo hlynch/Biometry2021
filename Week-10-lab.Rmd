@@ -288,9 +288,9 @@ summary(challenger.fit4)
 confidence.bands<-predict.glm(challenger.fit4,newdata,se.fit=TRUE)
 plot(Temp,O.ring.failure,xlab="Temperature",ylab="Damage",main="O-ring Damage vs. Temperature") 
 # Above line only needed because RMarkdown doesn't keep previous plot
-lines(newdata[,1],inv.logit(confidence.bands$fit),col="orange",lwd=2)
-lines(newdata[,1],inv.logit(confidence.bands$fit+1.96*confidence.bands$se.fit),col="orange",lwd=2,lty=3)
-lines(newdata[,1],inv.logit(confidence.bands$fit-1.96*confidence.bands$se.fit),col="orange",lwd=2,lty=3)
+lines(newdata[,1],exp(confidence.bands$fit),col="orange",lwd=2)
+lines(newdata[,1],exp(confidence.bands$fit+1.96*confidence.bands$se.fit),col="orange",lwd=2,lty=3)
+lines(newdata[,1],exp(confidence.bands$fit-1.96*confidence.bands$se.fit),col="orange",lwd=2,lty=3)
 ```
 
 We can see that the Poisson model has no inflection point and therefore its predictions would not be bounded by (0,1).
