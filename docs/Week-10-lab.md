@@ -406,7 +406,7 @@ $$
 \text{confidence interval} = [\text{LL of } (\beta_{0} + \beta_{0}X_{i}), \text{UL of } (\beta_{0} + \beta_{0}X_{i})]
 $$
 
-Therefore, in order to construct confidence intervals on the scale of the probability $p$, you need to back-transfrom, so the LL for $p$ is given by $logit^{-1}(\text{LL of } (\beta_{0} + \beta_{0}X_{i}))$ and the UL is given by $logit^{-1}(\text{UL of } (\beta_{0} + \beta_{0}X_{i}))$. Operationally, this looks as follows in R:
+Therefore, in order to construct confidence intervals on the scale of the probability $p$, you need to back-transform, so the LL for $p$ is given by $logit^{-1}(\text{LL of } (\beta_{0} + \beta_{0}X_{i}))$ and the UL is given by $logit^{-1}(\text{UL of } (\beta_{0} + \beta_{0}X_{i}))$. Operationally, this looks as follows in R:
 
 
 
@@ -454,7 +454,7 @@ Poisson regression practice
 
 Since we have the data loaded already, we will use the challenger o-ring data to illustrate how a Poisson model is fit, even though a Poisson model would be inappropriate for the o-ring data. **<span style="color: green;">Checkpoint #6: Why is a Poisson model inappropriate?</span>**
 
-Note that now the link function is the $log()$ so the inverse link function needed to get a CI of the Poisson intensity $\lambda$ is now the exponential $exp())$.In other words, to construct confidence intervals on the scale of the intensity $\lamba$, you need to back-transfrom, so the LL for $p$ is given by $exp^{\text{LL of } (\beta_{0} + \beta_{0}X_{i})}$ and the UL is given by $exp^{\text{UL of } (\beta_{0} + \beta_{0}X_{i})}$. 
+Note that now the link function is the $log()$ so the inverse link function needed to get a CI of the Poisson intensity $\lambda$ is now the exponential $exp()$. In other words, to construct confidence intervals on the scale of the intensity $\lambda$, you need to back-transform, so the LL for $p$ is given by $exp^{\text{LL of } (\beta_{0} + \beta_{0}X_{i})}$ and the UL is given by $exp^{\text{UL of } (\beta_{0} + \beta_{0}X_{i})}$. 
 
 
 ```r
@@ -523,7 +523,7 @@ dev_diff
 ```
 
 ```
-## [1] 1.629912
+## [1] 5.359337
 ```
 
 Notice that even though the covariate that we added is just noise, it still decreases the deviance.
@@ -549,13 +549,6 @@ for (i in 1:1000){
   
   dev_diff <- c(dev_diff, dev_diff_rand)
 }
-```
-
-```
-## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-```
-
-```r
 # plot the distribution and add a line for a chi-square with df=1 
 hist(dev_diff, xlab="Deviance Difference", main="Expected distribution", freq=FALSE,breaks=30)
 lines(seq(0,20,0.1), dchisq(seq(0,20,0.1),df=1), col="red",lwd=2)

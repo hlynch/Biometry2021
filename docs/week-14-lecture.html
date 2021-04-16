@@ -447,11 +447,11 @@ z_j = c_1 X_{1j} + c_2 X_{2j} + \dots + c_p X_{pj}
 <p>If we have data that can be grouped, we can estimate the components in order to maximize between-group differences relative to within-group differences. This is what we get out of multivariate ANOVA (MANOVA) or discriminant function analysis.</p>
 <p>Note that if you are working with species abundances, species presence-absences, or genetic data, we might calculate the dissimilarity between observations using a dissimilarity matrix.</p>
 <p>For example, we might have the species abundances of aquatic invertebrates sampled from 30 ponds. Each pond has different species and abundances of species. We can calculate the dissimilarity of each pond to every other pond based on the species composition of each (for example, using Bray-Curtis distance, or another metric of distance). Then, we can use a multivariate analysis to summarize the variation among all ponds. Ponds that share species and have similar abundances will be closer together in multivariate space.</p>
-<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="week-14-lecture.html#cb947-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb947-2"><a href="week-14-lecture.html#cb947-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb947-3"><a href="week-14-lecture.html#cb947-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(varespec)  <span class="co"># % cover of lichen spp. in 24 sites</span></span>
-<span id="cb947-4"><a href="week-14-lecture.html#cb947-4" aria-hidden="true" tabindex="-1"></a>vare.dis <span class="ot">&lt;-</span> <span class="fu">vegdist</span>(varespec)</span>
-<span id="cb947-5"><a href="week-14-lecture.html#cb947-5" aria-hidden="true" tabindex="-1"></a>vare.dis</span></code></pre></div>
+<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="week-14-lecture.html#cb941-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb941-2"><a href="week-14-lecture.html#cb941-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb941-3"><a href="week-14-lecture.html#cb941-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(varespec)  <span class="co"># % cover of lichen spp. in 24 sites</span></span>
+<span id="cb941-4"><a href="week-14-lecture.html#cb941-4" aria-hidden="true" tabindex="-1"></a>vare.dis <span class="ot">&lt;-</span> <span class="fu">vegdist</span>(varespec)</span>
+<span id="cb941-5"><a href="week-14-lecture.html#cb941-5" aria-hidden="true" tabindex="-1"></a>vare.dis</span></code></pre></div>
 <pre><code>##           18        15        24        27        23        19        22
 ## 15 0.5310021                                                            
 ## 24 0.6680661 0.3597783                                                  
@@ -578,9 +578,9 @@ z_j = c_1 X_{1j} + c_2 X_{2j} + \dots + c_p X_{pj}
 <div id="scaling-or-ordination-techniques" class="section level2" number="26.8">
 <h2><span class="header-section-number">26.8</span> Scaling or ordination techniques</h2>
 <p>The goals of these types of analyses (principal components analysis, correspondence analysis, canonical correspondence analysis, multidimensional scaling) are (1) to reduce a large set of covariates to a smaller number of derived covariates, and (2) to reveal patterns in the data in multidimensional space. We will only be able to go over PCA today, but the other methods are covered in Quinn and Keough (2002).</p>
-<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="week-14-lecture.html#cb949-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example of MDS using lichen data by site</span></span>
-<span id="cb949-2"><a href="week-14-lecture.html#cb949-2" aria-hidden="true" tabindex="-1"></a>vare.mds0 <span class="ot">&lt;-</span> <span class="fu">isoMDS</span>(vare.dis, <span class="at">trace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb949-3"><a href="week-14-lecture.html#cb949-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>(vare.mds0, <span class="at">type =</span> <span class="st">&quot;t&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb943-1"><a href="week-14-lecture.html#cb943-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example of MDS using lichen data by site</span></span>
+<span id="cb943-2"><a href="week-14-lecture.html#cb943-2" aria-hidden="true" tabindex="-1"></a>vare.mds0 <span class="ot">&lt;-</span> <span class="fu">isoMDS</span>(vare.dis, <span class="at">trace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb943-3"><a href="week-14-lecture.html#cb943-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>(vare.mds0, <span class="at">type =</span> <span class="st">&quot;t&quot;</span>)</span></code></pre></div>
 <p><img src="Week-14-lecture_files/figure-html/unnamed-chunk-3-1.png" width="384" /></p>
 </div>
 <div id="principal-components-analysis-pca" class="section level2" number="26.9">
@@ -591,10 +591,10 @@ z_j = c_1 X_{1j} + c_2 X_{2j} + \dots + c_p X_{pj}
 <div id="principal-components-analysis-pca-1" class="section level2" number="26.10">
 <h2><span class="header-section-number">26.10</span> Principal components analysis (PCA)</h2>
 <p>Using the example I described at the beginning of the lecture, Lovett et al. (2000) measured water chemistry variables in each of 39 streams in the Catskill Mountains. Lovett and colleagues looked at each covariate and decided to log transform dissolved organic C, Cl, and H.</p>
-<div class="sourceCode" id="cb950"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb950-1"><a href="week-14-lecture.html#cb950-1" aria-hidden="true" tabindex="-1"></a>streams.init <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lecture/lovett2.csv&quot;</span>)</span>
-<span id="cb950-2"><a href="week-14-lecture.html#cb950-2" aria-hidden="true" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams.init[, <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">16</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">17</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">18</span>)]</span>
-<span id="cb950-3"><a href="week-14-lecture.html#cb950-3" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(streams) <span class="ot">&lt;-</span> streams.init[, <span class="dv">1</span>]</span>
-<span id="cb950-4"><a href="week-14-lecture.html#cb950-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(streams)</span></code></pre></div>
+<div class="sourceCode" id="cb944"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb944-1"><a href="week-14-lecture.html#cb944-1" aria-hidden="true" tabindex="-1"></a>streams.init <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lecture/lovett2.csv&quot;</span>)</span>
+<span id="cb944-2"><a href="week-14-lecture.html#cb944-2" aria-hidden="true" tabindex="-1"></a>streams <span class="ot">&lt;-</span> streams.init[, <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">8</span>, <span class="dv">16</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">17</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">18</span>)]</span>
+<span id="cb944-3"><a href="week-14-lecture.html#cb944-3" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(streams) <span class="ot">&lt;-</span> streams.init[, <span class="dv">1</span>]</span>
+<span id="cb944-4"><a href="week-14-lecture.html#cb944-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(streams)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:	38 obs. of  10 variables:
 ##  $ NO3 : num  24.2 25.4 29.7 22.1 13.1 27.5 28.1 31.2 22.6 35.9 ...
 ##  $ TON : num  5.6 4.9 4.4 6.1 5.7 3 4.7 5.4 3.1 4.9 ...
@@ -607,21 +607,21 @@ z_j = c_1 X_{1j} + c_2 X_{2j} + \dots + c_p X_{pj}
 ##  $ MG  : num  14.4 17 19.6 19.5 21.9 22.4 26.2 25.4 21.8 22.2 ...
 ##  $ LH  : num  -0.319 -0.62 -0.328 -0.638 -0.432 ...</code></pre>
 <p>Some of the covariates are correlated, and would be collinear in a regression. The components from a PCA are orthogonal, removing multicollinearity.</p>
-<div class="sourceCode" id="cb952"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb952-1"><a href="week-14-lecture.html#cb952-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(streams)</span></code></pre></div>
+<div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb946-1"><a href="week-14-lecture.html#cb946-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(streams)</span></code></pre></div>
 <p><img src="Week-14-lecture_files/figure-html/unnamed-chunk-5-1.png" width="576" /></p>
 </div>
 <div id="pca-in-r" class="section level2" number="26.11">
 <h2><span class="header-section-number">26.11</span> PCA in R</h2>
 <p>We can fit a PCA using <code>prcomp()</code>. There are a lot of functions for PCAs, carefully read the help files to understand how the function is fitting the PCA before using in your own analyses.</p>
 <p>The variances of the water chemistry covariates are very variable. It is probably best if we scale our data with the argument <code>scale = TRUE</code> (note this is not the default in R!).</p>
-<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="week-14-lecture.html#cb953-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> streams, <span class="at">MARGIN =</span> <span class="dv">2</span>, var)  <span class="co"># variance of each covariate</span></span></code></pre></div>
+<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="week-14-lecture.html#cb947-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> streams, <span class="at">MARGIN =</span> <span class="dv">2</span>, var)  <span class="co"># variance of each covariate</span></span></code></pre></div>
 <pre><code>##          NO3          TON           TN         LDOC          NH4          SO4 
 ##  74.18850640   1.63670697  65.60399004   0.02144044   0.53607397  27.24332859 
 ##          LCL           CA           MG           LH 
 ##   0.02407754 194.74177098  26.24953058   0.08566604</code></pre>
-<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="week-14-lecture.html#cb955-1" aria-hidden="true" tabindex="-1"></a>pca.streams <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(streams, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="week-14-lecture.html#cb949-1" aria-hidden="true" tabindex="-1"></a>pca.streams <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(streams, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>We can look at our eigenvalues in R using <code>summary()</code>. The square root of the eigenvalue is labeled <code>Standard deviation</code>. We can also see the proportion of variation explained in each component (labeled <code>Proportion of Variance</code>).</p>
-<div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb956-1"><a href="week-14-lecture.html#cb956-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca.streams)</span></code></pre></div>
+<div class="sourceCode" id="cb950"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb950-1"><a href="week-14-lecture.html#cb950-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca.streams)</span></code></pre></div>
 <pre><code>## Importance of components:
 ##                           PC1    PC2    PC3     PC4     PC5     PC6     PC7
 ## Standard deviation     1.8504 1.5725 1.0822 0.96516 0.86381 0.80397 0.61930
@@ -636,18 +636,18 @@ z_j = c_1 X_{1j} + c_2 X_{2j} + \dots + c_p X_{pj}
 <p><span class="math display">\[z_j = c_1 (\text{NO}_3)_j + c_2 (\text{total organic N})_j + c_3 (\text{total N})_j + \\
 c_4 (\text{NH}_4)_j + c_5 (\text{log dis. organic C})_j + c_6 (\text{SO}_4)_j \\
 c_7 (\text{log Cl})_j + c_8 (\text{Ca})_j + c_9 (\text{Mg})_j + c_{10} (\text{log H})_j\]</span></p>
-<div class="sourceCode" id="cb958"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb958-1"><a href="week-14-lecture.html#cb958-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pca.streams<span class="sc">$</span>rotation[, <span class="dv">1</span>], <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb952"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb952-1"><a href="week-14-lecture.html#cb952-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pca.streams<span class="sc">$</span>rotation[, <span class="dv">1</span>], <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   NO3   TON    TN  LDOC   NH4   SO4   LCL    CA    MG    LH 
 ## -0.26  0.15 -0.23 -0.29  0.23  0.37  0.36  0.28  0.47 -0.40</code></pre>
 <p>Large values of PC1 are associated with having higher Mg, higher log Cl, higher S04, and lower log H.</p>
 <p>We can visualize our PCA using either the <code>biplot()</code> function in base R or <code>fviz_pca_biplot()</code> in the package <code>factoextra</code>.</p>
-<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb960-1"><a href="week-14-lecture.html#cb960-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
-<span id="cb960-2"><a href="week-14-lecture.html#cb960-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_biplot</span>(pca.streams, <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb960-3"><a href="week-14-lecture.html#cb960-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">col.var =</span> <span class="st">&quot;dodgerblue3&quot;</span>, <span class="at">col.ind =</span> <span class="st">&quot;gray60&quot;</span>, <span class="at">title =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb954"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb954-1"><a href="week-14-lecture.html#cb954-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb954-2"><a href="week-14-lecture.html#cb954-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_pca_biplot</span>(pca.streams, <span class="at">axes =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb954-3"><a href="week-14-lecture.html#cb954-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">col.var =</span> <span class="st">&quot;dodgerblue3&quot;</span>, <span class="at">col.ind =</span> <span class="st">&quot;gray60&quot;</span>, <span class="at">title =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <p><img src="Week-14-lecture_files/figure-html/unnamed-chunk-9-1.png" width="576" /></p>
 <p>The coordinates of each stream <span class="math inline">\(j\)</span> are equal to the scores <span class="math inline">\(z_j\)</span> for PC1 and PC2 (<span class="math inline">\(z_{1j}, z_{2j}\)</span>).</p>
-<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="week-14-lecture.html#cb961-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA scores for PC1 and PC2 of the first five streams</span></span>
-<span id="cb961-2"><a href="week-14-lecture.html#cb961-2" aria-hidden="true" tabindex="-1"></a>pca.streams<span class="sc">$</span>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="week-14-lecture.html#cb955-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA scores for PC1 and PC2 of the first five streams</span></span>
+<span id="cb955-2"><a href="week-14-lecture.html#cb955-2" aria-hidden="true" tabindex="-1"></a>pca.streams<span class="sc">$</span>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##                     PC1        PC2
 ## Santa Cruz   -3.7157577 -1.3260985
 ## Colgate      -2.1068761 -0.3092199
@@ -655,8 +655,8 @@ c_7 (\text{log Cl})_j + c_8 (\text{Ca})_j + c_9 (\text{Mg})_j + c_{10} (\text{lo
 ## Batavia Hill -1.1467251 -0.6644800
 ## Windham Ridg -0.8618198 -2.0450124</code></pre>
 <p>The vectors are proportional to the eigenvectors, or the contribution of each covariate to the component.</p>
-<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb963-1"><a href="week-14-lecture.html#cb963-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eigenvectors for PC1 and PC2</span></span>
-<span id="cb963-2"><a href="week-14-lecture.html#cb963-2" aria-hidden="true" tabindex="-1"></a>pca.streams<span class="sc">$</span>rotation[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="week-14-lecture.html#cb957-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eigenvectors for PC1 and PC2</span></span>
+<span id="cb957-2"><a href="week-14-lecture.html#cb957-2" aria-hidden="true" tabindex="-1"></a>pca.streams<span class="sc">$</span>rotation[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##             PC1         PC2
 ## NO3  -0.2608012  0.51882617
 ## TON   0.1470633 -0.29927264
@@ -674,9 +674,9 @@ c_7 (\text{log Cl})_j + c_8 (\text{Ca})_j + c_9 (\text{Mg})_j + c_{10} (\text{lo
 <div id="missing-data" class="section level2" number="26.12">
 <h2><span class="header-section-number">26.12</span> Missing data</h2>
 <p>In large, multivariate data sets, you may have observations that are missing values for some of the covariates. We saw this in lab last week.</p>
-<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb965-1"><a href="week-14-lecture.html#cb965-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 13 Model selection and criticism/Week 13 Lab/MammalLifeHistory.csv&quot;</span>,<span class="at">header=</span>T)</span>
-<span id="cb965-2"><a href="week-14-lecture.html#cb965-2" aria-hidden="true" tabindex="-1"></a>carnivore.init <span class="ot">&lt;-</span> mammal[<span class="fu">which</span>(mammal<span class="sc">$</span>Order <span class="sc">==</span> <span class="st">&quot;Carnivora&quot;</span>), ]</span>
-<span id="cb965-3"><a href="week-14-lecture.html#cb965-3" aria-hidden="true" tabindex="-1"></a>carnivore.init<span class="sc">$</span>AFR[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="week-14-lecture.html#cb959-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 13 Model selection and criticism/Week 13 Lab/MammalLifeHistory.csv&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb959-2"><a href="week-14-lecture.html#cb959-2" aria-hidden="true" tabindex="-1"></a>carnivore.init <span class="ot">&lt;-</span> mammal[<span class="fu">which</span>(mammal<span class="sc">$</span>Order <span class="sc">==</span> <span class="st">&quot;Carnivora&quot;</span>), ]</span>
+<span id="cb959-3"><a href="week-14-lecture.html#cb959-3" aria-hidden="true" tabindex="-1"></a>carnivore.init<span class="sc">$</span>AFR[<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>]</span></code></pre></div>
 <pre><code>##  [1] 24.00    NA 12.00 10.50 12.00 10.50    NA 12.00    NA    NA    NA 16.81</code></pre>
 <p>Last week, we removed the entire row for observations with one or more missing values for covariates. This is the default behavior in R, for example, when fitting multiple regressions with <code>lm()</code>. However, this is throwing away all of the information we do have for the observation.</p>
 </div>
@@ -688,18 +688,18 @@ c_7 (\text{log Cl})_j + c_8 (\text{Ca})_j + c_9 (\text{Mg})_j + c_{10} (\text{lo
 \text{Maximum lifespan} \sim \text{Intercept} + \text{AFR}
 \]</span></p>
 <p>We could impute missing values of AFR with the mean value of AFR.</p>
-<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb967-1"><a href="week-14-lecture.html#cb967-1" aria-hidden="true" tabindex="-1"></a>carnivore <span class="ot">&lt;-</span> carnivore.init</span>
-<span id="cb967-2"><a href="week-14-lecture.html#cb967-2" aria-hidden="true" tabindex="-1"></a>missing.AFR <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.na</span>(carnivore.init<span class="sc">$</span>AFR))</span>
-<span id="cb967-3"><a href="week-14-lecture.html#cb967-3" aria-hidden="true" tabindex="-1"></a>mean.AFR <span class="ot">&lt;-</span> <span class="fu">mean</span>(carnivore.init<span class="sc">$</span>AFR, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb967-4"><a href="week-14-lecture.html#cb967-4" aria-hidden="true" tabindex="-1"></a>carnivore<span class="sc">$</span>AFR[missing.AFR] <span class="ot">&lt;-</span> mean.AFR</span></code></pre></div>
+<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="week-14-lecture.html#cb961-1" aria-hidden="true" tabindex="-1"></a>carnivore <span class="ot">&lt;-</span> carnivore.init</span>
+<span id="cb961-2"><a href="week-14-lecture.html#cb961-2" aria-hidden="true" tabindex="-1"></a>missing.AFR <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">is.na</span>(carnivore.init<span class="sc">$</span>AFR))</span>
+<span id="cb961-3"><a href="week-14-lecture.html#cb961-3" aria-hidden="true" tabindex="-1"></a>mean.AFR <span class="ot">&lt;-</span> <span class="fu">mean</span>(carnivore.init<span class="sc">$</span>AFR, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb961-4"><a href="week-14-lecture.html#cb961-4" aria-hidden="true" tabindex="-1"></a>carnivore<span class="sc">$</span>AFR[missing.AFR] <span class="ot">&lt;-</span> mean.AFR</span></code></pre></div>
 <p>You could also use a regression to predict the missing value for one covariate given the other covariates in the data. Using the same example, we could impute missing values of AFR using the coefficients estimated from a regression where AFR is the response variable with one or more other covariates as the predictors. For example:</p>
 <p><span class="math display">\[
 \text{AFR} \sim \text{Intercept} + \text{Litter size}
 \]</span></p>
-<div class="sourceCode" id="cb968"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb968-1"><a href="week-14-lecture.html#cb968-1" aria-hidden="true" tabindex="-1"></a>imputation.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> AFR <span class="sc">~</span> LitterSize, <span class="at">data =</span> carnivore.init)</span>
-<span id="cb968-2"><a href="week-14-lecture.html#cb968-2" aria-hidden="true" tabindex="-1"></a>predicted.AFR <span class="ot">&lt;-</span> imputation.lm<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> imputation.lm<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> </span>
-<span id="cb968-3"><a href="week-14-lecture.html#cb968-3" aria-hidden="true" tabindex="-1"></a>  carnivore.init<span class="sc">$</span>LitterSize[missing.AFR] </span>
-<span id="cb968-4"><a href="week-14-lecture.html#cb968-4" aria-hidden="true" tabindex="-1"></a>carnivore<span class="sc">$</span>AFR[missing.AFR] <span class="ot">&lt;-</span> predicted.AFR</span></code></pre></div>
+<div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb962-1"><a href="week-14-lecture.html#cb962-1" aria-hidden="true" tabindex="-1"></a>imputation.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> AFR <span class="sc">~</span> LitterSize, <span class="at">data =</span> carnivore.init)</span>
+<span id="cb962-2"><a href="week-14-lecture.html#cb962-2" aria-hidden="true" tabindex="-1"></a>predicted.AFR <span class="ot">&lt;-</span> imputation.lm<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> imputation.lm<span class="sc">$</span>coefficients[<span class="dv">2</span>] <span class="sc">*</span> </span>
+<span id="cb962-3"><a href="week-14-lecture.html#cb962-3" aria-hidden="true" tabindex="-1"></a>  carnivore.init<span class="sc">$</span>LitterSize[missing.AFR] </span>
+<span id="cb962-4"><a href="week-14-lecture.html#cb962-4" aria-hidden="true" tabindex="-1"></a>carnivore<span class="sc">$</span>AFR[missing.AFR] <span class="ot">&lt;-</span> predicted.AFR</span></code></pre></div>
 
 </div>
 </div>

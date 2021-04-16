@@ -411,90 +411,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">12</span> Week 6 Lab</h1>
 <p>Today we will do a short exercise to illustrate the permutation method of dealing with multiple comparisons.</p>
 <p>First, we will simulate 10 groups of data (say, heights) from the <em>same</em> distribution using the normal distribution and put the data for each group in a list for easy access:</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="week-6-lab.html#cb331-1" aria-hidden="true" tabindex="-1"></a>data.all<span class="ot">&lt;-</span><span class="fu">list</span>()</span>
-<span id="cb331-2"><a href="week-6-lab.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb331-3"><a href="week-6-lab.html#cb331-3" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb331-4"><a href="week-6-lab.html#cb331-4" aria-hidden="true" tabindex="-1"></a>    data.all[[i]]<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10</span>)  <span class="co">#Note the double brackets for a list</span></span>
-<span id="cb331-5"><a href="week-6-lab.html#cb331-5" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="week-6-lab.html#cb333-1" aria-hidden="true" tabindex="-1"></a>data.all<span class="ot">&lt;-</span><span class="fu">list</span>()</span>
+<span id="cb333-2"><a href="week-6-lab.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb333-3"><a href="week-6-lab.html#cb333-3" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb333-4"><a href="week-6-lab.html#cb333-4" aria-hidden="true" tabindex="-1"></a>    data.all[[i]]<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10</span>)  <span class="co">#Note the double brackets for a list</span></span>
+<span id="cb333-5"><a href="week-6-lab.html#cb333-5" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
 <p>Now we can compare each group pairwise using a t.test.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="week-6-lab.html#cb332-1" aria-hidden="true" tabindex="-1"></a>p.values<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="at">ncol=</span><span class="dv">10</span>,<span class="at">nrow=</span><span class="dv">10</span>)</span>
-<span id="cb332-2"><a href="week-6-lab.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
-<span id="cb332-3"><a href="week-6-lab.html#cb332-3" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb332-4"><a href="week-6-lab.html#cb332-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb332-5"><a href="week-6-lab.html#cb332-5" aria-hidden="true" tabindex="-1"></a>      {</span>
-<span id="cb332-6"><a href="week-6-lab.html#cb332-6" aria-hidden="true" tabindex="-1"></a>        p.values[i,j]<span class="ot">&lt;-</span><span class="fu">t.test</span>(data.all[[i]],data.all[[j]])<span class="sc">$</span>p.value </span>
-<span id="cb332-7"><a href="week-6-lab.html#cb332-7" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb332-8"><a href="week-6-lab.html#cb332-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb332-9"><a href="week-6-lab.html#cb332-9" aria-hidden="true" tabindex="-1"></a>p.values</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="week-6-lab.html#cb334-1" aria-hidden="true" tabindex="-1"></a>p.values<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="at">ncol=</span><span class="dv">10</span>,<span class="at">nrow=</span><span class="dv">10</span>)</span>
+<span id="cb334-2"><a href="week-6-lab.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
+<span id="cb334-3"><a href="week-6-lab.html#cb334-3" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb334-4"><a href="week-6-lab.html#cb334-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb334-5"><a href="week-6-lab.html#cb334-5" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb334-6"><a href="week-6-lab.html#cb334-6" aria-hidden="true" tabindex="-1"></a>        p.values[i,j]<span class="ot">&lt;-</span><span class="fu">t.test</span>(data.all[[i]],data.all[[j]])<span class="sc">$</span>p.value </span>
+<span id="cb334-7"><a href="week-6-lab.html#cb334-7" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb334-8"><a href="week-6-lab.html#cb334-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb334-9"><a href="week-6-lab.html#cb334-9" aria-hidden="true" tabindex="-1"></a>p.values</span></code></pre></div>
 <pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
-##  [1,]   NA 0.5573541 0.9946133 0.9718535 0.9881366 0.7366812 0.7542626
-##  [2,]   NA        NA 0.6093428 0.5534243 0.5704277 0.4000024 0.7543342
-##  [3,]   NA        NA        NA 0.9701620 0.9844504 0.7601777 0.7934344
-##  [4,]   NA        NA        NA        NA 0.9848276 0.7714596 0.7402559
-##  [5,]   NA        NA        NA        NA        NA 0.7601394 0.7591648
-##  [6,]   NA        NA        NA        NA        NA        NA 0.5369274
+##  [1,]   NA 0.3916626 0.4569096 0.4326660 0.2098641 0.6354479 0.8138615
+##  [2,]   NA        NA 0.8026151 0.7304081 0.8440817 0.5783556 0.3019793
+##  [3,]   NA        NA        NA 0.9315288 0.5742404 0.7100856 0.3429812
+##  [4,]   NA        NA        NA        NA 0.4360729 0.7089139 0.3160402
+##  [5,]   NA        NA        NA        NA        NA 0.3161668 0.1550037
+##  [6,]   NA        NA        NA        NA        NA        NA 0.4780898
 ##  [7,]   NA        NA        NA        NA        NA        NA        NA
 ##  [8,]   NA        NA        NA        NA        NA        NA        NA
 ##  [9,]   NA        NA        NA        NA        NA        NA        NA
 ## [10,]   NA        NA        NA        NA        NA        NA        NA
-##            [,8]       [,9]      [,10]
-##  [1,] 0.4630125 0.18055865 0.91451450
-##  [2,] 0.2013076 0.07425111 0.54948098
-##  [3,] 0.5305706 0.24500624 0.93678590
-##  [4,] 0.5150182 0.21725115 0.88781133
-##  [5,] 0.5079449 0.21633597 0.90869483
-##  [6,] 0.7756420 0.38774622 0.63067119
-##  [7,] 0.2764968 0.09574719 0.78051999
-##  [8,]        NA 0.46051654 0.28777530
-##  [9,]        NA         NA 0.08437147
-## [10,]        NA         NA         NA</code></pre>
+##            [,8]      [,9]     [,10]
+##  [1,] 0.5373983 0.7793527 0.3357357
+##  [2,] 0.7097314 0.4997056 0.9667540
+##  [3,] 0.8814186 0.5999433 0.8001874
+##  [4,] 0.9253893 0.5832434 0.6978043
+##  [5,] 0.4713679 0.2703549 0.7676983
+##  [6,] 0.8317739 0.8406657 0.5205179
+##  [7,] 0.4059120 0.6045816 0.2499434
+##  [8,]        NA 0.7042893 0.6871618
+##  [9,]        NA        NA 0.4399712
+## [10,]        NA        NA        NA</code></pre>
 <p>Now we can see how many of these p.values are “significant.” We know these are false positives, because all the data were generated from the same distribution.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="week-6-lab.html#cb334-1" aria-hidden="true" tabindex="-1"></a>false.positives<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span><span class="fl">0.05</span>,<span class="at">na.rm=</span>T)</span>
-<span id="cb334-2"><a href="week-6-lab.html#cb334-2" aria-hidden="true" tabindex="-1"></a>false.positives</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="week-6-lab.html#cb336-1" aria-hidden="true" tabindex="-1"></a>false.positives<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span><span class="fl">0.05</span>,<span class="at">na.rm=</span>T)</span>
+<span id="cb336-2"><a href="week-6-lab.html#cb336-2" aria-hidden="true" tabindex="-1"></a>false.positives</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>We could correct this using the Bonferonni method:</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="week-6-lab.html#cb336-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="dv">45</span></span>
-<span id="cb336-2"><a href="week-6-lab.html#cb336-2" aria-hidden="true" tabindex="-1"></a>new.threshold.B<span class="ot">&lt;-</span><span class="fl">0.05</span><span class="sc">/</span>k</span>
-<span id="cb336-3"><a href="week-6-lab.html#cb336-3" aria-hidden="true" tabindex="-1"></a>new.threshold.B</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="week-6-lab.html#cb338-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="dv">45</span></span>
+<span id="cb338-2"><a href="week-6-lab.html#cb338-2" aria-hidden="true" tabindex="-1"></a>new.threshold.B<span class="ot">&lt;-</span><span class="fl">0.05</span><span class="sc">/</span>k</span>
+<span id="cb338-3"><a href="week-6-lab.html#cb338-3" aria-hidden="true" tabindex="-1"></a>new.threshold.B</span></code></pre></div>
 <pre><code>## [1] 0.001111111</code></pre>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="week-6-lab.html#cb338-1" aria-hidden="true" tabindex="-1"></a>false.positives.B<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span>new.threshold.B,<span class="at">na.rm=</span>T)</span>
-<span id="cb338-2"><a href="week-6-lab.html#cb338-2" aria-hidden="true" tabindex="-1"></a>false.positives.B</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="week-6-lab.html#cb340-1" aria-hidden="true" tabindex="-1"></a>false.positives.B<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span>new.threshold.B,<span class="at">na.rm=</span>T)</span>
+<span id="cb340-2"><a href="week-6-lab.html#cb340-2" aria-hidden="true" tabindex="-1"></a>false.positives.B</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>We could correct this using the Dunn-Sidak method:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="week-6-lab.html#cb340-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="dv">45</span></span>
-<span id="cb340-2"><a href="week-6-lab.html#cb340-2" aria-hidden="true" tabindex="-1"></a>new.threshold.DS<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">-</span>((<span class="dv">1</span><span class="fl">-0.05</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>k))</span>
-<span id="cb340-3"><a href="week-6-lab.html#cb340-3" aria-hidden="true" tabindex="-1"></a>new.threshold.DS</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="week-6-lab.html#cb342-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="dv">45</span></span>
+<span id="cb342-2"><a href="week-6-lab.html#cb342-2" aria-hidden="true" tabindex="-1"></a>new.threshold.DS<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">-</span>((<span class="dv">1</span><span class="fl">-0.05</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>k))</span>
+<span id="cb342-3"><a href="week-6-lab.html#cb342-3" aria-hidden="true" tabindex="-1"></a>new.threshold.DS</span></code></pre></div>
 <pre><code>## [1] 0.001139202</code></pre>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="week-6-lab.html#cb342-1" aria-hidden="true" tabindex="-1"></a>false.positives.DS<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span>new.threshold.DS,<span class="at">na.rm=</span>T)</span>
-<span id="cb342-2"><a href="week-6-lab.html#cb342-2" aria-hidden="true" tabindex="-1"></a>false.positives.DS</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="week-6-lab.html#cb344-1" aria-hidden="true" tabindex="-1"></a>false.positives.DS<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span>new.threshold.DS,<span class="at">na.rm=</span>T)</span>
+<span id="cb344-2"><a href="week-6-lab.html#cb344-2" aria-hidden="true" tabindex="-1"></a>false.positives.DS</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>We could correct this using the randomization method. This requires simulating data under the null hypothesis to generate a null distribution of p-values.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="week-6-lab.html#cb344-1" aria-hidden="true" tabindex="-1"></a>p.values.all<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
-<span id="cb344-2"><a href="week-6-lab.html#cb344-2" aria-hidden="true" tabindex="-1"></a>min.p.values.all<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
-<span id="cb344-3"><a href="week-6-lab.html#cb344-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
-<span id="cb344-4"><a href="week-6-lab.html#cb344-4" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb344-5"><a href="week-6-lab.html#cb344-5" aria-hidden="true" tabindex="-1"></a>    data.null<span class="ot">&lt;-</span><span class="fu">list</span>()</span>
-<span id="cb344-6"><a href="week-6-lab.html#cb344-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb344-7"><a href="week-6-lab.html#cb344-7" aria-hidden="true" tabindex="-1"></a>      {</span>
-<span id="cb344-8"><a href="week-6-lab.html#cb344-8" aria-hidden="true" tabindex="-1"></a>        data.null[[i]]<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10</span>)  <span class="co">#Note the double brackets for a list</span></span>
-<span id="cb344-9"><a href="week-6-lab.html#cb344-9" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb344-10"><a href="week-6-lab.html#cb344-10" aria-hidden="true" tabindex="-1"></a>    p.values.null<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="at">ncol=</span><span class="dv">10</span>,<span class="at">nrow=</span><span class="dv">10</span>)</span>
-<span id="cb344-11"><a href="week-6-lab.html#cb344-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
-<span id="cb344-12"><a href="week-6-lab.html#cb344-12" aria-hidden="true" tabindex="-1"></a>      {</span>
-<span id="cb344-13"><a href="week-6-lab.html#cb344-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb344-14"><a href="week-6-lab.html#cb344-14" aria-hidden="true" tabindex="-1"></a>          {</span>
-<span id="cb344-15"><a href="week-6-lab.html#cb344-15" aria-hidden="true" tabindex="-1"></a>            p.values.null[i,j]<span class="ot">&lt;-</span><span class="fu">t.test</span>(data.null[[i]],data.null[[j]])<span class="sc">$</span>p.value </span>
-<span id="cb344-16"><a href="week-6-lab.html#cb344-16" aria-hidden="true" tabindex="-1"></a>          }</span>
-<span id="cb344-17"><a href="week-6-lab.html#cb344-17" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb344-18"><a href="week-6-lab.html#cb344-18" aria-hidden="true" tabindex="-1"></a>    p.values.all<span class="ot">&lt;-</span><span class="fu">c</span>(p.values.all,<span class="fu">c</span>(p.values.null)[<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">c</span>(p.values.null))])</span>
-<span id="cb344-19"><a href="week-6-lab.html#cb344-19" aria-hidden="true" tabindex="-1"></a>    min.p.values.all<span class="ot">&lt;-</span><span class="fu">c</span>(min.p.values.all,<span class="fu">min</span>(<span class="fu">c</span>(p.values.null)[<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">c</span>(p.values.null))]))</span>
-<span id="cb344-20"><a href="week-6-lab.html#cb344-20" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb344-21"><a href="week-6-lab.html#cb344-21" aria-hidden="true" tabindex="-1"></a>new.threshold.R<span class="ot">&lt;-</span><span class="fu">quantile</span>(min.p.values.all,<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.05</span>))</span>
-<span id="cb344-22"><a href="week-6-lab.html#cb344-22" aria-hidden="true" tabindex="-1"></a>new.threshold.R</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="week-6-lab.html#cb346-1" aria-hidden="true" tabindex="-1"></a>p.values.all<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
+<span id="cb346-2"><a href="week-6-lab.html#cb346-2" aria-hidden="true" tabindex="-1"></a>min.p.values.all<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
+<span id="cb346-3"><a href="week-6-lab.html#cb346-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
+<span id="cb346-4"><a href="week-6-lab.html#cb346-4" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb346-5"><a href="week-6-lab.html#cb346-5" aria-hidden="true" tabindex="-1"></a>    data.null<span class="ot">&lt;-</span><span class="fu">list</span>()</span>
+<span id="cb346-6"><a href="week-6-lab.html#cb346-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb346-7"><a href="week-6-lab.html#cb346-7" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb346-8"><a href="week-6-lab.html#cb346-8" aria-hidden="true" tabindex="-1"></a>        data.null[[i]]<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10</span>)  <span class="co">#Note the double brackets for a list</span></span>
+<span id="cb346-9"><a href="week-6-lab.html#cb346-9" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb346-10"><a href="week-6-lab.html#cb346-10" aria-hidden="true" tabindex="-1"></a>    p.values.null<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="at">ncol=</span><span class="dv">10</span>,<span class="at">nrow=</span><span class="dv">10</span>)</span>
+<span id="cb346-11"><a href="week-6-lab.html#cb346-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
+<span id="cb346-12"><a href="week-6-lab.html#cb346-12" aria-hidden="true" tabindex="-1"></a>      {</span>
+<span id="cb346-13"><a href="week-6-lab.html#cb346-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (j <span class="cf">in</span> (i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb346-14"><a href="week-6-lab.html#cb346-14" aria-hidden="true" tabindex="-1"></a>          {</span>
+<span id="cb346-15"><a href="week-6-lab.html#cb346-15" aria-hidden="true" tabindex="-1"></a>            p.values.null[i,j]<span class="ot">&lt;-</span><span class="fu">t.test</span>(data.null[[i]],data.null[[j]])<span class="sc">$</span>p.value </span>
+<span id="cb346-16"><a href="week-6-lab.html#cb346-16" aria-hidden="true" tabindex="-1"></a>          }</span>
+<span id="cb346-17"><a href="week-6-lab.html#cb346-17" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb346-18"><a href="week-6-lab.html#cb346-18" aria-hidden="true" tabindex="-1"></a>    p.values.all<span class="ot">&lt;-</span><span class="fu">c</span>(p.values.all,<span class="fu">c</span>(p.values.null)[<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">c</span>(p.values.null))])</span>
+<span id="cb346-19"><a href="week-6-lab.html#cb346-19" aria-hidden="true" tabindex="-1"></a>    min.p.values.all<span class="ot">&lt;-</span><span class="fu">c</span>(min.p.values.all,<span class="fu">min</span>(<span class="fu">c</span>(p.values.null)[<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">c</span>(p.values.null))]))</span>
+<span id="cb346-20"><a href="week-6-lab.html#cb346-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb346-21"><a href="week-6-lab.html#cb346-21" aria-hidden="true" tabindex="-1"></a>new.threshold.R<span class="ot">&lt;-</span><span class="fu">quantile</span>(min.p.values.all,<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.05</span>))</span>
+<span id="cb346-22"><a href="week-6-lab.html#cb346-22" aria-hidden="true" tabindex="-1"></a>new.threshold.R</span></code></pre></div>
 <pre><code>##          5% 
-## 0.001312807</code></pre>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="week-6-lab.html#cb346-1" aria-hidden="true" tabindex="-1"></a>false.positives.R<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span>new.threshold.R,<span class="at">na.rm=</span>T)</span>
-<span id="cb346-2"><a href="week-6-lab.html#cb346-2" aria-hidden="true" tabindex="-1"></a>false.positives.R</span></code></pre></div>
+## 0.001957185</code></pre>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="week-6-lab.html#cb348-1" aria-hidden="true" tabindex="-1"></a>false.positives.R<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span>new.threshold.R,<span class="at">na.rm=</span>T)</span>
+<span id="cb348-2"><a href="week-6-lab.html#cb348-2" aria-hidden="true" tabindex="-1"></a>false.positives.R</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>If you were to do this experiment (all of the code in the preceding clock) 100 times, you should get at least 1 false positive 5 times, since we have set the threshold such that we have a 5% chance that the smallest p-value in that set of 45 comparisons will be smaller than the threshold we set.</p>
 
