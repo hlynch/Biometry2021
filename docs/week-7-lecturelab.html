@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-15" />
+<meta name="date" content="2021-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -714,8 +714,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Week-7-lecture_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Be aware of overplotting (points that overlap) especially when data are discrete or rounded. One strategy for overcoming this is jittering the points so the density of points can be displayed without overly distorting the underlying relationships. You can use the ‘jitter’ command in the base package.</p>
 <div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="week-7-lecturelab.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">jitter</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">7</span>))</span></code></pre></div>
-<pre><code>## [1] -0.018795821  0.011465995 -0.018581389 -0.016755708 -0.003874405
-## [6] -0.003417511 -0.002527659</code></pre>
+<pre><code>## [1] -1.312258e-02 -6.267389e-03 -7.751045e-03  1.865846e-02 -7.587056e-05
+## [6] -1.730181e-03 -6.772447e-03</code></pre>
 <p>Before we launch into three-dimensional plotting, we should introduce ‘ggplot2’ which is quickly becoming “industry standard” for making plots in R. There is <em>so</em> much that can be done with ggplot2 that we will only scratch the surface today, but at least this introduction will illustrate some of the things that ggplot2 can do.</p>
 <p>The basic function to make plots using ggplot2 is ‘qplot.’ We can recreate the scatterplot of the mtcars data using ggplot2 as follows</p>
 <div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="week-7-lecturelab.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -756,8 +756,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Number of data points:  2000 
 ## Number of grid bins:  200 x 200 
-## X range: ( -14.12477 , 14.73591 )
-## Y range: ( -14.12477 , 14.73591 )</code></pre>
+## X range: ( -13.53244 , 15.18609 )
+## Y range: ( -13.53244 , 15.18609 )</code></pre>
 <p>Notice that we had to use “same.scale=T” to make sure that distances along the x and y axes were comparable.</p>
 <p>Now we will use the hisr2d function to create inputs for a three-dimensional perspective plot.</p>
 <div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="week-7-lecturelab.html#cb378-1" aria-hidden="true" tabindex="-1"></a>h2d <span class="ot">&lt;-</span> <span class="fu">hist2d</span>(x,y,<span class="at">show=</span><span class="cn">FALSE</span>, <span class="at">same.scale=</span><span class="cn">TRUE</span>, <span class="at">nbins=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">30</span>))</span>

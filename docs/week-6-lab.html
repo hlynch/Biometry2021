@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-15" />
+<meta name="date" content="2021-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -427,27 +427,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb332-8"><a href="week-6-lab.html#cb332-8" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb332-9"><a href="week-6-lab.html#cb332-9" aria-hidden="true" tabindex="-1"></a>p.values</span></code></pre></div>
 <pre><code>##       [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
-##  [1,]   NA 0.4042032 0.9602347 0.5062491 0.8134257 0.6742967 0.7952200
-##  [2,]   NA        NA 0.5668867 0.9660780 0.6641315 0.7551931 0.3361662
-##  [3,]   NA        NA        NA 0.6074652 0.8806231 0.7731824 0.7974311
-##  [4,]   NA        NA        NA        NA 0.6969269 0.7776185 0.4160044
-##  [5,]   NA        NA        NA        NA        NA 0.8902630 0.6635852
-##  [6,]   NA        NA        NA        NA        NA        NA 0.5436837
+##  [1,]   NA 0.5573541 0.9946133 0.9718535 0.9881366 0.7366812 0.7542626
+##  [2,]   NA        NA 0.6093428 0.5534243 0.5704277 0.4000024 0.7543342
+##  [3,]   NA        NA        NA 0.9701620 0.9844504 0.7601777 0.7934344
+##  [4,]   NA        NA        NA        NA 0.9848276 0.7714596 0.7402559
+##  [5,]   NA        NA        NA        NA        NA 0.7601394 0.7591648
+##  [6,]   NA        NA        NA        NA        NA        NA 0.5369274
 ##  [7,]   NA        NA        NA        NA        NA        NA        NA
 ##  [8,]   NA        NA        NA        NA        NA        NA        NA
 ##  [9,]   NA        NA        NA        NA        NA        NA        NA
 ## [10,]   NA        NA        NA        NA        NA        NA        NA
-##            [,8]       [,9]     [,10]
-##  [1,] 0.4826066 0.21997269 0.4949455
-##  [2,] 0.1210262 0.67413105 0.9449977
-##  [3,] 0.5581023 0.39002261 0.5952996
-##  [4,] 0.2288837 0.79776400 0.9821423
-##  [5,] 0.4170791 0.45414267 0.6826484
-##  [6,] 0.2947796 0.50777568 0.7611712
-##  [7,] 0.7348297 0.20016703 0.4072868
-##  [8,]        NA 0.05341151 0.2248376
-##  [9,]        NA         NA 0.8214835
-## [10,]        NA         NA        NA</code></pre>
+##            [,8]       [,9]      [,10]
+##  [1,] 0.4630125 0.18055865 0.91451450
+##  [2,] 0.2013076 0.07425111 0.54948098
+##  [3,] 0.5305706 0.24500624 0.93678590
+##  [4,] 0.5150182 0.21725115 0.88781133
+##  [5,] 0.5079449 0.21633597 0.90869483
+##  [6,] 0.7756420 0.38774622 0.63067119
+##  [7,] 0.2764968 0.09574719 0.78051999
+##  [8,]        NA 0.46051654 0.28777530
+##  [9,]        NA         NA 0.08437147
+## [10,]        NA         NA         NA</code></pre>
 <p>Now we can see how many of these p.values are “significant.” We know these are false positives, because all the data were generated from the same distribution.</p>
 <div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="week-6-lab.html#cb334-1" aria-hidden="true" tabindex="-1"></a>false.positives<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span><span class="fl">0.05</span>,<span class="at">na.rm=</span>T)</span>
 <span id="cb334-2"><a href="week-6-lab.html#cb334-2" aria-hidden="true" tabindex="-1"></a>false.positives</span></code></pre></div>
@@ -492,7 +492,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb344-21"><a href="week-6-lab.html#cb344-21" aria-hidden="true" tabindex="-1"></a>new.threshold.R<span class="ot">&lt;-</span><span class="fu">quantile</span>(min.p.values.all,<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.05</span>))</span>
 <span id="cb344-22"><a href="week-6-lab.html#cb344-22" aria-hidden="true" tabindex="-1"></a>new.threshold.R</span></code></pre></div>
 <pre><code>##          5% 
-## 0.002111582</code></pre>
+## 0.001312807</code></pre>
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="week-6-lab.html#cb346-1" aria-hidden="true" tabindex="-1"></a>false.positives.R<span class="ot">&lt;-</span><span class="fu">sum</span>(p.values<span class="sc">&lt;</span>new.threshold.R,<span class="at">na.rm=</span>T)</span>
 <span id="cb346-2"><a href="week-6-lab.html#cb346-2" aria-hidden="true" tabindex="-1"></a>false.positives.R</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
