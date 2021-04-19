@@ -34,6 +34,8 @@ So the null hypothesis being tested is $H_{0}$: The differences **among** groups
 </span>
 </details> 
 
+<p>&nbsp;</p>
+
 So, do the groups all come from the same population? Based on what we know already know, we might try using pairwise t-tests. But wait! If we use pairwise *t*-tests to determine which groups were different, we would have $a(a - 1) / 2$ pairwise comparisons with $a$ group means. 
 
 **Question: Why is this ill advised?**
@@ -44,6 +46,8 @@ So, do the groups all come from the same population? Based on what we know alrea
 Multiple comparisons will inflate the familywise error rate.
 </span>
 </details> 
+
+<p>&nbsp;</p>
 
 ANOVA is an **omnibus test**, meaning that if we reject the null hypothesis, we only know that **at least one group is different**. We do not know which groups in particular are different. 
 
@@ -92,7 +96,7 @@ How do we test our hypothesis? First let's relate the figure back to the equatio
 
 Notice that there is variation at two levels: 1) variation among individuals within a given treatment group, and 2) variation among the three treatment group means. **We can partition the variance into these two components.**
 
-###Variation within treatment group
+\subsection{Variation within treatment group}
 
 Variation among individuals within a treatment group is residual variation. This variation exists because of any number of factors we weren't able to measure.
 
@@ -109,7 +113,7 @@ ggplot(data = dat, aes(x = Treatment, y = TumorDiameter)) + geom_point() +
   theme_classic() + theme(text = element_text(size = text.size))
 ```
 
-### Variation among treatment group means
+\subsection{Variation among treatment group means}
 
 Variation among treatment means is variation due to the effect of the treatment (if there is an effect) *in addition to the individual variation*.
 
@@ -125,7 +129,7 @@ ggplot(data = dat, aes(x = Treatment, y = TumorDiameter)) + geom_point() +
   theme_classic() + theme(text = element_text(size = text.size))
 ```
 
-### Comparing variance components
+\subsection{Comparing variance components}
 
 We can relate these two components of variation to one another, and this is our test statistic. Informally (we will get into the mathematical formulas soon) we can write this as:
 
@@ -141,6 +145,8 @@ $$
 Under the null hypothesis, we assume there is no group effect. So, the ratio is about 1.
 </span>
 </details>  
+
+<p>&nbsp;</p>
 
 Let's imagine our data looked slightly different:
 
@@ -174,7 +180,8 @@ ggplot(data = dat, aes(x = Treatment, y = TumorDiameter)) + geom_point() +
 How much variation is there among groups relative to within groups? Without knowing the details yet, do you think there is a significant difference among groups?
 
 
-## Comparing variance components
+Comparing variance components
+-----------------
 
 **Question: Given that we are using null hypothesis significance testing methods, what do you think the next step is after we estimate the test statistic?**
 
@@ -185,6 +192,8 @@ Compare the value of the test statistic to the distribution of the test statisti
 </span>
 </details> 
 
+<p>&nbsp;</p>
+
 **Question: The distribution of the test statistic under the null hypothesis describes the ratios of variances. What distribution do you think it is?**
 
 <details>
@@ -194,9 +203,12 @@ The F distribution (see Week 5 lecture)
 </span>
 </details>  
 
+<p>&nbsp;</p>
+
 Another way we can phrase the statistical question is to ask whether the differences among group means are significantly different from the differences seen within groups. *In ANOVA, we compare variances in order to compare means.*
 
-## Two ways to estimate variance
+Two ways to estimate variance
+--------------
 
 1) Variation within groups
 
@@ -321,6 +333,8 @@ $\text{SS}_{\text{among groups}} = n \sum^a_{i = 1} (\bar{Y}_{i} - \bar{Y})^2$. 
 </span>
 </details> 
 
+<p>&nbsp;</p>
+
 Last, we will calculate the sum of squares within groups, or how much each data point in group $i$ ($Y_{ij}$) differs from the the mean of group $i$ ($\bar{Y}_i$):
 
 $$
@@ -369,6 +383,8 @@ Subtract the number of quantities estimated from the data from the total number 
 </span>
 </details> 
 
+<p>&nbsp;</p>
+
 **Question: How many quantities did we estimate in the ANOVA calculation? First, how many quantities were estimated and how many data points are included in the formula for the total sums of squares?**
 
 $$
@@ -381,6 +397,8 @@ $$
 We estimated the overall mean ("uses up" one degree of freedom). We have $a \times n$ data points. So, for $\text{SS}_{\text{total}}$ we have $(a \times n) - 1$ degrees of freedom.
 </span>
 </details> 
+
+<p>&nbsp;</p>
 
 **Question: Now, how many quantities were estimated and how many data points are included in the formula for the sums of squares among groups?** 
 
@@ -395,6 +413,8 @@ We estimated the overall mean ("uses up" one degree of freedom), and we have $a$
 </span>
 </details> 
 
+<p>&nbsp;</p>
+
 **Question: Last, how many quantities were estimated and how many data points are included in the formula for the sums of squares within groups?** 
 
 $$
@@ -407,6 +427,8 @@ $$
 We estimated the group means ("uses up" $a$ degrees of freedom).  We have $a \times n$ data points. So, for $\text{SS}_{\text{within groups}}$ we have $(a \times n) - a$ degrees of freedom.
 </span>
 </details> 
+
+<p>&nbsp;</p>
 
 We have the second column to fill in our ANOVA table:
 
@@ -520,7 +542,10 @@ The difference between the data points $Y_{ij}$ and the group mean $\mu_i$, $\ep
 </span>
 </details> 
 
-## Fixed effects vs. random effects
+<p>&nbsp;</p>
+
+Fixed effects vs. random effects
+---------------
 
 We have so far assumed that factors are fixed effects. **Fixed effects** represent all the states in the system you would ever be interested in. Our null hypothesis for a fixed effects factor is $H_0: \text{all treatment effects, } A_i = 0$ (e.g., the three experimental, pre-planned nitrogen treatments as in our plant example). ANOVA models with only fixed effects are sometimes called Model I ANOVAs.
 
@@ -559,7 +584,8 @@ Again, ANOVA is an omnibus test, so if we get a significant result, we only know
 
 What do we do to find out which group(s) is/are different? This brings us to the subject of "post hoc tests".
 
-##Post-hoc tests
+Post-hoc tests
+---------------
 
 To follow up on a significant ANOVA result, we can conduct *post hoc* (or *a posteriori*) tests. These only make sense for fixed effects, because with random effects, the factors belong to the same population, so differences between pairs has no interpretation. 
 
@@ -567,7 +593,7 @@ In general, these are similar to pairwise *t*-tests assuming equal variance whil
 
 There are a huge number of *post hoc* tests: Fishers Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), Dunnett's test, Bonferroni's test, Holm's test, Scheffe's test (see Day and Quinn 1989 in "Additional readings" for descriptions).
 
-### Tukey's HSD
+\subsection{Tukey's HSD}
 
 Tukey's HSD is one of the most common *post hoc* tests. It is very similar to an unpaired two-sample *t*-test assuming equal variances. 
 
