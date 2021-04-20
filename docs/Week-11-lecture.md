@@ -75,19 +75,19 @@ How do we test our hypothesis? First let's relate the figure back to the equatio
 
 Notice that there is variation at two levels: 1) variation among individuals within a given treatment group, and 2) variation among the three treatment group means. **We can partition the variance into these two components.**
 
-\subsection{Variation within treatment group}
+### Variation within treatment group
 
 Variation among individuals within a treatment group is residual variation. This variation exists because of any number of factors we weren't able to measure.
 
 <img src="Week-11-lecture_files/figure-html/unnamed-chunk-2-1.png" width="576" />
 
-\subsection{Variation among treatment group means}
+### Variation among treatment group means
 
 Variation among treatment means is variation due to the effect of the treatment (if there is an effect) *in addition to the individual variation*.
 
 <img src="Week-11-lecture_files/figure-html/unnamed-chunk-3-1.png" width="576" />
 
-\subsection{Comparing variance components}
+### Comparing variance components
 
 We can relate these two components of variation to one another, and this is our test statistic. Informally (we will get into the mathematical formulas soon) we can write this as:
 
@@ -554,7 +554,7 @@ In general, these are similar to pairwise *t*-tests assuming equal variance whil
 
 There are a huge number of *post hoc* tests: Fishers Least Significant Difference (LSD), Tukey's Honest Significant Difference (HSD), Dunnett's test, Bonferroni's test, Holm's test, Scheffe's test (see Day and Quinn 1989 in "Additional readings" for descriptions).
 
-\subsection{Tukey's HSD}
+### Tukey's HSD
 
 Tukey's HSD is one of the most common *post hoc* tests. It is very similar to an unpaired two-sample *t*-test assuming equal variances. 
 

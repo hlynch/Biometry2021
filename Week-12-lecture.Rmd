@@ -139,12 +139,6 @@ $\bar{Y}_i = \bar{Y}_3$ = mean of all biomass values in row 3
 
 <p>&nbsp;</p>
 
-| Factor level | $B_1$        | $B_2$       | $B_3$        | $B_4$         |
-| ------------------- |:---------:|:---------:|:---------:|:---------:|
-| $A_1$ | $A_1 ,  B_1 = Y_{111}$ <br> $A_1 ,  B_1 = Y_{112}$ <br> $A_1 ,  B_1 = Y_{113}$| $A_1 ,  B_2 = Y_{121}$ <br> $A_1 ,  B_2 = Y_{122}$ <br> $A_1 ,  B_2 = Y_{123}$ | $A_1 ,  B_3 = Y_{131}$ <br> $A_1 ,  B_3 = Y_{132}$ <br> $A_1 ,  B_3 = Y_{133}$ | $A_1 ,  B_4 = Y_{141}$ <br> $A_1 ,  B_4 = Y_{142}$ <br> $A_1 ,  B_4 = Y_{143}$ |
-| $A_2$ | $A_2 ,  B_1 = Y_{211}$ <br> $A_2 ,  B_1 = Y_{212}$ <br> $A_2 ,  B_1 = Y_{213}$ | $A_2 ,  B_2 = Y_{221}$ <br> $A_2 ,  B_2 = Y_{222}$ <br> $A_2 ,  B_2 = Y_{223}$ | $A_2 ,  B_3 = Y_{231}$ <br> $A_2 ,  B_3 = Y_{232}$ <br> $A_2 ,  B_3 = Y_{233}$ | $A_2 ,  B_4 = Y_{241}$ <br> $A_2 ,  B_4 = Y_{242}$ <br> $A_2 ,  B_4 = Y_{243}$ |
-| $A_3$ | $A_3 ,  B_1 = Y_{311}$ <br> $A_3 ,  B_1 = Y_{312}$ <br> $A_3 ,  B_1 = Y_{313}$ | $A_3 ,  B_2 = Y_{321}$ <br> $A_3 ,  B_2 = Y_{322}$ <br> $A_3 ,  B_2 = Y_{323}$ | $A_3 ,  B_3 = Y_{331}$ <br> $A_3 ,  B_3 = Y_{332}$ <br> $A_3 ,  B_3 = Y_{333}$ | $A_3 ,  B_4 = Y_{341}$ <br> $A_3 ,  B_4 = Y_{342}$ <br> $A_3 ,  B_4 = Y_{343}$ |
-
 **Question: What about the mean for factor A, level 2 AND factor B, level 4 (ambient N, excess water)?**
 
 <details>
@@ -475,10 +469,10 @@ $$
 
 We have partitioned the variance into the variance explained by factor A ($\text{SS}_{A}$), the variance explained by factor B ($\text{SS}_{B}$), the variance explained by the interaction between factor A and factor B ($\text{SS}_{AB}$), and the unexplained (residual) variance ($\text{SS}_{\text{within}}$).
 
-So, if our ANOVA is balanced:
+So, **if our ANOVA is balanced**:
 
 $$
-\text{SS}_{\text{total}} = \text{SS}_{A} + \text{SS}_{B} + \text{SS}_{AB} + \text{SS}_{\text{within}}
+\textbf{SS}_{\text{total}} = \textbf{SS}_{A} + \textbf{SS}_{B} + \textbf{SS}_{AB} + \textbf{SS}_{\text{within}}
 $$
 What if factors A and B are both random effects? Our null hypotheses would be:
 
@@ -494,8 +488,7 @@ $$
 H_0: \sigma^2_{AB} = 0
 $$
 
-This means that there is no added variance due to the combinations of A and B.
-
+This means that there is no added variance due to the *combination* of A and B.
 
 If both effects are random, most of the ANOVA table is exactly the same, however, the **F-ratio is calculated differently**.
 
@@ -505,7 +498,7 @@ If both effects are random, most of the ANOVA table is exactly the same, however
 | Factor B | $\frac{\text{MS}_{B}}{\text{MS}_{\text{within}}}$ | $\frac{\text{MS}_{B}}{\text{MS}_{AB}}$ | $\frac{\text{MS}_{B}}{\text{MS}_{AB}}$ |
 | Interaction | $\frac{\text{MS}_{AB}}{\text{MS}_{\text{within}}}$ |  $\frac{\text{MS}_{AB}}{\text{MS}_{\text{within}}}$ | $\frac{\text{MS}_{AB}}{\text{MS}_{\text{within}}}$ |
 
-The F ratio is the mean squared error (MS) of the factor of interest divided by the mean squared error for the term that has everything but the factor of interest. When you have factor A and are considering interactions with a random effects variable B, that adds a new component to the expected variance of A (remember the new variance term, $\sigma_{AB}^2$ with random effects). Therefore, the appropriate comparison for the F ratio test is the mean squared error for the interaction term, which includes both the within group error and this additional variance component associated with the random factor.
+The F ratio is the mean squared error (MS) of the factor of interest divided by the mean squared error for the term that has everything *but* the factor of interest. When you have factor A and are considering interactions with a random effects variable B, that adds a new component to the expected variance of A (remember the new variance term, $\sigma_{AB}^2$ with random effects). Therefore, the appropriate comparison for the F ratio test is the mean squared error for the interaction term, which includes both the within group error and this additional variance component associated with the random factor.
 
 Remember from last week:
 
@@ -544,18 +537,18 @@ Why bother with random effects?
 You have a study measuring the effect of different levels of zinc contamination on diatom diversity, measured in multiple streams. You could model the data with or without stream as a random effect. The model without a random effect (pooling all data from different streams), where $A_i$ is the effect of zinc level $i$, would be:
 
 $$
-Y_{ij} = \mu + A_i + \epsilon_{ij} \text{, where } \epsilon_{ijk} \sim \mathrm{N} ( 0, \sigma^2 )
+Y_{ij} = \mu + A_i + \epsilon_{ij} \text{, where } \epsilon_{ijk} \sim \mathrm{N} ( 0, \sigma_{\epsilon1}^2 )
 $$
 
 The model with stream as a random effect, where $B_j$ is the random effect of stream, and $AB_{ij}$ is also a random effect describing whether the effect of zinc is consistent across streams, would be:
 
 $$
-Y_{ijk} = \mu + A_i + B_j + {AB}_{ij} + \epsilon_{ijk} \text{, where } \epsilon_{ijk} \sim \mathrm{N} ( 0, \sigma^2 ) \\
+Y_{ijk} = \mu + A_i + B_j + {AB}_{ij} + \epsilon_{ijk} \text{, where } \epsilon_{ijk} \sim \mathrm{N} ( 0, \sigma_{\epsilon2}^2 ) \\
 B_j \sim \mathrm{N}(0, \sigma^2_B) \\
 {AB}_{ij} \sim \mathrm{N}(0, \sigma^2_{AB})
 $$
 
-Your data is exactly the same in both cases, but **in the model with stream as a random effect, you have decided to let the random effect of stream absorb some of the residual/unexplained variation in the model**. In the case where you ignored the effect of stream, the unexplained variation included some variation that could have been explained by stream. By lumping these together, you lose statistical power.
+Your data is exactly the same in both cases, but **in the model with stream as a random effect, you have decided to let the random effect of stream absorb some of the residual/unexplained variation in the model**. Therefore, $\sigma_{\epsilon2} \leq \sigma_{\epsilon1}$. In the case where you ignored the effect of stream, the unexplained variation included some variation that could have been explained by stream. By lumping these together, you lose statistical power to test the null hypothesis on $A_{i}$.
 
 Mixed model
 --------------
@@ -710,7 +703,8 @@ where $\sigma^2_{\epsilon_2} < \sigma^2_{\epsilon_1}$ because some of that varia
 $$
 \text{SS}_{A} = \text{SSE}(\mu) - \text{SSE}(A)
 $$
-SSE is the sum-of-squares error, or the residual sum-of-squares variation left over after the model. The model with no factors is comparing each data point to the grand mean $\mu$, so here $SSE(\mu)$ is just the total sum-of-squares variation. (In other words, with no covariates, *all* variation is residual.) $SSE(A)$ is the residual sum-of-squares variation with $A$ in the model.
+
+In the above equation, $SS_{A}$ is the sum of squares associated with the factor A. In other words, it is the sum of squares error that factor A "takes credit for". SSE is the sum-of-squares error, or the residual sum-of-squares variation left over after the model. The model with no factors is comparing each data point to the grand mean $\mu$, so here $SSE(\mu)$ is just the total sum-of-squares variation. (In other words, with no covariates, *all* variation is residual.) $SSE(A)$ is the residual sum-of-squares variation with $A$ in the model.
 
 To estimate the sums of squares for factor B, we compare the difference in the sums of squares error between the model with factor A to the model with factor A and factor B (but no interaction). In other words, we add the factor $B$
 
@@ -793,7 +787,7 @@ $$
 
 When the design is balanced (equal sample sizes in each category), the factors are “orthogonal," and Types I,II, and III all give equivalent results. When the interaction AB is not significant, then Type II and III SS estimates are equivalent. Aho 10.14 contains more detail.
 
-Note that $\text{SS}_{AB}$ and $\text{SS}_{\text{within}}$ are the same for all three ways of calculating SS. $\text{SS}_{\text{within}}$ is the sum of squared deviations between each fitted data point $\hat{Y}_{ijk} = \bar{Y}_{ij}$ and the overall mean for the full model ($Y_{ijk} = \mu + A_i + B_i + (AB)_{ij} + \epsilon_{ijk}$), and $\text{SS}_{AB}$ is calculated as the difference in sums of squares between the full model and the model without the interaction term. There are only differences in estimates of SS for the main effects terms for the three different SS methods because it depends on the way you calculate **marginal** means.
+Note that $\text{SS}_{AB}$ and $\text{SS}_{\text{within}}$ are the same for all three ways of calculating SS. $\text{SS}_{\text{within}}$ is the sum of squared deviations between each fitted data point $\hat{Y}_{ijk} = \bar{Y}_{ij}$ and the overall mean for the full model $Y_{ijk} = \mu + A_i + B_i + (AB)_{ij} + \epsilon_{ijk}$ and $\text{SS}_{AB}$ is calculated as the difference in sums of squares between the full model and the model without the interaction term. There are only differences in estimates of SS for the main effects terms for the three different SS methods because it depends on the way you calculate **marginal** means.
 
 Unbalanced design -- Missing cell
 -----------
@@ -805,7 +799,11 @@ Two factor nested ANOVA
 
 In nested designs, the categories of the nested factor within each level of the main factor are unique. Usually this happens because 1) you have unique organisms within each treatment, or 2) you have unique plots within each treatment. The nested factors are usually random effects (but not always).
 
-Let's imagine we are measuring the amount of glycogen in rat livers. We have **three treatments** that we gave rats. We included **two rats in each treatment**. We took three liver samples from each rat. What would our model equation look like?
+Let's imagine we are measuring the amount of glycogen in rat livers. We have **three treatments** that we gave rats. We included **two rats in each treatment**. We took three liver samples from each rat. 
+
+![](RatDesign.png)
+
+What would our model equation look like?
 
 $$
 Y_{ijk} = \mu + A_i + B_{j(i)} + \epsilon_{ijk} \text{, where } \epsilon_{ijk} \sim \mathrm{N} ( 0, \sigma^2)
@@ -821,7 +819,7 @@ Nested designs are actually quite powerful. Single units in an experimental desi
 knitr::include_graphics('NestedANOVA_NoSubsampling.png')
 ```
 
-By subsampling within each sample, we get a better idea of what's going on within each sampling unit (like the Central Limit Theorem). If we estimate the response in three subsamples, we can get a more precise estimate of the treatment mean than if we only had one sample per replication. This way, we reduce unexplained variability.
+**<span style="color: read;">By subsampling within each sample, we get a more precise estimate of the mean response within each sampling unit (think: Central Limit Theorem).</span>** If we estimate the response in three subsamples, we can get a more precise estimate of the treatment mean than if we only had one sample per replication. This way, we reduce unexplained variability.
 
 Nested designs refer to any design in which there is subsampling within the replicates.
 
@@ -840,9 +838,18 @@ Now we know why subsampling is helpful, but why not just average among the subsa
 | Subsamples within replicates (residual) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y}_{j(i)})^2$ | $ab (n - 1)$ | $\frac{\text{SS}_{\text{residual}}}{\text{DOF}_{\text{residual}}}$ | |
 | Total | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y})^2$ | $abn - 1$ | | |
 
+In the above table, the notation is as follows:
+
+$\bar{Y}$ is the grand mean.
+
+$\bar{Y}_{i}$ is the mean within each group. In the rat example, this is the mean for each rat.
+
+$\bar{Y}_{j(i)}$ = is the mean within of the subsets within that group. In the rat example, this would be the mean within each liver sample.
+
 To test the null hypothesis that factor A has no effect ($H_0(A): A_i = 0$), we find the probability of obtaining an F ratio greater than the F ratio we calculated with our data: $P ( X \ge F^*), X \sim F_{[\text{DOF}_{\text{among grp.}}, \text{DOF}_{\text{within}}]}$. To test the null hypothesis that nesting factor B has no effect ($H_0(B): B_j = 0$), $P ( X \ge F^*), X \sim F_{[\text{DOF}_{\text{among rep.}}, \text{DOF}_{\text{within}}]}$. Again, there is no interaction term with nested designs.
 
-\subsection{Potential issues with nested designs}
+
+### Potential issues with nested designs
 
 Nested designs are often mis-analyzed, because people often incorrectly treat subsamples as independent replicates. This ignores correlation among subsamples and artificially boosts sample size. As a result, the chance of Type I error increases dramatically. 
 
@@ -857,7 +864,7 @@ Experimental design
 
 Experimental design is a very important part of statistics that deals with the structure of an experiment or sampling scheme (experimental design is still important even with observational studies). Proper experimental design is essential to correctly be able to make inferences. More on this topic in Aho Ch. 7 and the Hurlbert (1989) paper.
 
-\subsection{Completely randomized design}
+### Completely randomized design
 
 We didn’t say so explicitly, but when we discussed single-factor ANOVA before we assumed a **completely randomized design**. In a completely randomized design, treatments are assigned at random to experimental units (plots, organisms, patients). A negative of completely randomized design is that if there is an environmental gradient, or “noise,” then the completely randomized design will have low power. This is because differences among treatments will be swamped by background “noise” not accounted for in the model.
 
@@ -865,7 +872,7 @@ We didn’t say so explicitly, but when we discussed single-factor ANOVA before 
 knitr::include_graphics('EnvGradient.png')
 ```
 
-\subsection{Randomized block design}
+### Randomized block design
 
 A “block” is a unit of space or time within which conditions are considered to be relatively homogeneous. Blocks may be placed randomly or systematically, but they should be arranged so that **environmental conditions are more are more similar within blocks than between them**.Within each block, treatments are assigned randomly. Each treatment is assigned once per block. Blocks should be placed far enough apart that blocks can be considered independent.
 
@@ -891,7 +898,7 @@ Our null hypotheses are the effect of treatment factor A is zero ($H_0(A): \text
 
 There is no $\sum^n_{k = 1}$ because there is only one replicate of each treatment in each block. Also notice the similarity of the residual SS to the interaction mean squares in other designs.
 
-\subsection{Latin square design}
+### Latin square design
 
 A Latin square design is a special case of a randomized block design for cases where environmental heterogeneity may occur along two dimensions (east-west and north-south for example). In this case you want each treatment to occur exactly once in each row and in each column (like Sudoku).
 
@@ -899,7 +906,7 @@ A Latin square design is a special case of a randomized block design for cases w
 knitr::include_graphics('LatinSquare.png')
 ```
 
-\subsection{Split plot design}
+### Split plot design
 
 With a split plot design, we have an experimental design that exists at two scales: a large unit (which has a whole plot treatment assigned), and smaller units within the large unit (which have split plot treatments). This is a hierarchical design in that the large unit treatments are pseudoreplicates, but the split plots have informative factor levels that mean exactly the same thing in other plots (unlike rat individuals in nested designs). For example, the large unit could be "pond," to which you apply different nutrient addition treatments, and the smaller unit could be "predation treatment" where you multiple different cage setups within each pond. The predation treatments mean the same thing in the other ponds.
 
