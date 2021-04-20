@@ -303,10 +303,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="22" data-path="week-12-lecture.html"><a href="week-12-lecture.html"><i class="fa fa-check"></i><b>22</b> Week 12 Lecture</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#review-anova-with-one-factor"><i class="fa fa-check"></i><b>22.1</b> Review: ANOVA with one factor</a></li>
+<li class="chapter" data-level="22.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#review-anova-with-one-factor"><i class="fa fa-check"></i><b>22.1</b> Review: ANOVA with one factor</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#anova-with-more-than-one-factor"><i class="fa fa-check"></i><b>22.1.1</b> ANOVA with more than one factor</a></li>
+<li class="chapter" data-level="22.1.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-way-anova-factorial-designs"><i class="fa fa-check"></i><b>22.1.2</b> Two-way ANOVA factorial designs</a></li>
+</ul></li>
 <li class="chapter" data-level="22.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#why-bother-with-random-effects"><i class="fa fa-check"></i><b>22.2</b> Why bother with random effects?</a></li>
 <li class="chapter" data-level="22.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#mixed-model"><i class="fa fa-check"></i><b>22.3</b> Mixed model</a></li>
-<li class="chapter" data-level="22.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-designs"><i class="fa fa-check"></i><b>22.4</b> Unbalanced designs</a></li>
+<li class="chapter" data-level="22.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-designs"><i class="fa fa-check"></i><b>22.4</b> Unbalanced designs</a>
+<ul>
+<li class="chapter" data-level="22.4.1" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design-different-sample-sizes"><i class="fa fa-check"></i><b>22.4.1</b> Unbalanced design – Different sample sizes</a></li>
+<li class="chapter" data-level="22.4.2" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-i-sequential-sums-of-squares"><i class="fa fa-check"></i><b>22.4.2</b> Type I (sequential) sums of squares</a></li>
+<li class="chapter" data-level="22.4.3" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-ii-hierarchical-sums-of-squares"><i class="fa fa-check"></i><b>22.4.3</b> Type II (hierarchical) sums of squares</a></li>
+<li class="chapter" data-level="22.4.4" data-path="week-12-lecture.html"><a href="week-12-lecture.html#type-iii-marginal-sums-of-squares"><i class="fa fa-check"></i><b>22.4.4</b> Type III (marginal) sums of squares</a></li>
+<li class="chapter" data-level="22.4.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#comparing-type-i-ii-and-iii-ss"><i class="fa fa-check"></i><b>22.4.5</b> Comparing type I, II, and III SS</a></li>
+</ul></li>
 <li class="chapter" data-level="22.5" data-path="week-12-lecture.html"><a href="week-12-lecture.html#unbalanced-design-missing-cell"><i class="fa fa-check"></i><b>22.5</b> Unbalanced design – Missing cell</a></li>
 <li class="chapter" data-level="22.6" data-path="week-12-lecture.html"><a href="week-12-lecture.html#two-factor-nested-anova"><i class="fa fa-check"></i><b>22.6</b> Two factor nested ANOVA</a></li>
 <li class="chapter" data-level="22.7" data-path="week-12-lecture.html"><a href="week-12-lecture.html#experimental-design"><i class="fa fa-check"></i><b>22.7</b> Experimental design</a></li>
@@ -433,8 +444,8 @@ SS_{among groups} = \sum^{a}_{i=1}\sum^{n}_{j=1}(\bar{Y}_{i}-\bar{Y})^{2}
 SS_{within groups} = \sum^{a}_{i=1}\sum^{n}_{j=1}(Y_{ij}-\bar{Y}_{i})^{2}
 \]</span></p>
 <p>We will start by doing a simple one-way ANOVA. You should already have downloaded some data from the web relating “Salary” to three different kinds of “Education” and “Gender.” These data relate to starting salaries for those leaving college with an English degree.</p>
-<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="week-11-lab.html#cb663-1" aria-hidden="true" tabindex="-1"></a>salaries<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 11 Single factor ANOVA/Week 11 Lab/TwoWayANOVAdata_balanced.csv&quot;</span>, <span class="at">header=</span>T)</span>
-<span id="cb663-2"><a href="week-11-lab.html#cb663-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(salaries)</span></code></pre></div>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="week-11-lab.html#cb672-1" aria-hidden="true" tabindex="-1"></a>salaries<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 11 Single factor ANOVA/Week 11 Lab/TwoWayANOVAdata_balanced.csv&quot;</span>, <span class="at">header=</span>T)</span>
+<span id="cb672-2"><a href="week-11-lab.html#cb672-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(salaries)</span></code></pre></div>
 <pre><code>##   Salary Gender Education
 ## 1     24 Female   Masters
 ## 2     26 Female   Masters
@@ -442,15 +453,15 @@ SS_{within groups} = \sum^{a}_{i=1}\sum^{n}_{j=1}(Y_{ij}-\bar{Y}_{i})^{2}
 ## 4     24 Female   Masters
 ## 5     27 Female   Masters
 ## 6     24 Female   Masters</code></pre>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="week-11-lab.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb665-2"><a href="week-11-lab.html#cb665-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(salaries<span class="sc">$</span>Salary<span class="sc">~</span>salaries<span class="sc">$</span>Gender,<span class="at">ylab=</span><span class="st">&quot;Salary&quot;</span>)</span>
-<span id="cb665-3"><a href="week-11-lab.html#cb665-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(salaries<span class="sc">$</span>Salary<span class="sc">~</span>salaries<span class="sc">$</span>Education,<span class="at">ylab=</span><span class="st">&quot;Salary&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="week-11-lab.html#cb674-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb674-2"><a href="week-11-lab.html#cb674-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(salaries<span class="sc">$</span>Salary<span class="sc">~</span>salaries<span class="sc">$</span>Gender,<span class="at">ylab=</span><span class="st">&quot;Salary&quot;</span>)</span>
+<span id="cb674-3"><a href="week-11-lab.html#cb674-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(salaries<span class="sc">$</span>Salary<span class="sc">~</span>salaries<span class="sc">$</span>Education,<span class="at">ylab=</span><span class="st">&quot;Salary&quot;</span>)</span></code></pre></div>
 <p><img src="Week-11-lab_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>Question: What determines the order of plotting for the boxplots?
 Answer: The alphabet!</p>
 <p>Next we will fit a linear model for Education:</p>
-<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="week-11-lab.html#cb666-1" aria-hidden="true" tabindex="-1"></a>lm.fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Salary<span class="sc">~</span>Education,<span class="at">data=</span>salaries)</span>
-<span id="cb666-2"><a href="week-11-lab.html#cb666-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.fit)</span></code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="week-11-lab.html#cb675-1" aria-hidden="true" tabindex="-1"></a>lm.fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Salary<span class="sc">~</span>Education,<span class="at">data=</span>salaries)</span>
+<span id="cb675-2"><a href="week-11-lab.html#cb675-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Salary ~ Education, data = salaries)
@@ -472,12 +483,12 @@ Answer: The alphabet!</p>
 ## F-statistic: 49.37 on 2 and 33 DF,  p-value: 1.201e-10</code></pre>
 <p>How do we interpret the model fit? Notice that ‘lm’ has fit an intercept which is by default the “Masters” group, and it is comparing groups “No degree” and “PhD” AGAINST the “Masters” group. It has done this because it has ordered the factors alphabetically, which may not be what you want. In this case, we probably want to order the factors like</p>
 <p>No degree, Masters, PhD</p>
-<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="week-11-lab.html#cb668-1" aria-hidden="true" tabindex="-1"></a>salaries<span class="sc">$</span>Education<span class="ot">&lt;-</span><span class="fu">factor</span>(salaries<span class="sc">$</span>Education,<span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;No degree&quot;</span>,<span class="st">&quot;Masters&quot;</span>,<span class="st">&quot;PhD&quot;</span>),<span class="at">ordered=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="week-11-lab.html#cb677-1" aria-hidden="true" tabindex="-1"></a>salaries<span class="sc">$</span>Education<span class="ot">&lt;-</span><span class="fu">factor</span>(salaries<span class="sc">$</span>Education,<span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;No degree&quot;</span>,<span class="st">&quot;Masters&quot;</span>,<span class="st">&quot;PhD&quot;</span>),<span class="at">ordered=</span>F)</span></code></pre></div>
 <p>If you plot salaries$Education now you’ll see that the data have not changed, but we have forced R to list the degrees in some meaningful order. Note that we have said “ordered=F” because we do not want to treat them as</p>
 <p>No degree<span class="math inline">\(\leq\)</span>Masters<span class="math inline">\(\leq\)</span>PhD</p>
 <p>in the modelling, we just want the various levels to appear in a way that we can interpret them easily.</p>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="week-11-lab.html#cb669-1" aria-hidden="true" tabindex="-1"></a>lm.fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Salary<span class="sc">~</span>Education,<span class="at">data=</span>salaries)</span>
-<span id="cb669-2"><a href="week-11-lab.html#cb669-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.fit)</span></code></pre></div>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="week-11-lab.html#cb678-1" aria-hidden="true" tabindex="-1"></a>lm.fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Salary<span class="sc">~</span>Education,<span class="at">data=</span>salaries)</span>
+<span id="cb678-2"><a href="week-11-lab.html#cb678-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Salary ~ Education, data = salaries)
@@ -511,8 +522,8 @@ Answer: The alphabet!</p>
 \]</span></p>
 <p>Therefore, the t-statistic is just the estimate / s.e., and the p-values derived from that reflect the significance of difference in “Masters” vs. “No degree” and “PhD” vs. “No degree.”</p>
 <p>We can eliminate the intercept to make the coefficients more obviously analogous to ANOVA.</p>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="week-11-lab.html#cb671-1" aria-hidden="true" tabindex="-1"></a>lm.fit2<span class="ot">&lt;-</span><span class="fu">lm</span>(Salary<span class="sc">~</span>Education<span class="dv">-1</span>,<span class="at">data=</span>salaries)</span>
-<span id="cb671-2"><a href="week-11-lab.html#cb671-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.fit2)</span></code></pre></div>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="week-11-lab.html#cb680-1" aria-hidden="true" tabindex="-1"></a>lm.fit2<span class="ot">&lt;-</span><span class="fu">lm</span>(Salary<span class="sc">~</span>Education<span class="dv">-1</span>,<span class="at">data=</span>salaries)</span>
+<span id="cb680-2"><a href="week-11-lab.html#cb680-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.fit2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Salary ~ Education - 1, data = salaries)
@@ -534,14 +545,14 @@ Answer: The alphabet!</p>
 ## F-statistic:  1155 on 3 and 33 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The main results (the group means and their differences) haven’t fundamentally changed, but they are now displayed in a way that makes the most sense. Note that the metrics of model fit (R2, F-statistic, and p-value for the model) have changed, and in the opposite direction as we might expect. We ran into this earlier in the semester when comparing the fit of a regression model with an intercept and the same model without an intercept.</p>
 <p>Now the estimates represent the group means, which is easier to interpret. How do we calculate the standard errors, and why are all the standard errors the same? Recalling our discussion from Week #8, we remember that we want to use the residual variation divided by the square-root of the sample size:</p>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="week-11-lab.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.508</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(salaries<span class="sc">$</span>Salary[salaries<span class="sc">$</span>Education<span class="sc">==</span><span class="st">&quot;Masters&quot;</span>]))</span></code></pre></div>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="week-11-lab.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2.508</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(salaries<span class="sc">$</span>Salary[salaries<span class="sc">$</span>Education<span class="sc">==</span><span class="st">&quot;Masters&quot;</span>]))</span></code></pre></div>
 <pre><code>## [1] 0.7239972</code></pre>
 <p>(Side note: If anyone figures out how to extract the residual standard error directly from the object lm.fit2, let me know.)</p>
 <p>Since we have a balanced design, there are the same number of samples from each educational level, and so each educational coefficient estimate has the same standard error. In other words, when calculating the estimate standard errors, we used the mean squared residuals, which is equivalent to a pooled variance estimator, where we have pooled with within group variance from all the groups.</p>
 <p><strong><span style="color: green;">Checkpoint #2: In words, how do we interpret the p-values for the Masters and PhD group? What hypothesis are they addressing?</span></strong>
 <span style="color: white;">Answer: Now the p-values are meaningless, because they test the uninteresting null hypothesis that the group means are zero.</span></p>
 <p>Before working out all the numbers here, lets print out the ANOVA table for this model</p>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="week-11-lab.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(lm.fit)</span></code></pre></div>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="week-11-lab.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(lm.fit)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: Salary
@@ -556,7 +567,7 @@ Answer: The alphabet!</p>
 \]</span></p>
 <p>(The main take home message is that regression with discrete covariates is the SAME as analysis of variance. Using a regression approach, we focus more on coefficients and hypothesis tests on those coefficients. Using an ANOVA approach, we focus more on the partitioning of variance, and the null hypothesis being addressed is an omnibus hypothesis which addresses whether the covariate in question can explain more variation than would be expected by random chance alone.)</p>
 <p>Compare results of ‘summary(lm.fit)’ with a t-test looking at groups “No degree” and “Masters.” <strong><span style="color: green;">Checkpoint #3: Why would these be different?</span></strong> <span style="color: white;">(The anova case pools the errors from all three cases, so the results will be slightly different.)</span></p>
-<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="week-11-lab.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(salaries<span class="sc">$</span>Salary[salaries<span class="sc">$</span>Education<span class="sc">==</span><span class="st">&quot;Masters&quot;</span>],salaries<span class="sc">$</span>Salary[salaries<span class="sc">$</span>Education<span class="sc">==</span><span class="st">&quot;No degree&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="week-11-lab.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(salaries<span class="sc">$</span>Salary[salaries<span class="sc">$</span>Education<span class="sc">==</span><span class="st">&quot;Masters&quot;</span>],salaries<span class="sc">$</span>Salary[salaries<span class="sc">$</span>Education<span class="sc">==</span><span class="st">&quot;No degree&quot;</span>])</span></code></pre></div>
 <pre><code>## 
 ## 	Welch Two Sample t-test
 ## 
@@ -574,7 +585,7 @@ Answer: The alphabet!</p>
 d.o.f.^{*} = \frac{\left[\frac{s^{2}_{A}}{n_{A}}+\frac{s_{B}^{2}}{n_{B}}\right]^{2}}{\frac{\left(\frac{s^{2}_{A}}{n_{A}}\right)^{2}}{n_{A}-1}+\frac{\left(\frac{s^{2}_{B}}{n_{B}}\right)^{2}}{n_{B}-1}}
 \]</span></p>
 <p>As an aside, what were to happen if we were to print out the ANOVA table for the model with no intercept (lm.fit2)?</p>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="week-11-lab.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(lm.fit2)</span></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="week-11-lab.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(lm.fit2)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: Salary
@@ -584,31 +595,31 @@ d.o.f.^{*} = \frac{\left[\frac{s^{2}_{A}}{n_{A}}+\frac{s_{B}^{2}}{n_{B}}\right]^
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The ANOVA table is now very different from what we got before, for the exact same reason that comparing regression models with and without intercepts is confusing. In essence, the total sum of squares being calculated by R is not relative to the overall grand mean, but relative to zero. We can see this easily by calculating <span class="math inline">\(SS_{total}\)</span></p>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="week-11-lab.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(salaries<span class="sc">$</span>Salary<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="week-11-lab.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(salaries<span class="sc">$</span>Salary<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 21999</code></pre>
 <p>which is the new sum-of-squares total, quite a bit larger than the previous, and more sensible calculation of</p>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="week-11-lab.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((salaries<span class="sc">$</span>Salary<span class="sc">-</span><span class="fu">mean</span>(salaries<span class="sc">$</span>Salary))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="week-11-lab.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((salaries<span class="sc">$</span>Salary<span class="sc">-</span><span class="fu">mean</span>(salaries<span class="sc">$</span>Salary))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 828.75</code></pre>
 <p>R uses the <span class="math inline">\(SS_{total}\)</span> to work back to what <span class="math inline">\(SS_{among}\)</span> should be. By mis-calculating <span class="math inline">\(SS_{total}\)</span>, it inflates <span class="math inline">\(SS_{among}\)</span>. There are ways to fix this (insert the <span class="math inline">\(SS_{total}\)</span> from the linear model with an intercept and reconstruct the correct <span class="math inline">\(SS_{among}\)</span>), but I won’t get into much detail about that now.</p>
 </div>
 <div id="follow-up-analyses-to-anova" class="section level2" number="21.3">
 <h2><span class="header-section-number">21.3</span> Follow up analyses to ANOVA</h2>
 <p>On Tuesday, we introduced the studentized range distribution q. Unfortunately, R does not have a function to draw from this distribution (i.e. there is no ‘rtukey’). However, we can easy simulate draws from this distribution. In the case of the Educational data, we have three groups, each with 12 data points. Let’s start by randomly drawing 36 datapoints from a normal distribution with mean 0 and with a standard deviation that equals the empirical standard deviation. Under the null hypothesis, the three groups are arbitrary subsets of the full data and so we randomly divide them up into three groups of 12. Let’s put this in a loop and histogram it to get a sense for the full distribution (each iteration through the loop is one draw from the studentized range distribution). Note that because this is a balanced design, <span class="math inline">\(n_{A}=n_{B}=n_{C}=12\)</span>.</p>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="week-11-lab.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(salaries)</span>
-<span id="cb685-2"><a href="week-11-lab.html#cb685-2" aria-hidden="true" tabindex="-1"></a>q<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
-<span id="cb685-3"><a href="week-11-lab.html#cb685-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
-<span id="cb685-4"><a href="week-11-lab.html#cb685-4" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb685-5"><a href="week-11-lab.html#cb685-5" aria-hidden="true" tabindex="-1"></a>  data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">type=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>,<span class="at">times=</span><span class="dv">12</span>),<span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>,<span class="at">times=</span><span class="dv">12</span>),<span class="fu">rep</span>(<span class="st">&quot;C&quot;</span>,<span class="at">times=</span><span class="dv">12</span>)),<span class="at">response=</span><span class="fu">rnorm</span>(<span class="dv">36</span>,<span class="dv">0</span>,<span class="fu">sd</span>(Salary)))</span>
-<span id="cb685-6"><a href="week-11-lab.html#cb685-6" aria-hidden="true" tabindex="-1"></a>  temp<span class="ot">&lt;-</span><span class="fu">aov</span>(data<span class="sc">$</span>response<span class="sc">~</span>data<span class="sc">$</span>type)</span>
-<span id="cb685-7"><a href="week-11-lab.html#cb685-7" aria-hidden="true" tabindex="-1"></a>  MSwithin<span class="ot">&lt;-</span><span class="fu">sum</span>((temp<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span><span class="dv">33</span></span>
-<span id="cb685-8"><a href="week-11-lab.html#cb685-8" aria-hidden="true" tabindex="-1"></a>  gr.means<span class="ot">&lt;-</span><span class="fu">aggregate</span>(data<span class="sc">$</span>response, <span class="fu">list</span>(data<span class="sc">$</span>type), mean)<span class="sc">$</span>x</span>
-<span id="cb685-9"><a href="week-11-lab.html#cb685-9" aria-hidden="true" tabindex="-1"></a>  q<span class="ot">&lt;-</span><span class="fu">c</span>(q,(<span class="fu">max</span>(gr.means)<span class="sc">-</span><span class="fu">min</span>(gr.means))<span class="sc">/</span><span class="fu">sqrt</span>(MSwithin<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>)))</span>
-<span id="cb685-10"><a href="week-11-lab.html#cb685-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb685-11"><a href="week-11-lab.html#cb685-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(q)</span></code></pre></div>
+<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="week-11-lab.html#cb694-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(salaries)</span>
+<span id="cb694-2"><a href="week-11-lab.html#cb694-2" aria-hidden="true" tabindex="-1"></a>q<span class="ot">&lt;-</span><span class="fu">c</span>()</span>
+<span id="cb694-3"><a href="week-11-lab.html#cb694-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)</span>
+<span id="cb694-4"><a href="week-11-lab.html#cb694-4" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb694-5"><a href="week-11-lab.html#cb694-5" aria-hidden="true" tabindex="-1"></a>  data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">type=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>,<span class="at">times=</span><span class="dv">12</span>),<span class="fu">rep</span>(<span class="st">&quot;B&quot;</span>,<span class="at">times=</span><span class="dv">12</span>),<span class="fu">rep</span>(<span class="st">&quot;C&quot;</span>,<span class="at">times=</span><span class="dv">12</span>)),<span class="at">response=</span><span class="fu">rnorm</span>(<span class="dv">36</span>,<span class="dv">0</span>,<span class="fu">sd</span>(Salary)))</span>
+<span id="cb694-6"><a href="week-11-lab.html#cb694-6" aria-hidden="true" tabindex="-1"></a>  temp<span class="ot">&lt;-</span><span class="fu">aov</span>(data<span class="sc">$</span>response<span class="sc">~</span>data<span class="sc">$</span>type)</span>
+<span id="cb694-7"><a href="week-11-lab.html#cb694-7" aria-hidden="true" tabindex="-1"></a>  MSwithin<span class="ot">&lt;-</span><span class="fu">sum</span>((temp<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span><span class="dv">33</span></span>
+<span id="cb694-8"><a href="week-11-lab.html#cb694-8" aria-hidden="true" tabindex="-1"></a>  gr.means<span class="ot">&lt;-</span><span class="fu">aggregate</span>(data<span class="sc">$</span>response, <span class="fu">list</span>(data<span class="sc">$</span>type), mean)<span class="sc">$</span>x</span>
+<span id="cb694-9"><a href="week-11-lab.html#cb694-9" aria-hidden="true" tabindex="-1"></a>  q<span class="ot">&lt;-</span><span class="fu">c</span>(q,(<span class="fu">max</span>(gr.means)<span class="sc">-</span><span class="fu">min</span>(gr.means))<span class="sc">/</span><span class="fu">sqrt</span>(MSwithin<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>)))</span>
+<span id="cb694-10"><a href="week-11-lab.html#cb694-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb694-11"><a href="week-11-lab.html#cb694-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(q)</span></code></pre></div>
 <p><img src="Week-11-lab_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>This is a histogram of the studentized range distribution. While R does not provide a function to sample randomly from this distribution, R does provide functions for calculating the cumulative distribution, and so we can check that our simulation works by plotting the empirical distribution against that which is output by ‘ptukey.’</p>
-<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="week-11-lab.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(q))</span>
-<span id="cb686-2"><a href="week-11-lab.html#cb686-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="fl">0.01</span>),<span class="fu">ptukey</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="fl">0.01</span>),<span class="dv">3</span>,<span class="dv">33</span>),<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="week-11-lab.html#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(q))</span>
+<span id="cb695-2"><a href="week-11-lab.html#cb695-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="fl">0.01</span>),<span class="fu">ptukey</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="fl">0.01</span>),<span class="dv">3</span>,<span class="dv">33</span>),<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="Week-11-lab_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Yeah! Our simulation correctly samples from the studentized range distribution. Now we can use this to reconstruct what R’s function TukeyHSD produces.</p>
 <p>Before employing Tukey’s HSD test, rank the group means (A,B,C) from largest to smallest.</p>
@@ -623,7 +634,7 @@ A&gt;B&gt;C
 <p>a = # of treatment groups = 3 (in this case)</p>
 <p><span class="math inline">\(DOF_{\text{within}}\)</span> = # of degrees of freedom used in the calculation of <span class="math inline">\(MS_{within}\)</span> = 33 (in this case)</p>
 <p><span class="math inline">\(n_{A}=n_{C}\)</span> = number of samples within groups A and C = 12</p>
-<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="week-11-lab.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(Salary<span class="sc">~</span>Education,<span class="at">data=</span>salaries))</span></code></pre></div>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="week-11-lab.html#cb696-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(Salary<span class="sc">~</span>Education,<span class="at">data=</span>salaries))</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -648,17 +659,17 @@ q_{a,DOF_{\text{within}}} \sim \frac{max(results)-min(results)}{\sqrt{MS_{within
 \]</span></p>
 <p>where <span class="math inline">\(q_{(a,DOF)[0.95]}\)</span> is the 95th quantile of the q-distribution.</p>
 <p>First, let’s make sure the estimates for the group differences make sense. We’ll do the PhD-No degree as an example, since these groups make up the largest and smallest responses, respectively.</p>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="week-11-lab.html#cb689-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;PhD&quot;</span>])<span class="sc">-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;No degree&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="week-11-lab.html#cb698-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;PhD&quot;</span>])<span class="sc">-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;No degree&quot;</span>])</span></code></pre></div>
 <pre><code>## [1] 9.666667</code></pre>
 <p>This matches the output of TukeyHSD. So far, so good.</p>
 <p>What would we calculate for the lower limit?</p>
-<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="week-11-lab.html#cb691-1" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">&lt;-</span><span class="fu">aov</span>(Salary<span class="sc">~</span>Education,<span class="at">data=</span>salaries)</span>
-<span id="cb691-2"><a href="week-11-lab.html#cb691-2" aria-hidden="true" tabindex="-1"></a>MSwithin<span class="ot">&lt;-</span><span class="fu">sum</span>((temp<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span><span class="dv">33</span> <span class="co"># These lines just extract MSwithin</span></span>
-<span id="cb691-3"><a href="week-11-lab.html#cb691-3" aria-hidden="true" tabindex="-1"></a>LL<span class="ot">&lt;-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;PhD&quot;</span>])<span class="sc">-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;No degree&quot;</span>]) <span class="sc">-</span> <span class="fu">qtukey</span>(<span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">33</span>)<span class="sc">*</span><span class="fu">sqrt</span>(MSwithin<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>))</span>
-<span id="cb691-4"><a href="week-11-lab.html#cb691-4" aria-hidden="true" tabindex="-1"></a>UL<span class="ot">&lt;-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;PhD&quot;</span>])<span class="sc">-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;No degree&quot;</span>]) <span class="sc">+</span> <span class="fu">qtukey</span>(<span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">33</span>)<span class="sc">*</span><span class="fu">sqrt</span>(MSwithin<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>))</span>
-<span id="cb691-5"><a href="week-11-lab.html#cb691-5" aria-hidden="true" tabindex="-1"></a>LL</span></code></pre></div>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="week-11-lab.html#cb700-1" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">&lt;-</span><span class="fu">aov</span>(Salary<span class="sc">~</span>Education,<span class="at">data=</span>salaries)</span>
+<span id="cb700-2"><a href="week-11-lab.html#cb700-2" aria-hidden="true" tabindex="-1"></a>MSwithin<span class="ot">&lt;-</span><span class="fu">sum</span>((temp<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span><span class="dv">33</span> <span class="co"># These lines just extract MSwithin</span></span>
+<span id="cb700-3"><a href="week-11-lab.html#cb700-3" aria-hidden="true" tabindex="-1"></a>LL<span class="ot">&lt;-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;PhD&quot;</span>])<span class="sc">-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;No degree&quot;</span>]) <span class="sc">-</span> <span class="fu">qtukey</span>(<span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">33</span>)<span class="sc">*</span><span class="fu">sqrt</span>(MSwithin<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>))</span>
+<span id="cb700-4"><a href="week-11-lab.html#cb700-4" aria-hidden="true" tabindex="-1"></a>UL<span class="ot">&lt;-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;PhD&quot;</span>])<span class="sc">-</span><span class="fu">mean</span>(Salary[Education<span class="sc">==</span><span class="st">&quot;No degree&quot;</span>]) <span class="sc">+</span> <span class="fu">qtukey</span>(<span class="fl">0.95</span>,<span class="dv">3</span>,<span class="dv">33</span>)<span class="sc">*</span><span class="fu">sqrt</span>(MSwithin<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>))</span>
+<span id="cb700-5"><a href="week-11-lab.html#cb700-5" aria-hidden="true" tabindex="-1"></a>LL</span></code></pre></div>
 <pre><code>## [1] 7.154191</code></pre>
-<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="week-11-lab.html#cb693-1" aria-hidden="true" tabindex="-1"></a>UL</span></code></pre></div>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="week-11-lab.html#cb702-1" aria-hidden="true" tabindex="-1"></a>UL</span></code></pre></div>
 <pre><code>## [1] 12.17914</code></pre>
 <p>We have recreated the output from the TukeyHSD function.</p>
 </div>
@@ -677,25 +688,25 @@ Y_{ij} = \mu + \alpha_{i} + \epsilon_{ij}
 \mbox{Diatom spp diversity} = \mbox{overall mean} + \mbox{effect of zinc level} + \mbox{error}
 \]</span></p>
 <p>Step 1: Import the data</p>
-<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="week-11-lab.html#cb695-1" aria-hidden="true" tabindex="-1"></a>medley<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 11 Single factor ANOVA/Week 11 Lab/medley.csv&quot;</span>,<span class="at">header=</span>T,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="week-11-lab.html#cb704-1" aria-hidden="true" tabindex="-1"></a>medley<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 11 Single factor ANOVA/Week 11 Lab/medley.csv&quot;</span>,<span class="at">header=</span>T,<span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span></code></pre></div>
 <p>Step 2: Reorganize the levels of the categorical variable into a more logical order</p>
-<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="week-11-lab.html#cb696-1" aria-hidden="true" tabindex="-1"></a>medley<span class="sc">$</span>ZINC<span class="ot">&lt;-</span><span class="fu">factor</span>(medley<span class="sc">$</span>ZINC,<span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;HIGH&quot;</span>,<span class="st">&quot;MED&quot;</span>,<span class="st">&quot;LOW&quot;</span>,<span class="st">&quot;BACK&quot;</span>),<span class="at">ordered=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="week-11-lab.html#cb705-1" aria-hidden="true" tabindex="-1"></a>medley<span class="sc">$</span>ZINC<span class="ot">&lt;-</span><span class="fu">factor</span>(medley<span class="sc">$</span>ZINC,<span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;HIGH&quot;</span>,<span class="st">&quot;MED&quot;</span>,<span class="st">&quot;LOW&quot;</span>,<span class="st">&quot;BACK&quot;</span>),<span class="at">ordered=</span>F)</span></code></pre></div>
 <p>Now we will work through the steps of Logan’s “Key for Single-factor classification.”</p>
 <p>Step 3: Assess normality/homogeneity of variance using a boxplot of species diversity against zinc group.</p>
-<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="week-11-lab.html#cb697-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(DIVERSITY<span class="sc">~</span>ZINC, medley)</span></code></pre></div>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="week-11-lab.html#cb706-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(DIVERSITY<span class="sc">~</span>ZINC, medley)</span></code></pre></div>
 <p><img src="Week-11-lab_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Conclusions? No obvious violations of normality or homogeneity of variance (boxplots are not asymmetrical and do not vary greatly in size).</p>
 <p>Step 4: Assess homogeneity of variance assumption with a table and/or plot of mean vs variance</p>
-<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="week-11-lab.html#cb698-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">tapply</span>(medley<span class="sc">$</span>DIVERSITY, medley<span class="sc">$</span>ZINC, mean), <span class="fu">tapply</span>(medley<span class="sc">$</span>DIVERSITY, medley<span class="sc">$</span>ZINC, var),<span class="at">pch=</span><span class="dv">16</span>,<span class="at">cex=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="week-11-lab.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">tapply</span>(medley<span class="sc">$</span>DIVERSITY, medley<span class="sc">$</span>ZINC, mean), <span class="fu">tapply</span>(medley<span class="sc">$</span>DIVERSITY, medley<span class="sc">$</span>ZINC, var),<span class="at">pch=</span><span class="dv">16</span>,<span class="at">cex=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Week-11-lab_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>Conclusions? No obvious relationship between mean and variance.</p>
 <p>Step 5: Test <span class="math inline">\(H_{0}\)</span> that population group means are all equal - perform analysis of variance (fit the linear model) of species diversity versus zinc level group and examine the diagnostics (residual plot)</p>
-<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="week-11-lab.html#cb699-1" aria-hidden="true" tabindex="-1"></a>medley.aov<span class="ot">&lt;-</span><span class="fu">aov</span>(DIVERSITY<span class="sc">~</span>ZINC, medley)</span>
-<span id="cb699-2"><a href="week-11-lab.html#cb699-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(medley.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="week-11-lab.html#cb708-1" aria-hidden="true" tabindex="-1"></a>medley.aov<span class="ot">&lt;-</span><span class="fu">aov</span>(DIVERSITY<span class="sc">~</span>ZINC, medley)</span>
+<span id="cb708-2"><a href="week-11-lab.html#cb708-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(medley.aov)</span></code></pre></div>
 <p><img src="Week-11-lab_files/figure-html/unnamed-chunk-21-1.png" width="672" /><img src="Week-11-lab_files/figure-html/unnamed-chunk-21-2.png" width="672" /><img src="Week-11-lab_files/figure-html/unnamed-chunk-21-3.png" width="672" /><img src="Week-11-lab_files/figure-html/unnamed-chunk-21-4.png" width="672" /></p>
 <p>Conclusions? We won’t discuss this much until we get to model diagnostics, but there are no obvious violations of normality of homogeneity among the residuals (no obvious wedge shape in the residuals, Q-Q plot against a normal is approximately linear). Note that Cook’s D values are meaningless in ANOVA.</p>
 <p>Step 6: Examine the ANOVA table</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="week-11-lab.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(medley.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="week-11-lab.html#cb709-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(medley.aov)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: DIVERSITY
@@ -710,17 +721,17 @@ Y_{ij} = \mu + \alpha_{i} + \epsilon_{ij}
 <p><span class="math display">\[
 \frac{\bar{X}_{A}-\bar{X}_{D}}{\sqrt{MS_{within}\frac{\left(\frac{1}{n_{A}}+\frac{1}{n_{D}}\right)}{2}}} \sim q_{num.groups,dof}
 \]</span></p>
-<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="week-11-lab.html#cb702-1" aria-hidden="true" tabindex="-1"></a>MS.within<span class="ot">&lt;-</span><span class="fl">0.217</span> <span class="co">#from anova table output before</span></span>
-<span id="cb702-2"><a href="week-11-lab.html#cb702-2" aria-hidden="true" tabindex="-1"></a>n.A<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(medley<span class="sc">$</span>ZINC<span class="sc">==</span><span class="st">&quot;LOW&quot;</span>))</span>
-<span id="cb702-3"><a href="week-11-lab.html#cb702-3" aria-hidden="true" tabindex="-1"></a>n.D<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(medley<span class="sc">$</span>ZINC<span class="sc">==</span><span class="st">&quot;HIGH&quot;</span>))</span>
-<span id="cb702-4"><a href="week-11-lab.html#cb702-4" aria-hidden="true" tabindex="-1"></a>numerator<span class="ot">&lt;-</span><span class="fu">mean</span>(medley<span class="sc">$</span>DIVERSITY[medley<span class="sc">$</span>ZINC<span class="sc">==</span><span class="st">&quot;LOW&quot;</span>])<span class="sc">-</span><span class="fu">mean</span>(medley<span class="sc">$</span>DIVERSITY[medley<span class="sc">$</span>ZINC<span class="sc">==</span><span class="st">&quot;HIGH&quot;</span>])</span>
-<span id="cb702-5"><a href="week-11-lab.html#cb702-5" aria-hidden="true" tabindex="-1"></a>denominator<span class="ot">&lt;-</span><span class="fu">sqrt</span>(MS.within<span class="sc">*</span>(((<span class="dv">1</span><span class="sc">/</span>n.A)<span class="sc">+</span>(<span class="dv">1</span><span class="sc">/</span>n.D))<span class="sc">/</span><span class="dv">2</span>))</span>
-<span id="cb702-6"><a href="week-11-lab.html#cb702-6" aria-hidden="true" tabindex="-1"></a>test.statistic<span class="ot">&lt;-</span>numerator<span class="sc">/</span>denominator</span>
-<span id="cb702-7"><a href="week-11-lab.html#cb702-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">ptukey</span>(test.statistic,<span class="at">nmeans=</span><span class="dv">4</span>,<span class="at">df=</span><span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="week-11-lab.html#cb711-1" aria-hidden="true" tabindex="-1"></a>MS.within<span class="ot">&lt;-</span><span class="fl">0.217</span> <span class="co">#from anova table output before</span></span>
+<span id="cb711-2"><a href="week-11-lab.html#cb711-2" aria-hidden="true" tabindex="-1"></a>n.A<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(medley<span class="sc">$</span>ZINC<span class="sc">==</span><span class="st">&quot;LOW&quot;</span>))</span>
+<span id="cb711-3"><a href="week-11-lab.html#cb711-3" aria-hidden="true" tabindex="-1"></a>n.D<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(medley<span class="sc">$</span>ZINC<span class="sc">==</span><span class="st">&quot;HIGH&quot;</span>))</span>
+<span id="cb711-4"><a href="week-11-lab.html#cb711-4" aria-hidden="true" tabindex="-1"></a>numerator<span class="ot">&lt;-</span><span class="fu">mean</span>(medley<span class="sc">$</span>DIVERSITY[medley<span class="sc">$</span>ZINC<span class="sc">==</span><span class="st">&quot;LOW&quot;</span>])<span class="sc">-</span><span class="fu">mean</span>(medley<span class="sc">$</span>DIVERSITY[medley<span class="sc">$</span>ZINC<span class="sc">==</span><span class="st">&quot;HIGH&quot;</span>])</span>
+<span id="cb711-5"><a href="week-11-lab.html#cb711-5" aria-hidden="true" tabindex="-1"></a>denominator<span class="ot">&lt;-</span><span class="fu">sqrt</span>(MS.within<span class="sc">*</span>(((<span class="dv">1</span><span class="sc">/</span>n.A)<span class="sc">+</span>(<span class="dv">1</span><span class="sc">/</span>n.D))<span class="sc">/</span><span class="dv">2</span>))</span>
+<span id="cb711-6"><a href="week-11-lab.html#cb711-6" aria-hidden="true" tabindex="-1"></a>test.statistic<span class="ot">&lt;-</span>numerator<span class="sc">/</span>denominator</span>
+<span id="cb711-7"><a href="week-11-lab.html#cb711-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">ptukey</span>(test.statistic,<span class="at">nmeans=</span><span class="dv">4</span>,<span class="at">df=</span><span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## [1] 0.01160652</code></pre>
 <p><strong><span style="color: green;">Checkpoint #5: Why is this always a one-tailed test?</span></strong> <span style="color: white;">Note that we did a one tailed test because we always take the largest minus the smallest group mean.</span></p>
 <p>We can also use the built in function we used before</p>
-<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="week-11-lab.html#cb704-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(medley.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="week-11-lab.html#cb713-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(medley.aov)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -741,11 +752,11 @@ Y_{ij} = \mu + \alpha_{i} + \epsilon_{ij}
 <h2><span class="header-section-number">21.5</span> More practice: Brief intro to doing Model II ANOVA in R</h2>
 <p>Now we will look at the influence of STREAM, which can be considered a random variable (Model II ANOVA).</p>
 <p>Step 1: The data is already loaded, but we need to assess normality/homogeneity of variances using a boxplot of species diversity against stream.</p>
-<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="week-11-lab.html#cb706-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(DIVERSITY <span class="sc">~</span> STREAM, medley)</span></code></pre></div>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="week-11-lab.html#cb715-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(DIVERSITY <span class="sc">~</span> STREAM, medley)</span></code></pre></div>
 <p><img src="Week-11-lab_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>Step 2: We fit the ANOVA just like we already know how to do for fixed effects; this is a Model I ANOVA</p>
-<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="week-11-lab.html#cb707-1" aria-hidden="true" tabindex="-1"></a>medley.aov<span class="ot">&lt;-</span><span class="fu">aov</span>(DIVERSITY<span class="sc">~</span>STREAM,medley)</span>
-<span id="cb707-2"><a href="week-11-lab.html#cb707-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(medley.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="week-11-lab.html#cb716-1" aria-hidden="true" tabindex="-1"></a>medley.aov<span class="ot">&lt;-</span><span class="fu">aov</span>(DIVERSITY<span class="sc">~</span>STREAM,medley)</span>
+<span id="cb716-2"><a href="week-11-lab.html#cb716-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(medley.aov)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: DIVERSITY
@@ -755,9 +766,9 @@ Y_{ij} = \mu + \alpha_{i} + \epsilon_{ij}
 <p>Conclusions? Do not reject the null hypothesis because there is no evidence to suggest that stream identity is influencing diatom diversity.</p>
 <p>Step 3: I won’t go into more detail, but we can fit models with only random effects using ‘aov’ or fit models with random-only models or mixed-models (both random and fixed effects included) using the package ‘lme4.’</p>
 <p>Just to get it out of the way, let’s load the ‘lme4’ package:</p>
-<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="week-11-lab.html#cb709-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4,<span class="at">quietly=</span><span class="cn">TRUE</span>,<span class="at">verbose=</span><span class="cn">FALSE</span>,<span class="at">warn.conflicts=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="week-11-lab.html#cb718-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4,<span class="at">quietly=</span><span class="cn">TRUE</span>,<span class="at">verbose=</span><span class="cn">FALSE</span>,<span class="at">warn.conflicts=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Using the ‘aov’ function we already know how to use for random effects is fairly straightforward:</p>
-<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="week-11-lab.html#cb710-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(DIVERSITY<span class="sc">~</span><span class="fu">Error</span>(STREAM),medley)</span></code></pre></div>
+<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="week-11-lab.html#cb719-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(DIVERSITY<span class="sc">~</span><span class="fu">Error</span>(STREAM),medley)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## aov(formula = DIVERSITY ~ Error(STREAM), data = medley)
@@ -782,7 +793,7 @@ Y_{ij} = \mu + \alpha_{i} + \epsilon_{ij}
 ## 
 ## Residual standard error: 0.5090319</code></pre>
 <p>Using the lmer function, the syntax gets slightly messier:</p>
-<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="week-11-lab.html#cb712-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lmer</span>(DIVERSITY<span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>STREAM,medley)</span></code></pre></div>
+<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="week-11-lab.html#cb721-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lmer</span>(DIVERSITY<span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>STREAM,medley)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by REML [&#39;lmerMod&#39;]
 ## Formula: DIVERSITY ~ 1 | STREAM
 ##    Data: medley

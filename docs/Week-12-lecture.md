@@ -24,7 +24,7 @@ With single factor ANOVA, we compared multiple levels of a factor. Another way t
 
 <img src="Week-12-lecture_files/figure-html/unnamed-chunk-2-1.png" width="384" />
 
-\subsection{ANOVA with more than one factor}
+### ANOVA with more than one factor
 
 With two-way (and higher) ANOVA, we look at more than one factor at a time (e.g., the effect of density and season on limpet egg production). There are different ways in which multiple factors can be modeled, and this depends on the design of your study. We will focus our discussion primarily on two ways in which multiple factors can be applied in an experimental design: Nested vs Factorial. Note that in some complicated experiments, there may be elements that are nested and others that are factorial. This will become clear as we work through some examples.
 
@@ -36,7 +36,7 @@ The two factors are fully crossed, or all combinations of factors are included i
 
 We will start with factorial designs because these are the most logical extension of the one-way analyses we discussed last week.
 
-\subsection{Two-way ANOVA factorial designs}
+### Two-way ANOVA factorial designs
 
 In the previous example, the number of egg masses per limpet was measured at different densities (factor A) and in different seasons (factor B). Two-way factorial designs can be represented in a table, where each cell is a combination of factor A and factor B. Each cell has multiple replicates.
 
@@ -279,14 +279,6 @@ The mean biomass in fertilizer (factor A) $i$, averaged across all watering trea
 
 <p>&nbsp;</p>
 
-| Source of variation | SS        | DOF       | MS        |
-| ------------------- |:---------:|:---------:|:---------:|
-| Among groups (factor A) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{i} - \bar{Y})^2$ | $a - 1$ | $\frac{\text{SS}_{A}}{\text{DOF}_{A}}$ |
-| Among groups (factor B) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{j} - \bar{Y})^2$ | $b - 1$ | $\frac{\text{SS}_{B}}{\text{DOF}_{B}}$ |
-| Interaction | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{ij} - \bar{Y}_{i} - \bar{Y}_{j} + \bar{Y})^2$ | $(a - 1) (b - 1)$ | $\frac{\text{SS}_{AB}}{\text{DOF}_{AB}}$ |
-| Within groups (residual) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y}_{ij})^2$ | $ab (n - 1)$ | $\frac{\text{SS}_{\text{within}}}{\text{DOF}_{\text{within}}}$ |
-| Total | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y})^2$ | $abn - 1$ | |
-
 **Question: What is $\bar{Y}_j$?**
 
 <details>
@@ -309,14 +301,6 @@ The mean biomass in treatment combination fertilizer (factor A) $i$ and water le
 
 <p>&nbsp;</p>
 
-| Source of variation | SS        | DOF       | MS        |
-| ------------------- |:---------:|:---------:|:---------:|
-| Among groups (factor A) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{i} - \bar{Y})^2$ | $a - 1$ | $\frac{\text{SS}_{A}}{\text{DOF}_{A}}$ |
-| Among groups (factor B) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{j} - \bar{Y})^2$ | $b - 1$ | $\frac{\text{SS}_{B}}{\text{DOF}_{B}}$ |
-| Interaction | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{ij} - \bar{Y}_{i} - \bar{Y}_{j} + \bar{Y})^2$ | $(a - 1) (b - 1)$ | $\frac{\text{SS}_{AB}}{\text{DOF}_{AB}}$ |
-| Within groups (residual) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y}_{ij})^2$ | $ab (n - 1)$ | $\frac{\text{SS}_{\text{within}}}{\text{DOF}_{\text{within}}}$ |
-| Total | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y})^2$ | $abn - 1$ | |
-
 **Question: What is going on with the sums of squares for factor A? There are no $k$ or $j$ subscripts in the formula $(\bar{Y}_{i} - \bar{Y})^2$, yet the summations $\sum^b_{j = 1}$ and $\sum^n_{k = 1}$ are included in the equation.**
 
 <details>
@@ -327,14 +311,6 @@ You end up multiplying the same value, $(\bar{Y}_{i} - \bar{Y})^2$ multiple time
 </details> 
 
 <p>&nbsp;</p>
-
-| Source of variation | SS        | DOF       | MS        |
-| ------------------- |:---------:|:---------:|:---------:|
-| Among groups (factor A) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{i} - \bar{Y})^2$ | $a - 1$ | $\frac{\text{SS}_{A}}{\text{DOF}_{A}}$ |
-| Among groups (factor B) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{j} - \bar{Y})^2$ | $b - 1$ | $\frac{\text{SS}_{B}}{\text{DOF}_{B}}$ |
-| Interaction | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{ij} - \bar{Y}_{i} - \bar{Y}_{j} + \bar{Y})^2$ | $(a - 1) (b - 1)$ | $\frac{\text{SS}_{AB}}{\text{DOF}_{AB}}$ |
-| Within groups (residual) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y}_{ij})^2$ | $ab (n - 1)$ | $\frac{\text{SS}_{\text{within}}}{\text{DOF}_{\text{within}}}$ |
-| Total | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y})^2$ | $abn - 1$ | |
 
 **Question: Why is $\text{DOF}_{A} = a - 1$ and  $\text{DOF}_{B} = b - 1$?**
 
@@ -358,14 +334,6 @@ Multiply this out. $ab$ = number of combinations, we estimate $ab$ cell means, m
 
 <p>&nbsp;</p>
 
-| Source of variation | SS        | DOF       | MS        |
-| ------------------- |:---------:|:---------:|:---------:|
-| Among groups (factor A) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{i} - \bar{Y})^2$ | $a - 1$ | $\frac{\text{SS}_{A}}{\text{DOF}_{A}}$ |
-| Among groups (factor B) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{j} - \bar{Y})^2$ | $b - 1$ | $\frac{\text{SS}_{B}}{\text{DOF}_{B}}$ |
-| Interaction | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{ij} - \bar{Y}_{i} - \bar{Y}_{j} + \bar{Y})^2$ | $(a - 1) (b - 1)$ | $\frac{\text{SS}_{AB}}{\text{DOF}_{AB}}$ |
-| Within groups (residual) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y}_{ij})^2$ | $ab (n - 1)$ | $\frac{\text{SS}_{\text{within}}}{\text{DOF}_{\text{within}}}$ |
-| Total | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y})^2$ | $abn - 1$ | |
-
 **Question: Why is $\text{DOF}_{\text{within}} = a b (n - 1)$?**
 
 <details>
@@ -384,13 +352,6 @@ $$
 $$
 
 The interaction term represents the difference between the cell mean and overall mean relative to the difference between the main effects mean and the overall mean. This tells us how "special" this cell is relative to being in factor A alone or factor B alone.
-
-| Source of variation | SS        | DOF       | MS        | F         |
-| ------------------- |:---------:|:---------:|:---------:|:---------:|
-| Among groups (factor A) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{i} - \bar{Y})^2$ | $a - 1$ | $\frac{\text{SS}_{A}}{\text{DOF}_{A}}$ | $\frac{\text{MS}_{A}}{\text{MS}_{\text{within}}}$ |
-| Among groups (factor B) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{j} - \bar{Y})^2$ | $b - 1$ | $\frac{\text{SS}_{B}}{\text{DOF}_{B}}$ | $\frac{\text{MS}_{B}}{\text{MS}_{\text{within}}}$ |
-| Interaction | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (\bar{Y}_{ij} - \bar{Y}_{i} - \bar{Y}_{j} + \bar{Y})^2$ | $(a - 1) (b - 1)$ | $\frac{\text{SS}_{AB}}{\text{DOF}_{AB}}$ | $\frac{\text{MS}_{AB}}{\text{MS}_{\text{within}}}$ | $P ( X \ge F^*), X \sim  |
-| Within groups (residual) | $\sum^a_{i = 1} \sum^b_{j = 1} \sum^n_{k = 1} (Y_{ijk} - \bar{Y}_{ij})^2$ | $ab (n - 1)$ | $\frac{\text{SS}_{\text{within}}}{\text{DOF}_{\text{within}}}$ | |
 
 To test the null hypothesis that factor A has no effect ($H_0(A): A_i = 0$), we find the probability of obtaining an F ratio greater than the F ratio we calculated with our data: $P ( X \ge F^*), X \sim F_{[\text{DOF}_{A}, \text{DOF}_{\text{within}}]}$.
 
@@ -436,7 +397,7 @@ If both effects are random, most of the ANOVA table is exactly the same, however
 | Factor B | $\frac{\text{MS}_{B}}{\text{MS}_{\text{within}}}$ | $\frac{\text{MS}_{B}}{\text{MS}_{AB}}$ | $\frac{\text{MS}_{B}}{\text{MS}_{AB}}$ |
 | Interaction | $\frac{\text{MS}_{AB}}{\text{MS}_{\text{within}}}$ |  $\frac{\text{MS}_{AB}}{\text{MS}_{\text{within}}}$ | $\frac{\text{MS}_{AB}}{\text{MS}_{\text{within}}}$ |
 
-The F ratio is the MS (MS is a estimator of a variance component) of the factor of interest divided by the MS for the term that has everything but the factor of interest. When you have factor A and are considering interactions with a random effects variable B, that adds a new component to the expected variance of A (remember the new variance term, $\sigma_{AB}^2$ with random effects). Therefore, the appropriate comparison for the F ratio test is the MS for the interaction term, which includes both the within group error and this additional variance component associated with the random factor.
+The F ratio is the mean squared error (MS) of the factor of interest divided by the mean squared error for the term that has everything but the factor of interest. When you have factor A and are considering interactions with a random effects variable B, that adds a new component to the expected variance of A (remember the new variance term, $\sigma_{AB}^2$ with random effects). Therefore, the appropriate comparison for the F ratio test is the mean squared error for the interaction term, which includes both the within group error and this additional variance component associated with the random factor.
 
 Remember from last week:
 
@@ -482,19 +443,6 @@ The model with stream as a random effect, where $B_j$ is the random effect of st
 
 $$
 Y_{ijk} = \mu + A_i + B_j + {AB}_{ij} + \epsilon_{ijk} \text{, where } \epsilon_{ijk} \sim \mathrm{N} ( 0, \sigma^2 ) \\
-B_j \sim \mathrm{N}(0, \sigma^2_B) \\
-{AB}_{ij} \sim \mathrm{N}(0, \sigma^2_{AB})
-$$
-The model without a random effect:
-
-$$
-Y_{ij} = \mu + A_i + \epsilon_{ij} \text{, where } \epsilon_{ijk} \sim \mathrm{N} ( 0, \sigma_\epsilon^2 )
-$$
-
-The model with stream as a random effect:
-
-$$
-Y_{ijk} = \mu + A_i + B_j + {AB}_{ij} + \epsilon_{ijk} \text{, where } \epsilon_{ijk} \sim \mathrm{N} ( 0, \sigma_\epsilon^2 ) \\
 B_j \sim \mathrm{N}(0, \sigma^2_B) \\
 {AB}_{ij} \sim \mathrm{N}(0, \sigma^2_{AB})
 $$
@@ -580,7 +528,7 @@ Or, one or more cells (factor A B combination) may be missing entirely:
 | $A_2$ | | $A_2 ,  B_2 = Y_{221}$ <br> $A_2 ,  B_2 = Y_{222}$ <br> $A_2 ,  B_2 = Y_{223}$ | $A_2 ,  B_3 = Y_{231}$ <br> $A_2 ,  B_3 = Y_{232}$ <br> $A_2 ,  B_3 = Y_{233}$ | $A_2 ,  B_4 = Y_{241}$ <br> $A_2 ,  B_4 = Y_{242}$ <br> $A_2 ,  B_4 = Y_{243}$ |
 | $A_3$ | $A_3 ,  B_1 = Y_{311}$ <br> $A_3 ,  B_1 = Y_{312}$ <br> $A_3 ,  B_1 = Y_{313}$ | $A_3 ,  B_2 = Y_{321}$ <br> $A_3 ,  B_2 = Y_{322}$ <br> $A_3 ,  B_2 = Y_{323}$ | $A_3 ,  B_3 = Y_{331}$ <br> $A_3 ,  B_3 = Y_{332}$ <br> $A_3 ,  B_3 = Y_{333}$ | $A_3 ,  B_4 = Y_{341}$ <br> $A_3 ,  B_4 = Y_{342}$ <br> $A_3 ,  B_4 = Y_{343}$ |
 
-\subsection{Unbalanced design -- Different sample sizes}
+### Unbalanced design -- Different sample sizes
 
 We'll look into the first situation first. Again, when you have an unbalanced design, not only is your ANOVA more sensitive to deviations from the assumptions of ANOVA (i.e., cells with different sample sizes might have different variances), but the sum of squares can no longer be neatly partitioned as we have assumed in the past:
 
@@ -622,7 +570,7 @@ Usually, we are interested in inference where we are controlling for the other v
 
 We will now define each of the types of sums of squares. Note that each definition assumes the two-way factorial design: $Y \sim A + B + A \times B$.
 
-\subsection{Type I (sequential) sums of squares}
+### Type I (sequential) sums of squares
 
 $\text{SS}(A)$ for factor A
 
@@ -670,7 +618,7 @@ $$
 \text{SS}_{B} = \text{SSE}(A) - \text{SSE}(A + B)
 $$
 
-\subsection{Type II (hierarchical) sums of squares}
+### Type II (hierarchical) sums of squares
 
 $\text{SS}(A | B)$ for factor A
 
@@ -703,7 +651,7 @@ $$
 \text{SS}_{B} = \text{SSE}(A) - \text{SSE}(A + B)
 $$
 
-\subsection{Type III (marginal) sums of squares}
+### Type III (marginal) sums of squares
 
 $\text{SS}(A | B, AB)$ for factor A
 
@@ -737,7 +685,7 @@ $$
 $$
 
 
-\subsection{Comparing type I, II, and III SS}
+### Comparing type I, II, and III SS
 
 When the design is balanced (equal sample sizes in each category), the factors are “orthogonal," and Types I,II, and III all give equivalent results. When the interaction AB is not significant, then Type II and III SS estimates are equivalent. Aho 10.14 contains more detail.
 
