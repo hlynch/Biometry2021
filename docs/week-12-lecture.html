@@ -1199,7 +1199,12 @@ Y_{ijk} = \mu + A_i + (AB)_{ij} + \epsilon_{ijk} \longrightarrow Y_{ijk} = \mu +
 <h2><span class="header-section-number">22.6</span> Two factor nested ANOVA</h2>
 <p>In nested designs, the categories of the nested factor within each level of the main factor are unique. Usually this happens because 1) you have unique organisms within each treatment, or 2) you have unique plots within each treatment. The nested factors are usually random effects (but not always).</p>
 <p>Let’s imagine we are measuring the amount of glycogen in rat livers. We have <strong>three treatments</strong> that we gave rats. We included <strong>two rats in each treatment</strong>. We took three liver samples from each rat.</p>
-<p><img src="RatDesign.png" /></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
+<img src="RatDesign.png" alt="Nested design of the rat experiment." width="100%" />
+<p class="caption">
+Figure 22.7: Nested design of the rat experiment.
+</p>
+</div>
 <p>What would our model equation look like?</p>
 <p><span class="math display">\[
 Y_{ijk} = \mu + A_i + B_{j(i)} + \epsilon_{ijk} \text{, where } \epsilon_{ijk} \sim \mathrm{N} ( 0, \sigma^2)
@@ -1207,18 +1212,18 @@ Y_{ijk} = \mu + A_i + B_{j(i)} + \epsilon_{ijk} \text{, where } \epsilon_{ijk} \
 <p><span class="math inline">\(A_i\)</span> is the effect of treatment, and <span class="math inline">\(B_{j(i)}\)</span> is the nesting factor (rats within treatment). <span class="math inline">\(Y_{ijk}\)</span> is the <span class="math inline">\(k^{th}\)</span> liver sample from rat <span class="math inline">\(j\)</span> nested in treatment <span class="math inline">\(i\)</span>. It would be impossible to have a crossed design for this experiment, for example, rat 1 cannot be in treatment 1, 2, and 3.</p>
 <p>Why use a nested structure?</p>
 <p>Nested designs are actually quite powerful. Single units in an experimental design may not adequately represent the populations. By only measuring the response in single units in an experiment, this can actually <strong>increases</strong> the unexplained variation in the system, which can mask the true differences.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
 <img src="NestedANOVA_NoSubsampling.png" alt="Nested ANOVA with no sub-sampling" width="60%" />
 <p class="caption">
-Figure 22.7: Nested ANOVA with no sub-sampling
+Figure 22.8: Nested ANOVA with no sub-sampling
 </p>
 </div>
 <p><strong><span style="color: read;">By subsampling within each sample, we get a more precise estimate of the mean response within each sampling unit (think: Central Limit Theorem).</span></strong> If we estimate the response in three subsamples, we can get a more precise estimate of the treatment mean than if we only had one sample per replication. This way, we reduce unexplained variability.</p>
 <p>Nested designs refer to any design in which there is subsampling within the replicates.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
 <img src="NestedANOVA_WithSubsampling.png" alt="Nested ANOVA with sub-sampling" width="60%" />
 <p class="caption">
-Figure 22.8: Nested ANOVA with sub-sampling
+Figure 22.9: Nested ANOVA with sub-sampling
 </p>
 </div>
 <p>Nested designs, or hierarchical designs, can have many levels. For example, if you were interested in barnacle diversity, you could have subsamples within replicates, replicates nested within intertidal zones, intertidal zones nested with shores, shores nested within regions, etc.</p>
@@ -1290,20 +1295,20 @@ Figure 22.8: Nested ANOVA with sub-sampling
 <div id="completely-randomized-design" class="section level3" number="22.7.1">
 <h3><span class="header-section-number">22.7.1</span> Completely randomized design</h3>
 <p>We didn’t say so explicitly, but when we discussed single-factor ANOVA before we assumed a <strong>completely randomized design</strong>. In a completely randomized design, treatments are assigned at random to experimental units (plots, organisms, patients). A negative of completely randomized design is that if there is an environmental gradient, or “noise,” then the completely randomized design will have low power. This is because differences among treatments will be swamped by background “noise” not accounted for in the model.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
 <img src="EnvGradient.png" alt="Environmental gradient" width="50%" />
 <p class="caption">
-Figure 22.9: Environmental gradient
+Figure 22.10: Environmental gradient
 </p>
 </div>
 </div>
 <div id="randomized-block-design" class="section level3" number="22.7.2">
 <h3><span class="header-section-number">22.7.2</span> Randomized block design</h3>
 <p>A “block” is a unit of space or time within which conditions are considered to be relatively homogeneous. Blocks may be placed randomly or systematically, but they should be arranged so that <strong>environmental conditions are more are more similar within blocks than between them</strong>.Within each block, treatments are assigned randomly. Each treatment is assigned once per block. Blocks should be placed far enough apart that blocks can be considered independent.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
 <img src="RandomizedBlockDesign.png" alt="Randomized block design" width="50%" />
 <p class="caption">
-Figure 22.10: Randomized block design
+Figure 22.11: Randomized block design
 </p>
 </div>
 <p>Randomized block designs <strong>can account for some of the background heterogeneity that completely randomized designs miss</strong>. When environmental heterogeneity is present, the randomized block design is more efficient than a completely randomized layout and will need fewer replicates for the same statistical power. A negative of randomized block design is that we assume no interaction between the block and the treatments (in other words, it assumes that the ranking of treatment responses will be the same in each block).</p>
@@ -1358,10 +1363,10 @@ Y_{ijk} = \mu + A_i + B_j +\epsilon_{ijk}, \text{where } \epsilon_{ijk} \sim \ma
 <div id="latin-square-design" class="section level3" number="22.7.3">
 <h3><span class="header-section-number">22.7.3</span> Latin square design</h3>
 <p>A Latin square design is a special case of a randomized block design for cases where environmental heterogeneity may occur along two dimensions (east-west and north-south for example). In this case you want each treatment to occur exactly once in each row and in each column (like Sudoku).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
 <img src="LatinSquare.png" alt="Latin square design. Source: Wikipedia" width="40%" />
 <p class="caption">
-Figure 22.11: Latin square design. Source: Wikipedia
+Figure 22.12: Latin square design. Source: Wikipedia
 </p>
 </div>
 </div>

@@ -801,7 +801,9 @@ In nested designs, the categories of the nested factor within each level of the 
 
 Let's imagine we are measuring the amount of glycogen in rat livers. We have **three treatments** that we gave rats. We included **two rats in each treatment**. We took three liver samples from each rat. 
 
-![](RatDesign.png)
+```{r echo=FALSE, fig.align='center', fig.cap='Nested design of the rat experiment.', out.width='100%'}
+knitr::include_graphics('RatDesign.png')
+```
 
 What would our model equation look like?
 

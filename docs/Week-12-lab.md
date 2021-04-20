@@ -379,7 +379,10 @@ Example #2: Nested design
 
 We will work through one of the classic examples from Sokal & Rohlf in which we are looking at the effect of a treatment on rat livers. We have three treatments, two rats per treatment, three liver samples per rat, and two measurements of each liver sample. The experimental design is sketched out here:
 
-![](RatDesign.png)
+<div class="figure" style="text-align: center">
+<img src="RatDesign.png" alt="Nested design of the rat experiment." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-9)Nested design of the rat experiment.</p>
+</div>
 
 
 ```r
@@ -492,7 +495,7 @@ First, let's check the assumption of normality by looking at boxplots of the dat
 boxplot(Density~Season,data=worms)
 ```
 
-<img src="Week-12-lab_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="Week-12-lab_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 We see that Winter has significantly more variance than Summer. What do we do? We try and transform Density so as to stabilize variance between two seasons. The original authors use a fourth-root transformation, so we will try that...
 
@@ -501,7 +504,7 @@ We see that Winter has significantly more variance than Summer. What do we do? W
 boxplot(Density^(1/4)~Season,data=worms)
 ```
 
-<img src="Week-12-lab_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="Week-12-lab_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 A log transformation would also have worked.There are strategies for finding the best transformation but we don't have time to get into that.
 
@@ -640,7 +643,7 @@ We can't actually test for an interaction between Block and Treatment in this de
 boxplot(Number~interaction(Leaf,Treatment),data=tobacco)
 ```
 
-<img src="Week-12-lab_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="Week-12-lab_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 The interaction plot suggests that there is some evidence of an interaction. Although the number of lesions appear to be greater in strongly innoculated leaves than the weakly innoculated leaves in most of the leaf pairs (blocks), this trend is either absent or reversed in two of the eight (1/4) of the leaf pairs. As a result, the test of block may not be reliable, and the power of the main test of treatment is reduced.
 </span>

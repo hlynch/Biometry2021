@@ -697,7 +697,10 @@ In nested designs, the categories of the nested factor within each level of the 
 
 Let's imagine we are measuring the amount of glycogen in rat livers. We have **three treatments** that we gave rats. We included **two rats in each treatment**. We took three liver samples from each rat. 
 
-![](RatDesign.png)
+<div class="figure" style="text-align: center">
+<img src="RatDesign.png" alt="Nested design of the rat experiment." width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-18)Nested design of the rat experiment.</p>
+</div>
 
 What would our model equation look like?
 
@@ -713,7 +716,7 @@ Nested designs are actually quite powerful. Single units in an experimental desi
 
 <div class="figure" style="text-align: center">
 <img src="NestedANOVA_NoSubsampling.png" alt="Nested ANOVA with no sub-sampling" width="60%" />
-<p class="caption">(\#fig:unnamed-chunk-18)Nested ANOVA with no sub-sampling</p>
+<p class="caption">(\#fig:unnamed-chunk-19)Nested ANOVA with no sub-sampling</p>
 </div>
 
 **<span style="color: read;">By subsampling within each sample, we get a more precise estimate of the mean response within each sampling unit (think: Central Limit Theorem).</span>** If we estimate the response in three subsamples, we can get a more precise estimate of the treatment mean than if we only had one sample per replication. This way, we reduce unexplained variability.
@@ -722,7 +725,7 @@ Nested designs refer to any design in which there is subsampling within the repl
 
 <div class="figure" style="text-align: center">
 <img src="NestedANOVA_WithSubsampling.png" alt="Nested ANOVA with sub-sampling" width="60%" />
-<p class="caption">(\#fig:unnamed-chunk-19)Nested ANOVA with sub-sampling</p>
+<p class="caption">(\#fig:unnamed-chunk-20)Nested ANOVA with sub-sampling</p>
 </div>
 
 Nested designs, or hierarchical designs, can have many levels. For example, if you were interested in barnacle diversity, you could have subsamples within replicates, replicates nested within intertidal zones, intertidal zones nested with shores, shores nested within regions, etc. 
@@ -768,7 +771,7 @@ We didn’t say so explicitly, but when we discussed single-factor ANOVA before 
 
 <div class="figure" style="text-align: center">
 <img src="EnvGradient.png" alt="Environmental gradient" width="50%" />
-<p class="caption">(\#fig:unnamed-chunk-20)Environmental gradient</p>
+<p class="caption">(\#fig:unnamed-chunk-21)Environmental gradient</p>
 </div>
 
 ### Randomized block design
@@ -777,7 +780,7 @@ A “block” is a unit of space or time within which conditions are considered 
 
 <div class="figure" style="text-align: center">
 <img src="RandomizedBlockDesign.png" alt="Randomized block design" width="50%" />
-<p class="caption">(\#fig:unnamed-chunk-21)Randomized block design</p>
+<p class="caption">(\#fig:unnamed-chunk-22)Randomized block design</p>
 </div>
 
 Randomized block designs **can account for some of the background heterogeneity that completely randomized designs miss**. When environmental heterogeneity is present, the randomized block design is more efficient than a completely randomized layout and will need fewer replicates for the same statistical power. A negative of randomized block design is that we assume no interaction between the block and the treatments (in other words, it assumes that the ranking of treatment responses will be the same in each block).
@@ -804,7 +807,7 @@ A Latin square design is a special case of a randomized block design for cases w
 
 <div class="figure" style="text-align: center">
 <img src="LatinSquare.png" alt="Latin square design. Source: Wikipedia" width="40%" />
-<p class="caption">(\#fig:unnamed-chunk-22)Latin square design. Source: Wikipedia</p>
+<p class="caption">(\#fig:unnamed-chunk-23)Latin square design. Source: Wikipedia</p>
 </div>
 
 ### Split plot design

@@ -143,7 +143,9 @@ Example #2: Nested design
 
 We will work through one of the classic examples from Sokal & Rohlf in which we are looking at the effect of a treatment on rat livers. We have three treatments, two rats per treatment, three liver samples per rat, and two measurements of each liver sample. The experimental design is sketched out here:
 
-![](RatDesign.png)
+```{r echo=FALSE, fig.align='center', fig.cap='Nested design of the rat experiment.', out.width='100%'}
+knitr::include_graphics('RatDesign.png')
+```
 
 ```{r}
 rats<-read.csv("~/Dropbox/Biometry/Week 12 Nested and factorial ANOVA/Week 12 Lab/rats.txt",header=T)
