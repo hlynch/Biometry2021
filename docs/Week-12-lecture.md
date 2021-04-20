@@ -693,12 +693,12 @@ When an entire cell (a combination of factors) is missing, it is not possible to
 Two factor nested ANOVA
 -----------------
 
-In nested designs, the categories of the nested factor within each level of the main factor are unique. Usually this happens because 1) you have unique organisms within each treatment, or 2) you have unique plots within each treatment. The nested factors are usually random effects (but not always).
+In nested designs, the categories of the nested factor within each level of the main factor are unique. Usually this happens because 1) you have unique organisms within each treatment, or 2) you have unique plots within each treatment. The nested factors are usually random effects (but not always). Nested designs refer to any design in which there is subsampling within the replicates. Nested designs, or hierarchical designs, can have many levels. For example, if you were interested in barnacle diversity, you could have subsamples within replicates, replicates nested within intertidal zones, intertidal zones nested with shores, shores nested within regions, etc. 
 
-Let's imagine we are measuring the amount of glycogen in rat livers. We have **three treatments** that we gave rats. We included **two rats in each treatment**. We took three liver samples from each rat. 
+Let's imagine we are measuring the amount of glycogen in rat livers. We have **three treatments** that we gave rats. We included **two rats in each treatment**. We took six liver samples from each rat and measured each one of those liver samples once. (We will tackle a slightly more complex nested version in the lab.) There are 36 total measurements.
 
 <div class="figure" style="text-align: center">
-<img src="RatDesign.png" alt="Nested design of the rat experiment." width="100%" />
+<img src="RatDesign_Simplified.png" alt="Nested design of the rat experiment." width="100%" />
 <p class="caption">(\#fig:unnamed-chunk-18)Nested design of the rat experiment.</p>
 </div>
 
@@ -714,23 +714,10 @@ Why use a nested structure?
 
 Nested designs are actually quite powerful. Single units in an experimental design may not adequately represent the populations. By only measuring the response in single units in an experiment, this can actually **increases** the unexplained variation in the system, which can mask the true differences.
 
-<div class="figure" style="text-align: center">
-<img src="NestedANOVA_NoSubsampling.png" alt="Nested ANOVA with no sub-sampling" width="60%" />
-<p class="caption">(\#fig:unnamed-chunk-19)Nested ANOVA with no sub-sampling</p>
-</div>
-
 **<span style="color: read;">By subsampling within each sample, we get a more precise estimate of the mean response within each sampling unit (think: Central Limit Theorem).</span>** If we estimate the response in three subsamples, we can get a more precise estimate of the treatment mean than if we only had one sample per replication. This way, we reduce unexplained variability.
 
-Nested designs refer to any design in which there is subsampling within the replicates.
+Now we know why subsampling is helpful, but why not just average among the subsamples? A nested analysis allows you to partition the variance into the amount of variation at each level of the hierarchy. Why not just *ignore* the nestedness of the data? Because by ignoring the nestedness of the data, you would treat all the data as being independent, but because of the nested samping design, this is inappropriate.
 
-<div class="figure" style="text-align: center">
-<img src="NestedANOVA_WithSubsampling.png" alt="Nested ANOVA with sub-sampling" width="60%" />
-<p class="caption">(\#fig:unnamed-chunk-20)Nested ANOVA with sub-sampling</p>
-</div>
-
-Nested designs, or hierarchical designs, can have many levels. For example, if you were interested in barnacle diversity, you could have subsamples within replicates, replicates nested within intertidal zones, intertidal zones nested with shores, shores nested within regions, etc. 
-
-Now we know why subsampling is helpful, but why not just average among the subsamples? A nested analysis allows you to partition the variance into the amount of variation at each level of the hierarchy.
 
 | Source of variation | SS        | DOF       | MS        | F         |
 | ------------------- |:---------:|:---------:|:---------:|:---------:|
@@ -741,14 +728,22 @@ Now we know why subsampling is helpful, but why not just average among the subsa
 
 In the above table, the notation is as follows:
 
-$\bar{Y}$ is the grand mean.
+$\bar{Y}$ is the grand mean (i.e. the average across all 36 measurements)
 
-$\bar{Y}_{i}$ is the mean within each group. In the rat example, this is the mean for each rat.
+$\bar{Y}_{i}$ is the mean within each group. In the rat example, this is the mean for each treatment.
 
-$\bar{Y}_{j(i)}$ = is the mean within of the subsets within that group. In the rat example, this would be the mean within each liver sample.
+$\bar{Y}_{j(i)}$ = is the mean within of the subsets within that group. In the rat example, this would be the mean within each rat.
+
+Notice that there are 6 measurements for each rat and there is variation *within* these measurements. Given this experimental set-up, this is the residual variation. The mean squared error at this bottom level of the model is $\text{MS}_{within}$. Notice that in the ANOVA table, this is the denominator for all F ratios. **Large residual variation is going to make it difficult to say that variation between groups higher in the hierarchy are actually statistically significant.**
 
 To test the null hypothesis that factor A has no effect ($H_0(A): A_i = 0$), we find the probability of obtaining an F ratio greater than the F ratio we calculated with our data: $P ( X \ge F^*), X \sim F_{[\text{DOF}_{\text{among grp.}}, \text{DOF}_{\text{within}}]}$. To test the null hypothesis that nesting factor B has no effect ($H_0(B): B_j = 0$), $P ( X \ge F^*), X \sim F_{[\text{DOF}_{\text{among rep.}}, \text{DOF}_{\text{within}}]}$. Again, there is no interaction term with nested designs.
 
+Finally, nested design arise frequently in a spatial context, where you might have multiple plots within fields receiving different treatments. The most common scenario would look like this:
+
+<div class="figure" style="text-align: center">
+<img src="NestedANOVA_WithSubsampling.png" alt="Nested ANOVA with sub-sampling" width="60%" />
+<p class="caption">(\#fig:unnamed-chunk-19)Nested ANOVA with sub-sampling</p>
+</div>
 
 ### Potential issues with nested designs
 
@@ -771,7 +766,7 @@ We didn’t say so explicitly, but when we discussed single-factor ANOVA before 
 
 <div class="figure" style="text-align: center">
 <img src="EnvGradient.png" alt="Environmental gradient" width="50%" />
-<p class="caption">(\#fig:unnamed-chunk-21)Environmental gradient</p>
+<p class="caption">(\#fig:unnamed-chunk-20)Environmental gradient</p>
 </div>
 
 ### Randomized block design
@@ -780,7 +775,7 @@ A “block” is a unit of space or time within which conditions are considered 
 
 <div class="figure" style="text-align: center">
 <img src="RandomizedBlockDesign.png" alt="Randomized block design" width="50%" />
-<p class="caption">(\#fig:unnamed-chunk-22)Randomized block design</p>
+<p class="caption">(\#fig:unnamed-chunk-21)Randomized block design</p>
 </div>
 
 Randomized block designs **can account for some of the background heterogeneity that completely randomized designs miss**. When environmental heterogeneity is present, the randomized block design is more efficient than a completely randomized layout and will need fewer replicates for the same statistical power. A negative of randomized block design is that we assume no interaction between the block and the treatments (in other words, it assumes that the ranking of treatment responses will be the same in each block).
@@ -807,7 +802,7 @@ A Latin square design is a special case of a randomized block design for cases w
 
 <div class="figure" style="text-align: center">
 <img src="LatinSquare.png" alt="Latin square design. Source: Wikipedia" width="40%" />
-<p class="caption">(\#fig:unnamed-chunk-23)Latin square design. Source: Wikipedia</p>
+<p class="caption">(\#fig:unnamed-chunk-22)Latin square design. Source: Wikipedia</p>
 </div>
 
 ### Split plot design
