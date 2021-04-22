@@ -3,7 +3,7 @@ Week 12 Lab
 
 
 
-Today we will discuss Hurlbert's [famous paper](https://github.com/hlynch/Biometry2020/tree/master/_data/Hurlbert.pdf) on pseudoreplication. You can also find an interview with Hurlbert [here](https://podfanatic.com/podcast/ieam/episode/get-real-stuart-hurlbert-on-pseudoreplication-and-other-sins-of-statistical-analysis).
+Today we will discuss Hurlbert's [famous paper](https://github.com/hlynch/Biometry2020/tree/master/_data/Hurlbert.pdf) on pseudoreplication. You can also find an interview with Hurlbert [here](https://podcasts.apple.com/us/podcast/get-real-stuart-hurlbert-on-pseudoreplication-other/id426676729?i=1000368631395).
 
 There are 5 parts to this week's lab:
 

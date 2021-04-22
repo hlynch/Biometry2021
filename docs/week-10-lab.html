@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-20" />
+<meta name="date" content="2021-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -748,7 +748,7 @@ and R’s function predict.glm() provides the confidence intervals on the right 
 <span id="cb637-9"><a href="week-10-lab.html#cb637-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the deviance difference of the two models </span></span>
 <span id="cb637-10"><a href="week-10-lab.html#cb637-10" aria-hidden="true" tabindex="-1"></a>dev_diff <span class="ot">&lt;-</span> <span class="fu">deviance</span>(challenger.smaller.model) <span class="sc">-</span> <span class="fu">deviance</span>(challenger.larger.model)</span>
 <span id="cb637-11"><a href="week-10-lab.html#cb637-11" aria-hidden="true" tabindex="-1"></a>dev_diff</span></code></pre></div>
-<pre><code>## [1] 1.49611</code></pre>
+<pre><code>## [1] 0.04538919</code></pre>
 <p>Notice that even though the covariate that we added is just noise, it still decreases the deviance.</p>
 <p>Now we need to repeat those steps a number of times to generate a distribution of expected deviance differences</p>
 <div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="week-10-lab.html#cb639-1" aria-hidden="true" tabindex="-1"></a>dev_diff <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
@@ -768,10 +768,13 @@ and R’s function predict.glm() provides the confidence intervals on the right 
 <span id="cb639-15"><a href="week-10-lab.html#cb639-15" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb639-16"><a href="week-10-lab.html#cb639-16" aria-hidden="true" tabindex="-1"></a>  dev_diff <span class="ot">&lt;-</span> <span class="fu">c</span>(dev_diff, dev_diff_rand)</span>
 <span id="cb639-17"><a href="week-10-lab.html#cb639-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
-<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="week-10-lab.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the distribution and add a line for a chi-square with df=1 </span></span>
-<span id="cb641-2"><a href="week-10-lab.html#cb641-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dev_diff, <span class="at">xlab=</span><span class="st">&quot;Deviance Difference&quot;</span>, <span class="at">main=</span><span class="st">&quot;Expected distribution&quot;</span>, <span class="at">freq=</span><span class="cn">FALSE</span>,<span class="at">breaks=</span><span class="dv">30</span>)</span>
-<span id="cb641-3"><a href="week-10-lab.html#cb641-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="fl">0.1</span>), <span class="fu">dchisq</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="fl">0.1</span>),<span class="at">df=</span><span class="dv">1</span>), <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## Warning: glm.fit: algorithm did not converge</code></pre>
+<pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="week-10-lab.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the distribution and add a line for a chi-square with df=1 </span></span>
+<span id="cb642-2"><a href="week-10-lab.html#cb642-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dev_diff, <span class="at">xlab=</span><span class="st">&quot;Deviance Difference&quot;</span>, <span class="at">main=</span><span class="st">&quot;Expected distribution&quot;</span>, <span class="at">freq=</span><span class="cn">FALSE</span>,<span class="at">breaks=</span><span class="dv">30</span>)</span>
+<span id="cb642-3"><a href="week-10-lab.html#cb642-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="fl">0.1</span>), <span class="fu">dchisq</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,<span class="fl">0.1</span>),<span class="at">df=</span><span class="dv">1</span>), <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Week-10-lab_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Sure enough, as expected, the difference in deviance we get by adding a covariate that has <em>no</em> association with the response is a <span class="math inline">\(\chi^{2}_{1}\)</span> distributed variable. Therefore, to justify adding a covariate to a model, we want to see that the decrease in deviance is much larger than this. Specifically, we want to see that the decrease in deviance is so unlikely to have arisen from a <span class="math inline">\(\chi^{2}_{1}\)</span> distribution that we reject the null hypothesis that the two models are equivalent. (In other words, by rejecting the null hypothesis, we say that the larger model is, in fact, the better model and the additional covariate is worth keeping.)</p>
 <p><strong><span style="color: green;">Checkpoint #7: Does this make sense?</span></strong></p>
@@ -780,15 +783,15 @@ and R’s function predict.glm() provides the confidence intervals on the right 
 <h2><span class="header-section-number">19.6</span> Generalized Additive Models</h2>
 <p>There are two libraries that can fit GAMs: ‘gam’ and ‘mcgv.’ We will use the ‘gam’ package for now, but keep in mind that the ‘mgcv’ package is more flexible and more powerful (so worth considering if you need to do GAMs for your own research).</p>
 <p>Stop: Install the GAM package and then load it into the workspace using</p>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="week-10-lab.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;gam&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="week-10-lab.html#cb643-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;gam&#39;</span>)</span></code></pre></div>
 <p>Inside the ‘gam’ package is a dataset that we will use on ozone in New York as a function of solar radiation, temperature, and wind.</p>
 <p>First we histogram the ozone data</p>
-<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="week-10-lab.html#cb643-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Ozone)</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="week-10-lab.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Ozone)</span></code></pre></div>
 <p><img src="Week-10-lab_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>Clearly the ozone data are not normal. It turns out the log transformation gets the ozone data to something more ‘normal-like.’ (How would we compare different transformations of the data? Try and do a ks.test comparing various transformed datasets against the normal.)</p>
 <p>First we’ll just fit a linear model for comparison.</p>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="week-10-lab.html#cb644-1" aria-hidden="true" tabindex="-1"></a>air.lm<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="fu">log</span>(Ozone)<span class="sc">~</span>Solar.R<span class="sc">+</span>Wind<span class="sc">+</span>Temp,<span class="at">data=</span>airquality)</span>
-<span id="cb644-2"><a href="week-10-lab.html#cb644-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(air.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="week-10-lab.html#cb645-1" aria-hidden="true" tabindex="-1"></a>air.lm<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="fu">log</span>(Ozone)<span class="sc">~</span>Solar.R<span class="sc">+</span>Wind<span class="sc">+</span>Temp,<span class="at">data=</span>airquality)</span>
+<span id="cb645-2"><a href="week-10-lab.html#cb645-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(air.lm)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(Ozone) ~ Solar.R + Wind + Temp, data = airquality)
@@ -811,8 +814,8 @@ and R’s function predict.glm() provides the confidence intervals on the right 
 ## Multiple R-squared:  0.6644,	Adjusted R-squared:  0.655 
 ## F-statistic: 70.62 on 3 and 107 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Now we’ll try fitting this data with a GAM. Note the syntax: s() fits a smoothing spline, lo() would fit a LOESS curve.</p>
-<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="week-10-lab.html#cb646-1" aria-hidden="true" tabindex="-1"></a>air.gam<span class="ot">&lt;-</span><span class="fu">gam</span>(<span class="fu">log</span>(Ozone)<span class="sc">~</span><span class="fu">s</span>(Solar.R)<span class="sc">+</span><span class="fu">s</span>(Wind)<span class="sc">+</span><span class="fu">s</span>(Temp),<span class="at">data=</span>airquality)</span>
-<span id="cb646-2"><a href="week-10-lab.html#cb646-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(air.gam)</span></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="week-10-lab.html#cb647-1" aria-hidden="true" tabindex="-1"></a>air.gam<span class="ot">&lt;-</span><span class="fu">gam</span>(<span class="fu">log</span>(Ozone)<span class="sc">~</span><span class="fu">s</span>(Solar.R)<span class="sc">+</span><span class="fu">s</span>(Wind)<span class="sc">+</span><span class="fu">s</span>(Temp),<span class="at">data=</span>airquality)</span>
+<span id="cb647-2"><a href="week-10-lab.html#cb647-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(air.gam)</span></code></pre></div>
 <pre><code>## 
 ## Call: gam(formula = log(Ozone) ~ s(Solar.R) + s(Wind) + s(Temp), data = airquality)
 ## Deviance Residuals:
@@ -845,12 +848,12 @@ and R’s function predict.glm() provides the confidence intervals on the right 
 ## s(Temp)           3 2.9358 0.03713 *
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="week-10-lab.html#cb648-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
-<span id="cb648-2"><a href="week-10-lab.html#cb648-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air.gam,<span class="at">se=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="week-10-lab.html#cb649-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
+<span id="cb649-2"><a href="week-10-lab.html#cb649-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air.gam,<span class="at">se=</span>T)</span></code></pre></div>
 <p><img src="Week-10-lab_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>The default is that the smoothing splines have df=4, but we can control the amount of smoothing by changing the number of d.o.f.</p>
-<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="week-10-lab.html#cb649-1" aria-hidden="true" tabindex="-1"></a>air.gam<span class="ot">&lt;-</span><span class="fu">gam</span>(<span class="fu">log</span>(Ozone)<span class="sc">~</span><span class="fu">s</span>(Solar.R,<span class="at">df=</span><span class="dv">20</span>)<span class="sc">+</span><span class="fu">s</span>(Wind)<span class="sc">+</span><span class="fu">s</span>(Temp),<span class="at">data=</span>airquality)</span>
-<span id="cb649-2"><a href="week-10-lab.html#cb649-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air.gam,<span class="at">se=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="week-10-lab.html#cb650-1" aria-hidden="true" tabindex="-1"></a>air.gam<span class="ot">&lt;-</span><span class="fu">gam</span>(<span class="fu">log</span>(Ozone)<span class="sc">~</span><span class="fu">s</span>(Solar.R,<span class="at">df=</span><span class="dv">20</span>)<span class="sc">+</span><span class="fu">s</span>(Wind)<span class="sc">+</span><span class="fu">s</span>(Temp),<span class="at">data=</span>airquality)</span>
+<span id="cb650-2"><a href="week-10-lab.html#cb650-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(air.gam,<span class="at">se=</span>T)</span></code></pre></div>
 <p><img src="Week-10-lab_files/figure-html/unnamed-chunk-19-1.png" width="672" /><img src="Week-10-lab_files/figure-html/unnamed-chunk-19-2.png" width="672" /><img src="Week-10-lab_files/figure-html/unnamed-chunk-19-3.png" width="672" /></p>
 <p>That makes the curve for Solar.R much more curvy.</p>
 

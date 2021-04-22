@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-20" />
+<meta name="date" content="2021-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -425,8 +425,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="part-1-model-selection-model-comparison" class="section level2" number="25.1">
 <h2><span class="header-section-number">25.1</span> Part 1: Model selection / model comparison</h2>
 <p>There is a frog dataset on the distribution of the Southern Corroboree frog that we are going to attach.</p>
-<div class="sourceCode" id="cb813"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb813-1"><a href="week-13-lab.html#cb813-1" aria-hidden="true" tabindex="-1"></a>frogs<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Documents/Projects/Biometry2021/_data/frogs.csv&quot;</span>,<span class="at">header=</span>T)</span>
-<span id="cb813-2"><a href="week-13-lab.html#cb813-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(frogs)</span></code></pre></div>
+<div class="sourceCode" id="cb814"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb814-1"><a href="week-13-lab.html#cb814-1" aria-hidden="true" tabindex="-1"></a>frogs<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Documents/Projects/Biometry2021/_data/frogs.csv&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb814-2"><a href="week-13-lab.html#cb814-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(frogs)</span></code></pre></div>
 <pre><code>##   X pres.abs northing easting altitude distance NoOfPools NoOfSites   avrain
 ## 1 2        1      115    1047     1500      500       232         3 155.0000
 ## 2 3        1      110    1042     1520      250        66         5 157.6667
@@ -441,20 +441,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 3.200000 13.16667
 ## 5 3.200000 13.16667
 ## 6 3.133333 13.06667</code></pre>
-<div class="sourceCode" id="cb815"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb815-1"><a href="week-13-lab.html#cb815-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(frogs)</span>
-<span id="cb815-2"><a href="week-13-lab.html#cb815-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(northing <span class="sc">~</span> easting, <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">16</span>)[frogs<span class="sc">$</span>pres.abs<span class="sc">+</span><span class="dv">1</span>],<span class="at">xlab=</span><span class="st">&quot;Meters east&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Meters north&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb816"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb816-1"><a href="week-13-lab.html#cb816-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(frogs)</span>
+<span id="cb816-2"><a href="week-13-lab.html#cb816-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(northing <span class="sc">~</span> easting, <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">16</span>)[frogs<span class="sc">$</span>pres.abs<span class="sc">+</span><span class="dv">1</span>],<span class="at">xlab=</span><span class="st">&quot;Meters east&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Meters north&quot;</span>)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Make sure you understand how the pch command is working in the above plot command.</p>
-<div class="sourceCode" id="cb816"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb816-1"><a href="week-13-lab.html#cb816-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">cbind</span>(altitude,distance,NoOfPools,NoOfSites,avrain,meanmin,meanmax))</span></code></pre></div>
+<div class="sourceCode" id="cb817"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb817-1"><a href="week-13-lab.html#cb817-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">cbind</span>(altitude,distance,NoOfPools,NoOfSites,avrain,meanmin,meanmax))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Looking at the data in this way, are there any covariates that might benefit from transformation?</p>
 <p>Let’s try log-transforming “distance” and “Number of Pools.”</p>
-<div class="sourceCode" id="cb817"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb817-1"><a href="week-13-lab.html#cb817-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">cbind</span>(altitude,<span class="fu">log</span>(distance),<span class="fu">log</span>(NoOfPools),NoOfSites,avrain,meanmin,meanmax))</span></code></pre></div>
+<div class="sourceCode" id="cb818"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb818-1"><a href="week-13-lab.html#cb818-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">cbind</span>(altitude,<span class="fu">log</span>(distance),<span class="fu">log</span>(NoOfPools),NoOfSites,avrain,meanmin,meanmax))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Let’s fit a GLM with all the variables.</p>
 <p>Why a GLM? Because the response variable is binary 0/1.</p>
-<div class="sourceCode" id="cb818"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb818-1"><a href="week-13-lab.html#cb818-1" aria-hidden="true" tabindex="-1"></a>frogs.glm0<span class="ot">&lt;-</span><span class="fu">glm</span>(pres.abs<span class="sc">~</span>altitude<span class="sc">+</span><span class="fu">log</span>(distance)<span class="sc">+</span><span class="fu">log</span>(NoOfPools)<span class="sc">+</span>NoOfSites<span class="sc">+</span>avrain<span class="sc">+</span>meanmin<span class="sc">+</span>meanmax,<span class="at">family=</span>binomial,<span class="at">data=</span>frogs,<span class="at">na.action=</span>na.fail)</span>
-<span id="cb818-2"><a href="week-13-lab.html#cb818-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frogs.glm0)</span></code></pre></div>
+<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="week-13-lab.html#cb819-1" aria-hidden="true" tabindex="-1"></a>frogs.glm0<span class="ot">&lt;-</span><span class="fu">glm</span>(pres.abs<span class="sc">~</span>altitude<span class="sc">+</span><span class="fu">log</span>(distance)<span class="sc">+</span><span class="fu">log</span>(NoOfPools)<span class="sc">+</span>NoOfSites<span class="sc">+</span>avrain<span class="sc">+</span>meanmin<span class="sc">+</span>meanmax,<span class="at">family=</span>binomial,<span class="at">data=</span>frogs,<span class="at">na.action=</span>na.fail)</span>
+<span id="cb819-2"><a href="week-13-lab.html#cb819-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = pres.abs ~ altitude + log(distance) + log(NoOfPools) + 
@@ -488,25 +488,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>(The na.action flag is so MuMIn won’t complain further down.)</p>
 <p>Anything look funny? Well, for one, meanmin is highly significant but meanmax and altitude are not - but we would expect these three variables to be highly correlated.</p>
 <p>Use the vif() function to explore this further</p>
-<div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb820-1"><a href="week-13-lab.html#cb820-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(frogs.glm0)</span></code></pre></div>
+<div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb821-1"><a href="week-13-lab.html#cb821-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>##       altitude  log(distance) log(NoOfPools)      NoOfSites         avrain 
 ##     850.879518       1.396014       1.306058       1.401175      16.664582 
 ##        meanmin        meanmax 
 ##      29.319704     996.949239</code></pre>
 <p>It appears that the variances for altitude and meanmax are inflated. Why?</p>
 <p>Plot the data:</p>
-<div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb822-1"><a href="week-13-lab.html#cb822-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb822-2"><a href="week-13-lab.html#cb822-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(altitude,meanmax)</span>
-<span id="cb822-3"><a href="week-13-lab.html#cb822-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(altitude,meanmin)</span></code></pre></div>
+<div class="sourceCode" id="cb823"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb823-1"><a href="week-13-lab.html#cb823-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb823-2"><a href="week-13-lab.html#cb823-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(altitude,meanmax)</span>
+<span id="cb823-3"><a href="week-13-lab.html#cb823-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(altitude,meanmin)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode" id="cb823"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb823-1"><a href="week-13-lab.html#cb823-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(altitude,meanmax)</span></code></pre></div>
+<div class="sourceCode" id="cb824"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb824-1"><a href="week-13-lab.html#cb824-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(altitude,meanmax)</span></code></pre></div>
 <pre><code>## [1] -0.996557</code></pre>
-<div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb825-1"><a href="week-13-lab.html#cb825-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(altitude,meanmin)</span></code></pre></div>
+<div class="sourceCode" id="cb826"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb826-1"><a href="week-13-lab.html#cb826-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(altitude,meanmin)</span></code></pre></div>
 <pre><code>## [1] -0.953661</code></pre>
 <p>Question: So…what do we do?</p>
 <p>Answer: Let’s try removing the least biologically significant variable first. I suggest we remove altitude.</p>
-<div class="sourceCode" id="cb827"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb827-1"><a href="week-13-lab.html#cb827-1" aria-hidden="true" tabindex="-1"></a>frogs.glm1<span class="ot">&lt;-</span><span class="fu">glm</span>(pres.abs<span class="sc">~</span><span class="fu">log</span>(distance)<span class="sc">+</span><span class="fu">log</span>(NoOfPools)<span class="sc">+</span>NoOfSites<span class="sc">+</span>avrain<span class="sc">+</span>meanmin<span class="sc">+</span>meanmax,<span class="at">family=</span>binomial,<span class="at">data=</span>frogs)</span>
-<span id="cb827-2"><a href="week-13-lab.html#cb827-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frogs.glm1)</span></code></pre></div>
+<div class="sourceCode" id="cb828"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb828-1"><a href="week-13-lab.html#cb828-1" aria-hidden="true" tabindex="-1"></a>frogs.glm1<span class="ot">&lt;-</span><span class="fu">glm</span>(pres.abs<span class="sc">~</span><span class="fu">log</span>(distance)<span class="sc">+</span><span class="fu">log</span>(NoOfPools)<span class="sc">+</span>NoOfSites<span class="sc">+</span>avrain<span class="sc">+</span>meanmin<span class="sc">+</span>meanmax,<span class="at">family=</span>binomial,<span class="at">data=</span>frogs)</span>
+<span id="cb828-2"><a href="week-13-lab.html#cb828-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frogs.glm1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = pres.abs ~ log(distance) + log(NoOfPools) + NoOfSites + 
@@ -544,9 +544,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Bayesian Information Criterion (BIC)</p></li>
 </ol>
 <p>We get the log-likelihood of a model in R using the logLik command</p>
-<div class="sourceCode" id="cb829"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb829-1"><a href="week-13-lab.html#cb829-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(frogs.glm0)</span></code></pre></div>
+<div class="sourceCode" id="cb830"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb830-1"><a href="week-13-lab.html#cb830-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## &#39;log Lik.&#39; -98.81244 (df=8)</code></pre>
-<div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb831-1"><a href="week-13-lab.html#cb831-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(frogs.glm1)</span></code></pre></div>
+<div class="sourceCode" id="cb832"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb832-1"><a href="week-13-lab.html#cb832-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(frogs.glm1)</span></code></pre></div>
 <pre><code>## &#39;log Lik.&#39; -98.82714 (df=7)</code></pre>
 <p>How do we do the likelihood ratio test?</p>
 <p>Remember that</p>
@@ -555,16 +555,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \sim \chi^{2}_{\mbox{difference in parameters}}
 \]</span></p>
 <p>In R we can do this with</p>
-<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="week-13-lab.html#cb833-1" aria-hidden="true" tabindex="-1"></a>test.stat<span class="ot">&lt;-</span><span class="sc">-</span><span class="dv">2</span><span class="sc">*</span>(<span class="fu">logLik</span>(frogs.glm1)<span class="sc">-</span><span class="fu">logLik</span>(frogs.glm0))</span>
-<span id="cb833-2"><a href="week-13-lab.html#cb833-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(test.stat) <span class="co"># as.numeric is just to suppress the labels which can be misleading</span></span></code></pre></div>
+<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb834-1"><a href="week-13-lab.html#cb834-1" aria-hidden="true" tabindex="-1"></a>test.stat<span class="ot">&lt;-</span><span class="sc">-</span><span class="dv">2</span><span class="sc">*</span>(<span class="fu">logLik</span>(frogs.glm1)<span class="sc">-</span><span class="fu">logLik</span>(frogs.glm0))</span>
+<span id="cb834-2"><a href="week-13-lab.html#cb834-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(test.stat) <span class="co"># as.numeric is just to suppress the labels which can be misleading</span></span></code></pre></div>
 <pre><code>## [1] 0.02941079</code></pre>
-<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb835-1"><a href="week-13-lab.html#cb835-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(test.stat,<span class="at">df=</span><span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb836-1"><a href="week-13-lab.html#cb836-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(test.stat,<span class="at">df=</span><span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] 0.863834</code></pre>
 <p>Question: How do we interpret that p-value?</p>
 <p>Answer: This p-value is the probability that the larger model fits the data better only by the amount expected by its additional degree of freedom. In this case, we can not reject the null hypothesis that the two models are equivalent, and so we would prefer the smaller model on the basis of parsimony.</p>
 <p>We can actually get R to do the LRT automatically using the ‘lrtest’ function in the ‘lmtest’ package.</p>
-<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="week-13-lab.html#cb837-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;lmtest&#39;</span>)</span>
-<span id="cb837-2"><a href="week-13-lab.html#cb837-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lrtest</span>(frogs.glm0,frogs.glm1)</span></code></pre></div>
+<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="week-13-lab.html#cb838-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;lmtest&#39;</span>)</span>
+<span id="cb838-2"><a href="week-13-lab.html#cb838-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lrtest</span>(frogs.glm0,frogs.glm1)</span></code></pre></div>
 <pre><code>## Likelihood ratio test
 ## 
 ## Model 1: pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
@@ -576,7 +576,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2   7 -98.827 -1 0.0294     0.8638</code></pre>
 <p>This gives us exactly the same result we got before.</p>
 <p>We could also have also compared these models by looking at the ANOVA table for comparison</p>
-<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="week-13-lab.html#cb839-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(frogs.glm0,frogs.glm1)</span></code></pre></div>
+<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="week-13-lab.html#cb840-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(frogs.glm0,frogs.glm1)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
@@ -587,27 +587,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1       204     197.62             
 ## 2       205     197.65 -1 -0.029411</code></pre>
 <p>How do we calculate AIC for these two models?</p>
-<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb841-1"><a href="week-13-lab.html#cb841-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(frogs.glm0)</span></code></pre></div>
+<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb842-1"><a href="week-13-lab.html#cb842-1" aria-hidden="true" tabindex="-1"></a><span class="fu">logLik</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## &#39;log Lik.&#39; -98.81244 (df=8)</code></pre>
-<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="week-13-lab.html#cb843-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="dv">8</span></span>
-<span id="cb843-2"><a href="week-13-lab.html#cb843-2" aria-hidden="true" tabindex="-1"></a>AIC.glm0<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(<span class="sc">-</span><span class="dv">2</span><span class="sc">*</span><span class="fu">logLik</span>(frogs.glm0)<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>k)</span>
-<span id="cb843-3"><a href="week-13-lab.html#cb843-3" aria-hidden="true" tabindex="-1"></a>AIC.glm0</span></code></pre></div>
+<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="week-13-lab.html#cb844-1" aria-hidden="true" tabindex="-1"></a>k<span class="ot">&lt;-</span><span class="dv">8</span></span>
+<span id="cb844-2"><a href="week-13-lab.html#cb844-2" aria-hidden="true" tabindex="-1"></a>AIC.glm0<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(<span class="sc">-</span><span class="dv">2</span><span class="sc">*</span><span class="fu">logLik</span>(frogs.glm0)<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>k)</span>
+<span id="cb844-3"><a href="week-13-lab.html#cb844-3" aria-hidden="true" tabindex="-1"></a>AIC.glm0</span></code></pre></div>
 <pre><code>## [1] 213.6249</code></pre>
-<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="week-13-lab.html#cb845-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm0)</span></code></pre></div>
+<div class="sourceCode" id="cb846"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb846-1"><a href="week-13-lab.html#cb846-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## [1] 213.6249</code></pre>
-<div class="sourceCode" id="cb847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb847-1"><a href="week-13-lab.html#cb847-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm1)</span></code></pre></div>
+<div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb848-1"><a href="week-13-lab.html#cb848-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm1)</span></code></pre></div>
 <pre><code>## [1] 211.6543</code></pre>
 <p>Question: Are these significantly different?</p>
 <p>Answer: This is a trick question. In an Information Theoretic context, we avoid the term “significant” because it is implied that we mean “statistically significant” in the context of hypothesis testing, and no hypothesis test is being performed. AIC simply gives us information on the weight of evidence for one model over another. There are no theoretically justified guidelines (although Burnham and Anderson suggest some as we discussed in lecture). It is better (in my opinion) to convert AICs into model weights and, if it makes sense in the context, to do model averaging.</p>
 <p>How about BIC? USe the AIC function with a different flag for the penalty.</p>
-<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb849-1"><a href="week-13-lab.html#cb849-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm0,<span class="at">k=</span><span class="fu">log</span>(<span class="fu">nrow</span>(frogs)))</span></code></pre></div>
+<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb850-1"><a href="week-13-lab.html#cb850-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm0,<span class="at">k=</span><span class="fu">log</span>(<span class="fu">nrow</span>(frogs)))</span></code></pre></div>
 <pre><code>## [1] 240.4776</code></pre>
-<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="week-13-lab.html#cb851-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm1,<span class="at">k=</span><span class="fu">log</span>(<span class="fu">nrow</span>(frogs)))</span></code></pre></div>
+<div class="sourceCode" id="cb852"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb852-1"><a href="week-13-lab.html#cb852-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(frogs.glm1,<span class="at">k=</span><span class="fu">log</span>(<span class="fu">nrow</span>(frogs)))</span></code></pre></div>
 <pre><code>## [1] 235.1504</code></pre>
 <p>We could also do this with the BIC() function</p>
-<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="week-13-lab.html#cb853-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(frogs.glm0)</span></code></pre></div>
+<div class="sourceCode" id="cb854"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb854-1"><a href="week-13-lab.html#cb854-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## [1] 240.4776</code></pre>
-<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="week-13-lab.html#cb855-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(frogs.glm1)</span></code></pre></div>
+<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb856-1"><a href="week-13-lab.html#cb856-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(frogs.glm1)</span></code></pre></div>
 <pre><code>## [1] 235.1504</code></pre>
 <p>Exercise: Work in groups to find a small set (3-5) of candidate models, calculate the AIC for each of these models, and calculate model weights.</p>
 </div>
@@ -616,7 +616,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s start with an Information Theoretic approach:</p>
 <p>We could calculate the AIC for every possible model, but this is probably not necessary. We can narrow down the set of candidate models just thinking about the biology.</p>
 <p>Now compare this to what you would get from</p>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="week-13-lab.html#cb857-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(frogs.glm0)</span></code></pre></div>
+<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="week-13-lab.html#cb858-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## Start:  AIC=213.62
 ## pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
 ##     avrain + meanmin + meanmax
@@ -676,7 +676,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Degrees of Freedom: 211 Total (i.e. Null);  207 Residual
 ## Null Deviance:	    280 
 ## Residual Deviance: 197.7 	AIC: 207.7</code></pre>
-<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="week-13-lab.html#cb860-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(frogs.glm0,<span class="at">direction=</span><span class="st">&quot;forward&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="week-13-lab.html#cb861-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(frogs.glm0,<span class="at">direction=</span><span class="st">&quot;forward&quot;</span>)</span></code></pre></div>
 <pre><code>## Start:  AIC=213.62
 ## pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
 ##     avrain + meanmin + meanmax</code></pre>
@@ -694,7 +694,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Degrees of Freedom: 211 Total (i.e. Null);  204 Residual
 ## Null Deviance:	    280 
 ## Residual Deviance: 197.6 	AIC: 213.6</code></pre>
-<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb863-1"><a href="week-13-lab.html#cb863-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(frogs.glm0,<span class="at">direction=</span><span class="st">&quot;backward&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="week-13-lab.html#cb864-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(frogs.glm0,<span class="at">direction=</span><span class="st">&quot;backward&quot;</span>)</span></code></pre></div>
 <pre><code>## Start:  AIC=213.62
 ## pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
 ##     avrain + meanmin + meanmax
@@ -756,7 +756,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual Deviance: 197.7 	AIC: 207.7</code></pre>
 <p>Why does the forward process give you more parameters? Probably because forward selection is like a ratchet - once variables get added, they never get removed, even if something is added that explains that portion of the variance better.</p>
 <p>Note that we can also do stepwise regression using stepAIC</p>
-<div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb866-1"><a href="week-13-lab.html#cb866-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stepAIC</span>(frogs.glm0)</span></code></pre></div>
+<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb867-1"><a href="week-13-lab.html#cb867-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stepAIC</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## Start:  AIC=213.62
 ## pres.abs ~ altitude + log(distance) + log(NoOfPools) + NoOfSites + 
 ##     avrain + meanmin + meanmax
@@ -818,7 +818,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual Deviance: 197.7 	AIC: 207.7</code></pre>
 <p>but this is a bit like putting lipstick on a pig, so its not often used.</p>
 <p>The real magic comes when we use a package like ‘MuMIn’ (Multimodel Inference)</p>
-<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="week-13-lab.html#cb869-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dredge</span>(frogs.glm0)</span></code></pre></div>
+<div class="sourceCode" id="cb870"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb870-1"><a href="week-13-lab.html#cb870-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dredge</span>(frogs.glm0)</span></code></pre></div>
 <pre><code>## Fixed term is &quot;(Intercept)&quot;</code></pre>
 <pre><code>## Global model call: glm(formula = pres.abs ~ altitude + log(distance) + log(NoOfPools) + 
 ##     NoOfSites + avrain + meanmin + meanmax, family = binomial, 
@@ -1085,7 +1085,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3               2 -139.974 284.0 76.06  0.000
 ## Models ranked by AICc(x)</code></pre>
 <p>We can make a table to compare a hand-selected set of models.</p>
-<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="week-13-lab.html#cb872-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model.sel</span>(frogs.glm0,frogs.glm1)</span></code></pre></div>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="week-13-lab.html#cb873-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model.sel</span>(frogs.glm0,frogs.glm1)</span></code></pre></div>
 <pre><code>## Model selection table 
 ##            (Int)       alt        avr log(dst) log(NOP)   mnmx  mnmn        NOS
 ## frogs.glm1 18.27            0.0007003  -0.7583   0.5709 -2.362 5.354 -0.0036200
@@ -1095,7 +1095,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## frogs.glm0 binomial(logit)   na.fail  8 -98.812 214.3  2.13  0.256
 ## Models ranked by AICc(x)</code></pre>
 <p>We can do model averaging</p>
-<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb874-1"><a href="week-13-lab.html#cb874-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">model.avg</span>(frogs.glm0,frogs.glm1))</span></code></pre></div>
+<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="week-13-lab.html#cb875-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">model.avg</span>(frogs.glm0,frogs.glm1))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## model.avg(object = frogs.glm0, frogs.glm1)
@@ -1159,37 +1159,37 @@ Age of first reproduction (mo)<br />
 Litter size<br />
 Litters/year</p>
 <p>First, we will load the data and the ‘car’ package, and use ‘names’ to see what the columns are named</p>
-<div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb876-1"><a href="week-13-lab.html#cb876-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Documents/Projects/Biometry2021/_data/MammalLifeHistory.csv&quot;</span>)</span>
-<span id="cb876-2"><a href="week-13-lab.html#cb876-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(data)</span>
-<span id="cb876-3"><a href="week-13-lab.html#cb876-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="week-13-lab.html#cb877-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Documents/Projects/Biometry2021/_data/MammalLifeHistory.csv&quot;</span>)</span>
+<span id="cb877-2"><a href="week-13-lab.html#cb877-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(data)</span>
+<span id="cb877-3"><a href="week-13-lab.html#cb877-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>##  [1] &quot;Order&quot;          &quot;Family&quot;         &quot;Genus&quot;          &quot;Species&quot;       
 ##  [5] &quot;Mass&quot;           &quot;Gestation&quot;      &quot;Newborn&quot;        &quot;Weaning&quot;       
 ##  [9] &quot;WeanMass&quot;       &quot;AFR&quot;            &quot;MaxLifespan&quot;    &quot;LitterSize&quot;    
 ## [13] &quot;LittersPerYear&quot;</code></pre>
 <p>Before fitting any models, let’s just look at each potential covariate vs. maximum longevity to get a sense for which variables need to be transformed. I list get the first few here…</p>
-<div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="week-13-lab.html#cb878-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Order)</span></code></pre></div>
+<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="week-13-lab.html#cb879-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Order)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="week-13-lab.html#cb879-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Family)</span></code></pre></div>
+<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb880-1"><a href="week-13-lab.html#cb880-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Family)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
-<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb880-1"><a href="week-13-lab.html#cb880-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Genus)</span></code></pre></div>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="week-13-lab.html#cb881-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Genus)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-3.png" width="672" /></p>
-<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="week-13-lab.html#cb881-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Species)</span></code></pre></div>
+<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="week-13-lab.html#cb882-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(MaxLifespan<span class="sc">~</span>Species)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-4.png" width="672" /></p>
-<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="week-13-lab.html#cb882-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span>Mass)</span></code></pre></div>
+<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="week-13-lab.html#cb883-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span>Mass)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-5.png" width="672" /></p>
-<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="week-13-lab.html#cb883-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span>Gestation)</span></code></pre></div>
+<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="week-13-lab.html#cb884-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span>Gestation)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-22-6.png" width="672" /></p>
 <p>Note that most of the covariates need to be transformed to linearize the relationship. The easiest transformation to try is the log() - the covariates that should probably be transformed relate to mass and time periods: Mass, Gestation, Newborn,Weaning,WeanMass,AFR,LittersPerYear (possible, not clear what the best transmation is for this). In other words, look at:</p>
-<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="week-13-lab.html#cb884-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span><span class="fu">log10</span>(Mass))</span></code></pre></div>
+<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="week-13-lab.html#cb885-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span><span class="fu">log10</span>(Mass))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
-<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="week-13-lab.html#cb885-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span><span class="fu">log10</span>(Gestation))</span></code></pre></div>
+<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="week-13-lab.html#cb886-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MaxLifespan<span class="sc">~</span><span class="fu">log10</span>(Gestation))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-23-2.png" width="672" /></p>
 <p>etc.</p>
 <p>For now, let’s ignore the taxonomic covariates and focus on just three covariates: Mass, AFR, and LitterSize.</p>
 <p><em>Fitting the model using ‘lm’</em></p>
 <p>Let’s fit the model with Mass,AFR, and LitterSize. We will consider this the full model.</p>
-<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="week-13-lab.html#cb886-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(MaxLifespan<span class="sc">~</span><span class="fu">log10</span>(Mass)<span class="sc">+</span><span class="fu">log10</span>(AFR)<span class="sc">+</span>LitterSize)</span>
-<span id="cb886-2"><a href="week-13-lab.html#cb886-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="week-13-lab.html#cb887-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(MaxLifespan<span class="sc">~</span><span class="fu">log10</span>(Mass)<span class="sc">+</span><span class="fu">log10</span>(AFR)<span class="sc">+</span>LitterSize)</span>
+<span id="cb887-2"><a href="week-13-lab.html#cb887-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = MaxLifespan ~ log10(Mass) + log10(AFR) + LitterSize)
@@ -1213,10 +1213,10 @@ Litters/year</p>
 ## F-statistic: 273.1 on 3 and 485 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><em>Model diagnostics</em></p>
 <p>Let’s look at the residuals as a function of the fitted values:</p>
-<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="week-13-lab.html#cb888-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fitted</span>(fit),<span class="fu">residuals</span>(fit))</span></code></pre></div>
+<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="week-13-lab.html#cb889-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fitted</span>(fit),<span class="fu">residuals</span>(fit))</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>Let’s look at the residuals using the ‘car’ package function ‘residualPlots.’ This command produces scatterplots of the residuals versus each of the predictors and versus the final fitted value. Note that what we did manually above is reproduced as the final panel here.</p>
-<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="week-13-lab.html#cb889-1" aria-hidden="true" tabindex="-1"></a><span class="fu">residualPlots</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="week-13-lab.html#cb890-1" aria-hidden="true" tabindex="-1"></a><span class="fu">residualPlots</span>(fit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <pre><code>##             Test stat Pr(&gt;|Test stat|)    
 ## log10(Mass)   12.8413           &lt;2e-16 ***
@@ -1226,14 +1226,14 @@ Litters/year</p>
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>We can assess the normality of the residuals by histogramming the studentized residuals. We can pull these out from the fitted model using the ‘studres’ function from the ‘MASS’ package.</p>
-<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="week-13-lab.html#cb891-1" aria-hidden="true" tabindex="-1"></a>sresid<span class="ot">&lt;-</span><span class="fu">studres</span>(fit)</span>
-<span id="cb891-2"><a href="week-13-lab.html#cb891-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sresid,<span class="at">freq=</span><span class="cn">FALSE</span>)</span>
-<span id="cb891-3"><a href="week-13-lab.html#cb891-3" aria-hidden="true" tabindex="-1"></a>xfit<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fu">min</span>(sresid),<span class="fu">max</span>(sresid),<span class="at">length=</span><span class="dv">40</span>)</span>
-<span id="cb891-4"><a href="week-13-lab.html#cb891-4" aria-hidden="true" tabindex="-1"></a>yfit<span class="ot">&lt;-</span><span class="fu">dnorm</span>(xfit)</span>
-<span id="cb891-5"><a href="week-13-lab.html#cb891-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xfit,yfit)</span></code></pre></div>
+<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="week-13-lab.html#cb892-1" aria-hidden="true" tabindex="-1"></a>sresid<span class="ot">&lt;-</span><span class="fu">studres</span>(fit)</span>
+<span id="cb892-2"><a href="week-13-lab.html#cb892-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sresid,<span class="at">freq=</span><span class="cn">FALSE</span>)</span>
+<span id="cb892-3"><a href="week-13-lab.html#cb892-3" aria-hidden="true" tabindex="-1"></a>xfit<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fu">min</span>(sresid),<span class="fu">max</span>(sresid),<span class="at">length=</span><span class="dv">40</span>)</span>
+<span id="cb892-4"><a href="week-13-lab.html#cb892-4" aria-hidden="true" tabindex="-1"></a>yfit<span class="ot">&lt;-</span><span class="fu">dnorm</span>(xfit)</span>
+<span id="cb892-5"><a href="week-13-lab.html#cb892-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xfit,yfit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>A variation on the basic residual plot is the marginal model plot.</p>
-<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="week-13-lab.html#cb892-1" aria-hidden="true" tabindex="-1"></a><span class="fu">marginalModelPlots</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="week-13-lab.html#cb893-1" aria-hidden="true" tabindex="-1"></a><span class="fu">marginalModelPlots</span>(fit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>Note that loess smoothers have been added showing the non-parametric regression between the actual data (solid line) and the model prediction (dashed line) against each of the predictor variables. If these two lines are close together, that is an indication of good model fit.</p>
 <p>Note that the marginal plots display the relationship between the response and each covariates IGNORING the other covariates. We can also look at the relationship between the response and each covariates CONTROLLING for the other covariates. We do this through “added variable plots.”</p>
@@ -1258,7 +1258,7 @@ X_{1} \sim X_{2} + X_{3}
 <p>The residuals from this plot represent the part of <span class="math inline">\(X_{1}\)</span> not explained by the other covariates.</p>
 <p>The added variable plot is simply a plot of the residuals from #1 on the y-axis and the residuals from #2 on the x-axis.</p>
 <p>We can do this in R using the function ‘avPlots’ from the ‘car’ package</p>
-<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="week-13-lab.html#cb893-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(fit,<span class="at">id.n=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb894-1"><a href="week-13-lab.html#cb894-1" aria-hidden="true" tabindex="-1"></a><span class="fu">avPlots</span>(fit,<span class="at">id.n=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## Warning in plot.window(...): &quot;id.n&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in plot.xy(xy, type, ...): &quot;id.n&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;id.n&quot; is not a
@@ -1296,23 +1296,23 @@ X_{1} \sim X_{2} + X_{3}
 <p>The id.n option will cause the plot to identify the two points that are furthest from the mean on the x axis and the two with the largest absolute residuals.</p>
 <p>The added variable plot allows us to visualize the effect of each covariate after adjusting for all the other covariates in the model.</p>
 <p>We can also look at leverage by using the command ‘leveragePlots’</p>
-<div class="sourceCode" id="cb912"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb912-1"><a href="week-13-lab.html#cb912-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveragePlots</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb913"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb913-1"><a href="week-13-lab.html#cb913-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveragePlots</span>(fit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>For covariates with only a single degree of freedom (i.e. not different levels of a factor), this will simply be a rescaled version of the added-variable plots.</p>
 <p><em>Outliers</em></p>
 <p>Let’s look for outliers using the ‘car’ function ‘outlierTest’ which reports the Bonferroni p-values for Studentized residuals:</p>
-<div class="sourceCode" id="cb913"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb913-1"><a href="week-13-lab.html#cb913-1" aria-hidden="true" tabindex="-1"></a><span class="fu">outlierTest</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb914"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb914-1"><a href="week-13-lab.html#cb914-1" aria-hidden="true" tabindex="-1"></a><span class="fu">outlierTest</span>(fit)</span></code></pre></div>
 <pre><code>##      rstudent unadjusted p-value Bonferroni p
 ## 1440 6.797206         3.1481e-11   1.5394e-08
 ## 1439 6.284883         7.3267e-10   3.5828e-07
 ## 1438 4.650225         4.2834e-06   2.0946e-03
 ## 1437 4.488601         8.9697e-06   4.3862e-03</code></pre>
 <p>Plot the qqplot for the studentized residuals using the ‘car’ package function qqPlot. WARNING: This is not the same as qqplot (lower case p); this is a specialized function in the ‘car’ package that will plot the appropriate qqplot for the studentized residuals given a fitted model as input.</p>
-<div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb915-1"><a href="week-13-lab.html#cb915-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb916"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb916-1"><a href="week-13-lab.html#cb916-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(fit)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <pre><code>## [1] 1439 1440</code></pre>
 <p>To identify points with high leverage, we want to calculate the hat values for each of the points. We can do this using the ‘hatvalues" command in the ’car’ package.</p>
-<div class="sourceCode" id="cb917"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb917-1"><a href="week-13-lab.html#cb917-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hatvalues</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb918-1"><a href="week-13-lab.html#cb918-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hatvalues</span>(fit)</span></code></pre></div>
 <pre><code>##         842         846         847         848         849         850 
 ## 0.015068582 0.017116554 0.013839481 0.021939881 0.017150953 0.018853062 
 ##         853         854         856         857         858         859 
@@ -1479,11 +1479,11 @@ X_{1} \sim X_{2} + X_{3}
 ## 0.022172504 0.025746100 0.020671173</code></pre>
 <p>Note that the ‘stats’ package has a function called ‘lm.influence’ that provides much the same information.</p>
 <p>We can make a plot that highlights highly influential values. We will use John Fox’s suggested cut-off of 4/(n-p-1) where n=number of data points and p=number of estimated parameters.</p>
-<div class="sourceCode" id="cb919"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb919-1"><a href="week-13-lab.html#cb919-1" aria-hidden="true" tabindex="-1"></a>cutoff<span class="ot">&lt;-</span><span class="dv">4</span><span class="sc">/</span>((<span class="fu">nrow</span>(data)<span class="sc">-</span><span class="fu">length</span>(fit<span class="sc">$</span>coefficients)<span class="sc">-</span><span class="dv">2</span>))</span>
-<span id="cb919-2"><a href="week-13-lab.html#cb919-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit,<span class="at">which=</span><span class="dv">4</span>,<span class="at">cook.levels=</span>cutoff)</span></code></pre></div>
+<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb920-1"><a href="week-13-lab.html#cb920-1" aria-hidden="true" tabindex="-1"></a>cutoff<span class="ot">&lt;-</span><span class="dv">4</span><span class="sc">/</span>((<span class="fu">nrow</span>(data)<span class="sc">-</span><span class="fu">length</span>(fit<span class="sc">$</span>coefficients)<span class="sc">-</span><span class="dv">2</span>))</span>
+<span id="cb920-2"><a href="week-13-lab.html#cb920-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit,<span class="at">which=</span><span class="dv">4</span>,<span class="at">cook.levels=</span>cutoff)</span></code></pre></div>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>Another useful plot is created by ‘influencePlot’ which creates a “bubble” plot of studentized residuals by hat values, with the areas of the circles representing the observations proportional to Cook’s distances. Vertical reference lines are drawn at twice and three times the average hat value, horizontal reference lines at -2,0,2 on the studentized-residual scale.</p>
-<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb920-1"><a href="week-13-lab.html#cb920-1" aria-hidden="true" tabindex="-1"></a><span class="fu">influencePlot</span>(fit,<span class="at">id.method=</span><span class="st">&quot;identify&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb921"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb921-1"><a href="week-13-lab.html#cb921-1" aria-hidden="true" tabindex="-1"></a><span class="fu">influencePlot</span>(fit,<span class="at">id.method=</span><span class="st">&quot;identify&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in plot.window(...): &quot;id.method&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in plot.xy(xy, type, ...): &quot;id.method&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;id.method&quot; is not
@@ -1503,12 +1503,12 @@ X_{1} \sim X_{2} + X_{3}
 ## 1440  6.7972059 0.02067117 0.223016923</code></pre>
 <p><em>Heteroskedacity</em></p>
 <p>Although we can often pick up heteroskedacity graphically, we can test for it formally by using the ‘ncvTest’ function in the ‘car’ package</p>
-<div class="sourceCode" id="cb928"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb928-1"><a href="week-13-lab.html#cb928-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncvTest</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb929"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb929-1"><a href="week-13-lab.html#cb929-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncvTest</span>(fit)</span></code></pre></div>
 <pre><code>## Non-constant Variance Score Test 
 ## Variance formula: ~ fitted.values 
 ## Chisquare = 297.9263, Df = 1, p = &lt; 2.22e-16</code></pre>
 <p>We can also use the function ‘spreadLevelPlot’ from the ‘car’ package to create plots for examining potential heteroskedacity in the data.</p>
-<div class="sourceCode" id="cb930"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb930-1"><a href="week-13-lab.html#cb930-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spreadLevelPlot</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb931"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb931-1"><a href="week-13-lab.html#cb931-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spreadLevelPlot</span>(fit)</span></code></pre></div>
 <pre><code>## Warning in spreadLevelPlot.lm(fit): 
 ## 47 negative fitted values removed</code></pre>
 <p><img src="Week-13-lab_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
@@ -1516,7 +1516,7 @@ X_{1} \sim X_{2} + X_{3}
 ## Suggested power transformation:  0.4508167</code></pre>
 <p><em>Multicollinearity</em></p>
 <p>We can calculate the variance inflation factors using the function ‘vif’</p>
-<div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb933-1"><a href="week-13-lab.html#cb933-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb934"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb934-1"><a href="week-13-lab.html#cb934-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(fit)</span></code></pre></div>
 <pre><code>## log10(Mass)  log10(AFR)  LitterSize 
 ##    2.466580    2.434861    1.759614</code></pre>
 <p><em>Serially correlated residuals</em></p>
@@ -1526,16 +1526,16 @@ d=\frac{\sum^{T}_{t=2}(e_{t}-e_{t-1})^{2}}{\sum^{T}_{t=1}e^{2}_{t}}
 \]</span></p>
 <p>where T is the number of data points.</p>
 <p>We can calculate the Durban-Watson test as follows:</p>
-<div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb935-1"><a href="week-13-lab.html#cb935-1" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb936"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb936-1"><a href="week-13-lab.html#cb936-1" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(fit)</span></code></pre></div>
 <pre><code>##  lag Autocorrelation D-W Statistic p-value
 ##    1       0.6286888     0.6560464       0
 ##  Alternative hypothesis: rho != 0</code></pre>
 <p><em>More help with model diagnostics</em></p>
 <p>There is another package that can help with model diagnostics called the ‘gvlma’ or “Global Validation of Linear Model Assumptions.”</p>
 <p>Install ‘gvlma’</p>
-<div class="sourceCode" id="cb937"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb937-1"><a href="week-13-lab.html#cb937-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gvlma)</span>
-<span id="cb937-2"><a href="week-13-lab.html#cb937-2" aria-hidden="true" tabindex="-1"></a>gvmodel<span class="ot">&lt;-</span><span class="fu">gvlma</span>(fit)</span>
-<span id="cb937-3"><a href="week-13-lab.html#cb937-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gvmodel)</span></code></pre></div>
+<div class="sourceCode" id="cb938"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb938-1"><a href="week-13-lab.html#cb938-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gvlma)</span>
+<span id="cb938-2"><a href="week-13-lab.html#cb938-2" aria-hidden="true" tabindex="-1"></a>gvmodel<span class="ot">&lt;-</span><span class="fu">gvlma</span>(fit)</span>
+<span id="cb938-3"><a href="week-13-lab.html#cb938-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gvmodel)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = MaxLifespan ~ log10(Mass) + log10(AFR) + LitterSize)
