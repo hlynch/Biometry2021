@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-22" />
+<meta name="date" content="2021-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -419,9 +419,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">15</span> Week 8 Lab</h1>
 <p>Our first task is to go over how to write a linear model in R. Let’s take a moment to go through Logan Table 7.3.</p>
 <p>First we will read in <a href="https://github.com/hlynch/Biometry2021/tree/master/_data/fish.txt">some data</a> on mercury levels in fish.</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="week-8-lab.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 8 Introduction to linear models/Week 8 Lab&quot;</span>)</span>
-<span id="cb405-2"><a href="week-8-lab.html#cb405-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;fish.txt&quot;</span>,<span class="at">header=</span>T)</span>
-<span id="cb405-3"><a href="week-8-lab.html#cb405-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="week-8-lab.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 8 Introduction to linear models/Week 8 Lab&quot;</span>)</span>
+<span id="cb409-2"><a href="week-8-lab.html#cb409-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;fish.txt&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb409-3"><a href="week-8-lab.html#cb409-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##   RIVER STATION LENGTH WEIGHT MERCURY
 ## 1     0       0   47.0   1616    1.60
 ## 2     0       0   48.7   1862    1.50
@@ -430,10 +430,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5     0       0   44.7   1320    0.56
 ## 6     0       0   43.8   1225    0.51</code></pre>
 <p>Let’s use Station as a categorical variable, and use it as a covariate for a model of mercury:</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="week-8-lab.html#cb407-1" aria-hidden="true" tabindex="-1"></a>Station<span class="ot">&lt;-</span>data<span class="sc">$</span>STATION</span>
-<span id="cb407-2"><a href="week-8-lab.html#cb407-2" aria-hidden="true" tabindex="-1"></a>Mercury<span class="ot">&lt;-</span>data<span class="sc">$</span>MERCURY</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="week-8-lab.html#cb411-1" aria-hidden="true" tabindex="-1"></a>Station<span class="ot">&lt;-</span>data<span class="sc">$</span>STATION</span>
+<span id="cb411-2"><a href="week-8-lab.html#cb411-2" aria-hidden="true" tabindex="-1"></a>Mercury<span class="ot">&lt;-</span>data<span class="sc">$</span>MERCURY</span></code></pre></div>
 <p>What’s the difference between</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="week-8-lab.html#cb408-1" aria-hidden="true" tabindex="-1"></a>Station</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="week-8-lab.html#cb412-1" aria-hidden="true" tabindex="-1"></a>Station</span></code></pre></div>
 <pre><code>##   [1]  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
 ##  [26]  1  1  1  1  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3  3  3  3  3  3
 ##  [51]  3  3  4  4  4  4  4  4  4  4  4  4  4  4  4  4  5  5  5  6  6  6  6  7  7
@@ -442,7 +442,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [126] 11 11 11 11 11 12 12 12 12 12 12 12 12 12 12 12 12 12 13 13 13 13 14 14 14
 ## [151] 14 14 14 14 14 14 14 14 14 14 15 15 15 15 15 15 15 15 15 15 15</code></pre>
 <p>and</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="week-8-lab.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.factor</span>(Station)</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="week-8-lab.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.factor</span>(Station)</span></code></pre></div>
 <pre><code>##   [1] 0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1 
 ##  [26] 1  1  1  1  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3  3  3  3  3  3 
 ##  [51] 3  3  4  4  4  4  4  4  4  4  4  4  4  4  4  4  5  5  5  6  6  6  6  7  7 
@@ -452,8 +452,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [151] 14 14 14 14 14 14 14 14 14 14 15 15 15 15 15 15 15 15 15 15 15
 ## Levels: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15</code></pre>
 <p>To see what impact this has on the modelling, let’s write a basic linear model in R</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="week-8-lab.html#cb412-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station)</span>
-<span id="cb412-2"><a href="week-8-lab.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="week-8-lab.html#cb416-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station)</span>
+<span id="cb416-2"><a href="week-8-lab.html#cb416-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Mercury ~ Station)
@@ -473,8 +473,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.0858,	Adjusted R-squared:  0.08039 
 ## F-statistic: 15.86 on 1 and 169 DF,  p-value: 0.0001011</code></pre>
 <p>and compare this with</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="week-8-lab.html#cb414-1" aria-hidden="true" tabindex="-1"></a>fit2<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span><span class="fu">as.factor</span>(Station))</span>
-<span id="cb414-2"><a href="week-8-lab.html#cb414-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="week-8-lab.html#cb418-1" aria-hidden="true" tabindex="-1"></a>fit2<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span><span class="fu">as.factor</span>(Station))</span>
+<span id="cb418-2"><a href="week-8-lab.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Mercury ~ as.factor(Station))
@@ -509,22 +509,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## F-statistic: 6.367 on 15 and 155 DF,  p-value: 2.1e-10</code></pre>
 <p>This second approach is what we are interested in, because we want to use the Stations as categorical factors.</p>
 <p><strong><span style="color: green;">Checkpoint #1: Why is the intercept for fit2 not the same as the intercept for fit?</span></strong> We won’t get into linear regression formally until next week, but we can see what’s going on if we plot the data and the best-fit line together on the same plot.</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="week-8-lab.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Station, Mercury,<span class="at">cex=</span><span class="dv">1</span>,<span class="at">xlab=</span><span class="st">&quot;Station as a numeric&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Mercury&quot;</span>)</span>
-<span id="cb416-2"><a href="week-8-lab.html#cb416-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="fu">coef</span>(fit)[<span class="dv">1</span>],<span class="at">b=</span><span class="fu">coef</span>(fit)[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb416-3"><a href="week-8-lab.html#cb416-3" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0=</span><span class="sc">-</span><span class="fl">0.5</span>,<span class="at">x1=</span><span class="fl">0.5</span>,<span class="at">y0=</span><span class="fu">coef</span>(fit2)[<span class="dv">1</span>],<span class="at">y1=</span><span class="fu">coef</span>(fit2)[<span class="dv">1</span>],<span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">lwd=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="week-8-lab.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Station, Mercury,<span class="at">cex=</span><span class="dv">1</span>,<span class="at">xlab=</span><span class="st">&quot;Station as a numeric&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Mercury&quot;</span>)</span>
+<span id="cb420-2"><a href="week-8-lab.html#cb420-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="fu">coef</span>(fit)[<span class="dv">1</span>],<span class="at">b=</span><span class="fu">coef</span>(fit)[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb420-3"><a href="week-8-lab.html#cb420-3" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0=</span><span class="sc">-</span><span class="fl">0.5</span>,<span class="at">x1=</span><span class="fl">0.5</span>,<span class="at">y0=</span><span class="fu">coef</span>(fit2)[<span class="dv">1</span>],<span class="at">y1=</span><span class="fu">coef</span>(fit2)[<span class="dv">1</span>],<span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">lwd=</span><span class="dv">4</span>)</span></code></pre></div>
 <p><img src="Week-8-lab_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The blue segment shows you the mean mercury measurement for the first station (Station 0), whereas the intercept of the red line is a little lower. Why? Because the best fitting line for all the mercury measurements doesn’t necessary pass through the mean value for the first station.</p>
 <p>To make our consideration of contrasts easy, let’s just redefine the variable accordingly:</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="week-8-lab.html#cb417-1" aria-hidden="true" tabindex="-1"></a>Station<span class="ot">&lt;-</span><span class="fu">as.factor</span>(Station)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="week-8-lab.html#cb421-1" aria-hidden="true" tabindex="-1"></a>Station<span class="ot">&lt;-</span><span class="fu">as.factor</span>(Station)</span></code></pre></div>
 <p>Let’s examine this output for a second. How do we interpret the intercept? Notice that Station=0 isn’t represented among the factors, it has been turned in to (a.k.a. “aliased by”) the intercept. We can convince ourselves this is true using</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="week-8-lab.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="week-8-lab.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>])</span></code></pre></div>
 <pre><code>## [1] 0.993</code></pre>
 <p>(We have to use quotes now, because the variable “Station” is a factor, which means the levels are now identified by names (characters) which must be put in quotes.)</p>
 <p><strong><span style="color: green;">Checkpoint #2: Do you understand what the intercept of fit2 means? Can you predict what the value for as.factor(Station)1 means?</span></strong></p>
 <p>We can also convince ourselves of the other model estimates using</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="week-8-lab.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;1&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="week-8-lab.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;1&quot;</span>])</span></code></pre></div>
 <pre><code>## [1] 0.8442105</code></pre>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="week-8-lab.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;2&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="week-8-lab.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;2&quot;</span>])</span></code></pre></div>
 <pre><code>## [1] 1.140769</code></pre>
 <p>When fitting a model involving categorical factors as predictors, R will always use the first factor for the intercept, which is the one that comes first alphabetically or numerically. This may not be what you actually want to do. Why?? Because the hypotheses being tested are:</p>
 <p><span class="math display">\[
@@ -541,12 +541,12 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 \]</span></p>
 <p>etc. In other words, with the exception of the first factor which is the intercept, you are testing the equality of each factor with the first factor, not against zero (or other benchmark).</p>
 <p>This is the “Treatment contrasts/Dummy coding” approach we discussed in lecture on Tuesday. We can confirm this by having R tell us what its default behavior is when faced with categorical predictors.</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="week-8-lab.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>()<span class="sc">$</span>contrasts</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="week-8-lab.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>()<span class="sc">$</span>contrasts</span></code></pre></div>
 <pre><code>##         unordered           ordered 
 ## &quot;contr.treatment&quot;      &quot;contr.poly&quot;</code></pre>
 <p>(As a side note, we can just call “options()” to get all sorts of information about R’s defaults.)</p>
 <p>We can get R to spit out the design matrix for this set of contrasts using</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="week-8-lab.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contr.treatment</span>(<span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="week-8-lab.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contr.treatment</span>(<span class="dv">15</span>)</span></code></pre></div>
 <pre><code>##    2 3 4 5 6 7 8 9 10 11 12 13 14 15
 ## 1  0 0 0 0 0 0 0 0  0  0  0  0  0  0
 ## 2  1 0 0 0 0 0 0 0  0  0  0  0  0  0
@@ -564,8 +564,8 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 ## 14 0 0 0 0 0 0 0 0  0  0  0  0  1  0
 ## 15 0 0 0 0 0 0 0 0  0  0  0  0  0  1</code></pre>
 <p>Another approach would be to take the intercept out of the model, so the coefficients simply represented the group means. We can do this by including a “-1” in the model statement.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="week-8-lab.html#cb428-1" aria-hidden="true" tabindex="-1"></a>fit3<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station<span class="dv">-1</span>)</span>
-<span id="cb428-2"><a href="week-8-lab.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit3)</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="week-8-lab.html#cb432-1" aria-hidden="true" tabindex="-1"></a>fit3<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station<span class="dv">-1</span>)</span>
+<span id="cb432-2"><a href="week-8-lab.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Mercury ~ Station - 1)
@@ -600,7 +600,7 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 ## F-statistic: 44.53 on 16 and 155 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Notice that all stations are now treated equally, there is no intercept, and the model coefficients (the group means) are tested for significant differences from 0.</p>
 <p>Let’s pause for a second and make sure we understand how R calculated the estimates and their standard errors. The estimates are pretty straightforward, in fact we have already calculated this.</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="week-8-lab.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="week-8-lab.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>])</span></code></pre></div>
 <pre><code>## [1] 0.993</code></pre>
 <p>But how did R calculate the standard errors? Let’s stop and think for a second as to what the standard error of an estimate represents. We know the standard error of the mean of a (normal) distribution is given by</p>
 <p><span class="math display">\[
@@ -608,21 +608,21 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 \]</span></p>
 <p>So the standard error of any estimate is, roughly speaking, the (residual) variation divided by the square root of the sample size. (In the case of the SEM, all the variation is “residual.”)</p>
 <p>What is the residual variation in this case? One way to measure residual variation within the Station=0 group is to calculate the standard deviation of the Station=0 data.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="week-8-lab.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="week-8-lab.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>])</span></code></pre></div>
 <pre><code>## [1] 0.5043158</code></pre>
 <p>Using this as the “residual” variation, we would calculate the standard error of the coefficient for the Station=0 group as follows:</p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="week-8-lab.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>])<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>]))</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="week-8-lab.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>])<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>]))</span></code></pre></div>
 <pre><code>## [1] 0.1594787</code></pre>
 <p>But this doesn’t match what R has returned!! Why not? Because an even better estimate of the “residual” variation is the pooled estimate of the residual variation, where we use not only the residual variation within the Station=0 group, but within each of the Stations. R returned this value above: “Residual standard error:0.6274.” Using this value, we calculate</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="week-8-lab.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.6274</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>]))</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="week-8-lab.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.6274</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(Mercury[Station<span class="sc">==</span><span class="st">&quot;0&quot;</span>]))</span></code></pre></div>
 <pre><code>## [1] 0.1984013</code></pre>
 <p>Now we get what R has returned for the standard error on the co-efficient for the Station=0 group. <strong><span style="color: green;">Checkpoint #3: Does this make sense?</span></strong> Its important to recognize that your intuition to use the standard deviation within the Station=0 group to estimate the standard error of the coefficient is not wrong, but that by pooling the data, we can get a more precise estimate of that residual standard deviation. Notice also that the only difference in standard errors between the different stations comes from the different sample sizes.</p>
 <p><strong><span style="color: green;">Checkpoint #4: Write a short script to bootstrap resample data within each station. Each of you should end up with a slightly different dataset and fitting the model to that unique dataset will yield a unique estimate for mercury at Station0. Calculate the standard deviation of your group’s estimates. Is this at least approximately equal to the standard error of the estimate as reported by your model’s fit?</span></strong></p>
 <div id="contrasts" class="section level2" number="15.1">
 <h2><span class="header-section-number">15.1</span> Contrasts</h2>
 <p>In lecture on Tuesday we discussed several other contrasts. Let’s start with the Helmhert contrast.</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="week-8-lab.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(Station)<span class="ot">&lt;-</span><span class="st">&quot;contr.helmert&quot;</span></span>
-<span id="cb438-2"><a href="week-8-lab.html#cb438-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contr.helmert</span>(<span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="week-8-lab.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(Station)<span class="ot">&lt;-</span><span class="st">&quot;contr.helmert&quot;</span></span>
+<span id="cb442-2"><a href="week-8-lab.html#cb442-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contr.helmert</span>(<span class="dv">15</span>)</span></code></pre></div>
 <pre><code>##    [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]
 ## 1    -1   -1   -1   -1   -1   -1   -1   -1   -1    -1    -1    -1    -1    -1
 ## 2     1   -1   -1   -1   -1   -1   -1   -1   -1    -1    -1    -1    -1    -1
@@ -640,8 +640,8 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 ## 14    0    0    0    0    0    0    0    0    0     0     0     0    13    -1
 ## 15    0    0    0    0    0    0    0    0    0     0     0     0     0    14</code></pre>
 <p>and redo the analysis (this time with an intercept)</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="week-8-lab.html#cb440-1" aria-hidden="true" tabindex="-1"></a>fit4<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station)</span>
-<span id="cb440-2"><a href="week-8-lab.html#cb440-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="week-8-lab.html#cb444-1" aria-hidden="true" tabindex="-1"></a>fit4<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station)</span>
+<span id="cb444-2"><a href="week-8-lab.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit4)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Mercury ~ Station)
@@ -676,21 +676,21 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 ## F-statistic: 6.367 on 15 and 155 DF,  p-value: 2.1e-10</code></pre>
 <p>Do these coefficients make sense? Let’s work through them using the information learned in Tuesday’s lecture.</p>
 <p>The first coefficient for the Helmert contrasts is the mean of the group means. This is <em>not</em> the same as the overall mean, because different groups may have different sample sizes. We can find the mean of all the group means by using the output from fit3. Let’s pull out all the coefficients from fit3, and give them a new name for convenience:</p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="week-8-lab.html#cb442-1" aria-hidden="true" tabindex="-1"></a>group.means<span class="ot">&lt;-</span><span class="fu">coef</span>(fit3)</span>
-<span id="cb442-2"><a href="week-8-lab.html#cb442-2" aria-hidden="true" tabindex="-1"></a>group.means</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="week-8-lab.html#cb446-1" aria-hidden="true" tabindex="-1"></a>group.means<span class="ot">&lt;-</span><span class="fu">coef</span>(fit3)</span>
+<span id="cb446-2"><a href="week-8-lab.html#cb446-2" aria-hidden="true" tabindex="-1"></a>group.means</span></code></pre></div>
 <pre><code>##  Station0  Station1  Station2  Station3  Station4  Station5  Station6  Station7 
 ## 0.9930000 0.8442105 1.1407692 1.3010000 1.0221429 0.7500000 2.0825000 0.6900000 
 ##  Station8  Station9 Station10 Station11 Station12 Station13 Station14 Station15 
 ## 0.7864286 1.3166667 1.5142857 1.2744444 0.4869231 1.2200000 1.9692308 2.1045455</code></pre>
 <p>We can confirm the first Helmert parameter estimate by looking at</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="week-8-lab.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(group.means)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="week-8-lab.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(group.means)</span></code></pre></div>
 <pre><code>## [1] 1.218509</code></pre>
 <p>Now the second Helmert parameter is given by</p>
 <p><span class="math display">\[
 \frac{\mu_{1}+\mu_{2}}{2}-\mu_{1}
 \]</span></p>
 <p>which we can calculate using</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="week-8-lab.html#cb446-1" aria-hidden="true" tabindex="-1"></a>((group.means[<span class="dv">1</span>]<span class="sc">+</span>group.means[<span class="dv">2</span>])<span class="sc">/</span><span class="dv">2</span>)<span class="sc">-</span>group.means[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="week-8-lab.html#cb450-1" aria-hidden="true" tabindex="-1"></a>((group.means[<span class="dv">1</span>]<span class="sc">+</span>group.means[<span class="dv">2</span>])<span class="sc">/</span><span class="dv">2</span>)<span class="sc">-</span>group.means[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##    Station0 
 ## -0.07439474</code></pre>
 <p>The third Helmert coefficient is given by</p>
@@ -698,13 +698,13 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 \frac{\mu_{1}+\mu_{2}+\mu_{3}}{3}-\frac{\mu_{1}+\mu_{2}}{2}
 \]</span></p>
 <p>which we can calculate using</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="week-8-lab.html#cb448-1" aria-hidden="true" tabindex="-1"></a>((group.means[<span class="dv">1</span>]<span class="sc">+</span>group.means[<span class="dv">2</span>]<span class="sc">+</span>group.means[<span class="dv">3</span>])<span class="sc">/</span><span class="dv">3</span>)<span class="sc">-</span>((group.means[<span class="dv">1</span>]<span class="sc">+</span>group.means[<span class="dv">2</span>])<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="week-8-lab.html#cb452-1" aria-hidden="true" tabindex="-1"></a>((group.means[<span class="dv">1</span>]<span class="sc">+</span>group.means[<span class="dv">2</span>]<span class="sc">+</span>group.means[<span class="dv">3</span>])<span class="sc">/</span><span class="dv">3</span>)<span class="sc">-</span>((group.means[<span class="dv">1</span>]<span class="sc">+</span>group.means[<span class="dv">2</span>])<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   Station0 
 ## 0.07405466</code></pre>
 <p>and so on.</p>
 <p>Sum-to-zero contrasts can be done using</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="week-8-lab.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(Station)<span class="ot">&lt;-</span><span class="st">&quot;contr.sum&quot;</span></span>
-<span id="cb450-2"><a href="week-8-lab.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contr.sum</span>(<span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="week-8-lab.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(Station)<span class="ot">&lt;-</span><span class="st">&quot;contr.sum&quot;</span></span>
+<span id="cb454-2"><a href="week-8-lab.html#cb454-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contr.sum</span>(<span class="dv">15</span>)</span></code></pre></div>
 <pre><code>##    [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14]
 ## 1     1    0    0    0    0    0    0    0    0     0     0     0     0     0
 ## 2     0    1    0    0    0    0    0    0    0     0     0     0     0     0
@@ -722,8 +722,8 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 ## 14    0    0    0    0    0    0    0    0    0     0     0     0     0     1
 ## 15   -1   -1   -1   -1   -1   -1   -1   -1   -1    -1    -1    -1    -1    -1</code></pre>
 <p>and redo the analysis (this time with an intercept)</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="week-8-lab.html#cb452-1" aria-hidden="true" tabindex="-1"></a>fit5<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station)</span>
-<span id="cb452-2"><a href="week-8-lab.html#cb452-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit5)</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="week-8-lab.html#cb456-1" aria-hidden="true" tabindex="-1"></a>fit5<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station)</span>
+<span id="cb456-2"><a href="week-8-lab.html#cb456-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit5)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Mercury ~ Station)
@@ -757,16 +757,16 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 ## Multiple R-squared:  0.3813,	Adjusted R-squared:  0.3214 
 ## F-statistic: 6.367 on 15 and 155 DF,  p-value: 2.1e-10</code></pre>
 <p>Once again the first parameter to be estimated is the mean of the group means. The second and third parameter estimates can be confirmed as</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="week-8-lab.html#cb454-1" aria-hidden="true" tabindex="-1"></a>group.means[<span class="dv">1</span>]<span class="sc">-</span><span class="fu">mean</span>(group.means)</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="week-8-lab.html#cb458-1" aria-hidden="true" tabindex="-1"></a>group.means[<span class="dv">1</span>]<span class="sc">-</span><span class="fu">mean</span>(group.means)</span></code></pre></div>
 <pre><code>##   Station0 
 ## -0.2255092</code></pre>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="week-8-lab.html#cb456-1" aria-hidden="true" tabindex="-1"></a>group.means[<span class="dv">2</span>]<span class="sc">-</span><span class="fu">mean</span>(group.means)</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="week-8-lab.html#cb460-1" aria-hidden="true" tabindex="-1"></a>group.means[<span class="dv">2</span>]<span class="sc">-</span><span class="fu">mean</span>(group.means)</span></code></pre></div>
 <pre><code>##   Station1 
 ## -0.3742987</code></pre>
 <p>and so forth. <strong><span style="color: green;">Checkpoint #5: Do you understand how to obtain the sum-to-zero parameter estimates and what they mean in terms of this dataset?</span></strong></p>
 <p>Polynomial contrasts can be done using</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="week-8-lab.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(Station)<span class="ot">&lt;-</span><span class="st">&quot;contr.poly&quot;</span></span>
-<span id="cb458-2"><a href="week-8-lab.html#cb458-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contr.poly</span>(<span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="week-8-lab.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(Station)<span class="ot">&lt;-</span><span class="st">&quot;contr.poly&quot;</span></span>
+<span id="cb462-2"><a href="week-8-lab.html#cb462-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contr.poly</span>(<span class="dv">15</span>)</span></code></pre></div>
 <pre><code>##                  .L          .Q            .C          ^4            ^5
 ##  [1,] -4.183300e-01  0.47227028 -4.562564e-01  0.39364141 -3.077236e-01
 ##  [2,] -3.585686e-01  0.26986873 -6.517949e-02 -0.16870346  3.516842e-01
@@ -816,8 +816,8 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 ## [14,] -7.163761e-02 -0.029959342 -9.844668e-03 -0.0022103751
 ## [15,]  8.499378e-03  0.002953738  8.203890e-04  0.0001578839</code></pre>
 <p>and redo the analysis</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="week-8-lab.html#cb460-1" aria-hidden="true" tabindex="-1"></a>fit6<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station)</span>
-<span id="cb460-2"><a href="week-8-lab.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit6)</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="week-8-lab.html#cb464-1" aria-hidden="true" tabindex="-1"></a>fit6<span class="ot">&lt;-</span><span class="fu">lm</span>(Mercury<span class="sc">~</span>Station)</span>
+<span id="cb464-2"><a href="week-8-lab.html#cb464-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit6)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Mercury ~ Station)
@@ -851,17 +851,17 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 ## Multiple R-squared:  0.3813,	Adjusted R-squared:  0.3214 
 ## F-statistic: 6.367 on 15 and 155 DF,  p-value: 2.1e-10</code></pre>
 <p>Let’s plot the contrast polynomials to get a sense for them.</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="week-8-lab.html#cb462-1" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">&lt;-</span><span class="fu">contr.poly</span>(<span class="dv">15</span>)</span>
-<span id="cb462-2"><a href="week-8-lab.html#cb462-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(temp[,<span class="dv">1</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">xlab=</span><span class="st">&quot;Group&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Coefficient&quot;</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>)</span>
-<span id="cb462-3"><a href="week-8-lab.html#cb462-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(temp[,<span class="dv">2</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb462-4"><a href="week-8-lab.html#cb462-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(temp[,<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb462-5"><a href="week-8-lab.html#cb462-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(temp[,<span class="dv">4</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
-<span id="cb462-6"><a href="week-8-lab.html#cb462-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(temp[,<span class="dv">5</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">col=</span><span class="st">&quot;orange&quot;</span>)</span>
-<span id="cb462-7"><a href="week-8-lab.html#cb462-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">15</span>),<span class="at">times=</span><span class="dv">15</span>),<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="week-8-lab.html#cb466-1" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">&lt;-</span><span class="fu">contr.poly</span>(<span class="dv">15</span>)</span>
+<span id="cb466-2"><a href="week-8-lab.html#cb466-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(temp[,<span class="dv">1</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">xlab=</span><span class="st">&quot;Group&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Coefficient&quot;</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>)</span>
+<span id="cb466-3"><a href="week-8-lab.html#cb466-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(temp[,<span class="dv">2</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb466-4"><a href="week-8-lab.html#cb466-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(temp[,<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb466-5"><a href="week-8-lab.html#cb466-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(temp[,<span class="dv">4</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
+<span id="cb466-6"><a href="week-8-lab.html#cb466-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(temp[,<span class="dv">5</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">col=</span><span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb466-7"><a href="week-8-lab.html#cb466-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">15</span>),<span class="at">times=</span><span class="dv">15</span>),<span class="at">typ=</span><span class="st">&quot;b&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
 <p><img src="Week-8-lab_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>where the last line plot is the intercept (a constant value whose vector magnitude equals 1) which R doesn’t include in the print out of the treatments.</p>
 <p>We can get R to plot out the model matrix for any of these models as follows:</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="week-8-lab.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">model.matrix</span>(<span class="sc">~</span>Station,<span class="at">contrasts=</span><span class="fu">list</span>(<span class="at">Station=</span><span class="st">&quot;contr.treatment&quot;</span>)),<span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="week-8-lab.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">model.matrix</span>(<span class="sc">~</span>Station,<span class="at">contrasts=</span><span class="fu">list</span>(<span class="at">Station=</span><span class="st">&quot;contr.treatment&quot;</span>)),<span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
 <pre><code>##    (Intercept) Station1 Station2 Station3 Station4 Station5 Station6 Station7
 ## 1            1        0        0        0        0        0        0        0
 ## 2            1        0        0        0        0        0        0        0
@@ -926,7 +926,7 @@ H_{0}: \mbox{Difference between factor level 4 and factor level 1} = 0
 ## 19         0
 ## 20         0</code></pre>
 <p>or</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="week-8-lab.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">model.matrix</span>(<span class="sc">~</span>Station,<span class="at">contrasts=</span><span class="fu">list</span>(<span class="at">Station=</span><span class="st">&quot;contr.helmert&quot;</span>)),<span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="week-8-lab.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">model.matrix</span>(<span class="sc">~</span>Station,<span class="at">contrasts=</span><span class="fu">list</span>(<span class="at">Station=</span><span class="st">&quot;contr.helmert&quot;</span>)),<span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
 <pre><code>##    (Intercept) Station1 Station2 Station3 Station4 Station5 Station6 Station7
 ## 1            1       -1       -1       -1       -1       -1       -1       -1
 ## 2            1       -1       -1       -1       -1       -1       -1       -1

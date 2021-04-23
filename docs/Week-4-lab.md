@@ -204,14 +204,14 @@ opt1
 
 ```
 ## $par
-## [1] 1.033146 2.005038
+## [1] 1.044293 2.014240
 ## 
 ## $value
-## [1] 2114.552
+## [1] 2119.115
 ## 
 ## $counts
 ## function gradient 
-##       61       NA 
+##       63       NA 
 ## 
 ## $convergence
 ## [1] 0
@@ -230,8 +230,8 @@ fitdistr(x,"normal")
 
 ```
 ##       mean          sd    
-##   1.03336460   2.00493908 
-##  (0.06340174) (0.04483180)
+##   1.04442050   2.01410892 
+##  (0.06369172) (0.04503684)
 ```
 
 Notice that this function outputs the SE as well, whereas our function and 'optim' only give the MLE. 
