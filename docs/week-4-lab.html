@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-04-26" />
+<meta name="date" content="2021-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -514,59 +514,59 @@ n-\frac{1}{\hat{A}}\sum_{i}\left((X_{i}-\mu)^{2}\right)=0
 \]</span></p>
 <p>The MLEs are not necessarily the best estimates, or even unbised estimates. In fact, the MLE for <span class="math inline">\(\sigma^{2}\)</span> is biased (the unbiased estimator replaces n with n-1).</p>
 <p>To do this in R, we have to write a function to define the NLL:</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="week-4-lab.html#cb237-1" aria-hidden="true" tabindex="-1"></a>neg.ll<span class="ot">&lt;-</span><span class="cf">function</span>(x,mu,sigma2)</span>
-<span id="cb237-2"><a href="week-4-lab.html#cb237-2" aria-hidden="true" tabindex="-1"></a> {</span>
-<span id="cb237-3"><a href="week-4-lab.html#cb237-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fl">0.5</span><span class="sc">*</span><span class="fu">log</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>sigma2)<span class="sc">+</span><span class="fl">0.5</span><span class="sc">*</span>((x<span class="sc">-</span>mu)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>sigma2)</span>
-<span id="cb237-4"><a href="week-4-lab.html#cb237-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="week-4-lab.html#cb235-1" aria-hidden="true" tabindex="-1"></a>neg.ll<span class="ot">&lt;-</span><span class="cf">function</span>(x,mu,sigma2)</span>
+<span id="cb235-2"><a href="week-4-lab.html#cb235-2" aria-hidden="true" tabindex="-1"></a> {</span>
+<span id="cb235-3"><a href="week-4-lab.html#cb235-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fl">0.5</span><span class="sc">*</span><span class="fu">log</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>sigma2)<span class="sc">+</span><span class="fl">0.5</span><span class="sc">*</span>((x<span class="sc">-</span>mu)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>sigma2)</span>
+<span id="cb235-4"><a href="week-4-lab.html#cb235-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>For the purposes of a simple example, lets generate some fake “data” by drawing random samples from a <span class="math inline">\(N(\mu=1,\sigma=2)\)</span>.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="week-4-lab.html#cb238-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">1</span>,<span class="at">sd=</span><span class="dv">2</span>)</span>
-<span id="cb238-2"><a href="week-4-lab.html#cb238-2" aria-hidden="true" tabindex="-1"></a>mu.test.values<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.1</span>)</span>
-<span id="cb238-3"><a href="week-4-lab.html#cb238-3" aria-hidden="true" tabindex="-1"></a>sigma2.test.values<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">11</span>,<span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="week-4-lab.html#cb236-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">1</span>,<span class="at">sd=</span><span class="dv">2</span>)</span>
+<span id="cb236-2"><a href="week-4-lab.html#cb236-2" aria-hidden="true" tabindex="-1"></a>mu.test.values<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.1</span>)</span>
+<span id="cb236-3"><a href="week-4-lab.html#cb236-3" aria-hidden="true" tabindex="-1"></a>sigma2.test.values<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">11</span>,<span class="fl">0.1</span>)</span></code></pre></div>
 <p>Next, we will make a matrix to store the values of the likelihood for a grid of potential <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^{2}\)</span> values.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="week-4-lab.html#cb239-1" aria-hidden="true" tabindex="-1"></a>likelihood.matrix<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="at">nrow=</span><span class="fu">length</span>(mu.test.values),<span class="at">ncol=</span><span class="fu">length</span>(sigma2.test.values))</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="week-4-lab.html#cb237-1" aria-hidden="true" tabindex="-1"></a>likelihood.matrix<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="at">nrow=</span><span class="fu">length</span>(mu.test.values),<span class="at">ncol=</span><span class="fu">length</span>(sigma2.test.values))</span></code></pre></div>
 <p>Now we will search parameter space by brute force, calculating the likelihood on a grid of potential <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^{2}\)</span> values.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="week-4-lab.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(mu.test.values))</span>
-<span id="cb240-2"><a href="week-4-lab.html#cb240-2" aria-hidden="true" tabindex="-1"></a> {</span>
-<span id="cb240-3"><a href="week-4-lab.html#cb240-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(sigma2.test.values))</span>
-<span id="cb240-4"><a href="week-4-lab.html#cb240-4" aria-hidden="true" tabindex="-1"></a>   {</span>
-<span id="cb240-5"><a href="week-4-lab.html#cb240-5" aria-hidden="true" tabindex="-1"></a>    likelihood.matrix[i,j]<span class="ot">&lt;-</span><span class="fu">neg.ll</span>(x,mu.test.values[i],sigma2.test.values[j])</span>
-<span id="cb240-6"><a href="week-4-lab.html#cb240-6" aria-hidden="true" tabindex="-1"></a>   }</span>
-<span id="cb240-7"><a href="week-4-lab.html#cb240-7" aria-hidden="true" tabindex="-1"></a> }</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="week-4-lab.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(mu.test.values))</span>
+<span id="cb238-2"><a href="week-4-lab.html#cb238-2" aria-hidden="true" tabindex="-1"></a> {</span>
+<span id="cb238-3"><a href="week-4-lab.html#cb238-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(sigma2.test.values))</span>
+<span id="cb238-4"><a href="week-4-lab.html#cb238-4" aria-hidden="true" tabindex="-1"></a>   {</span>
+<span id="cb238-5"><a href="week-4-lab.html#cb238-5" aria-hidden="true" tabindex="-1"></a>    likelihood.matrix[i,j]<span class="ot">&lt;-</span><span class="fu">neg.ll</span>(x,mu.test.values[i],sigma2.test.values[j])</span>
+<span id="cb238-6"><a href="week-4-lab.html#cb238-6" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb238-7"><a href="week-4-lab.html#cb238-7" aria-hidden="true" tabindex="-1"></a> }</span></code></pre></div>
 <p>We can plot the results using the functions ‘image’ and ‘contour,’ and place on top of this plot the maximum likelihood as found by the grid search as well as the known parameter values.</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="week-4-lab.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mu.test.values,sigma2.test.values,likelihood.matrix,<span class="at">col=</span><span class="fu">topo.colors</span>(<span class="dv">100</span>))</span>
-<span id="cb241-2"><a href="week-4-lab.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(mu.test.values,sigma2.test.values,likelihood.matrix,<span class="at">nlevels=</span><span class="dv">30</span>,<span class="at">add=</span>T)</span>
-<span id="cb241-3"><a href="week-4-lab.html#cb241-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb241-4"><a href="week-4-lab.html#cb241-4" aria-hidden="true" tabindex="-1"></a>max.element<span class="ot">&lt;-</span><span class="fu">which</span>(likelihood.matrix<span class="sc">==</span><span class="fu">min</span>(likelihood.matrix),<span class="at">arr.ind=</span>T)</span>
-<span id="cb241-5"><a href="week-4-lab.html#cb241-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mu.test.values[max.element[<span class="dv">1</span>]],sigma2.test.values[max.element[<span class="dv">2</span>]],<span class="at">pch=</span><span class="dv">16</span>,<span class="at">cex=</span><span class="dv">2</span>)</span>
-<span id="cb241-6"><a href="week-4-lab.html#cb241-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="at">pch=</span><span class="st">&#39;x&#39;</span>,<span class="at">cex=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="week-4-lab.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mu.test.values,sigma2.test.values,likelihood.matrix,<span class="at">col=</span><span class="fu">topo.colors</span>(<span class="dv">100</span>))</span>
+<span id="cb239-2"><a href="week-4-lab.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(mu.test.values,sigma2.test.values,likelihood.matrix,<span class="at">nlevels=</span><span class="dv">30</span>,<span class="at">add=</span>T)</span>
+<span id="cb239-3"><a href="week-4-lab.html#cb239-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb239-4"><a href="week-4-lab.html#cb239-4" aria-hidden="true" tabindex="-1"></a>max.element<span class="ot">&lt;-</span><span class="fu">which</span>(likelihood.matrix<span class="sc">==</span><span class="fu">min</span>(likelihood.matrix),<span class="at">arr.ind=</span>T)</span>
+<span id="cb239-5"><a href="week-4-lab.html#cb239-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mu.test.values[max.element[<span class="dv">1</span>]],sigma2.test.values[max.element[<span class="dv">2</span>]],<span class="at">pch=</span><span class="dv">16</span>,<span class="at">cex=</span><span class="dv">2</span>)</span>
+<span id="cb239-6"><a href="week-4-lab.html#cb239-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="at">pch=</span><span class="st">&#39;x&#39;</span>,<span class="at">cex=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="Week-4-lab_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Now we can plot the likelihood “slices,” which show cross sections across the search grid for fixed values of <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\sigma^{2}\)</span>.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="week-4-lab.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb242-2"><a href="week-4-lab.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mu.test.values,likelihood.matrix[,max.element[<span class="dv">2</span>]],<span class="at">typ=</span><span class="st">&quot;b&quot;</span>)</span>
-<span id="cb242-3"><a href="week-4-lab.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sigma2.test.values,likelihood.matrix[max.element[<span class="dv">1</span>],],<span class="at">typ=</span><span class="st">&quot;b&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="week-4-lab.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb240-2"><a href="week-4-lab.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mu.test.values,likelihood.matrix[,max.element[<span class="dv">2</span>]],<span class="at">typ=</span><span class="st">&quot;b&quot;</span>)</span>
+<span id="cb240-3"><a href="week-4-lab.html#cb240-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sigma2.test.values,likelihood.matrix[max.element[<span class="dv">1</span>],],<span class="at">typ=</span><span class="st">&quot;b&quot;</span>)</span></code></pre></div>
 <p><img src="Week-4-lab_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Notice how the likelihood curve for <span class="math inline">\(\sigma^{2}\)</span> is not symmetric. While a horizontal line drawn at some higher value (which represents the likelihood of an alternative hypothesis) yields a fairly symmetric confidence interval for <span class="math inline">\(\mu\)</span>, the assymetry of the likelihood surface yields a highly assymetric confidence interval for <span class="math inline">\(\sigma^{2}\)</span>. Confidence intervals do not have to be symmetric! <strong>However</strong>, immediately in the vicinity of the minimum, the likelihood surface <strong>is</strong> approximately quadratic and symmetric. We will come back to this in a second.</p>
 <p>In this case, the bivariate likelihood surface shows no correlation between <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^{2}\)</span>, but this is not always the case. Sometimes you get strong correlations among parameter estimates and get diagonal “ridges” in parameter space. In this case, it is important to distinguish between the likelihood profile and likellihood slices. (see Bolker!) The likelihood surface need not even have a single maximum; there could be several peaks which makes it difficult to define the MLE or its confidence intervals. If there are strong tradeoffs between parameter values, it is often better to discuss the MLEs in terms of a confidence region, which is the envelop of parameter space that you are [insert confidence limit here] percent certain contains the true combination of population parameter values.</p>
 <p>R has a function ‘optim’ which optimizes functions (and is thus much better than a simple grid search ‘brute force’ approach we just did) and is very handy for minimizing the LL. We take advantage of the R function that gives us the probability density function, which saves us having to hard code that into R. Make sure the use of ‘dnorm’ in the code below makes sense!</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="week-4-lab.html#cb243-1" aria-hidden="true" tabindex="-1"></a>neg.ll.v2<span class="ot">&lt;-</span><span class="cf">function</span>(x,params)</span>
-<span id="cb243-2"><a href="week-4-lab.html#cb243-2" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb243-3"><a href="week-4-lab.html#cb243-3" aria-hidden="true" tabindex="-1"></a>mu<span class="ot">=</span>params[<span class="dv">1</span>]</span>
-<span id="cb243-4"><a href="week-4-lab.html#cb243-4" aria-hidden="true" tabindex="-1"></a>sigma<span class="ot">=</span>params[<span class="dv">2</span>]</span>
-<span id="cb243-5"><a href="week-4-lab.html#cb243-5" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(x,<span class="at">mean=</span>mu,<span class="at">sd=</span>sigma,<span class="at">log=</span><span class="cn">TRUE</span>))</span>
-<span id="cb243-6"><a href="week-4-lab.html#cb243-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="week-4-lab.html#cb241-1" aria-hidden="true" tabindex="-1"></a>neg.ll.v2<span class="ot">&lt;-</span><span class="cf">function</span>(x,params)</span>
+<span id="cb241-2"><a href="week-4-lab.html#cb241-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb241-3"><a href="week-4-lab.html#cb241-3" aria-hidden="true" tabindex="-1"></a>mu<span class="ot">=</span>params[<span class="dv">1</span>]</span>
+<span id="cb241-4"><a href="week-4-lab.html#cb241-4" aria-hidden="true" tabindex="-1"></a>sigma<span class="ot">=</span>params[<span class="dv">2</span>]</span>
+<span id="cb241-5"><a href="week-4-lab.html#cb241-5" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(x,<span class="at">mean=</span>mu,<span class="at">sd=</span>sigma,<span class="at">log=</span><span class="cn">TRUE</span>))</span>
+<span id="cb241-6"><a href="week-4-lab.html#cb241-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Notice that I used the “log-TRUE” option to take the log inside the dnorm command, which saves me taking it later. I also had to pass the parameters as one variable since that is what ‘optim’ is expecting. Take a second to convince yourself that the neg.ll and neg.ll.v2 functions give the same answer.</p>
 <p>We still need a way to maximize the log-likelihood and for this we use the function ‘optim’:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="week-4-lab.html#cb244-1" aria-hidden="true" tabindex="-1"></a>opt1<span class="ot">&lt;-</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="at">fn=</span>neg.ll.v2,<span class="at">x=</span>x)</span>
-<span id="cb244-2"><a href="week-4-lab.html#cb244-2" aria-hidden="true" tabindex="-1"></a>opt1</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="week-4-lab.html#cb242-1" aria-hidden="true" tabindex="-1"></a>opt1<span class="ot">&lt;-</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),<span class="at">fn=</span>neg.ll.v2,<span class="at">x=</span>x)</span>
+<span id="cb242-2"><a href="week-4-lab.html#cb242-2" aria-hidden="true" tabindex="-1"></a>opt1</span></code></pre></div>
 <pre><code>## $par
-## [1] 0.9662468 2.0045356
+## [1] 1.025766 2.016815
 ## 
 ## $value
-## [1] 2114.356
+## [1] 2120.438
 ## 
 ## $counts
 ## function gradient 
-##       57       NA 
+##       77       NA 
 ## 
 ## $convergence
 ## [1] 0
@@ -574,11 +574,11 @@ n-\frac{1}{\hat{A}}\sum_{i}\left((X_{i}-\mu)^{2}\right)=0
 ## $message
 ## NULL</code></pre>
 <p>An even easier way is to use the ‘fitdistr’ command we already learned about, but the ‘optim’ function comes in handy all the time and is the only option you have when fitting non-tranditional distributions not covered by ‘fitdistr.’</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="week-4-lab.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb246-2"><a href="week-4-lab.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fitdistr</span>(x,<span class="st">&quot;normal&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="week-4-lab.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb244-2"><a href="week-4-lab.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fitdistr</span>(x,<span class="st">&quot;normal&quot;</span>)</span></code></pre></div>
 <pre><code>##       mean          sd    
-##   0.96651082   2.00454519 
-##  (0.06338928) (0.04482299)</code></pre>
+##   1.02571063   2.01677393 
+##  (0.06377599) (0.04509644)</code></pre>
 <p>Notice that this function outputs the SE as well, whereas our function and ‘optim’ only give the MLE.</p>
 <p>The likelihood is a relative concept that only makes sense relative to other possible datasets. The absolute magnitude depends on the “sample space” of the data and sometimes even the maximum likelihood is a very small value. So all we can do is compare relative likelihoods.</p>
 <p>We now know how to use maximum likelihood to calculate the “best” parameter value (in the sense that it is the parameter value that maximizes the likelihood, or minimizes the negative log-likelihood.) But we know that parameter estimates by themselves are useless. We need to somehow calculate the uncertainty in our maximum likelihood estimate, i.e. the confidence interval.</p>
@@ -589,7 +589,7 @@ n-\frac{1}{\hat{A}}\sum_{i}\left((X_{i}-\mu)^{2}\right)=0
 \]</span></p>
 <p>where <span class="math inline">\(r\)</span> is the number of “constrained” parameters for the smaller model. So if I compare a model where <span class="math inline">\(\theta\)</span> is allowed to vary (the original model) to one in which I fix <span class="math inline">\(\theta\)</span> arbitrarily (somewhere higher on the NLL surface), then the likelihood ratio (<span class="math inline">\(\times\)</span> -2) follows a <span class="math inline">\(\chi^{2}_{1}\)</span>.</p>
 <p>Therefore, we can set a cut-off for the difference in log-likelihoods based on the 95th percentile of the <span class="math inline">\(\chi^{2}\)</span> distribution.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="week-4-lab.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qchisq</span>(<span class="fl">0.95</span>,<span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="week-4-lab.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qchisq</span>(<span class="fl">0.95</span>,<span class="dv">1</span>)<span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 1.920729</code></pre>
 <p>which equals 1.92 log-likelihood units if you are looking at only one parameter to be estimated. Therefore, if we have only one parameter, then we simply calculate the NLL over a range of parameter values, and find the CIs representing those parameter estimates which have &lt;1.92 increase in NLL from the MLE.</p>
 <p>You will explore this more in the problem set. There is also more discussion of this in Bolker’s Chapter #6.</p>

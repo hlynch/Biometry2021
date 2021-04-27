@@ -66,7 +66,7 @@ pairs(cbind(altitude,log(distance),log(NoOfPools),NoOfSites,avrain,meanmin,meanm
 
 Let's fit a GLM with all the variables.
 
-Why a GLM? Because the response variable is binary 0/1.
+**<span style="color: green;">Checkpoint #1: Why a GLM?</span>** <span style="color: white;">Because the response variable is binary 0/1.</span>
 
 
 ```r
@@ -125,7 +125,7 @@ vif(frogs.glm0)
 ##      29.319704     996.949239
 ```
 
-It appears that the variances for altitude and meanmax are inflated. Why?
+It appears that the variances for altitude and meanmax are inflated. **<span style="color: green;">Checkpoint #2: Why?</span>**
 
 Plot the data:
 
@@ -255,9 +255,9 @@ as.numeric(1-pchisq(test.stat,df=1))
 ## [1] 0.863834
 ```
 
-Question: How do we interpret that p-value?
+**<span style="color: green;">Checkpoint #3: How do we interpret that p-value?</span>**
 
-Answer: This p-value is the probability that the larger model fits the data better only by the amount expected by its additional degree of freedom. In this case, we can not reject the null hypothesis that the two models are equivalent, and so we would prefer the smaller model on the basis of parsimony.
+<span style="color: white;">Answer: This p-value is the probability that the larger model fits the data better only by the amount expected by its additional degree of freedom. In this case, we can not reject the null hypothesis that the two models are equivalent, and so we would prefer the smaller model on the basis of parsimony.</span>
 
 We can actually get R to do the LRT automatically using the 'lrtest' function in the 'lmtest' package.
 
@@ -379,7 +379,9 @@ BIC(frogs.glm1)
 ## [1] 235.1504
 ```
 
-Exercise: Work in groups to find a small set (3-5) of candidate models, calculate the AIC for each of these models, and calculate model weights.
+As a group, find a small set (3-5) of candidate models, calculate the AIC for each of these models, and calculate model weights.
+
+**<span style="color: green;">Checkpoint #4: What covariates were in the best performing model (among the ones you tried as a group) and what was its model weight?</span>**
 
 Model selection via step-wise regression
 --------------------
@@ -1060,7 +1062,7 @@ plot(MaxLifespan~Gestation)
 
 <img src="Week-13-lab_files/figure-html/unnamed-chunk-22-6.png" width="672" />
 
-Note that most of the covariates need to be transformed to linearize the relationship. The easiest transformation to try is the log() - the covariates that should probably be transformed relate to mass and time periods: Mass, Gestation, Newborn,Weaning,WeanMass,AFR,LittersPerYear (possible, not clear what the best transmation is for this). In other words, look at:
+Note that most of the covariates need to be transformed to linearize the relationship. The easiest transformation to try is the log() - the covariates that should probably be transformed relate to mass and time periods: Mass, Gestation, Newborn, Weaning, WeanMass, AFR, LittersPerYear (possible, not clear what the best transmation is for this). In other words, look at:
 
 
 ```r

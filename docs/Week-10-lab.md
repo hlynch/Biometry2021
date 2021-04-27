@@ -523,7 +523,7 @@ dev_diff
 ```
 
 ```
-## [1] 0.01049808
+## [1] 0.4655019
 ```
 
 Notice that even though the covariate that we added is just noise, it still decreases the deviance.
@@ -549,6 +549,10 @@ for (i in 1:1000){
   
   dev_diff <- c(dev_diff, dev_diff_rand)
 }
+```
+
+```
+## Warning: glm.fit: algorithm did not converge
 ```
 
 ```
