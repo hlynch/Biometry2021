@@ -40,13 +40,13 @@ c. Linear pattern in the residuals, the errors are not independent
 d. Nonlinear pattern in the residuals (consider transforming data or fitting the predictor quadratically).
 
 
-##Residuals
+## Residuals
 
 In linear regression, an outlier is an observation with a **large residual**. In other words, it is an observation whose dependent-variable value is unusual given its value on the predictor variables. An outlier may indicate a sample peculiarity, a data entry error, or other problem.
 
 <img src="Week-13-lecture_files/figure-html/unnamed-chunk-3-1.png" width="480" />
 
-##Leverage
+## Leverage
 
 An observation with an extreme value for a **predictor variable/independent variable/covariate** (often $X$) is a point with high leverage. Leverage for a point is high when $(X - \bar{X})^2$ is large. X-values further from $\bar{X}$ influence $\hat{Y}_i$ more than those close to $\bar{X}$. High leverage points may have a large effect on the estimate of regression coefficients.
 
@@ -54,7 +54,7 @@ The leverage of the $i^{\text{th}}$ point is called $h_{ii}$ (the $i^{\text{th}}
 
 Average leverage is considered to be equal to $p / n$, or the number of parameters divided by the sample size. Twice the average leverage is considered high.
 
-##Influence
+## Influence
 
 An observation is said to be influential if removing the observation substantially changes the estimate of the regression coefficients. Influence can be thought of as the **product of leverage and outlierness**.
 
@@ -64,17 +64,13 @@ $$
 \text{Influence} \propto \hat{\beta} - \hat{\beta}_{-i}
 $$
 
-##Comparing residuals, leverage, and influence
+## Comparing residuals, leverage, and influence
 
 <img src="Week-13-lecture_files/figure-html/unnamed-chunk-4-1.png" width="576" />
 
 The red and the blue points have large residuals.
 
-<img src="Week-13-lecture_files/figure-html/unnamed-chunk-5-1.png" width="576" />
-
-Here, the red and the green points have high leverage (large X values).
-
-<img src="Week-13-lecture_files/figure-html/unnamed-chunk-6-1.png" width="576" />
+The red and the green points have high leverage (large X values).
 
 Only the red point here has high influence. Note that in your own work you would support these claims with statistics (which we will go over next).
 
@@ -99,7 +95,7 @@ Are the residuals normally distributed? Histogram the residuals. They should be 
 hist(web.fit$residuals)
 ```
 
-<img src="Week-13-lecture_files/figure-html/unnamed-chunk-7-1.png" width="480" />
+<img src="Week-13-lecture_files/figure-html/unnamed-chunk-5-1.png" width="480" />
 
 Are the residuals normally distributed? Look at a Q-Q plot comparing the quantiles of the residuals against the quantiles of the distribution we expect them to match (usually normal).
 
@@ -108,7 +104,7 @@ Are the residuals normally distributed? Look at a Q-Q plot comparing the quantil
 plot(web.fit, which = 2)
 ```
 
-<img src="Week-13-lecture_files/figure-html/unnamed-chunk-8-1.png" width="480" />
+<img src="Week-13-lecture_files/figure-html/unnamed-chunk-6-1.png" width="480" />
 
 Are the residuals independent and homoscedasctic? Plot the residuals vs. the fitted values. The residuals should be uncorrelated with the fitted values and the variance of the residuals should not change as a function of the fitted values. 
 
@@ -117,7 +113,7 @@ Are the residuals independent and homoscedasctic? Plot the residuals vs. the fit
 plot(web.fit, which = 1)
 ```
 
-<img src="Week-13-lecture_files/figure-html/unnamed-chunk-9-1.png" width="384" />
+<img src="Week-13-lecture_files/figure-html/unnamed-chunk-7-1.png" width="384" />
 
 Are the residuals normally distributed? We can formally check the residuals are normally distributed using the Kolmogorov-Smirnov test (null hypothesis is that the two vectors come from the same distribution). In this case, we would check against a normal distribution with mean of 0 and standard deviation of $\sigma$ from the regression.
 
@@ -144,6 +140,8 @@ We have insufficient evidence to reject the null hypothesis that the residuals a
 </span>
 </details>
 
+<p>&nbsp;</p>
+
 Are the residuals independent? Use the Durbin-Watson test, where the null hypothesis is that there is no correlation among residuals. If errors are correlated, we cannot assume that our errors are independent (an assumption of regression). These kind of correlations may be temporal or spatial, and can be controlled for with different modeling approaches. See Zuur et al. (2010) "Step 8" for details on how to deal with correlated errors.
 
 $$d = \frac{\sum_{i = 2}^n (\epsilon_i - \epsilon_{i - 1})^2}{\sum_{i = 1}^n (\epsilon_i)^2}$$
@@ -156,7 +154,7 @@ durbinWatsonTest(web.fit)
 
 ```
 ##  lag Autocorrelation D-W Statistic p-value
-##    1     -0.03369874      2.059546   0.956
+##    1     -0.03369874      2.059546   0.988
 ##  Alternative hypothesis: rho != 0
 ```
 
@@ -169,9 +167,20 @@ We have insufficient evidence to reject the null hypothesis that the residuals a
 </span>
 </details>
 
+<p>&nbsp;</p>
+
 Also be sure to look for outliers and points with high influence. There are a couple of ways you can determine if a point really is an outlier. We will use the Duncan regression to assess outliers, `Duncan.fit`.
 
-What do you do with an outlier? Don't remove it unless you can verifiably say it was recorded or measured in error.
+What do you do with an outlier? 
+
+Well...
+
+<div class="figure" style="text-align: center">
+<img src="Outlier_cartoon.png" alt="One possible solution to outliers. (No!! Just kidding!! Do not do this.) Source: John Fox, Regression Diagnostics (1991)" width="25%" />
+<p class="caption">(\#fig:unnamed-chunk-10)One possible solution to outliers. (No!! Just kidding!! Do not do this.) Source: John Fox, Regression Diagnostics (1991)</p>
+</div>
+
+Don't remove it unless you can verifiably say it was recorded or measured in error.
 
 1. Present the model with and without outliers, providing an explanation for the outliers (is there a potential unmeasured covariate that could explain the outlier?)
 
@@ -236,7 +245,7 @@ crab.glm <- glm(satell ~ width,  family = "poisson", data = crabs)
 plot(crab.glm, which = 1)
 ```
 
-<img src="Week-13-lecture_files/figure-html/unnamed-chunk-14-1.png" width="384" />
+<img src="Week-13-lecture_files/figure-html/unnamed-chunk-13-1.png" width="384" />
 
 
 ```r
@@ -244,7 +253,7 @@ crab.glm <- glm(satell ~ width,  family = "poisson", data = crabs)
 plot(crab.glm, which = 2)
 ```
 
-<img src="Week-13-lecture_files/figure-html/unnamed-chunk-15-1.png" width="384" />
+<img src="Week-13-lecture_files/figure-html/unnamed-chunk-14-1.png" width="384" />
 
 
 ```r
@@ -252,7 +261,7 @@ crab.glm <- glm(satell ~ width,  family = "poisson", data = crabs)
 plot(crab.glm, which = 5)
 ```
 
-<img src="Week-13-lecture_files/figure-html/unnamed-chunk-16-1.png" width="384" />
+<img src="Week-13-lecture_files/figure-html/unnamed-chunk-15-1.png" width="384" />
 
 
 ## Model selection vs. model criticism
@@ -314,7 +323,7 @@ If we are generating models to test mechanisms, we can use the following three c
 
 The likelihood ratio test is one way of comparing two nested models. Before we get into the details of the LRT, let's review for a second what we mean by *nested*.
 
-###Nested or not?
+### Nested or not?
 
 **Question: Are these models nested?**
 
@@ -330,6 +339,8 @@ No, neither model is a subset of the other
 </span>
 </details>
 
+<p>&nbsp;</p>
+
 **Question: What about these models?**
 
 $$
@@ -343,6 +354,8 @@ $$
 Yes, the second model is a subset of the first model
 </span>
 </details>
+
+<p>&nbsp;</p>
 
 Note that this usage of "nested" is completely different from the way we used it with nested ANOVAs.
 
@@ -359,6 +372,8 @@ Nested. The second model is equal to the first model with $b = 0$.
 </span>
 </details>
 
+<p>&nbsp;</p>
+
 **Question: Nested?**
 
 $$
@@ -371,6 +386,8 @@ $$
 Nested. The second model is equal to the first model with $c = 0$.
 </span>
 </details>
+
+<p>&nbsp;</p>
 
 **Question: Nested?**
 
@@ -385,6 +402,8 @@ $$
 Nested. The second model is equal to the first model with $\gamma = 1$. This model is called the Ricker model (top model is the usual form and the bottom model is the generalized version). It's used in ecology to model the abundance of animal populations with density dependence.
 </span>
 </details>
+
+<p>&nbsp;</p>
 
 ### Likelihood Ratio Test (LRT)
 
@@ -419,6 +438,8 @@ $\beta_0$, $\beta_1$, and $\sigma$
 </span>
 </details>
 
+<p>&nbsp;</p>
+
 **Question: What are the parameters in a linear model with one categorical predictor (which has four levels)?**
 
 <details>
@@ -427,6 +448,8 @@ $\beta_0$, $\beta_1$, and $\sigma$
 $\mu$, $\alpha_1$, $\alpha_2$, $\alpha_3$ (depends on how you code the model, but there will be four parameters describing the mean behavior if the model is not overparameterized), and $\sigma$
 </span>
 </details>
+
+<p>&nbsp;</p>
 
 **Question: What are the parameters in a Poisson generalized linear model with one continuous predictor?**
 
@@ -438,6 +461,8 @@ $\mu$, $\alpha_1$, $\alpha_2$, $\alpha_3$ (depends on how you code the model, bu
 $\beta_0$ and $\beta_1$
 </span>
 </details>
+
+<p>&nbsp;</p>
 
 Remember the deviance difference from Week 10? Under the null hypothesis that the larger model fits no better than the smaller model, the deviance difference goes as a chi-square distribution.
 
@@ -455,6 +480,8 @@ The likelihood will always be larger for the larger model (more parameters = mor
 </span>
 </details>
 
+<p>&nbsp;</p>
+
 **Question: Will the deviance difference, D, be positive or negative?**
 
 <details>
@@ -463,6 +490,8 @@ The likelihood will always be larger for the larger model (more parameters = mor
 Because the likelihood will always be larger for the larger model, D will always be positive. This makes sense because the $\chi^2$ distribution is always positive.
 </span>
 </details>
+
+<p>&nbsp;</p>
 
 
 ```r
@@ -511,7 +540,7 @@ abline(v = Duncan.D, col = "dodgerblue2")
     text(x = Duncan.D + 6, y = 0.5, col = "dodgerblue2", labels = "Observed test stat.")
 ```
 
-<img src="Week-13-lecture_files/figure-html/unnamed-chunk-18-1.png" width="480" />
+<img src="Week-13-lecture_files/figure-html/unnamed-chunk-17-1.png" width="480" />
 
 **Question: How do we interpret the results of our likelihood ratio test?**
 
@@ -521,6 +550,8 @@ abline(v = Duncan.D, col = "dodgerblue2")
 The larger model explains significantly more variation in the data than we would expect.
 </span>
 </details>
+
+<p>&nbsp;</p>
 
 ### Akaike's Information Criterion (AIC)
 
@@ -562,6 +593,8 @@ The larger model.
 </span>
 </details>
 
+<p>&nbsp;</p>
+
 $$
 \mathrm{AIC} = -2 \ell + 2 k
 $$
@@ -600,6 +633,8 @@ The larger model.
 </span>
 </details>
 
+<p>&nbsp;</p>
+
 We can calculate the AIC of all possible candidate models and compare by calculating the difference in AIC between model *i* and the AIC of the best candidate model:
 
 $$
@@ -622,6 +657,8 @@ $\Delta \mathrm{AIC} > 10$ are definitely different
 Yes, $\Delta \mathrm{AIC} > 10$.
 </span>
 </details>
+
+<p>&nbsp;</p>
 
 ### Bayesian Information Criterion (BIC)
 
@@ -656,6 +693,8 @@ $$
 The larger model.
 </span>
 </details>
+
+<p>&nbsp;</p>
 
 The penalty for BIC is different than for AIC. For AIC, the probability of Type I error (in this case, choosing the larger model erroneously, that is, when the smaller model is the true model) depends on $k$ but does not depend on sample size. This means that as sample size goes to infinity, you still choose the larger model with some probability (the Type I error rate). When this happens, we say that an estimator is not “consistent”. The BIC corrects for this by increasing the penalty term as sample size, $n$, gets large. Proponents of BIC like that it tends to select simpler models (fewer parameters) relative to AIC, because it is a consistent estimator of model fit.
 
@@ -765,6 +804,7 @@ You need to also provide evidence of model explanatory power using metrics like 
 $$
 R^2 = \frac{\mathrm{SSR}}{\mathrm{SST}} = \frac{\sum_{i = 1}^n (Y_i - \hat{Y}_i)^2}{\sum_{i = 1}^n (Y_i - \bar{Y})^2}
 $$
+
 Which models to include in model selection?
 
 In many situations, you might have a large number of potential covariates to include in a model, all of which could have biological significance to your system. You have many choices to make as the investigator. You could:
@@ -810,6 +850,7 @@ If the goal is prediction, you can start with a wider set of candidate models, a
 $$
 r^{2} = \frac{SSR}{SST} = \frac{1-SSE}{SST} = \frac{1-\mbox{sum-of-squares error}}{\mbox{sum-of-squares total}}
 $$
+
 Going back to Week 9, we note that the sum-of-squares total is given by
 
 $$

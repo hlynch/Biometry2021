@@ -73,14 +73,14 @@ Today's Agenda
 5. Introduction to statistical inference
 
 
-##Basic Probability Theory
+## Basic Probability Theory
 
 Let's imagine that we have a bag with a mix of regular and peanut M&Ms. Each M&M has two traits: Color and Type.
 
 $$ \sum_{all \: colors} P(color) = 1 $$
 $$ \sum_{all \: types} P(types) = ? $$
 
-###Intersection
+### Intersection
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Red shading represents the intersection. Source: Wikimedia Commons', out.width='25%'}
 knitr::include_graphics('inter.png')
@@ -92,7 +92,7 @@ $$ P(Green \: AND \:  Peanut) = P(Green \cap Peanut) = P(Green) \cdot P(Peanut) 
 
 This is called a Joint Probability and we usually write it as $P(Green,Peanut)$. *This only works if these two traits are independent of one another.* If color and type were not independent of one another, we would have to calculate the joint probability differently, but in the vast majority of cases we are working with data that we assuming are independent of one another. In these cases, the joint probability is simply the product of all the individual probabilities.
 
-###Union
+### Union
 
 ```{r echo=FALSE, fig.align='center', fig.cap='Red shading represents the union. Source: Wikimedia Commons', out.width='25%'}
 knitr::include_graphics('union.png')
@@ -112,7 +112,7 @@ P(Green \: OR \: Peanut) &= P(Green \cup Peanut) \\
 </span>
 </details> 
 
-###Complement:
+### Complement:
 
 The complement of a trait represents everything that does *not* have that trait.
 
@@ -123,7 +123,7 @@ knitr::include_graphics('comp.png')
 $$ P(Green^c) = 1 - P(Green)  $$
 
 
-##Multiple events
+## Multiple events
 
 Let's consider what happens when we pull 2 M&Ms out of the bag
 
@@ -138,14 +138,14 @@ $$ P (Green \: AND \: THEN \: Blue) = P(Green) \cdot P(Blue) $$
 </span>
 </details> 
 
-##Conditionals
+## Conditionals
 
 $$ P(A \mid B) = P(A \: conditional \: on \: B) $$
 
 $$ \begin{align*}  P(A,B) = P(A \cap B) &= P(A \mid B) \cdot P(B) \\
 &= P(B \mid A) \cdot P(A) \end{align*} $$
 
-##Bayes Theorem
+## Bayes Theorem
 
 $$ P(A \mid B) \cdot P(B) = P(B \mid A) \cdot P(A) $$
 
@@ -157,7 +157,7 @@ $$ P(parameters \mid data) \cdot P(data) = P(data \mid parameters) \cdot P(param
 
 $$ P(parameters \mid data) = \frac{P(data \mid parameters) \cdot P(parameters)}{P(data)}$$
 
-##A few foundational ideas
+## A few foundational ideas
 
 There are a few statistics (a *statistic* is just something calculated from data) that we will need to know right at the beginning.
 
@@ -232,12 +232,12 @@ What can you ask of a distribution?
 Note that the CDF is the integration of the PDF, and the PDF is the derivative of the CDF, so if you have one of these you can always get the other. Likewise, you can always get from the quantiles to the CDF (and then to the PDF). These three things are all equally informative about the shape of the distribution.
 
 
-###Expected Value of a Random Variable
+### Expected Value of a Random Variable
 
 In probability theory the expected value of a random variable is the weighted average of all possible values that this random variable can take on. The weights used in computing this average correspond to the probabilities in case of a discrete random variable, or densities in case of continious random variable.
 
 
-###Discrete Case
+### Discrete Case
 
 $$ X = \{X_1, X_2,...,X_k\} \\
 E[X] = \sum_{i=1}^n{X_i \cdot P(X_i)}$$
@@ -247,13 +247,13 @@ E[X] = \sum_{i=1}^n{X_i \cdot P(X_i)}$$
 $$ \begin{align*} E[X] &= (0.1 \cdot 1) + (0.1 \cdot 2) + (0.1 \cdot 3) + (0.1 \cdot 4) + (0.6 \cdot 5) \\ &=4 \end{align*}$$
 
 
-###Continuous Case
+### Continuous Case
 
 $$ E[X] = \int_{-\infty}^{\infty}{X \cdot f(X)dX}$$
 
 Note that the function $f(x)$ in the above equation is the probability density function.
 
-##A Brief Introduction to Scientific Method 
+## A Brief Introduction to Scientific Method 
 
 INDUCTIVE reasoning:
 
