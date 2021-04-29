@@ -475,7 +475,7 @@ And the third and fourth columns of our ANOVA table can be filled in:
 | Source of variation | SS        | DOF       | MS        | F         | *P*       |
 | ------------------- |:---------:|:---------:|:---------:|:---------:|:---------:|
 | Among groups | $\sum^a_{i = 1} \sum^n_{j = 1} (\bar{Y}_{i} - \bar{Y})^2 = 22.17$ | $a - 1 = 2$ | $\frac{\text{SS}_{\text{among groups}}}{\text{DOF}_{\text{among groups}}} = 11.08$ | $\frac{\text{MS}_{\text{among groups}}}{\text{MS}_{\text{within groups}}} = 5.11$ | |
-| Within groups | $\sum^a_{i = 1} \sum^n_{j = 1} (Y_{ij} - \bar{Y}_i)^2 = 19.50$ | $a \times n = 9$ | $\frac{\text{SS}_{\text{within groups}}}{\text{DOF}_{\text{within groups}}} = 2.17$ | | |
+| Within groups | $\sum^a_{i = 1} \sum^n_{j = 1} (Y_{ij} - \bar{Y}_i)^2 = 19.50$ | $(a \times n) - a = 9$ | $\frac{\text{SS}_{\text{within groups}}}{\text{DOF}_{\text{within groups}}} = 2.17$ | | |
 | Total | $\sum^a_{i = 1} \sum^n_{j = 1} (Y_{ij} - \bar{Y})^2 = 41.67$ | $a \times n - 1 = 11$ | | | |
 
 We now test whether the F ratio (our test statistic) is significant given its distribution under the null hypothesis. The distribution of test statistic $F$ under the null hypothesis is $F | H_0 \sim F_{\text{DOF}_{\text{among}}, \text{DOF}_{\text{within}}}$.
