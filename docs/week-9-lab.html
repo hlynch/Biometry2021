@@ -563,18 +563,18 @@ P(tanh(z-\frac{t_{[1-\alpha/2](\infty)}}{\sqrt{n-3}})\leq \rho \leq tanh(z+\frac
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -14.3074  -4.1354  -0.6852   4.7717  22.7457 
+## -15.8988  -6.3365   0.9503   5.1240  19.1922 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   8.8738     3.4225   2.593    0.015 *  
-## X            -2.5740     0.1928 -13.352 1.15e-13 ***
+## (Intercept)  -1.0702     3.4019  -0.315    0.755    
+## X            -2.2146     0.1916 -11.557  3.6e-12 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 9.139 on 28 degrees of freedom
-## Multiple R-squared:  0.8643,	Adjusted R-squared:  0.8594 
-## F-statistic: 178.3 on 1 and 28 DF,  p-value: 1.153e-13</code></pre>
+## Residual standard error: 9.085 on 28 degrees of freedom
+## Multiple R-squared:  0.8267,	Adjusted R-squared:  0.8205 
+## F-statistic: 133.6 on 1 and 28 DF,  p-value: 3.6e-12</code></pre>
 <p>Copy this script into R and r-run it several times. Notice how the estimates for slope and intercept bounce around, but they should be correct <em>on average</em> and also the scale of variation from one run to the next should make sense given the estimate of the standard error. (Their standard deviation should be the standard error.) Notice also how the residual standard error is equal (within sampling error) to the sigma that you put into the model, and that as you increase sigma, the R2 goes down because now you are increasing the variation that is <em>not</em> explained by the covariate. Try changing the number of samples drawn, either by extending the vector of the covariates or by drawing multiple times for each value (you will have to modify the code to make this latter change work). Notice how the standard errors on the intercept and slope coefficients gets smaller as the data set gets larger but the estimate for sigma does not. The parameter sigma is a property of the underlying population, not a property of the sample drawn, so it does not get smaller as you increase the number of samples in the dataset. (If this does not make sense, ask me!)</p>
 <p><strong>Fitting real data</strong></p>
 <p>Now that we’ve gained some intuition, we can dive into fitting a real dataset. The syntax of ‘lm’ is straightforward. We will run through some examples using a dataset on Old Faithful eruptions. The dataset is built into the MASS library, so we just have to load it.</p>
@@ -890,8 +890,8 @@ SSE = \sum^{n}_{i=1}w_{i}(Y_{i}-\hat{Y}_{i})^{2}
 ## 
 ## Bootstrap Statistics :
 ##      original       bias    std. error
-## t1* 6.3002197  0.197771531  4.59861250
-## t2* 0.6615263 -0.006488749  0.07425391</code></pre>
+## t1* 6.3002197  0.306895255  4.72874590
+## t2* 0.6615263 -0.007733257  0.07723763</code></pre>
 <p><strong><span style="color: green;">Checkpoint #5: How would we know if the bias is significant (i.e., how would we calculate the standard error of the bias)?</span></strong></p>
 </div>
 <div id="type-i-vs.-type-ii-regression-the-smatr-package" class="section level2" number="17.6">

@@ -46,13 +46,13 @@ t.test(sample.a,sample.b)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -0.69278, df = 197.14, p-value = 0.4893
+## t = 1.9448, df = 197.8, p-value = 0.05321
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.5992757  0.2876896
+##  -0.006789286  0.978235373
 ## sample estimates:
 ## mean of x mean of y 
-##  1.169144  1.324937
+## 1.3342593 0.8485363
 ```
 
 Notice that the degrees of freedom need not necessarily be an integer. R assumes unequal variances so we have to use the more complicated formula for the degrees of freedom. (In this situation, the number of degrees of freedom is not very intuitive; however, if you have $s_{A}^{2}=s_{B}^{2}$ and $n_{A}=n_{B}$, then the formula for the d.o.f. simplifies to 2n-2 which is what you would expect. )
@@ -92,13 +92,13 @@ t.test(sample.a,sample.b,alternative="greater")
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -0.69278, df = 197.14, p-value = 0.7554
+## t = 1.9448, df = 197.8, p-value = 0.02661
 ## alternative hypothesis: true difference in means is greater than 0
 ## 95 percent confidence interval:
-##  -0.527437       Inf
+##  0.07298954        Inf
 ## sample estimates:
 ## mean of x mean of y 
-##  1.169144  1.324937
+## 1.3342593 0.8485363
 ```
 
 ```r
@@ -110,13 +110,13 @@ t.test(sample.a,sample.b,alternative="less")
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -0.69278, df = 197.14, p-value = 0.2446
+## t = 1.9448, df = 197.8, p-value = 0.9734
 ## alternative hypothesis: true difference in means is less than 0
 ## 95 percent confidence interval:
-##       -Inf 0.2158509
+##       -Inf 0.8984565
 ## sample estimates:
 ## mean of x mean of y 
-##  1.169144  1.324937
+## 1.3342593 0.8485363
 ```
 
 Try both of these options and see how the p-value and the confidence intervals change. Make sure you understand why they make sense. Remember, if you are going to use a one-tailed test, you should be prepared to accept that a large difference opposite to what was expected is pure random chance.
@@ -147,13 +147,13 @@ t.test(sample.a,sample.b,paired=T)
 ## 	Paired t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -1.9347, df = 99, p-value = 0.05589
+## t = -2.574, df = 99, p-value = 0.01153
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.556830174  0.007040443
+##  -0.5960254 -0.0771219
 ## sample estimates:
 ## mean of the differences 
-##              -0.2748949
+##              -0.3365737
 ```
 
 Compare this with
@@ -168,13 +168,13 @@ t.test(sample.a,sample.b,paired=F)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -1.1139, df = 195.34, p-value = 0.2667
+## t = -1.4105, df = 197.72, p-value = 0.16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.7615910  0.2118012
+##  -0.8071424  0.1339951
 ## sample estimates:
 ## mean of x mean of y 
-## 0.9024487 1.1773436
+##  1.186293  1.522867
 ```
 
 which is the same as 
@@ -189,13 +189,13 @@ t.test(sample.a,sample.b)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  sample.a and sample.b
-## t = -1.1139, df = 195.34, p-value = 0.2667
+## t = -1.4105, df = 197.72, p-value = 0.16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -0.7615910  0.2118012
+##  -0.8071424  0.1339951
 ## sample estimates:
 ## mean of x mean of y 
-## 0.9024487 1.1773436
+##  1.186293  1.522867
 ```
 
 since the default is to assume unpaired samples.
@@ -209,7 +209,7 @@ mean(z)
 ```
 
 ```
-## [1] -0.2748949
+## [1] -0.3365737
 ```
 
 ```r
@@ -217,7 +217,7 @@ var(z)
 ```
 
 ```
-## [1] 2.018927
+## [1] 1.709759
 ```
 
 ```r
@@ -225,7 +225,7 @@ var(sample.a)+var(sample.b)-2*cov(sample.a,sample.b)
 ```
 
 ```
-## [1] 2.018927
+## [1] 1.709759
 ```
 
 Spend some time going back and experimenting with different sets of random variables. In particular, change the covariances (makign sure that the covariance matrix is symmetric and the variances positive). Make sure you understand why the t-test results change as you alter the data. **<span style="color: green;">Checkpoint #3: What happens to the t-test results when you make the correlation weak?</span>**
@@ -314,7 +314,7 @@ F.ratio
 ```
 
 ```
-## [1] 1.644539
+## [1] 2.369346
 ```
 
 Note that we didn't check that var.A was actually bigger than var.B. Because we are only interested in a one-tailed test, we want var.A in the numerator and we will compare that to the right-hand side of the F-distribution.
@@ -340,7 +340,7 @@ We see that the F-ratio for our data is greater than the critical value for the 
 ```
 
 ```
-## [1] 0.007023273
+## [1] 1.237475e-05
 ```
 
 and we see that it is small (<0.05).
@@ -359,13 +359,13 @@ var.test(sample.a,sample.b)
 ## 	F test to compare two variances
 ## 
 ## data:  sample.a and sample.b
-## F = 1.6445, num df = 99, denom df = 99, p-value = 0.01405
+## F = 2.3693, num df = 99, denom df = 99, p-value = 2.475e-05
 ## alternative hypothesis: true ratio of variances is not equal to 1
 ## 95 percent confidence interval:
-##  1.106515 2.444170
+##  1.594195 3.521402
 ## sample estimates:
 ## ratio of variances 
-##           1.644539
+##           2.369346
 ```
 
 The output of var.test includes 7 quantities - make sure you can calculate each and every one of these quantities.
@@ -380,7 +380,7 @@ qf(0.025,df1=99,df2=99)*F.ratio
 ```
 
 ```
-## [1] 1.106515
+## [1] 1.594195
 ```
 
 ```r
@@ -388,7 +388,7 @@ qf(0.975,df1=99,df2=99)*F.ratio
 ```
 
 ```
-## [1] 2.44417
+## [1] 3.521402
 ```
 
 Comparing two proportions
@@ -606,7 +606,7 @@ sum(as.numeric((0.02<=UL)&(0.02>=LL)))/1000 #proportion of times the CI include 
 ```
 
 ```
-## [1] 0.851
+## [1] 0.879
 ```
 
 We see that the CIs are actually too narrow! The Wald test is commonly used but as we have demonstrated, it is not very good in practice. R and its packages make it easy to get better CIs for a binomial proportion and in real analysis, you should use these more sophisticated methods.
@@ -879,7 +879,7 @@ ks.test(x,y)
 ## 	Two-sample Kolmogorov-Smirnov test
 ## 
 ## data:  x and y
-## D = 0.48, p-value = 0.0002033
+## D = 0.56, p-value = 6.303e-06
 ## alternative hypothesis: two-sided
 ```
 
