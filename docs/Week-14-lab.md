@@ -12,7 +12,7 @@ There are a number of functions you could use in R to do principal components an
 
 
 ```r
-readings<-read.csv("~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lab/Readings 2020.csv",header=T)
+readings<-read.csv("~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lab/Readings 2021.csv",header=T)
 
 missing<-which(is.na(readings$Useful)|is.na(readings$Difficult)|is.na(readings$Interesting))
 Useful<-aggregate(readings$Useful[-missing], by=list(Index=readings$Index[-missing]),FUN=mean)$x
@@ -38,12 +38,12 @@ summary(pca.result)
 ```
 ## Importance of components:
 ##                           PC1    PC2    PC3
-## Standard deviation     1.0232 0.6395 0.4109
-## Proportion of Variance 0.6444 0.2517 0.1039
-## Cumulative Proportion  0.6444 0.8961 1.0000
+## Standard deviation     0.9084 0.5395 0.3891
+## Proportion of Variance 0.6510 0.2296 0.1194
+## Cumulative Proportion  0.6510 0.8806 1.0000
 ```
 
-We see that PCA1 is associated with over 64% of the variation in responses. So, what is PCA1?
+We see that PCA1 is associated with over 65% of the variation in responses. So, what is PCA1?
 
 
 ```r
@@ -51,13 +51,13 @@ pca.result$rotation
 ```
 
 ```
-##                     PC1        PC2        PC3
-## Useful      -0.63382221  0.4348484  0.6396689
-## Interesting -0.04763128  0.8034897 -0.5934101
-## Difficult   -0.77201079 -0.4065847 -0.4885573
+##                    PC1       PC2        PC3
+## Useful      -0.1571361 0.7179282  0.6781500
+## Interesting -0.6425818 0.4471147 -0.6222356
+## Difficult    0.7499312 0.5335425 -0.3910697
 ```
 
-PCA1 is an axis which describes papers that are Not Useful and not Difficult, with a very small weight towards papers that are not Interesting. In other words, a large positive PCA1 score would be associated with an Easy paper that was not Useful. Note that the principal components denote an axis, but the direction is arbitrary. Since no direction is implied by the sign, we do not interpret this as saying that most papers were Not Useful, Not Difficult, and Not Interesting. Instead we would say that the papers largely fall along a common axis in which Easy/Boring/Useless papers are at one end, and Difficult/Interesting/Useful papers are at the other end. (Obviously, the goal is to weed out the former in favor of the latter over time.)
+PCA1 is an axis which describes papers that are Less Interesting and More Difficult, with a very small weight towards papers that are Less Useful. In other words, a large positive PCA1 score would be associated with an boring paper that was difficult to read. Note that the principal components denote an axis, but the direction is arbitrary. Since no direction is implied by the sign, we do not interpret this as saying that most papers were boring and difficult. Instead we would say that the papers largely fall along a common axis in which Interesting/Easy/Useful papers are at one end, and Boring/Difficult/Useless papers are at the other end. 
 
 We can visualize this using the function 'biplot'
 
@@ -68,9 +68,9 @@ biplot(pca.result)
 
 <img src="Week-14-lab_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
-Biplots take some getting used to, and when they have many more dimensions, they become increasingly difficult to interpret. However, papers high on PC1 are generally Easy but Not Useful and papers high on PC2 are generally Useful and Interesting but Not Difficult. 
+Biplots take some getting used to, and when they have many more dimensions, they become increasingly difficult to interpret. However, papers low on PC1 are generally Interesting and Easy and paper high on PC1 are generally Boring and Difficult. Papers low on PC2 are generally Boring and Easy and Useless and papers high on PC2 are generally Interesting and Difficult and Useful.
 
-So which papers came out as highly negative on the PC1 axis? Remember, these are the most "Useful" but "Difficult"?
+So which papers came out as highly positive on the PC2 axis? Remember, these are considered Useful and Interesting but also Difficult to read.
 
 
 ```r
@@ -81,71 +81,59 @@ readings[readings$Index==14,1][1]
 ## [1] "Shmueli (2010) To explain or predict? Statistical Science 25(3): 289-310."
 ```
 
-```r
-readings[readings$Index==16,1][1]
-```
-
-```
-## [1] "Hulbert, S. H. 1984. Pseudoreplication and the design of ecological field experiments. Ecological Monographs 54(2): 187-211."
-```
-
 Perhaps not surprising! 
 
 You can play around with this yourself and see why I added the [1] at the end. When I pull out the rows with the Index identified by the PCA, I get the list of all entries (since we had >1 team rating the papers) and so I only print the first one.
 
-Which papers were highly positive on PC2? (Not Difficult but Interesting and Useful)
+Which papers were highly positive on PC1? (Difficult and Boring)
 
 
 ```r
-readings[readings$Index==1,1][1]
+readings[readings$Index==2,1][1]
 ```
 
 ```
-## [1] "Johnson, D.H. 1995. Statistical sirens: The allure of nonparametrics. Ecology 76(6): 1998-2000."
+## [1] "Bolker Chapter 6 (Posted on Bb)"
 ```
 
-```r
-readings[readings$Index==3,1][1]
-```
+Alas, poor Bolker! Bolker is often rated as boring and difficult. I keep him around because his thinking is so "spot on" and perhaps his style is an aquired taste.
 
-```
-## [1] "Johnson, D.H. 2002. The role of hypothesis testing in wildlife science. The Journal of Wildlife Management 66(2): 272-276."
-```
+These two papers are the only two stand outs this year. The other readings cluster together.
 
-```r
-readings[readings$Index==10,1][1]
-```
-
-```
-## [1] "Gawande (1999) The cancer cluster myth. The New Yorker."
-```
-
-There are two papers out at the end of Not Useful:
+One thing to keep in mind is that a PCA identifies *variation* in the dataset. It's worth putting these numbers in context of the overall means.
 
 
 ```r
-readings[readings$Index==12,1][1]
+mean(Useful)
 ```
 
 ```
-## [1] "Wainer, H. 1984. How to display data badly. The American Statistician 38(2): 137-147."
+## [1] 3.288542
 ```
 
 ```r
-readings[readings$Index==31,1][1]
+mean(Difficult)
 ```
 
 ```
-## [1] "Gelman, A. 2011. Open data and open methods. Chance 24(4): 51-53."
+## [1] 2.421354
 ```
 
-Both papers relate to the more general issues relating to data display and data reproducibility. I hope these ideas prove useful later, but I can understand why they don't seem as immediately useful to Biometry as some of the other readings we did.
+```r
+mean(Interesting)
+```
+
+```
+## [1] 3.223438
+```
+
+So the average reading scored pretty high for being Useful and Interesting and was rated of medium Difficulty.
 
 We can do the same for the problem sets:
 
 
 ```r
-PS<-read.csv("~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lab/ProblemSets 2020.csv",header=T)
+PS<-read.csv("~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lab/ProblemSets 2021.csv",header=T)
 
 # In this case there were no missing data
 Useful.means.PS<-aggregate(PS$Useful, by=list(Index=PS$Week),FUN=mean)$x
@@ -169,12 +157,12 @@ summary(pca.result)
 ```
 ## Importance of components:
 ##                           PC1    PC2     PC3
-## Standard deviation     0.7671 0.4910 0.23598
-## Proportion of Variance 0.6648 0.2723 0.06291
-## Cumulative Proportion  0.6648 0.9371 1.00000
+## Standard deviation     0.8288 0.7171 0.33638
+## Proportion of Variance 0.5226 0.3913 0.08609
+## Cumulative Proportion  0.5226 0.9139 1.00000
 ```
 
-We see that for the problem sets, PC1 is slightly more dominant (66% of the variation). So, what is PCA1?
+We see that for the problem sets, PC1 is even more dominant (83% of the variation). So, what is PCA1?
 
 
 ```r
@@ -182,13 +170,13 @@ pca.result$rotation
 ```
 
 ```
-##                             PC1        PC2         PC3
-## Useful.means.PS      -0.4563116 -0.7401567 -0.49391070
-## Interesting.means.PS -0.1706660 -0.4719635  0.86494138
-## Difficult.means.PS    0.8733000 -0.4789765 -0.08904282
+##                             PC1        PC2        PC3
+## Useful.means.PS      -0.5926091 -0.1695284  0.7874482
+## Interesting.means.PS -0.5122508 -0.6751269 -0.5308510
+## Difficult.means.PS    0.6216217 -0.7179581  0.3132453
 ```
 
-PC1 is dominated by "Difficult". A large positive PC1 score indicates a problem set that was difficult. PC2 is related primarily to whether a problem set was judged "Useful"" but also has strong weight divided nearly equally between "Interesting" and "Difficult" so positive PC2 values indicate "Not Useful" and "Not Interesting" but "Easy". (Reminder: the signs of the PCs is arbitrary, so R could have given us this same information flipped on its axis, and made positive PC2 values associated with "Useful" and "Interesting" and "Difficult".) Its a little hard to say in this case which quadrat we "want", but if "Useful" is the most important metric, than we want problem sets that are as far as possible in the lower left section of the biplot and we want to avoid problem sests in the far upper right corner.
+PC1 almost evenly combines all three factors, and the axis divides problem sets judged Useless/Boring/Difficult and those that are Useful/Interesting/Easy. (Reminder: the signs of the PCs is arbitrary, so the signs on the rotation could have all be flipped.) Looking across all the PC axes, we want papers that are low (negative) on PC1, low (negative) on PC2, and probably high (positive) on PC3.
 
 
 ```r
@@ -197,7 +185,36 @@ biplot(pca.result)
 
 <img src="Week-14-lab_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
-Luckily (for us all) nothing really stands out in the upper right corner. (Over the years, this exercise has eliminated the worst performing problem sets, so there are no major outliers anymore, though perhaps Week #12 [number 10 on the biplot] still needs some tweaking. Suggestions on all the problem sets most welcome.)
+Most of this is a scatter, but the problem set for Week 1 stands out in the upper right. Looking at the data, this is largely because the Week 1 problem set was the least interesting of all the problem sets.
+
+Again, looking at the means:
+
+
+```r
+mean(Useful.means.PS)
+```
+
+```
+## [1] 3.827273
+```
+
+```r
+mean(Difficult.means.PS)
+```
+
+```
+## [1] 3.118182
+```
+
+```r
+mean(Interesting.means.PS)
+```
+
+```
+## [1] 3.263636
+```
+
+The problem sets overall rated as being Useful, and Interesting, and Difficult. 
 
 Missing at random - practice with GLMs
 --------------------------------------
@@ -221,41 +238,43 @@ for (i in 1:max(readings$Index))
 
 For simplicity, I am considering "evaluated" as evaluated for all three categories (Useful, Difficult, and Interesting).
 
-Now I use a Binomial GLM to model the probability of being evaluated as a function of Useful, Interesting, and Difficult (as rated by the other groups). Note that there were 4 groups (A-C plus a group of 2 students that missed Tuesday) total, so n=4.
+Now I use a Binomial GLM to model the probability of being evaluated as a function of Useful, Interesting, and Difficult (as rated by the other groups). Note that there were 5 groups total, so n=5.
 
 
 ```r
-fit<-glm(cbind(4-num.missing,num.missing)~Useful+Difficult+Interesting,family="binomial")
+fit<-glm(cbind(5-num.missing,num.missing)~Useful+Difficult+Interesting,family="binomial")
 summary(fit)
 ```
 
 ```
 ## 
 ## Call:
-## glm(formula = cbind(4 - num.missing, num.missing) ~ Useful + 
+## glm(formula = cbind(5 - num.missing, num.missing) ~ Useful + 
 ##     Difficult + Interesting, family = "binomial")
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -1.4683   0.1489   0.3054   0.4337   1.3082  
+## -2.6523   0.2319   0.8001   1.0451   1.4609  
 ## 
 ## Coefficients:
-##             Estimate Std. Error z value Pr(>|z|)
-## (Intercept)  -3.5318     2.6969  -1.310    0.190
-## Useful        0.4905     0.7953   0.617    0.537
-## Difficult     1.2288     0.8455   1.453    0.146
-## Interesting   0.8669     0.6762   1.282    0.200
+##             Estimate Std. Error z value Pr(>|z|)  
+## (Intercept) -1.15040    2.82422  -0.407    0.684  
+## Useful       1.09309    0.64480   1.695    0.090 .
+## Difficult    0.04547    0.45650   0.100    0.921  
+## Interesting -0.05625    0.51023  -0.110    0.912  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 21.823  on 32  degrees of freedom
-## Residual deviance: 13.605  on 29  degrees of freedom
-## AIC: 31.962
+##     Null deviance: 49.173  on 31  degrees of freedom
+## Residual deviance: 45.877  on 28  degrees of freedom
+## AIC: 70.197
 ## 
-## Number of Fisher Scoring iterations: 6
+## Number of Fisher Scoring iterations: 5
 ```
 
-None of the covariates are significant, which isn't a surprise. Because I (accidentally) didn't pass out the Week 14 readings until Tuesday, it was only the Week 14 readings that had NAs, so we would not expect (except possibly by chance) any association with the factors of Useful, Difficult, or Interesting. 
+None of the covariates are significant, which isn't a surprise. Because I (accidentally) didn't pass out the Week 14 readings until Monday night, it was only the Week 14 readings that had many NAs, so we would not expect (except possibly by chance) any association with the factors of Useful, Difficult, or Interesting. 
 
 We might suspect a high degree of multicollinearity among the predictors. We can use PCA to create new orthogonal covariates which (more efficiently) capture the variability in the survey results. 
 
@@ -270,9 +289,9 @@ summary(pca.result)
 ```
 ## Importance of components:
 ##                           PC1    PC2    PC3
-## Standard deviation     1.0232 0.6395 0.4109
-## Proportion of Variance 0.6444 0.2517 0.1039
-## Cumulative Proportion  0.6444 0.8961 1.0000
+## Standard deviation     0.9084 0.5395 0.3891
+## Proportion of Variance 0.6510 0.2296 0.1194
+## Cumulative Proportion  0.6510 0.8806 1.0000
 ```
 
 ```r
@@ -280,79 +299,78 @@ pca.result$rotation
 ```
 
 ```
-##                     PC1        PC2        PC3
-## Useful      -0.63382221  0.4348484  0.6396689
-## Interesting -0.04763128  0.8034897 -0.5934101
-## Difficult   -0.77201079 -0.4065847 -0.4885573
+##                    PC1       PC2        PC3
+## Useful      -0.1571361 0.7179282  0.6781500
+## Interesting -0.6425818 0.4471147 -0.6222356
+## Difficult    0.7499312 0.5335425 -0.3910697
 ```
 
-PCA1 captures about 60% of the variability, so we try using just PCA1 in our GLM. 
+PCA1 captures about 91% of the variability, so we try using just PCA1 in our GLM. 
 
 
 ```r
-fit<-glm(cbind(4-num.missing,num.missing)~pca.result$x[,1],family="binomial")
+fit<-glm(cbind(5-num.missing,num.missing)~pca.result$x[,1],family="binomial")
 summary(fit)
 ```
 
 ```
 ## 
 ## Call:
-## glm(formula = cbind(4 - num.missing, num.missing) ~ pca.result$x[, 
+## glm(formula = cbind(5 - num.missing, num.missing) ~ pca.result$x[, 
 ##     1], family = "binomial")
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -1.6068   0.1929   0.3408   0.4717   1.2890  
+## -2.7500   0.5157   0.9595   1.0049   1.1519  
 ## 
 ## Coefficients:
 ##                   Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)         3.6863     0.6769   5.446 5.15e-08 ***
-## pca.result$x[, 1]  -1.2112     0.5325  -2.275   0.0229 *  
+## (Intercept)         2.2729     0.2723   8.349   <2e-16 ***
+## pca.result$x[, 1]  -0.1135     0.2932  -0.387    0.699    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 21.823  on 32  degrees of freedom
-## Residual deviance: 14.951  on 31  degrees of freedom
-## AIC: 29.307
+##     Null deviance: 49.173  on 31  degrees of freedom
+## Residual deviance: 49.026  on 30  degrees of freedom
+## AIC: 69.346
 ## 
-## Number of Fisher Scoring iterations: 6
+## Number of Fisher Scoring iterations: 5
 ```
 
-Not surprisingly, the first PC actually more significant than any of the individual factors alone. (And this is just an artifact, since the missingness is in fact related only to Week.) What if we look instead at the length of each paper?
-
+Still not significant.
 
 
 ```r
-fit<-glm(cbind(4-num.missing,num.missing)~Length.means.readings,family="binomial")
+fit<-glm(cbind(5-num.missing,num.missing)~Length.means.readings,family="binomial")
 summary(fit)
 ```
 
 ```
 ## 
 ## Call:
-## glm(formula = cbind(4 - num.missing, num.missing) ~ Length.means.readings, 
+## glm(formula = cbind(5 - num.missing, num.missing) ~ Length.means.readings, 
 ##     family = "binomial")
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -1.5078   0.4354   0.5848   0.6606   0.7105  
+## -2.7169   0.2359   0.9747   1.0418   1.0753  
 ## 
 ## Coefficients:
 ##                       Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)            2.63135    0.69342   3.795 0.000148 ***
-## Length.means.readings  0.04997    0.07654   0.653 0.513846    
+## (Intercept)            2.05040    0.40637   5.046 4.52e-07 ***
+## Length.means.readings  0.02434    0.03673   0.663    0.507    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 21.823  on 32  degrees of freedom
-## Residual deviance: 21.187  on 31  degrees of freedom
-## AIC: 35.544
+##     Null deviance: 49.173  on 31  degrees of freedom
+## Residual deviance: 48.612  on 30  degrees of freedom
+## AIC: 68.932
 ## 
-## Number of Fisher Scoring iterations: 6
+## Number of Fisher Scoring iterations: 5
 ```
 
 Length is not statistically correlated with whether a paper was rated, which is not surprising in this case because we know that the only papers not rated were the ones for the last week.
