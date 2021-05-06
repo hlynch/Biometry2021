@@ -16,23 +16,23 @@ We've already worked with multivariate data when we fit multiple regressions or 
 
 ## Multivariate associations
 
-Wwe are familiar with the process of measuring **variation within a variable** in linear regression using sums of squares and variances (which are equivalent to scaled sums of squares). For covariate 1, $X_1$:
+We are familiar with the process of measuring **variation within a variable** in linear regression using sums of squares and variances (which are equivalent to scaled sums of squares). For covariate 1, $X_1$:
 
 $$
-\text{SS} (X_1) = \sum_{j = 1}^n ( X_{1j} - \bar{X}_{1} ) ^2
+\text{SS} (X_1) = \sum_{i = 1}^n ( X_{1i} - \bar{X}_{1} ) ^2
 $$
 
 $$
-\mathrm{Var} (X_1) = \frac{1}{n - 1} \sum_{j = 1}^n ( X_{1j} - \bar{X}_{1} ) ^2
+\mathrm{Var} (X_1) = \frac{1}{n - 1} \sum_{i = 1}^n ( X_{1i} - \bar{X}_{1} ) ^2
 $$
 With multivariate data, we also look at the **covariation between variables**, as the sums of cross products or the covariances. For covariates 1 and 2, $X_1, X_2$:
 
 $$
-\text{SCP} (X_1, X_2) = \sum_{i = 1}^n ( X_{1j} - \bar{X}_{1} ) ( X_{2j} - \bar{X}_{2} )
+\text{SCP} (X_1, X_2) = \sum_{i = 1}^n ( X_{1i} - \bar{X}_{1} ) ( X_{2i} - \bar{X}_{2} )
 $$
 
 $$
-\mathrm{Cov} (X_1, X_2) = \frac{1}{n - 1} \sum_{i = 1}^n ( X_{1j} - \bar{X}_{1} ) ( X_{2j} - \bar{X}_{2} )
+\mathrm{Cov} (X_1, X_2) = \frac{1}{n - 1} \sum_{i = 1}^n ( X_{1i} - \bar{X}_{1} ) ( X_{2i} - \bar{X}_{2} )
 $$
 
 We can do this for all of our covariates and get a matrix of the sums of squares and sums of cross products or a matrix of the variances and covariances. We could also standardize the variances and covariances by their standard deviations and get a matrix of correlations ($r$).
@@ -48,10 +48,6 @@ $c_1$ through $c_p$ are coefficients that describe how much each original covari
 *Note that you could also calculate $z$ and $c$ using the original matrix of data rather than the matrix of associations (check your R package information to see which method is used).*
 
 What do we estimate in a multivariate analysis?
-
-$$
-z_j = c_1 X_{1j} + c_2 X_{2j} + \dots + c_p X_{pj}
-$$
 
 Each $z_j$ (remember, there are $p$ of these for each observation $j$) is called a **score**. The entire equation above (again, there are $p$ of these), is called a **component**. 
 
