@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-05-06" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1287,7 +1287,7 @@ Y_{ijk} = \mu + A_i + B_{j(i)} + \epsilon_{ijk} \text{, where } \epsilon_{ijk} \
 <p><span class="math inline">\(\bar{Y}\)</span> is the grand mean (i.e. the average across all 36 measurements)</p>
 <p><span class="math inline">\(\bar{Y}_{i}\)</span> is the mean within each group. In the rat example, this is the mean for each treatment.</p>
 <p><span class="math inline">\(\bar{Y}_{j(i)}\)</span> = is the mean within of the subsets within that group. In the rat example, this would be the mean within each rat.</p>
-<p>Notice that there are 6 measurements for each rat and there is variation <em>within</em> these measurements. Given this experimental set-up, this is the residual variation. The mean squared error at this bottom level of the model is <span class="math inline">\(\text{MS}_{within}\)</span>. Notice that in the ANOVA table, this is the denominator for all F ratios. <strong>Large residual variation is going to make it difficult to say that variation between groups higher in the hierarchy are actually statistically significant.</strong></p>
+<p>Notice that there are 6 measurements for each rat and there is variation <em>within</em> these measurements. Given this experimental set-up, this is the residual variation. The mean squared error at this bottom level of the model is <span class="math inline">\(\text{MS}_{residual}\)</span>. <strong>Large residual variation is going to make it difficult to say that variation between groups higher in the hierarchy are actually statistically significant.</strong></p>
 <p>To test the null hypothesis that factor A has no effect (<span class="math inline">\(H_0(A): A_i = 0\)</span>), we find the probability of obtaining an F ratio greater than the F ratio we calculated with our data: <span class="math inline">\(P ( X \ge F^*), X \sim F_{[\text{DOF}_{\text{among grp.}}, \text{DOF}_{\text{within}}]}\)</span>. To test the null hypothesis that nesting factor B has no effect (<span class="math inline">\(H_0(B): B_j = 0\)</span>), <span class="math inline">\(P ( X \ge F^*), X \sim F_{[\text{DOF}_{\text{among rep.}}, \text{DOF}_{\text{within}}]}\)</span>. Again, there is no interaction term with nested designs.</p>
 <p>Finally, nested design arise frequently in a spatial context, where you might have multiple plots within fields receiving different treatments. The most common scenario would look like this:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>

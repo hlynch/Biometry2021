@@ -837,7 +837,7 @@ $\bar{Y}_{i}$ is the mean within each group. In the rat example, this is the mea
 
 $\bar{Y}_{j(i)}$ = is the mean within of the subsets within that group. In the rat example, this would be the mean within each rat.
 
-Notice that there are 6 measurements for each rat and there is variation *within* these measurements. Given this experimental set-up, this is the residual variation. The mean squared error at this bottom level of the model is $\text{MS}_{within}$. Notice that in the ANOVA table, this is the denominator for all F ratios. **Large residual variation is going to make it difficult to say that variation between groups higher in the hierarchy are actually statistically significant.**
+Notice that there are 6 measurements for each rat and there is variation *within* these measurements. Given this experimental set-up, this is the residual variation. The mean squared error at this bottom level of the model is $\text{MS}_{residual}$. **Large residual variation is going to make it difficult to say that variation between groups higher in the hierarchy are actually statistically significant.**
 
 To test the null hypothesis that factor A has no effect ($H_0(A): A_i = 0$), we find the probability of obtaining an F ratio greater than the F ratio we calculated with our data: $P ( X \ge F^*), X \sim F_{[\text{DOF}_{\text{among grp.}}, \text{DOF}_{\text{within}}]}$. To test the null hypothesis that nesting factor B has no effect ($H_0(B): B_j = 0$), $P ( X \ge F^*), X \sim F_{[\text{DOF}_{\text{among rep.}}, \text{DOF}_{\text{within}}]}$. Again, there is no interaction term with nested designs.
 

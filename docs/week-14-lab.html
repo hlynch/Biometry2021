@@ -24,7 +24,7 @@
 <meta name="author" content="Heather Lynch" />
 
 
-<meta name="date" content="2021-05-06" />
+<meta name="date" content="2021-05-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -444,109 +444,109 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Some practice with GLMs using the semester survey results</p></li>
 </ol>
 <p>There are a number of functions you could use in R to do principal components analysis. We will use the ‘prcomp’ function, but there is a very closely related function called ‘princomp’ as well as a function called ‘principal’ which is in the ‘psych’ package.</p>
-<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="week-14-lab.html#cb959-1" aria-hidden="true" tabindex="-1"></a>readings<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lab/Readings 2021.csv&quot;</span>,<span class="at">header=</span>T)</span>
-<span id="cb959-2"><a href="week-14-lab.html#cb959-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb959-3"><a href="week-14-lab.html#cb959-3" aria-hidden="true" tabindex="-1"></a>missing<span class="ot">&lt;-</span><span class="fu">which</span>(<span class="fu">is.na</span>(readings<span class="sc">$</span>Useful)<span class="sc">|</span><span class="fu">is.na</span>(readings<span class="sc">$</span>Difficult)<span class="sc">|</span><span class="fu">is.na</span>(readings<span class="sc">$</span>Interesting))</span>
-<span id="cb959-4"><a href="week-14-lab.html#cb959-4" aria-hidden="true" tabindex="-1"></a>Useful<span class="ot">&lt;-</span><span class="fu">aggregate</span>(readings<span class="sc">$</span>Useful[<span class="sc">-</span>missing], <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>readings<span class="sc">$</span>Index[<span class="sc">-</span>missing]),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
-<span id="cb959-5"><a href="week-14-lab.html#cb959-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb959-6"><a href="week-14-lab.html#cb959-6" aria-hidden="true" tabindex="-1"></a>Difficult<span class="ot">&lt;-</span><span class="fu">aggregate</span>(readings<span class="sc">$</span>Difficult[<span class="sc">-</span>missing], <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>readings<span class="sc">$</span>Index[<span class="sc">-</span>missing]),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
-<span id="cb959-7"><a href="week-14-lab.html#cb959-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb959-8"><a href="week-14-lab.html#cb959-8" aria-hidden="true" tabindex="-1"></a>Interesting<span class="ot">&lt;-</span><span class="fu">aggregate</span>(readings<span class="sc">$</span>Interesting[<span class="sc">-</span>missing], <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>readings<span class="sc">$</span>Index[<span class="sc">-</span>missing]),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
-<span id="cb959-9"><a href="week-14-lab.html#cb959-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb959-10"><a href="week-14-lab.html#cb959-10" aria-hidden="true" tabindex="-1"></a>Length.means.readings<span class="ot">&lt;-</span><span class="fu">aggregate</span>(readings<span class="sc">$</span>Length[<span class="sc">-</span>missing], <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>readings<span class="sc">$</span>Index[<span class="sc">-</span>missing]),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
-<span id="cb959-11"><a href="week-14-lab.html#cb959-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb959-12"><a href="week-14-lab.html#cb959-12" aria-hidden="true" tabindex="-1"></a>pca.result<span class="ot">&lt;-</span><span class="fu">prcomp</span>(<span class="sc">~</span>Useful<span class="sc">+</span>Interesting<span class="sc">+</span>Difficult,<span class="at">retx=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="week-14-lab.html#cb961-1" aria-hidden="true" tabindex="-1"></a>readings<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lab/Readings 2021.csv&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb961-2"><a href="week-14-lab.html#cb961-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb961-3"><a href="week-14-lab.html#cb961-3" aria-hidden="true" tabindex="-1"></a>missing<span class="ot">&lt;-</span><span class="fu">which</span>(<span class="fu">is.na</span>(readings<span class="sc">$</span>Useful)<span class="sc">|</span><span class="fu">is.na</span>(readings<span class="sc">$</span>Difficult)<span class="sc">|</span><span class="fu">is.na</span>(readings<span class="sc">$</span>Interesting))</span>
+<span id="cb961-4"><a href="week-14-lab.html#cb961-4" aria-hidden="true" tabindex="-1"></a>Useful<span class="ot">&lt;-</span><span class="fu">aggregate</span>(readings<span class="sc">$</span>Useful[<span class="sc">-</span>missing], <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>readings<span class="sc">$</span>Index[<span class="sc">-</span>missing]),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
+<span id="cb961-5"><a href="week-14-lab.html#cb961-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb961-6"><a href="week-14-lab.html#cb961-6" aria-hidden="true" tabindex="-1"></a>Difficult<span class="ot">&lt;-</span><span class="fu">aggregate</span>(readings<span class="sc">$</span>Difficult[<span class="sc">-</span>missing], <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>readings<span class="sc">$</span>Index[<span class="sc">-</span>missing]),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
+<span id="cb961-7"><a href="week-14-lab.html#cb961-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb961-8"><a href="week-14-lab.html#cb961-8" aria-hidden="true" tabindex="-1"></a>Interesting<span class="ot">&lt;-</span><span class="fu">aggregate</span>(readings<span class="sc">$</span>Interesting[<span class="sc">-</span>missing], <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>readings<span class="sc">$</span>Index[<span class="sc">-</span>missing]),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
+<span id="cb961-9"><a href="week-14-lab.html#cb961-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb961-10"><a href="week-14-lab.html#cb961-10" aria-hidden="true" tabindex="-1"></a>Length.means.readings<span class="ot">&lt;-</span><span class="fu">aggregate</span>(readings<span class="sc">$</span>Length[<span class="sc">-</span>missing], <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>readings<span class="sc">$</span>Index[<span class="sc">-</span>missing]),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
+<span id="cb961-11"><a href="week-14-lab.html#cb961-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb961-12"><a href="week-14-lab.html#cb961-12" aria-hidden="true" tabindex="-1"></a>pca.result<span class="ot">&lt;-</span><span class="fu">prcomp</span>(<span class="sc">~</span>Useful<span class="sc">+</span>Interesting<span class="sc">+</span>Difficult,<span class="at">retx=</span>T)</span></code></pre></div>
 <p>Before printing out the result, let’s make sure everyone understands what I was doing with the aggregate commands, and how the ‘prcomp’ function input works.</p>
 <p>To print out a summary of the PCA, we use</p>
-<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb960-1"><a href="week-14-lab.html#cb960-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca.result)</span></code></pre></div>
+<div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb962-1"><a href="week-14-lab.html#cb962-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca.result)</span></code></pre></div>
 <pre><code>## Importance of components:
 ##                           PC1    PC2    PC3
 ## Standard deviation     0.9084 0.5395 0.3891
 ## Proportion of Variance 0.6510 0.2296 0.1194
 ## Cumulative Proportion  0.6510 0.8806 1.0000</code></pre>
 <p>We see that PCA1 is associated with over 65% of the variation in responses. So, what is PCA1?</p>
-<div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb962-1"><a href="week-14-lab.html#cb962-1" aria-hidden="true" tabindex="-1"></a>pca.result<span class="sc">$</span>rotation</span></code></pre></div>
+<div class="sourceCode" id="cb964"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb964-1"><a href="week-14-lab.html#cb964-1" aria-hidden="true" tabindex="-1"></a>pca.result<span class="sc">$</span>rotation</span></code></pre></div>
 <pre><code>##                    PC1       PC2        PC3
 ## Useful      -0.1571361 0.7179282  0.6781500
 ## Interesting -0.6425818 0.4471147 -0.6222356
 ## Difficult    0.7499312 0.5335425 -0.3910697</code></pre>
 <p>PCA1 is an axis which describes papers that are Less Interesting and More Difficult, with a very small weight towards papers that are Less Useful. In other words, a large positive PCA1 score would be associated with an boring paper that was difficult to read. Note that the principal components denote an axis, but the direction is arbitrary. Since no direction is implied by the sign, we do not interpret this as saying that most papers were boring and difficult. Instead we would say that the papers largely fall along a common axis in which Interesting/Easy/Useful papers are at one end, and Boring/Difficult/Useless papers are at the other end.</p>
 <p>We can visualize this using the function ‘biplot’</p>
-<div class="sourceCode" id="cb964"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb964-1"><a href="week-14-lab.html#cb964-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(pca.result)</span></code></pre></div>
+<div class="sourceCode" id="cb966"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb966-1"><a href="week-14-lab.html#cb966-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(pca.result)</span></code></pre></div>
 <p><img src="Week-14-lab_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Biplots take some getting used to, and when they have many more dimensions, they become increasingly difficult to interpret. However, papers low on PC1 are generally Interesting and Easy and paper high on PC1 are generally Boring and Difficult. Papers low on PC2 are generally Boring and Easy and Useless and papers high on PC2 are generally Interesting and Difficult and Useful.</p>
 <p>So which papers came out as highly positive on the PC2 axis? Remember, these are considered Useful and Interesting but also Difficult to read.</p>
-<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb965-1"><a href="week-14-lab.html#cb965-1" aria-hidden="true" tabindex="-1"></a>readings[readings<span class="sc">$</span>Index<span class="sc">==</span><span class="dv">14</span>,<span class="dv">1</span>][<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb967-1"><a href="week-14-lab.html#cb967-1" aria-hidden="true" tabindex="-1"></a>readings[readings<span class="sc">$</span>Index<span class="sc">==</span><span class="dv">14</span>,<span class="dv">1</span>][<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;Shmueli (2010) To explain or predict? Statistical Science 25(3): 289-310.&quot;</code></pre>
 <p>Perhaps not surprising!</p>
 <p>You can play around with this yourself and see why I added the [1] at the end. When I pull out the rows with the Index identified by the PCA, I get the list of all entries (since we had &gt;1 team rating the papers) and so I only print the first one.</p>
 <p>Which papers were highly positive on PC1? (Difficult and Boring)</p>
-<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb967-1"><a href="week-14-lab.html#cb967-1" aria-hidden="true" tabindex="-1"></a>readings[readings<span class="sc">$</span>Index<span class="sc">==</span><span class="dv">2</span>,<span class="dv">1</span>][<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb969"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb969-1"><a href="week-14-lab.html#cb969-1" aria-hidden="true" tabindex="-1"></a>readings[readings<span class="sc">$</span>Index<span class="sc">==</span><span class="dv">2</span>,<span class="dv">1</span>][<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;Bolker Chapter 6 (Posted on Bb)&quot;</code></pre>
 <p>Alas, poor Bolker! Bolker is often rated as boring and difficult. I keep him around because his thinking is so “spot on” and perhaps his style is an aquired taste.</p>
 <p>These two papers are the only two stand outs this year. The other readings cluster together.</p>
 <p>One thing to keep in mind is that a PCA identifies <em>variation</em> in the dataset. It’s worth putting these numbers in context of the overall means.</p>
-<div class="sourceCode" id="cb969"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb969-1"><a href="week-14-lab.html#cb969-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Useful)</span></code></pre></div>
+<div class="sourceCode" id="cb971"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb971-1"><a href="week-14-lab.html#cb971-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Useful)</span></code></pre></div>
 <pre><code>## [1] 3.288542</code></pre>
-<div class="sourceCode" id="cb971"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb971-1"><a href="week-14-lab.html#cb971-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Difficult)</span></code></pre></div>
+<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="week-14-lab.html#cb973-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Difficult)</span></code></pre></div>
 <pre><code>## [1] 2.421354</code></pre>
-<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="week-14-lab.html#cb973-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Interesting)</span></code></pre></div>
+<div class="sourceCode" id="cb975"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb975-1"><a href="week-14-lab.html#cb975-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Interesting)</span></code></pre></div>
 <pre><code>## [1] 3.223438</code></pre>
 <p>So the average reading scored pretty high for being Useful and Interesting and was rated of medium Difficulty.</p>
 <p>We can do the same for the problem sets:</p>
-<div class="sourceCode" id="cb975"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb975-1"><a href="week-14-lab.html#cb975-1" aria-hidden="true" tabindex="-1"></a>PS<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lab/ProblemSets 2021.csv&quot;</span>,<span class="at">header=</span>T)</span>
-<span id="cb975-2"><a href="week-14-lab.html#cb975-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb975-3"><a href="week-14-lab.html#cb975-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case there were no missing data</span></span>
-<span id="cb975-4"><a href="week-14-lab.html#cb975-4" aria-hidden="true" tabindex="-1"></a>Useful.means.PS<span class="ot">&lt;-</span><span class="fu">aggregate</span>(PS<span class="sc">$</span>Useful, <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>PS<span class="sc">$</span>Week),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
-<span id="cb975-5"><a href="week-14-lab.html#cb975-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb975-6"><a href="week-14-lab.html#cb975-6" aria-hidden="true" tabindex="-1"></a>Difficult.means.PS<span class="ot">&lt;-</span><span class="fu">aggregate</span>(PS<span class="sc">$</span>Difficult, <span class="at">by=</span><span class="fu">list</span>(<span class="at">Week=</span>PS<span class="sc">$</span>Week),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
-<span id="cb975-7"><a href="week-14-lab.html#cb975-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb975-8"><a href="week-14-lab.html#cb975-8" aria-hidden="true" tabindex="-1"></a>Interesting.means.PS<span class="ot">&lt;-</span><span class="fu">aggregate</span>(PS<span class="sc">$</span>Interesting, <span class="at">by=</span><span class="fu">list</span>(<span class="at">Week=</span>PS<span class="sc">$</span>Week),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
-<span id="cb975-9"><a href="week-14-lab.html#cb975-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb975-10"><a href="week-14-lab.html#cb975-10" aria-hidden="true" tabindex="-1"></a>pca.result<span class="ot">&lt;-</span><span class="fu">prcomp</span>(<span class="sc">~</span>Useful.means.PS<span class="sc">+</span>Interesting.means.PS<span class="sc">+</span>Difficult.means.PS,<span class="at">data=</span>PS,<span class="at">retx=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb977"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb977-1"><a href="week-14-lab.html#cb977-1" aria-hidden="true" tabindex="-1"></a>PS<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;~/Dropbox/Biometry/Week 14 Multivariate analyses and Review/Week 14 Lab/ProblemSets 2021.csv&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb977-2"><a href="week-14-lab.html#cb977-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb977-3"><a href="week-14-lab.html#cb977-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case there were no missing data</span></span>
+<span id="cb977-4"><a href="week-14-lab.html#cb977-4" aria-hidden="true" tabindex="-1"></a>Useful.means.PS<span class="ot">&lt;-</span><span class="fu">aggregate</span>(PS<span class="sc">$</span>Useful, <span class="at">by=</span><span class="fu">list</span>(<span class="at">Index=</span>PS<span class="sc">$</span>Week),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
+<span id="cb977-5"><a href="week-14-lab.html#cb977-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb977-6"><a href="week-14-lab.html#cb977-6" aria-hidden="true" tabindex="-1"></a>Difficult.means.PS<span class="ot">&lt;-</span><span class="fu">aggregate</span>(PS<span class="sc">$</span>Difficult, <span class="at">by=</span><span class="fu">list</span>(<span class="at">Week=</span>PS<span class="sc">$</span>Week),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
+<span id="cb977-7"><a href="week-14-lab.html#cb977-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb977-8"><a href="week-14-lab.html#cb977-8" aria-hidden="true" tabindex="-1"></a>Interesting.means.PS<span class="ot">&lt;-</span><span class="fu">aggregate</span>(PS<span class="sc">$</span>Interesting, <span class="at">by=</span><span class="fu">list</span>(<span class="at">Week=</span>PS<span class="sc">$</span>Week),<span class="at">FUN=</span>mean)<span class="sc">$</span>x</span>
+<span id="cb977-9"><a href="week-14-lab.html#cb977-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb977-10"><a href="week-14-lab.html#cb977-10" aria-hidden="true" tabindex="-1"></a>pca.result<span class="ot">&lt;-</span><span class="fu">prcomp</span>(<span class="sc">~</span>Useful.means.PS<span class="sc">+</span>Interesting.means.PS<span class="sc">+</span>Difficult.means.PS,<span class="at">data=</span>PS,<span class="at">retx=</span>T)</span></code></pre></div>
 <p>Notice that it has simply labeled them in order, so 7=Week #9 PS, 8=Week #10 PS, 9=Week #11 PS, 10=Week #12 PS, and 11=Week #13 PS.</p>
 <p>To print out a summary of the PCA, we use</p>
-<div class="sourceCode" id="cb976"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb976-1"><a href="week-14-lab.html#cb976-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca.result)</span></code></pre></div>
+<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb978-1"><a href="week-14-lab.html#cb978-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca.result)</span></code></pre></div>
 <pre><code>## Importance of components:
 ##                           PC1    PC2     PC3
 ## Standard deviation     0.8288 0.7171 0.33638
 ## Proportion of Variance 0.5226 0.3913 0.08609
 ## Cumulative Proportion  0.5226 0.9139 1.00000</code></pre>
 <p>We see that for the problem sets, PC1 is even more dominant (83% of the variation). So, what is PCA1?</p>
-<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb978-1"><a href="week-14-lab.html#cb978-1" aria-hidden="true" tabindex="-1"></a>pca.result<span class="sc">$</span>rotation</span></code></pre></div>
+<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="week-14-lab.html#cb980-1" aria-hidden="true" tabindex="-1"></a>pca.result<span class="sc">$</span>rotation</span></code></pre></div>
 <pre><code>##                             PC1        PC2        PC3
 ## Useful.means.PS      -0.5926091 -0.1695284  0.7874482
 ## Interesting.means.PS -0.5122508 -0.6751269 -0.5308510
 ## Difficult.means.PS    0.6216217 -0.7179581  0.3132453</code></pre>
 <p>PC1 almost evenly combines all three factors, and the axis divides problem sets judged Useless/Boring/Difficult and those that are Useful/Interesting/Easy. (Reminder: the signs of the PCs is arbitrary, so the signs on the rotation could have all be flipped.) Looking across all the PC axes, we want papers that are low (negative) on PC1, low (negative) on PC2, and probably high (positive) on PC3.</p>
-<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="week-14-lab.html#cb980-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(pca.result)</span></code></pre></div>
+<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb982-1"><a href="week-14-lab.html#cb982-1" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(pca.result)</span></code></pre></div>
 <p><img src="Week-14-lab_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Most of this is a scatter, but the problem set for Week 1 stands out in the upper right. Looking at the data, this is largely because the Week 1 problem set was the least interesting of all the problem sets.</p>
 <p>Again, looking at the means:</p>
-<div class="sourceCode" id="cb981"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb981-1"><a href="week-14-lab.html#cb981-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Useful.means.PS)</span></code></pre></div>
+<div class="sourceCode" id="cb983"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb983-1"><a href="week-14-lab.html#cb983-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Useful.means.PS)</span></code></pre></div>
 <pre><code>## [1] 3.827273</code></pre>
-<div class="sourceCode" id="cb983"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb983-1"><a href="week-14-lab.html#cb983-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Difficult.means.PS)</span></code></pre></div>
+<div class="sourceCode" id="cb985"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb985-1"><a href="week-14-lab.html#cb985-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Difficult.means.PS)</span></code></pre></div>
 <pre><code>## [1] 3.118182</code></pre>
-<div class="sourceCode" id="cb985"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb985-1"><a href="week-14-lab.html#cb985-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Interesting.means.PS)</span></code></pre></div>
+<div class="sourceCode" id="cb987"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb987-1"><a href="week-14-lab.html#cb987-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Interesting.means.PS)</span></code></pre></div>
 <pre><code>## [1] 3.263636</code></pre>
 <p>The problem sets overall rated as being Useful, and Interesting, and Difficult.</p>
 <div id="missing-at-random---practice-with-glms" class="section level2" number="27.1">
 <h2><span class="header-section-number">27.1</span> Missing at random - practice with GLMs</h2>
 <p>There were missing data for some of the readings. One could ask the question, are these data missing at random? In the problem set for Week #13, we completed the dataset using random imputation. In other words, we assumed that data were missing at random and we drew with replacement from the other values to replace missing datapoints. However, in this case, it seems likely that data are not missing at random. I suspect that papers were not evaluated because no one read them, and that something about the papers may predict whether the papers were read or not. We can answer this question by constructing a model for “missingness” which assumes that the probability of being evaluated is distributed as Binom(n,p) where p is the probability of being evaluated (and presumably, of having been read in the first place).</p>
 <p>First, I need to go through the data and figure out how many times a paper was evaluated.</p>
-<div class="sourceCode" id="cb987"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb987-1"><a href="week-14-lab.html#cb987-1" aria-hidden="true" tabindex="-1"></a>num.missing<span class="ot">&lt;-</span><span class="fu">vector</span>(<span class="at">length=</span><span class="fu">max</span>(readings<span class="sc">$</span>Index))</span>
-<span id="cb987-2"><a href="week-14-lab.html#cb987-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">max</span>(readings<span class="sc">$</span>Index))</span>
-<span id="cb987-3"><a href="week-14-lab.html#cb987-3" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb987-4"><a href="week-14-lab.html#cb987-4" aria-hidden="true" tabindex="-1"></a>  num.missing.useful<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(<span class="fu">is.na</span>(readings<span class="sc">$</span>Useful[readings<span class="sc">$</span>Index<span class="sc">==</span>i])))</span>
-<span id="cb987-5"><a href="week-14-lab.html#cb987-5" aria-hidden="true" tabindex="-1"></a>  num.missing.difficult<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(<span class="fu">is.na</span>(readings<span class="sc">$</span>Difficult[readings<span class="sc">$</span>Index<span class="sc">==</span>i])))</span>
-<span id="cb987-6"><a href="week-14-lab.html#cb987-6" aria-hidden="true" tabindex="-1"></a>  num.missing.interesting<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(<span class="fu">is.na</span>(readings<span class="sc">$</span>Interesting[readings<span class="sc">$</span>Index<span class="sc">==</span>i])))</span>
-<span id="cb987-7"><a href="week-14-lab.html#cb987-7" aria-hidden="true" tabindex="-1"></a>  max.missing<span class="ot">&lt;-</span><span class="fu">max</span>(num.missing.useful,num.missing.difficult,num.missing.interesting)</span>
-<span id="cb987-8"><a href="week-14-lab.html#cb987-8" aria-hidden="true" tabindex="-1"></a>  num.missing[i]<span class="ot">&lt;-</span>max.missing</span>
-<span id="cb987-9"><a href="week-14-lab.html#cb987-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb989"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb989-1"><a href="week-14-lab.html#cb989-1" aria-hidden="true" tabindex="-1"></a>num.missing<span class="ot">&lt;-</span><span class="fu">vector</span>(<span class="at">length=</span><span class="fu">max</span>(readings<span class="sc">$</span>Index))</span>
+<span id="cb989-2"><a href="week-14-lab.html#cb989-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">max</span>(readings<span class="sc">$</span>Index))</span>
+<span id="cb989-3"><a href="week-14-lab.html#cb989-3" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb989-4"><a href="week-14-lab.html#cb989-4" aria-hidden="true" tabindex="-1"></a>  num.missing.useful<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(<span class="fu">is.na</span>(readings<span class="sc">$</span>Useful[readings<span class="sc">$</span>Index<span class="sc">==</span>i])))</span>
+<span id="cb989-5"><a href="week-14-lab.html#cb989-5" aria-hidden="true" tabindex="-1"></a>  num.missing.difficult<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(<span class="fu">is.na</span>(readings<span class="sc">$</span>Difficult[readings<span class="sc">$</span>Index<span class="sc">==</span>i])))</span>
+<span id="cb989-6"><a href="week-14-lab.html#cb989-6" aria-hidden="true" tabindex="-1"></a>  num.missing.interesting<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="fu">as.numeric</span>(<span class="fu">is.na</span>(readings<span class="sc">$</span>Interesting[readings<span class="sc">$</span>Index<span class="sc">==</span>i])))</span>
+<span id="cb989-7"><a href="week-14-lab.html#cb989-7" aria-hidden="true" tabindex="-1"></a>  max.missing<span class="ot">&lt;-</span><span class="fu">max</span>(num.missing.useful,num.missing.difficult,num.missing.interesting)</span>
+<span id="cb989-8"><a href="week-14-lab.html#cb989-8" aria-hidden="true" tabindex="-1"></a>  num.missing[i]<span class="ot">&lt;-</span>max.missing</span>
+<span id="cb989-9"><a href="week-14-lab.html#cb989-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>For simplicity, I am considering “evaluated” as evaluated for all three categories (Useful, Difficult, and Interesting).</p>
 <p>Now I use a Binomial GLM to model the probability of being evaluated as a function of Useful, Interesting, and Difficult (as rated by the other groups). Note that there were 5 groups total, so n=5.</p>
-<div class="sourceCode" id="cb988"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb988-1"><a href="week-14-lab.html#cb988-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">glm</span>(<span class="fu">cbind</span>(<span class="dv">5</span><span class="sc">-</span>num.missing,num.missing)<span class="sc">~</span>Useful<span class="sc">+</span>Difficult<span class="sc">+</span>Interesting,<span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb988-2"><a href="week-14-lab.html#cb988-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="week-14-lab.html#cb990-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">glm</span>(<span class="fu">cbind</span>(<span class="dv">5</span><span class="sc">-</span>num.missing,num.missing)<span class="sc">~</span>Useful<span class="sc">+</span>Difficult<span class="sc">+</span>Interesting,<span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb990-2"><a href="week-14-lab.html#cb990-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cbind(5 - num.missing, num.missing) ~ Useful + 
@@ -575,21 +575,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>None of the covariates are significant, which isn’t a surprise. Because I (accidentally) didn’t pass out the Week 14 readings until Monday night, it was only the Week 14 readings that had many NAs, so we would not expect (except possibly by chance) any association with the factors of Useful, Difficult, or Interesting.</p>
 <p>We might suspect a high degree of multicollinearity among the predictors. We can use PCA to create new orthogonal covariates which (more efficiently) capture the variability in the survey results.</p>
 <p>I will rerun the PCA for the readings.</p>
-<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="week-14-lab.html#cb990-1" aria-hidden="true" tabindex="-1"></a>pca.result<span class="ot">&lt;-</span><span class="fu">prcomp</span>(<span class="sc">~</span>Useful<span class="sc">+</span>Interesting<span class="sc">+</span>Difficult,<span class="at">retx=</span>T)</span>
-<span id="cb990-2"><a href="week-14-lab.html#cb990-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca.result)</span></code></pre></div>
+<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="week-14-lab.html#cb992-1" aria-hidden="true" tabindex="-1"></a>pca.result<span class="ot">&lt;-</span><span class="fu">prcomp</span>(<span class="sc">~</span>Useful<span class="sc">+</span>Interesting<span class="sc">+</span>Difficult,<span class="at">retx=</span>T)</span>
+<span id="cb992-2"><a href="week-14-lab.html#cb992-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca.result)</span></code></pre></div>
 <pre><code>## Importance of components:
 ##                           PC1    PC2    PC3
 ## Standard deviation     0.9084 0.5395 0.3891
 ## Proportion of Variance 0.6510 0.2296 0.1194
 ## Cumulative Proportion  0.6510 0.8806 1.0000</code></pre>
-<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="week-14-lab.html#cb992-1" aria-hidden="true" tabindex="-1"></a>pca.result<span class="sc">$</span>rotation</span></code></pre></div>
+<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="week-14-lab.html#cb994-1" aria-hidden="true" tabindex="-1"></a>pca.result<span class="sc">$</span>rotation</span></code></pre></div>
 <pre><code>##                    PC1       PC2        PC3
 ## Useful      -0.1571361 0.7179282  0.6781500
 ## Interesting -0.6425818 0.4471147 -0.6222356
 ## Difficult    0.7499312 0.5335425 -0.3910697</code></pre>
 <p>PCA1 captures about 91% of the variability, so we try using just PCA1 in our GLM.</p>
-<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="week-14-lab.html#cb994-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">glm</span>(<span class="fu">cbind</span>(<span class="dv">5</span><span class="sc">-</span>num.missing,num.missing)<span class="sc">~</span>pca.result<span class="sc">$</span>x[,<span class="dv">1</span>],<span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb994-2"><a href="week-14-lab.html#cb994-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb996"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb996-1"><a href="week-14-lab.html#cb996-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">glm</span>(<span class="fu">cbind</span>(<span class="dv">5</span><span class="sc">-</span>num.missing,num.missing)<span class="sc">~</span>pca.result<span class="sc">$</span>x[,<span class="dv">1</span>],<span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb996-2"><a href="week-14-lab.html#cb996-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cbind(5 - num.missing, num.missing) ~ pca.result$x[, 
@@ -614,8 +614,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>Still not significant.</p>
-<div class="sourceCode" id="cb996"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb996-1"><a href="week-14-lab.html#cb996-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">glm</span>(<span class="fu">cbind</span>(<span class="dv">5</span><span class="sc">-</span>num.missing,num.missing)<span class="sc">~</span>Length.means.readings,<span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb996-2"><a href="week-14-lab.html#cb996-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="week-14-lab.html#cb998-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">glm</span>(<span class="fu">cbind</span>(<span class="dv">5</span><span class="sc">-</span>num.missing,num.missing)<span class="sc">~</span>Length.means.readings,<span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb998-2"><a href="week-14-lab.html#cb998-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cbind(5 - num.missing, num.missing) ~ Length.means.readings, 
